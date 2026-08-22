@@ -4,7 +4,7 @@ One row per GLM run — including fix-loop runs (reference the parent task ID in
 
 | Date | Task ID | Workstream | Prompt tokens | Output tokens | Estimated total | Result | Quality score | Notes |
 |---|---|---|---|---|---|---|---|---|
-| *2026-08-22* | *SN-000* | *WS-DOCS* | *3,200* | *4,100* | *7,300* | *Merged* | *4/5* | *Example row — delete after the first real entry* |
+| *2026-08-22* | *SN-000* | *WS-INFRA* | *4,000* | *12,000* | *16,000* | *Merged* | *5/5* | *Example row — delete after the first real entry* |
 
 ## Result values
 

@@ -4,8 +4,7 @@ Cards move left to right through the columns defined in [GLM_WORKFLOW.md](GLM_WO
 
 | Backlog | Spec Ready | Prompt Ready | GLM Running | Review | Fix Required | QA | Done |
 |---|---|---|---|---|---|---|---|
-| SN-002 *(proposed)* — Backend scaffold | | | | SN-001 — Monorepo structure and control docs | | | |
-| SN-003 *(proposed)* — Mobile scaffold (Expo) | | | | | | | |
+| | SN-003 *(proposed)* — Mobile scaffold (Expo) | SN-002 — Backend scaffold | | | | | | SN-001 — Monorepo structure and control docs |
 | SN-004 *(proposed)* — Web landing scaffold (Next.js) | | | | | | | |
 | SN-005 *(proposed)* — Content model and first scenarios | | | | | | | |
 
