@@ -1,0 +1,56 @@
+# Secrets and environment
+.env
+.env.*
+!.env.example
+
+# Node
+node_modules/
+.npm/
+*.tsbuildinfo
+
+# React Native / Expo
+.expo/
+dist/
+web-build/
+*.orig.*
+
+# Next.js
+.next/
+out/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+coverage.xml
+htmlcov/
+
+# Databases
+*.sqlite3
+*.db
+
+# Logs
+logs/
+*.log
+
+# Editors and IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Build artifacts
+build/
+*.apk
+*.aab
+*.ipa
