@@ -45,6 +45,18 @@ jest.mock("../services/secureStorage", () => ({
   removeItem: jest.fn(async () => true),
 }));
 
+jest.mock("expo-av", () => ({
+  Audio: {
+    requestPermissionsAsync: jest.fn(async () => ({ granted: true, status: "granted" })),
+    setAudioModeAsync: jest.fn(async () => {}),
+    Recording: { createAsync: jest.fn() },
+    AndroidOutputFormat: { MPEG_4: "mpeg4" },
+    AndroidAudioEncoder: { AAC: "aac" },
+    IOSOutputFormat: { MPEG_4: "mpeg4" },
+    IOSAudioQuality: { HIGH: "high", MEDIUM: "medium", LOW: "low" },
+  },
+}));
+
 jest.mock("../api/client", () => {
   const actualModule = jest.requireActual("../api/client");
   return { ...actualModule, completeSession: jest.fn() };
@@ -106,14 +118,27 @@ describe("useVoiceSession", () => {
     await waitFor(() => expect(openSockets.length).toBe(1));
     act(() => {
       lastSocket().simulateOpen();
+    });
+    // IDLE tap → async recorder.start() then sends init chunk.
+    await act(async () => {
       result.current.handleTap();
+    });
+    await waitFor(() => {
+      expect(lastSocket().sent.length).toBeGreaterThanOrEqual(1);
     });
     act(() => {
       lastSocket().simulateFrame({
         type: "state_change", payload: { state: "listening" },
       });
     });
-    act(() => { result.current.handleTap(); });
+    // LISTENING tap → stopAndCollect + end_turn.
+    const beforeEndTurn = lastSocket().sent.length;
+    await act(async () => {
+      result.current.handleTap();
+    });
+    await waitFor(() => {
+      expect(lastSocket().sent.length).toBeGreaterThan(beforeEndTurn);
+    });
     const types = lastSocket().sent.map((raw) => JSON.parse(raw).type);
     expect(types).toEqual(["audio_chunk", "end_turn"]);
   });
