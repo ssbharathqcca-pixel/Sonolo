@@ -11,7 +11,7 @@ import json
 import logging
 from contextlib import suppress
 from typing import cast
-from uuid import UUID, uuid4
+from uuid import UUID
 
 from fastapi import APIRouter, WebSocket, WebSocketDisconnect
 from pydantic import ValidationError

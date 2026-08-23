@@ -117,13 +117,15 @@ class SessionManager:
         async with session.lock:
             if session.state in (VoiceState.PROCESSING, VoiceState.SPEAKING):
                 return False
+            was_listening = session.state is VoiceState.LISTENING
             session.state = VoiceState.LISTENING
             session.last_audio_at = time.monotonic()
             if session.silence_task is None:
                 session.silence_task = asyncio.create_task(
                     self._watch_silence(session)
                 )
-        await session.send(state_change(VoiceState.LISTENING))
+        if not was_listening:
+            await session.send(state_change(VoiceState.LISTENING))
         return True
 
     async def begin_turn(self, session: VoiceSession) -> bool:
