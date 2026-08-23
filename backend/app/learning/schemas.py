@@ -1,9 +1,15 @@
-"""Pydantic schemas for the session evaluation request and response."""
+"""Pydantic schemas for the learning engine.
 
+Session evaluation models (SN-011) and FSRS review models (SN-012).
+"""
+
+from datetime import datetime
 from typing import Literal
 from uuid import UUID
 
-from pydantic import BaseModel, Field, field_validator
+from pydantic import BaseModel, ConfigDict, Field, field_validator
+
+Rating = Literal["again", "hard", "good", "easy"]
 
 SkillDimension = Literal[
     "fluency",
@@ -75,3 +81,39 @@ class EvaluationResponse(BaseModel):
     skills: list[SkillScore]
     insights: list[Insight]
     xp_earned: int = Field(ge=0)
+
+
+# -----------------------------------------------------------------------
+# FSRS review (SN-012)
+# -----------------------------------------------------------------------
+
+
+class ReviewSubmission(BaseModel):
+    """One graded answer for a vocabulary card."""
+
+    card_id: UUID
+    rating: Rating
+
+
+class DueCardResponse(BaseModel):
+    """A card queued for review on the mobile flashcard screen."""
+
+    model_config = ConfigDict(from_attributes=True)
+
+    id: UUID
+    word: str
+    translations: dict[str, str]
+    due_date: datetime
+    state: int
+
+
+class CardResponse(DueCardResponse):
+    """The full updated card returned after a review is processed."""
+
+    stability: float
+    difficulty: float
+    elapsed_days: int
+    scheduled_days: int
+    reps: int
+    lapses: int
+    last_review: datetime | None

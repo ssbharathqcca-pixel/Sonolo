@@ -20,7 +20,7 @@ from sqlalchemy import (
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from uuid6 import uuid7
 
-from app.db.base import Base
+from app.db.base import Base, JSONB
 
 if TYPE_CHECKING:
     from app.models.user import User
@@ -43,6 +43,9 @@ class VocabularyCard(Base):
     id: Mapped[uuid.UUID] = mapped_column(primary_key=True, default=uuid7)
     user_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("users.id"))
     word: Mapped[str] = mapped_column(Text)
+    translations: Mapped[dict[str, str]] = mapped_column(
+        JSONB, default=dict
+    )
     stability: Mapped[float] = mapped_column(
         Float, default=0.0, server_default=text("0")
     )

@@ -15,7 +15,9 @@ evidence".
 | SN-006 | PostgreSQL-dialect DDL render (8 tables, 6× JSONB, 12× timestamptz, partial indexes) | `2026-08-22_sn006_pg_ddl_render.txt` | exit 0 |
 | SN-007 | Voice WebSocket protocol + state machine (`tests/test_ws.py`) | `2026-08-22_sn007_test_ws.txt` | 9 passed |
 | SN-011 | Evaluator unit + feedback API (`tests/test_evaluator.py`, `tests/test_api_sessions.py`) | `2026-08-22_sn011_test_evaluator_api.txt` | 14 passed |
-| all | Full backend suite | `2026-08-22_full_suite.txt` | 31 passed |
+| SN-012 | FSRS-5 engine math (`tests/test_fsrs.py`) | `2026-08-22_sn012_test_fsrs.txt` | 13 passed |
+| SN-012 | Review API (`tests/test_api_review.py`) | `2026-08-22_sn012_test_api_review.txt` | 6 passed |
+| all | Full backend suite (regenerated after SN-012) | `2026-08-22_full_suite.txt` | 50 passed |
 
 ## Environment
 

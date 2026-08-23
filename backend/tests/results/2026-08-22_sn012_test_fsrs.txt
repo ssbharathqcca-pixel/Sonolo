@@ -1,0 +1,28 @@
+C:\Users\pavan\OneDrive\Desktop\Sonolo\backend\.venv\Lib\site-packages\pytest_asyncio\plugin.py:207: PytestDeprecationWarning: The configuration option "asyncio_default_fixture_loop_scope" is unset.
+The event loop scope for asynchronous fixtures will default to the fixture caching scope. Future versions of pytest-asyncio will default the loop scope for asynchronous fixtures to function scope. Set the default fixture loop scope explicitly in order to avoid unexpected behavior in the future. Valid fixture loop scopes are: "function", "class", "module", "package", "session"
+
+  warnings.warn(PytestDeprecationWarning(_DEFAULT_FIXTURE_LOOP_SCOPE_UNSET))
+============================= test session starts =============================
+platform win32 -- Python 3.11.4, pytest-8.3.4, pluggy-1.6.0 -- C:\Users\pavan\OneDrive\Desktop\Sonolo\backend\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\pavan\OneDrive\Desktop\Sonolo\backend
+plugins: anyio-4.14.2, asyncio-0.25.3
+asyncio: mode=Mode.STRICT, asyncio_default_fixture_loop_scope=None
+collecting ... collected 13 items
+
+tests/test_fsrs.py::test_new_card_good_graduates_to_review_one_day PASSED [  7%]
+tests/test_fsrs.py::test_new_card_initial_stability_ordering_and_states PASSED [ 15%]
+tests/test_fsrs.py::test_initial_difficulty_per_rating PASSED            [ 23%]
+tests/test_fsrs.py::test_review_again_moves_to_relearning_and_increments_lapses PASSED [ 30%]
+tests/test_fsrs.py::test_review_easy_grows_stability_and_interval PASSED [ 38%]
+tests/test_fsrs.py::test_hard_good_easy_stability_ordering PASSED        [ 46%]
+tests/test_fsrs.py::test_same_day_review_uses_short_term_stability PASSED [ 53%]
+tests/test_fsrs.py::test_difficulty_evolution_and_clamping PASSED        [ 61%]
+tests/test_fsrs.py::test_learning_state_transitions_use_minute_steps PASSED [ 69%]
+tests/test_fsrs.py::test_relearning_graduates_on_good PASSED             [ 76%]
+tests/test_fsrs.py::test_reps_and_elapsed_days_are_recorded PASSED       [ 84%]
+tests/test_fsrs.py::test_interval_scales_linearly_with_stability PASSED  [ 92%]
+tests/test_fsrs.py::test_engine_rejects_bad_configuration PASSED         [100%]
+
+============================= 13 passed in 0.06s ==============================
+EXIT_CODE=0
