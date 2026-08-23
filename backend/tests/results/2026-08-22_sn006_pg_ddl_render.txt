@@ -1,0 +1,6 @@
+TABLES: ['analytics_events', 'daily_quests', 'scenarios', 'sessions', 'user_badges', 'user_skills', 'users', 'vocabulary_cards']
+JSONB count: 6
+TIMESTAMPTZ count: 12
+partial idx vocab: True
+partial idx scenarios: True
+EXIT_CODE=0
