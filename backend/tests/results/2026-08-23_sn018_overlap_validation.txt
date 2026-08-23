@@ -1,0 +1,15 @@
+SN-018 overlap + schema validation (2026-08-23)
+============================================================
+scenario packs : v1=20  v2=20
+vocab packs    : v1=100  v2=100
+title overlap  : NONE
+scenario id ov.: NONE
+word overlap   : NONE
+vocab id ov.   : NONE
+v2 categories  : 9/9 -> ['banking', 'casual', 'education', 'government', 'healthcare', 'housing', 'shopping', 'social', 'workplace']
+premium count  : 5 -> ['emergency-dental-toothache', 'free-tax-clinic-first-return', 'open-tfsa-automatic-savings', 'parent-teacher-interview', 'tenant-insurance-quote-call']
+all published  : True
+schema parity  : scenario keys match v1 (+card-mandated difficulty); vocab keys identical: True
+vocab fields   : translations complete, fsrs difficulty 0-1, stability>0: True
+banned strings : NONE
+EXIT_CODE=0

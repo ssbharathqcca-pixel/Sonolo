@@ -100,7 +100,7 @@ async def test_fresh_user_release_journey(smoke_client, db_session) -> None:
     from app.services.content_service import seed_scenarios
 
     seeded = await seed_scenarios(db_session)
-    assert seeded == 20
+    assert seeded == 40
     scenario = (
         await db_session.execute(select(Scenario).limit(1))
     ).scalar_one()
@@ -227,4 +227,4 @@ async def test_review_due_materialization_is_idempotent(
             )
         ).scalar_one()
     )
-    assert card_count == 100  # Full SN-009 pack, materialized once.
+    assert card_count == 200  # Full SN-009 + SN-018 pack, materialized once.

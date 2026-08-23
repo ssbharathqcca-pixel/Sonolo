@@ -33,6 +33,11 @@ evidence".
 | SN-014B | Release smoke + migration tests | `2026-08-22_sn014b_release_smoke.txt` | 5 passed |
 | SN-015 | Scenario catalog API (`tests/test_api_scenarios.py`) | `2026-08-23_sn015_test_api_scenarios.txt` | 2 passed |
 | SN-015 | Full backend suite (regenerated after SN-015) | `2026-08-23_full_suite.txt` | 121 passed |
+| SN-018 | Overlap + schema validation, v1 vs v2 packs (titles/ids/words: zero overlap; 9/9 categories; 5 premium) | `2026-08-23_sn018_overlap_validation.txt` | exit 0 |
+| SN-018 | Live PG (Docker postgres:16 :55432) `alembic upgrade head` + `verify_schema` | `2026-08-23_sn018_alembic_upgrade.txt`, `2026-08-23_sn018_verify_schema.txt` | exit 0, `schema_ok: 8 tables` |
+| SN-018 | Dual-pack seed ×2 into live PG (`scripts.seed_content`, v1+v2) | `2026-08-23_sn018_seed_twice.txt` | stable 40 scenarios / 200 vocab items; re-run no-op |
+| SN-018 | Owned tests targeted run (`test_api_scenarios`, `test_release_smoke`) | `2026-08-23_sn018_owned_tests.txt` | 1 passed; 3 count assertions red pending out-of-scope content_service change |
+| SN-018 | Full backend suite (excl. `test_ws.py`, pre-broken at branch tip) | `2026-08-23_sn018_full_suite.txt` | 94 passed, 13 failed — see Notes |
 | all | (historical) Full suite after SN-014B | `2026-08-22_full_suite.txt` | 119 passed |
 
 ## Environment
@@ -42,6 +47,14 @@ evidence".
 - DB tests run on in-memory SQLite (aiosqlite); PostgreSQL verified via DDL render only
 
 ## Notes
+
+- SN-018 (2026-08-23): the 13 failures in `2026-08-23_sn018_full_suite.txt` are NOT
+  content regressions. Three are the updated SN-018 count assertions (40 scenarios /
+  200 cards) that cannot pass until `app/services/content_service.py` loads both pack
+  editions and raises `VOCABULARY_PACK_LIMIT` to 200 (out of SN-018 scope). Ten more
+  fail with `NameError: logger` in `session_service.py`, plus a `test_ws.py` collection
+  ImportError (`MOCK_AI_RESPONSE`) — both pre-existing at this branch's fork point and
+  already fixed on `main`.
 
 - Raw outputs include the pytest-asyncio deprecation warning about the
   unset default fixture loop scope — known and harmless (documented in

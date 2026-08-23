@@ -1,0 +1,98 @@
+C:\Users\pavan\OneDrive\Desktop\Sonolo\backend\.venv\Lib\site-packages\pytest_asyncio\plugin.py:207: PytestDeprecationWarning: The configuration option "asyncio_default_fixture_loop_scope" is unset.
+The event loop scope for asynchronous fixtures will default to the fixture caching scope. Future versions of pytest-asyncio will default the loop scope for asynchronous fixtures to function scope. Set the default fixture loop scope explicitly in order to avoid unexpected behavior in the future. Valid fixture loop scopes are: "function", "class", "module", "package", "session"
+
+  warnings.warn(PytestDeprecationWarning(_DEFAULT_FIXTURE_LOOP_SCOPE_UNSET))
+.FFF                                                                     [100%]
+================================== FAILURES ===================================
+__________________ test_scenarios_returns_the_seeded_catalog __________________
+
+scenarios_client = <httpx.AsyncClient object at 0x00000267AE0A7250>
+db_session = <sqlalchemy.ext.asyncio.session.AsyncSession object at 0x00000267ADE48850>
+
+    async def test_scenarios_returns_the_seeded_catalog(
+        scenarios_client: AsyncClient, db_session: AsyncSession
+    ) -> None:
+        seeded = await seed_scenarios(db_session)
+>       assert seeded == 40
+E       assert 20 == 40
+
+tests\test_api_scenarios.py:66: AssertionError
+---------------------------- Captured stderr call -----------------------------
+{"timestamp": "2026-08-23T22:39:20.480253+00:00", "level": "INFO", "logger": "app.services.content_service", "message": "Seeded 20 scenarios from the content pack."}
+------------------------------ Captured log call ------------------------------
+INFO     app.services.content_service:content_service.py:194 Seeded 20 scenarios from the content pack.
+_______________________ test_fresh_user_release_journey _______________________
+
+smoke_client = <httpx.AsyncClient object at 0x00000267AE18D8D0>
+db_session = <sqlalchemy.ext.asyncio.session.AsyncSession object at 0x00000267AE18E310>
+
+    async def test_fresh_user_release_journey(smoke_client, db_session) -> None:
+        # 3. Ensure scenarios exist (same service the seed CLI uses).
+        from app.services.content_service import seed_scenarios
+    
+        seeded = await seed_scenarios(db_session)
+>       assert seeded == 40
+E       assert 20 == 40
+
+tests\test_release_smoke.py:103: AssertionError
+---------------------------- Captured stderr call -----------------------------
+{"timestamp": "2026-08-23T22:39:20.822450+00:00", "level": "INFO", "logger": "app.services.content_service", "message": "Seeded 20 scenarios from the content pack."}
+------------------------------ Captured log call ------------------------------
+INFO     app.services.content_service:content_service.py:194 Seeded 20 scenarios from the content pack.
+________________ test_review_due_materialization_is_idempotent ________________
+
+smoke_client = <httpx.AsyncClient object at 0x00000267ADD4DC10>
+db_session = <sqlalchemy.ext.asyncio.session.AsyncSession object at 0x00000267ADF90B50>
+
+    async def test_review_due_materialization_is_idempotent(
+        smoke_client, db_session
+    ) -> None:
+        from sqlalchemy import func
+    
+        from app.models.user import User
+        from app.models.vocabulary import VocabularyCard
+    
+        headers = await register_and_login(smoke_client, "fresh@example.com")
+        first = await smoke_client.get("/api/review/due", headers=headers)
+        second = await smoke_client.get("/api/review/due", headers=headers)
+    
+        assert first.status_code == second.status_code == 200
+        # The response is capped by the default limit=20; the materialized
+        # set behind it is the full pack, exactly once.
+        assert len(first.json()) == len(second.json()) == 20
+        user = (
+            await db_session.execute(
+                select(User).where(User.email == "fresh@example.com")
+            )
+        ).scalar_one()
+        card_count = int(
+            (
+                await db_session.execute(
+                    select(func.count())
+                    .select_from(VocabularyCard)
+                    .where(VocabularyCard.user_id == user.id)
+                )
+            ).scalar_one()
+        )
+>       assert card_count == 200  # Full SN-009 + SN-018 pack, materialized once.
+E       assert 100 == 200
+
+tests\test_release_smoke.py:230: AssertionError
+---------------------------- Captured stderr call -----------------------------
+{"timestamp": "2026-08-23T22:39:21.304583+00:00", "level": "INFO", "logger": "httpx", "message": "HTTP Request: POST http://test/api/auth/register \"HTTP/1.1 201 Created\""}
+{"timestamp": "2026-08-23T22:39:21.591570+00:00", "level": "INFO", "logger": "httpx", "message": "HTTP Request: POST http://test/api/auth/login \"HTTP/1.1 200 OK\""}
+{"timestamp": "2026-08-23T22:39:21.621798+00:00", "level": "INFO", "logger": "app.services.content_service", "message": "Materialized 100 vocabulary cards for user 01a030c7-46ba-7ab7-bda4-f34a0d2788f9."}
+{"timestamp": "2026-08-23T22:39:21.644114+00:00", "level": "INFO", "logger": "httpx", "message": "HTTP Request: GET http://test/api/review/due \"HTTP/1.1 200 OK\""}
+{"timestamp": "2026-08-23T22:39:21.671720+00:00", "level": "INFO", "logger": "httpx", "message": "HTTP Request: GET http://test/api/review/due \"HTTP/1.1 200 OK\""}
+------------------------------ Captured log call ------------------------------
+INFO     httpx:_client.py:1740 HTTP Request: POST http://test/api/auth/register "HTTP/1.1 201 Created"
+INFO     httpx:_client.py:1740 HTTP Request: POST http://test/api/auth/login "HTTP/1.1 200 OK"
+INFO     app.services.content_service:content_service.py:227 Materialized 100 vocabulary cards for user 01a030c7-46ba-7ab7-bda4-f34a0d2788f9.
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/review/due "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/review/due "HTTP/1.1 200 OK"
+=========================== short test summary info ===========================
+FAILED tests/test_api_scenarios.py::test_scenarios_returns_the_seeded_catalog
+FAILED tests/test_release_smoke.py::test_fresh_user_release_journey - assert ...
+FAILED tests/test_release_smoke.py::test_review_due_materialization_is_idempotent
+3 failed, 1 passed in 1.43s
+EXIT_CODE=1

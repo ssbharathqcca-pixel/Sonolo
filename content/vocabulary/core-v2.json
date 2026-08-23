@@ -1,0 +1,1902 @@
+[
+  {
+    "id": "vocab-101",
+    "word": "maple syrup",
+    "phonetic": "/ˈmeɪpəl ˈsɜːrəp/",
+    "translations": {
+      "pa": "ਮੈਪਲ ਸ਼ਰਬਤ (ਦਰੱਖ਼ਤ ਦਾ ਮਿੱਠਾ ਰਸ)",
+      "hi": "मेपल सिरप",
+      "zh": "枫糖浆",
+      "es": "sirope de arce"
+    },
+    "level": "seed",
+    "category": "food",
+    "example_sentences": [
+      "We pour maple syrup on our pancakes on Sunday mornings.",
+      "Real maple syrup costs more than table syrup because it is boiled down from tree sap in Quebec and Ontario sugar bushes."
+    ],
+    "confusion_pairs": ["honey", "table syrup"],
+    "fsrs_params": {"difficulty": 0.25, "stability": 4.4}
+  },
+  {
+    "id": "vocab-102",
+    "word": "poutine",
+    "phonetic": "/puːˈtiːn/",
+    "translations": {
+      "pa": "ਪੂਟੀਨ (ਫ੍ਰਾਈ, ਚੀਜ਼ ਤੇ ਗ੍ਰੇਵੀ)",
+      "hi": "पूटीन (फ्राई, चीज़ और ग्रेवी)",
+      "zh": "普汀（肉汁奶酪薯条）",
+      "es": "poutine (papas con queso y salsa)"
+    },
+    "level": "sprout",
+    "category": "food",
+    "example_sentences": [
+      "She ordered poutine at the hockey arena canteen.",
+      "Poutine is fries topped with cheese curds and hot gravy — every diner claims its own version is the real one."
+    ],
+    "confusion_pairs": ["fries", "gravy"],
+    "fsrs_params": {"difficulty": 0.45, "stability": 3.3}
+  },
+  {
+    "id": "vocab-103",
+    "word": "takeout",
+    "phonetic": "/ˈteɪkaʊt/",
+    "translations": {
+      "pa": "ਬਾਹਰ ਲੈ ਜਾਣ ਵਾਲਾ ਖਾਣਾ",
+      "hi": "पैक कराकर ले जाने वाला खाना",
+      "zh": "外带食物",
+      "es": "comida para llevar"
+    },
+    "level": "seed",
+    "category": "food",
+    "example_sentences": [
+      "Let's just get takeout tonight, I'm too tired to cook.",
+      "Canadians say takeout while Americans say takeaway or to-go — the menu board will say Take-Out."
+    ],
+    "confusion_pairs": ["delivery", "dine-in"],
+    "fsrs_params": {"difficulty": 0.2, "stability": 4.6}
+  },
+  {
+    "id": "vocab-104",
+    "word": "leftovers",
+    "phonetic": "/ˈlɛftoʊvərz/",
+    "translations": {
+      "pa": "ਬਚਿਆ ਹੋਇਆ ਖਾਣਾ",
+      "hi": "बचा हुआ खाना",
+      "zh": "剩菜剩饭",
+      "es": "sobras"
+    },
+    "level": "seed",
+    "category": "food",
+    "example_sentences": [
+      "There are leftovers in the fridge if you get hungry.",
+      "After a big holiday dinner, Canadians eat turkey leftovers for days — sandwiches, soup, everything."
+    ],
+    "confusion_pairs": ["remains", "scraps"],
+    "fsrs_params": {"difficulty": 0.22, "stability": 4.5}
+  },
+  {
+    "id": "vocab-105",
+    "word": "portion",
+    "phonetic": "/ˈpɔːrʃən/",
+    "translations": {
+      "pa": "ਖਾਣੇ ਦਾ ਹਿੱਸਾ",
+      "hi": "भोजन की मात्रा",
+      "zh": "（食物的）一份",
+      "es": "porción"
+    },
+    "level": "bloom",
+    "category": "food",
+    "example_sentences": [
+      "The portions at this diner are huge.",
+      "Restaurant portions in North America are bigger than many visitors expect, so sharing one plate is normal."
+    ],
+    "confusion_pairs": ["serving", "piece"],
+    "fsrs_params": {"difficulty": 0.55, "stability": 2.7}
+  },
+  {
+    "id": "vocab-106",
+    "word": "napkin",
+    "phonetic": "/ˈnæpkɪn/",
+    "translations": {
+      "pa": "ਨੈਪਕਿਨ (ਹੱਥ ਪੂੰਝਣ ਲਈ)",
+      "hi": "नैपकिन",
+      "zh": "餐巾纸",
+      "es": "servilleta"
+    },
+    "level": "seed",
+    "category": "food",
+    "example_sentences": [
+      "Could I have a few extra napkins, please?",
+      "Fast-food counters hand out napkins freely — just ask for a handful when you grab your tray."
+    ],
+    "confusion_pairs": ["diaper", "tissue"],
+    "fsrs_params": {"difficulty": 0.18, "stability": 4.8}
+  },
+  {
+    "id": "vocab-107",
+    "word": "appetizer",
+    "phonetic": "/ˈæpɪtaɪzər/",
+    "translations": {
+      "pa": "ਭੋਜਨ ਤੋਂ ਪਹਿਲਾਂ ਦਾ ਵੰਞਣ",
+      "hi": "स्टार्टर (भोजन से पहले का)",
+      "zh": "开胃菜",
+      "es": "entrante"
+    },
+    "level": "branch",
+    "category": "food",
+    "example_sentences": [
+      "We shared an appetizer before the main course.",
+      "Appetizers are smaller and cheaper than mains, so two appetizers plus dessert is a perfectly normal dinner order."
+    ],
+    "confusion_pairs": ["dessert", "starter"],
+    "fsrs_params": {"difficulty": 0.58, "stability": 2.5}
+  },
+  {
+    "id": "vocab-108",
+    "word": "dessert",
+    "phonetic": "/dɪˈzɜːrt/",
+    "translations": {
+      "pa": "ਖਾਣੇ ਤੋਂ ਬਾਅਦ ਦੀ ਮਿਠਾਈ",
+      "hi": "मिठाई (भोजन के बाद)",
+      "zh": "甜点",
+      "es": "postre"
+    },
+    "level": "sprout",
+    "category": "food",
+    "example_sentences": [
+      "Save room for dessert — the carrot cake here is famous.",
+      "Don't mix up dessert with desert; one is cake and pie, the other is sand as far as the eye can see."
+    ],
+    "confusion_pairs": ["desert", "sweet"],
+    "fsrs_params": {"difficulty": 0.35, "stability": 3.7}
+  },
+  {
+    "id": "vocab-109",
+    "word": "beverage",
+    "phonetic": "/ˈbɛvərɪdʒ/",
+    "translations": {
+      "pa": "ਪੀਣ ਵਾਲੀ ਚੀਜ਼",
+      "hi": "पेय पदार्थ",
+      "zh": "饮品",
+      "es": "bebida"
+    },
+    "level": "bloom",
+    "category": "food",
+    "example_sentences": [
+      "Beverages are refillable with the combo meal.",
+      "On invitations, BYOB means bring your own beverage — checking what it stands for saves awkward moments."
+    ],
+    "confusion_pairs": ["drink", "liquid"],
+    "fsrs_params": {"difficulty": 0.52, "stability": 2.8}
+  },
+  {
+    "id": "vocab-110",
+    "word": "butter tart",
+    "phonetic": "/ˈbʌtər tɑːrt/",
+    "translations": {
+      "pa": "ਬਟਰ ਟਾਰਟ (ਕਨੇਡੀਅਨ ਮਿੱਠੀ ਟਾਰਟ)",
+      "hi": "बटर टार्ट",
+      "zh": "黄油挞（加拿大传统甜点）",
+      "es": "tarta de mantequilla"
+    },
+    "level": "canopy",
+    "category": "food",
+    "example_sentences": [
+      "A butter tart is the sweetest thing on the bakery shelf.",
+      "Butter tarts are a genuinely Canadian invention — gooey sugar filling in pastry, sometimes with raisins, never with nuts if you're a purist."
+    ],
+    "confusion_pairs": ["pecan pie", "tart"],
+    "fsrs_params": {"difficulty": 0.72, "stability": 1.8}
+  },
+  {
+    "id": "vocab-111",
+    "word": "cashier",
+    "phonetic": "/kæˈʃɪr/",
+    "translations": {
+      "pa": "ਕੈਸ਼ੀਅਰ (ਬਿੱਲ ਕਰਨ ਵਾਲਾ)",
+      "hi": "कैशियर (बिल लगाने वाला)",
+      "zh": "收银员",
+      "es": "cajero/a"
+    },
+    "level": "sprout",
+    "category": "shopping",
+    "example_sentences": [
+      "The cashier asked if I wanted a bag.",
+      "Self-checkout machines still need one cashier watching six lanes, which is why someone always comes over to help."
+    ],
+    "confusion_pairs": ["teller", "customer"],
+    "fsrs_params": {"difficulty": 0.32, "stability": 3.9}
+  },
+  {
+    "id": "vocab-112",
+    "word": "sales tax",
+    "phonetic": "/ˈseɪlz tæks/",
+    "translations": {
+      "pa": "ਵਿਕਰੀ ਟੈਕਸ",
+      "hi": "बिक्री कर",
+      "zh": "销售税",
+      "es": "impuesto sobre ventas"
+    },
+    "level": "branch",
+    "category": "shopping",
+    "example_sentences": [
+      "The price tag never includes sales tax.",
+      "Sales tax gets added at the register and varies by province — budget roughly thirteen percent extra in Ontario."
+    ],
+    "confusion_pairs": ["income tax", "tip"],
+    "fsrs_params": {"difficulty": 0.6, "stability": 2.4}
+  },
+  {
+    "id": "vocab-113",
+    "word": "price tag",
+    "phonetic": "/ˈpraɪs tæɡ/",
+    "translations": {
+      "pa": "ਕੀਮਤ ਦਾ ਟੈਗ",
+      "hi": "मूल्य टैग",
+      "zh": "价签",
+      "es": "etiqueta de precio"
+    },
+    "level": "sprout",
+    "category": "shopping",
+    "example_sentences": [
+      "Check the price tag before you get to the till.",
+      "If an item scans higher than its price tag, many stores honour the tag — it pays to notice."
+    ],
+    "confusion_pairs": ["receipt", "label"],
+    "fsrs_params": {"difficulty": 0.35, "stability": 3.6}
+  },
+  {
+    "id": "vocab-114",
+    "word": "rain check",
+    "phonetic": "/ˈreɪn tʃɛk/",
+    "translations": {
+      "pa": "ਬਾਅਦ ਲਈ ਗਾਰੰਟੀ ਪਰਚੀ",
+      "hi": "बाद में उसी दाम पर खरीदने की पर्ची",
+      "zh": "缺货保价凭证",
+      "es": "cupón de reposición"
+    },
+    "level": "canopy",
+    "category": "shopping",
+    "example_sentences": [
+      "They were out of the sale coffee, so I got a rain check.",
+      "A rain check is the store's written promise to sell you the sale price when stock arrives — just ask at customer service."
+    ],
+    "confusion_pairs": ["refund", "coupon"],
+    "fsrs_params": {"difficulty": 0.75, "stability": 1.7}
+  },
+  {
+    "id": "vocab-115",
+    "word": "loyalty card",
+    "phonetic": "/ˈlɔɪəlti kɑːrd/",
+    "translations": {
+      "pa": "ਲੌਇਲਟੀ ਕਾਰਡ (ਪੁਆਇੰਟ ਕਾਰਡ)",
+      "hi": "लॉयल्टी कार्ड (पॉइंट कार्ड)",
+      "zh": "会员积分卡",
+      "es": "tarjeta de fidelización"
+    },
+    "level": "branch",
+    "category": "shopping",
+    "example_sentences": [
+      "Scan your loyalty card and the points add up fast.",
+      "Canadian grocery loyalty programs convert points into free groceries, and stacking them with flyer sales is how careful shoppers save hundreds."
+    ],
+    "confusion_pairs": ["credit card", "membership"],
+    "fsrs_params": {"difficulty": 0.55, "stability": 2.6}
+  },
+  {
+    "id": "vocab-116",
+    "word": "gift card",
+    "phonetic": "/ˈɡɪft kɑːrd/",
+    "translations": {
+      "pa": "ਗਿਫ਼ਟ ਕਾਰਡ (ਤੋਹਫ਼ਾ ਕਾਰਡ)",
+      "hi": "गिफ्ट कार्ड",
+      "zh": "礼品卡",
+      "es": "tarjeta de regalo"
+    },
+    "level": "seed",
+    "category": "shopping",
+    "example_sentences": [
+      "My aunt gave me a gift card for my birthday.",
+      "Gift cards are the default Canadian present when you don't know someone's size or taste — check the balance online before shopping."
+    ],
+    "confusion_pairs": ["gift receipt", "credit card"],
+    "fsrs_params": {"difficulty": 0.2, "stability": 4.7}
+  },
+  {
+    "id": "vocab-117",
+    "word": "coupon",
+    "phonetic": "/ˈkuːpɒn/",
+    "translations": {
+      "pa": "ਕੂਪਨ (ਛੂਟ ਦੀ ਪਰਚੀ)",
+      "hi": "कूपन (छूट पर्ची)",
+      "zh": "优惠券",
+      "es": "cupón"
+    },
+    "level": "sprout",
+    "category": "shopping",
+    "example_sentences": [
+      "I clipped a coupon for dish soap from the weekend paper.",
+      "Most coupons went digital — load them onto the store app and they apply automatically at checkout."
+    ],
+    "confusion_pairs": ["discount", "voucher"],
+    "fsrs_params": {"difficulty": 0.42, "stability": 3.1}
+  },
+  {
+    "id": "vocab-118",
+    "word": "clearance",
+    "phonetic": "/ˈklɪərəns/",
+    "translations": {
+      "pa": "ਕਲੀਅਰੈਂਸ (ਸਟਾਕ ਖ਼ਤਮ ਦੇ ਦਾਮ)",
+      "hi": "क्लीयरेंस सेल (स्टॉक खत्मी छूट)",
+      "zh": "清仓特价区",
+      "es": "liquidación"
+    },
+    "level": "bloom",
+    "category": "shopping",
+    "example_sentences": [
+      "Winter coats hit clearance in February.",
+      "Clearance items are final-sale more often than regular items, so check the return policy before buying."
+    ],
+    "confusion_pairs": ["sale", "discount"],
+    "fsrs_params": {"difficulty": 0.62, "stability": 2.2}
+  },
+  {
+    "id": "vocab-119",
+    "word": "aisle",
+    "phonetic": "/aɪl/",
+    "translations": {
+      "pa": "ਸਟੋਰ ਦਾ ਗਲਿਆਰਾ (ਕਤਾਰ ਦੇ ਵਿਚਕਾਰ ਰਾਹ)",
+      "hi": "दुकान का गलियारा",
+      "zh": "（货架间的）过道",
+      "es": "pasillo"
+    },
+    "level": "bloom",
+    "category": "shopping",
+    "example_sentences": [
+      "Spices are in aisle seven, next to the baking supplies.",
+      "The s in aisle is silent — it sounds exactly like 'I'll', which confuses everyone the first time an announcement says aisle five."
+    ],
+    "confusion_pairs": ["isle", "shelf"],
+    "fsrs_params": {"difficulty": 0.65, "stability": 2.1}
+  },
+  {
+    "id": "vocab-120",
+    "word": "return policy",
+    "phonetic": "/rɪˈtɜːrn ˈpɑːləsi/",
+    "translations": {
+      "pa": "ਵਾਪਸੀ ਦੀ ਨੀਤੀ",
+      "hi": "वापसी नीति",
+      "zh": "退货政策",
+      "es": "política de devoluciones"
+    },
+    "level": "branch",
+    "category": "shopping",
+    "example_sentences": [
+      "Ask about the return policy before you buy electronics.",
+      "Every store sets its own return policy — thirty days with a receipt is common, but final-sale and clearance items often can't come back."
+    ],
+    "confusion_pairs": ["warranty", "exchange"],
+    "fsrs_params": {"difficulty": 0.55, "stability": 2.5}
+  },
+  {
+    "id": "vocab-121",
+    "word": "transit",
+    "phonetic": "/ˈtrænzɪt/",
+    "translations": {
+      "pa": "ਜਨਤਕ ਆਵਾਜਾਈ",
+      "hi": "सार्वजनिक परिवहन",
+      "zh": "公共交通",
+      "es": "transporte público"
+    },
+    "level": "sprout",
+    "category": "transportation",
+    "example_sentences": [
+      "I get to work by transit, door to door in forty minutes.",
+      "Each city runs its own transit system — TTC in Toronto, TransLink in Vancouver — each with its own fare cards and apps."
+    ],
+    "confusion_pairs": ["traffic", "transport"],
+    "fsrs_params": {"difficulty": 0.38, "stability": 3.6}
+  },
+  {
+    "id": "vocab-122",
+    "word": "bus stop",
+    "phonetic": "/ˈbʌs stɑːp/",
+    "translations": {
+      "pa": "ਬੱਸ ਸਟੈਂਡ",
+      "hi": "बस स्टॉप",
+      "zh": "公交车站",
+      "es": "parada de autobús"
+    },
+    "level": "seed",
+    "category": "transportation",
+    "example_sentences": [
+      "The bus stop outside our building has a shelter and a schedule pole.",
+      "Wave at the driver at your bus stop or they may sail past — and pull the cord a block early to request your own stop."
+    ],
+    "confusion_pairs": ["station", "terminal"],
+    "fsrs_params": {"difficulty": 0.15, "stability": 4.9}
+  },
+  {
+    "id": "vocab-123",
+    "word": "fare",
+    "phonetic": "/fɛr/",
+    "translations": {
+      "pa": "ਸਫ਼ਰ ਦਾ ਕਿਰਾਇਆ",
+      "hi": "यात्रा का किराया",
+      "zh": "车费",
+      "es": "tarifa"
+    },
+    "level": "bloom",
+    "category": "transportation",
+    "example_sentences": [
+      "The bus fare went up by ten cents this January.",
+      "Fare and fair sound identical — one is what you pay to ride, the other means just or a carnival."
+    ],
+    "confusion_pairs": ["fair", "fee"],
+    "fsrs_params": {"difficulty": 0.6, "stability": 2.4}
+  },
+  {
+    "id": "vocab-124",
+    "word": "crosswalk",
+    "phonetic": "/ˈkrɔːswɔːk/",
+    "translations": {
+      "pa": "ਪੈਦਲ ਯਾਤਰੀਆਂ ਦਾ ਰਾਹ",
+      "hi": "पैदल यात्रा क्रॉसिंग",
+      "zh": "人行横道",
+      "es": "paso de peatones"
+    },
+    "level": "sprout",
+    "category": "transportation",
+    "example_sentences": [
+      "Press the button and wait for the walk signal at the crosswalk.",
+      "Cars must stop for pedestrians in a crosswalk, but making eye contact with the driver first is still the smart move."
+    ],
+    "confusion_pairs": ["intersection", "jaywalking"],
+    "fsrs_params": {"difficulty": 0.4, "stability": 3.4}
+  },
+  {
+    "id": "vocab-125",
+    "word": "pedestrian",
+    "phonetic": "/pəˈdɛstriən/",
+    "translations": {
+      "pa": "ਪੈਦਲ ਯਾਤਰੀ",
+      "hi": "पैदल यात्री",
+      "zh": "行人",
+      "es": "peatón"
+    },
+    "level": "bloom",
+    "category": "transportation",
+    "example_sentences": [
+      "Downtown streets close to cars and open for pedestrians all summer.",
+      "Pedestrian means a person walking — drivers yield to pedestrians at marked crossings whether or not the light has changed."
+    ],
+    "confusion_pairs": ["driver", "cyclist"],
+    "fsrs_params": {"difficulty": 0.58, "stability": 2.5}
+  },
+  {
+    "id": "vocab-126",
+    "word": "rush hour",
+    "phonetic": "/ˈrʌʃ ˌaʊər/",
+    "translations": {
+      "pa": "ਟ੍ਰੈਫ਼ਿਕ ਦਾ ਵਿਅਸਤ ਸਮਾਂ",
+      "hi": "पीक ऑवर (भीड़ का समय)",
+      "zh": "高峰时段",
+      "es": "hora pico"
+    },
+    "level": "sprout",
+    "category": "transportation",
+    "example_sentences": [
+      "Leave before rush hour or the drive doubles to an hour.",
+      "Rush hour runs roughly seven to nine in the morning and four to six at night — buses and trains are packed but still faster than driving."
+    ],
+    "confusion_pairs": ["peak time", "traffic jam"],
+    "fsrs_params": {"difficulty": 0.32, "stability": 3.8}
+  },
+  {
+    "id": "vocab-127",
+    "word": "carpool",
+    "phonetic": "/ˈkɑːrpuːl/",
+    "translations": {
+      "pa": "ਸਾਂਝੀ ਸਵਾਰੀ (ਗੱਡੀ ਵਿੱਚ ਸਾਥ)",
+      "hi": "कारपूल (साझी गाड़ी से यात्रा)",
+      "zh": "拼车",
+      "es": "viaje compartido en auto"
+    },
+    "level": "bloom",
+    "category": "transportation",
+    "example_sentences": [
+      "Three of us carpool to the plant and split the gas.",
+      "Some highways have diamond-marked carpool lanes that let vehicles with two or more people skip the worst of the jam."
+    ],
+    "confusion_pairs": ["rideshare", "carshare"],
+    "fsrs_params": {"difficulty": 0.55, "stability": 2.7}
+  },
+  {
+    "id": "vocab-128",
+    "word": "snowplow",
+    "phonetic": "/ˈsnoʊplaʊ/",
+    "translations": {
+      "pa": "ਬਰਫ਼ ਹਟਾਉਣ ਵਾਲੀ ਗੱਡੀ",
+      "hi": "बर्फ हटाने वाली गाड़ी",
+      "zh": "铲雪车",
+      "es": "quitanieves"
+    },
+    "level": "branch",
+    "category": "transportation",
+    "example_sentences": [
+      "The city snowplow came through at four in the morning and buried the driveway again.",
+      "When a snowplow is announced, move your car off the street or risk a ticket — and never try to pass one."
+    ],
+    "confusion_pairs": ["snowblower", "salt truck"],
+    "fsrs_params": {"difficulty": 0.62, "stability": 2.2}
+  },
+  {
+    "id": "vocab-129",
+    "word": "winter tires",
+    "phonetic": "/ˈwɪntər ˌtaɪərz/",
+    "translations": {
+      "pa": "ਸਰਦੀਆਂ ਦੇ ਟਾਇਰ",
+      "hi": "सर्दियों के टायर",
+      "zh": "冬季轮胎",
+      "es": "neumáticos de invierno"
+    },
+    "level": "branch",
+    "category": "transportation",
+    "example_sentences": [
+      "Book your winter tires swap before the first snowfall hits.",
+      "Quebec makes winter tires mandatory from December to March, and most insurers elsewhere offer a small discount for using them."
+    ],
+    "confusion_pairs": ["all-season tires", "chains"],
+    "fsrs_params": {"difficulty": 0.58, "stability": 2.4}
+  },
+  {
+    "id": "vocab-130",
+    "word": "windshield",
+    "phonetic": "/ˈwɪndʃiːld/",
+    "translations": {
+      "pa": "ਗੱਡੀ ਦਾ ਸਾਹਮਣੇ ਵਾਲਾ ਸ਼ੀਸ਼ਾ",
+      "hi": "गाड़ी का सामने का शीशा",
+      "zh": "挡风玻璃",
+      "es": "parabrisas"
+    },
+    "level": "sprout",
+    "category": "transportation",
+    "example_sentences": [
+      "A gravel truck cracked our windshield on the highway.",
+      "Gravel cracks and winter frost make windshield chips a rite of passage for Canadian drivers — small ones get repaired free by many insurers."
+    ],
+    "confusion_pairs": ["window", "windscreen"],
+    "fsrs_params": {"difficulty": 0.48, "stability": 2.9}
+  },
+  {
+    "id": "vocab-131",
+    "word": "blizzard",
+    "phonetic": "/ˈblɪzərd/",
+    "translations": {
+      "pa": "ਬਰਫ਼ਾਨੀ ਤੂਫ਼ਾਨ",
+      "hi": "बर्फ़ीला तूफ़ान",
+      "zh": "暴风雪",
+      "es": "ventisca"
+    },
+    "level": "branch",
+    "category": "weather",
+    "example_sentences": [
+      "Schools closed today because of the blizzard warning.",
+      "A blizzard means heavy snow plus strong wind plus near-zero visibility — the news names winter storms the way hurricanes get names."
+    ],
+    "confusion_pairs": ["snowstorm", "ice storm"],
+    "fsrs_params": {"difficulty": 0.55, "stability": 2.7}
+  },
+  {
+    "id": "vocab-132",
+    "word": "flurries",
+    "phonetic": "/ˈflɜːriz/",
+    "translations": {
+      "pa": "ਬਰਫ਼ ਦੀਆਂ ਹਲਕੀਆਂ ਝਿੜਕਾਂ",
+      "hi": "हल्की फुहार जैसी बर्फबारी",
+      "zh": "零星小雪",
+      "es": "nevadas ligeras"
+    },
+    "level": "bloom",
+    "category": "weather",
+    "example_sentences": [
+      "Just flurries today, nothing that sticks.",
+      "Flurries mean light scattered snow that melts on contact — the forecast word that promises drama-free driving."
+    ],
+    "confusion_pairs": ["snow shower", "dusting"],
+    "fsrs_params": {"difficulty": 0.68, "stability": 1.9}
+  },
+  {
+    "id": "vocab-133",
+    "word": "slush",
+    "phonetic": "/slʌʃ/",
+    "translations": {
+      "pa": "ਪਿਘਲੀ ਬਰਫ਼ ਦਾ ਗਿੱਲਾ ਘੋਲ",
+      "hi": "पिघलती बर्फ का कीचड़",
+      "zh": "融雪泥浆",
+      "es": "aguanieve"
+    },
+    "level": "bloom",
+    "category": "weather",
+    "example_sentences": [
+      "March sidewalks are pure slush — wear the waterproof boots.",
+      "Slush is half-melted snow that soaks shoes in seconds, which is why locals switch boots the moment temperatures climb above zero."
+    ],
+    "confusion_pairs": ["mud", "puddle"],
+    "fsrs_params": {"difficulty": 0.66, "stability": 2.0}
+  },
+  {
+    "id": "vocab-134",
+    "word": "frost",
+    "phonetic": "/frɔːst/",
+    "translations": {
+      "pa": "ਪਾਲਾ",
+      "hi": "पाला",
+      "zh": "霜",
+      "es": "escarcha"
+    },
+    "level": "sprout",
+    "category": "weather",
+    "example_sentences": [
+      "Scrape the frost off the windshield before you drive.",
+      "The first frost usually lands in October and kills the garden — it also means the car needs five extra minutes every morning."
+    ],
+    "confusion_pairs": ["ice", "dew"],
+    "fsrs_params": {"difficulty": 0.4, "stability": 3.4}
+  },
+  {
+    "id": "vocab-135",
+    "word": "humidity",
+    "phonetic": "/hjuːˈmɪdəti/",
+    "translations": {
+      "pa": "ਹਵਾ ਵਿੱਚ ਨਮੀ",
+      "hi": "आर्द्रता (नमी)",
+      "zh": "湿度",
+      "es": "humedad"
+    },
+    "level": "branch",
+    "category": "weather",
+    "example_sentences": [
+      "Summer humidity makes thirty degrees feel like forty.",
+      "Weather reports mention the humidex in summer — humidity plus heat measured together — the way winter reports use wind chill."
+    ],
+    "confusion_pairs": ["heat", "moisture"],
+    "fsrs_params": {"difficulty": 0.6, "stability": 2.4}
+  },
+  {
+    "id": "vocab-136",
+    "word": "heat wave",
+    "phonetic": "/ˈhiːt weɪv/",
+    "translations": {
+      "pa": "ਗਰਮੀ ਦੀ ਲਹਿਰ",
+      "hi": "गर्मी की लहर",
+      "zh": "热浪",
+      "es": "ola de calor"
+    },
+    "level": "sprout",
+    "category": "weather",
+    "example_sentences": [
+      "The city opens cooling centres during a heat wave.",
+      "Heat waves are taken seriously — community centres open as cooling centres and news anchors remind you to check on elderly neighbours."
+    ],
+    "confusion_pairs": ["hot spell", "sunstroke"],
+    "fsrs_params": {"difficulty": 0.35, "stability": 3.7}
+  },
+  {
+    "id": "vocab-137",
+    "word": "chinook",
+    "phonetic": "/ʃɪˈnʊk/",
+    "translations": {
+      "pa": "ਚਿਨੂਕ (ਗਰਮ ਪੱਛਮੀ ਹਵਾ)",
+      "hi": "चिनूक (गर्म हवा)",
+      "zh": "钦诺克暖风",
+      "es": "viento chinook"
+    },
+    "level": "canopy",
+    "category": "weather",
+    "example_sentences": [
+      "A chinook melted all the snow overnight in Calgary.",
+      "The chinook is Alberta's famous warm winter wind that can raise temperatures twenty degrees in an hour and gives Calgarians snow-free Januaries."
+    ],
+    "confusion_pairs": ["windstorm", "thaw"],
+    "fsrs_params": {"difficulty": 0.82, "stability": 1.5}
+  },
+  {
+    "id": "vocab-138",
+    "word": "parka",
+    "phonetic": "/ˈpɑːrkə/",
+    "translations": {
+      "pa": "ਪਾਰਕਾ (ਭਾਰੀ ਸਰਦੀਆਂ ਦੀ ਕੋਟ)",
+      "hi": "पार्का (भारी सर्दी कोट)",
+      "zh": "风雪大衣",
+      "es": "parka (abrigo de invierno)"
+    },
+    "level": "sprout",
+    "category": "weather",
+    "example_sentences": [
+      "In Winnipeg you need a real parka by November.",
+      "A true Canadian parka is rated for minus-thirty — the first deep-cold day teaches newcomers why locals spend real money on one coat."
+    ],
+    "confusion_pairs": ["jacket", "coat"],
+    "fsrs_params": {"difficulty": 0.45, "stability": 3.1}
+  },
+  {
+    "id": "vocab-139",
+    "word": "mittens",
+    "phonetic": "/ˈmɪtənz/",
+    "translations": {
+      "pa": "ਮਿੱਟੀਜ਼ (ਦਸਤਾਨੇ)",
+      "hi": "मिटेंस (दस्ताने)",
+      "zh": "连指手套",
+      "es": "mitones"
+    },
+    "level": "seed",
+    "category": "weather",
+    "example_sentences": [
+      "Kids lose mittens constantly — label them with a marker.",
+      "Mittens keep hands warmer than gloves because fingers share heat, which is why every schoolyard in January is full of them."
+    ],
+    "confusion_pairs": ["gloves", "hand warmers"],
+    "fsrs_params": {"difficulty": 0.22, "stability": 4.5}
+  },
+  {
+    "id": "vocab-140",
+    "word": "toboggan",
+    "phonetic": "/ˈtoʊbəɡən/",
+    "translations": {
+      "pa": "ਟੋਬੌਗਨ (ਬਰਫ਼ ਦੀ ਸਲਾਈਡ)",
+      "hi": "टोबॉगन (बर्फ की स्लेढ़ी)",
+      "zh": "平底雪橇",
+      "es": "trineo"
+    },
+    "level": "canopy",
+    "category": "weather",
+    "example_sentences": [
+      "The whole family goes tobogganing after a big snowfall.",
+      "Tobogganing is the classic free Canadian winter outing — find a local hill, and some cities ban plastic carpets for safety, so check signs."
+    ],
+    "confusion_pairs": ["sled", "skating"],
+    "fsrs_params": {"difficulty": 0.75, "stability": 1.7}
+  },
+  {
+    "id": "vocab-141",
+    "word": "condo",
+    "phonetic": "/ˈkɑːndoʊ/",
+    "translations": {
+      "pa": "ਕੌਂਡੋ (ਖ਼ਰੀਦਿਆ ਫਲੈਟ)",
+      "hi": "कोंडो (खरीदा हुआ फ्लैट)",
+      "zh": "公寓（自有产权单元）",
+      "es": "condominio"
+    },
+    "level": "sprout",
+    "category": "housing",
+    "example_sentences": [
+      "They bought a two-bedroom condo downtown last spring.",
+      "Condo owners pay monthly maintenance fees covering building upkeep — renters hear the word used loosely for any high-rise apartment."
+    ],
+    "confusion_pairs": ["apartment", "co-op"],
+    "fsrs_params": {"difficulty": 0.42, "stability": 3.2}
+  },
+  {
+    "id": "vocab-142",
+    "word": "townhouse",
+    "phonetic": "/ˈtaʊnhaʊs/",
+    "translations": {
+      "pa": "ਟਾਊਨਹਾਊਸ (ਨਾਲ ਜੁੜੇ ਘਰ)",
+      "hi": "टाउनहाउस (जुड़े हुए घर)",
+      "zh": "联排住宅",
+      "es": "casa adosada"
+    },
+    "level": "branch",
+    "category": "housing",
+    "example_sentences": [
+      "Townhouse complexes share walls but each unit has its own front door.",
+      "Townhouses sit between condos and detached houses — usually three floors, often with a tiny yard and a monthly strata or condo fee."
+    ],
+    "confusion_pairs": ["semi-detached", "duplex"],
+    "fsrs_params": {"difficulty": 0.58, "stability": 2.5}
+  },
+  {
+    "id": "vocab-143",
+    "word": "basement",
+    "phonetic": "/ˈbeɪsmənt/",
+    "translations": {
+      "pa": "ਤਹਿਖ਼ਾਨਾ (ਘਰ ਦਾ ਹੇਠਲਾ ਫਲੋਰ)",
+      "hi": "तहखाना (नीचे का फ्लोर)",
+      "zh": "地下室",
+      "es": "sótano"
+    },
+    "level": "seed",
+    "category": "housing",
+    "example_sentences": [
+      "We store the suitcases in the basement.",
+      "Basement apartments are a classic affordable first home for newcomers — cooler in summer, dimmer in winter, and priced accordingly."
+    ],
+    "confusion_pairs": ["cellar", "attic"],
+    "fsrs_params": {"difficulty": 0.28, "stability": 4.2}
+  },
+  {
+    "id": "vocab-144",
+    "word": "furnace",
+    "phonetic": "/ˈfɜːrnɪs/",
+    "translations": {
+      "pa": "ਫਰਨੇਸ (ਘਰ ਦਾ ਹੀਟਿੰਗ ਸਿਸਟਮ)",
+      "hi": "भट्ठी (घर की हीटिंग)",
+      "zh": "暖气炉",
+      "es": "caldera de calefacción"
+    },
+    "level": "bloom",
+    "category": "housing",
+    "example_sentences": [
+      "The furnace kicked in for the first time this fall.",
+      "Most Canadian houses heat with a gas furnace — replace its filter every few months and it quietly earns its keep all winter."
+    ],
+    "confusion_pairs": ["heater", "boiler"],
+    "fsrs_params": {"difficulty": 0.62, "stability": 2.3}
+  },
+  {
+    "id": "vocab-145",
+    "word": "insulation",
+    "phonetic": "/ˌɪnsəˈleɪʃən/",
+    "translations": {
+      "pa": "ਇੰਸੂਲੇਸ਼ਨ (ਗਰਮੀ/ਠੰਡ ਤੋਂ ਬਚਾਅ ਪਰਤ)",
+      "hi": "इंसुलेशन (ऊष्मा रोधी परत)",
+      "zh": "隔热保温层",
+      "es": "aislamiento térmico"
+    },
+    "level": "canopy",
+    "category": "housing",
+    "example_sentences": [
+      "Old houses skimp on insulation, so the bills run high.",
+      "Good insulation is invisible but decisive in Canada — rebate programs exist precisely because better insulation cuts heating bills all winter."
+    ],
+    "confusion_pairs": ["isolated", "weatherstripping"],
+    "fsrs_params": {"difficulty": 0.75, "stability": 1.6}
+  },
+  {
+    "id": "vocab-146",
+    "word": "smoke alarm",
+    "phonetic": "/ˈsmoʊk əˌlɑːrm/",
+    "translations": {
+      "pa": "ਧੂੰਏਂ ਦਾ ਅਲਾਰਮ",
+      "hi": "धुएँ का अलार्म",
+      "zh": "烟雾报警器",
+      "es": "detector de humo"
+    },
+    "level": "branch",
+    "category": "housing",
+    "example_sentences": [
+      "The smoke alarm chirps when its battery dies — annoying but lifesaving.",
+      "Landlords must keep working smoke alarms in every bedroom level by law, and tenants test them monthly in most provinces."
+    ],
+    "confusion_pairs": ["carbon monoxide detector", "fire alarm"],
+    "fsrs_params": {"difficulty": 0.5, "stability": 2.8}
+  },
+  {
+    "id": "vocab-147",
+    "word": "laundry room",
+    "phonetic": "/ˈlɔːndri ruːm/",
+    "translations": {
+      "pa": "ਕੱਪੜੇ ਧੋਣ ਦਾ ਕਮਰਾ",
+      "hi": "कपड़े धोने का कमरा",
+      "zh": "洗衣房",
+      "es": "lavandería"
+    },
+    "level": "sprout",
+    "category": "housing",
+    "example_sentences": [
+      "Sunday morning is quiet in the laundry room.",
+      "Shared laundry rooms run on coins or a loaded card — keep loonies handy and set a phone timer so nobody moves your wet towels."
+    ],
+    "confusion_pairs": ["laundromat", "dryer"],
+    "fsrs_params": {"difficulty": 0.35, "stability": 3.6}
+  },
+  {
+    "id": "vocab-148",
+    "word": "moving truck",
+    "phonetic": "/ˈmuːvɪŋ trʌk/",
+    "translations": {
+      "pa": "ਸਮਾਨ ਢੋਣ ਵਾਲਾ ਟਰੱਕ",
+      "hi": "सामान ढोने वाला ट्रक",
+      "zh": "搬家卡车",
+      "es": "camión de mudanza"
+    },
+    "level": "sprout",
+    "category": "housing",
+    "example_sentences": [
+      "We rented a moving truck for the drive from Montreal.",
+      "July first is moving day in Quebec and trucks vanish weeks ahead — book any moving truck early at month-end everywhere in Canada."
+    ],
+    "confusion_pairs": ["van rental", "delivery truck"],
+    "fsrs_params": {"difficulty": 0.4, "stability": 3.3}
+  },
+  {
+    "id": "vocab-149",
+    "word": "driveway",
+    "phonetic": "/ˈdraɪvweɪ/",
+    "translations": {
+      "pa": "ਘਰ ਦੇ ਸਾਹਮਣੇ ਗੱਡੀ ਦਾ ਰਾਹ",
+      "hi": "घर के सामने गाड़ी रखने की जगह",
+      "zh": "私家车道",
+      "es": "entrada para autos"
+    },
+    "level": "seed",
+    "category": "housing",
+    "example_sentences": [
+      "Shovelling the driveway after a storm takes an hour.",
+      "Driveway culture is real: clearing your driveway promptly is neighbourly, and parking on the street overnight often needs a permit."
+    ],
+    "confusion_pairs": ["garage", "sidewalk"],
+    "fsrs_params": {"difficulty": 0.25, "stability": 4.4}
+  },
+  {
+    "id": "vocab-150",
+    "word": "lawn",
+    "phonetic": "/lɔːn/",
+    "translations": {
+      "pa": "ਘਾਹ ਵਾਲਾ ਮੈਦਾਨ (ਲਾਅਨ)",
+      "hi": "घास का मैदान",
+      "zh": "草坪",
+      "es": "césped"
+    },
+    "level": "seed",
+    "category": "housing",
+    "example_sentences": [
+      "The kids were playing tag on the front lawn.",
+      "Many cities have lawn-watering rules in dry summers, and letting grass grow past a certain height can earn a bylaw letter."
+    ],
+    "confusion_pairs": ["garden", "yard"],
+    "fsrs_params": {"difficulty": 0.2, "stability": 4.6}
+  },
+  {
+    "id": "vocab-151",
+    "word": "dentist",
+    "phonetic": "/ˈdɛntɪst/",
+    "translations": {
+      "pa": "ਦੰਦਾਂ ਦਾ ਡਾਕਟਰ",
+      "hi": "दंत चिकित्सक",
+      "zh": "牙医",
+      "es": "dentista"
+    },
+    "level": "seed",
+    "category": "healthcare",
+    "example_sentences": [
+      "I see the dentist every nine months for a cleaning.",
+      "Adult dental care isn't covered by provincial plans, so many employers' benefit packages list exactly how much the dentist will reimburse."
+    ],
+    "confusion_pairs": ["hygienist", "orthodontist"],
+    "fsrs_params": {"difficulty": 0.2, "stability": 4.7}
+  },
+  {
+    "id": "vocab-152",
+    "word": "cavity",
+    "phonetic": "/ˈkævəti/",
+    "translations": {
+      "pa": "ਦੰਦ ਦਾ ਖੋੜ (ਸੜਨ)",
+      "hi": "दांत का कीड़ा (गुहा)",
+      "zh": "蛀牙洞",
+      "es": "caries"
+    },
+    "level": "branch",
+    "category": "healthcare",
+    "example_sentences": [
+      "No cavities this time — keep up the flossing.",
+      "A cavity is a little hole of tooth decay; catching it early means a quick filling instead of a root canal later."
+    ],
+    "confusion_pairs": ["cavity (space)", "abscess"],
+    "fsrs_params": {"difficulty": 0.6, "stability": 2.3}
+  },
+  {
+    "id": "vocab-153",
+    "word": "X-ray",
+    "phonetic": "/ˈɛksreɪ/",
+    "translations": {
+      "pa": "ਐਕਸ-ਰੇ (ਐਕਸ-ਕਿਰਨ ਜਾਂਚ)",
+      "hi": "एक्स-रे जांच",
+      "zh": "X光检查",
+      "es": "radiografía"
+    },
+    "level": "sprout",
+    "category": "healthcare",
+    "example_sentences": [
+      "The dentist took an X-ray of my back molar.",
+      "Capitalize X-ray properly and note it works as noun and verb — they X-rayed my wrist at the urgent care centre."
+    ],
+    "confusion_pairs": ["ultrasound", "scan"],
+    "fsrs_params": {"difficulty": 0.4, "stability": 3.3}
+  },
+  {
+    "id": "vocab-154",
+    "word": "immunization",
+    "phonetic": "/ˌɪmjuːnəˈzeɪʃən/",
+    "translations": {
+      "pa": "ਟੀਕਾਕਰਨ",
+      "hi": "टीकाकरण",
+      "zh": "免疫接种",
+      "es": "inmunización"
+    },
+    "level": "canopy",
+    "category": "healthcare",
+    "example_sentences": [
+      "Schools ask for your child's immunization record at registration.",
+      "Immunization is the formal word for getting vaccinated — public health keeps the official record, and schools review it at enrollment."
+    ],
+    "confusion_pairs": ["vaccination", "medication"],
+    "fsrs_params": {"difficulty": 0.78, "stability": 1.5}
+  },
+  {
+    "id": "vocab-155",
+    "word": "paramedic",
+    "phonetic": "/ˌpærəˈmɛdɪk/",
+    "translations": {
+      "pa": "ਐਮਰਜੈਂਸੀ ਡਾਕਟਰੀ ਸਹਾਇਕ (ਪੈਰਾਮੈਡਿਕ)",
+      "hi": "पैरामेडिक",
+      "zh": "急救医护人员",
+      "es": "paramédico"
+    },
+    "level": "branch",
+    "category": "healthcare",
+    "example_sentences": [
+      "Two paramedics arrived within six minutes of the 911 call.",
+      "Paramedics staff ambulances and bill separately from hospitals in most provinces — knowing their scope helps you answer their questions fast."
+    ],
+    "confusion_pairs": ["doctor", "EMT"],
+    "fsrs_params": {"difficulty": 0.6, "stability": 2.4}
+  },
+  {
+    "id": "vocab-156",
+    "word": "ambulance",
+    "phonetic": "/ˈæmbjələns/",
+    "translations": {
+      "pa": "ਐਂਬੂਲੈਂਸ",
+      "hi": "एम्बुलेंस",
+      "zh": "救护车",
+      "es": "ambulancia"
+    },
+    "level": "seed",
+    "category": "healthcare",
+    "example_sentences": [
+      "Call an ambulance if the chest pain doesn't stop.",
+      "Ambulance rides usually carry a provincial fee unless admitted or covered by benefits — a detail worth knowing before you need one."
+    ],
+    "confusion_pairs": ["fire truck", "taxi"],
+    "fsrs_params": {"difficulty": 0.22, "stability": 4.5}
+  },
+  {
+    "id": "vocab-157",
+    "word": "urgent care",
+    "phonetic": "/ˈɜːrdʒənt kɛr/",
+    "translations": {
+      "pa": "ਤੁਰੰਤ ਦੇਖਭਾਲ ਕੇਂਦਰ",
+      "hi": "तत्काल देखभाल केंद्र",
+      "zh": "急诊护理中心",
+      "es": "atención urgente"
+    },
+    "level": "branch",
+    "category": "healthcare",
+    "example_sentences": [
+      "A sprained wrist belongs at urgent care, not the emergency room.",
+      "Urgent care centres handle serious-but-not-life-threatening problems with shorter waits than emergency rooms — pick the right door and save hours."
+    ],
+    "confusion_pairs": ["emergency room", "walk-in clinic"],
+    "fsrs_params": {"difficulty": 0.55, "stability": 2.7}
+  },
+  {
+    "id": "vocab-158",
+    "word": "optometrist",
+    "phonetic": "/ɑːpˈtɑːmətrɪst/",
+    "translations": {
+      "pa": "ਅੱਖਾਂ ਦੀ ਜਾਂਚ ਕਰਨ ਵਾਲਾ ਡਾਕਟਰ",
+      "hi": "ऑप्टोमेट्रिस्ट (नेत्र परीक्षक)",
+      "zh": "验光师",
+      "es": "optometrista"
+    },
+    "level": "canopy",
+    "category": "healthcare",
+    "example_sentences": [
+      "Book the optometrist yearly once you hit forty.",
+      "Optometrists test vision and prescribe glasses — provinces cover children's and seniors' exams, working-age adults usually pay out of pocket or through benefits."
+    ],
+    "confusion_pairs": ["ophthalmologist", "optician"],
+    "fsrs_params": {"difficulty": 0.78, "stability": 1.6}
+  },
+  {
+    "id": "vocab-159",
+    "word": "dental hygienist",
+    "phonetic": "/ˈdɛntəl haɪˈdʒiːnɪst/",
+    "translations": {
+      "pa": "ਦੰਦਾਂ ਦੀ ਸਫ਼ਾਈ ਮਾਹਿਰ",
+      "hi": "डेंटल हाइजीनिस्ट (दांत साफ करने वाला विशेषज्ञ)",
+      "zh": "洁牙师",
+      "es": "higienista dental"
+    },
+    "level": "canopy",
+    "category": "healthcare",
+    "example_sentences": [
+      "The dental hygienist does the cleaning before the dentist looks.",
+      "You spend more time with the hygienist than the dentist at checkups — they scrape, polish, and teach flossing without judgment."
+    ],
+    "confusion_pairs": ["dentist", "assistant"],
+    "fsrs_params": {"difficulty": 0.76, "stability": 1.6}
+  },
+  {
+    "id": "vocab-160",
+    "word": "bandage",
+    "phonetic": "/ˈbændɪdʒ/",
+    "translations": {
+      "pa": "ਪੱਟੀ (ਜ਼ਖ਼ਮ ਦੀ)",
+      "hi": "पट्टी (बैंडेज)",
+      "zh": "绷带；创可贴",
+      "es": "vendaje"
+    },
+    "level": "seed",
+    "category": "healthcare",
+    "example_sentences": [
+      "Put a bandage on the cut and keep it dry today.",
+      "Bandage works as noun and verb, and the little sticky strips are also called Band-Aids after the brand, like Kleenex for tissues."
+    ],
+    "confusion_pairs": ["band-aid", "gauze"],
+    "fsrs_params": {"difficulty": 0.25, "stability": 4.3}
+  },
+  {
+    "id": "vocab-161",
+    "word": "shift trade",
+    "phonetic": "/ʃɪft treɪd/",
+    "translations": {
+      "pa": "ਸ਼ਿਫਟ ਦਾ ਅਦਲ-ਬਦਲ",
+      "hi": "शिफ्ट की अदला-बदली",
+      "zh": "换班",
+      "es": "intercambio de turno"
+    },
+    "level": "bloom",
+    "category": "workplace",
+    "example_sentences": [
+      "I arranged a shift trade so I could attend the wedding.",
+      "Shift trades usually need supervisor approval even when coworkers agree — post it on the break-room board or the scheduling app."
+    ],
+    "confusion_pairs": ["swap", "shift change"],
+    "fsrs_params": {"difficulty": 0.58, "stability": 2.4}
+  },
+  {
+    "id": "vocab-162",
+    "word": "break room",
+    "phonetic": "/ˈbreɪk ruːm/",
+    "translations": {
+      "pa": "ਆਰਾਮ ਕਮਰਾ (ਬ੍ਰੇਕ ਰੂਮ)",
+      "hi": "ब्रेक रूम (आराम कक्ष)",
+      "zh": "员工休息室",
+      "es": "sala de descanso"
+    },
+    "level": "sprout",
+    "category": "workplace",
+    "example_sentences": [
+      "Your lunch is in the break room fridge, third shelf.",
+      "Break-room etiquette matters: label your food, wipe the microwave, and the communal coffee pot runs on goodwill."
+    ],
+    "confusion_pairs": ["cafeteria", "staff room"],
+    "fsrs_params": {"difficulty": 0.32, "stability": 3.9}
+  },
+  {
+    "id": "vocab-163",
+    "word": "time off",
+    "phonetic": "/taɪm ɔːf/",
+    "translations": {
+      "pa": "ਕੰਮ ਤੋਂ ਛੁੱਟੀ ਦਾ ਸਮਾਂ",
+      "hi": "अवकाश (छुट्टी का समय)",
+      "zh": "休假时间",
+      "es": "permiso (tiempo libre)"
+    },
+    "level": "sprout",
+    "category": "workplace",
+    "example_sentences": [
+      "I'm taking time off in July for my brother's graduation.",
+      "Time off splits into paid vacation, unpaid leave, and statutory days — track your banked hours before requesting anything long."
+    ],
+    "confusion_pairs": ["vacation", "leave"],
+    "fsrs_params": {"difficulty": 0.35, "stability": 3.7}
+  },
+  {
+    "id": "vocab-164",
+    "word": "statutory holiday",
+    "phonetic": "/ˈstætʃətɔːri ˈhɒlədeɪ/",
+    "translations": {
+      "pa": "ਕਾਨੂੰਨੀ ਛੁੱਟੀ ਦਾ ਦਿਨ",
+      "hi": "वैधानिक सार्वजनिक अवकाश",
+      "zh": "法定假日",
+      "es": "día festivo oficial"
+    },
+    "level": "canopy",
+    "category": "workplace",
+    "example_sentences": [
+      "Family Day in February is a statutory holiday in several provinces.",
+      "Statutory holidays entitle most employees to the day off with pay, or premium pay like time-and-a-half if they work — rules vary by province."
+    ],
+    "confusion_pairs": ["public holiday", "long weekend"],
+    "fsrs_params": {"difficulty": 0.78, "stability": 1.5}
+  },
+  {
+    "id": "vocab-165",
+    "word": "minimum wage",
+    "phonetic": "/ˈmɪnɪməm weɪdʒ/",
+    "translations": {
+      "pa": "ਘੱਟੋ-ਘੱਟ ਤਨਖ਼ਾਹ",
+      "hi": "न्यूनतम मजदूरी",
+      "zh": "最低工资",
+      "es": "salario mínimo"
+    },
+    "level": "branch",
+    "category": "workplace",
+    "example_sentences": [
+      "Minimum wage rises every October in this province.",
+      "Minimum wage differs by province and sometimes by role — students serving liquor, for instance, can have their own lower rate in some places."
+    ],
+    "confusion_pairs": ["living wage", "pay rate"],
+    "fsrs_params": {"difficulty": 0.55, "stability": 2.6}
+  },
+  {
+    "id": "vocab-166",
+    "word": "dress code",
+    "phonetic": "/ˈdrɛs koʊd/",
+    "translations": {
+      "pa": "ਪਹਿਰਾਵੇ ਦਾ ਨਿਯਮ (ਡਰੈਸ ਕੋਡ)",
+      "hi": "ड्रेस कोड",
+      "zh": "着装要求",
+      "es": "código de vestimenta"
+    },
+    "level": "bloom",
+    "category": "workplace",
+    "example_sentences": [
+      "The dress code is business casual except on Fridays.",
+      "When unsure about a dress code, overdress slightly on day one and adjust tomorrow — nobody remembers the person who looked sharp."
+    ],
+    "confusion_pairs": ["uniform", "casual Friday"],
+    "fsrs_params": {"difficulty": 0.52, "stability": 2.7}
+  },
+  {
+    "id": "vocab-167",
+    "word": "probation",
+    "phonetic": "/prəˈbeɪʃən/",
+    "translations": {
+      "pa": "ਨੌਕਰੀ ਦੀ ਸ਼ੁਰੂਆਤੀ ਪੜਤਾਲ ਮਿਆਦ",
+      "hi": "परिवीक्षा अवधि (नौकरी की शुरुआत)",
+      "zh": "试用期",
+      "es": "período de prueba"
+    },
+    "level": "canopy",
+    "category": "workplace",
+    "example_sentences": [
+      "My first three months are probation, then benefits kick in.",
+      "Probation periods commonly run three months, when both sides decide fit — benefits and sometimes job protections start after it ends."
+    ],
+    "confusion_pairs": ["trial shift", "parole"],
+    "fsrs_params": {"difficulty": 0.72, "stability": 1.8}
+  },
+  {
+    "id": "vocab-168",
+    "word": "reference letter",
+    "phonetic": "/ˈrɛfərəns ˌlɛtər/",
+    "translations": {
+      "pa": "ਸਿਫ਼ਾਰਸ਼ੀ ਪੱਤਰ",
+      "hi": "सिफ़ारिशी पत्र",
+      "zh": "推荐信",
+      "es": "carta de recomendación"
+    },
+    "level": "branch",
+    "category": "workplace",
+    "example_sentences": [
+      "My volunteer coordinator wrote me a reference letter for the pharmacy job.",
+      "Newcomers often build their first Canadian reference letter through volunteering — twenty hours of showing up reliably is usually enough to ask."
+    ],
+    "confusion_pairs": ["reference check", "cover letter"],
+    "fsrs_params": {"difficulty": 0.6, "stability": 2.3}
+  },
+  {
+    "id": "vocab-169",
+    "word": "layoff",
+    "phonetic": "/ˈleɪɔːf/",
+    "translations": {
+      "pa": "ਅਸਥਾਈ ਨੌਕਰੀ ਛੁੱਟੀ (ਛਾਂਟੀ)",
+      "hi": "छंटनी (अस्थायी नौकरी हटना)",
+      "zh": "裁员／临时解雇",
+      "es": "despido temporal"
+    },
+    "level": "canopy",
+    "category": "workplace",
+    "example_sentences": [
+      "The plant announced a layoff of sixty workers until spring.",
+      "A layoff is not a firing for cause — seasonal layoffs end with recall, and record-of-employment paperwork unlocks employment insurance."
+    ],
+    "confusion_pairs": ["fired", "resigned"],
+    "fsrs_params": {"difficulty": 0.72, "stability": 1.7}
+  },
+  {
+    "id": "vocab-170",
+    "word": "direct deposit",
+    "phonetic": "/dəˈrɛkt dɪˈpɑːzɪt/",
+    "translations": {
+      "pa": "ਸਿੱਧਾ ਡਿਪਾਜ਼ਿਟ (ਖਾਤੇ ਵਿੱਚ ਤਨਖ਼ਾਹ)",
+      "hi": "डायरेक्ट डिपॉज़िट (सीधे खाते में वेतन)",
+      "zh": "工资直接入账",
+      "es": "depósito directo"
+    },
+    "level": "bloom",
+    "category": "workplace",
+    "example_sentences": [
+      "Payroll arrives by direct deposit every second Thursday.",
+      "Set up direct deposit with a void cheque or banking details form — it's how virtually every Canadian employer pays."
+    ],
+    "confusion_pairs": ["e-transfer", "pay stub"],
+    "fsrs_params": {"difficulty": 0.6, "stability": 2.3}
+  },
+  {
+    "id": "vocab-171",
+    "word": "semester",
+    "phonetic": "/sɪˈmɛstər/",
+    "translations": {
+      "pa": "ਸੈਮੈਸਟਰ (ਪੜ੍ਹਾਈ ਦਾ ਸੈਸ਼ਨ)",
+      "hi": "सेमेस्टर",
+      "zh": "学期",
+      "es": "semestre"
+    },
+    "level": "sprout",
+    "category": "education",
+    "example_sentences": [
+      "The fall semester starts the day after Labour Day.",
+      "Colleges run fall and winter semesters plus a compressed summer term — course registration for each opens well before it begins."
+    ],
+    "confusion_pairs": ["term", "quarter"],
+    "fsrs_params": {"difficulty": 0.4, "stability": 3.3}
+  },
+  {
+    "id": "vocab-172",
+    "word": "tuition",
+    "phonetic": "/tuːˈɪʃən/",
+    "translations": {
+      "pa": "ਟਿਊਸ਼ਨ ਫੀਸ (ਪੜ੍ਹਾਈ ਦੀ ਫੀਸ)",
+      "hi": "ट्यूशन फीस",
+      "zh": "学费",
+      "es": "matrícula"
+    },
+    "level": "branch",
+    "category": "education",
+    "example_sentences": [
+      "College tuition is due in full before classes begin.",
+      "Domestic tuition is far lower than international tuition, and payment plans plus tax credits soften the sticker shock."
+    ],
+    "confusion_pairs": ["fees", "scholarship"],
+    "fsrs_params": {"difficulty": 0.55, "stability": 2.6}
+  },
+  {
+    "id": "vocab-173",
+    "word": "scholarship",
+    "phonetic": "/ˈskɒlərʃɪp/",
+    "translations": {
+      "pa": "ਸਕਾਲਰਸ਼ਿਪ (ਵਜ਼ੀਫ਼ਾ)",
+      "hi": "छात्रवृत्ति",
+      "zh": "奖学金",
+      "es": "beca"
+    },
+    "level": "branch",
+    "category": "education",
+    "example_sentences": [
+      "She won an entrance scholarship for her high-school marks.",
+      "Scholarships reward grades or achievements and don't need repaying — many go unclaimed simply because nobody applied."
+    ],
+    "confusion_pairs": ["grant", "student loan"],
+    "fsrs_params": {"difficulty": 0.55, "stability": 2.6}
+  },
+  {
+    "id": "vocab-174",
+    "word": "transcript",
+    "phonetic": "/ˈtrænkrɪpt/",
+    "translations": {
+      "pa": "ਅਕਾਦਮਿਕ ਨੰਬਰਾਂ ਦੀ ਰਿਪੋਰਟ",
+      "hi": "शैक्षणिक अंकसूची",
+      "zh": "成绩单",
+      "es": "certificado de calificaciones"
+    },
+    "level": "canopy",
+    "category": "education",
+    "example_sentences": [
+      "Universities abroad want an official transcript mailed in a sealed envelope.",
+      "A transcript lists every course and grade — credential assessment services use your foreign transcript to equate it with Canadian levels."
+    ],
+    "confusion_pairs": ["diploma", "report card"],
+    "fsrs_params": {"difficulty": 0.74, "stability": 1.7}
+  },
+  {
+    "id": "vocab-175",
+    "word": "credential",
+    "phonetic": "/krəˈdɛnʃəl/",
+    "translations": {
+      "pa": "ਯੋਗਤਾ ਪ੍ਰਮਾਣ-ਪੱਤਰ (ਡਿਗਰੀ/ਡਿਪਲੋਮਾ)",
+      "hi": "योग्यता प्रमाणपत्र",
+      "zh": "资历证书",
+      "es": "credencial"
+    },
+    "level": "canopy",
+    "category": "education",
+    "example_sentences": [
+      "Credential recognition took eight months for her nursing degree.",
+      "Getting foreign credentials recognized involves assessment agencies and sometimes bridging programs — start the process before you arrive if you can."
+    ],
+    "confusion_pairs": ["certificate", "licence"],
+    "fsrs_params": {"difficulty": 0.76, "stability": 1.6}
+  },
+  {
+    "id": "vocab-176",
+    "word": "apprenticeship",
+    "phonetic": "/əˈprɛntɪsʃɪp/",
+    "translations": {
+      "pa": "ਅਪ੍ਰੈਂਟਿਸਸ਼ਿਪ (ਕਾਰੀਗਰੀ ਸਿਖਲਾਈ)",
+      "hi": "ऐप्रेंटिसशिप (उस्तादी प्रशिक्षण)",
+      "zh": "学徒训练",
+      "es": "formación como aprendiz"
+    },
+    "level": "canopy",
+    "category": "education",
+    "example_sentences": [
+      "He finished his electrician apprenticeship in four years.",
+      "Trades training runs on apprenticeships — paid work hours plus classroom blocks — leading to a red seal exam recognized across provinces."
+    ],
+    "confusion_pairs": ["internship", "co-op program"],
+    "fsrs_params": {"difficulty": 0.78, "stability": 1.5}
+  },
+  {
+    "id": "vocab-177",
+    "word": "continuing education",
+    "phonetic": "/kənˈtɪnjuːɪŋ ˌɛdʒuˈkeɪʃən/",
+    "translations": {
+      "pa": "ਬਾਲਗ ਸਿੱਖਿਆ (ਨਿਰੰਤਰ ਸਿੱਖਿਆ)",
+      "hi": "सतत शिक्षा (वयस्क शिक्षा)",
+      "zh": "继续教育",
+      "es": "educación continua"
+    },
+    "level": "branch",
+    "category": "education",
+    "example_sentences": [
+      "Continuing education courses run evenings at the college for working adults.",
+      "Continuing education departments sell short certificates in everything from accounting software to welding — perfect for career changers."
+    ],
+    "confusion_pairs": ["night school", "professional development"],
+    "fsrs_params": {"difficulty": 0.62, "stability": 2.2}
+  },
+  {
+    "id": "vocab-178",
+    "word": "school bus",
+    "phonetic": "/ˈskuːl bʌs/",
+    "translations": {
+      "pa": "ਸਕੂਲ ਦੀ ਬੱਸ (ਪੀਲੀ ਬੱਸ)",
+      "hi": "स्कूल बस",
+      "zh": "校车",
+      "es": "autobús escolar"
+    },
+    "level": "seed",
+    "category": "education",
+    "example_sentences": [
+      "The yellow school bus stops at the corner at 8:05 sharp.",
+      "It is illegal to pass a school bus with flashing red lights in either direction — the stop arm means every lane stops."
+    ],
+    "confusion_pairs": ["city bus", "school van"],
+    "fsrs_params": {"difficulty": 0.2, "stability": 4.7}
+  },
+  {
+    "id": "vocab-179",
+    "word": "attendance",
+    "phonetic": "/əˈtɛndəns/",
+    "translations": {
+      "pa": "ਹਾਜ਼ਰੀ",
+      "hi": "उपस्थिति",
+      "zh": "出勤",
+      "es": "asistencia"
+    },
+    "level": "bloom",
+    "category": "education",
+    "example_sentences": [
+      "Perfect attendance earned him a certificate at assembly.",
+      "Attendance calls go out automatically when a child is absent — parents phone the office before the bell or expect a callback."
+    ],
+    "confusion_pairs": ["presence", "enrollment"],
+    "fsrs_params": {"difficulty": 0.58, "stability": 2.4}
+  },
+  {
+    "id": "vocab-180",
+    "word": "report card",
+    "phonetic": "/rɪˈpɔːrt kɑːrd/",
+    "translations": {
+      "pa": "ਨਤੀਜਾ ਪੱਤਰ (ਬੱਚਿਆਂ ਦੀ ਰਿਪੋਰਟ)",
+      "hi": "रिपोर्ट कार्ड",
+      "zh": "成绩报告单",
+      "es": "boleta de calificaciones"
+    },
+    "level": "sprout",
+    "category": "education",
+    "example_sentences": [
+      "Report cards go home three times a year.",
+      "Report cards pair letter grades with teacher comments, and signing the envelope back counts as much as the marks inside."
+    ],
+    "confusion_pairs": ["transcript", "progress report"],
+    "fsrs_params": {"difficulty": 0.35, "stability": 3.7}
+  },
+  {
+    "id": "vocab-181",
+    "word": "ballot",
+    "phonetic": "/ˈbælət/",
+    "translations": {
+      "pa": "ਵੋਟ ਦੀ ਪਰਚੀ",
+      "hi": "मतपत्र",
+      "zh": "选票",
+      "es": "boleta electoral"
+    },
+    "level": "bloom",
+    "category": "government",
+    "example_sentences": [
+      "Mark one circle on the ballot and feed it into the box.",
+      "Canada votes on paper ballots counted by hand at each polling place, with scrutineers from each party watching every step."
+    ],
+    "confusion_pairs": ["vote", "ballot box"],
+    "fsrs_params": {"difficulty": 0.6, "stability": 2.3}
+  },
+  {
+    "id": "vocab-182",
+    "word": "polling station",
+    "phonetic": "/ˈpoʊlɪŋ ˈsteɪʃən/",
+    "translations": {
+      "pa": "ਵੋਟ ਪਾਉਣ ਦਾ ਕੇਂਦਰ",
+      "hi": "मतदान केंद्र",
+      "zh": "投票站",
+      "es": "centro de votación"
+    },
+    "level": "canopy",
+    "category": "government",
+    "example_sentences": [
+      "Our polling station is the school gym two blocks away.",
+      "Your assigned polling station prints on the voter information card — vote there on election day, or at any advance poll earlier."
+    ],
+    "confusion_pairs": ["poll", "returning office"],
+    "fsrs_params": {"difficulty": 0.74, "stability": 1.7}
+  },
+  {
+    "id": "vocab-183",
+    "word": "tax return",
+    "phonetic": "/ˈtæks rɪˌtɜːrn/",
+    "translations": {
+      "pa": "ਟੈਕਸ ਰਿਟਰਨ (ਸਾਲਾਨਾ ਕਰ ਬਿਆਨ)",
+      "hi": "टैक्स रिटर्न",
+      "zh": "报税表",
+      "es": "declaración de impuestos"
+    },
+    "level": "branch",
+    "category": "government",
+    "example_sentences": [
+      "File your tax return by April thirtieth to avoid interest.",
+      "A tax return is the annual filing; the refund is what comes back — filing even with no income unlocks quarterly credits."
+    ],
+    "confusion_pairs": ["tax refund", "notice of assessment"],
+    "fsrs_params": {"difficulty": 0.6, "stability": 2.3}
+  },
+  {
+    "id": "vocab-184",
+    "word": "notice of assessment",
+    "phonetic": "/ˈnoʊtɪs əv əˈsɛsmənt/",
+    "translations": {
+      "pa": "ਟੈਕਸ ਮੁਲਾਂਕਣ ਪੱਤਰ",
+      "hi": "कर मूल्यांकन सूचना पत्र",
+      "zh": "评税通知（税务评估函）",
+      "es": "aviso de evaluación"
+    },
+    "level": "summit",
+    "category": "government",
+    "example_sentences": [
+      "Keep the notice of assessment — landlords and schools sometimes ask for it.",
+      "The notice of assessment arrives weeks after filing as the official receipt of your return; it's proof of income for many applications."
+    ],
+    "confusion_pairs": ["tax refund", "tax bill"],
+    "fsrs_params": {"difficulty": 0.85, "stability": 1.3}
+  },
+  {
+    "id": "vocab-185",
+    "word": "child benefit",
+    "phonetic": "/tʃaɪld ˈbɛnəfɪt/",
+    "translations": {
+      "pa": "ਬੱਚਿਆਂ ਦੀ ਭੱਤਾ ਰਕਮ",
+      "hi": "बाल भत्ता",
+      "zh": "儿童福利金",
+      "es": "subsidio por hijos"
+    },
+    "level": "canopy",
+    "category": "government",
+    "example_sentences": [
+      "Apply for the child benefit as soon as the baby is registered.",
+      "The Canada Child Benefit pays monthly per child based on income — applying happens alongside birth registration or on arrival."
+    ],
+    "confusion_pairs": ["child support", "GST credit"],
+    "fsrs_params": {"difficulty": 0.72, "stability": 1.7}
+  },
+  {
+    "id": "vocab-186",
+    "word": "jury duty",
+    "phonetic": "/ˈdʒʊri duːti/",
+    "translations": {
+      "pa": "ਜੂਰੀ ਦੀ ਸੇਵਾ (ਕੋਰਟ ਡਿਊਟੀ)",
+      "hi": "ज्यूरी ड्यूटी",
+      "zh": "陪审义务",
+      "es": "deber de jurado"
+    },
+    "level": "canopy",
+    "category": "government",
+    "example_sentences": [
+      "I got a jury duty summons in the mail last month.",
+      "Jury duty summonses arrive randomly from voter rolls — employers must give time off, though payment details vary by province."
+    ],
+    "confusion_pairs": ["court date", "witness"],
+    "fsrs_params": {"difficulty": 0.75, "stability": 1.6}
+  },
+  {
+    "id": "vocab-187",
+    "word": "bylaw",
+    "phonetic": "/ˈbaɪlɔː/",
+    "translations": {
+      "pa": "ਸਥਾਨਕ ਨਿਯਮ (ਬਾਈ-ਲਾਅ)",
+      "hi": "उपनियम (नगर निगम का नियम)",
+      "zh": "地方法规",
+      "es": "ordenanza municipal"
+    },
+    "level": "canopy",
+    "category": "government",
+    "example_sentences": [
+      "A bylaw officer left a note about the unshovelled sidewalk.",
+      "Bylaws are city-level rules — noise hours, grass height, parking overnight — enforced gently at first, ticketed eventually."
+    ],
+    "confusion_pairs": ["law", "regulation"],
+    "fsrs_params": {"difficulty": 0.76, "stability": 1.5}
+  },
+  {
+    "id": "vocab-188",
+    "word": "election",
+    "phonetic": "/ɪˈlɛkʃən/",
+    "translations": {
+      "pa": "ਚੋਣ",
+      "hi": "चुनाव",
+      "zh": "选举",
+      "es": "elección"
+    },
+    "level": "sprout",
+    "category": "government",
+    "example_sentences": [
+      "The federal election is on Monday — polls open until eight.",
+      "Elections happen at municipal, provincial, and federal levels on separate schedules — permanent residents can vote locally in some municipalities."
+    ],
+    "confusion_pairs": ["referendum", "campaign"],
+    "fsrs_params": {"difficulty": 0.38, "stability": 3.5}
+  },
+  {
+    "id": "vocab-189",
+    "word": "city council",
+    "phonetic": "/ˈsɪti ˈkaʊnsəl/",
+    "translations": {
+      "pa": "ਨਗਰ ਕੌਂਸਲ",
+      "hi": "नगर परिषद",
+      "zh": "市议会",
+      "es": "concejo municipal"
+    },
+    "level": "branch",
+    "category": "government",
+    "example_sentences": [
+      "City council approved the new bike lanes last night.",
+      "City council meetings are public, televised, and surprisingly entertaining — residents can sign up to speak for three minutes."
+    ],
+    "confusion_pairs": ["parliament", "mayor"],
+    "fsrs_params": {"difficulty": 0.6, "stability": 2.2}
+  },
+  {
+    "id": "vocab-190",
+    "word": "public library",
+    "phonetic": "/ˈpʌblɪk ˈlaɪbrəri/",
+    "translations": {
+      "pa": "ਪਬਲਿਕ ਲਾਇਬ੍ਰੇਰੀ",
+      "hi": "सार्वजनिक पुस्तकालय",
+      "zh": "公共图书馆",
+      "es": "biblioteca pública"
+    },
+    "level": "seed",
+    "category": "government",
+    "example_sentences": [
+      "The public library lends movies, tools, and museum passes too.",
+      "A library card is free with ID and unlocks books, streaming, language apps, and free meeting rooms — arguably Canada's best public deal."
+    ],
+    "confusion_pairs": ["bookstore", "archives"],
+    "fsrs_params": {"difficulty": 0.22, "stability": 4.5}
+  },
+  {
+    "id": "vocab-191",
+    "word": "newcomer",
+    "phonetic": "/ˈnjuːkʌmər/",
+    "translations": {
+      "pa": "ਨਵਾਂ ਆਉਣ ਵਾਲਾ (ਪਰਵਾਸੀ)",
+      "hi": "नया आने वाला (प्रवासी)",
+      "zh": "新移民／新来者",
+      "es": "recién llegado"
+    },
+    "level": "sprout",
+    "category": "social",
+    "example_sentences": [
+      "As a newcomer, she joined every free walking tour going.",
+      "Newcomer is the standard friendly term across settlement services — newcomer centres, newcomer youth programs, welcome guides all use it."
+    ],
+    "confusion_pairs": ["immigrant", "foreigner"],
+    "fsrs_params": {"difficulty": 0.35, "stability": 3.7}
+  },
+  {
+    "id": "vocab-192",
+    "word": "barbecue",
+    "phonetic": "/ˈbɑːrbɪkjuː/",
+    "translations": {
+      "pa": "ਬਾਰਬੀਕਿਊ (ਬਾਹਰ ਸੇਕ ਕੇ ਬਣਾਇਆ ਖਾਣਾ)",
+      "hi": "बारबेक्यू",
+      "zh": "烧烤",
+      "es": "barbacoa"
+    },
+    "level": "sprout",
+    "category": "social",
+    "example_sentences": [
+      "They fired up the barbecue the first sunny weekend of May.",
+      "Barbecue doubles as noun and verb, guests bring salads while the host grills burgers, and propane-tank exchanges happen at grocery stores."
+    ],
+    "confusion_pairs": ["BBQ", "grill"],
+    "fsrs_params": {"difficulty": 0.42, "stability": 3.1}
+  },
+  {
+    "id": "vocab-193",
+    "word": "playdate",
+    "phonetic": "/ˈpleɪdeɪt/",
+    "translations": {
+      "pa": "ਬੱਚਿਆਂ ਦੀ ਮਿਲਣੀ (ਖੇਡਣ ਦਾ ਸਮਾਂ)",
+      "hi": "प्लेडेट (बच्चों की साथ खेलने की मुलाक़ात)",
+      "zh": "小朋友玩耍约会",
+      "es": "cita de juego"
+    },
+    "level": "branch",
+    "category": "social",
+    "example_sentences": [
+      "Can Zoe come over for a playdate on Saturday afternoon?",
+      "Playdates are scheduled kid hangouts arranged by parents — hosting means snacks, and dropping off usually means staying the first time."
+    ],
+    "confusion_pairs": ["sleepover", "babysitting"],
+    "fsrs_params": {"difficulty": 0.55, "stability": 2.6}
+  },
+  {
+    "id": "vocab-194",
+    "word": "block party",
+    "phonetic": "/ˈblɑːk ˈpɑːrti/",
+    "translations": {
+      "pa": "ਗਲੀ ਦੀ ਪਾਰਟੀ",
+      "hi": "ब्लॉक पार्टी (गली की पार्टी)",
+      "zh": "街区聚会",
+      "es": "fiesta de cuadra"
+    },
+    "level": "canopy",
+    "category": "social",
+    "example_sentences": [
+      "The street closes for a block party every Victoria Day weekend.",
+      "Block parties need a city permit to close the street — neighbours grill, kids chalk the asphalt, and everyone finally learns each other's names."
+    ],
+    "confusion_pairs": ["street festival", "garage sale"],
+    "fsrs_params": {"difficulty": 0.7, "stability": 1.9}
+  },
+  {
+    "id": "vocab-195",
+    "word": "hockey",
+    "phonetic": "/ˈhɑːki/",
+    "translations": {
+      "pa": "ਹਾਕੀ (ਬਰਫ਼ ਦੀ ਹਾਕੀ)",
+      "hi": "हॉकी (आइस हॉकी)",
+      "zh": "冰球",
+      "es": "hockey sobre hielo"
+    },
+    "level": "seed",
+    "category": "social",
+    "example_sentences": [
+      "The whole office watched the hockey game last night.",
+      "Hockey defaults to ice hockey in Canada — saying hockey scores is small talk currency from October to June, playoffs especially."
+    ],
+    "confusion_pairs": ["field hockey", "ringette"],
+    "fsrs_params": {"difficulty": 0.2, "stability": 4.7}
+  },
+  {
+    "id": "vocab-196",
+    "word": "rink",
+    "phonetic": "/rɪŋk/",
+    "translations": {
+      "pa": "ਸਕੇਟਿੰਗ ਮੈਦਾਨ (ਰਿੰਕ)",
+      "hi": "स्केटिंग रिंक",
+      "zh": "溜冰场",
+      "es": "pista de hielo"
+    },
+    "level": "bloom",
+    "category": "social",
+    "example_sentences": [
+      "The outdoor rink behind the school froze solid last week.",
+      "Neighbourhood outdoor rinks are maintained by volunteers flooding the pad at night — skating there is free, unlike arena ice times."
+    ],
+    "confusion_pairs": ["arena", "rink (bowls)"],
+    "fsrs_params": {"difficulty": 0.6, "stability": 2.2}
+  },
+  {
+    "id": "vocab-197",
+    "word": "canoe",
+    "phonetic": "/kəˈnuː/",
+    "translations": {
+      "pa": "ਕੈਨੂ (ਪੈਡਲ ਨਾਲ ਚੱਲਣ ਵਾਲੀ ਨਾਵ)",
+      "hi": "कैनू (डोंगी)",
+      "zh": "独木舟",
+      "es": "canoa"
+    },
+    "level": "branch",
+    "category": "social",
+    "example_sentences": [
+      "We rented a canoe at the park and paddled around the lake.",
+      "The canoe is practically national symbolism — lakeside towns rent them by the hour, and portaging between lakes is a badge of summer camp honour."
+    ],
+    "confusion_pairs": ["kayak", "rowboat"],
+    "fsrs_params": {"difficulty": 0.6, "stability": 2.2}
+  },
+  {
+    "id": "vocab-198",
+    "word": "campfire",
+    "phonetic": "/ˈkæmpfaɪər/",
+    "translations": {
+      "pa": "ਅਲਾਵ (ਕੈਂਪ ਫਾਇਰ)",
+      "hi": "अलाव",
+      "zh": "营火",
+      "es": "hoguera"
+    },
+    "level": "sprout",
+    "category": "social",
+    "example_sentences": [
+      "Provincial campsites allow a campfire until eleven at night.",
+      "Campfires need permits or designated pits in fire season — check the posted fire rating before lighting anything at the lake."
+    ],
+    "confusion_pairs": ["bonfire", "camp stove"],
+    "fsrs_params": {"difficulty": 0.4, "stability": 3.3}
+  },
+  {
+    "id": "vocab-199",
+    "word": "cottage",
+    "phonetic": "/ˈkɑːtɪdʒ/",
+    "translations": {
+      "pa": "ਝੀਲ ਕੰਢੇ ਦੀ ਛੁੱਟੀਆਂ ਦੀ ਕੁਟੀਰ",
+      "hi": "कॉटेज (झील किनारे की छुट्टी की झोपड़ी)",
+      "zh": "度假木屋",
+      "es": "cabaña de veraneo"
+    },
+    "level": "canopy",
+    "category": "social",
+    "example_sentences": [
+      "They spend every August long weekend at the cottage.",
+      "Cottaging is Ontario shorthand for escaping to lake country — Manitobans say cabin, Quebeckers say chalet, everyone means the same bliss."
+    ],
+    "confusion_pairs": ["chalet", "cabin"],
+    "fsrs_params": {"difficulty": 0.7, "stability": 1.9}
+  },
+  {
+    "id": "vocab-200",
+    "word": "washroom",
+    "phonetic": "/ˈwɒʃruːm/",
+    "translations": {
+      "pa": "ਵਾਸ਼ਰੂਮ (ਟਾਇਲਟ)",
+      "hi": "शौचालय",
+      "zh": "洗手间",
+      "es": "baño"
+    },
+    "level": "seed",
+    "category": "social",
+    "example_sentences": [
+      "Excuse me, where is the washroom in this mall?",
+      "Washroom is the polite Canadian word where Americans say restroom and Britons say toilet — signage will say WASHROOM almost everywhere."
+    ],
+    "confusion_pairs": ["restroom", "bathroom"],
+    "fsrs_params": {"difficulty": 0.2, "stability": 4.7}
+  }
+]

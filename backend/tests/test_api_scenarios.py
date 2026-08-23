@@ -63,7 +63,7 @@ async def test_scenarios_returns_the_seeded_catalog(
     scenarios_client: AsyncClient, db_session: AsyncSession
 ) -> None:
     seeded = await seed_scenarios(db_session)
-    assert seeded == 20
+    assert seeded == 40
 
     response = await scenarios_client.get(
         "/api/scenarios", headers=await auth_headers(scenarios_client)
@@ -71,7 +71,7 @@ async def test_scenarios_returns_the_seeded_catalog(
 
     assert response.status_code == 200
     body = response.json()
-    assert len(body["scenarios"]) == 20
+    assert len(body["scenarios"]) == 40
     titles = [scenario["title"] for scenario in body["scenarios"]]
     assert titles == sorted(titles)  # Stable, title-ordered list.
     first = body["scenarios"][0]

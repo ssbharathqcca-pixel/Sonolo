@@ -1,0 +1,1997 @@
+C:\Users\pavan\OneDrive\Desktop\Sonolo\backend\.venv\Lib\site-packages\pytest_asyncio\plugin.py:207: PytestDeprecationWarning: The configuration option "asyncio_default_fixture_loop_scope" is unset.
+The event loop scope for asynchronous fixtures will default to the fixture caching scope. Future versions of pytest-asyncio will default the loop scope for asynchronous fixtures to function scope. Set the default fixture loop scope explicitly in order to avoid unexpected behavior in the future. Valid fixture loop scopes are: "function", "class", "module", "package", "session"
+
+  warnings.warn(PytestDeprecationWarning(_DEFAULT_FIXTURE_LOOP_SCOPE_UNSET))
+FFFFFF.F.....FFF...........F............................................ [ 67%]
+............................FF.....                                      [100%]
+================================== FAILURES ===================================
+_________________ test_complete_session_persists_and_responds _________________
+
+self = <app.services.session_service.SessionService object at 0x000002396416FC90>
+locked_user = User(id=UUID('01a030a0-c9cf-7dd3-a7ad-85fe429935a0'), name='Pavan', current_level='seed', subscription_tier='free')
+payload = SessionCompleteRequest(client_session_id=UUID('6d044a44-6598-4daa-8646-eca3af0d5cb1'), scenario_id=UUID('01a030a0-caf2....0, task_completion=82.0), overall_score=82.0, insights=[], engine_version='sn011-deterministic-v1'), client_info=None)
+scenario = Scenario(id=UUID('01a030a0-caf2-7149-b6e5-74e06b6f51a0'), title='Order at the coffee shop', category='shopping', level='seed', is_published=False)
+now = datetime.datetime(2026, 8, 22, 20, 0, tzinfo=datetime.timezone.utc)
+
+    async def _create_session_flow(
+        self,
+        locked_user: User,
+        payload: SessionCompleteRequest,
+        scenario: Scenario,
+        now: datetime,
+    ) -> SessionCompleteResponse:
+        """Insert the session and award skills, XP, streaks, quests, badges."""
+        gamification = GamificationService(self._db)
+        local_date = get_local_date_for_user(now, locked_user.timezone)
+        xp_eligible = is_session_xp_eligible(payload)
+        scores = payload.evaluation.scores
+    
+        if xp_eligible:
+            # Server-side cross-check of the client-reported evaluation:
+            # MVP trusts the client, but significant divergence is logged.
+            try:
+                own = await SessionEvaluator().evaluate(
+                    EvaluatorRequest(
+                        session_id=payload.client_session_id,
+                        transcript=[
+                            EvaluatorTurn(
+                                role=(
+                                    "user"
+                                    if turn.role == "user"
+                                    else "tutor"
+                                ),
+                                text=turn.text,
+                            )
+                            for turn in payload.transcript
+                        ],
+                        duration_seconds=float(payload.duration_seconds),
+                    )
+                )
+                if (
+                    abs(own.speaking_power_score - payload.evaluation.overall_score)
+                    > 10.0
+                ):
+>                   logger.warning(
+                        "Evaluation divergence: client=%s server=%s session=%s",
+                        payload.evaluation.overall_score,
+                        own.speaking_power_score,
+                        payload.client_session_id,
+                    )
+E                   NameError: name 'logger' is not defined
+
+app\services\session_service.py:210: NameError
+
+During handling of the above exception, another exception occurred:
+
+api_client = <httpx.AsyncClient object at 0x0000023964063250>
+db_session = <sqlalchemy.ext.asyncio.session.AsyncSession object at 0x0000023964106710>
+
+    async def test_complete_session_persists_and_responds(
+        api_client: AsyncClient, db_session: AsyncSession
+    ) -> None:
+        headers = await register_and_login(api_client)
+        scenario = await seed_scenario(db_session)
+    
+>       response = await complete(
+            api_client, headers, make_payload(str(scenario.id))
+        )
+
+tests\test_api_gamification.py:169: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\test_api_gamification.py:151: in complete
+    return await api_client.post(
+..\..\Sonolo\backend\.venv\Lib\site-packages\httpx\_client.py:1859: in post
+    return await self.request(
+..\..\Sonolo\backend\.venv\Lib\site-packages\httpx\_client.py:1540: in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+..\..\Sonolo\backend\.venv\Lib\site-packages\httpx\_client.py:1629: in send
+    response = await self._send_handling_auth(
+..\..\Sonolo\backend\.venv\Lib\site-packages\httpx\_client.py:1657: in _send_handling_auth
+    response = await self._send_handling_redirects(
+..\..\Sonolo\backend\.venv\Lib\site-packages\httpx\_client.py:1694: in _send_handling_redirects
+    response = await self._send_single_request(request)
+..\..\Sonolo\backend\.venv\Lib\site-packages\httpx\_client.py:1730: in _send_single_request
+    response = await transport.handle_async_request(request)
+..\..\Sonolo\backend\.venv\Lib\site-packages\httpx\_transports\asgi.py:170: in handle_async_request
+    await self.app(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\fastapi\applications.py:1054: in __call__
+    await super().__call__(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\applications.py:113: in __call__
+    await self.middleware_stack(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\middleware\errors.py:187: in __call__
+    raise exc
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\middleware\errors.py:165: in __call__
+    await self.app(scope, receive, _send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\middleware\cors.py:85: in __call__
+    await self.app(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\middleware\exceptions.py:62: in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\_exception_handler.py:53: in wrapped_app
+    raise exc
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\_exception_handler.py:42: in wrapped_app
+    await app(scope, receive, sender)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\routing.py:715: in __call__
+    await self.middleware_stack(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\routing.py:735: in app
+    await route.handle(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\routing.py:288: in handle
+    await self.app(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\routing.py:76: in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\_exception_handler.py:53: in wrapped_app
+    raise exc
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\_exception_handler.py:42: in wrapped_app
+    await app(scope, receive, sender)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\routing.py:73: in app
+    response = await f(request)
+..\..\Sonolo\backend\.venv\Lib\site-packages\fastapi\routing.py:301: in app
+    raw_response = await run_endpoint_function(
+..\..\Sonolo\backend\.venv\Lib\site-packages\fastapi\routing.py:212: in run_endpoint_function
+    return await dependant.call(**values)
+app\api\sessions.py:84: in complete_session
+    result = await service.complete_session(user, payload, utc_now())
+app\services\session_service.py:142: in complete_session
+    return await self._create_session_flow(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <app.services.session_service.SessionService object at 0x000002396416FC90>
+locked_user = User(id=UUID('01a030a0-c9cf-7dd3-a7ad-85fe429935a0'), name='Pavan', current_level='seed', subscription_tier='free')
+payload = SessionCompleteRequest(client_session_id=UUID('6d044a44-6598-4daa-8646-eca3af0d5cb1'), scenario_id=UUID('01a030a0-caf2....0, task_completion=82.0), overall_score=82.0, insights=[], engine_version='sn011-deterministic-v1'), client_info=None)
+scenario = Scenario(id=UUID('01a030a0-caf2-7149-b6e5-74e06b6f51a0'), title='Order at the coffee shop', category='shopping', level='seed', is_published=False)
+now = datetime.datetime(2026, 8, 22, 20, 0, tzinfo=datetime.timezone.utc)
+
+    async def _create_session_flow(
+        self,
+        locked_user: User,
+        payload: SessionCompleteRequest,
+        scenario: Scenario,
+        now: datetime,
+    ) -> SessionCompleteResponse:
+        """Insert the session and award skills, XP, streaks, quests, badges."""
+        gamification = GamificationService(self._db)
+        local_date = get_local_date_for_user(now, locked_user.timezone)
+        xp_eligible = is_session_xp_eligible(payload)
+        scores = payload.evaluation.scores
+    
+        if xp_eligible:
+            # Server-side cross-check of the client-reported evaluation:
+            # MVP trusts the client, but significant divergence is logged.
+            try:
+                own = await SessionEvaluator().evaluate(
+                    EvaluatorRequest(
+                        session_id=payload.client_session_id,
+                        transcript=[
+                            EvaluatorTurn(
+                                role=(
+                                    "user"
+                                    if turn.role == "user"
+                                    else "tutor"
+                                ),
+                                text=turn.text,
+                            )
+                            for turn in payload.transcript
+                        ],
+                        duration_seconds=float(payload.duration_seconds),
+                    )
+                )
+                if (
+                    abs(own.speaking_power_score - payload.evaluation.overall_score)
+                    > 10.0
+                ):
+                    logger.warning(
+                        "Evaluation divergence: client=%s server=%s session=%s",
+                        payload.evaluation.overall_score,
+                        own.speaking_power_score,
+                        payload.client_session_id,
+                    )
+            except Exception:  # noqa: BLE001 - cross-check must not block
+>               logger.debug("Evaluator cross-check skipped.", exc_info=True)
+E               NameError: name 'logger' is not defined
+
+app\services\session_service.py:217: NameError
+---------------------------- Captured stderr call -----------------------------
+{"timestamp": "2026-08-23T21:57:18.958010+00:00", "level": "INFO", "logger": "httpx", "message": "HTTP Request: POST http://test/api/auth/register \"HTTP/1.1 201 Created\""}
+{"timestamp": "2026-08-23T21:57:19.215537+00:00", "level": "INFO", "logger": "httpx", "message": "HTTP Request: POST http://test/api/auth/login \"HTTP/1.1 200 OK\""}
+------------------------------ Captured log call ------------------------------
+INFO     httpx:_client.py:1740 HTTP Request: POST http://test/api/auth/register "HTTP/1.1 201 Created"
+INFO     httpx:_client.py:1740 HTTP Request: POST http://test/api/auth/login "HTTP/1.1 200 OK"
+__________________ test_complete_creates_user_skills_and_xp ___________________
+
+self = <app.services.session_service.SessionService object at 0x000002396550AE50>
+locked_user = User(id=UUID('01a030a0-ce25-7197-b9c5-d53bdc8445fb'), name='Pavan', current_level='seed', subscription_tier='free')
+payload = SessionCompleteRequest(client_session_id=UUID('9f0d86b5-bda5-43a4-88ae-9b4edd0bcecb'), scenario_id=UUID('01a030a0-cf3c....0, task_completion=82.0), overall_score=82.0, insights=[], engine_version='sn011-deterministic-v1'), client_info=None)
+scenario = Scenario(id=UUID('01a030a0-cf3c-7f63-bef2-d700311cb971'), title='Order at the coffee shop', category='shopping', level='seed', is_published=False)
+now = datetime.datetime(2026, 8, 22, 20, 0, tzinfo=datetime.timezone.utc)
+
+    async def _create_session_flow(
+        self,
+        locked_user: User,
+        payload: SessionCompleteRequest,
+        scenario: Scenario,
+        now: datetime,
+    ) -> SessionCompleteResponse:
+        """Insert the session and award skills, XP, streaks, quests, badges."""
+        gamification = GamificationService(self._db)
+        local_date = get_local_date_for_user(now, locked_user.timezone)
+        xp_eligible = is_session_xp_eligible(payload)
+        scores = payload.evaluation.scores
+    
+        if xp_eligible:
+            # Server-side cross-check of the client-reported evaluation:
+            # MVP trusts the client, but significant divergence is logged.
+            try:
+                own = await SessionEvaluator().evaluate(
+                    EvaluatorRequest(
+                        session_id=payload.client_session_id,
+                        transcript=[
+                            EvaluatorTurn(
+                                role=(
+                                    "user"
+                                    if turn.role == "user"
+                                    else "tutor"
+                                ),
+                                text=turn.text,
+                            )
+                            for turn in payload.transcript
+                        ],
+                        duration_seconds=float(payload.duration_seconds),
+                    )
+                )
+                if (
+                    abs(own.speaking_power_score - payload.evaluation.overall_score)
+                    > 10.0
+                ):
+>                   logger.warning(
+                        "Evaluation divergence: client=%s server=%s session=%s",
+                        payload.evaluation.overall_score,
+                        own.speaking_power_score,
+                        payload.client_session_id,
+                    )
+E                   NameError: name 'logger' is not defined
+
+app\services\session_service.py:210: NameError
+
+During handling of the above exception, another exception occurred:
+
+api_client = <httpx.AsyncClient object at 0x000002396551AB90>
+db_session = <sqlalchemy.ext.asyncio.session.AsyncSession object at 0x0000023965C65F90>
+
+    async def test_complete_creates_user_skills_and_xp(
+        api_client: AsyncClient, db_session: AsyncSession
+    ) -> None:
+        headers = await register_and_login(api_client)
+        scenario = await seed_scenario(db_session)
+    
+>       await complete(api_client, headers, make_payload(str(scenario.id)))
+
+tests\test_api_gamification.py:191: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\test_api_gamification.py:151: in complete
+    return await api_client.post(
+..\..\Sonolo\backend\.venv\Lib\site-packages\httpx\_client.py:1859: in post
+    return await self.request(
+..\..\Sonolo\backend\.venv\Lib\site-packages\httpx\_client.py:1540: in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+..\..\Sonolo\backend\.venv\Lib\site-packages\httpx\_client.py:1629: in send
+    response = await self._send_handling_auth(
+..\..\Sonolo\backend\.venv\Lib\site-packages\httpx\_client.py:1657: in _send_handling_auth
+    response = await self._send_handling_redirects(
+..\..\Sonolo\backend\.venv\Lib\site-packages\httpx\_client.py:1694: in _send_handling_redirects
+    response = await self._send_single_request(request)
+..\..\Sonolo\backend\.venv\Lib\site-packages\httpx\_client.py:1730: in _send_single_request
+    response = await transport.handle_async_request(request)
+..\..\Sonolo\backend\.venv\Lib\site-packages\httpx\_transports\asgi.py:170: in handle_async_request
+    await self.app(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\fastapi\applications.py:1054: in __call__
+    await super().__call__(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\applications.py:113: in __call__
+    await self.middleware_stack(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\middleware\errors.py:187: in __call__
+    raise exc
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\middleware\errors.py:165: in __call__
+    await self.app(scope, receive, _send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\middleware\cors.py:85: in __call__
+    await self.app(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\middleware\exceptions.py:62: in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\_exception_handler.py:53: in wrapped_app
+    raise exc
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\_exception_handler.py:42: in wrapped_app
+    await app(scope, receive, sender)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\routing.py:715: in __call__
+    await self.middleware_stack(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\routing.py:735: in app
+    await route.handle(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\routing.py:288: in handle
+    await self.app(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\routing.py:76: in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\_exception_handler.py:53: in wrapped_app
+    raise exc
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\_exception_handler.py:42: in wrapped_app
+    await app(scope, receive, sender)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\routing.py:73: in app
+    response = await f(request)
+..\..\Sonolo\backend\.venv\Lib\site-packages\fastapi\routing.py:301: in app
+    raw_response = await run_endpoint_function(
+..\..\Sonolo\backend\.venv\Lib\site-packages\fastapi\routing.py:212: in run_endpoint_function
+    return await dependant.call(**values)
+app\api\sessions.py:84: in complete_session
+    result = await service.complete_session(user, payload, utc_now())
+app\services\session_service.py:142: in complete_session
+    return await self._create_session_flow(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <app.services.session_service.SessionService object at 0x000002396550AE50>
+locked_user = User(id=UUID('01a030a0-ce25-7197-b9c5-d53bdc8445fb'), name='Pavan', current_level='seed', subscription_tier='free')
+payload = SessionCompleteRequest(client_session_id=UUID('9f0d86b5-bda5-43a4-88ae-9b4edd0bcecb'), scenario_id=UUID('01a030a0-cf3c....0, task_completion=82.0), overall_score=82.0, insights=[], engine_version='sn011-deterministic-v1'), client_info=None)
+scenario = Scenario(id=UUID('01a030a0-cf3c-7f63-bef2-d700311cb971'), title='Order at the coffee shop', category='shopping', level='seed', is_published=False)
+now = datetime.datetime(2026, 8, 22, 20, 0, tzinfo=datetime.timezone.utc)
+
+    async def _create_session_flow(
+        self,
+        locked_user: User,
+        payload: SessionCompleteRequest,
+        scenario: Scenario,
+        now: datetime,
+    ) -> SessionCompleteResponse:
+        """Insert the session and award skills, XP, streaks, quests, badges."""
+        gamification = GamificationService(self._db)
+        local_date = get_local_date_for_user(now, locked_user.timezone)
+        xp_eligible = is_session_xp_eligible(payload)
+        scores = payload.evaluation.scores
+    
+        if xp_eligible:
+            # Server-side cross-check of the client-reported evaluation:
+            # MVP trusts the client, but significant divergence is logged.
+            try:
+                own = await SessionEvaluator().evaluate(
+                    EvaluatorRequest(
+                        session_id=payload.client_session_id,
+                        transcript=[
+                            EvaluatorTurn(
+                                role=(
+                                    "user"
+                                    if turn.role == "user"
+                                    else "tutor"
+                                ),
+                                text=turn.text,
+                            )
+                            for turn in payload.transcript
+                        ],
+                        duration_seconds=float(payload.duration_seconds),
+                    )
+                )
+                if (
+                    abs(own.speaking_power_score - payload.evaluation.overall_score)
+                    > 10.0
+                ):
+                    logger.warning(
+                        "Evaluation divergence: client=%s server=%s session=%s",
+                        payload.evaluation.overall_score,
+                        own.speaking_power_score,
+                        payload.client_session_id,
+                    )
+            except Exception:  # noqa: BLE001 - cross-check must not block
+>               logger.debug("Evaluator cross-check skipped.", exc_info=True)
+E               NameError: name 'logger' is not defined
+
+app\services\session_service.py:217: NameError
+---------------------------- Captured stderr call -----------------------------
+{"timestamp": "2026-08-23T21:57:20.064587+00:00", "level": "INFO", "logger": "httpx", "message": "HTTP Request: POST http://test/api/auth/register \"HTTP/1.1 201 Created\""}
+{"timestamp": "2026-08-23T21:57:20.312894+00:00", "level": "INFO", "logger": "httpx", "message": "HTTP Request: POST http://test/api/auth/login \"HTTP/1.1 200 OK\""}
+------------------------------ Captured log call ------------------------------
+INFO     httpx:_client.py:1740 HTTP Request: POST http://test/api/auth/register "HTTP/1.1 201 Created"
+INFO     httpx:_client.py:1740 HTTP Request: POST http://test/api/auth/login "HTTP/1.1 200 OK"
+________________ test_complete_generates_and_progresses_quests ________________
+
+self = <app.services.session_service.SessionService object at 0x0000023964199810>
+locked_user = User(id=UUID('01a030a0-d1cf-7c45-87ca-9b2bd50ae4df'), name='Pavan', current_level='seed', subscription_tier='free')
+payload = SessionCompleteRequest(client_session_id=UUID('4123d869-1c2e-4209-820a-b4140fb479d8'), scenario_id=UUID('01a030a0-d2e9....0, task_completion=82.0), overall_score=82.0, insights=[], engine_version='sn011-deterministic-v1'), client_info=None)
+scenario = Scenario(id=UUID('01a030a0-d2e9-7777-9a80-f7b16bbc2a86'), title='Order at the coffee shop', category='shopping', level='seed', is_published=False)
+now = datetime.datetime(2026, 8, 22, 20, 0, tzinfo=datetime.timezone.utc)
+
+    async def _create_session_flow(
+        self,
+        locked_user: User,
+        payload: SessionCompleteRequest,
+        scenario: Scenario,
+        now: datetime,
+    ) -> SessionCompleteResponse:
+        """Insert the session and award skills, XP, streaks, quests, badges."""
+        gamification = GamificationService(self._db)
+        local_date = get_local_date_for_user(now, locked_user.timezone)
+        xp_eligible = is_session_xp_eligible(payload)
+        scores = payload.evaluation.scores
+    
+        if xp_eligible:
+            # Server-side cross-check of the client-reported evaluation:
+            # MVP trusts the client, but significant divergence is logged.
+            try:
+                own = await SessionEvaluator().evaluate(
+                    EvaluatorRequest(
+                        session_id=payload.client_session_id,
+                        transcript=[
+                            EvaluatorTurn(
+                                role=(
+                                    "user"
+                                    if turn.role == "user"
+                                    else "tutor"
+                                ),
+                                text=turn.text,
+                            )
+                            for turn in payload.transcript
+                        ],
+                        duration_seconds=float(payload.duration_seconds),
+                    )
+                )
+                if (
+                    abs(own.speaking_power_score - payload.evaluation.overall_score)
+                    > 10.0
+                ):
+>                   logger.warning(
+                        "Evaluation divergence: client=%s server=%s session=%s",
+                        payload.evaluation.overall_score,
+                        own.speaking_power_score,
+                        payload.client_session_id,
+                    )
+E                   NameError: name 'logger' is not defined
+
+app\services\session_service.py:210: NameError
+
+During handling of the above exception, another exception occurred:
+
+api_client = <httpx.AsyncClient object at 0x000002396431F890>
+db_session = <sqlalchemy.ext.asyncio.session.AsyncSession object at 0x0000023964354F90>
+
+    async def test_complete_generates_and_progresses_quests(
+        api_client: AsyncClient, db_session: AsyncSession
+    ) -> None:
+        headers = await register_and_login(api_client)
+        scenario = await seed_scenario(db_session)
+    
+>       body = (await complete(api_client, headers, make_payload(str(scenario.id)))).json()
+
+tests\test_api_gamification.py:208: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\test_api_gamification.py:151: in complete
+    return await api_client.post(
+..\..\Sonolo\backend\.venv\Lib\site-packages\httpx\_client.py:1859: in post
+    return await self.request(
+..\..\Sonolo\backend\.venv\Lib\site-packages\httpx\_client.py:1540: in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+..\..\Sonolo\backend\.venv\Lib\site-packages\httpx\_client.py:1629: in send
+    response = await self._send_handling_auth(
+..\..\Sonolo\backend\.venv\Lib\site-packages\httpx\_client.py:1657: in _send_handling_auth
+    response = await self._send_handling_redirects(
+..\..\Sonolo\backend\.venv\Lib\site-packages\httpx\_client.py:1694: in _send_handling_redirects
+    response = await self._send_single_request(request)
+..\..\Sonolo\backend\.venv\Lib\site-packages\httpx\_client.py:1730: in _send_single_request
+    response = await transport.handle_async_request(request)
+..\..\Sonolo\backend\.venv\Lib\site-packages\httpx\_transports\asgi.py:170: in handle_async_request
+    await self.app(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\fastapi\applications.py:1054: in __call__
+    await super().__call__(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\applications.py:113: in __call__
+    await self.middleware_stack(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\middleware\errors.py:187: in __call__
+    raise exc
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\middleware\errors.py:165: in __call__
+    await self.app(scope, receive, _send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\middleware\cors.py:85: in __call__
+    await self.app(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\middleware\exceptions.py:62: in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\_exception_handler.py:53: in wrapped_app
+    raise exc
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\_exception_handler.py:42: in wrapped_app
+    await app(scope, receive, sender)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\routing.py:715: in __call__
+    await self.middleware_stack(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\routing.py:735: in app
+    await route.handle(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\routing.py:288: in handle
+    await self.app(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\routing.py:76: in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\_exception_handler.py:53: in wrapped_app
+    raise exc
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\_exception_handler.py:42: in wrapped_app
+    await app(scope, receive, sender)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\routing.py:73: in app
+    response = await f(request)
+..\..\Sonolo\backend\.venv\Lib\site-packages\fastapi\routing.py:301: in app
+    raw_response = await run_endpoint_function(
+..\..\Sonolo\backend\.venv\Lib\site-packages\fastapi\routing.py:212: in run_endpoint_function
+    return await dependant.call(**values)
+app\api\sessions.py:84: in complete_session
+    result = await service.complete_session(user, payload, utc_now())
+app\services\session_service.py:142: in complete_session
+    return await self._create_session_flow(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <app.services.session_service.SessionService object at 0x0000023964199810>
+locked_user = User(id=UUID('01a030a0-d1cf-7c45-87ca-9b2bd50ae4df'), name='Pavan', current_level='seed', subscription_tier='free')
+payload = SessionCompleteRequest(client_session_id=UUID('4123d869-1c2e-4209-820a-b4140fb479d8'), scenario_id=UUID('01a030a0-d2e9....0, task_completion=82.0), overall_score=82.0, insights=[], engine_version='sn011-deterministic-v1'), client_info=None)
+scenario = Scenario(id=UUID('01a030a0-d2e9-7777-9a80-f7b16bbc2a86'), title='Order at the coffee shop', category='shopping', level='seed', is_published=False)
+now = datetime.datetime(2026, 8, 22, 20, 0, tzinfo=datetime.timezone.utc)
+
+    async def _create_session_flow(
+        self,
+        locked_user: User,
+        payload: SessionCompleteRequest,
+        scenario: Scenario,
+        now: datetime,
+    ) -> SessionCompleteResponse:
+        """Insert the session and award skills, XP, streaks, quests, badges."""
+        gamification = GamificationService(self._db)
+        local_date = get_local_date_for_user(now, locked_user.timezone)
+        xp_eligible = is_session_xp_eligible(payload)
+        scores = payload.evaluation.scores
+    
+        if xp_eligible:
+            # Server-side cross-check of the client-reported evaluation:
+            # MVP trusts the client, but significant divergence is logged.
+            try:
+                own = await SessionEvaluator().evaluate(
+                    EvaluatorRequest(
+                        session_id=payload.client_session_id,
+                        transcript=[
+                            EvaluatorTurn(
+                                role=(
+                                    "user"
+                                    if turn.role == "user"
+                                    else "tutor"
+                                ),
+                                text=turn.text,
+                            )
+                            for turn in payload.transcript
+                        ],
+                        duration_seconds=float(payload.duration_seconds),
+                    )
+                )
+                if (
+                    abs(own.speaking_power_score - payload.evaluation.overall_score)
+                    > 10.0
+                ):
+                    logger.warning(
+                        "Evaluation divergence: client=%s server=%s session=%s",
+                        payload.evaluation.overall_score,
+                        own.speaking_power_score,
+                        payload.client_session_id,
+                    )
+            except Exception:  # noqa: BLE001 - cross-check must not block
+>               logger.debug("Evaluator cross-check skipped.", exc_info=True)
+E               NameError: name 'logger' is not defined
+
+app\services\session_service.py:217: NameError
+---------------------------- Captured stderr call -----------------------------
+{"timestamp": "2026-08-23T21:57:21.004751+00:00", "level": "INFO", "logger": "httpx", "message": "HTTP Request: POST http://test/api/auth/register \"HTTP/1.1 201 Created\""}
+{"timestamp": "2026-08-23T21:57:21.254435+00:00", "level": "INFO", "logger": "httpx", "message": "HTTP Request: POST http://test/api/auth/login \"HTTP/1.1 200 OK\""}
+------------------------------ Captured log call ------------------------------
+INFO     httpx:_client.py:1740 HTTP Request: POST http://test/api/auth/register "HTTP/1.1 201 Created"
+INFO     httpx:_client.py:1740 HTTP Request: POST http://test/api/auth/login "HTTP/1.1 200 OK"
+__________________ test_complete_returns_first_session_badge __________________
+
+self = <app.services.session_service.SessionService object at 0x00000239656E7890>
+locked_user = User(id=UUID('01a030a0-d584-7d8c-a9e4-cfdca7f0bd01'), name='Pavan', current_level='seed', subscription_tier='free')
+payload = SessionCompleteRequest(client_session_id=UUID('1c54a73c-7793-49e5-b77c-4fab4b4dfc9f'), scenario_id=UUID('01a030a0-d697....0, task_completion=82.0), overall_score=82.0, insights=[], engine_version='sn011-deterministic-v1'), client_info=None)
+scenario = Scenario(id=UUID('01a030a0-d697-74c4-b1a8-2b4406658903'), title='Order at the coffee shop', category='shopping', level='seed', is_published=False)
+now = datetime.datetime(2026, 8, 22, 20, 0, tzinfo=datetime.timezone.utc)
+
+    async def _create_session_flow(
+        self,
+        locked_user: User,
+        payload: SessionCompleteRequest,
+        scenario: Scenario,
+        now: datetime,
+    ) -> SessionCompleteResponse:
+        """Insert the session and award skills, XP, streaks, quests, badges."""
+        gamification = GamificationService(self._db)
+        local_date = get_local_date_for_user(now, locked_user.timezone)
+        xp_eligible = is_session_xp_eligible(payload)
+        scores = payload.evaluation.scores
+    
+        if xp_eligible:
+            # Server-side cross-check of the client-reported evaluation:
+            # MVP trusts the client, but significant divergence is logged.
+            try:
+                own = await SessionEvaluator().evaluate(
+                    EvaluatorRequest(
+                        session_id=payload.client_session_id,
+                        transcript=[
+                            EvaluatorTurn(
+                                role=(
+                                    "user"
+                                    if turn.role == "user"
+                                    else "tutor"
+                                ),
+                                text=turn.text,
+                            )
+                            for turn in payload.transcript
+                        ],
+                        duration_seconds=float(payload.duration_seconds),
+                    )
+                )
+                if (
+                    abs(own.speaking_power_score - payload.evaluation.overall_score)
+                    > 10.0
+                ):
+>                   logger.warning(
+                        "Evaluation divergence: client=%s server=%s session=%s",
+                        payload.evaluation.overall_score,
+                        own.speaking_power_score,
+                        payload.client_session_id,
+                    )
+E                   NameError: name 'logger' is not defined
+
+app\services\session_service.py:210: NameError
+
+During handling of the above exception, another exception occurred:
+
+api_client = <httpx.AsyncClient object at 0x00000239656E7ED0>
+db_session = <sqlalchemy.ext.asyncio.session.AsyncSession object at 0x0000023965FADC10>
+
+    async def test_complete_returns_first_session_badge(
+        api_client: AsyncClient, db_session: AsyncSession
+    ) -> None:
+        headers = await register_and_login(api_client)
+        scenario = await seed_scenario(db_session)
+    
+>       body = (await complete(api_client, headers, make_payload(str(scenario.id)))).json()
+
+tests\test_api_gamification.py:228: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\test_api_gamification.py:151: in complete
+    return await api_client.post(
+..\..\Sonolo\backend\.venv\Lib\site-packages\httpx\_client.py:1859: in post
+    return await self.request(
+..\..\Sonolo\backend\.venv\Lib\site-packages\httpx\_client.py:1540: in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+..\..\Sonolo\backend\.venv\Lib\site-packages\httpx\_client.py:1629: in send
+    response = await self._send_handling_auth(
+..\..\Sonolo\backend\.venv\Lib\site-packages\httpx\_client.py:1657: in _send_handling_auth
+    response = await self._send_handling_redirects(
+..\..\Sonolo\backend\.venv\Lib\site-packages\httpx\_client.py:1694: in _send_handling_redirects
+    response = await self._send_single_request(request)
+..\..\Sonolo\backend\.venv\Lib\site-packages\httpx\_client.py:1730: in _send_single_request
+    response = await transport.handle_async_request(request)
+..\..\Sonolo\backend\.venv\Lib\site-packages\httpx\_transports\asgi.py:170: in handle_async_request
+    await self.app(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\fastapi\applications.py:1054: in __call__
+    await super().__call__(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\applications.py:113: in __call__
+    await self.middleware_stack(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\middleware\errors.py:187: in __call__
+    raise exc
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\middleware\errors.py:165: in __call__
+    await self.app(scope, receive, _send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\middleware\cors.py:85: in __call__
+    await self.app(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\middleware\exceptions.py:62: in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\_exception_handler.py:53: in wrapped_app
+    raise exc
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\_exception_handler.py:42: in wrapped_app
+    await app(scope, receive, sender)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\routing.py:715: in __call__
+    await self.middleware_stack(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\routing.py:735: in app
+    await route.handle(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\routing.py:288: in handle
+    await self.app(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\routing.py:76: in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\_exception_handler.py:53: in wrapped_app
+    raise exc
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\_exception_handler.py:42: in wrapped_app
+    await app(scope, receive, sender)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\routing.py:73: in app
+    response = await f(request)
+..\..\Sonolo\backend\.venv\Lib\site-packages\fastapi\routing.py:301: in app
+    raw_response = await run_endpoint_function(
+..\..\Sonolo\backend\.venv\Lib\site-packages\fastapi\routing.py:212: in run_endpoint_function
+    return await dependant.call(**values)
+app\api\sessions.py:84: in complete_session
+    result = await service.complete_session(user, payload, utc_now())
+app\services\session_service.py:142: in complete_session
+    return await self._create_session_flow(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <app.services.session_service.SessionService object at 0x00000239656E7890>
+locked_user = User(id=UUID('01a030a0-d584-7d8c-a9e4-cfdca7f0bd01'), name='Pavan', current_level='seed', subscription_tier='free')
+payload = SessionCompleteRequest(client_session_id=UUID('1c54a73c-7793-49e5-b77c-4fab4b4dfc9f'), scenario_id=UUID('01a030a0-d697....0, task_completion=82.0), overall_score=82.0, insights=[], engine_version='sn011-deterministic-v1'), client_info=None)
+scenario = Scenario(id=UUID('01a030a0-d697-74c4-b1a8-2b4406658903'), title='Order at the coffee shop', category='shopping', level='seed', is_published=False)
+now = datetime.datetime(2026, 8, 22, 20, 0, tzinfo=datetime.timezone.utc)
+
+    async def _create_session_flow(
+        self,
+        locked_user: User,
+        payload: SessionCompleteRequest,
+        scenario: Scenario,
+        now: datetime,
+    ) -> SessionCompleteResponse:
+        """Insert the session and award skills, XP, streaks, quests, badges."""
+        gamification = GamificationService(self._db)
+        local_date = get_local_date_for_user(now, locked_user.timezone)
+        xp_eligible = is_session_xp_eligible(payload)
+        scores = payload.evaluation.scores
+    
+        if xp_eligible:
+            # Server-side cross-check of the client-reported evaluation:
+            # MVP trusts the client, but significant divergence is logged.
+            try:
+                own = await SessionEvaluator().evaluate(
+                    EvaluatorRequest(
+                        session_id=payload.client_session_id,
+                        transcript=[
+                            EvaluatorTurn(
+                                role=(
+                                    "user"
+                                    if turn.role == "user"
+                                    else "tutor"
+                                ),
+                                text=turn.text,
+                            )
+                            for turn in payload.transcript
+                        ],
+                        duration_seconds=float(payload.duration_seconds),
+                    )
+                )
+                if (
+                    abs(own.speaking_power_score - payload.evaluation.overall_score)
+                    > 10.0
+                ):
+                    logger.warning(
+                        "Evaluation divergence: client=%s server=%s session=%s",
+                        payload.evaluation.overall_score,
+                        own.speaking_power_score,
+                        payload.client_session_id,
+                    )
+            except Exception:  # noqa: BLE001 - cross-check must not block
+>               logger.debug("Evaluator cross-check skipped.", exc_info=True)
+E               NameError: name 'logger' is not defined
+
+app\services\session_service.py:217: NameError
+---------------------------- Captured stderr call -----------------------------
+{"timestamp": "2026-08-23T21:57:21.947266+00:00", "level": "INFO", "logger": "httpx", "message": "HTTP Request: POST http://test/api/auth/register \"HTTP/1.1 201 Created\""}
+{"timestamp": "2026-08-23T21:57:22.196037+00:00", "level": "INFO", "logger": "httpx", "message": "HTTP Request: POST http://test/api/auth/login \"HTTP/1.1 200 OK\""}
+------------------------------ Captured log call ------------------------------
+INFO     httpx:_client.py:1740 HTTP Request: POST http://test/api/auth/register "HTTP/1.1 201 Created"
+INFO     httpx:_client.py:1740 HTTP Request: POST http://test/api/auth/login "HTTP/1.1 200 OK"
+_____________ test_duplicate_completion_replays_without_mutation ______________
+
+self = <app.services.session_service.SessionService object at 0x00000239643DFA90>
+locked_user = User(id=UUID('01a030a0-d8d5-7259-9cb4-7442c8527cdd'), name='Pavan', current_level='seed', subscription_tier='free')
+payload = SessionCompleteRequest(client_session_id=UUID('d783365f-e138-4a1a-8e85-b32670187e9e'), scenario_id=UUID('01a030a0-d9dd....0, task_completion=82.0), overall_score=82.0, insights=[], engine_version='sn011-deterministic-v1'), client_info=None)
+scenario = Scenario(id=UUID('01a030a0-d9dd-73db-9bd9-0d3e28b124af'), title='Order at the coffee shop', category='shopping', level='seed', is_published=False)
+now = datetime.datetime(2026, 8, 22, 20, 0, tzinfo=datetime.timezone.utc)
+
+    async def _create_session_flow(
+        self,
+        locked_user: User,
+        payload: SessionCompleteRequest,
+        scenario: Scenario,
+        now: datetime,
+    ) -> SessionCompleteResponse:
+        """Insert the session and award skills, XP, streaks, quests, badges."""
+        gamification = GamificationService(self._db)
+        local_date = get_local_date_for_user(now, locked_user.timezone)
+        xp_eligible = is_session_xp_eligible(payload)
+        scores = payload.evaluation.scores
+    
+        if xp_eligible:
+            # Server-side cross-check of the client-reported evaluation:
+            # MVP trusts the client, but significant divergence is logged.
+            try:
+                own = await SessionEvaluator().evaluate(
+                    EvaluatorRequest(
+                        session_id=payload.client_session_id,
+                        transcript=[
+                            EvaluatorTurn(
+                                role=(
+                                    "user"
+                                    if turn.role == "user"
+                                    else "tutor"
+                                ),
+                                text=turn.text,
+                            )
+                            for turn in payload.transcript
+                        ],
+                        duration_seconds=float(payload.duration_seconds),
+                    )
+                )
+                if (
+                    abs(own.speaking_power_score - payload.evaluation.overall_score)
+                    > 10.0
+                ):
+>                   logger.warning(
+                        "Evaluation divergence: client=%s server=%s session=%s",
+                        payload.evaluation.overall_score,
+                        own.speaking_power_score,
+                        payload.client_session_id,
+                    )
+E                   NameError: name 'logger' is not defined
+
+app\services\session_service.py:210: NameError
+
+During handling of the above exception, another exception occurred:
+
+api_client = <httpx.AsyncClient object at 0x000002396448BF10>
+db_session = <sqlalchemy.ext.asyncio.session.AsyncSession object at 0x0000023965EDBB90>
+
+    async def test_duplicate_completion_replays_without_mutation(
+        api_client: AsyncClient, db_session: AsyncSession
+    ) -> None:
+        headers = await register_and_login(api_client)
+        scenario = await seed_scenario(db_session)
+        payload = make_payload(str(scenario.id))
+    
+>       first = await complete(api_client, headers, payload)
+
+tests\test_api_gamification.py:239: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\test_api_gamification.py:151: in complete
+    return await api_client.post(
+..\..\Sonolo\backend\.venv\Lib\site-packages\httpx\_client.py:1859: in post
+    return await self.request(
+..\..\Sonolo\backend\.venv\Lib\site-packages\httpx\_client.py:1540: in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+..\..\Sonolo\backend\.venv\Lib\site-packages\httpx\_client.py:1629: in send
+    response = await self._send_handling_auth(
+..\..\Sonolo\backend\.venv\Lib\site-packages\httpx\_client.py:1657: in _send_handling_auth
+    response = await self._send_handling_redirects(
+..\..\Sonolo\backend\.venv\Lib\site-packages\httpx\_client.py:1694: in _send_handling_redirects
+    response = await self._send_single_request(request)
+..\..\Sonolo\backend\.venv\Lib\site-packages\httpx\_client.py:1730: in _send_single_request
+    response = await transport.handle_async_request(request)
+..\..\Sonolo\backend\.venv\Lib\site-packages\httpx\_transports\asgi.py:170: in handle_async_request
+    await self.app(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\fastapi\applications.py:1054: in __call__
+    await super().__call__(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\applications.py:113: in __call__
+    await self.middleware_stack(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\middleware\errors.py:187: in __call__
+    raise exc
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\middleware\errors.py:165: in __call__
+    await self.app(scope, receive, _send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\middleware\cors.py:85: in __call__
+    await self.app(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\middleware\exceptions.py:62: in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\_exception_handler.py:53: in wrapped_app
+    raise exc
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\_exception_handler.py:42: in wrapped_app
+    await app(scope, receive, sender)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\routing.py:715: in __call__
+    await self.middleware_stack(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\routing.py:735: in app
+    await route.handle(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\routing.py:288: in handle
+    await self.app(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\routing.py:76: in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\_exception_handler.py:53: in wrapped_app
+    raise exc
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\_exception_handler.py:42: in wrapped_app
+    await app(scope, receive, sender)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\routing.py:73: in app
+    response = await f(request)
+..\..\Sonolo\backend\.venv\Lib\site-packages\fastapi\routing.py:301: in app
+    raw_response = await run_endpoint_function(
+..\..\Sonolo\backend\.venv\Lib\site-packages\fastapi\routing.py:212: in run_endpoint_function
+    return await dependant.call(**values)
+app\api\sessions.py:84: in complete_session
+    result = await service.complete_session(user, payload, utc_now())
+app\services\session_service.py:142: in complete_session
+    return await self._create_session_flow(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <app.services.session_service.SessionService object at 0x00000239643DFA90>
+locked_user = User(id=UUID('01a030a0-d8d5-7259-9cb4-7442c8527cdd'), name='Pavan', current_level='seed', subscription_tier='free')
+payload = SessionCompleteRequest(client_session_id=UUID('d783365f-e138-4a1a-8e85-b32670187e9e'), scenario_id=UUID('01a030a0-d9dd....0, task_completion=82.0), overall_score=82.0, insights=[], engine_version='sn011-deterministic-v1'), client_info=None)
+scenario = Scenario(id=UUID('01a030a0-d9dd-73db-9bd9-0d3e28b124af'), title='Order at the coffee shop', category='shopping', level='seed', is_published=False)
+now = datetime.datetime(2026, 8, 22, 20, 0, tzinfo=datetime.timezone.utc)
+
+    async def _create_session_flow(
+        self,
+        locked_user: User,
+        payload: SessionCompleteRequest,
+        scenario: Scenario,
+        now: datetime,
+    ) -> SessionCompleteResponse:
+        """Insert the session and award skills, XP, streaks, quests, badges."""
+        gamification = GamificationService(self._db)
+        local_date = get_local_date_for_user(now, locked_user.timezone)
+        xp_eligible = is_session_xp_eligible(payload)
+        scores = payload.evaluation.scores
+    
+        if xp_eligible:
+            # Server-side cross-check of the client-reported evaluation:
+            # MVP trusts the client, but significant divergence is logged.
+            try:
+                own = await SessionEvaluator().evaluate(
+                    EvaluatorRequest(
+                        session_id=payload.client_session_id,
+                        transcript=[
+                            EvaluatorTurn(
+                                role=(
+                                    "user"
+                                    if turn.role == "user"
+                                    else "tutor"
+                                ),
+                                text=turn.text,
+                            )
+                            for turn in payload.transcript
+                        ],
+                        duration_seconds=float(payload.duration_seconds),
+                    )
+                )
+                if (
+                    abs(own.speaking_power_score - payload.evaluation.overall_score)
+                    > 10.0
+                ):
+                    logger.warning(
+                        "Evaluation divergence: client=%s server=%s session=%s",
+                        payload.evaluation.overall_score,
+                        own.speaking_power_score,
+                        payload.client_session_id,
+                    )
+            except Exception:  # noqa: BLE001 - cross-check must not block
+>               logger.debug("Evaluator cross-check skipped.", exc_info=True)
+E               NameError: name 'logger' is not defined
+
+app\services\session_service.py:217: NameError
+---------------------------- Captured stderr call -----------------------------
+{"timestamp": "2026-08-23T21:57:22.796064+00:00", "level": "INFO", "logger": "httpx", "message": "HTTP Request: POST http://test/api/auth/register \"HTTP/1.1 201 Created\""}
+{"timestamp": "2026-08-23T21:57:23.033879+00:00", "level": "INFO", "logger": "httpx", "message": "HTTP Request: POST http://test/api/auth/login \"HTTP/1.1 200 OK\""}
+------------------------------ Captured log call ------------------------------
+INFO     httpx:_client.py:1740 HTTP Request: POST http://test/api/auth/register "HTTP/1.1 201 Created"
+INFO     httpx:_client.py:1740 HTTP Request: POST http://test/api/auth/login "HTTP/1.1 200 OK"
+_________ test_duplicate_completion_conflicting_scenario_returns_409 __________
+
+self = <app.services.session_service.SessionService object at 0x00000239643EE410>
+locked_user = User(id=UUID('01a030a0-dc1f-7f1c-9972-a6afc11ebfb1'), name='Pavan', current_level='seed', subscription_tier='free')
+payload = SessionCompleteRequest(client_session_id=UUID('0330eb7c-b0c5-480f-8a4c-0f4d378d1cb5'), scenario_id=UUID('01a030a0-dd26....0, task_completion=82.0), overall_score=82.0, insights=[], engine_version='sn011-deterministic-v1'), client_info=None)
+scenario = Scenario(id=UUID('01a030a0-dd26-7fd0-96fd-af874fb5f710'), title='Order at the coffee shop', category='shopping', level='seed', is_published=False)
+now = datetime.datetime(2026, 8, 22, 20, 0, tzinfo=datetime.timezone.utc)
+
+    async def _create_session_flow(
+        self,
+        locked_user: User,
+        payload: SessionCompleteRequest,
+        scenario: Scenario,
+        now: datetime,
+    ) -> SessionCompleteResponse:
+        """Insert the session and award skills, XP, streaks, quests, badges."""
+        gamification = GamificationService(self._db)
+        local_date = get_local_date_for_user(now, locked_user.timezone)
+        xp_eligible = is_session_xp_eligible(payload)
+        scores = payload.evaluation.scores
+    
+        if xp_eligible:
+            # Server-side cross-check of the client-reported evaluation:
+            # MVP trusts the client, but significant divergence is logged.
+            try:
+                own = await SessionEvaluator().evaluate(
+                    EvaluatorRequest(
+                        session_id=payload.client_session_id,
+                        transcript=[
+                            EvaluatorTurn(
+                                role=(
+                                    "user"
+                                    if turn.role == "user"
+                                    else "tutor"
+                                ),
+                                text=turn.text,
+                            )
+                            for turn in payload.transcript
+                        ],
+                        duration_seconds=float(payload.duration_seconds),
+                    )
+                )
+                if (
+                    abs(own.speaking_power_score - payload.evaluation.overall_score)
+                    > 10.0
+                ):
+>                   logger.warning(
+                        "Evaluation divergence: client=%s server=%s session=%s",
+                        payload.evaluation.overall_score,
+                        own.speaking_power_score,
+                        payload.client_session_id,
+                    )
+E                   NameError: name 'logger' is not defined
+
+app\services\session_service.py:210: NameError
+
+During handling of the above exception, another exception occurred:
+
+api_client = <httpx.AsyncClient object at 0x0000023965721090>
+db_session = <sqlalchemy.ext.asyncio.session.AsyncSession object at 0x000002396569E2D0>
+
+    async def test_duplicate_completion_conflicting_scenario_returns_409(
+        api_client: AsyncClient, db_session: AsyncSession
+    ) -> None:
+        headers = await register_and_login(api_client)
+        first_scenario = await seed_scenario(db_session, difficulty=2)
+        second_scenario = await seed_scenario(db_session, difficulty=4)
+        payload = make_payload(str(first_scenario.id))
+    
+>       await complete(api_client, headers, payload)
+
+tests\test_api_gamification.py:260: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\test_api_gamification.py:151: in complete
+    return await api_client.post(
+..\..\Sonolo\backend\.venv\Lib\site-packages\httpx\_client.py:1859: in post
+    return await self.request(
+..\..\Sonolo\backend\.venv\Lib\site-packages\httpx\_client.py:1540: in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+..\..\Sonolo\backend\.venv\Lib\site-packages\httpx\_client.py:1629: in send
+    response = await self._send_handling_auth(
+..\..\Sonolo\backend\.venv\Lib\site-packages\httpx\_client.py:1657: in _send_handling_auth
+    response = await self._send_handling_redirects(
+..\..\Sonolo\backend\.venv\Lib\site-packages\httpx\_client.py:1694: in _send_handling_redirects
+    response = await self._send_single_request(request)
+..\..\Sonolo\backend\.venv\Lib\site-packages\httpx\_client.py:1730: in _send_single_request
+    response = await transport.handle_async_request(request)
+..\..\Sonolo\backend\.venv\Lib\site-packages\httpx\_transports\asgi.py:170: in handle_async_request
+    await self.app(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\fastapi\applications.py:1054: in __call__
+    await super().__call__(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\applications.py:113: in __call__
+    await self.middleware_stack(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\middleware\errors.py:187: in __call__
+    raise exc
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\middleware\errors.py:165: in __call__
+    await self.app(scope, receive, _send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\middleware\cors.py:85: in __call__
+    await self.app(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\middleware\exceptions.py:62: in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\_exception_handler.py:53: in wrapped_app
+    raise exc
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\_exception_handler.py:42: in wrapped_app
+    await app(scope, receive, sender)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\routing.py:715: in __call__
+    await self.middleware_stack(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\routing.py:735: in app
+    await route.handle(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\routing.py:288: in handle
+    await self.app(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\routing.py:76: in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\_exception_handler.py:53: in wrapped_app
+    raise exc
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\_exception_handler.py:42: in wrapped_app
+    await app(scope, receive, sender)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\routing.py:73: in app
+    response = await f(request)
+..\..\Sonolo\backend\.venv\Lib\site-packages\fastapi\routing.py:301: in app
+    raw_response = await run_endpoint_function(
+..\..\Sonolo\backend\.venv\Lib\site-packages\fastapi\routing.py:212: in run_endpoint_function
+    return await dependant.call(**values)
+app\api\sessions.py:84: in complete_session
+    result = await service.complete_session(user, payload, utc_now())
+app\services\session_service.py:142: in complete_session
+    return await self._create_session_flow(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <app.services.session_service.SessionService object at 0x00000239643EE410>
+locked_user = User(id=UUID('01a030a0-dc1f-7f1c-9972-a6afc11ebfb1'), name='Pavan', current_level='seed', subscription_tier='free')
+payload = SessionCompleteRequest(client_session_id=UUID('0330eb7c-b0c5-480f-8a4c-0f4d378d1cb5'), scenario_id=UUID('01a030a0-dd26....0, task_completion=82.0), overall_score=82.0, insights=[], engine_version='sn011-deterministic-v1'), client_info=None)
+scenario = Scenario(id=UUID('01a030a0-dd26-7fd0-96fd-af874fb5f710'), title='Order at the coffee shop', category='shopping', level='seed', is_published=False)
+now = datetime.datetime(2026, 8, 22, 20, 0, tzinfo=datetime.timezone.utc)
+
+    async def _create_session_flow(
+        self,
+        locked_user: User,
+        payload: SessionCompleteRequest,
+        scenario: Scenario,
+        now: datetime,
+    ) -> SessionCompleteResponse:
+        """Insert the session and award skills, XP, streaks, quests, badges."""
+        gamification = GamificationService(self._db)
+        local_date = get_local_date_for_user(now, locked_user.timezone)
+        xp_eligible = is_session_xp_eligible(payload)
+        scores = payload.evaluation.scores
+    
+        if xp_eligible:
+            # Server-side cross-check of the client-reported evaluation:
+            # MVP trusts the client, but significant divergence is logged.
+            try:
+                own = await SessionEvaluator().evaluate(
+                    EvaluatorRequest(
+                        session_id=payload.client_session_id,
+                        transcript=[
+                            EvaluatorTurn(
+                                role=(
+                                    "user"
+                                    if turn.role == "user"
+                                    else "tutor"
+                                ),
+                                text=turn.text,
+                            )
+                            for turn in payload.transcript
+                        ],
+                        duration_seconds=float(payload.duration_seconds),
+                    )
+                )
+                if (
+                    abs(own.speaking_power_score - payload.evaluation.overall_score)
+                    > 10.0
+                ):
+                    logger.warning(
+                        "Evaluation divergence: client=%s server=%s session=%s",
+                        payload.evaluation.overall_score,
+                        own.speaking_power_score,
+                        payload.client_session_id,
+                    )
+            except Exception:  # noqa: BLE001 - cross-check must not block
+>               logger.debug("Evaluator cross-check skipped.", exc_info=True)
+E               NameError: name 'logger' is not defined
+
+app\services\session_service.py:217: NameError
+---------------------------- Captured stderr call -----------------------------
+{"timestamp": "2026-08-23T21:57:23.636125+00:00", "level": "INFO", "logger": "httpx", "message": "HTTP Request: POST http://test/api/auth/register \"HTTP/1.1 201 Created\""}
+{"timestamp": "2026-08-23T21:57:23.875922+00:00", "level": "INFO", "logger": "httpx", "message": "HTTP Request: POST http://test/api/auth/login \"HTTP/1.1 200 OK\""}
+------------------------------ Captured log call ------------------------------
+INFO     httpx:_client.py:1740 HTTP Request: POST http://test/api/auth/register "HTTP/1.1 201 Created"
+INFO     httpx:_client.py:1740 HTTP Request: POST http://test/api/auth/login "HTTP/1.1 200 OK"
+________________________ test_gamification_me_summary _________________________
+
+self = <app.services.session_service.SessionService object at 0x000002396436F690>
+locked_user = User(id=UUID('01a030a0-e24f-76c3-b08d-adb2b25507a3'), name='Pavan', current_level='seed', subscription_tier='free')
+payload = SessionCompleteRequest(client_session_id=UUID('8fddae95-4df6-496e-82bd-9291e28b5a7e'), scenario_id=UUID('01a030a0-e353....0, task_completion=82.0), overall_score=82.0, insights=[], engine_version='sn011-deterministic-v1'), client_info=None)
+scenario = Scenario(id=UUID('01a030a0-e353-7c7e-8c23-99ee4ea07725'), title='Order at the coffee shop', category='shopping', level='seed', is_published=False)
+now = datetime.datetime(2026, 8, 22, 20, 0, tzinfo=datetime.timezone.utc)
+
+    async def _create_session_flow(
+        self,
+        locked_user: User,
+        payload: SessionCompleteRequest,
+        scenario: Scenario,
+        now: datetime,
+    ) -> SessionCompleteResponse:
+        """Insert the session and award skills, XP, streaks, quests, badges."""
+        gamification = GamificationService(self._db)
+        local_date = get_local_date_for_user(now, locked_user.timezone)
+        xp_eligible = is_session_xp_eligible(payload)
+        scores = payload.evaluation.scores
+    
+        if xp_eligible:
+            # Server-side cross-check of the client-reported evaluation:
+            # MVP trusts the client, but significant divergence is logged.
+            try:
+                own = await SessionEvaluator().evaluate(
+                    EvaluatorRequest(
+                        session_id=payload.client_session_id,
+                        transcript=[
+                            EvaluatorTurn(
+                                role=(
+                                    "user"
+                                    if turn.role == "user"
+                                    else "tutor"
+                                ),
+                                text=turn.text,
+                            )
+                            for turn in payload.transcript
+                        ],
+                        duration_seconds=float(payload.duration_seconds),
+                    )
+                )
+                if (
+                    abs(own.speaking_power_score - payload.evaluation.overall_score)
+                    > 10.0
+                ):
+>                   logger.warning(
+                        "Evaluation divergence: client=%s server=%s session=%s",
+                        payload.evaluation.overall_score,
+                        own.speaking_power_score,
+                        payload.client_session_id,
+                    )
+E                   NameError: name 'logger' is not defined
+
+app\services\session_service.py:210: NameError
+
+During handling of the above exception, another exception occurred:
+
+api_client = <httpx.AsyncClient object at 0x00000239656E6D50>
+db_session = <sqlalchemy.ext.asyncio.session.AsyncSession object at 0x0000023961634250>
+
+    async def test_gamification_me_summary(
+        api_client: AsyncClient, db_session: AsyncSession
+    ) -> None:
+        headers = await register_and_login(api_client)
+        scenario = await seed_scenario(db_session)
+>       await complete(api_client, headers, make_payload(str(scenario.id)))
+
+tests\test_api_gamification.py:292: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\test_api_gamification.py:151: in complete
+    return await api_client.post(
+..\..\Sonolo\backend\.venv\Lib\site-packages\httpx\_client.py:1859: in post
+    return await self.request(
+..\..\Sonolo\backend\.venv\Lib\site-packages\httpx\_client.py:1540: in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+..\..\Sonolo\backend\.venv\Lib\site-packages\httpx\_client.py:1629: in send
+    response = await self._send_handling_auth(
+..\..\Sonolo\backend\.venv\Lib\site-packages\httpx\_client.py:1657: in _send_handling_auth
+    response = await self._send_handling_redirects(
+..\..\Sonolo\backend\.venv\Lib\site-packages\httpx\_client.py:1694: in _send_handling_redirects
+    response = await self._send_single_request(request)
+..\..\Sonolo\backend\.venv\Lib\site-packages\httpx\_client.py:1730: in _send_single_request
+    response = await transport.handle_async_request(request)
+..\..\Sonolo\backend\.venv\Lib\site-packages\httpx\_transports\asgi.py:170: in handle_async_request
+    await self.app(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\fastapi\applications.py:1054: in __call__
+    await super().__call__(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\applications.py:113: in __call__
+    await self.middleware_stack(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\middleware\errors.py:187: in __call__
+    raise exc
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\middleware\errors.py:165: in __call__
+    await self.app(scope, receive, _send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\middleware\cors.py:85: in __call__
+    await self.app(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\middleware\exceptions.py:62: in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\_exception_handler.py:53: in wrapped_app
+    raise exc
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\_exception_handler.py:42: in wrapped_app
+    await app(scope, receive, sender)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\routing.py:715: in __call__
+    await self.middleware_stack(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\routing.py:735: in app
+    await route.handle(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\routing.py:288: in handle
+    await self.app(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\routing.py:76: in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\_exception_handler.py:53: in wrapped_app
+    raise exc
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\_exception_handler.py:42: in wrapped_app
+    await app(scope, receive, sender)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\routing.py:73: in app
+    response = await f(request)
+..\..\Sonolo\backend\.venv\Lib\site-packages\fastapi\routing.py:301: in app
+    raw_response = await run_endpoint_function(
+..\..\Sonolo\backend\.venv\Lib\site-packages\fastapi\routing.py:212: in run_endpoint_function
+    return await dependant.call(**values)
+app\api\sessions.py:84: in complete_session
+    result = await service.complete_session(user, payload, utc_now())
+app\services\session_service.py:142: in complete_session
+    return await self._create_session_flow(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <app.services.session_service.SessionService object at 0x000002396436F690>
+locked_user = User(id=UUID('01a030a0-e24f-76c3-b08d-adb2b25507a3'), name='Pavan', current_level='seed', subscription_tier='free')
+payload = SessionCompleteRequest(client_session_id=UUID('8fddae95-4df6-496e-82bd-9291e28b5a7e'), scenario_id=UUID('01a030a0-e353....0, task_completion=82.0), overall_score=82.0, insights=[], engine_version='sn011-deterministic-v1'), client_info=None)
+scenario = Scenario(id=UUID('01a030a0-e353-7c7e-8c23-99ee4ea07725'), title='Order at the coffee shop', category='shopping', level='seed', is_published=False)
+now = datetime.datetime(2026, 8, 22, 20, 0, tzinfo=datetime.timezone.utc)
+
+    async def _create_session_flow(
+        self,
+        locked_user: User,
+        payload: SessionCompleteRequest,
+        scenario: Scenario,
+        now: datetime,
+    ) -> SessionCompleteResponse:
+        """Insert the session and award skills, XP, streaks, quests, badges."""
+        gamification = GamificationService(self._db)
+        local_date = get_local_date_for_user(now, locked_user.timezone)
+        xp_eligible = is_session_xp_eligible(payload)
+        scores = payload.evaluation.scores
+    
+        if xp_eligible:
+            # Server-side cross-check of the client-reported evaluation:
+            # MVP trusts the client, but significant divergence is logged.
+            try:
+                own = await SessionEvaluator().evaluate(
+                    EvaluatorRequest(
+                        session_id=payload.client_session_id,
+                        transcript=[
+                            EvaluatorTurn(
+                                role=(
+                                    "user"
+                                    if turn.role == "user"
+                                    else "tutor"
+                                ),
+                                text=turn.text,
+                            )
+                            for turn in payload.transcript
+                        ],
+                        duration_seconds=float(payload.duration_seconds),
+                    )
+                )
+                if (
+                    abs(own.speaking_power_score - payload.evaluation.overall_score)
+                    > 10.0
+                ):
+                    logger.warning(
+                        "Evaluation divergence: client=%s server=%s session=%s",
+                        payload.evaluation.overall_score,
+                        own.speaking_power_score,
+                        payload.client_session_id,
+                    )
+            except Exception:  # noqa: BLE001 - cross-check must not block
+>               logger.debug("Evaluator cross-check skipped.", exc_info=True)
+E               NameError: name 'logger' is not defined
+
+app\services\session_service.py:217: NameError
+---------------------------- Captured stderr call -----------------------------
+{"timestamp": "2026-08-23T21:57:25.219482+00:00", "level": "INFO", "logger": "httpx", "message": "HTTP Request: POST http://test/api/auth/register \"HTTP/1.1 201 Created\""}
+{"timestamp": "2026-08-23T21:57:25.457827+00:00", "level": "INFO", "logger": "httpx", "message": "HTTP Request: POST http://test/api/auth/login \"HTTP/1.1 200 OK\""}
+------------------------------ Captured log call ------------------------------
+INFO     httpx:_client.py:1740 HTTP Request: POST http://test/api/auth/register "HTTP/1.1 201 Created"
+INFO     httpx:_client.py:1740 HTTP Request: POST http://test/api/auth/login "HTTP/1.1 200 OK"
+________________ test_two_sessions_same_local_date_keep_streak ________________
+
+self = <app.services.session_service.SessionService object at 0x0000023965AB0F10>
+locked_user = User(id=UUID('01a030a0-f012-715c-b551-b492fdb9888d'), name='Pavan', current_level='seed', subscription_tier='free')
+payload = SessionCompleteRequest(client_session_id=UUID('f908cd39-ff16-45bb-b1f7-4c7ef7270fc8'), scenario_id=UUID('01a030a0-f122....0, task_completion=82.0), overall_score=82.0, insights=[], engine_version='sn011-deterministic-v1'), client_info=None)
+scenario = Scenario(id=UUID('01a030a0-f122-7289-843b-712a1700d235'), title='Order at the coffee shop', category='shopping', level='seed', is_published=False)
+now = datetime.datetime(2026, 8, 22, 20, 0, tzinfo=datetime.timezone.utc)
+
+    async def _create_session_flow(
+        self,
+        locked_user: User,
+        payload: SessionCompleteRequest,
+        scenario: Scenario,
+        now: datetime,
+    ) -> SessionCompleteResponse:
+        """Insert the session and award skills, XP, streaks, quests, badges."""
+        gamification = GamificationService(self._db)
+        local_date = get_local_date_for_user(now, locked_user.timezone)
+        xp_eligible = is_session_xp_eligible(payload)
+        scores = payload.evaluation.scores
+    
+        if xp_eligible:
+            # Server-side cross-check of the client-reported evaluation:
+            # MVP trusts the client, but significant divergence is logged.
+            try:
+                own = await SessionEvaluator().evaluate(
+                    EvaluatorRequest(
+                        session_id=payload.client_session_id,
+                        transcript=[
+                            EvaluatorTurn(
+                                role=(
+                                    "user"
+                                    if turn.role == "user"
+                                    else "tutor"
+                                ),
+                                text=turn.text,
+                            )
+                            for turn in payload.transcript
+                        ],
+                        duration_seconds=float(payload.duration_seconds),
+                    )
+                )
+                if (
+                    abs(own.speaking_power_score - payload.evaluation.overall_score)
+                    > 10.0
+                ):
+>                   logger.warning(
+                        "Evaluation divergence: client=%s server=%s session=%s",
+                        payload.evaluation.overall_score,
+                        own.speaking_power_score,
+                        payload.client_session_id,
+                    )
+E                   NameError: name 'logger' is not defined
+
+app\services\session_service.py:210: NameError
+
+During handling of the above exception, another exception occurred:
+
+api_client = <httpx.AsyncClient object at 0x0000023965A63690>
+db_session = <sqlalchemy.ext.asyncio.session.AsyncSession object at 0x0000023965DB1550>
+
+    async def test_two_sessions_same_local_date_keep_streak(
+        api_client: AsyncClient, db_session: AsyncSession
+    ) -> None:
+        headers = await register_and_login(api_client)
+        scenario = await seed_scenario(db_session)
+    
+>       await complete(api_client, headers, make_payload(str(scenario.id)))
+
+tests\test_api_gamification.py:376: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\test_api_gamification.py:151: in complete
+    return await api_client.post(
+..\..\Sonolo\backend\.venv\Lib\site-packages\httpx\_client.py:1859: in post
+    return await self.request(
+..\..\Sonolo\backend\.venv\Lib\site-packages\httpx\_client.py:1540: in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+..\..\Sonolo\backend\.venv\Lib\site-packages\httpx\_client.py:1629: in send
+    response = await self._send_handling_auth(
+..\..\Sonolo\backend\.venv\Lib\site-packages\httpx\_client.py:1657: in _send_handling_auth
+    response = await self._send_handling_redirects(
+..\..\Sonolo\backend\.venv\Lib\site-packages\httpx\_client.py:1694: in _send_handling_redirects
+    response = await self._send_single_request(request)
+..\..\Sonolo\backend\.venv\Lib\site-packages\httpx\_client.py:1730: in _send_single_request
+    response = await transport.handle_async_request(request)
+..\..\Sonolo\backend\.venv\Lib\site-packages\httpx\_transports\asgi.py:170: in handle_async_request
+    await self.app(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\fastapi\applications.py:1054: in __call__
+    await super().__call__(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\applications.py:113: in __call__
+    await self.middleware_stack(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\middleware\errors.py:187: in __call__
+    raise exc
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\middleware\errors.py:165: in __call__
+    await self.app(scope, receive, _send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\middleware\cors.py:85: in __call__
+    await self.app(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\middleware\exceptions.py:62: in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\_exception_handler.py:53: in wrapped_app
+    raise exc
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\_exception_handler.py:42: in wrapped_app
+    await app(scope, receive, sender)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\routing.py:715: in __call__
+    await self.middleware_stack(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\routing.py:735: in app
+    await route.handle(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\routing.py:288: in handle
+    await self.app(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\routing.py:76: in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\_exception_handler.py:53: in wrapped_app
+    raise exc
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\_exception_handler.py:42: in wrapped_app
+    await app(scope, receive, sender)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\routing.py:73: in app
+    response = await f(request)
+..\..\Sonolo\backend\.venv\Lib\site-packages\fastapi\routing.py:301: in app
+    raw_response = await run_endpoint_function(
+..\..\Sonolo\backend\.venv\Lib\site-packages\fastapi\routing.py:212: in run_endpoint_function
+    return await dependant.call(**values)
+app\api\sessions.py:84: in complete_session
+    result = await service.complete_session(user, payload, utc_now())
+app\services\session_service.py:142: in complete_session
+    return await self._create_session_flow(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <app.services.session_service.SessionService object at 0x0000023965AB0F10>
+locked_user = User(id=UUID('01a030a0-f012-715c-b551-b492fdb9888d'), name='Pavan', current_level='seed', subscription_tier='free')
+payload = SessionCompleteRequest(client_session_id=UUID('f908cd39-ff16-45bb-b1f7-4c7ef7270fc8'), scenario_id=UUID('01a030a0-f122....0, task_completion=82.0), overall_score=82.0, insights=[], engine_version='sn011-deterministic-v1'), client_info=None)
+scenario = Scenario(id=UUID('01a030a0-f122-7289-843b-712a1700d235'), title='Order at the coffee shop', category='shopping', level='seed', is_published=False)
+now = datetime.datetime(2026, 8, 22, 20, 0, tzinfo=datetime.timezone.utc)
+
+    async def _create_session_flow(
+        self,
+        locked_user: User,
+        payload: SessionCompleteRequest,
+        scenario: Scenario,
+        now: datetime,
+    ) -> SessionCompleteResponse:
+        """Insert the session and award skills, XP, streaks, quests, badges."""
+        gamification = GamificationService(self._db)
+        local_date = get_local_date_for_user(now, locked_user.timezone)
+        xp_eligible = is_session_xp_eligible(payload)
+        scores = payload.evaluation.scores
+    
+        if xp_eligible:
+            # Server-side cross-check of the client-reported evaluation:
+            # MVP trusts the client, but significant divergence is logged.
+            try:
+                own = await SessionEvaluator().evaluate(
+                    EvaluatorRequest(
+                        session_id=payload.client_session_id,
+                        transcript=[
+                            EvaluatorTurn(
+                                role=(
+                                    "user"
+                                    if turn.role == "user"
+                                    else "tutor"
+                                ),
+                                text=turn.text,
+                            )
+                            for turn in payload.transcript
+                        ],
+                        duration_seconds=float(payload.duration_seconds),
+                    )
+                )
+                if (
+                    abs(own.speaking_power_score - payload.evaluation.overall_score)
+                    > 10.0
+                ):
+                    logger.warning(
+                        "Evaluation divergence: client=%s server=%s session=%s",
+                        payload.evaluation.overall_score,
+                        own.speaking_power_score,
+                        payload.client_session_id,
+                    )
+            except Exception:  # noqa: BLE001 - cross-check must not block
+>               logger.debug("Evaluator cross-check skipped.", exc_info=True)
+E               NameError: name 'logger' is not defined
+
+app\services\session_service.py:217: NameError
+---------------------------- Captured stderr call -----------------------------
+{"timestamp": "2026-08-23T21:57:28.742419+00:00", "level": "INFO", "logger": "httpx", "message": "HTTP Request: POST http://test/api/auth/register \"HTTP/1.1 201 Created\""}
+{"timestamp": "2026-08-23T21:57:28.992969+00:00", "level": "INFO", "logger": "httpx", "message": "HTTP Request: POST http://test/api/auth/login \"HTTP/1.1 200 OK\""}
+------------------------------ Captured log call ------------------------------
+INFO     httpx:_client.py:1740 HTTP Request: POST http://test/api/auth/register "HTTP/1.1 201 Created"
+INFO     httpx:_client.py:1740 HTTP Request: POST http://test/api/auth/login "HTTP/1.1 200 OK"
+________________ test_consecutive_local_dates_increment_streak ________________
+
+self = <app.services.session_service.SessionService object at 0x0000023965BBF950>
+locked_user = User(id=UUID('01a030a0-f35d-72f6-8b2e-cd6d680e9d32'), name='Pavan', current_level='seed', subscription_tier='free')
+payload = SessionCompleteRequest(client_session_id=UUID('c96cf652-e692-4f1b-b930-e43deaffe42d'), scenario_id=UUID('01a030a0-f470....0, task_completion=82.0), overall_score=82.0, insights=[], engine_version='sn011-deterministic-v1'), client_info=None)
+scenario = Scenario(id=UUID('01a030a0-f470-72cc-8243-8592c37a88ef'), title='Order at the coffee shop', category='shopping', level='seed', is_published=False)
+now = datetime.datetime(2026, 8, 22, 20, 0, tzinfo=datetime.timezone.utc)
+
+    async def _create_session_flow(
+        self,
+        locked_user: User,
+        payload: SessionCompleteRequest,
+        scenario: Scenario,
+        now: datetime,
+    ) -> SessionCompleteResponse:
+        """Insert the session and award skills, XP, streaks, quests, badges."""
+        gamification = GamificationService(self._db)
+        local_date = get_local_date_for_user(now, locked_user.timezone)
+        xp_eligible = is_session_xp_eligible(payload)
+        scores = payload.evaluation.scores
+    
+        if xp_eligible:
+            # Server-side cross-check of the client-reported evaluation:
+            # MVP trusts the client, but significant divergence is logged.
+            try:
+                own = await SessionEvaluator().evaluate(
+                    EvaluatorRequest(
+                        session_id=payload.client_session_id,
+                        transcript=[
+                            EvaluatorTurn(
+                                role=(
+                                    "user"
+                                    if turn.role == "user"
+                                    else "tutor"
+                                ),
+                                text=turn.text,
+                            )
+                            for turn in payload.transcript
+                        ],
+                        duration_seconds=float(payload.duration_seconds),
+                    )
+                )
+                if (
+                    abs(own.speaking_power_score - payload.evaluation.overall_score)
+                    > 10.0
+                ):
+>                   logger.warning(
+                        "Evaluation divergence: client=%s server=%s session=%s",
+                        payload.evaluation.overall_score,
+                        own.speaking_power_score,
+                        payload.client_session_id,
+                    )
+E                   NameError: name 'logger' is not defined
+
+app\services\session_service.py:210: NameError
+
+During handling of the above exception, another exception occurred:
+
+api_client = <httpx.AsyncClient object at 0x00000239655E4D10>
+db_session = <sqlalchemy.ext.asyncio.session.AsyncSession object at 0x0000023965591F50>
+
+    async def test_consecutive_local_dates_increment_streak(
+        api_client: AsyncClient, db_session: AsyncSession
+    ) -> None:
+        headers = await register_and_login(api_client)
+        scenario = await seed_scenario(db_session)
+    
+>       await complete(api_client, headers, make_payload(str(scenario.id)))
+
+tests\test_api_gamification.py:393: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\test_api_gamification.py:151: in complete
+    return await api_client.post(
+..\..\Sonolo\backend\.venv\Lib\site-packages\httpx\_client.py:1859: in post
+    return await self.request(
+..\..\Sonolo\backend\.venv\Lib\site-packages\httpx\_client.py:1540: in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+..\..\Sonolo\backend\.venv\Lib\site-packages\httpx\_client.py:1629: in send
+    response = await self._send_handling_auth(
+..\..\Sonolo\backend\.venv\Lib\site-packages\httpx\_client.py:1657: in _send_handling_auth
+    response = await self._send_handling_redirects(
+..\..\Sonolo\backend\.venv\Lib\site-packages\httpx\_client.py:1694: in _send_handling_redirects
+    response = await self._send_single_request(request)
+..\..\Sonolo\backend\.venv\Lib\site-packages\httpx\_client.py:1730: in _send_single_request
+    response = await transport.handle_async_request(request)
+..\..\Sonolo\backend\.venv\Lib\site-packages\httpx\_transports\asgi.py:170: in handle_async_request
+    await self.app(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\fastapi\applications.py:1054: in __call__
+    await super().__call__(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\applications.py:113: in __call__
+    await self.middleware_stack(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\middleware\errors.py:187: in __call__
+    raise exc
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\middleware\errors.py:165: in __call__
+    await self.app(scope, receive, _send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\middleware\cors.py:85: in __call__
+    await self.app(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\middleware\exceptions.py:62: in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\_exception_handler.py:53: in wrapped_app
+    raise exc
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\_exception_handler.py:42: in wrapped_app
+    await app(scope, receive, sender)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\routing.py:715: in __call__
+    await self.middleware_stack(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\routing.py:735: in app
+    await route.handle(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\routing.py:288: in handle
+    await self.app(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\routing.py:76: in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\_exception_handler.py:53: in wrapped_app
+    raise exc
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\_exception_handler.py:42: in wrapped_app
+    await app(scope, receive, sender)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\routing.py:73: in app
+    response = await f(request)
+..\..\Sonolo\backend\.venv\Lib\site-packages\fastapi\routing.py:301: in app
+    raw_response = await run_endpoint_function(
+..\..\Sonolo\backend\.venv\Lib\site-packages\fastapi\routing.py:212: in run_endpoint_function
+    return await dependant.call(**values)
+app\api\sessions.py:84: in complete_session
+    result = await service.complete_session(user, payload, utc_now())
+app\services\session_service.py:142: in complete_session
+    return await self._create_session_flow(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <app.services.session_service.SessionService object at 0x0000023965BBF950>
+locked_user = User(id=UUID('01a030a0-f35d-72f6-8b2e-cd6d680e9d32'), name='Pavan', current_level='seed', subscription_tier='free')
+payload = SessionCompleteRequest(client_session_id=UUID('c96cf652-e692-4f1b-b930-e43deaffe42d'), scenario_id=UUID('01a030a0-f470....0, task_completion=82.0), overall_score=82.0, insights=[], engine_version='sn011-deterministic-v1'), client_info=None)
+scenario = Scenario(id=UUID('01a030a0-f470-72cc-8243-8592c37a88ef'), title='Order at the coffee shop', category='shopping', level='seed', is_published=False)
+now = datetime.datetime(2026, 8, 22, 20, 0, tzinfo=datetime.timezone.utc)
+
+    async def _create_session_flow(
+        self,
+        locked_user: User,
+        payload: SessionCompleteRequest,
+        scenario: Scenario,
+        now: datetime,
+    ) -> SessionCompleteResponse:
+        """Insert the session and award skills, XP, streaks, quests, badges."""
+        gamification = GamificationService(self._db)
+        local_date = get_local_date_for_user(now, locked_user.timezone)
+        xp_eligible = is_session_xp_eligible(payload)
+        scores = payload.evaluation.scores
+    
+        if xp_eligible:
+            # Server-side cross-check of the client-reported evaluation:
+            # MVP trusts the client, but significant divergence is logged.
+            try:
+                own = await SessionEvaluator().evaluate(
+                    EvaluatorRequest(
+                        session_id=payload.client_session_id,
+                        transcript=[
+                            EvaluatorTurn(
+                                role=(
+                                    "user"
+                                    if turn.role == "user"
+                                    else "tutor"
+                                ),
+                                text=turn.text,
+                            )
+                            for turn in payload.transcript
+                        ],
+                        duration_seconds=float(payload.duration_seconds),
+                    )
+                )
+                if (
+                    abs(own.speaking_power_score - payload.evaluation.overall_score)
+                    > 10.0
+                ):
+                    logger.warning(
+                        "Evaluation divergence: client=%s server=%s session=%s",
+                        payload.evaluation.overall_score,
+                        own.speaking_power_score,
+                        payload.client_session_id,
+                    )
+            except Exception:  # noqa: BLE001 - cross-check must not block
+>               logger.debug("Evaluator cross-check skipped.", exc_info=True)
+E               NameError: name 'logger' is not defined
+
+app\services\session_service.py:217: NameError
+---------------------------- Captured stderr call -----------------------------
+{"timestamp": "2026-08-23T21:57:29.590153+00:00", "level": "INFO", "logger": "httpx", "message": "HTTP Request: POST http://test/api/auth/register \"HTTP/1.1 201 Created\""}
+{"timestamp": "2026-08-23T21:57:29.838255+00:00", "level": "INFO", "logger": "httpx", "message": "HTTP Request: POST http://test/api/auth/login \"HTTP/1.1 200 OK\""}
+------------------------------ Captured log call ------------------------------
+INFO     httpx:_client.py:1740 HTTP Request: POST http://test/api/auth/register "HTTP/1.1 201 Created"
+INFO     httpx:_client.py:1740 HTTP Request: POST http://test/api/auth/login "HTTP/1.1 200 OK"
+_______________ test_concurrent_duplicates_do_not_double_award ________________
+
+self = <app.services.session_service.SessionService object at 0x0000023965C9E250>
+locked_user = User(id=UUID('01a030a0-f66b-74d9-9c12-5123682f7523'), name='Pavan', current_level='seed', subscription_tier='free')
+payload = SessionCompleteRequest(client_session_id=UUID('8ce7a4e4-f803-40b1-95d6-1e23f145327a'), scenario_id=UUID('01a030a0-f7a9....0, task_completion=82.0), overall_score=82.0, insights=[], engine_version='sn011-deterministic-v1'), client_info=None)
+scenario = Scenario(id=UUID('01a030a0-f7a9-7c67-826b-94feff7150e2'), title='Order at the coffee shop', category='shopping', level='seed', is_published=False)
+now = datetime.datetime(2026, 8, 22, 20, 0, tzinfo=datetime.timezone.utc)
+
+    async def _create_session_flow(
+        self,
+        locked_user: User,
+        payload: SessionCompleteRequest,
+        scenario: Scenario,
+        now: datetime,
+    ) -> SessionCompleteResponse:
+        """Insert the session and award skills, XP, streaks, quests, badges."""
+        gamification = GamificationService(self._db)
+        local_date = get_local_date_for_user(now, locked_user.timezone)
+        xp_eligible = is_session_xp_eligible(payload)
+        scores = payload.evaluation.scores
+    
+        if xp_eligible:
+            # Server-side cross-check of the client-reported evaluation:
+            # MVP trusts the client, but significant divergence is logged.
+            try:
+                own = await SessionEvaluator().evaluate(
+                    EvaluatorRequest(
+                        session_id=payload.client_session_id,
+                        transcript=[
+                            EvaluatorTurn(
+                                role=(
+                                    "user"
+                                    if turn.role == "user"
+                                    else "tutor"
+                                ),
+                                text=turn.text,
+                            )
+                            for turn in payload.transcript
+                        ],
+                        duration_seconds=float(payload.duration_seconds),
+                    )
+                )
+                if (
+                    abs(own.speaking_power_score - payload.evaluation.overall_score)
+                    > 10.0
+                ):
+>                   logger.warning(
+                        "Evaluation divergence: client=%s server=%s session=%s",
+                        payload.evaluation.overall_score,
+                        own.speaking_power_score,
+                        payload.client_session_id,
+                    )
+E                   NameError: name 'logger' is not defined
+
+app\services\session_service.py:210: NameError
+
+During handling of the above exception, another exception occurred:
+
+api_client = <httpx.AsyncClient object at 0x0000023965ED5F50>
+db_session = <sqlalchemy.ext.asyncio.session.AsyncSession object at 0x0000023965E00990>
+
+    async def test_concurrent_duplicates_do_not_double_award(
+        api_client: AsyncClient, db_session: AsyncSession
+    ) -> None:
+        headers = await register_and_login(api_client)
+        scenario = await seed_scenario(db_session)
+        payload = make_payload(str(scenario.id))
+    
+>       responses = await asyncio.gather(
+            complete(api_client, headers, payload),
+            complete(api_client, headers, payload),
+        )
+
+tests\test_api_gamification.py:409: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\test_api_gamification.py:151: in complete
+    return await api_client.post(
+..\..\Sonolo\backend\.venv\Lib\site-packages\httpx\_client.py:1859: in post
+    return await self.request(
+..\..\Sonolo\backend\.venv\Lib\site-packages\httpx\_client.py:1540: in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+..\..\Sonolo\backend\.venv\Lib\site-packages\httpx\_client.py:1629: in send
+    response = await self._send_handling_auth(
+..\..\Sonolo\backend\.venv\Lib\site-packages\httpx\_client.py:1657: in _send_handling_auth
+    response = await self._send_handling_redirects(
+..\..\Sonolo\backend\.venv\Lib\site-packages\httpx\_client.py:1694: in _send_handling_redirects
+    response = await self._send_single_request(request)
+..\..\Sonolo\backend\.venv\Lib\site-packages\httpx\_client.py:1730: in _send_single_request
+    response = await transport.handle_async_request(request)
+..\..\Sonolo\backend\.venv\Lib\site-packages\httpx\_transports\asgi.py:170: in handle_async_request
+    await self.app(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\fastapi\applications.py:1054: in __call__
+    await super().__call__(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\applications.py:113: in __call__
+    await self.middleware_stack(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\middleware\errors.py:187: in __call__
+    raise exc
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\middleware\errors.py:165: in __call__
+    await self.app(scope, receive, _send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\middleware\cors.py:85: in __call__
+    await self.app(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\middleware\exceptions.py:62: in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\_exception_handler.py:53: in wrapped_app
+    raise exc
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\_exception_handler.py:42: in wrapped_app
+    await app(scope, receive, sender)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\routing.py:715: in __call__
+    await self.middleware_stack(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\routing.py:735: in app
+    await route.handle(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\routing.py:288: in handle
+    await self.app(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\routing.py:76: in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\_exception_handler.py:53: in wrapped_app
+    raise exc
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\_exception_handler.py:42: in wrapped_app
+    await app(scope, receive, sender)
+..\..\Sonolo\backend\.venv\Lib\site-packages\starlette\routing.py:73: in app
+    response = await f(request)
+..\..\Sonolo\backend\.venv\Lib\site-packages\fastapi\routing.py:301: in app
+    raw_response = await run_endpoint_function(
+..\..\Sonolo\backend\.venv\Lib\site-packages\fastapi\routing.py:212: in run_endpoint_function
+    return await dependant.call(**values)
+app\api\sessions.py:84: in complete_session
+    result = await service.complete_session(user, payload, utc_now())
+app\services\session_service.py:142: in complete_session
+    return await self._create_session_flow(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <app.services.session_service.SessionService object at 0x0000023965C9E250>
+locked_user = User(id=UUID('01a030a0-f66b-74d9-9c12-5123682f7523'), name='Pavan', current_level='seed', subscription_tier='free')
+payload = SessionCompleteRequest(client_session_id=UUID('8ce7a4e4-f803-40b1-95d6-1e23f145327a'), scenario_id=UUID('01a030a0-f7a9....0, task_completion=82.0), overall_score=82.0, insights=[], engine_version='sn011-deterministic-v1'), client_info=None)
+scenario = Scenario(id=UUID('01a030a0-f7a9-7c67-826b-94feff7150e2'), title='Order at the coffee shop', category='shopping', level='seed', is_published=False)
+now = datetime.datetime(2026, 8, 22, 20, 0, tzinfo=datetime.timezone.utc)
+
+    async def _create_session_flow(
+        self,
+        locked_user: User,
+        payload: SessionCompleteRequest,
+        scenario: Scenario,
+        now: datetime,
+    ) -> SessionCompleteResponse:
+        """Insert the session and award skills, XP, streaks, quests, badges."""
+        gamification = GamificationService(self._db)
+        local_date = get_local_date_for_user(now, locked_user.timezone)
+        xp_eligible = is_session_xp_eligible(payload)
+        scores = payload.evaluation.scores
+    
+        if xp_eligible:
+            # Server-side cross-check of the client-reported evaluation:
+            # MVP trusts the client, but significant divergence is logged.
+            try:
+                own = await SessionEvaluator().evaluate(
+                    EvaluatorRequest(
+                        session_id=payload.client_session_id,
+                        transcript=[
+                            EvaluatorTurn(
+                                role=(
+                                    "user"
+                                    if turn.role == "user"
+                                    else "tutor"
+                                ),
+                                text=turn.text,
+                            )
+                            for turn in payload.transcript
+                        ],
+                        duration_seconds=float(payload.duration_seconds),
+                    )
+                )
+                if (
+                    abs(own.speaking_power_score - payload.evaluation.overall_score)
+                    > 10.0
+                ):
+                    logger.warning(
+                        "Evaluation divergence: client=%s server=%s session=%s",
+                        payload.evaluation.overall_score,
+                        own.speaking_power_score,
+                        payload.client_session_id,
+                    )
+            except Exception:  # noqa: BLE001 - cross-check must not block
+>               logger.debug("Evaluator cross-check skipped.", exc_info=True)
+E               NameError: name 'logger' is not defined
+
+app\services\session_service.py:217: NameError
+---------------------------- Captured stderr call -----------------------------
+{"timestamp": "2026-08-23T21:57:30.385687+00:00", "level": "INFO", "logger": "httpx", "message": "HTTP Request: POST http://test/api/auth/register \"HTTP/1.1 201 Created\""}
+{"timestamp": "2026-08-23T21:57:30.662361+00:00", "level": "INFO", "logger": "httpx", "message": "HTTP Request: POST http://test/api/auth/login \"HTTP/1.1 200 OK\""}
+------------------------------ Captured log call ------------------------------
+INFO     httpx:_client.py:1740 HTTP Request: POST http://test/api/auth/register "HTTP/1.1 201 Created"
+INFO     httpx:_client.py:1740 HTTP Request: POST http://test/api/auth/login "HTTP/1.1 200 OK"
+__________________ test_scenarios_returns_the_seeded_catalog __________________
+
+scenarios_client = <httpx.AsyncClient object at 0x00000239655E0C50>
+db_session = <sqlalchemy.ext.asyncio.session.AsyncSession object at 0x0000023965F5A190>
+
+    async def test_scenarios_returns_the_seeded_catalog(
+        scenarios_client: AsyncClient, db_session: AsyncSession
+    ) -> None:
+        seeded = await seed_scenarios(db_session)
+>       assert seeded == 40
+E       assert 20 == 40
+
+tests\test_api_scenarios.py:66: AssertionError
+---------------------------- Captured stderr call -----------------------------
+{"timestamp": "2026-08-23T21:57:36.187298+00:00", "level": "INFO", "logger": "app.services.content_service", "message": "Seeded 20 scenarios from the content pack."}
+------------------------------ Captured log call ------------------------------
+INFO     app.services.content_service:content_service.py:194 Seeded 20 scenarios from the content pack.
+_______________________ test_fresh_user_release_journey _______________________
+
+smoke_client = <httpx.AsyncClient object at 0x00000239655EB310>
+db_session = <sqlalchemy.ext.asyncio.session.AsyncSession object at 0x00000239655EBE10>
+
+    async def test_fresh_user_release_journey(smoke_client, db_session) -> None:
+        # 3. Ensure scenarios exist (same service the seed CLI uses).
+        from app.services.content_service import seed_scenarios
+    
+        seeded = await seed_scenarios(db_session)
+>       assert seeded == 40
+E       assert 20 == 40
+
+tests\test_release_smoke.py:103: AssertionError
+---------------------------- Captured stderr call -----------------------------
+{"timestamp": "2026-08-23T21:57:45.705771+00:00", "level": "INFO", "logger": "app.services.content_service", "message": "Seeded 20 scenarios from the content pack."}
+------------------------------ Captured log call ------------------------------
+INFO     app.services.content_service:content_service.py:194 Seeded 20 scenarios from the content pack.
+________________ test_review_due_materialization_is_idempotent ________________
+
+smoke_client = <httpx.AsyncClient object at 0x0000023965FC1CD0>
+db_session = <sqlalchemy.ext.asyncio.session.AsyncSession object at 0x0000023966076090>
+
+    async def test_review_due_materialization_is_idempotent(
+        smoke_client, db_session
+    ) -> None:
+        from sqlalchemy import func
+    
+        from app.models.user import User
+        from app.models.vocabulary import VocabularyCard
+    
+        headers = await register_and_login(smoke_client, "fresh@example.com")
+        first = await smoke_client.get("/api/review/due", headers=headers)
+        second = await smoke_client.get("/api/review/due", headers=headers)
+    
+        assert first.status_code == second.status_code == 200
+        # The response is capped by the default limit=20; the materialized
+        # set behind it is the full pack, exactly once.
+        assert len(first.json()) == len(second.json()) == 20
+        user = (
+            await db_session.execute(
+                select(User).where(User.email == "fresh@example.com")
+            )
+        ).scalar_one()
+        card_count = int(
+            (
+                await db_session.execute(
+                    select(func.count())
+                    .select_from(VocabularyCard)
+                    .where(VocabularyCard.user_id == user.id)
+                )
+            ).scalar_one()
+        )
+>       assert card_count == 200  # Full SN-009 + SN-018 pack, materialized once.
+E       assert 100 == 200
+
+tests\test_release_smoke.py:230: AssertionError
+---------------------------- Captured stderr call -----------------------------
+{"timestamp": "2026-08-23T21:57:46.162347+00:00", "level": "INFO", "logger": "httpx", "message": "HTTP Request: POST http://test/api/auth/register \"HTTP/1.1 201 Created\""}
+{"timestamp": "2026-08-23T21:57:46.430750+00:00", "level": "INFO", "logger": "httpx", "message": "HTTP Request: POST http://test/api/auth/login \"HTTP/1.1 200 OK\""}
+{"timestamp": "2026-08-23T21:57:46.460012+00:00", "level": "INFO", "logger": "app.services.content_service", "message": "Materialized 100 vocabulary cards for user 01a030a1-341e-74dc-8f39-588b3300a434."}
+{"timestamp": "2026-08-23T21:57:46.479792+00:00", "level": "INFO", "logger": "httpx", "message": "HTTP Request: GET http://test/api/review/due \"HTTP/1.1 200 OK\""}
+{"timestamp": "2026-08-23T21:57:46.503177+00:00", "level": "INFO", "logger": "httpx", "message": "HTTP Request: GET http://test/api/review/due \"HTTP/1.1 200 OK\""}
+------------------------------ Captured log call ------------------------------
+INFO     httpx:_client.py:1740 HTTP Request: POST http://test/api/auth/register "HTTP/1.1 201 Created"
+INFO     httpx:_client.py:1740 HTTP Request: POST http://test/api/auth/login "HTTP/1.1 200 OK"
+INFO     app.services.content_service:content_service.py:227 Materialized 100 vocabulary cards for user 01a030a1-341e-74dc-8f39-588b3300a434.
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/review/due "HTTP/1.1 200 OK"
+INFO     httpx:_client.py:1740 HTTP Request: GET http://test/api/review/due "HTTP/1.1 200 OK"
+=========================== short test summary info ===========================
+FAILED tests/test_api_gamification.py::test_complete_session_persists_and_responds
+FAILED tests/test_api_gamification.py::test_complete_creates_user_skills_and_xp
+FAILED tests/test_api_gamification.py::test_complete_generates_and_progresses_quests
+FAILED tests/test_api_gamification.py::test_complete_returns_first_session_badge
+FAILED tests/test_api_gamification.py::test_duplicate_completion_replays_without_mutation
+FAILED tests/test_api_gamification.py::test_duplicate_completion_conflicting_scenario_returns_409
+FAILED tests/test_api_gamification.py::test_gamification_me_summary - NameErr...
+FAILED tests/test_api_gamification.py::test_two_sessions_same_local_date_keep_streak
+FAILED tests/test_api_gamification.py::test_consecutive_local_dates_increment_streak
+FAILED tests/test_api_gamification.py::test_concurrent_duplicates_do_not_double_award
+FAILED tests/test_api_scenarios.py::test_scenarios_returns_the_seeded_catalog
+FAILED tests/test_release_smoke.py::test_fresh_user_release_journey - assert ...
+FAILED tests/test_release_smoke.py::test_review_due_materialization_is_idempotent
+13 failed, 94 passed in 28.23s
+EXIT_CODE=1
