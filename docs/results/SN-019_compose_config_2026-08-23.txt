@@ -1,0 +1,8 @@
+SN-019 docker compose config validation — 2026-08-23T22:13:16Z
+command: POSTGRES_PASSWORD=smoke-placeholder SECRET_KEY=smoke-placeholder docker compose config --quiet
+---
+compose config OK
+EXIT_CODE=0
+---resolved services---
+db
+api

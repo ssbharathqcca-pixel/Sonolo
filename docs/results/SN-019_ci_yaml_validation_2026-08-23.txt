@@ -1,0 +1,6 @@
+SN-019 CI YAML validation — 2026-08-23T22:13:04Z
+command: python -c "import yaml; yaml.safe_load(open('.github/workflows/ci.yml', encoding='utf-8')); print('YAML OK')"
+---
+YAML OK
+jobs: backend, mobile
+EXIT_CODE=0

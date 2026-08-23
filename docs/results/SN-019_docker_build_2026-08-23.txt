@@ -1,0 +1,287 @@
+SN-019 docker compose build — 2026-08-23T22:13:32Z
+command: POSTGRES_PASSWORD=smoke-placeholder SECRET_KEY=smoke-placeholder docker compose build
+---
+ Image sonolo-api:latest Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 565B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 1.47kB 0.0s done
+#2 DONE 0.1s
+
+#3 [internal] load metadata for docker.io/library/python:3.12-slim
+#3 DONE 1.4s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 2B done
+#4 DONE 0.0s
+
+#5 [builder 1/4] FROM docker.io/library/python:3.12-slim@sha256:2c941e860699f878900b0edc2403613c234d4b32eda3cc9fa7036991a2a63c4a
+#5 resolve docker.io/library/python:3.12-slim@sha256:2c941e860699f878900b0edc2403613c234d4b32eda3cc9fa7036991a2a63c4a 0.0s done
+#5 ...
+
+#6 [internal] load build context
+#6 transferring context: 197.88kB 0.0s done
+#6 DONE 0.1s
+
+#5 [builder 1/4] FROM docker.io/library/python:3.12-slim@sha256:2c941e860699f878900b0edc2403613c234d4b32eda3cc9fa7036991a2a63c4a
+#5 sha256:6760bfe2ff00c4530bc73b2f88a1e9615a56c9a77028f41f8bb4b978d08b8439 248B / 248B 0.1s done
+#5 sha256:b952fe9f6810de5dac5d24a3983aee5fce3884f7359a533ba325e48ecb745994 0B / 12.12MB 0.3s
+#5 sha256:fa18dfb1257a9c1afc75e233c55b0195dd02b8d6d18dd7e24c10238b039e7742 0B / 1.29MB 0.2s
+#5 sha256:b952fe9f6810de5dac5d24a3983aee5fce3884f7359a533ba325e48ecb745994 1.05MB / 12.12MB 0.5s
+#5 sha256:b952fe9f6810de5dac5d24a3983aee5fce3884f7359a533ba325e48ecb745994 5.24MB / 12.12MB 0.6s
+#5 sha256:b952fe9f6810de5dac5d24a3983aee5fce3884f7359a533ba325e48ecb745994 7.34MB / 12.12MB 0.8s
+#5 sha256:fa18dfb1257a9c1afc75e233c55b0195dd02b8d6d18dd7e24c10238b039e7742 1.29MB / 1.29MB 0.6s done
+#5 extracting sha256:fa18dfb1257a9c1afc75e233c55b0195dd02b8d6d18dd7e24c10238b039e7742
+#5 extracting sha256:fa18dfb1257a9c1afc75e233c55b0195dd02b8d6d18dd7e24c10238b039e7742 0.2s done
+#5 sha256:b952fe9f6810de5dac5d24a3983aee5fce3884f7359a533ba325e48ecb745994 12.12MB / 12.12MB 1.0s done
+#5 extracting sha256:b952fe9f6810de5dac5d24a3983aee5fce3884f7359a533ba325e48ecb745994
+#5 extracting sha256:b952fe9f6810de5dac5d24a3983aee5fce3884f7359a533ba325e48ecb745994 0.5s done
+#5 DONE 1.6s
+
+#5 [builder 1/4] FROM docker.io/library/python:3.12-slim@sha256:2c941e860699f878900b0edc2403613c234d4b32eda3cc9fa7036991a2a63c4a
+#5 extracting sha256:6760bfe2ff00c4530bc73b2f88a1e9615a56c9a77028f41f8bb4b978d08b8439 0.0s done
+#5 DONE 1.7s
+
+#7 [builder 2/4] WORKDIR /build
+#7 DONE 0.2s
+
+#8 [runtime 2/8] RUN groupadd --system sonolo     && useradd --system --gid sonolo --create-home sonolo
+#8 ...
+
+#9 [builder 3/4] COPY requirements.txt .
+#9 DONE 0.0s
+
+#10 [builder 4/4] RUN python -m venv /opt/venv     && /opt/venv/bin/pip install --upgrade pip     && /opt/venv/bin/pip install -r requirements.txt
+#10 ...
+
+#8 [runtime 2/8] RUN groupadd --system sonolo     && useradd --system --gid sonolo --create-home sonolo
+#8 DONE 0.6s
+
+#10 [builder 4/4] RUN python -m venv /opt/venv     && /opt/venv/bin/pip install --upgrade pip     && /opt/venv/bin/pip install -r requirements.txt
+#10 4.648 Requirement already satisfied: pip in /opt/venv/lib/python3.12/site-packages (25.0.1)
+#10 4.878 Collecting pip
+#10 5.076   Downloading pip-26.2.1-py3-none-any.whl.metadata (4.6 kB)
+#10 5.123 Downloading pip-26.2.1-py3-none-any.whl (1.8 MB)
+#10 5.313    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.8/1.8 MB 15.7 MB/s eta 0:00:00
+#10 5.330 Installing collected packages: pip
+#10 5.330   Attempting uninstall: pip
+#10 5.333     Found existing installation: pip 25.0.1
+#10 5.368     Uninstalling pip-25.0.1:
+#10 5.377       Successfully uninstalled pip-25.0.1
+#10 6.262 Successfully installed pip-26.2.1
+#10 7.426 Collecting fastapi==0.115.6 (from -r requirements.txt (line 18))
+#10 7.568   Downloading fastapi-0.115.6-py3-none-any.whl.metadata (27 kB)
+#10 7.809 Collecting pydantic==2.10.4 (from pydantic[email]==2.10.4->-r requirements.txt (line 19))
+#10 7.855   Downloading pydantic-2.10.4-py3-none-any.whl.metadata (29 kB)
+#10 7.902 Collecting pydantic-settings==2.7.0 (from -r requirements.txt (line 20))
+#10 7.937   Downloading pydantic_settings-2.7.0-py3-none-any.whl.metadata (3.5 kB)
+#10 8.002 Collecting uvicorn==0.34.0 (from uvicorn[standard]==0.34.0->-r requirements.txt (line 21))
+#10 8.040   Downloading uvicorn-0.34.0-py3-none-any.whl.metadata (6.5 kB)
+#10 8.404 Collecting sqlalchemy==2.0.36 (from sqlalchemy[asyncio]==2.0.36->-r requirements.txt (line 22))
+#10 8.459   Downloading SQLAlchemy-2.0.36-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (9.7 kB)
+#10 8.543 Collecting asyncpg==0.30.0 (from -r requirements.txt (line 23))
+#10 8.587   Downloading asyncpg-0.30.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (5.0 kB)
+#10 8.641 Collecting alembic==1.14.0 (from -r requirements.txt (line 24))
+#10 8.677   Downloading alembic-1.14.0-py3-none-any.whl.metadata (7.4 kB)
+#10 8.720 Collecting uuid6==2024.7.10 (from -r requirements.txt (line 25))
+#10 8.760   Downloading uuid6-2024.7.10-py3-none-any.whl.metadata (8.6 kB)
+#10 8.805 Collecting passlib==1.7.4 (from passlib[bcrypt]==1.7.4->-r requirements.txt (line 26))
+#10 8.846   Downloading passlib-1.7.4-py2.py3-none-any.whl.metadata (1.7 kB)
+#10 8.922 Collecting bcrypt==4.0.1 (from -r requirements.txt (line 27))
+#10 8.980   Downloading bcrypt-4.0.1-cp36-abi3-manylinux_2_28_x86_64.whl.metadata (9.0 kB)
+#10 9.025 Collecting python-jose==3.3.0 (from python-jose[cryptography]==3.3.0->-r requirements.txt (line 28))
+#10 9.063   Downloading python_jose-3.3.0-py2.py3-none-any.whl.metadata (5.4 kB)
+#10 9.115 Collecting python-multipart==0.0.20 (from -r requirements.txt (line 29))
+#10 9.149   Downloading python_multipart-0.0.20-py3-none-any.whl.metadata (1.8 kB)
+#10 9.198 Collecting email-validator==2.2.0 (from -r requirements.txt (line 30))
+#10 9.254   Downloading email_validator-2.2.0-py3-none-any.whl.metadata (25 kB)
+#10 9.307 Collecting tzdata==2024.2 (from -r requirements.txt (line 32))
+#10 9.345   Downloading tzdata-2024.2-py2.py3-none-any.whl.metadata (1.4 kB)
+#10 9.401 Collecting httpx==0.28.1 (from -r requirements.txt (line 33))
+#10 9.436   Downloading httpx-0.28.1-py3-none-any.whl.metadata (7.1 kB)
+#10 9.495 Collecting pytest==8.3.4 (from -r requirements.txt (line 34))
+#10 9.538   Downloading pytest-8.3.4-py3-none-any.whl.metadata (7.5 kB)
+#10 9.598 Collecting pytest-asyncio==0.25.3 (from -r requirements.txt (line 35))
+#10 9.641   Downloading pytest_asyncio-0.25.3-py3-none-any.whl.metadata (3.9 kB)
+#10 9.700 Collecting aiosqlite==0.20.0 (from -r requirements.txt (line 36))
+#10 9.734   Downloading aiosqlite-0.20.0-py3-none-any.whl.metadata (4.3 kB)
+#10 9.795 Collecting starlette<0.42.0,>=0.40.0 (from fastapi==0.115.6->-r requirements.txt (line 18))
+#10 9.836   Downloading starlette-0.41.3-py3-none-any.whl.metadata (6.0 kB)
+#10 9.898 Collecting typing-extensions>=4.8.0 (from fastapi==0.115.6->-r requirements.txt (line 18))
+#10 9.930   Downloading typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+#10 9.977 Collecting annotated-types>=0.6.0 (from pydantic==2.10.4->pydantic[email]==2.10.4->-r requirements.txt (line 19))
+#10 10.02   Downloading annotated_types-0.8.0-py3-none-any.whl.metadata (15 kB)
+#10 10.91 Collecting pydantic-core==2.27.2 (from pydantic==2.10.4->pydantic[email]==2.10.4->-r requirements.txt (line 19))
+#10 10.95   Downloading pydantic_core-2.27.2-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.6 kB)
+#10 11.00 Collecting python-dotenv>=0.21.0 (from pydantic-settings==2.7.0->-r requirements.txt (line 20))
+#10 11.03   Downloading python_dotenv-1.2.3-py3-none-any.whl.metadata (29 kB)
+#10 11.09 Collecting click>=7.0 (from uvicorn==0.34.0->uvicorn[standard]==0.34.0->-r requirements.txt (line 21))
+#10 11.12   Downloading click-8.4.2-py3-none-any.whl.metadata (2.6 kB)
+#10 11.17 Collecting h11>=0.8 (from uvicorn==0.34.0->uvicorn[standard]==0.34.0->-r requirements.txt (line 21))
+#10 11.21   Downloading h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+#10 11.41 Collecting greenlet!=0.4.17 (from sqlalchemy==2.0.36->sqlalchemy[asyncio]==2.0.36->-r requirements.txt (line 22))
+#10 11.47   Downloading greenlet-3.5.5-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl.metadata (3.8 kB)
+#10 11.52 Collecting Mako (from alembic==1.14.0->-r requirements.txt (line 24))
+#10 11.55   Downloading mako-1.4.1-py3-none-any.whl.metadata (2.9 kB)
+#10 11.60 Collecting ecdsa!=0.15 (from python-jose==3.3.0->python-jose[cryptography]==3.3.0->-r requirements.txt (line 28))
+#10 11.64   Downloading ecdsa-0.19.2-py2.py3-none-any.whl.metadata (29 kB)
+#10 11.70 Collecting rsa (from python-jose==3.3.0->python-jose[cryptography]==3.3.0->-r requirements.txt (line 28))
+#10 11.73   Downloading rsa-4.9.1-py3-none-any.whl.metadata (5.6 kB)
+#10 11.79 Collecting pyasn1 (from python-jose==3.3.0->python-jose[cryptography]==3.3.0->-r requirements.txt (line 28))
+#10 11.83   Downloading pyasn1-0.6.4-py3-none-any.whl.metadata (8.4 kB)
+#10 11.88 Collecting dnspython>=2.0.0 (from email-validator==2.2.0->-r requirements.txt (line 30))
+#10 11.92   Downloading dnspython-2.8.0-py3-none-any.whl.metadata (5.7 kB)
+#10 11.97 Collecting idna>=2.0.0 (from email-validator==2.2.0->-r requirements.txt (line 30))
+#10 12.01   Downloading idna-3.19-py3-none-any.whl.metadata (9.2 kB)
+#10 12.07 Collecting anyio (from httpx==0.28.1->-r requirements.txt (line 33))
+#10 12.11   Downloading anyio-4.14.2-py3-none-any.whl.metadata (4.6 kB)
+#10 12.15 Collecting certifi (from httpx==0.28.1->-r requirements.txt (line 33))
+#10 12.18   Downloading certifi-2026.7.22-py3-none-any.whl.metadata (2.5 kB)
+#10 12.23 Collecting httpcore==1.* (from httpx==0.28.1->-r requirements.txt (line 33))
+#10 12.27   Downloading httpcore-1.0.9-py3-none-any.whl.metadata (21 kB)
+#10 12.32 Collecting iniconfig (from pytest==8.3.4->-r requirements.txt (line 34))
+#10 12.36   Downloading iniconfig-2.3.0-py3-none-any.whl.metadata (2.5 kB)
+#10 12.41 Collecting packaging (from pytest==8.3.4->-r requirements.txt (line 34))
+#10 12.44   Downloading packaging-26.3-py3-none-any.whl.metadata (3.5 kB)
+#10 12.49 Collecting pluggy<2,>=1.5 (from pytest==8.3.4->-r requirements.txt (line 34))
+#10 12.53   Downloading pluggy-1.6.0-py3-none-any.whl.metadata (4.8 kB)
+#10 12.81 Collecting cryptography>=3.4.0 (from python-jose[cryptography]==3.3.0->-r requirements.txt (line 28))
+#10 12.86   Downloading cryptography-50.0.0-cp311-abi3-manylinux_2_34_x86_64.whl.metadata (4.3 kB)
+#10 12.92 Collecting httptools>=0.6.3 (from uvicorn[standard]==0.34.0->-r requirements.txt (line 21))
+#10 12.96   Downloading httptools-0.8.0-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (3.5 kB)
+#10 13.04 Collecting pyyaml>=5.1 (from uvicorn[standard]==0.34.0->-r requirements.txt (line 21))
+#10 13.07   Downloading pyyaml-6.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.4 kB)
+#10 13.15 Collecting uvloop!=0.15.0,!=0.15.1,>=0.14.0 (from uvicorn[standard]==0.34.0->-r requirements.txt (line 21))
+#10 13.20   Downloading uvloop-0.22.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (4.9 kB)
+#10 13.33 Collecting watchfiles>=0.13 (from uvicorn[standard]==0.34.0->-r requirements.txt (line 21))
+#10 13.37   Downloading watchfiles-1.2.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.9 kB)
+#10 13.50 Collecting websockets>=10.4 (from uvicorn[standard]==0.34.0->-r requirements.txt (line 21))
+#10 13.54   Downloading websockets-17.0.1-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (6.3 kB)
+#10 13.71 Collecting cffi>=2.0.0 (from cryptography>=3.4.0->python-jose[cryptography]==3.3.0->-r requirements.txt (line 28))
+#10 13.76   Downloading cffi-2.1.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (2.5 kB)
+#10 13.81 Collecting pycparser (from cffi>=2.0.0->cryptography>=3.4.0->python-jose[cryptography]==3.3.0->-r requirements.txt (line 28))
+#10 13.85   Downloading pycparser-3.0-py3-none-any.whl.metadata (8.2 kB)
+#10 13.90 Collecting six>=1.9.0 (from ecdsa!=0.15->python-jose==3.3.0->python-jose[cryptography]==3.3.0->-r requirements.txt (line 28))
+#10 13.94   Downloading six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+#10 14.06 Collecting MarkupSafe>=2.0 (from Mako->alembic==1.14.0->-r requirements.txt (line 24))
+#10 14.11   Downloading markupsafe-3.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.7 kB)
+#10 14.16 Downloading fastapi-0.115.6-py3-none-any.whl (94 kB)
+#10 14.26 Downloading pydantic-2.10.4-py3-none-any.whl (431 kB)
+#10 14.37 Downloading pydantic_settings-2.7.0-py3-none-any.whl (29 kB)
+#10 14.41 Downloading uvicorn-0.34.0-py3-none-any.whl (62 kB)
+#10 14.46 Downloading SQLAlchemy-2.0.36-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (3.2 MB)
+#10 14.60    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.2/3.2 MB 24.7 MB/s  0:00:00
+#10 14.66 Downloading asyncpg-0.30.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (3.6 MB)
+#10 14.84    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.6/3.6 MB 20.0 MB/s  0:00:00
+#10 14.90 Downloading alembic-1.14.0-py3-none-any.whl (233 kB)
+#10 14.98 Downloading uuid6-2024.7.10-py3-none-any.whl (6.4 kB)
+#10 15.03 Downloading passlib-1.7.4-py2.py3-none-any.whl (525 kB)
+#10 15.05    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 525.6/525.6 kB 18.0 MB/s  0:00:00
+#10 15.09 Downloading bcrypt-4.0.1-cp36-abi3-manylinux_2_28_x86_64.whl (593 kB)
+#10 15.14    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 593.7/593.7 kB 12.7 MB/s  0:00:00
+#10 15.17 Downloading python_jose-3.3.0-py2.py3-none-any.whl (33 kB)
+#10 15.22 Downloading python_multipart-0.0.20-py3-none-any.whl (24 kB)
+#10 15.27 Downloading email_validator-2.2.0-py3-none-any.whl (33 kB)
+#10 15.30 Downloading tzdata-2024.2-py2.py3-none-any.whl (346 kB)
+#10 15.35 Downloading httpx-0.28.1-py3-none-any.whl (73 kB)
+#10 15.39 Downloading pytest-8.3.4-py3-none-any.whl (343 kB)
+#10 15.45 Downloading pytest_asyncio-0.25.3-py3-none-any.whl (19 kB)
+#10 15.50 Downloading aiosqlite-0.20.0-py3-none-any.whl (15 kB)
+#10 15.54 Downloading pydantic_core-2.27.2-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.0 MB)
+#10 15.62    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.0/2.0 MB 27.7 MB/s  0:00:00
+#10 15.66 Downloading httpcore-1.0.9-py3-none-any.whl (78 kB)
+#10 15.70 Downloading pluggy-1.6.0-py3-none-any.whl (20 kB)
+#10 15.74 Downloading starlette-0.41.3-py3-none-any.whl (73 kB)
+#10 15.79 Downloading anyio-4.14.2-py3-none-any.whl (125 kB)
+#10 15.84 Downloading annotated_types-0.8.0-py3-none-any.whl (13 kB)
+#10 15.89 Downloading click-8.4.2-py3-none-any.whl (119 kB)
+#10 15.93 Downloading cryptography-50.0.0-cp311-abi3-manylinux_2_34_x86_64.whl (4.7 MB)
+#10 16.20    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.7/4.7 MB 18.7 MB/s  0:00:00
+#10 14.88 Downloading cffi-2.1.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (221 kB)
+#10 14.92 Downloading dnspython-2.8.0-py3-none-any.whl (331 kB)
+#10 14.99 Downloading ecdsa-0.19.2-py2.py3-none-any.whl (150 kB)
+#10 15.03 Downloading greenlet-3.5.5-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (621 kB)
+#10 15.06    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 621.4/621.4 kB 22.5 MB/s  0:00:00
+#10 15.10 Downloading h11-0.16.0-py3-none-any.whl (37 kB)
+#10 15.15 Downloading httptools-0.8.0-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (523 kB)
+#10 15.21 Downloading idna-3.19-py3-none-any.whl (68 kB)
+#10 15.25 Downloading python_dotenv-1.2.3-py3-none-any.whl (22 kB)
+#10 15.29 Downloading pyyaml-6.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (807 kB)
+#10 15.34    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 807.9/807.9 kB 23.4 MB/s  0:00:00
+#10 15.38 Downloading six-1.17.0-py2.py3-none-any.whl (11 kB)
+#10 15.42 Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+#10 15.46 Downloading uvloop-0.22.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (4.4 MB)
+#10 15.73    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.4/4.4 MB 17.5 MB/s  0:00:00
+#10 15.79 Downloading watchfiles-1.2.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (456 kB)
+#10 15.86 Downloading websockets-17.0.1-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (220 kB)
+#10 15.91 Downloading certifi-2026.7.22-py3-none-any.whl (136 kB)
+#10 15.96 Downloading iniconfig-2.3.0-py3-none-any.whl (7.5 kB)
+#10 16.01 Downloading mako-1.4.1-py3-none-any.whl (80 kB)
+#10 16.06 Downloading markupsafe-3.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (22 kB)
+#10 16.12 Downloading packaging-26.3-py3-none-any.whl (129 kB)
+#10 16.16 Downloading pyasn1-0.6.4-py3-none-any.whl (84 kB)
+#10 16.20 Downloading pycparser-3.0-py3-none-any.whl (48 kB)
+#10 16.25 Downloading rsa-4.9.1-py3-none-any.whl (34 kB)
+#10 16.57 Installing collected packages: passlib, websockets, uvloop, uuid6, tzdata, typing-extensions, six, pyyaml, python-multipart, python-dotenv, pycparser, pyasn1, pluggy, packaging, MarkupSafe, iniconfig, idna, httptools, h11, greenlet, dnspython, click, certifi, bcrypt, asyncpg, annotated-types, uvicorn, sqlalchemy, rsa, pytest, pydantic-core, Mako, httpcore, email-validator, ecdsa, cffi, anyio, aiosqlite, watchfiles, starlette, python-jose, pytest-asyncio, pydantic, httpx, cryptography, alembic, pydantic-settings, fastapi
+#10 22.20 
+#10 22.21 Successfully installed Mako-1.4.1 MarkupSafe-3.0.3 aiosqlite-0.20.0 alembic-1.14.0 annotated-types-0.8.0 anyio-4.14.2 asyncpg-0.30.0 bcrypt-4.0.1 certifi-2026.7.22 cffi-2.1.1 click-8.4.2 cryptography-50.0.0 dnspython-2.8.0 ecdsa-0.19.2 email-validator-2.2.0 fastapi-0.115.6 greenlet-3.5.5 h11-0.16.0 httpcore-1.0.9 httptools-0.8.0 httpx-0.28.1 idna-3.19 iniconfig-2.3.0 packaging-26.3 passlib-1.7.4 pluggy-1.6.0 pyasn1-0.6.4 pycparser-3.0 pydantic-2.10.4 pydantic-core-2.27.2 pydantic-settings-2.7.0 pytest-8.3.4 pytest-asyncio-0.25.3 python-dotenv-1.2.3 python-jose-3.3.0 python-multipart-0.0.20 pyyaml-6.0.3 rsa-4.9.1 six-1.17.0 sqlalchemy-2.0.36 starlette-0.41.3 typing-extensions-4.16.0 tzdata-2024.2 uuid6-2024.7.10 uvicorn-0.34.0 uvloop-0.22.1 watchfiles-1.2.0 websockets-17.0.1
+#10 DONE 22.6s
+
+#11 [runtime 3/8] COPY --from=builder /opt/venv /opt/venv
+#11 DONE 0.6s
+
+#12 [runtime 4/8] WORKDIR /app
+#12 DONE 0.1s
+
+#13 [runtime 5/8] COPY alembic.ini ./
+#13 DONE 0.0s
+
+#14 [runtime 6/8] COPY alembic ./alembic
+#14 DONE 0.0s
+
+#15 [runtime 7/8] COPY scripts ./scripts
+#15 DONE 0.0s
+
+#16 [runtime 8/8] COPY app ./app
+#16 DONE 0.0s
+
+#17 exporting to image
+#17 exporting layers
+#17 exporting layers 5.0s done
+#17 exporting manifest sha256:c5483a206f40c0eee53a24713d260664949a4e3e90ed37605d40b7e9ca8cecda 0.0s done
+#17 exporting config sha256:9a606db591dfa3a730fcb3198001a279ae5887e0bb0b75f81f59d334951567e9 0.0s done
+#17 exporting attestation manifest sha256:fc50e23cdc149986e6d9107159327c91952fb3a9c13584bed52acca4018749c3 0.0s done
+#17 exporting manifest list sha256:0d60f546700c26ba8e9bf6d4b507b8bcba9f0ba2539fc7bcc9cfe8eb41adfac7 0.0s done
+#17 naming to docker.io/library/sonolo-api:latest
+#17 naming to docker.io/library/sonolo-api:latest done
+#17 unpacking to docker.io/library/sonolo-api:latest
+#17 unpacking to docker.io/library/sonolo-api:latest 1.4s done
+#17 DONE 6.5s
+
+#18 resolving provenance for metadata file
+#18 DONE 0.0s
+ Image sonolo-api:latest Built 
+EXIT_CODE=0
+---tail---
+
+#15 [runtime 7/8] COPY scripts ./scripts
+#15 DONE 0.0s
+
+#16 [runtime 8/8] COPY app ./app
+#16 DONE 0.0s
+
+#17 exporting to image
+#17 exporting layers
+#17 exporting layers 5.0s done
+#17 exporting manifest sha256:c5483a206f40c0eee53a24713d260664949a4e3e90ed37605d40b7e9ca8cecda 0.0s done
+#17 exporting config sha256:9a606db591dfa3a730fcb3198001a279ae5887e0bb0b75f81f59d334951567e9 0.0s done
+#17 exporting attestation manifest sha256:fc50e23cdc149986e6d9107159327c91952fb3a9c13584bed52acca4018749c3 0.0s done
+#17 exporting manifest list sha256:0d60f546700c26ba8e9bf6d4b507b8bcba9f0ba2539fc7bcc9cfe8eb41adfac7 0.0s done
+#17 naming to docker.io/library/sonolo-api:latest
+#17 naming to docker.io/library/sonolo-api:latest done
+#17 unpacking to docker.io/library/sonolo-api:latest
+#17 unpacking to docker.io/library/sonolo-api:latest 1.4s done
+#17 DONE 6.5s
+
