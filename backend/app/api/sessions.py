@@ -15,6 +15,7 @@ from app.db.session import get_db
 from app.learning.evaluator import SessionEvaluator
 from app.learning.schemas import EvaluationRequest, EvaluationResponse
 from app.models.user import User
+from app.models.session import SpeakingSession
 from app.schemas.gamification import (
     SessionCompleteRequest,
     SessionCompleteResponse,
@@ -43,17 +44,26 @@ def get_evaluator() -> SessionEvaluator:
 async def session_feedback(
     session_id: UUID,
     request: EvaluationRequest,
-    # Auth gate (SN-014A): the evaluation itself is stateless, so there
-    # is no persisted row to own yet — ownership checks land together
-    # with persisted-session reads in the session-history task.
     current_user: User = Depends(get_current_user),
+    db: AsyncSession = Depends(get_db),
     evaluator: SessionEvaluator = Depends(get_evaluator),
 ) -> EvaluationResponse:
-    """Evaluate a completed session and return scores plus insights."""
+    """Evaluate a completed session and return scores plus insights.
+
+    Ownership: when a persisted session exists for this id (SN-014),
+    only its owner may request feedback for it — other users get 404.
+    Unpersisted ids remain stateless evaluations for now.
+    """
     if request.session_id != session_id:
         raise HTTPException(
             status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
             detail="Body session_id must match the path session_id.",
+        )
+    persisted = await db.get(SpeakingSession, session_id)
+    if persisted is not None and persisted.user_id != current_user.id:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Session not found.",
         )
     return await evaluator.evaluate(request)
 

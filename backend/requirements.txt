@@ -1,5 +1,9 @@
 # Sonolo backend dependencies (Python 3.12).
 #
+# NOTE: real AI providers (faster-whisper, edge-tts) live in the
+# optional requirements-ai.txt; the app runs on Mock providers without
+# them (see app/services/ai/).
+#
 # Runtime: fastapi (web framework), uvicorn[standard] (ASGI server with
 # --reload support via watchfiles), pydantic (models), pydantic-settings
 # (environment-driven configuration), sqlalchemy[asyncio] (2.0 async ORM;

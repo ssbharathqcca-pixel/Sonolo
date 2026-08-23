@@ -77,6 +77,52 @@ class Settings(BaseSettings):
         default=60,
         description="Access token lifetime in minutes.",
     )
+    content_scenarios_path: str = Field(
+        default="../content/scenarios/canadian-life-v1.json",
+        description=(
+            "Path to the validated scenario content pack (SN-008), "
+            "absolute or relative to the backend directory."
+        ),
+    )
+    content_vocabulary_path: str = Field(
+        default="../content/vocabulary/core-v1.json",
+        description=(
+            "Path to the validated vocabulary content pack (SN-009), "
+            "absolute or relative to the backend directory."
+        ),
+    )
+    ai_mock_enabled: bool = Field(
+        default=True,
+        description=(
+            "Force deterministic Mock AI providers (CI / key-less dev). "
+            "Real providers also fall back to mocks when their library, "
+            "key, or model is missing."
+        ),
+    )
+    openai_api_key: str = Field(
+        default="",
+        description="API key for the OpenAI-compatible tutor endpoint.",
+    )
+    openai_base_url: str = Field(
+        default="https://api.openai.com/v1",
+        description="Base URL of any OpenAI-compatible chat API.",
+    )
+    openai_model: str = Field(
+        default="gpt-4o-mini",
+        description="Chat model name for the tutor LLM.",
+    )
+    whisper_model_size: str = Field(
+        default="base",
+        description="faster-whisper model size (tiny/base/small/...).",
+    )
+    edge_tts_voice: str = Field(
+        default="en-CA-LiamNeural",
+        description="edge-tts voice for tutor speech.",
+    )
+    ai_request_timeout_seconds: float = Field(
+        default=30.0,
+        description="Timeout for AI provider calls.",
+    )
 
 
 @lru_cache(maxsize=1)

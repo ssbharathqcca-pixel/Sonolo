@@ -12,6 +12,9 @@ files once the mobile test setup task lands.
 | SN-003 | Full Metro bundle via `expo export --platform android` (Babel, imports, Reanimated plugin, Expo Router) | `2026-08-22_sn003_metro_bundle.txt` | exit 0, Hermes bundle exported |
 | SN-013 | Strict TypeScript check after auth flow (`npx tsc --noEmit`) | `2026-08-22_sn013_tsc_typecheck.txt` | exit 0, zero errors |
 | SN-013 | Metro bundle incl. auth screens, store, API client | `2026-08-22_sn013_metro_bundle.txt` | exit 0, Hermes bundle exported |
+| SN-015 | Strict TypeScript check after voice-session integration | `2026-08-23_sn015_tsc_typecheck.txt` | exit 0, zero errors |
+| SN-015 | Jest suite (jest-expo + RNTL): WS URL builder, useVoiceSession (auth URL, transcript, tap frames, 4401 logout, dropped-connection, completion POST) | `2026-08-23_sn015_jest.txt` | 9 passed |
+| SN-015 | Metro bundle incl. scenarios store, voice socket, feedback results | `2026-08-23_sn015_metro_bundle.txt` | exit 0, Hermes bundle exported |
 
 ## Environment
 

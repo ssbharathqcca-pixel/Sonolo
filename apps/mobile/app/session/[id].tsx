@@ -1,156 +1,95 @@
 /**
- * Voice session — the core speaking loop.
+ * Voice session — wired to the authenticated backend (SN-015).
  *
- * A mock state machine walks the VoiceButton through idle → listening →
- * thinking → speaking so the full interaction is playable before real
- * audio capture lands. The waveform is driven by one shared loop phase,
- * and the transcript shows the conversation so far with live-listening
- * dots while the learner speaks.
+ * The screen owns presentation; the useVoiceSession hook drives the
+ * 4-state pipeline over the WebSocket, collects the transcript, and
+ * posts the completion payload on finish.
  */
-import { useEffect, useState } from "react";
+
+import { useState } from "react";
 import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import Animated, {
-  cancelAnimation,
   Easing,
   useAnimatedStyle,
   useSharedValue,
   withRepeat,
-  withSequence,
   withTiming,
-  type SharedValue,
+  cancelAnimation,
 } from "react-native-reanimated";
+import { useEffect } from "react";
 import { ChevronLeft, Flag, Lightbulb } from "lucide-react-native";
+
 import { GlassCard } from "../../src/components/GlassCard";
 import {
   VoiceButton,
   voiceButtonCaption,
-  type VoiceButtonState,
 } from "../../src/components/VoiceButton";
-import { FALLBACK_QUEST, getQuestById } from "../../src/data/quests";
+import { useScenarioStore } from "../../src/stores/scenarioStore";
+import { useVoiceSession } from "../../src/hooks/useVoiceSession";
 import { colors } from "../../src/theme/colors";
 
-interface TranscriptTurn {
-  id: string;
-  speaker: "tutor" | "learner";
-  text: string;
-}
-
-const TRANSCRIPT: TranscriptTurn[] = [
-  {
-    id: "t1",
-    speaker: "tutor",
-    text: "Morning! Welcome to Sonolo Coffee — what can I get started for you?",
-  },
-  {
-    id: "l1",
-    speaker: "learner",
-    text: "Hi! Could I get a medium double-double, please?",
-  },
-  {
-    id: "t2",
-    speaker: "tutor",
-    text: "Great choice. Anything else today — maybe a maple dip?",
-  },
-];
-
-const HINT_TEXT = 'Try adding: "Could I also grab a maple dip, please?"';
+const HINT_TEXT =
+  "Tap the mic and answer out loud — even a short reply counts. Tap again when you finish.";
 
 const BAR_COUNT = 24;
 const BAR_BASE_HEIGHT = 5;
 const BAR_MAX_EXTRA = 26;
 const WAVE_LOOP_MS = 1400;
 
-const NEXT_STATE: Record<VoiceButtonState, VoiceButtonState> = {
-  idle: "listening",
-  listening: "thinking",
-  thinking: "speaking",
-  speaking: "idle",
-};
-
 function WaveformBar({
   phase,
-  index,
   color,
 }: {
-  phase: SharedValue<number>;
-  index: number;
+  phase: number;
   color: string;
 }): JSX.Element {
-  const style = useAnimatedStyle(() => {
-    const offset = (phase.value + (index % 6) / 6) % 1;
-    const wave = 0.5 - 0.5 * Math.cos(2 * Math.PI * offset * 2);
-    return { height: BAR_BASE_HEIGHT + wave * BAR_MAX_EXTRA };
-  });
-  return <Animated.View style={[styles.bar, style, { backgroundColor: color }]} />;
-}
+  const height = useSharedValue(BAR_BASE_HEIGHT);
+  const active = phase === 1 || phase === 3; // listening or speaking
 
-function ListeningDots(): JSX.Element {
-  const opacity = useSharedValue(0.3);
   useEffect(() => {
-    opacity.value = withRepeat(
-      withSequence(
-        withTiming(1, { duration: 420 }),
-        withTiming(0.3, { duration: 420 }),
-      ),
-      -1,
-    );
-    return () => {
-      cancelAnimation(opacity);
-    };
-  }, [opacity]);
+    if (active) {
+      height.value = withRepeat(
+        withTiming(BAR_BASE_HEIGHT + BAR_MAX_EXTRA, {
+          duration: WAVE_LOOP_MS,
+          easing: Easing.linear,
+        }),
+        -1,
+      );
+    } else {
+      cancelAnimation(height);
+      height.value = withTiming(BAR_BASE_HEIGHT, { duration: 350 });
+    }
+  }, [active, height]);
 
-  const style = useAnimatedStyle(() => ({ opacity: opacity.value }));
-
-  return (
-    <View style={styles.dotsRow}>
-      <Animated.View style={[styles.dot, style]} />
-      <Animated.View style={[styles.dot, style]} />
-      <Animated.View style={[styles.dot, style]} />
-    </View>
-  );
+  const style = useAnimatedStyle(() => ({ height: height.value }));
+  return <Animated.View style={[styles.bar, style, { backgroundColor: color }]} />;
 }
 
 export default function VoiceSessionScreen(): JSX.Element {
   const router = useRouter();
   const insets = useSafeAreaInsets();
   const params = useLocalSearchParams<{ id?: string }>();
-  const quest = getQuestById(params.id) ?? FALLBACK_QUEST;
+  const scenarios = useScenarioStore((state) => state.scenarios);
+  const selected = useScenarioStore((state) => state.selected);
+  const scenario =
+    scenarios.find((item) => item.id === params.id) ?? selected ?? null;
 
-  const [voiceState, setVoiceState] = useState<VoiceButtonState>("idle");
   const [hintVisible, setHintVisible] = useState(false);
-  const [sessionComplete, setSessionComplete] = useState(false);
+  const {
+    phase,
+    transcript,
+    error,
+    isConnected,
+    isFinishing,
+    handleTap,
+    finishSession,
+  } = useVoiceSession(scenario?.id ?? params.id ?? "");
 
-  const phase = useSharedValue(0);
-  const waveformActive = voiceState === "listening" || voiceState === "speaking";
-
-  useEffect(() => {
-    if (waveformActive) {
-      phase.value = withRepeat(
-        withTiming(1, { duration: WAVE_LOOP_MS, easing: Easing.linear }),
-        -1,
-      );
-    } else {
-      cancelAnimation(phase);
-      phase.value = withTiming(0, { duration: 350 });
-    }
-  }, [waveformActive, phase]);
-
-  const handleVoicePress = (): void => {
-    if (voiceState === "speaking") {
-      setSessionComplete(true);
-    }
-    setVoiceState(NEXT_STATE[voiceState]);
-  };
-
-  const openFeedback = (): void => {
-    router.replace({ pathname: "/feedback/[id]", params: { id: quest.id } });
-  };
-
-  const barColor =
-    voiceState === "listening" ? colors.warmCoral : colors.auroraTeal;
-  const latestTutorLine = TRANSCRIPT[TRANSCRIPT.length - 1].text;
+  const barColor = phase === "listening" ? colors.warmCoral : colors.auroraTeal;
+  const phaseIndex =
+    phase === "listening" ? 1 : phase === "thinking" ? 2 : phase === "speaking" ? 3 : 0;
 
   return (
     <View
@@ -161,7 +100,9 @@ export default function VoiceSessionScreen(): JSX.Element {
     >
       <View style={styles.topBar}>
         <Pressable
-          onPress={() => router.back()}
+          onPress={() => {
+            router.back();
+          }}
           hitSlop={12}
           accessibilityLabel="Go back"
         >
@@ -169,45 +110,53 @@ export default function VoiceSessionScreen(): JSX.Element {
         </Pressable>
         <View style={styles.titleBlock}>
           <Text style={styles.title} numberOfLines={1}>
-            {quest.title}
+            {scenario?.title ?? "Practice session"}
           </Text>
           <Text style={styles.subtitle}>
-            {quest.difficulty} · {quest.minutes} min
+            {isConnected ? "Live · Sonolo voice" : "Connecting…"}
           </Text>
         </View>
         <Pressable
-          onPress={openFeedback}
+          onPress={() => {
+            void finishSession();
+          }}
           hitSlop={12}
           accessibilityLabel="Finish session and see feedback"
+          disabled={isFinishing}
         >
-          <Flag color={colors.textSecondary} size={22} />
+          <Flag
+            color={isFinishing ? colors.textTertiary : colors.textSecondary}
+            size={22}
+          />
         </Pressable>
       </View>
 
       <GlassCard style={styles.promptCard}>
-        <Text style={styles.promptLabel}>Tutor</Text>
-        <Text style={styles.promptText}>{latestTutorLine}</Text>
+        <Text style={styles.promptLabel}>Scenario</Text>
+        <Text style={styles.promptText}>
+          {scenario?.description ?? HINT_TEXT}
+        </Text>
         <Pressable
           style={styles.hintButton}
-          onPress={() => setHintVisible((visible) => !visible)}
+          onPress={() => {
+            setHintVisible((visible) => !visible);
+          }}
           accessibilityLabel="Toggle hint"
         >
           <Lightbulb
             color={hintVisible ? colors.warning : colors.textSecondary}
             size={16}
           />
-          <Text
-            style={[styles.hintLabel, hintVisible && styles.hintLabelActive]}
-          >
+          <Text style={[styles.hintLabel, hintVisible && styles.hintLabelActive]}>
             Hint
           </Text>
         </Pressable>
         {hintVisible ? <Text style={styles.hintText}>{HINT_TEXT}</Text> : null}
       </GlassCard>
 
-      <View style={styles.waveform} importantForAccessibility="no-hide-descendants">
+      <View style={styles.waveform}>
         {Array.from({ length: BAR_COUNT }, (_, index) => (
-          <WaveformBar key={index} phase={phase} index={index} color={barColor} />
+          <WaveformBar key={index} phase={phaseIndex} color={barColor} />
         ))}
       </View>
 
@@ -217,28 +166,24 @@ export default function VoiceSessionScreen(): JSX.Element {
         showsVerticalScrollIndicator={false}
       >
         <Text style={styles.transcriptHeader}>Transcript</Text>
-        {TRANSCRIPT.map((turn) => (
+        {transcript.map((turn) => (
           <View
             key={turn.id}
             style={[
               styles.turnRow,
-              turn.speaker === "learner"
-                ? styles.turnRowRight
-                : styles.turnRowLeft,
+              turn.role === "user" ? styles.turnRowRight : styles.turnRowLeft,
             ]}
           >
             <View
               style={[
                 styles.turnBubble,
-                turn.speaker === "learner"
-                  ? styles.bubbleLearner
-                  : styles.bubbleTutor,
+                turn.role === "user" ? styles.bubbleUser : styles.bubbleTutor,
               ]}
             >
               <Text
                 style={[
                   styles.turnText,
-                  turn.speaker === "learner" && styles.turnTextLearner,
+                  turn.role === "user" && styles.turnTextUser,
                 ]}
               >
                 {turn.text}
@@ -246,32 +191,30 @@ export default function VoiceSessionScreen(): JSX.Element {
             </View>
           </View>
         ))}
-        {voiceState === "listening" ? (
-          <View style={[styles.turnRow, styles.turnRowRight]}>
-            <View style={[styles.turnBubble, styles.bubbleLearner]}>
-              <ListeningDots />
-            </View>
-          </View>
+        {transcript.length === 0 ? (
+          <Text style={styles.emptyText}>
+            Your conversation will appear here as you speak.
+          </Text>
         ) : null}
       </ScrollView>
 
+      {error !== null ? <Text style={styles.error}>{error}</Text> : null}
+
       <View style={styles.controls}>
-        <VoiceButton state={voiceState} onPress={handleVoicePress} />
-        <Text style={styles.caption}>{voiceButtonCaption(voiceState)}</Text>
-        {sessionComplete ? (
-          <Pressable
-            style={styles.finishButton}
-            onPress={openFeedback}
-            accessibilityLabel="View session feedback"
-          >
-            <Text style={styles.finishButtonText}>View feedback</Text>
-          </Pressable>
-        ) : (
-          <Text style={styles.stepHint}>
-            Tap the mic, speak your reply, then tap again — Sonolo coaches you
-            after a few turns.
+        <VoiceButton state={phase} onPress={handleTap} />
+        <Text style={styles.caption}>{voiceButtonCaption(phase)}</Text>
+        <Pressable
+          style={[styles.finishButton, isFinishing && styles.finishButtonBusy]}
+          onPress={() => {
+            void finishSession();
+          }}
+          accessibilityLabel="Finish session and see feedback"
+          disabled={isFinishing}
+        >
+          <Text style={styles.finishButtonText}>
+            {isFinishing ? "Saving session…" : "Finish session"}
           </Text>
-        )}
+        </Pressable>
       </View>
     </View>
   );
@@ -315,9 +258,9 @@ const styles = StyleSheet.create({
   },
   promptText: {
     color: colors.textPrimary,
-    fontSize: 17,
+    fontSize: 16,
     fontWeight: "600",
-    lineHeight: 24,
+    lineHeight: 22,
   },
   hintButton: {
     flexDirection: "row",
@@ -390,7 +333,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.nightSkyDeep,
     borderBottomLeftRadius: 6,
   },
-  bubbleLearner: {
+  bubbleUser: {
     backgroundColor: colors.auroraTealSoft,
     borderBottomRightRadius: 6,
   },
@@ -399,19 +342,20 @@ const styles = StyleSheet.create({
     fontSize: 14,
     lineHeight: 20,
   },
-  turnTextLearner: {
+  turnTextUser: {
     color: colors.textPrimary,
   },
-  dotsRow: {
-    flexDirection: "row",
-    gap: 5,
-    paddingVertical: 4,
+  emptyText: {
+    color: colors.textTertiary,
+    fontSize: 13,
+    fontStyle: "italic",
   },
-  dot: {
-    width: 7,
-    height: 7,
-    borderRadius: 999,
-    backgroundColor: colors.textSecondary,
+  error: {
+    color: colors.error,
+    fontSize: 13,
+    lineHeight: 18,
+    textAlign: "center",
+    paddingHorizontal: 16,
   },
   controls: {
     alignItems: "center",
@@ -429,16 +373,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 28,
     paddingVertical: 13,
   },
+  finishButtonBusy: {
+    opacity: 0.6,
+  },
   finishButtonText: {
     color: "#FFFFFF",
     fontSize: 15,
     fontWeight: "700",
-  },
-  stepHint: {
-    color: colors.textTertiary,
-    fontSize: 12,
-    textAlign: "center",
-    lineHeight: 17,
-    paddingHorizontal: 24,
   },
 });

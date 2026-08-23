@@ -1,0 +1,15 @@
+             List of relations
+ Schema |       Name       | Type  | Owner  
+--------+------------------+-------+--------
+ public | alembic_version  | table | sonolo
+ public | analytics_events | table | sonolo
+ public | daily_quests     | table | sonolo
+ public | scenarios        | table | sonolo
+ public | sessions         | table | sonolo
+ public | user_badges      | table | sonolo
+ public | user_skills      | table | sonolo
+ public | users            | table | sonolo
+ public | vocabulary_cards | table | sonolo
+(9 rows)
+
+EXIT_CODE=0

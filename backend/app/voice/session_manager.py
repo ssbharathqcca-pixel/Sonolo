@@ -22,6 +22,13 @@ class SessionAlreadyActiveError(RuntimeError):
     """Raised when a session_id registers while already active."""
 
 
+DEFAULT_TUTOR_PROMPT = (
+    "You are Sonolo, a friendly and patient Canadian English tutor. "
+    "Keep replies short and encouraging, gently rephrase the learner's "
+    "mistakes, and use everyday Canadian context."
+)
+
+
 class VoiceSession:
     """State for a single live voice connection."""
 
@@ -30,14 +37,18 @@ class VoiceSession:
         session_id: UUID,
         websocket: WebSocket,
         user_id: UUID | None = None,
+        system_prompt: str = DEFAULT_TUTOR_PROMPT,
     ) -> None:
         self.session_id = session_id
         self.user_id = user_id
         self.websocket = websocket
+        self.system_prompt = system_prompt
         self.state: VoiceState = VoiceState.IDLE
         self.lock = asyncio.Lock()
         self.send_lock = asyncio.Lock()
         self.audio_buffer: list[str] = []
+        self.audio_bytes: list[bytes] = []
+        self.history: list[dict[str, str]] = []
         self.last_audio_at: float = 0.0
         self.silence_task: asyncio.Task[None] | None = None
         self.turn_task: asyncio.Task[None] | None = None
@@ -90,6 +101,7 @@ class SessionManager:
         session_id: UUID,
         websocket: WebSocket,
         user_id: UUID | None = None,
+        system_prompt: str = DEFAULT_TUTOR_PROMPT,
     ) -> VoiceSession:
         """Register a new connection; rejects duplicate session_ids."""
         async with self._registry_lock:
@@ -97,7 +109,9 @@ class SessionManager:
                 raise SessionAlreadyActiveError(
                     f"Session {session_id} is already active."
                 )
-            session = VoiceSession(session_id, websocket, user_id)
+            session = VoiceSession(
+                session_id, websocket, user_id, system_prompt
+            )
             self._sessions[session_id] = session
             return session
 

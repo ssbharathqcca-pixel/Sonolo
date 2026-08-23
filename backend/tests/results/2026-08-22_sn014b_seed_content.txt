@@ -1,0 +1,4 @@
+scenarios_before=0
+pack_upserts=20
+scenarios_after=20
+EXIT_CODE=0

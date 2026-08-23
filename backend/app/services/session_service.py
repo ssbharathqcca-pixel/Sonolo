@@ -15,6 +15,11 @@ from sqlalchemy.exc import IntegrityError
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.time import get_local_date_for_user
+from app.learning.evaluator import SessionEvaluator
+from app.learning.schemas import (
+    EvaluationRequest as EvaluatorRequest,
+)
+from app.learning.schemas import TranscriptTurn as EvaluatorTurn
 from app.models.gamification import DailyQuest, UserBadge
 from app.models.scenario import Scenario
 from app.models.session import SpeakingSession
@@ -178,6 +183,39 @@ class SessionService:
         scores = payload.evaluation.scores
 
         if xp_eligible:
+            # Server-side cross-check of the client-reported evaluation:
+            # MVP trusts the client, but significant divergence is logged.
+            try:
+                own = await SessionEvaluator().evaluate(
+                    EvaluatorRequest(
+                        session_id=payload.client_session_id,
+                        transcript=[
+                            EvaluatorTurn(
+                                role=(
+                                    "user"
+                                    if turn.role == "user"
+                                    else "tutor"
+                                ),
+                                text=turn.text,
+                            )
+                            for turn in payload.transcript
+                        ],
+                        duration_seconds=float(payload.duration_seconds),
+                    )
+                )
+                if (
+                    abs(own.speaking_power_score - payload.evaluation.overall_score)
+                    > 10.0
+                ):
+                    logger.warning(
+                        "Evaluation divergence: client=%s server=%s session=%s",
+                        payload.evaluation.overall_score,
+                        own.speaking_power_score,
+                        payload.client_session_id,
+                    )
+            except Exception:  # noqa: BLE001 - cross-check must not block
+                logger.debug("Evaluator cross-check skipped.", exc_info=True)
+
             await gamification.update_streak(locked_user, local_date, now)
 
         session_xp = calculate_session_xp(

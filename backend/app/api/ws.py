@@ -7,6 +7,7 @@ turn without any client message.
 """
 
 import asyncio
+import base64
 import json
 import logging
 from contextlib import suppress
@@ -19,6 +20,13 @@ from pydantic import ValidationError
 
 from app.core.config import get_settings
 from app.core.security import decode_access_token
+from app.db.session import AsyncSessionLocal
+from app.learning.evaluator import SessionEvaluator
+from app.learning.schemas import (
+    EvaluationRequest as EvaluatorEvaluationRequest,
+)
+from app.learning.schemas import TranscriptTurn as EvaluatorTranscriptTurn
+from app.models.scenario import Scenario
 from app.voice.pipeline import process_turn
 from app.voice.protocol import (
     AudioChunkMessage,
@@ -26,6 +34,10 @@ from app.voice.protocol import (
     ClientMessage,
     EndTurnMessage,
     ServerMessage,
+    SessionSummaryMessage,
+    SessionSummaryPayload,
+    SessionEvaluationPayload,
+    SessionTranscriptTurn,
     StateChangeMessage,
     TextInputMessage,
     VoiceState,
@@ -34,13 +46,14 @@ from app.voice.protocol import (
     state_change,
 )
 from app.voice.session_manager import SessionManager, VoiceSession
+from sqlalchemy import select
 
 router = APIRouter()
 logger = logging.getLogger(__name__)
 
 
 async def _run_turn(
-    session: VoiceSession, *, audio: str | None, text: str | None
+    session: VoiceSession, *, override_text: str | None
 ) -> None:
     """Drive one pipeline turn, sending every yielded message.
 
@@ -51,9 +64,7 @@ async def _run_turn(
         return
     try:
         message: ServerMessage
-        async for message in process_turn(
-            session.session_id, audio_data=audio, text=text
-        ):
+        async for message in process_turn(session, override_text=override_text):
             try:
                 await session.send(message)
             except RuntimeError:
@@ -74,11 +85,8 @@ async def _run_turn(
 
 def _start_turn(session: VoiceSession, *, text: str | None = None) -> None:
     """Launch a turn as a background task (audio comes from the buffer)."""
-    audio: str | None = None
-    if text is None:
-        audio = session.drain_audio()
     session.turn_task = asyncio.create_task(
-        _run_turn(session, audio=audio, text=text)
+        _run_turn(session, override_text=text)
     )
 
 
@@ -97,6 +105,69 @@ async def _cancel_turn(session: VoiceSession) -> None:
         return
     await session.send(state_change(VoiceState.IDLE))
     await manager.apply_state(session, VoiceState.IDLE)
+
+
+async def _send_session_summary(websocket: WebSocket, session: VoiceSession) -> None:
+    """Evaluate the real transcript, send `session_summary`, close 1000."""
+    if session.history:
+        evaluator_turns = [
+            EvaluatorTranscriptTurn(
+                role="user" if turn["role"] == "user" else "tutor",
+                text=turn["content"],
+            )
+            for turn in session.history
+        ]
+        evaluation = await SessionEvaluator().evaluate(
+            EvaluatorEvaluationRequest(
+                session_id=session.session_id,
+                transcript=evaluator_turns,
+            )
+        )
+        summary = SessionSummaryMessage(
+            payload=SessionSummaryPayload(
+                evaluation=SessionEvaluationPayload(
+                    scores={
+                        skill.dimension: skill.score
+                        for skill in evaluation.skills
+                    },
+                    overall_score=evaluation.speaking_power_score,
+                    insights=[
+                        insight.text for insight in evaluation.insights
+                    ],
+                ),
+                transcript=[
+                    SessionTranscriptTurn(
+                        role="user" if turn["role"] == "user" else "assistant",
+                        text=turn["content"],
+                    )
+                    for turn in session.history
+                ],
+            )
+        )
+        with suppress(RuntimeError):
+            await session.send(summary)
+    await websocket.close(code=1000)
+
+
+async def _load_scenario_prompt(scenario_id_raw: str | None) -> str:
+    """Resolve the scenario's tutor prompt (default when unavailable)."""
+    from app.voice.session_manager import DEFAULT_TUTOR_PROMPT
+
+    if scenario_id_raw is None:
+        return DEFAULT_TUTOR_PROMPT
+    try:
+        scenario_uuid = UUID(scenario_id_raw)
+    except ValueError:
+        return DEFAULT_TUTOR_PROMPT
+    async with AsyncSessionLocal() as db:
+        prompt = (
+            await db.execute(
+                select(Scenario.system_prompt).where(
+                    Scenario.id == scenario_uuid
+                )
+            )
+        ).scalar_one_or_none()
+    return prompt if prompt else DEFAULT_TUTOR_PROMPT
 
 
 manager = SessionManager(
@@ -149,8 +220,13 @@ async def voice_session(websocket: WebSocket, session_id: UUID) -> None:
         await websocket.close(code=1008, reason="Session already active.")
         return
 
+    system_prompt = await _load_scenario_prompt(
+        websocket.query_params.get("scenario_id")
+    )
     await websocket.accept()
-    session = await manager.register(session_id, websocket, user_id)
+    session = await manager.register(
+        session_id, websocket, user_id, system_prompt
+    )
     logger.info(
         "Voice session opened: session_id=%s user_id=%s", session_id, user_id
     )
@@ -193,6 +269,14 @@ async def voice_session(websocket: WebSocket, session_id: UUID) -> None:
                 accepted = await manager.mark_audio(session)
                 if accepted:
                     session.audio_buffer.append(message.payload.audio)
+                    try:
+                        session.audio_bytes.append(
+                            base64.b64decode(message.payload.audio)
+                        )
+                    except (ValueError, TypeError):
+                        await session.send(
+                            error("invalid_message", "Audio chunk not base64.")
+                        )
                 else:
                     await session.send(
                         error(
@@ -206,6 +290,8 @@ async def voice_session(websocket: WebSocket, session_id: UUID) -> None:
                 _start_turn(session, text=message.payload.text)
             elif isinstance(message, CancelMessage):
                 await _cancel_turn(session)
+                await _send_session_summary(websocket, session)
+                return
     except WebSocketDisconnect:
         logger.info(
             "Voice session disconnected: session_id=%s", session_id

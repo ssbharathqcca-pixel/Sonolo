@@ -25,7 +25,15 @@ evidence".
 | SN-014A | User-scoped FSRS review API (`tests/test_api_review.py`) | `2026-08-22_sn014a_test_test_api_review.txt` | 10 passed |
 | SN-014A | Migration consistency (offline SQL + model inspection) (`tests/test_migrations.py`) | `2026-08-22_sn014a_test_test_migrations.txt` | 3 passed |
 | SN-014A | Alembic offline `upgrade head --sql` | `2026-08-22_sn014a_alembic_offline.txt` | exit 0, 8 tables |
-| all | Full backend suite (regenerated after SN-014A) | `2026-08-22_full_suite.txt` | 117 passed |
+| SN-014B | **Live PostgreSQL 16** `alembic upgrade head` (Docker, disposable container) | `2026-08-22_sn014b_alembic_upgrade.txt` | exit 0 |
+| SN-014B | Live PG `alembic current` | `2026-08-22_sn014b_alembic_current.txt` | `0001_initial (head)` |
+| SN-014B | Live PG table listing (`\dt`) | `2026-08-22_sn014b_pg_tables.txt` | 9 tables (8 models + alembic_version) |
+| SN-014B | Live PG schema-vs-models check (`scripts/verify_schema`) | `2026-08-22_sn014b_verify_schema.txt` | exit 0, `schema_ok: 8 tables match` |
+| SN-014B | SN-008 scenario seed into live PG (`scripts/seed_content`) | `2026-08-22_sn014b_seed_content.txt` | exit 0, 20 upserts |
+| SN-014B | Release smoke + migration tests | `2026-08-22_sn014b_release_smoke.txt` | 5 passed |
+| SN-015 | Scenario catalog API (`tests/test_api_scenarios.py`) | `2026-08-23_sn015_test_api_scenarios.txt` | 2 passed |
+| SN-015 | Full backend suite (regenerated after SN-015) | `2026-08-23_full_suite.txt` | 121 passed |
+| all | (historical) Full suite after SN-014B | `2026-08-22_full_suite.txt` | 119 passed |
 
 ## Environment
 

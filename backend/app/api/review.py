@@ -24,6 +24,7 @@ from app.services.analytics import (
     EVENT_VOCAB_REVIEWED,
     record_event,
 )
+from app.services.content_service import ensure_user_vocabulary
 from app.services.gamification_service import GamificationService
 from app.services.quest_service import QuestService
 
@@ -40,9 +41,14 @@ async def get_due_cards(
 ) -> list[DueCardResponse]:
     """Return the authenticated user's due cards, oldest due first.
 
+    A user with no cards yet gets the SN-009 vocabulary pack lazily
+    materialized (idempotent), so new users always have due reviews.
     Due means `due_date <= now` and `state < 3` per the MVP spec —
     relearning cards are answered directly, not queued here.
     """
+    materialized = await ensure_user_vocabulary(session, current_user.id)
+    if materialized > 0:
+        await session.commit()  # Persist the lazy bootstrap before reading.
     result = await session.execute(
         select(VocabularyCard)
         .where(VocabularyCard.user_id == current_user.id)

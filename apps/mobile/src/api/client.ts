@@ -19,8 +19,14 @@ const processEnv: Record<string, string | undefined> | undefined = (
   globalThis as { process?: { env?: Record<string, string | undefined> } }
 ).process?.env;
 
-const API_BASE_URL: string =
+export const API_BASE_URL: string =
   processEnv?.EXPO_PUBLIC_API_URL ?? "http://localhost:8000";
+
+/** Authenticated voice WebSocket URL (backend mounts /ws outside /api). */
+export function voiceSocketUrl(sessionId: string, token: string): string {
+  const wsBase = API_BASE_URL.replace(/^http/, "ws");
+  return `${wsBase}/ws/voice/${sessionId}?token=${encodeURIComponent(token)}`;
+}
 
 let authToken: string | null = null;
 let unauthorizedHandler: (() => void) | null = null;
@@ -156,4 +162,133 @@ export function getApiErrorMessage(error: unknown): string {
     return "Can't reach Sonolo — check your connection and the server.";
   }
   return "Something went wrong. Please try again.";
+}
+
+// ---------------------------------------------------------------------
+// Scenarios (SN-015)
+// ---------------------------------------------------------------------
+
+export interface Scenario {
+  id: string;
+  title: string;
+  description: string;
+  category: string;
+  difficulty: number | null;
+}
+
+export async function fetchScenarios(): Promise<Scenario[]> {
+  const { data } = await api.get<{ scenarios: Scenario[] }>("/scenarios");
+  return data.scenarios;
+}
+
+// ---------------------------------------------------------------------
+// Session completion (SN-015 -> SN-014 contract)
+// ---------------------------------------------------------------------
+
+export interface TranscriptTurnInput {
+  role: "user" | "assistant" | "system";
+  text: string;
+}
+
+export interface EvaluationScoresInput {
+  fluency: number;
+  pronunciation: number;
+  grammar: number;
+  vocabulary: number;
+  coherence: number;
+  task_completion: number;
+}
+
+export interface EvaluationInput {
+  scores: EvaluationScoresInput;
+  overall_score: number;
+  insights: string[];
+  engine_version: string;
+}
+
+export interface SessionCompletePayload {
+  client_session_id: string;
+  scenario_id: string;
+  started_at: string;
+  ended_at: string;
+  duration_seconds: number;
+  transcript: TranscriptTurnInput[];
+  evaluation: EvaluationInput;
+  client_info?: Record<string, string>;
+}
+
+export interface SkillUpdate {
+  dimension: string;
+  previous_score: number | null;
+  session_score: number;
+  new_score: number;
+}
+
+export interface QuestResult {
+  code: string;
+  title: string;
+  description: string;
+  target_count: number;
+  progress_count: number;
+  reward_xp: number;
+  completed: boolean;
+}
+
+export interface BadgeResult {
+  code: string;
+  title: string;
+  description: string;
+  awarded_at: string;
+}
+
+export interface SessionCompleteResponse {
+  session_id: string;
+  idempotent_replayed: boolean;
+  xp_eligible: boolean;
+  xp: {
+    session_xp: number;
+    quest_xp: number;
+    total_xp: number;
+    xp_total: number;
+    xp_today: number;
+    level: number;
+    progress_to_next_level: number;
+  };
+  skills: SkillUpdate[];
+  streak_current: number;
+  streak_longest: number;
+  quests: QuestResult[];
+  newly_awarded_badges: BadgeResult[];
+  completed_at: string;
+}
+
+/**
+ * Deterministic placeholder evaluation until the real evaluator feeds
+ * the completion call — valid per the backend's Pydantic contract, so
+ * sessions persist and gamification is awarded.
+ */
+export function buildMockEvaluation(): EvaluationInput {
+  return {
+    scores: {
+      fluency: 75,
+      pronunciation: 75,
+      grammar: 75,
+      vocabulary: 75,
+      coherence: 75,
+      task_completion: 75,
+    },
+    overall_score: 75,
+    insights: [],
+    engine_version: "sn011-deterministic-v1",
+  };
+}
+
+export async function completeSession(
+  payload: SessionCompletePayload,
+): Promise<SessionCompleteResponse> {
+  const { data } = await api.post<SessionCompleteResponse>(
+    "/sessions/complete",
+    payload,
+  );
+  return data;
 }

@@ -7,7 +7,17 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.api import auth, gamification, health, quests, review, sessions, users, ws
+from app.api import (
+    auth,
+    gamification,
+    health,
+    quests,
+    review,
+    scenarios,
+    sessions,
+    users,
+    ws,
+)
 from app.core.config import Settings, get_settings
 from app.core.logging import configure_logging
 
@@ -49,6 +59,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     app.include_router(review.router, prefix=settings.api_prefix)
     app.include_router(quests.router, prefix=settings.api_prefix)
     app.include_router(gamification.router, prefix=settings.api_prefix)
+    app.include_router(scenarios.router, prefix=settings.api_prefix)
     app.include_router(ws.router)
     return app
 

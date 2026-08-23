@@ -1,20 +1,19 @@
-"""Mock voice pipeline orchestrator.
+"""Real voice pipeline orchestrator (SN-016).
 
-Simulates the STT -> LLM -> TTS flow with fixed sleeps so the WebSocket
-protocol, state machine, and client UX can be fully exercised before the
-real speech models are wired in. The public shape (`process_turn`) is
-the contract the real orchestrator will implement.
+One turn = STT over the accumulated audio -> LLM tutor reply ->
+TTS synthesis streamed back as a single complete-buffer frame. The
+provider bundle (real or Mock) is selected by settings at startup; the
+state machine wrapper (PROCESSING / SPEAKING / IDLE) is identical for
+both, so CI exercises the real flow with deterministic mocks.
 """
 
 import asyncio
-import base64
 import logging
 from collections.abc import AsyncIterator
-from uuid import UUID, uuid4
+from uuid import uuid4
 
+from app.services.ai import get_ai_bundle
 from app.voice.protocol import (
-    AiAudioChunkMessage,
-    AiAudioChunkPayload,
     AiTextChunkMessage,
     AiTextChunkPayload,
     ServerMessage,
@@ -23,68 +22,71 @@ from app.voice.protocol import (
     TurnCompleteMessage,
     TurnCompletePayload,
     VoiceState,
+    audio_payload,
 )
+from app.voice.session_manager import VoiceSession
 
 logger = logging.getLogger(__name__)
 
-MOCK_USER_TRANSCRIPT = "Could I get a medium double-double, please?"
-MOCK_AI_RESPONSE = (
-    "Great choice! Anything else for you today — maybe a maple dip?"
-)
-MOCK_TTS_CHUNKS = [
-    base64.b64encode(f"sonolo-tts-chunk-{index}".encode()).decode()
-    for index in range(3)
-]
-
-STT_DELAY_SECONDS = 0.2
-LLM_DELAY_SECONDS = 0.5
-TTS_DELAY_SECONDS = 0.3
+STT_DELAY_SECONDS = 0.05  # Keep the mock pipeline visually testable.
+LLM_DELAY_SECONDS = 0.05
 
 
 async def process_turn(
-    session_id: UUID,
-    audio_data: str | None = None,
-    *,
-    text: str | None = None,
+    session: VoiceSession, override_text: str | None = None
 ) -> AsyncIterator[ServerMessage]:
-    """Run one mock tutor turn, yielding server messages in order.
+    """Run one full tutor turn for the session, yielding server frames.
 
-    `audio_data` is the joined base64 chunks captured while listening;
-    `text` is the typed-input fallback. Exactly one should be provided —
-    the mock STT returns the typed text verbatim when given.
+    `override_text` (typed input path) bypasses STT: the text is used
+    directly as the user turn.
     """
+    bundle = get_ai_bundle()
     logger.debug(
-        "Processing turn for session %s (audio=%d chars, text=%s)",
-        session_id,
-        len(audio_data or ""),
-        text is not None,
+        "Processing turn for session %s (audio=%d bytes, text=%s, mocks=%s)",
+        session.session_id,
+        sum(len(chunk) for chunk in session.audio_bytes),
+        override_text is not None,
+        bundle.using_mocks,
     )
+
     yield StateChangeMessage(
         payload=StateChangePayload(state=VoiceState.PROCESSING)
     )
 
-    # STT: audio -> transcript
-    await asyncio.sleep(STT_DELAY_SECONDS)
-    transcript = text if text is not None else MOCK_USER_TRANSCRIPT
+    # STT: accumulated audio (or typed text) -> user transcript.
+    if override_text is not None:
+        user_text = override_text
+    else:
+        audio = b"".join(session.audio_bytes)
+        session.audio_bytes = []
+        session.audio_buffer = []
+        await asyncio.sleep(STT_DELAY_SECONDS)
+        user_text = await bundle.stt.transcribe(audio)
+    if user_text == "":
+        user_text = "…"  # Empty STT still advances the conversation.
+    session.history.append({"role": "user", "content": user_text})
     yield AiTextChunkMessage(
-        payload=AiTextChunkPayload(text=transcript, is_final=True)
+        payload=AiTextChunkPayload(text=user_text, is_final=True, role="user")
     )
 
-    # LLM: transcript -> tutor reply
+    # LLM: history + scenario prompt -> tutor reply.
     await asyncio.sleep(LLM_DELAY_SECONDS)
+    tutor_reply = await bundle.llm.generate_response(
+        session.system_prompt, session.history
+    )
+    session.history.append({"role": "assistant", "content": tutor_reply})
     yield AiTextChunkMessage(
-        payload=AiTextChunkPayload(text=MOCK_AI_RESPONSE, is_final=True)
+        payload=AiTextChunkPayload(
+            text=tutor_reply, is_final=True, role="assistant"
+        )
     )
 
-    # TTS: reply -> streamed audio
+    # TTS: reply -> one complete audio buffer frame.
     yield StateChangeMessage(
         payload=StateChangePayload(state=VoiceState.SPEAKING)
     )
-    await asyncio.sleep(TTS_DELAY_SECONDS)
-    for chunk in MOCK_TTS_CHUNKS:
-        yield AiAudioChunkMessage(payload=AiAudioChunkPayload(audio=chunk))
+    audio_bytes = await bundle.tts.synthesize(tutor_reply)
+    yield audio_payload(audio_bytes)
 
-    yield TurnCompleteMessage(
-        payload=TurnCompletePayload(turn_id=uuid4())
-    )
+    yield TurnCompleteMessage(payload=TurnCompletePayload(turn_id=uuid4()))
     yield StateChangeMessage(payload=StateChangePayload(state=VoiceState.IDLE))

@@ -351,11 +351,16 @@ async def test_badge_quest_day_complete_requires_all_quests(db_session) -> None:
 
 
 async def test_level_and_summary_reflect_state(db_session) -> None:
+    from app.core.time import get_local_date_for_user, utc_now
+
+    # Use the real current local date so the xp_today staleness check
+    # in get_summary sees today's bucket, not a hardcoded one.
+    today = get_local_date_for_user(utc_now(), "America/Toronto")
     user = await add_user(
         db_session,
         total_xp=250,
         xp_today=40,
-        xp_today_date=LOCAL_DATE,
+        xp_today_date=today,
         streak_count=3,
         longest_streak=5,
         last_activity_at=NOW,

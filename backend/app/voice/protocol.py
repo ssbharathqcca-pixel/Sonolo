@@ -5,11 +5,12 @@ parse them with `parse_client_message`. Server-to-client frames are built
 from the `*Message` models and serialized with `model_dump(mode="json")`.
 """
 
+import base64
 from enum import StrEnum
 from typing import Annotated, Literal, Union
 from uuid import UUID
 
-from pydantic import BaseModel, Field, TypeAdapter
+from pydantic import BaseModel, ConfigDict, Field, TypeAdapter
 
 
 class VoiceState(StrEnum):
@@ -100,6 +101,14 @@ class AiTextChunkPayload(BaseModel):
 
     text: str
     is_final: bool
+    role: Literal["user", "assistant"] | None = None
+
+
+class AiAudioPayloadPayload(BaseModel):
+    """A complete TTS audio buffer (base64 MP3), sent as one frame."""
+
+    audio: str
+    format: Literal["mp3", "wav"] = "mp3"
 
 
 class AiAudioChunkPayload(BaseModel):
@@ -150,6 +159,11 @@ class AiAudioChunkMessage(BaseModel):
     payload: AiAudioChunkPayload
 
 
+class AiAudioPayloadMessage(BaseModel):
+    type: Literal["audio_payload"] = "audio_payload"
+    payload: AiAudioPayloadPayload
+
+
 class TurnCompleteMessage(BaseModel):
     type: Literal["turn_complete"] = "turn_complete"
     payload: TurnCompletePayload
@@ -175,15 +189,57 @@ class StateChangeMessage(BaseModel):
     payload: StateChangePayload
 
 
+class SessionEvaluationPayload(BaseModel):
+    """SN-011 evaluation scores as delivered in the summary frame."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    scores: dict[str, float]
+    overall_score: float
+    insights: list[str] = Field(default_factory=list)
+    engine_version: str = "sn011-deterministic-v1"
+
+
+class SessionTranscriptTurn(BaseModel):
+    """One final transcript turn in the summary frame."""
+
+    role: Literal["user", "assistant"]
+    text: str
+
+
+class SessionSummaryPayload(BaseModel):
+    """Final evaluation + transcript sent when a session closes."""
+
+    evaluation: SessionEvaluationPayload
+    transcript: list[SessionTranscriptTurn]
+
+
+class SessionSummaryMessage(BaseModel):
+    type: Literal["session_summary"] = "session_summary"
+    payload: SessionSummaryPayload
+
+
 ServerMessage = Union[
     AiTextChunkMessage,
     AiAudioChunkMessage,
+    AiAudioPayloadMessage,
     TurnCompleteMessage,
     SessionCompleteMessage,
+    SessionSummaryMessage,
     HintMessage,
     ErrorMessage,
     StateChangeMessage,
 ]
+
+
+def audio_payload(audio_bytes: bytes, format_: str = "mp3") -> AiAudioPayloadMessage:
+    """Build a complete-buffer `audio_payload` server message."""
+    return AiAudioPayloadMessage(
+        payload=AiAudioPayloadPayload(
+            audio=base64.b64encode(audio_bytes).decode("ascii"),
+            format=format_,  # type: ignore[arg-type]
+        )
+    )
 
 
 def state_change(state: VoiceState) -> StateChangeMessage:

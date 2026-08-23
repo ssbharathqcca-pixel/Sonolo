@@ -1,30 +1,37 @@
 /**
- * Home — the daily driver: CanadaReady progress card, today's quest,
- * and the rest of the quest catalog.
+ * Home — the daily driver (SN-015): loads the published scenario
+ * catalog from the backend, features the selected scenario, and jumps
+ * straight into a live voice session.
  */
-import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+
+import { useEffect } from "react";
+import { ActivityIndicator, Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { useRouter } from "expo-router";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import {
   ChevronRight,
-  Clock,
-  Flame,
   Play,
+  RefreshCw,
   Sparkles,
-  Zap,
 } from "lucide-react-native";
+
 import { GlassCard } from "../../src/components/GlassCard";
-import {
-  DIFFICULTY_COLORS,
-  QUESTS,
-  type Quest,
-} from "../../src/data/quests";
+import { useAuthStore } from "../../src/stores/authStore";
+import { useScenarioStore } from "../../src/stores/scenarioStore";
 import { colors } from "../../src/theme/colors";
 
-const CANADA_READY_SCORE = 62;
-const CANADA_READY_LEVEL = "CEFR B1 · Conversational";
-const CANADA_READY_NEXT = "8 points to B1+";
-const STREAK_DAYS = 12;
+const DIFFICULTY_TONES: Record<string, { label: string; text: string; background: string }> = {
+  easy: { label: "Gentle", text: colors.success, background: colors.successSoft },
+  medium: { label: "Standard", text: colors.auroraTeal, background: colors.auroraTealSoft },
+  hard: { label: "Challenge", text: colors.warmCoral, background: colors.warmCoralSoft },
+};
+
+function difficultyTone(difficulty: number | null) {
+  if (difficulty === null || difficulty <= 2) {
+    return DIFFICULTY_TONES.easy;
+  }
+  return difficulty <= 3 ? DIFFICULTY_TONES.medium : DIFFICULTY_TONES.hard;
+}
 
 function greetingForNow(): string {
   const hour = new Date().getHours();
@@ -40,51 +47,23 @@ function greetingForNow(): string {
   return "Good evening";
 }
 
-function DifficultyBadge({ quest }: { quest: Quest }): JSX.Element {
-  const tone = DIFFICULTY_COLORS[quest.difficulty];
-  return (
-    <View style={[styles.difficultyBadge, { backgroundColor: tone.background }]}>
-      <Text style={[styles.difficultyText, { color: tone.text }]}>
-        {quest.difficulty}
-      </Text>
-    </View>
-  );
-}
-
-function QuestRow({ quest }: { quest: Quest }): JSX.Element {
-  const router = useRouter();
-  const Icon = quest.icon;
-  return (
-    <GlassCard style={styles.questRowCard}>
-      <Pressable
-        style={styles.questRowPressable}
-        accessibilityLabel={`Start quest: ${quest.title}`}
-        onPress={() =>
-          router.push({ pathname: "/session/[id]", params: { id: quest.id } })
-        }
-      >
-        <View style={styles.questRowIconWell}>
-          <Icon color={colors.auroraTeal} size={20} />
-        </View>
-        <View style={styles.questRowInfo}>
-          <Text style={styles.questRowTitle}>{quest.title}</Text>
-          <Text style={styles.questRowMeta}>
-            {quest.minutes} min · +{quest.xp} XP
-          </Text>
-        </View>
-        <DifficultyBadge quest={quest} />
-        <ChevronRight color={colors.textTertiary} size={18} />
-      </Pressable>
-    </GlassCard>
-  );
-}
-
 export default function HomeScreen(): JSX.Element {
   const router = useRouter();
   const insets = useSafeAreaInsets();
-  const todayQuest = QUESTS[0];
-  const moreQuests = QUESTS.slice(1);
-  const TodayIcon = todayQuest.icon;
+  const user = useAuthStore((state) => state.user);
+  const scenarios = useScenarioStore((state) => state.scenarios);
+  const selected = useScenarioStore((state) => state.selected);
+  const isLoading = useScenarioStore((state) => state.isLoading);
+  const error = useScenarioStore((state) => state.error);
+  const load = useScenarioStore((state) => state.load);
+
+  useEffect(() => {
+    if (scenarios.length === 0) {
+      void load();
+    }
+  }, [scenarios.length, load]);
+
+  const rest = scenarios.filter((scenario) => scenario.id !== selected?.id);
 
   return (
     <ScrollView
@@ -95,77 +74,90 @@ export default function HomeScreen(): JSX.Element {
       ]}
       showsVerticalScrollIndicator={false}
     >
-      <Text style={styles.greeting}>{greetingForNow()}</Text>
-      <Text style={styles.brandLine}>Ready to speak some English?</Text>
+      <Text style={styles.greeting}>{greetingForNow()}{user !== null ? `, ${user.name}` : ""}</Text>
+      <Text style={styles.brandLine}>Ready to sound like you belong?</Text>
 
-      <GlassCard style={styles.scoreCard}>
-        <View style={styles.scoreHeader}>
-          <View style={styles.scoreHeaderLeft}>
-            <Text style={styles.scoreKicker}>CanadaReady Score</Text>
-            <View style={styles.scoreRow}>
-              <Text style={styles.scoreValue}>{CANADA_READY_SCORE}</Text>
-              <Text style={styles.scoreMax}>/ 100</Text>
+      {isLoading && scenarios.length === 0 ? (
+        <View style={styles.loadingBlock}>
+          <ActivityIndicator color={colors.auroraTeal} size="large" />
+          <Text style={styles.loadingText}>Loading today's scenarios…</Text>
+        </View>
+      ) : null}
+
+      {error !== null ? (
+        <View style={styles.errorBlock}>
+          <Text style={styles.errorText}>{error}</Text>
+          <Pressable
+            style={styles.retryButton}
+            onPress={() => {
+              void load();
+            }}
+            accessibilityLabel="Retry loading scenarios"
+          >
+            <RefreshCw color={colors.auroraTeal} size={16} />
+            <Text style={styles.retryText}>Try again</Text>
+          </Pressable>
+        </View>
+      ) : null}
+
+      {selected !== null ? (
+        <GlassCard style={styles.todayCard}>
+          <View style={styles.todayHeader}>
+            <View style={styles.todayKickerWell}>
+              <Play color={colors.auroraTeal} size={22} />
+            </View>
+            <View style={[styles.difficultyBadge, { backgroundColor: difficultyTone(selected.difficulty).background }]}>
+              <Text style={[styles.difficultyText, { color: difficultyTone(selected.difficulty).text }]}>
+                {difficultyTone(selected.difficulty).label}
+              </Text>
             </View>
           </View>
-          <View style={styles.streakChip}>
-            <Flame color={colors.warmCoral} size={16} />
-            <Text style={styles.streakText}>{STREAK_DAYS}-day streak</Text>
-          </View>
-        </View>
-        <View style={styles.scoreTrack}>
-          <View
-            style={[styles.scoreFill, { width: `${CANADA_READY_SCORE}%` }]}
-          />
-        </View>
-        <Text style={styles.scoreLevel}>
-          {CANADA_READY_LEVEL} · {CANADA_READY_NEXT}
-        </Text>
-      </GlassCard>
+          <Text style={styles.todayKicker}>Today's scenario</Text>
+          <Text style={styles.todayTitle}>{selected.title}</Text>
+          <Text style={styles.todayScenario}>{selected.description}</Text>
+          <Pressable
+            style={styles.startButton}
+            accessibilityLabel={`Start session: ${selected.title}`}
+            onPress={() => {
+              router.push(`/session/${selected.id}`);
+            }}
+          >
+            <Play color="#FFFFFF" size={18} />
+            <Text style={styles.startButtonText}>Start session</Text>
+          </Pressable>
+        </GlassCard>
+      ) : null}
 
-      <GlassCard style={styles.todayCard}>
-        <View style={styles.todayHeader}>
-          <View style={styles.todayIconWell}>
-            <TodayIcon color={colors.auroraTeal} size={24} />
-          </View>
-          <DifficultyBadge quest={todayQuest} />
-        </View>
-        <Text style={styles.todayKicker}>Today's quest</Text>
-        <Text style={styles.todayTitle}>{todayQuest.title}</Text>
-        <Text style={styles.todayScenario}>{todayQuest.scenario}</Text>
-        <View style={styles.todayChips}>
-          <View style={styles.chip}>
-            <Clock color={colors.textSecondary} size={14} />
-            <Text style={styles.chipText}>{todayQuest.minutes} min</Text>
-          </View>
-          <View style={styles.chip}>
-            <Zap color={colors.warmCoral} size={14} />
-            <Text style={styles.chipText}>+{todayQuest.xp} XP</Text>
-          </View>
-        </View>
-        <Pressable
-          style={styles.startButton}
-          accessibilityLabel={`Start session: ${todayQuest.title}`}
-          onPress={() =>
-            router.push({
-              pathname: "/session/[id]",
-              params: { id: todayQuest.id },
-            })
-          }
-        >
-          <Play color="#FFFFFF" size={18} />
-          <Text style={styles.startButtonText}>Start session</Text>
-        </Pressable>
-      </GlassCard>
-
-      <Text style={styles.sectionTitle}>More quests</Text>
-      {moreQuests.map((quest) => (
-        <QuestRow key={quest.id} quest={quest} />
+      {rest.length > 0 ? (
+        <Text style={styles.sectionTitle}>More scenarios</Text>
+      ) : null}
+      {rest.map((scenario) => (
+        <GlassCard key={scenario.id} style={styles.rowCard}>
+          <Pressable
+            style={styles.rowPressable}
+            accessibilityLabel={`Start scenario: ${scenario.title}`}
+            onPress={() => {
+              router.push(`/session/${scenario.id}`);
+            }}
+          >
+            <View style={styles.rowInfo}>
+              <Text style={styles.rowTitle}>{scenario.title}</Text>
+              <Text style={styles.rowMeta}>{scenario.category}</Text>
+            </View>
+            <View style={[styles.difficultyBadge, { backgroundColor: difficultyTone(scenario.difficulty).background }]}>
+              <Text style={[styles.difficultyText, { color: difficultyTone(scenario.difficulty).text }]}>
+                {difficultyTone(scenario.difficulty).label}
+              </Text>
+            </View>
+            <ChevronRight color={colors.textTertiary} size={18} />
+          </Pressable>
+        </GlassCard>
       ))}
 
       <View style={styles.footerNote}>
         <Sparkles color={colors.auroraTeal} size={16} />
         <Text style={styles.footerNoteText}>
-          Two more sessions this week and your CanadaReady score levels up.
+          Every session feeds your streak, quests, and CanadaReady scores.
         </Text>
       </View>
     </ScrollView>
@@ -192,65 +184,38 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     marginBottom: 4,
   },
-  scoreCard: {
-    gap: 14,
+  loadingBlock: {
+    alignItems: "center",
+    gap: 10,
+    paddingVertical: 24,
   },
-  scoreHeader: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "flex-start",
-  },
-  scoreHeaderLeft: {
-    gap: 6,
-  },
-  scoreKicker: {
+  loadingText: {
     color: colors.textSecondary,
+    fontSize: 14,
+  },
+  errorBlock: {
+    alignItems: "center",
+    gap: 10,
+    paddingVertical: 16,
+  },
+  errorText: {
+    color: colors.error,
     fontSize: 13,
-    fontWeight: "600",
+    textAlign: "center",
   },
-  scoreRow: {
-    flexDirection: "row",
-    alignItems: "baseline",
-    gap: 6,
-  },
-  scoreValue: {
-    color: colors.textPrimary,
-    fontSize: 44,
-    fontWeight: "800",
-  },
-  scoreMax: {
-    color: colors.textTertiary,
-    fontSize: 15,
-    fontWeight: "600",
-  },
-  streakChip: {
+  retryButton: {
     flexDirection: "row",
     alignItems: "center",
-    gap: 6,
-    backgroundColor: colors.warmCoralSoft,
+    gap: 8,
     borderRadius: 999,
-    paddingHorizontal: 12,
-    paddingVertical: 7,
-  },
-  streakText: {
-    color: colors.warmCoral,
-    fontSize: 12,
-    fontWeight: "700",
-  },
-  scoreTrack: {
-    height: 10,
-    borderRadius: 999,
+    paddingHorizontal: 14,
+    paddingVertical: 8,
     backgroundColor: colors.nightSkyDeep,
-    overflow: "hidden",
   },
-  scoreFill: {
-    height: "100%",
-    borderRadius: 999,
-    backgroundColor: colors.auroraTeal,
-  },
-  scoreLevel: {
-    color: colors.textSecondary,
+  retryText: {
+    color: colors.auroraTeal,
     fontSize: 13,
+    fontWeight: "700",
   },
   todayCard: {
     gap: 10,
@@ -260,7 +225,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
   },
-  todayIconWell: {
+  todayKickerWell: {
     width: 48,
     height: 48,
     borderRadius: 16,
@@ -285,24 +250,6 @@ const styles = StyleSheet.create({
     fontSize: 14,
     lineHeight: 20,
   },
-  todayChips: {
-    flexDirection: "row",
-    gap: 10,
-  },
-  chip: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 6,
-    borderRadius: 999,
-    paddingHorizontal: 12,
-    paddingVertical: 6,
-    backgroundColor: colors.nightSkyDeep,
-  },
-  chipText: {
-    color: colors.textSecondary,
-    fontSize: 12,
-    fontWeight: "600",
-  },
   startButton: {
     flexDirection: "row",
     alignItems: "center",
@@ -324,34 +271,27 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     marginTop: 8,
   },
-  questRowCard: {
+  rowCard: {
     padding: 14,
   },
-  questRowPressable: {
+  rowPressable: {
     flexDirection: "row",
     alignItems: "center",
     gap: 12,
   },
-  questRowIconWell: {
-    width: 40,
-    height: 40,
-    borderRadius: 14,
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: colors.auroraTealSoft,
-  },
-  questRowInfo: {
+  rowInfo: {
     flex: 1,
     gap: 2,
   },
-  questRowTitle: {
+  rowTitle: {
     color: colors.textPrimary,
     fontSize: 15,
     fontWeight: "600",
   },
-  questRowMeta: {
+  rowMeta: {
     color: colors.textTertiary,
     fontSize: 12,
+    textTransform: "capitalize",
   },
   difficultyBadge: {
     borderRadius: 999,

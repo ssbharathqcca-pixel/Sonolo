@@ -1,50 +1,45 @@
 /**
- * Post-session feedback — the report card.
- *
- * Renders the six speaking-readiness dimensions as a hexagon radar chart
- * (mock scores until the evaluation service lands), plus the wins and
- * growth edges from the session.
+ * Post-session feedback (SN-015): renders the real gamification result
+ * from /sessions/complete — XP, streak, badges, the 6-dimension skill
+ * radar, and daily quest progress. Falls back to sample data when the
+ * screen is opened without a stored result (deep link / dev).
  */
+
 import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { Check, ChevronRight, Sparkles, Sprout, Trophy } from "lucide-react-native";
+import { Check, ChevronRight, Flame, Sparkles, Trophy } from "lucide-react-native";
 import Svg, { Circle, Line, Polygon, Text as SvgText } from "react-native-svg";
+
 import { GlassCard } from "../../src/components/GlassCard";
-import { FALLBACK_QUEST, getQuestById } from "../../src/data/quests";
+import { useScenarioStore } from "../../src/stores/scenarioStore";
+import { useSessionResultStore } from "../../src/stores/sessionResultStore";
 import { colors } from "../../src/theme/colors";
 
-interface SkillDimension {
-  key: string;
-  label: string;
-  score: number;
-}
-
-const SKILL_DIMENSIONS: SkillDimension[] = [
-  { key: "fluency", label: "Fluency", score: 78 },
-  { key: "pronunciation", label: "Pronounce", score: 82 },
-  { key: "grammar", label: "Grammar", score: 64 },
-  { key: "vocabulary", label: "Vocab", score: 71 },
-  { key: "coherence", label: "Coherence", score: 74 },
-  { key: "taskCompletion", label: "Task Comp.", score: 88 },
-];
-
-const WINS = [
-  { id: "w1", text: "Used \u201Cdouble-double\u201D like a regular." },
-  { id: "w2", text: "Consistent, polite modals: \u201Ccould I get\u2026\u201D" },
-  { id: "w3", text: "Clear, relaxed /r/ in \u201Corder\u201D." },
-];
-
-const GROWTH = [
-  {
-    id: "g1",
-    text: "Swap \u201Cgood\u201D for \u201Cfantastic\u201D or \u201Csolid\u201D to sound more natural.",
-  },
-  {
-    id: "g2",
-    text: "Add question tags (\u201C\u2026cold today, eh?\u201D) to warm up small talk.",
-  },
-];
+const SAMPLE_SCORES: Record<string, number> = {
+  fluency: 78,
+  pronunciation: 82,
+  grammar: 64,
+  vocabulary: 71,
+  coherence: 74,
+  task_completion: 88,
+};
+const DIMENSION_LABELS: Record<string, string> = {
+  fluency: "Fluency",
+  pronunciation: "Pronounce",
+  grammar: "Grammar",
+  vocabulary: "Vocab",
+  coherence: "Coherence",
+  task_completion: "Task Comp.",
+};
+const DIMENSION_KEYS = [
+  "fluency",
+  "pronunciation",
+  "grammar",
+  "vocabulary",
+  "coherence",
+  "task_completion",
+] as const;
 
 const CHART_SIZE = 300;
 const CHART_CENTER = CHART_SIZE / 2;
@@ -60,20 +55,18 @@ function vertex(index: number, radius: number): { x: number; y: number } {
 }
 
 function ringPoints(radius: number): string {
-  return SKILL_DIMENSIONS.map((_, index) => {
+  return DIMENSION_KEYS.map((_, index) => {
     const point = vertex(index, radius);
     return `${point.x.toFixed(1)},${point.y.toFixed(1)}`;
   }).join(" ");
 }
 
-function scorePolygonPoints(): string {
-  return SKILL_DIMENSIONS.map((dimension, index) => {
-    const point = vertex(index, CHART_RADIUS * (dimension.score / 100));
+function SkillRadar({ scores }: { scores: Record<string, number> }): JSX.Element {
+  const scorePoints = DIMENSION_KEYS.map((key, index) => {
+    const point = vertex(index, (CHART_RADIUS * (scores[key] ?? 0)) / 100);
     return `${point.x.toFixed(1)},${point.y.toFixed(1)}`;
   }).join(" ");
-}
 
-function SkillRadar(): JSX.Element {
   return (
     <Svg
       viewBox={`0 0 ${CHART_SIZE} ${CHART_SIZE}`}
@@ -89,11 +82,11 @@ function SkillRadar(): JSX.Element {
           strokeWidth={1}
         />
       ))}
-      {SKILL_DIMENSIONS.map((dimension, index) => {
+      {DIMENSION_KEYS.map((key, index) => {
         const point = vertex(index, CHART_RADIUS);
         return (
           <Line
-            key={dimension.key}
+            key={key}
             x1={CHART_CENTER}
             y1={CHART_CENTER}
             x2={point.x}
@@ -104,28 +97,22 @@ function SkillRadar(): JSX.Element {
         );
       })}
       <Polygon
-        points={scorePolygonPoints()}
+        points={scorePoints}
         fill={colors.auroraTealSoft}
         stroke={colors.auroraTeal}
         strokeWidth={2}
       />
-      {SKILL_DIMENSIONS.map((dimension, index) => {
-        const point = vertex(index, CHART_RADIUS * (dimension.score / 100));
+      {DIMENSION_KEYS.map((key, index) => {
+        const point = vertex(index, (CHART_RADIUS * (scores[key] ?? 0)) / 100);
         return (
-          <Circle
-            key={dimension.key}
-            cx={point.x}
-            cy={point.y}
-            r={4}
-            fill={colors.auroraTeal}
-          />
+          <Circle key={key} cx={point.x} cy={point.y} r={4} fill={colors.auroraTeal} />
         );
       })}
-      {SKILL_DIMENSIONS.map((dimension, index) => {
+      {DIMENSION_KEYS.map((key, index) => {
         const point = vertex(index, LABEL_RADIUS);
         return (
           <SvgText
-            key={dimension.key}
+            key={key}
             x={point.x}
             y={point.y}
             fill={colors.textSecondary}
@@ -133,7 +120,7 @@ function SkillRadar(): JSX.Element {
             fontWeight="600"
             textAnchor="middle"
           >
-            {dimension.label}
+            {DIMENSION_LABELS[key]}
           </SvgText>
         );
       })}
@@ -145,11 +132,18 @@ export default function FeedbackScreen(): JSX.Element {
   const router = useRouter();
   const insets = useSafeAreaInsets();
   const params = useLocalSearchParams<{ id?: string }>();
-  const quest = getQuestById(params.id) ?? FALLBACK_QUEST;
+  const result = useSessionResultStore((state) => state.lastResult);
+  const selected = useScenarioStore((state) => state.selected);
 
-  const overallScore = Math.round(
-    SKILL_DIMENSIONS.reduce((sum, dimension) => sum + dimension.score, 0) /
-      SKILL_DIMENSIONS.length,
+  const scores: Record<string, number> =
+    result !== null
+      ? Object.fromEntries(
+          result.skills.map((skill) => [skill.dimension, skill.new_score]),
+        )
+      : SAMPLE_SCORES;
+  const overall = Math.round(
+    DIMENSION_KEYS.reduce((sum, key) => sum + (scores[key] ?? 0), 0) /
+      DIMENSION_KEYS.length,
   );
 
   return (
@@ -161,68 +155,102 @@ export default function FeedbackScreen(): JSX.Element {
       ]}
       showsVerticalScrollIndicator={false}
     >
-      <Text style={styles.kicker}>Session complete</Text>
-      <Text style={styles.heading}>{quest.title}</Text>
+      <Text style={styles.kicker}>
+        {result !== null ? "Session complete" : "Sample report"}
+      </Text>
+      <Text style={styles.heading}>
+        {selected?.title ?? "Voice session"}
+      </Text>
+      {params.id !== undefined && result !== null ? (
+        <Text style={styles.sessionId}>#{params.id.slice(0, 8)}</Text>
+      ) : null}
 
       <View style={styles.summaryRow}>
-        <GlassCard style={styles.overallCard}>
-          <Text style={styles.overallScore}>{overallScore}</Text>
-          <Text style={styles.overallLabel}>Overall score</Text>
-        </GlassCard>
-        <GlassCard style={styles.xpCard}>
+        <GlassCard style={styles.summaryCard}>
           <Sparkles color={colors.warmCoral} size={20} />
-          <Text style={styles.xpValue}>+{quest.xp} XP</Text>
-          <Text style={styles.xpLabel}>earned</Text>
+          <Text style={styles.xpValue}>
+            +{result?.xp.total_xp ?? 0} XP
+          </Text>
+          <Text style={styles.summaryLabel}>
+            {result !== null
+              ? `${result.xp.session_xp} session + ${result.xp.quest_xp} quest`
+              : "Finish a session to earn"}
+          </Text>
+        </GlassCard>
+        <GlassCard style={styles.summaryCard}>
+          <Flame color={colors.warmCoral} size={20} />
+          <Text style={styles.streakValue}>{result?.streak_current ?? 0}</Text>
+          <Text style={styles.summaryLabel}>
+            day streak (best {result?.streak_longest ?? 0})
+          </Text>
         </GlassCard>
       </View>
 
       <GlassCard style={styles.radarCard}>
         <Text style={styles.cardTitle}>Speaking readiness</Text>
-        <SkillRadar />
+        <SkillRadar scores={scores} />
         <View style={styles.dimensionList}>
-          {SKILL_DIMENSIONS.map((dimension) => (
-            <View key={dimension.key} style={styles.dimensionRow}>
-              <Text style={styles.dimensionLabel}>{dimension.label}</Text>
+          {DIMENSION_KEYS.map((key) => (
+            <View key={key} style={styles.dimensionRow}>
+              <Text style={styles.dimensionLabel}>{DIMENSION_LABELS[key]}</Text>
               <View style={styles.dimensionTrack}>
                 <View
-                  style={[styles.dimensionFill, { width: `${dimension.score}%` }]}
+                  style={[styles.dimensionFill, { width: `${scores[key] ?? 0}%` }]}
                 />
               </View>
-              <Text style={styles.dimensionScore}>{dimension.score}</Text>
+              <Text style={styles.dimensionScore}>{Math.round(scores[key] ?? 0)}</Text>
             </View>
           ))}
         </View>
+        <Text style={styles.overallLine}>
+          Overall {overall} · Level {result?.xp.level ?? 1} ·{" "}
+          {result?.xp.progress_to_next_level ?? 0}/100 to next level
+        </Text>
       </GlassCard>
 
-      <GlassCard style={styles.listCard}>
-        <View style={styles.listHeader}>
-          <Trophy color={colors.warning} size={18} />
-          <Text style={styles.listTitle}>Wins</Text>
-        </View>
-        {WINS.map((win) => (
-          <View key={win.id} style={styles.listRow}>
-            <Check color={colors.success} size={16} />
-            <Text style={styles.listText}>{win.text}</Text>
-          </View>
-        ))}
-      </GlassCard>
+      {result !== null && result.quests.length > 0 ? (
+        <GlassCard style={styles.listCard}>
+          <Text style={styles.cardTitle}>Today's quests</Text>
+          {result.quests.map((quest) => (
+            <View key={quest.code} style={styles.questRow}>
+              <Check
+                color={quest.completed ? colors.success : colors.textTertiary}
+                size={16}
+              />
+              <View style={styles.questInfo}>
+                <Text style={styles.questTitle}>{quest.title}</Text>
+                <Text style={styles.questMeta}>
+                  {quest.progress_count}/{quest.target_count} · +{quest.reward_xp} XP
+                </Text>
+              </View>
+            </View>
+          ))}
+        </GlassCard>
+      ) : null}
 
-      <GlassCard style={styles.listCard}>
-        <View style={styles.listHeader}>
-          <Sprout color={colors.success} size={18} />
-          <Text style={styles.listTitle}>Growth edges</Text>
-        </View>
-        {GROWTH.map((edge) => (
-          <View key={edge.id} style={styles.listRow}>
-            <ChevronRight color={colors.auroraTeal} size={16} />
-            <Text style={styles.listText}>{edge.text}</Text>
+      {result !== null && result.newly_awarded_badges.length > 0 ? (
+        <GlassCard style={styles.listCard}>
+          <View style={styles.listHeader}>
+            <Trophy color={colors.warning} size={18} />
+            <Text style={styles.cardTitle}>New badges</Text>
           </View>
-        ))}
-      </GlassCard>
+          {result.newly_awarded_badges.map((badge) => (
+            <View key={badge.code} style={styles.questRow}>
+              <ChevronRight color={colors.auroraTeal} size={16} />
+              <View style={styles.questInfo}>
+                <Text style={styles.questTitle}>{badge.title}</Text>
+                <Text style={styles.questMeta}>{badge.description}</Text>
+              </View>
+            </View>
+          ))}
+        </GlassCard>
+      ) : null}
 
       <Pressable
         style={styles.doneButton}
-        onPress={() => router.navigate("/")}
+        onPress={() => {
+          router.navigate("/");
+        }}
         accessibilityLabel="Back to home"
       >
         <Text style={styles.doneButtonText}>Done</Text>
@@ -253,26 +281,15 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     marginBottom: 4,
   },
+  sessionId: {
+    color: colors.textTertiary,
+    fontSize: 12,
+  },
   summaryRow: {
     flexDirection: "row",
     gap: 16,
   },
-  overallCard: {
-    flex: 1,
-    alignItems: "center",
-    gap: 4,
-  },
-  overallScore: {
-    color: colors.textPrimary,
-    fontSize: 40,
-    fontWeight: "800",
-  },
-  overallLabel: {
-    color: colors.textSecondary,
-    fontSize: 12,
-    fontWeight: "600",
-  },
-  xpCard: {
+  summaryCard: {
     flex: 1,
     alignItems: "center",
     gap: 4,
@@ -282,10 +299,16 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: "800",
   },
-  xpLabel: {
+  streakValue: {
+    color: colors.textPrimary,
+    fontSize: 24,
+    fontWeight: "800",
+  },
+  summaryLabel: {
     color: colors.textSecondary,
     fontSize: 12,
     fontWeight: "600",
+    textAlign: "center",
   },
   radarCard: {
     gap: 8,
@@ -334,6 +357,11 @@ const styles = StyleSheet.create({
     width: 26,
     textAlign: "right",
   },
+  overallLine: {
+    color: colors.textSecondary,
+    fontSize: 13,
+    textAlign: "center",
+  },
   listCard: {
     gap: 12,
   },
@@ -342,21 +370,23 @@ const styles = StyleSheet.create({
     alignItems: "center",
     gap: 8,
   },
-  listTitle: {
-    color: colors.textPrimary,
-    fontSize: 18,
-    fontWeight: "700",
-  },
-  listRow: {
+  questRow: {
     flexDirection: "row",
     alignItems: "flex-start",
     gap: 10,
   },
-  listText: {
+  questInfo: {
     flex: 1,
-    color: colors.textSecondary,
-    fontSize: 14,
-    lineHeight: 20,
+    gap: 2,
+  },
+  questTitle: {
+    color: colors.textPrimary,
+    fontSize: 15,
+    fontWeight: "600",
+  },
+  questMeta: {
+    color: colors.textTertiary,
+    fontSize: 12,
   },
   doneButton: {
     backgroundColor: colors.auroraTeal,
