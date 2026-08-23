@@ -1,7 +1,7 @@
 # Sonolo Makefile
 #
-# Targets are placeholders until app scaffolding lands (see docs/TASK_BOARD.md).
-# Each target prints what it will do once the corresponding workstream exists.
+# backend and mobile run locally. setup, web, and test are placeholders
+# until their scaffolding lands (see docs/TASK_BOARD.md).
 
 .PHONY: help setup backend mobile web test
 
@@ -11,14 +11,14 @@ help: ## List available targets
 setup: ## Install toolchains and dependencies for all workstreams
 	@echo "setup: placeholder - no dependencies yet (see docs/TASK_BOARD.md)"
 
-backend: ## Run the FastAPI backend locally
-	@echo "backend: placeholder - no backend code yet (see docs/TASK_BOARD.md)"
+backend: ## Run the FastAPI backend locally (auto-reload on :8000)
+	cd backend && uvicorn app.main:app --reload
 
-mobile: ## Run the Expo mobile app
-	@echo "mobile: placeholder - no mobile app yet (see docs/TASK_BOARD.md)"
+mobile: ## Run the Expo mobile app (Metro dev server)
+	cd apps/mobile && npx expo start
 
 web: ## Run the Next.js web app
 	@echo "web: placeholder - no web app yet (see docs/TASK_BOARD.md)"
 
-test: ## Run all tests
-	@echo "test: placeholder - no tests yet (see docs/TASK_BOARD.md)"
+test: ## Run all tests (backend tests: cd backend && pytest)
+	@echo "test: unified target pending - backend tests run with pytest from backend/"

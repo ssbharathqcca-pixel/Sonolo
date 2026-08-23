@@ -1,0 +1,1902 @@
+[
+  {
+    "id": "vocab-001",
+    "word": "lease",
+    "phonetic": "/liːs/",
+    "translations": {
+      "pa": "ਕਿਰਾਇਆ-ਸਮਝੌਤਾ",
+      "hi": "किराया-समझौता",
+      "zh": "租约",
+      "es": "contrato de arrendamiento"
+    },
+    "level": "bloom",
+    "category": "housing",
+    "example_sentences": [
+      "I signed a one-year lease for my apartment.",
+      "Before you sign the lease, read the part about breaking it early — some buildings in Toronto charge two months' rent."
+    ],
+    "confusion_pairs": ["rent", "contract"],
+    "fsrs_params": {"difficulty": 0.62, "stability": 2.2}
+  },
+  {
+    "id": "vocab-002",
+    "word": "tenant",
+    "phonetic": "/ˈtɛnənt/",
+    "translations": {
+      "pa": "ਕਿਰਾਏਦਾਰ",
+      "hi": "किरायेदार",
+      "zh": "租户",
+      "es": "inquilino"
+    },
+    "level": "bloom",
+    "category": "housing",
+    "example_sentences": [
+      "The tenant on the fourth floor pays rent on the first day of the month.",
+      "As a tenant, you have the right to ask for repairs in writing, and your landlord must answer within a reasonable time."
+    ],
+    "confusion_pairs": ["tenet", "renter"],
+    "fsrs_params": {"difficulty": 0.6, "stability": 2.4}
+  },
+  {
+    "id": "vocab-003",
+    "word": "landlord",
+    "phonetic": "/ˈlændlɔːrd/",
+    "translations": {
+      "pa": "ਘਰ ਮਾਲਕ",
+      "hi": "मकान मालिक",
+      "zh": "房东",
+      "es": "casero"
+    },
+    "level": "sprout",
+    "category": "housing",
+    "example_sentences": [
+      "My landlord fixed the stove on Monday.",
+      "The landlord said the rent includes water but not hydro, so ask before you sign anything."
+    ],
+    "confusion_pairs": ["landlady", "owner"],
+    "fsrs_params": {"difficulty": 0.35, "stability": 3.8}
+  },
+  {
+    "id": "vocab-004",
+    "word": "utilities",
+    "phonetic": "/juːˈtɪlətiz/",
+    "translations": {
+      "pa": "ਬਿਜਲੀ-ਪਾਣੀ ਆਦਿ ਸਹੂਲਤਾਂ",
+      "hi": "बिजली-पानी आदि सुविधाएँ",
+      "zh": "水电等公共事业费",
+      "es": "servicios públicos"
+    },
+    "level": "branch",
+    "category": "housing",
+    "example_sentences": [
+      "Utilities are not included in the rent.",
+      "When you move in, you usually set up utilities like hydro and gas in your own name."
+    ],
+    "confusion_pairs": ["facilities", "bills"],
+    "fsrs_params": {"difficulty": 0.58, "stability": 2.6}
+  },
+  {
+    "id": "vocab-005",
+    "word": "hydro",
+    "phonetic": "/ˈhaɪdroʊ/",
+    "translations": {
+      "pa": "ਬਿਜਲੀ (ਬਿਜਲੀ ਦਾ ਬਿੱਲ)",
+      "hi": "बिजली (बिजली का बिल)",
+      "zh": "电费（加拿大用法）",
+      "es": "electricidad (factura de luz)"
+    },
+    "level": "branch",
+    "category": "housing",
+    "example_sentences": [
+      "The hydro bill was high last month because it was cold.",
+      "In Ontario, many people just say hydro when they mean their electricity bill — it comes from Niagara Falls power."
+    ],
+    "confusion_pairs": ["water", "electricity"],
+    "fsrs_params": {"difficulty": 0.68, "stability": 1.8}
+  },
+  {
+    "id": "vocab-006",
+    "word": "deposit",
+    "phonetic": "/dɪˈpɑːzɪt/",
+    "translations": {
+      "pa": "ਜਮ੍ਹਾਂ ਕੀਤੀ ਰਕਮ (ਸਿਕਿਊਰਿਟੀ)",
+      "hi": "सुरक्षा राशि (जमा)",
+      "zh": "押金",
+      "es": "depósito (fianza)"
+    },
+    "level": "bloom",
+    "category": "housing",
+    "example_sentences": [
+      "I paid a deposit before I got the keys.",
+      "The landlord kept part of the deposit because of the broken window, which is allowed if he explains it in writing."
+    ],
+    "confusion_pairs": ["down payment", "withdrawal"],
+    "fsrs_params": {"difficulty": 0.6, "stability": 2.3}
+  },
+  {
+    "id": "vocab-007",
+    "word": "furnished",
+    "phonetic": "/ˈfɜːrnɪʃt/",
+    "translations": {
+      "pa": "ਫਰਨੀਚਰ ਸਮੇਤ",
+      "hi": "फर्नीचर सहित",
+      "zh": "带家具的",
+      "es": "amueblado"
+    },
+    "level": "sprout",
+    "category": "housing",
+    "example_sentences": [
+      "The apartment is furnished — it has a bed, a sofa, and a table.",
+      "Furnished places cost more per month, but they save you from buying a couch and appliances in your first winter here."
+    ],
+    "confusion_pairs": ["furniture", "equipped"],
+    "fsrs_params": {"difficulty": 0.42, "stability": 3.2}
+  },
+  {
+    "id": "vocab-008",
+    "word": "maintenance",
+    "phonetic": "/ˈmeɪntənəns/",
+    "translations": {
+      "pa": "ਮੁਰੰਮਤ ਤੇ ਸੰਭਾਲ",
+      "hi": "रखरखाव",
+      "zh": "维修保养",
+      "es": "mantenimiento"
+    },
+    "level": "branch",
+    "category": "housing",
+    "example_sentences": [
+      "Call maintenance if the sink is blocked.",
+      "The building sends a maintenance notice a week before they test the heating system every fall."
+    ],
+    "confusion_pairs": ["renovation", "repair"],
+    "fsrs_params": {"difficulty": 0.55, "stability": 2.7}
+  },
+  {
+    "id": "vocab-009",
+    "word": "superintendent",
+    "phonetic": "/ˌsuːpərɪnˈtɛndənt/",
+    "translations": {
+      "pa": "ਇਮਾਰਤ ਦਾ ਪ੍ਰਬੰਧਕ",
+      "hi": "भवन प्रबंधक",
+      "zh": "公寓管理员",
+      "es": "administrador del edificio"
+    },
+    "level": "canopy",
+    "category": "housing",
+    "example_sentences": [
+      "The superintendent lives in the basement apartment.",
+      "Neighbours just call him the super — he handles lockouts, garbage room problems, and small repairs."
+    ],
+    "confusion_pairs": ["supervisor", "caretaker"],
+    "fsrs_params": {"difficulty": 0.78, "stability": 1.5}
+  },
+  {
+    "id": "vocab-010",
+    "word": "rent",
+    "phonetic": "/rɛnt/",
+    "translations": {
+      "pa": "ਕਿਰਾਇਆ",
+      "hi": "किराया",
+      "zh": "房租",
+      "es": "alquiler"
+    },
+    "level": "seed",
+    "category": "housing",
+    "example_sentences": [
+      "My rent is due on the first of the month.",
+      "She sends her rent by e-transfer every month and keeps the confirmation email as proof."
+    ],
+    "confusion_pairs": ["lease", "rate"],
+    "fsrs_params": {"difficulty": 0.2, "stability": 4.8}
+  },
+  {
+    "id": "vocab-011",
+    "word": "sublet",
+    "phonetic": "/ˈsʌblɛt/",
+    "translations": {
+      "pa": "ਸਬ-ਕਿਰਾਇਆ (ਅੱਗੇ ਕਿਰਾਏ 'ਤੇ ਦੇਣਾ)",
+      "hi": "उप-किराया (आगे किराए पर देना)",
+      "zh": "转租",
+      "es": "subalquiler"
+    },
+    "level": "canopy",
+    "category": "housing",
+    "example_sentences": [
+      "She wants to sublet her room for the summer.",
+      "Most leases say you can only sublet with the landlord's written permission, so check your contract first."
+    ],
+    "confusion_pairs": ["lease", "rent out"],
+    "fsrs_params": {"difficulty": 0.8, "stability": 1.4}
+  },
+  {
+    "id": "vocab-012",
+    "word": "appliance",
+    "phonetic": "/əˈplaɪəns/",
+    "translations": {
+      "pa": "ਘਰੇਲੂ ਮਸ਼ੀਨਾਂ",
+      "hi": "घरेलू उपकरण",
+      "zh": "家用电器",
+      "es": "electrodoméstico"
+    },
+    "level": "branch",
+    "category": "housing",
+    "example_sentences": [
+      "The kitchen has all the appliances: a fridge, a stove, and a dishwasher.",
+      "Stores like Canadian Tire run appliance sales before Thanksgiving, which is when many families replace their old washers."
+    ],
+    "confusion_pairs": ["equipment", "machine"],
+    "fsrs_params": {"difficulty": 0.52, "stability": 2.8}
+  },
+  {
+    "id": "vocab-013",
+    "word": "thermostat",
+    "phonetic": "/ˈθɜːrməstæt/",
+    "translations": {
+      "pa": "ਥਰਮੋਸਟੈਟ (ਤਾਪਮਾਨ ਕੰਟਰੋਲ)",
+      "hi": "थर्मोस्टैट (तापमान नियंत्रक)",
+      "zh": "恒温器",
+      "es": "termostato"
+    },
+    "level": "bloom",
+    "category": "housing",
+    "example_sentences": [
+      "Turn the thermostat up if the apartment is cold.",
+      "Keep the thermostat around twenty degrees — cranking it higher wastes hydro and dries out the air."
+    ],
+    "confusion_pairs": ["thermometer", "radiator"],
+    "fsrs_params": {"difficulty": 0.72, "stability": 1.9}
+  },
+  {
+    "id": "vocab-014",
+    "word": "storage locker",
+    "phonetic": "/ˈstɔːrɪdʒ ˌlɑːkər/",
+    "translations": {
+      "pa": "ਸਟੋਰੇਜ਼ ਲਾਕਰ",
+      "hi": "स्टोरेज लॉकर",
+      "zh": "储物柜",
+      "es": "casillero de almacenamiento"
+    },
+    "level": "branch",
+    "category": "housing",
+    "example_sentences": [
+      "I keep my winter tires in the storage locker downstairs.",
+      "There is usually a waitlist for the storage lockers in this building, so put your name down early."
+    ],
+    "confusion_pairs": ["safe", "closet"],
+    "fsrs_params": {"difficulty": 0.55, "stability": 2.5}
+  },
+  {
+    "id": "vocab-015",
+    "word": "roommate",
+    "phonetic": "/ˈruːmmeɪt/",
+    "translations": {
+      "pa": "ਕਮਰੇ ਦਾ ਸਾਥੀ",
+      "hi": "कमरे का साथी",
+      "zh": "室友",
+      "es": "compañero de cuarto"
+    },
+    "level": "seed",
+    "category": "housing",
+    "example_sentences": [
+      "My roommate and I share the grocery bill.",
+      "Having a roommate almost halves your rent in Vancouver, but agree on house rules before you move in."
+    ],
+    "confusion_pairs": ["flatmate", "housemate"],
+    "fsrs_params": {"difficulty": 0.25, "stability": 4.5}
+  },
+  {
+    "id": "vocab-016",
+    "word": "prescription",
+    "phonetic": "/prɪˈskrɪpʃən/",
+    "translations": {
+      "pa": "ਦਵਾਈ ਦੀ ਪਰਚੀ",
+      "hi": "दवा का पर्चा",
+      "zh": "处方",
+      "es": "receta médica"
+    },
+    "level": "bloom",
+    "category": "healthcare",
+    "example_sentences": [
+      "The doctor gave me a prescription for my cough.",
+      "Your prescription has two refills, so you don't need to see the doctor again until December."
+    ],
+    "confusion_pairs": ["subscription", "description"],
+    "fsrs_params": {"difficulty": 0.68, "stability": 2.1}
+  },
+  {
+    "id": "vocab-017",
+    "word": "pharmacist",
+    "phonetic": "/ˈfɑːrməsɪst/",
+    "translations": {
+      "pa": "ਫਾਰਮਾਸਿਸਟ (ਦਵਾਈ ਮਾਹਿਰ)",
+      "hi": "फार्मासिस्ट (दवा विशेषज्ञ)",
+      "zh": "药剂师",
+      "es": "farmacéutico"
+    },
+    "level": "sprout",
+    "category": "healthcare",
+    "example_sentences": [
+      "Ask the pharmacist how much medicine to take.",
+      "The pharmacist can check if two medicines are safe together — that service is free, no appointment needed."
+    ],
+    "confusion_pairs": ["pharmacy", "physician"],
+    "fsrs_params": {"difficulty": 0.48, "stability": 3.0}
+  },
+  {
+    "id": "vocab-018",
+    "word": "symptom",
+    "phonetic": "/ˈsɪmptəm/",
+    "translations": {
+      "pa": "ਬਿਮਾਰੀ ਦਾ ਲੱਛਣ",
+      "hi": "बीमारी का लक्षण",
+      "zh": "症状",
+      "es": "síntoma"
+    },
+    "level": "sprout",
+    "category": "healthcare",
+    "example_sentences": [
+      "A sore throat is a symptom of a cold.",
+      "Tell the nurse your symptoms in order — when they started, how bad they are, and what makes them worse."
+    ],
+    "confusion_pairs": ["sign", "syndrome"],
+    "fsrs_params": {"difficulty": 0.5, "stability": 2.9}
+  },
+  {
+    "id": "vocab-019",
+    "word": "walk-in clinic",
+    "phonetic": "/ˈwɔːkɪn ˌklɪnɪk/",
+    "translations": {
+      "pa": "ਬਿਨਾਂ ਅਪੌਇੰਟਮੈਂਟ ਵਾਲਾ ਕਲੀਨਿਕ",
+      "hi": "बिना अपॉइंटमेंट वाला क्लिनिक",
+      "zh": "免预约诊所",
+      "es": "clínica sin cita"
+    },
+    "level": "branch",
+    "category": "healthcare",
+    "example_sentences": [
+      "You don't need an appointment at a walk-in clinic.",
+      "If you can't get in to see your family doctor, a walk-in clinic is the normal choice for minor problems."
+    ],
+    "confusion_pairs": ["emergency room", "family doctor"],
+    "fsrs_params": {"difficulty": 0.5, "stability": 2.8}
+  },
+  {
+    "id": "vocab-020",
+    "word": "health card",
+    "phonetic": "/ˈhɛlθ ˌkɑːrd/",
+    "translations": {
+      "pa": "ਹੈਲਥ ਕਾਰਡ (ਸਿਹਤ ਕਾਰਡ)",
+      "hi": "हेल्थ कार्ड (स्वास्थ्य कार्ड)",
+      "zh": "健康卡",
+      "es": "tarjeta de salud"
+    },
+    "level": "sprout",
+    "category": "healthcare",
+    "example_sentences": [
+      "Bring your health card to every doctor visit.",
+      "Each province has its own health card — an OHIP card from Ontario doesn't replace one from British Columbia."
+    ],
+    "confusion_pairs": ["insurance card", "SIN card"],
+    "fsrs_params": {"difficulty": 0.4, "stability": 3.4}
+  },
+  {
+    "id": "vocab-021",
+    "word": "family doctor",
+    "phonetic": "/ˈfæməli ˌdɑːktər/",
+    "translations": {
+      "pa": "ਪਰਿਵਾਰਕ ਡਾਕਟਰ",
+      "hi": "पारिवारिक डॉक्टर",
+      "zh": "家庭医生",
+      "es": "médico de familia"
+    },
+    "level": "sprout",
+    "category": "healthcare",
+    "example_sentences": [
+      "My family doctor works near the plaza.",
+      "It can take months to find a family doctor who is taking new patients, so put your name on the provincial waitlist."
+    ],
+    "confusion_pairs": ["general practitioner", "specialist"],
+    "fsrs_params": {"difficulty": 0.35, "stability": 3.6}
+  },
+  {
+    "id": "vocab-022",
+    "word": "appointment",
+    "phonetic": "/əˈpɔɪntmənt/",
+    "translations": {
+      "pa": "ਮੁਲਾਕਾਤ ਦਾ ਸਮਾਂ",
+      "hi": "मुलाक़ात का समय",
+      "zh": "预约",
+      "es": "cita"
+    },
+    "level": "seed",
+    "category": "healthcare",
+    "example_sentences": [
+      "I have an appointment at ten o'clock.",
+      "If you cancel the appointment less than twenty-four hours ahead, some clinics charge a small fee."
+    ],
+    "confusion_pairs": ["meeting", "schedule"],
+    "fsrs_params": {"difficulty": 0.28, "stability": 4.3}
+  },
+  {
+    "id": "vocab-023",
+    "word": "dosage",
+    "phonetic": "/ˈdoʊsɪdʒ/",
+    "translations": {
+      "pa": "ਦਵਾਈ ਦੀ ਖ਼ੁਰਾਕ",
+      "hi": "दवा की खुराक",
+      "zh": "剂量",
+      "es": "dosis"
+    },
+    "level": "bloom",
+    "category": "healthcare",
+    "example_sentences": [
+      "The dosage is one tablet two times a day.",
+      "The label lists the dosage clearly, but ask the pharmacist if you're unsure about taking it with food."
+    ],
+    "confusion_pairs": ["dose", "diagnosis"],
+    "fsrs_params": {"difficulty": 0.65, "stability": 2.2}
+  },
+  {
+    "id": "vocab-024",
+    "word": "refill",
+    "phonetic": "/ˈriːfɪl/",
+    "translations": {
+      "pa": "ਦਵਾਈ ਦੁਬਾਰਾ ਭਰਵਾਉਣੀ",
+      "hi": "दवा दोबारा भरवाना",
+      "zh": "续配（再次配药）",
+      "es": "resurtir la receta"
+    },
+    "level": "branch",
+    "category": "healthcare",
+    "example_sentences": [
+      "I need a refill for my allergy pills.",
+      "You can request refills through the pharmacy app and pick them up after work the next day."
+    ],
+    "confusion_pairs": ["renewal", "prescription"],
+    "fsrs_params": {"difficulty": 0.55, "stability": 2.6}
+  },
+  {
+    "id": "vocab-025",
+    "word": "insurance",
+    "phonetic": "/ɪnˈʃʊrəns/",
+    "translations": {
+      "pa": "ਬੀਮਾ",
+      "hi": "बीमा",
+      "zh": "保险",
+      "es": "seguro"
+    },
+    "level": "sprout",
+    "category": "healthcare",
+    "example_sentences": [
+      "My work insurance pays for dental care.",
+      "Provincial insurance covers doctor visits, but dentists and prescription drugs often need private insurance."
+    ],
+    "confusion_pairs": ["assurance", "coverage"],
+    "fsrs_params": {"difficulty": 0.42, "stability": 3.1}
+  },
+  {
+    "id": "vocab-026",
+    "word": "allergy",
+    "phonetic": "/ˈælərdʒi/",
+    "translations": {
+      "pa": "ਐਲਰਜੀ",
+      "hi": "एलर्जी",
+      "zh": "过敏",
+      "es": "alergia"
+    },
+    "level": "sprout",
+    "category": "healthcare",
+    "example_sentences": [
+      "I have an allergy to peanuts.",
+      "The clinic form asks about allergies to medications, which is different from food allergies like pollen in spring."
+    ],
+    "confusion_pairs": ["intolerance", "reaction"],
+    "fsrs_params": {"difficulty": 0.4, "stability": 3.3}
+  },
+  {
+    "id": "vocab-027",
+    "word": "emergency room",
+    "phonetic": "/ɪˈmɜːrdʒənsi ruːm/",
+    "translations": {
+      "pa": "ਐਮਰਜੈਂਸੀ ਵਾਰਡ",
+      "hi": "इमरजेंसी वार्ड",
+      "zh": "急诊室",
+      "es": "sala de emergencias"
+    },
+    "level": "sprout",
+    "category": "healthcare",
+    "example_sentences": [
+      "For a real emergency, go to the emergency room or call 911.",
+      "Emergency rooms treat the most serious cases first, so a small cut can mean waiting behind a heart patient."
+    ],
+    "confusion_pairs": ["walk-in clinic", "urgent care"],
+    "fsrs_params": {"difficulty": 0.38, "stability": 3.4}
+  },
+  {
+    "id": "vocab-028",
+    "word": "check-up",
+    "phonetic": "/ˈtʃɛkʌp/",
+    "translations": {
+      "pa": "ਨਿਯਮਿਤ ਸਿਹਤ ਜਾਂਚ",
+      "hi": "नियमित स्वास्थ्य जांच",
+      "zh": "体检",
+      "es": "chequeo médico"
+    },
+    "level": "seed",
+    "category": "healthcare",
+    "example_sentences": [
+      "I go for a check-up once a year.",
+      "Even if you feel fine, an annual check-up catches things like high blood pressure early."
+    ],
+    "confusion_pairs": ["check-in", "physical"],
+    "fsrs_params": {"difficulty": 0.3, "stability": 4.0}
+  },
+  {
+    "id": "vocab-029",
+    "word": "flu shot",
+    "phonetic": "/ˈfluː ʃɑːt/",
+    "translations": {
+      "pa": "ਫਲੂ ਦਾ ਟੀਕਾ",
+      "hi": "फ्लू का टीका",
+      "zh": "流感疫苗",
+      "es": "vacuna contra la gripe"
+    },
+    "level": "sprout",
+    "category": "healthcare",
+    "example_sentences": [
+      "You can get a flu shot at the pharmacy.",
+      "Flu shots are free in most provinces — pharmacies start advertising them as soon as October arrives."
+    ],
+    "confusion_pairs": ["vaccine", "booster"],
+    "fsrs_params": {"difficulty": 0.35, "stability": 3.5}
+  },
+  {
+    "id": "vocab-030",
+    "word": "sick note",
+    "phonetic": "/ˈsɪk noʊt/",
+    "translations": {
+      "pa": "ਬਿਮਾਰੀ ਦਾ ਸਰਟੀਫਿਕੇਟ",
+      "hi": "बीमारी का प्रमाण पत्र",
+      "zh": "病假条",
+      "es": "justificante médico"
+    },
+    "level": "branch",
+    "category": "healthcare",
+    "example_sentences": [
+      "My boss wants a sick note for two sick days.",
+      "Most Canadian employers don't ask for a sick note for a single day, only when you're off for a week or more."
+    ],
+    "confusion_pairs": ["doctor's note", "prescription"],
+    "fsrs_params": {"difficulty": 0.5, "stability": 2.8}
+  },
+  {
+    "id": "vocab-031",
+    "word": "chequing account",
+    "phonetic": "/ˈtʃɛkɪŋ əˌkaʊnt/",
+    "translations": {
+      "pa": "ਚੈਕਿੰਗ ਖਾਤਾ (ਰੋਜ਼ਾਨਾ ਬੈਂਕ ਖਾਤਾ)",
+      "hi": "चेकिंग खाता (रोज़मर्रा का बैंक खाता)",
+      "zh": "支票账户（日常账户）",
+      "es": "cuenta corriente"
+    },
+    "level": "canopy",
+    "category": "banking",
+    "example_sentences": [
+      "Your paycheque goes into your chequing account.",
+      "Canadians spell it chequing with a q-u, and most everyday spending comes straight out of this account."
+    ],
+    "confusion_pairs": ["savings account", "checking account"],
+    "fsrs_params": {"difficulty": 0.75, "stability": 1.8}
+  },
+  {
+    "id": "vocab-032",
+    "word": "savings account",
+    "phonetic": "/ˈseɪvɪŋz əˌkaʊnt/",
+    "translations": {
+      "pa": "ਬਚਤ ਖਾਤਾ",
+      "hi": "बचत खाता",
+      "zh": "储蓄账户",
+      "es": "cuenta de ahorros"
+    },
+    "level": "sprout",
+    "category": "banking",
+    "example_sentences": [
+      "I move money to my savings account every month.",
+      "Keep an emergency fund in a savings account — enough to cover three months of rent and groceries."
+    ],
+    "confusion_pairs": ["chequing account", "investment"],
+    "fsrs_params": {"difficulty": 0.32, "stability": 4.0}
+  },
+  {
+    "id": "vocab-033",
+    "word": "debit card",
+    "phonetic": "/ˈdɛbɪt kɑːrd/",
+    "translations": {
+      "pa": "ਡੈਬਿਟ ਕਾਰਡ",
+      "hi": "डेबिट कार्ड",
+      "zh": "借记卡",
+      "es": "tarjeta de débito"
+    },
+    "level": "seed",
+    "category": "banking",
+    "example_sentences": [
+      "Can I pay with my debit card?",
+      "Your debit card comes with a daily limit, so tell the bank if you're making a big purchase like furniture."
+    ],
+    "confusion_pairs": ["credit card", "bank card"],
+    "fsrs_params": {"difficulty": 0.25, "stability": 4.6}
+  },
+  {
+    "id": "vocab-034",
+    "word": "credit card",
+    "phonetic": "/ˈkrɛdɪt kɑːrd/",
+    "translations": {
+      "pa": "ਕ੍ਰੈਡਿਟ ਕਾਰਡ",
+      "hi": "क्रेडिट कार्ड",
+      "zh": "信用卡",
+      "es": "tarjeta de crédito"
+    },
+    "level": "seed",
+    "category": "banking",
+    "example_sentences": [
+      "I pay this bill with a credit card.",
+      "Pay the full credit card balance each month and you'll build a strong credit history without paying interest."
+    ],
+    "confusion_pairs": ["debit card", "credit limit"],
+    "fsrs_params": {"difficulty": 0.25, "stability": 4.6}
+  },
+  {
+    "id": "vocab-035",
+    "word": "e-transfer",
+    "phonetic": "/ˈiː ˌtrænsfɜːr/",
+    "translations": {
+      "pa": "ਈ-ਟ੍ਰਾਂਸਫਰ (ਆਨਲਾਈਨ ਪੈਸੇ ਭੇਜਣਾ)",
+      "hi": "ई-ट्रांसफर (ऑनलाइन पैसे भेजना)",
+      "zh": "电子转账（Interac）",
+      "es": "transferencia electrónica (Interac)"
+    },
+    "level": "bloom",
+    "category": "banking",
+    "example_sentences": [
+      "I'll send you the money by e-transfer.",
+      "Interac e-transfer is how Canadians split rent or send money to a friend — you just need an email address."
+    ],
+    "confusion_pairs": ["wire transfer", "deposit"],
+    "fsrs_params": {"difficulty": 0.62, "stability": 2.3}
+  },
+  {
+    "id": "vocab-036",
+    "word": "withdrawal",
+    "phonetic": "/wɪðˈdrɔːəl/",
+    "translations": {
+      "pa": "ਪੈਸੇ ਕੱਢਣੇ (ਨਿਕਾਸੀ)",
+      "hi": "पैसे निकालना (निकासी)",
+      "zh": "取款",
+      "es": "retiro"
+    },
+    "level": "branch",
+    "category": "banking",
+    "example_sentences": [
+      "There is a fee for withdrawals at other banks' machines.",
+      "Every withdrawal shows up on your statement instantly, which makes monthly budgeting much easier."
+    ],
+    "confusion_pairs": ["deposit", "transfer"],
+    "fsrs_params": {"difficulty": 0.55, "stability": 2.6}
+  },
+  {
+    "id": "vocab-037",
+    "word": "interest",
+    "phonetic": "/ˈɪntrəst/",
+    "translations": {
+      "pa": "ਵਿਆਜ",
+      "hi": "ब्याज",
+      "zh": "利息",
+      "es": "interés"
+    },
+    "level": "branch",
+    "category": "banking",
+    "example_sentences": [
+      "The savings account pays a little interest.",
+      "If you only pay the minimum on your credit card, the interest adds up faster than most people expect."
+    ],
+    "confusion_pairs": ["interest rate", "investment"],
+    "fsrs_params": {"difficulty": 0.52, "stability": 2.7}
+  },
+  {
+    "id": "vocab-038",
+    "word": "mortgage",
+    "phonetic": "/ˈmɔːrɡɪdʒ/",
+    "translations": {
+      "pa": "ਘਰ ਖ਼ਰੀਦਣ ਲਈ ਕਰਜ਼ਾ",
+      "hi": "घर खरीदने का ऋण",
+      "zh": "房屋抵押贷款",
+      "es": "hipoteca"
+    },
+    "level": "canopy",
+    "category": "banking",
+    "example_sentences": [
+      "They got a mortgage to buy a house in Hamilton.",
+      "Newcomers can get a mortgage with as little as five percent down, but you'll also need mortgage insurance."
+    ],
+    "confusion_pairs": ["loan", "down payment"],
+    "fsrs_params": {"difficulty": 0.78, "stability": 1.6}
+  },
+  {
+    "id": "vocab-039",
+    "word": "branch",
+    "phonetic": "/bræntʃ/",
+    "translations": {
+      "pa": "ਬੈਂਕ ਦੀ ਸ਼ਾਖਾ",
+      "hi": "बैंक की शाखा",
+      "zh": "银行分行",
+      "es": "sucursal"
+    },
+    "level": "bloom",
+    "category": "banking",
+    "example_sentences": [
+      "The nearest branch closes at five.",
+      "Open your account at the branch near your house — tellers there can help with anything complicated later."
+    ],
+    "confusion_pairs": ["location", "tree branch"],
+    "fsrs_params": {"difficulty": 0.58, "stability": 2.4}
+  },
+  {
+    "id": "vocab-040",
+    "word": "statement",
+    "phonetic": "/ˈsteɪtmənt/",
+    "translations": {
+      "pa": "ਖਾਤੇ ਦਾ ਬਿਆਨ",
+      "hi": "खाते का विवरण",
+      "zh": "对账单",
+      "es": "estado de cuenta"
+    },
+    "level": "branch",
+    "category": "banking",
+    "example_sentences": [
+      "Check your statement for charges you don't know.",
+      "A bank statement from the last three months is often accepted as proof of address for applications."
+    ],
+    "confusion_pairs": ["invoice", "bill"],
+    "fsrs_params": {"difficulty": 0.52, "stability": 2.6}
+  },
+  {
+    "id": "vocab-041",
+    "word": "teller",
+    "phonetic": "/ˈtɛlər/",
+    "translations": {
+      "pa": "ਬੈਂਕ ਕਾਊਂਟਰ 'ਤੇ ਕਲਰਕ",
+      "hi": "बैंक काउंटर पर क्लर्क",
+      "zh": "银行柜员",
+      "es": "cajero de banco"
+    },
+    "level": "bloom",
+    "category": "banking",
+    "example_sentences": [
+      "The teller helped me exchange money.",
+      "Don't confuse teller with tailor — one works at a bank, the other fixes your clothes."
+    ],
+    "confusion_pairs": ["tailor", "cashier"],
+    "fsrs_params": {"difficulty": 0.62, "stability": 2.2}
+  },
+  {
+    "id": "vocab-042",
+    "word": "PIN",
+    "phonetic": "/pɪn/",
+    "translations": {
+      "pa": "ਪਿੰਨ ਕੋਡ (ਗੁਪਤ ਨੰਬਰ)",
+      "hi": "पिन कोड (गुप्त नंबर)",
+      "zh": "个人密码",
+      "es": "código PIN"
+    },
+    "level": "seed",
+    "category": "banking",
+    "example_sentences": [
+      "Enter your PIN to pay.",
+      "Never share your PIN, not even with a bank employee — a real bank will never ask for it."
+    ],
+    "confusion_pairs": ["password", "postal code"],
+    "fsrs_params": {"difficulty": 0.2, "stability": 4.7}
+  },
+  {
+    "id": "vocab-043",
+    "word": "overdraft",
+    "phonetic": "/ˈoʊvərdræft/",
+    "translations": {
+      "pa": "ਓਵਰਡਰਾਫਟ (ਖਾਤੇ ਤੋਂ ਵੱਧ ਖਰਚ)",
+      "hi": "ओवरड्राफ्ट (खाता सीमा से अधिक खर्च)",
+      "zh": "透支",
+      "es": "sobregiro"
+    },
+    "level": "canopy",
+    "category": "banking",
+    "example_sentences": [
+      "My account went into overdraft last week.",
+      "Ask the bank to decline the card instead of allowing overdraft — the fees are five dollars every time it triggers."
+    ],
+    "confusion_pairs": ["overload", "loan"],
+    "fsrs_params": {"difficulty": 0.8, "stability": 1.4}
+  },
+  {
+    "id": "vocab-044",
+    "word": "exchange rate",
+    "phonetic": "/ɪksˈtʃeɪndʒ reɪt/",
+    "translations": {
+      "pa": "ਮੁਦਰਾ ਵਟਾਂਦਰਾ ਦਰ",
+      "hi": "मुद्रा विनिमय दर",
+      "zh": "汇率",
+      "es": "tipo de cambio"
+    },
+    "level": "bloom",
+    "category": "banking",
+    "example_sentences": [
+      "The exchange rate was good, so I sent money home.",
+      "Banks add a margin on top of the exchange rate, so compare a couple of apps before sending remittances."
+    ],
+    "confusion_pairs": ["interest rate", "transfer fee"],
+    "fsrs_params": {"difficulty": 0.6, "stability": 2.3}
+  },
+  {
+    "id": "vocab-045",
+    "word": "credit history",
+    "phonetic": "/ˈkrɛdɪt ˌhɪstəri/",
+    "translations": {
+      "pa": "ਕ੍ਰੈਡਿਟ ਇਤਿਹਾਸ",
+      "hi": "क्रेडिट इतिहास",
+      "zh": "信用记录",
+      "es": "historial crediticio"
+    },
+    "level": "canopy",
+    "category": "banking",
+    "example_sentences": [
+      "You build credit history by paying your credit card on time.",
+      "Landlords in big cities sometimes check credit history, so start building yours early with a secured card."
+    ],
+    "confusion_pairs": ["credit score", "credit report"],
+    "fsrs_params": {"difficulty": 0.72, "stability": 1.7}
+  },
+  {
+    "id": "vocab-046",
+    "word": "standup",
+    "phonetic": "/ˈstændʌp/",
+    "translations": {
+      "pa": "ਸਟੈਂਡਅੱਪ (ਛੋਟੀ ਰੋਜ਼ਾਨਾ ਮੀਟਿੰਗ)",
+      "hi": "स्टैंडअप (रोज़ की छोटी मीटिंग)",
+      "zh": "每日站会",
+      "es": "reunión de pie (daily)"
+    },
+    "level": "bloom",
+    "category": "workplace",
+    "example_sentences": [
+      "We have a standup every morning at nine.",
+      "In the standup, share yesterday's work, today's plan, and any blockers — keep it under two minutes."
+    ],
+    "confusion_pairs": ["meeting", "one-on-one"],
+    "fsrs_params": {"difficulty": 0.58, "stability": 2.3}
+  },
+  {
+    "id": "vocab-047",
+    "word": "deadline",
+    "phonetic": "/ˈdɛdlaɪn/",
+    "translations": {
+      "pa": "ਆਖ਼ਰੀ ਤਾਰੀਖ਼",
+      "hi": "अंतिम तिथि",
+      "zh": "截止日期",
+      "es": "fecha límite"
+    },
+    "level": "sprout",
+    "category": "workplace",
+    "example_sentences": [
+      "The deadline for the report is Friday.",
+      "If you can't meet a deadline, tell your manager early — Canadian workplaces expect a heads-up, not silence."
+    ],
+    "confusion_pairs": ["timeline", "due date"],
+    "fsrs_params": {"difficulty": 0.35, "stability": 3.7}
+  },
+  {
+    "id": "vocab-048",
+    "word": "blocker",
+    "phonetic": "/ˈblɑːkər/",
+    "translations": {
+      "pa": "ਕੰਮ ਵਿੱਚ ਰੁਕਾਵਟ",
+      "hi": "काम में रुकावट",
+      "zh": "阻碍（工作卡点）",
+      "es": "obstáculo"
+    },
+    "level": "bloom",
+    "category": "workplace",
+    "example_sentences": [
+      "My blocker is waiting for data from the vendor.",
+      "Saying you have no blockers is completely normal — a blocker only means something you truly can't fix yourself."
+    ],
+    "confusion_pairs": ["blockage", "delay"],
+    "fsrs_params": {"difficulty": 0.6, "stability": 2.2}
+  },
+  {
+    "id": "vocab-049",
+    "word": "shift",
+    "phonetic": "/ʃɪft/",
+    "translations": {
+      "pa": "ਕੰਮ ਦੀ ਸਿਫਟ",
+      "hi": "काम की शिफ्ट",
+      "zh": "班次",
+      "es": "turno"
+    },
+    "level": "sprout",
+    "category": "workplace",
+    "example_sentences": [
+      "My shift starts at three o'clock.",
+      "She picked up extra weekend shifts during the holiday rush to save for her parents' visit."
+    ],
+    "confusion_pairs": ["schedule", "rotation"],
+    "fsrs_params": {"difficulty": 0.32, "stability": 3.9}
+  },
+  {
+    "id": "vocab-050",
+    "word": "paycheque",
+    "phonetic": "/ˈpeɪtʃɛk/",
+    "translations": {
+      "pa": "ਤਨਖਾਹ ਦਾ ਚੈੱਕ",
+      "hi": "वेतन चेक",
+      "zh": "工资（支票）",
+      "es": "cheque de sueldo"
+    },
+    "level": "sprout",
+    "category": "workplace",
+    "example_sentences": [
+      "My paycheque comes every two weeks.",
+      "In Canada it's spelled paycheque with q-u, and most employers deposit it straight into your bank account."
+    ],
+    "confusion_pairs": ["paycheck", "pay stub"],
+    "fsrs_params": {"difficulty": 0.45, "stability": 3.0}
+  },
+  {
+    "id": "vocab-051",
+    "word": "benefits",
+    "phonetic": "/ˈbɛnəfɪts/",
+    "translations": {
+      "pa": "ਕਰਮਚਾਰੀ ਲਾਭ",
+      "hi": "कर्मचारी लाभ",
+      "zh": "员工福利",
+      "es": "prestaciones laborales"
+    },
+    "level": "branch",
+    "category": "workplace",
+    "example_sentences": [
+      "Full-time workers get benefits like dental insurance.",
+      "Compare the benefits package, not just the salary — health coverage for your family can be worth thousands a year."
+    ],
+    "confusion_pairs": ["perks", "advantages"],
+    "fsrs_params": {"difficulty": 0.5, "stability": 2.8}
+  },
+  {
+    "id": "vocab-052",
+    "word": "overtime",
+    "phonetic": "/ˈoʊvərtaɪm/",
+    "translations": {
+      "pa": "ਓਵਰਟਾਈਮ (ਵਾਧੂ ਕੰਮ ਦਾ ਸਮਾਂ)",
+      "hi": "ओवरटाइम (अतिरिक्त कार्य समय)",
+      "zh": "加班",
+      "es": "horas extras"
+    },
+    "level": "sprout",
+    "category": "workplace",
+    "example_sentences": [
+      "I get paid extra for overtime on weekends.",
+      "In most provinces, overtime means anything over forty-four hours a week and is paid at time and a half."
+    ],
+    "confusion_pairs": ["overwork", "extra shift"],
+    "fsrs_params": {"difficulty": 0.38, "stability": 3.5}
+  },
+  {
+    "id": "vocab-053",
+    "word": "résumé",
+    "phonetic": "/ˈrɛzjʊmeɪ/",
+    "translations": {
+      "pa": "ਰਿਜ਼ਿਊਮੇ (ਯੋਗਤਾ ਪੱਤਰ)",
+      "hi": "रिज़्यूमे (योग्यता पत्र)",
+      "zh": "简历",
+      "es": "currículum"
+    },
+    "level": "branch",
+    "category": "workplace",
+    "example_sentences": [
+      "Send your résumé before Monday.",
+      "Canadian résumés are usually two pages and skip photos and age — employers can't legally ask for them."
+    ],
+    "confusion_pairs": ["resume (verb)", "cover letter"],
+    "fsrs_params": {"difficulty": 0.55, "stability": 2.6}
+  },
+  {
+    "id": "vocab-054",
+    "word": "interview",
+    "phonetic": "/ˈɪntərvjuː/",
+    "translations": {
+      "pa": "ਇੰਟਰਵਿਊ",
+      "hi": "इंटरव्यू",
+      "zh": "面试",
+      "es": "entrevista"
+    },
+    "level": "sprout",
+    "category": "workplace",
+    "example_sentences": [
+      "I have a job interview tomorrow.",
+      "After the interview, a short thank-you email the same day leaves a strong, professional impression."
+    ],
+    "confusion_pairs": ["interrogation", "meeting"],
+    "fsrs_params": {"difficulty": 0.3, "stability": 4.1}
+  },
+  {
+    "id": "vocab-055",
+    "word": "colleague",
+    "phonetic": "/ˈkɑːliːɡ/",
+    "translations": {
+      "pa": "ਸਹਿਕਰਮੀ",
+      "hi": "सहकर्मी",
+      "zh": "同事",
+      "es": "colega de trabajo"
+    },
+    "level": "sprout",
+    "category": "workplace",
+    "example_sentences": [
+      "My colleague helped me with the new system.",
+      "Don't confuse colleague with college — your colleagues work beside you; college is where you studied."
+    ],
+    "confusion_pairs": ["college", "coworker"],
+    "fsrs_params": {"difficulty": 0.42, "stability": 3.1}
+  },
+  {
+    "id": "vocab-056",
+    "word": "supervisor",
+    "phonetic": "/ˈsuːpərvaɪzər/",
+    "translations": {
+      "pa": "ਸੁਪਰਵਾਈਜ਼ਰ (ਅਫ਼ਸਰ)",
+      "hi": "पर्यवेक्षक",
+      "zh": "主管",
+      "es": "supervisor"
+    },
+    "level": "sprout",
+    "category": "workplace",
+    "example_sentences": [
+      "Talk to your supervisor if the shift doesn't work.",
+      "A good supervisor would rather hear about a problem on Tuesday than discover it on Friday."
+    ],
+    "confusion_pairs": ["manager", "superintendent"],
+    "fsrs_params": {"difficulty": 0.4, "stability": 3.3}
+  },
+  {
+    "id": "vocab-057",
+    "word": "schedule",
+    "phonetic": "/ˈskɛdʒuːl/",
+    "translations": {
+      "pa": "ਸਮਾਨ-ਸੂਚੀ",
+      "hi": "समय-सारिणी",
+      "zh": "日程表",
+      "es": "horario"
+    },
+    "level": "sprout",
+    "category": "workplace",
+    "example_sentences": [
+      "The work schedule is on the wall.",
+      "Canadians say schedule with a k sound — SKED-jool — which surprises speakers of British English."
+    ],
+    "confusion_pairs": ["calendar", "timetable"],
+    "fsrs_params": {"difficulty": 0.38, "stability": 3.5}
+  },
+  {
+    "id": "vocab-058",
+    "word": "training",
+    "phonetic": "/ˈtreɪnɪŋ/",
+    "translations": {
+      "pa": "ਸਿਖਲਾਈ",
+      "hi": "प्रशिक्षण",
+      "zh": "培训",
+      "es": "capacitación"
+    },
+    "level": "sprout",
+    "category": "workplace",
+    "example_sentences": [
+      "New workers get two days of training.",
+      "Ask during training whether you'll be paid for the sessions — in most provinces, mandatory training must be paid."
+    ],
+    "confusion_pairs": ["course", "practice"],
+    "fsrs_params": {"difficulty": 0.3, "stability": 4.0}
+  },
+  {
+    "id": "vocab-059",
+    "word": "promotion",
+    "phonetic": "/prəˈmoʊʃən/",
+    "translations": {
+      "pa": "ਤਰੱਕੀ",
+      "hi": "पदोन्नति",
+      "zh": "升职",
+      "es": "ascenso"
+    },
+    "level": "branch",
+    "category": "workplace",
+    "example_sentences": [
+      "She got a promotion after one year.",
+      "A promotion usually means more responsibility first and the raise conversation second, so negotiate both together."
+    ],
+    "confusion_pairs": ["raise", "advertisement"],
+    "fsrs_params": {"difficulty": 0.5, "stability": 2.9}
+  },
+  {
+    "id": "vocab-060",
+    "word": "lunch break",
+    "phonetic": "/ˈlʌntʃ ˌbreɪk/",
+    "translations": {
+      "pa": "ਦੁਪਹਿਰ ਦਾ ਬਰੇਕ",
+      "hi": "दोपहर का ब्रेक",
+      "zh": "午休",
+      "es": "descanso para almorzar"
+    },
+    "level": "seed",
+    "category": "workplace",
+    "example_sentences": [
+      "I eat my lunch at the break room.",
+      "Most Canadian shifts include a thirty-minute unpaid lunch break plus a short paid coffee break."
+    ],
+    "confusion_pairs": ["coffee break", "break time"],
+    "fsrs_params": {"difficulty": 0.22, "stability": 4.5}
+  },
+  {
+    "id": "vocab-061",
+    "word": "SIN",
+    "phonetic": "/ˌɛs ˌaɪ ˈɛn/",
+    "translations": {
+      "pa": "ਸੋਸ਼ਲ ਇੰਸ਼ੋਰੈਂਸ ਨੰਬਰ",
+      "hi": "सोशल इंश्योरेंस नंबर",
+      "zh": "社会保险号",
+      "es": "número de seguro social"
+    },
+    "level": "bloom",
+    "category": "government",
+    "example_sentences": [
+      "You need a SIN before you can work.",
+      "It's called a SIN in Canada, not a social security number like in the United States — keep it private."
+    ],
+    "confusion_pairs": ["social security number", "SIN card"],
+    "fsrs_params": {"difficulty": 0.6, "stability": 2.4}
+  },
+  {
+    "id": "vocab-062",
+    "word": "permanent resident",
+    "phonetic": "/ˈpɜːrmənənt ˈrɛzɪdənt/",
+    "translations": {
+      "pa": "ਸਥਾਈ ਨਿਵਾਸੀ",
+      "hi": "स्थायी निवासी",
+      "zh": "永久居民",
+      "es": "residente permanente"
+    },
+    "level": "sprout",
+    "category": "government",
+    "example_sentences": [
+      "She became a permanent resident last year.",
+      "Permanent residents can live and work anywhere in Canada but cannot vote in federal elections."
+    ],
+    "confusion_pairs": ["citizen", "refugee"],
+    "fsrs_params": {"difficulty": 0.4, "stability": 3.4}
+  },
+  {
+    "id": "vocab-063",
+    "word": "citizenship",
+    "phonetic": "/ˈsɪtɪzənʃɪp/",
+    "translations": {
+      "pa": "ਨਾਗਰਿਕਤਾ",
+      "hi": "नागरिकता",
+      "zh": "公民身份",
+      "es": "ciudadanía"
+    },
+    "level": "branch",
+    "category": "government",
+    "example_sentences": [
+      "After three years, she applied for citizenship.",
+      "The citizenship test covers history, symbols, and how parliament works — the study guide is free online."
+    ],
+    "confusion_pairs": ["nationality", "residency"],
+    "fsrs_params": {"difficulty": 0.55, "stability": 2.7}
+  },
+  {
+    "id": "vocab-064",
+    "word": "work permit",
+    "phonetic": "/ˈwɜːrk ˌpɜːrmɪt/",
+    "translations": {
+      "pa": "ਕੰਮ ਕਰਨ ਦੀ ਇਜਾਜ਼ਤ",
+      "hi": "कार्य अनुमति",
+      "zh": "工作许可",
+      "es": "permiso de trabajo"
+    },
+    "level": "sprout",
+    "category": "government",
+    "example_sentences": [
+      "My work permit is valid for two years.",
+      "Check the conditions on your work permit — some are tied to one employer, others are open."
+    ],
+    "confusion_pairs": ["visa", "study permit"],
+    "fsrs_params": {"difficulty": 0.35, "stability": 3.6}
+  },
+  {
+    "id": "vocab-065",
+    "word": "passport",
+    "phonetic": "/ˈpæspɔːrt/",
+    "translations": {
+      "pa": "ਪਾਸਪੋਰਟ",
+      "hi": "पासपोर्ट",
+      "zh": "护照",
+      "es": "pasaporte"
+    },
+    "level": "seed",
+    "category": "government",
+    "example_sentences": [
+      "Bring your passport to the appointment.",
+      "Renew your passport at least six months before it expires — many countries refuse short-validity passports."
+    ],
+    "confusion_pairs": ["visa", "ID"],
+    "fsrs_params": {"difficulty": 0.18, "stability": 4.9}
+  },
+  {
+    "id": "vocab-066",
+    "word": "renewal",
+    "phonetic": "/rɪˈnjuːəl/",
+    "translations": {
+      "pa": "ਨਵੀਨੀਕਰਨ",
+      "hi": "नवीनीकरण",
+      "zh": "续期",
+      "es": "renovación"
+    },
+    "level": "branch",
+    "category": "government",
+    "example_sentences": [
+      "The renewal of my licence was quick.",
+      "Start the renewal process early — work permit renewals can take months and expire-if-pending rules change."
+    ],
+    "confusion_pairs": ["extension", "refill"],
+    "fsrs_params": {"difficulty": 0.55, "stability": 2.6}
+  },
+  {
+    "id": "vocab-067",
+    "word": "application",
+    "phonetic": "/ˌæplɪˈkeɪʃən/",
+    "translations": {
+      "pa": "ਅਰਜ਼ੀ",
+      "hi": "आवेदन",
+      "zh": "申请（表）",
+      "es": "solicitud"
+    },
+    "level": "sprout",
+    "category": "government",
+    "example_sentences": [
+      "I filled out the application online.",
+      "An incomplete application is the number one reason applications are returned, so check every field twice."
+    ],
+    "confusion_pairs": ["app", "appointment"],
+    "fsrs_params": {"difficulty": 0.42, "stability": 3.1}
+  },
+  {
+    "id": "vocab-068",
+    "word": "proof of address",
+    "phonetic": "/ˈpruːf əv əˈdrɛs/",
+    "translations": {
+      "pa": "ਰਿਹਾਇਸ਼ ਦਾ ਸਬੂਤ",
+      "hi": "पते का प्रमाण",
+      "zh": "地址证明",
+      "es": "comprobante de domicilio"
+    },
+    "level": "bloom",
+    "category": "government",
+    "example_sentences": [
+      "A bank letter works as proof of address.",
+      "For proof of address, officials usually want a utility bill or bank statement showing your name and current address."
+    ],
+    "confusion_pairs": ["proof of identity", "proof of income"],
+    "fsrs_params": {"difficulty": 0.62, "stability": 2.2}
+  },
+  {
+    "id": "vocab-069",
+    "word": "processing time",
+    "phonetic": "/ˈprɑːsɛsɪŋ ˌtaɪm/",
+    "translations": {
+      "pa": "ਪ੍ਰੋਸੈਸਿੰਗ ਸਮਾਂ",
+      "hi": "प्रोसेसिंग समय",
+      "zh": "办理时间",
+      "es": "tiempo de trámite"
+    },
+    "level": "branch",
+    "category": "government",
+    "example_sentences": [
+      "The processing time is about six weeks.",
+      "Processing times change with the seasons — applications slow down before holidays, so apply early."
+    ],
+    "confusion_pairs": ["wait time", "turnaround"],
+    "fsrs_params": {"difficulty": 0.5, "stability": 2.7}
+  },
+  {
+    "id": "vocab-070",
+    "word": "certified copy",
+    "phonetic": "/ˈsɜːrtɪfaɪd ˈkɑːpi/",
+    "translations": {
+      "pa": "ਪ੍ਰਮਾਣਿਤ ਕਾਪੀ",
+      "hi": "प्रमाणित प्रति",
+      "zh": "认证副本",
+      "es": "copia certificada"
+    },
+    "level": "canopy",
+    "category": "government",
+    "example_sentences": [
+      "Bring the original and a certified copy.",
+      "A certified copy is a photocopy that a lawyer or notary stamps to say it matches the original document."
+    ],
+    "confusion_pairs": ["notarized document", "photocopy"],
+    "fsrs_params": {"difficulty": 0.78, "stability": 1.5}
+  },
+  {
+    "id": "vocab-071",
+    "word": "Service Canada",
+    "phonetic": "/ˈsɜːrvɪs ˈkænədə/",
+    "translations": {
+      "pa": "ਸਰਵਿਸ ਕੈਨੇਡਾ (ਸਰਕਾਰੀ ਸੇਵਾ ਦਫ਼ਤਰ)",
+      "hi": "सर्विस कनाडा (सरकारी सेवा कार्यालय)",
+      "zh": "加拿大服务局",
+      "es": "Service Canada (oficina de servicios)"
+    },
+    "level": "sprout",
+    "category": "government",
+    "example_sentences": [
+      "You can get a SIN at Service Canada.",
+      "Service Canada offices open early, and staff there serve you in English or French — take a number when you arrive."
+    ],
+    "confusion_pairs": ["Service Ontario", "city hall"],
+    "fsrs_params": {"difficulty": 0.45, "stability": 3.0}
+  },
+  {
+    "id": "vocab-072",
+    "word": "ID",
+    "phonetic": "/ˌaɪ ˈdiː/",
+    "translations": {
+      "pa": "ਸ਼ਨਾਖ਼ਤੀ ਪੱਤਰ",
+      "hi": "पहचान पत्र",
+      "zh": "身份证件",
+      "es": "identificación"
+    },
+    "level": "seed",
+    "category": "government",
+    "example_sentences": [
+      "Show two pieces of ID at the counter.",
+      "Pieces of ID usually means one government photo ID plus one more, like a bank card with your name."
+    ],
+    "confusion_pairs": ["identification", "ID card"],
+    "fsrs_params": {"difficulty": 0.15, "stability": 5.0}
+  },
+  {
+    "id": "vocab-073",
+    "word": "licence",
+    "phonetic": "/ˈlaɪsəns/",
+    "translations": {
+      "pa": "ਲਾਇਸੈਂਸ",
+      "hi": "लाइसेंस",
+      "zh": "执照",
+      "es": "licencia"
+    },
+    "level": "sprout",
+    "category": "government",
+    "example_sentences": [
+      "My driver's licence expires in March.",
+      "In Canadian English, licence with a c is the noun and license with an s is the verb — a classic spelling trap."
+    ],
+    "confusion_pairs": ["license (verb)", "registration"],
+    "fsrs_params": {"difficulty": 0.48, "stability": 2.9}
+  },
+  {
+    "id": "vocab-074",
+    "word": "registration",
+    "phonetic": "/ˌrɛdʒɪˈstreɪʃən/",
+    "translations": {
+      "pa": "ਰਜਿਸਟ੍ਰੇਸ਼ਨ (ਦਰਜ ਕਰਾਉਣਾ)",
+      "hi": "पंजीकरण",
+      "zh": "登记注册",
+      "es": "registro"
+    },
+    "level": "branch",
+    "category": "government",
+    "example_sentences": [
+      "Registration for the program closes Friday.",
+      "Bring your health card to registration day at the community centre — they'll photocopy it on the spot."
+    ],
+    "confusion_pairs": ["application", "enrolment"],
+    "fsrs_params": {"difficulty": 0.55, "stability": 2.6}
+  },
+  {
+    "id": "vocab-075",
+    "word": "eligibility",
+    "phonetic": "/ɪˌlɪdʒəˈbɪləti/",
+    "translations": {
+      "pa": "ਯੋਗਤਾ",
+      "hi": "पात्रता",
+      "zh": "资格",
+      "es": "elegibilidad"
+    },
+    "level": "canopy",
+    "category": "government",
+    "example_sentences": [
+      "Check your eligibility before you apply.",
+      "The website has an eligibility checker — answering five questions saves you a long application for nothing."
+    ],
+    "confusion_pairs": ["qualification", "entitlement"],
+    "fsrs_params": {"difficulty": 0.8, "stability": 1.4}
+  },
+  {
+    "id": "vocab-076",
+    "word": "receipt",
+    "phonetic": "/rɪˈsiːt/",
+    "translations": {
+      "pa": "ਰਸੀਦ",
+      "hi": "रसीद",
+      "zh": "收据",
+      "es": "recibo"
+    },
+    "level": "sprout",
+    "category": "shopping",
+    "example_sentences": [
+      "Keep the receipt if you want to return it.",
+      "Don't confuse receipt with recipe — one proves you paid, the other tells you how to cook."
+    ],
+    "confusion_pairs": ["recipe", "bill"],
+    "fsrs_params": {"difficulty": 0.32, "stability": 4.0}
+  },
+  {
+    "id": "vocab-077",
+    "word": "refund",
+    "phonetic": "/ˈriːfʌnd/",
+    "translations": {
+      "pa": "ਪੈਸੇ ਵਾਪਸੀ",
+      "hi": "पैसे वापसी",
+      "zh": "退款",
+      "es": "reembolso"
+    },
+    "level": "sprout",
+    "category": "shopping",
+    "example_sentences": [
+      "I asked for a refund for the broken lamp.",
+      "With the original receipt, most stores refund to your card within a couple of business days."
+    ],
+    "confusion_pairs": ["exchange", "discount"],
+    "fsrs_params": {"difficulty": 0.35, "stability": 3.8}
+  },
+  {
+    "id": "vocab-078",
+    "word": "exchange",
+    "phonetic": "/ɪksˈtʃeɪndʒ/",
+    "translations": {
+      "pa": "ਸਮਾਨ ਬਦਲਣਾ",
+      "hi": "सामान बदलना",
+      "zh": "换货",
+      "es": "cambio de mercancía"
+    },
+    "level": "sprout",
+    "category": "shopping",
+    "example_sentences": [
+      "Can I exchange this shirt for a bigger size?",
+      "You can exchange it within thirty days as long as the tags are still on — that's standard at Canadian malls."
+    ],
+    "confusion_pairs": ["refund", "return"],
+    "fsrs_params": {"difficulty": 0.35, "stability": 3.8}
+  },
+  {
+    "id": "vocab-079",
+    "word": "discount",
+    "phonetic": "/ˈdɪskaʊnt/",
+    "translations": {
+      "pa": "ਛੂਟ",
+      "hi": "छूट",
+      "zh": "折扣",
+      "es": "descuento"
+    },
+    "level": "seed",
+    "category": "shopping",
+    "example_sentences": [
+      "Students get a discount on Tuesdays.",
+      "Groceries rotate discounts weekly, so the yellow sticker aisle is worth a slow walk."
+    ],
+    "confusion_pairs": ["sale", "coupon"],
+    "fsrs_params": {"difficulty": 0.25, "stability": 4.4}
+  },
+  {
+    "id": "vocab-080",
+    "word": "customer service",
+    "phonetic": "/ˈkʌstəmər ˌsɜːrvɪs/",
+    "translations": {
+      "pa": "ਗਾਹਕ ਸੇਵਾ",
+      "hi": "ग्राहक सेवा",
+      "zh": "客户服务",
+      "es": "servicio al cliente"
+    },
+    "level": "sprout",
+    "category": "shopping",
+    "example_sentences": [
+      "Call customer service about your bill.",
+      "Customer service will ask for your account number, so have your bill in hand before you dial."
+    ],
+    "confusion_pairs": ["help desk", "reception"],
+    "fsrs_params": {"difficulty": 0.3, "stability": 4.0}
+  },
+  {
+    "id": "vocab-081",
+    "word": "warranty",
+    "phonetic": "/ˈwɔːrənti/",
+    "translations": {
+      "pa": "ਵਾਰੰਟੀ",
+      "hi": "वारंटी",
+      "zh": "保修",
+      "es": "garantía"
+    },
+    "level": "branch",
+    "category": "shopping",
+    "example_sentences": [
+      "The laptop has a one-year warranty.",
+      "Keep the warranty card and receipt together — one without the other won't get your appliance fixed for free."
+    ],
+    "confusion_pairs": ["guarantee", "insurance"],
+    "fsrs_params": {"difficulty": 0.5, "stability": 2.9}
+  },
+  {
+    "id": "vocab-082",
+    "word": "flyer",
+    "phonetic": "/ˈflaɪər/",
+    "translations": {
+      "pa": "ਸਟੋਰ ਦਾ ਇਸ਼ਤਿਹਾਰ ਪੰਨਾ",
+      "hi": "स्टोर का विज्ञापन पत्रक",
+      "zh": "（商店）特价单",
+      "es": "folleto de ofertas"
+    },
+    "level": "branch",
+    "category": "shopping",
+    "example_sentences": [
+      "The soup is on sale in this week's flyer.",
+      "Most grocery chains post their flyers online every Thursday, and the app matches them to your list."
+    ],
+    "confusion_pairs": ["brochure", "pamphlet"],
+    "fsrs_params": {"difficulty": 0.55, "stability": 2.5}
+  },
+  {
+    "id": "vocab-083",
+    "word": "checkout",
+    "phonetic": "/ˈtʃɛkaʊt/",
+    "translations": {
+      "pa": "ਬਿੱਲ ਕਰਨ ਦੀ ਥਾਂ",
+      "hi": "बिल कराने की जगह",
+      "zh": "结账处",
+      "es": "caja"
+    },
+    "level": "sprout",
+    "category": "shopping",
+    "example_sentences": [
+      "There is no line at the self-checkout.",
+      "At self-checkout, the machine asks if you have your own bags so it doesn't charge you the plastic-bag fee."
+    ],
+    "confusion_pairs": ["check-in", "cash register"],
+    "fsrs_params": {"difficulty": 0.35, "stability": 3.7}
+  },
+  {
+    "id": "vocab-084",
+    "word": "grocery",
+    "phonetic": "/ˈɡroʊsəri/",
+    "translations": {
+      "pa": "ਕਰਿਆਨੇ ਦਾ ਸਮਾਨ",
+      "hi": "किराने का सामान",
+      "zh": "食品杂货",
+      "es": "comestibles"
+    },
+    "level": "seed",
+    "category": "shopping",
+    "example_sentences": [
+      "We buy groceries on Sundays.",
+      "Grocery prices vary a lot between chains, so many families split their list between two stores."
+    ],
+    "confusion_pairs": ["groceries", "market"],
+    "fsrs_params": {"difficulty": 0.22, "stability": 4.6}
+  },
+  {
+    "id": "vocab-085",
+    "word": "tip",
+    "phonetic": "/tɪp/",
+    "translations": {
+      "pa": "ਟਿਪ (ਇਨਾਮ)",
+      "hi": "टिप (बख्शीश)",
+      "zh": "小费",
+      "es": "propina"
+    },
+    "level": "seed",
+    "category": "shopping",
+    "example_sentences": [
+      "Leave a tip for the server.",
+      "In restaurants, Canadians typically tip fifteen to twenty percent — the machine suggests amounts for you."
+    ],
+    "confusion_pairs": ["gratuity", "hint"],
+    "fsrs_params": {"difficulty": 0.28, "stability": 4.2}
+  },
+  {
+    "id": "vocab-086",
+    "word": "fitting room",
+    "phonetic": "/ˈfɪtɪŋ ˌruːm/",
+    "translations": {
+      "pa": "ਕੱਪੜੇ ਪਰਖਣ ਵਾਲਾ ਕਮਰਾ",
+      "hi": "कपड़े परखने का कमरा",
+      "zh": "试衣间",
+      "es": "probador"
+    },
+    "level": "sprout",
+    "category": "shopping",
+    "example_sentences": [
+      "The fitting room is at the back.",
+      "Most stores limit you to six items in the fitting room, so bring your best picks first."
+    ],
+    "confusion_pairs": ["change room", "restroom"],
+    "fsrs_params": {"difficulty": 0.35, "stability": 3.6}
+  },
+  {
+    "id": "vocab-087",
+    "word": "on sale",
+    "phonetic": "/ɑːn ˈseɪl/",
+    "translations": {
+      "pa": "ਸੇਲ 'ਤੇ (ਘਟੀਆ ਦਾਮ)",
+      "hi": "सेल पर (छूट दाम पर)",
+      "zh": "打折中",
+      "es": "en oferta"
+    },
+    "level": "sprout",
+    "category": "shopping",
+    "example_sentences": [
+      "These winter boots are on sale.",
+      "On sale means a discount, but for sale means someone is selling it — mixing them up confuses clerks."
+    ],
+    "confusion_pairs": ["for sale", "sold out"],
+    "fsrs_params": {"difficulty": 0.3, "stability": 4.1}
+  },
+  {
+    "id": "vocab-088",
+    "word": "delivery",
+    "phonetic": "/dɪˈlɪvəri/",
+    "translations": {
+      "pa": "ਸਮਾਨ ਦੀ ਡਿਲੀਵਰੀ",
+      "hi": "सामान की डिलीवरी",
+      "zh": "送货",
+      "es": "entrega a domicilio"
+    },
+    "level": "sprout",
+    "category": "shopping",
+    "example_sentences": [
+      "Delivery is free over fifty dollars.",
+      "Grocery delivery slots fill up before snowstorms — book the morning slot the night before."
+    ],
+    "confusion_pairs": ["shipping", "pickup"],
+    "fsrs_params": {"difficulty": 0.32, "stability": 3.8}
+  },
+  {
+    "id": "vocab-089",
+    "word": "internet plan",
+    "phonetic": "/ˈɪntərnɛt ˌplæn/",
+    "translations": {
+      "pa": "ਇੰਟਰਨੈੱਟ ਪਲਾਨ",
+      "hi": "इंटरनेट प्लान",
+      "zh": "网络套餐",
+      "es": "plan de internet"
+    },
+    "level": "branch",
+    "category": "shopping",
+    "example_sentences": [
+      "Our internet plan costs sixty dollars a month.",
+      "Watch for the promotional price on internet plans — it jumps after the first year unless you call to renegotiate."
+    ],
+    "confusion_pairs": ["data plan", "bundle"],
+    "fsrs_params": {"difficulty": 0.5, "stability": 2.8}
+  },
+  {
+    "id": "vocab-090",
+    "word": "router",
+    "phonetic": "/ˈruːtər/",
+    "translations": {
+      "pa": "ਰਾਊਟਰ",
+      "hi": "राउटर",
+      "zh": "路由器",
+      "es": "enrutador (router)"
+    },
+    "level": "branch",
+    "category": "shopping",
+    "example_sentences": [
+      "Restart the router if the internet is slow.",
+      "The technician will set up the router near the cable outlet — usually the living room wall."
+    ],
+    "confusion_pairs": ["modem", "hotspot"],
+    "fsrs_params": {"difficulty": 0.52, "stability": 2.6}
+  },
+  {
+    "id": "vocab-091",
+    "word": "neighbour",
+    "phonetic": "/ˈneɪbər/",
+    "translations": {
+      "pa": "ਗੁਆਂਢੀ",
+      "hi": "पड़ोसी",
+      "zh": "邻居",
+      "es": "vecino"
+    },
+    "level": "seed",
+    "category": "social",
+    "example_sentences": [
+      "My neighbour said hello this morning.",
+      "Canadians spell it neighbour with a u — a friendly wave goes a long way in apartment buildings."
+    ],
+    "confusion_pairs": ["neighbor", "neighbourhood"],
+    "fsrs_params": {"difficulty": 0.2, "stability": 4.8}
+  },
+  {
+    "id": "vocab-092",
+    "word": "small talk",
+    "phonetic": "/ˌsmɔːl ˈtɔːk/",
+    "translations": {
+      "pa": "ਛੋਟੀ ਮੁਲਾਕਾਤੀ ਗੱਲਬਾਤ",
+      "hi": "छोटी सामान्य बातचीत",
+      "zh": "闲聊",
+      "es": "charla casual"
+    },
+    "level": "branch",
+    "category": "social",
+    "example_sentences": [
+      "We made small talk about the weather.",
+      "Small talk in Canada almost always starts with weather or weekend plans — short and friendly is perfect."
+    ],
+    "confusion_pairs": ["gossip", "conversation"],
+    "fsrs_params": {"difficulty": 0.45, "stability": 3.2}
+  },
+  {
+    "id": "vocab-093",
+    "word": "weather",
+    "phonetic": "/ˈwɛðər/",
+    "translations": {
+      "pa": "ਮੌਸਮ",
+      "hi": "मौसम",
+      "zh": "天气",
+      "es": "clima"
+    },
+    "level": "seed",
+    "category": "social",
+    "example_sentences": [
+      "The weather is cold today.",
+      "Don't confuse weather with whether — one is rain and snow, the other introduces a choice."
+    ],
+    "confusion_pairs": ["whether", "climate"],
+    "fsrs_params": {"difficulty": 0.2, "stability": 4.9}
+  },
+  {
+    "id": "vocab-094",
+    "word": "housewarming",
+    "phonetic": "/ˈhaʊsˌwɔːrmɪŋ/",
+    "translations": {
+      "pa": "ਨਵੇਂ ਘਰ ਦੀ ਪਾਰਟੀ",
+      "hi": "नए घर की दावत",
+      "zh": "乔迁聚会",
+      "es": "fiesta de estreno"
+    },
+    "level": "branch",
+    "category": "social",
+    "example_sentences": [
+      "We're going to a housewarming on Saturday.",
+      "At a Canadian housewarming, a small gift like candles or a plant is a thoughtful touch."
+    ],
+    "confusion_pairs": ["house party", "homecoming"],
+    "fsrs_params": {"difficulty": 0.5, "stability": 2.8}
+  },
+  {
+    "id": "vocab-095",
+    "word": "potluck",
+    "phonetic": "/ˈpɑːtlʌk/",
+    "translations": {
+      "pa": "ਸਾਂਝਾ ਭੋਜਨ (ਹਰ ਕੋਈ ਕੁਝ ਲਿਆਉਂਦਾ ਹੈ)",
+      "hi": "साझा भोज (हर कोई कुछ लाता है)",
+      "zh": "各自带菜的聚餐",
+      "es": "comida compartida"
+    },
+    "level": "canopy",
+    "category": "social",
+    "example_sentences": [
+      "Bring a dish to the office potluck.",
+      "At a potluck, everyone brings one dish to share — bringing your own food culture's dish is always a hit."
+    ],
+    "confusion_pairs": ["picnic", "buffet"],
+    "fsrs_params": {"difficulty": 0.7, "stability": 1.8}
+  },
+  {
+    "id": "vocab-096",
+    "word": "volunteer",
+    "phonetic": "/ˌvɑːlənˈtɪr/",
+    "translations": {
+      "pa": "ਸਵੈ-ਸੇਵਕ",
+      "hi": "स्वयंसेवक",
+      "zh": "志愿者",
+      "es": "voluntario"
+    },
+    "level": "sprout",
+    "category": "social",
+    "example_sentences": [
+      "She volunteers at the food bank.",
+      "Volunteering is one of the fastest ways to practise English and earn Canadian references at the same time."
+    ],
+    "confusion_pairs": ["intern", "employee"],
+    "fsrs_params": {"difficulty": 0.35, "stability": 3.6}
+  },
+  {
+    "id": "vocab-097",
+    "word": "community centre",
+    "phonetic": "/kəˈmjuːnəti ˌsɛntər/",
+    "translations": {
+      "pa": "ਕਮਿਊਨਿਟੀ ਸੈਂਟਰ",
+      "hi": "कम्युनिटी सेंटर (सामुदायिक केंद्र)",
+      "zh": "社区中心",
+      "es": "centro comunitario"
+    },
+    "level": "sprout",
+    "category": "social",
+    "example_sentences": [
+      "The community centre has free English classes.",
+      "Community centres post their seasonal program guides at the library — skating lessons fill up in September."
+    ],
+    "confusion_pairs": ["recreation centre", "library"],
+    "fsrs_params": {"difficulty": 0.32, "stability": 3.9}
+  },
+  {
+    "id": "vocab-098",
+    "word": "hiking",
+    "phonetic": "/ˈhaɪkɪŋ/",
+    "translations": {
+      "pa": "ਪੈਦਲ ਸੈਰ (ਟ੍ਰੈਕਿੰਗ)",
+      "hi": "पैदल सैर (हाइकिंग)",
+      "zh": "徒步远足",
+      "es": "senderismo"
+    },
+    "level": "sprout",
+    "category": "social",
+    "example_sentences": [
+      "We go hiking on the mountain every Sunday.",
+      "Join a hiking group if you're new — trail markers can be confusing, and groups know the easy routes first."
+    ],
+    "confusion_pairs": ["trekking", "camping"],
+    "fsrs_params": {"difficulty": 0.35, "stability": 3.7}
+  },
+  {
+    "id": "vocab-099",
+    "word": "favourite",
+    "phonetic": "/ˈfeɪvərɪt/",
+    "translations": {
+      "pa": "ਮਨਪਸੰਦ",
+      "hi": "पसंदीदा",
+      "zh": "最喜欢的",
+      "es": "favorito"
+    },
+    "level": "seed",
+    "category": "social",
+    "example_sentences": [
+      "Tim Hortons is my favourite coffee shop.",
+      "Favourite keeps its u in Canadian English — ask someone their favourite double-double order and you'll fit right in."
+    ],
+    "confusion_pairs": ["favorite", "best"],
+    "fsrs_params": {"difficulty": 0.2, "stability": 4.8}
+  },
+  {
+    "id": "vocab-100",
+    "word": "welcome",
+    "phonetic": "/ˈwɛlkəm/",
+    "translations": {
+      "pa": "ਜੀ ਆਇਆਂ (ਸੁਆਗਤ)",
+      "hi": "स्वागत",
+      "zh": "欢迎",
+      "es": "bienvenido"
+    },
+    "level": "seed",
+    "category": "social",
+    "example_sentences": [
+      "Welcome to the neighbourhood!",
+      "When someone thanks you, reply you're welcome — or the very Canadian no problem."
+    ],
+    "confusion_pairs": ["welcoming", "greeting"],
+    "fsrs_params": {"difficulty": 0.15, "stability": 5.0}
+  }
+]

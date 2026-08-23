@@ -55,6 +55,13 @@ class Settings(BaseSettings):
             "The default targets a local development PostgreSQL instance."
         ),
     )
+    voice_silence_timeout: float = Field(
+        default=2.0,
+        description=(
+            "Seconds without incoming audio before a listening turn is "
+            "auto-ended by the voice session manager."
+        ),
+    )
 
 
 @lru_cache(maxsize=1)
