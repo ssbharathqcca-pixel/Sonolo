@@ -1,0 +1,191 @@
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Generating static SQL
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+BEGIN;
+
+CREATE TABLE alembic_version (
+    version_num VARCHAR(32) NOT NULL, 
+    CONSTRAINT alembic_version_pkc PRIMARY KEY (version_num)
+);
+
+INFO  [alembic.runtime.migration] Running upgrade  -> 0001_initial, Initial Sonolo schema: SN-006 base plus additive SN-010/012/014 columns.
+-- Running upgrade  -> 0001_initial
+
+CREATE TABLE users (
+    id UUID NOT NULL, 
+    email VARCHAR(255), 
+    hashed_password VARCHAR(255) DEFAULT '' NOT NULL, 
+    name VARCHAR(255) NOT NULL, 
+    native_language VARCHAR(10) NOT NULL, 
+    target_language VARCHAR(10) NOT NULL, 
+    learning_goal VARCHAR(50) NOT NULL, 
+    current_level VARCHAR(20) NOT NULL, 
+    subscription_tier VARCHAR(20) DEFAULT 'free' NOT NULL, 
+    subscription_expires_at TIMESTAMP WITH TIME ZONE, 
+    streak_count INTEGER DEFAULT 0 NOT NULL, 
+    streak_last_date DATE, 
+    total_xp INTEGER DEFAULT 0 NOT NULL, 
+    xp_today INTEGER DEFAULT 0 NOT NULL, 
+    xp_today_date DATE, 
+    longest_streak INTEGER DEFAULT 0 NOT NULL, 
+    last_activity_at TIMESTAMP WITH TIME ZONE, 
+    timezone VARCHAR(64) DEFAULT 'America/Toronto' NOT NULL, 
+    total_speaking_seconds INTEGER DEFAULT 0 NOT NULL, 
+    onboarding_completed BOOLEAN DEFAULT false NOT NULL, 
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT now() NOT NULL, 
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT now() NOT NULL, 
+    CONSTRAINT pk_users PRIMARY KEY (id), 
+    CONSTRAINT uq_users_email UNIQUE (email)
+);
+
+CREATE TABLE user_skills (
+    id UUID NOT NULL, 
+    user_id UUID NOT NULL, 
+    fluency_score FLOAT DEFAULT 0 NOT NULL, 
+    pronunciation_score FLOAT DEFAULT 0 NOT NULL, 
+    grammar_score FLOAT DEFAULT 0 NOT NULL, 
+    vocabulary_score FLOAT DEFAULT 0 NOT NULL, 
+    coherence_score FLOAT DEFAULT 0 NOT NULL, 
+    task_completion_score FLOAT DEFAULT 0 NOT NULL, 
+    composite_score FLOAT DEFAULT 0 NOT NULL, 
+    canada_ready_score FLOAT DEFAULT 0 NOT NULL, 
+    confidence_score FLOAT DEFAULT 0 NOT NULL, 
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT now() NOT NULL, 
+    CONSTRAINT pk_user_skills PRIMARY KEY (id), 
+    CONSTRAINT fk_user_skills_user_id_users FOREIGN KEY(user_id) REFERENCES users (id), 
+    CONSTRAINT uq_user_skills_user_id UNIQUE (user_id)
+);
+
+CREATE TABLE scenarios (
+    id UUID NOT NULL, 
+    title VARCHAR(255) NOT NULL, 
+    description TEXT DEFAULT '' NOT NULL, 
+    category VARCHAR(50) NOT NULL, 
+    mode VARCHAR(20) NOT NULL, 
+    level VARCHAR(20) NOT NULL, 
+    difficulty INTEGER DEFAULT NULL, 
+    target_language VARCHAR(10) DEFAULT 'en-CA' NOT NULL, 
+    system_prompt TEXT DEFAULT '' NOT NULL, 
+    opening_line TEXT DEFAULT '' NOT NULL, 
+    expected_turns INTEGER NOT NULL, 
+    success_criteria JSONB NOT NULL, 
+    vocabulary_targets JSONB NOT NULL, 
+    grammar_targets JSONB NOT NULL, 
+    cultural_notes TEXT DEFAULT '' NOT NULL, 
+    is_premium BOOLEAN DEFAULT false NOT NULL, 
+    is_published BOOLEAN DEFAULT false NOT NULL, 
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT now() NOT NULL, 
+    CONSTRAINT pk_scenarios PRIMARY KEY (id)
+);
+
+CREATE INDEX idx_scenarios_level_category ON scenarios (level, category) WHERE is_published = TRUE;
+
+CREATE TABLE sessions (
+    id UUID NOT NULL, 
+    user_id UUID NOT NULL, 
+    scenario_id UUID, 
+    client_session_id UUID NOT NULL, 
+    session_type VARCHAR NOT NULL, 
+    started_at TIMESTAMP WITH TIME ZONE NOT NULL, 
+    ended_at TIMESTAMP WITH TIME ZONE NOT NULL, 
+    duration_seconds INTEGER NOT NULL, 
+    turns_count INTEGER NOT NULL, 
+    fluency_score FLOAT NOT NULL, 
+    pronunciation_score FLOAT NOT NULL, 
+    grammar_score FLOAT NOT NULL, 
+    vocabulary_score FLOAT NOT NULL, 
+    coherence_score FLOAT NOT NULL, 
+    task_completion_score FLOAT NOT NULL, 
+    composite_score FLOAT NOT NULL, 
+    xp_earned INTEGER NOT NULL, 
+    errors_detected JSONB NOT NULL, 
+    transcript JSONB NOT NULL, 
+    evaluation_json JSONB NOT NULL, 
+    overall_score FLOAT DEFAULT 0 NOT NULL, 
+    is_xp_eligible BOOLEAN DEFAULT false NOT NULL, 
+    session_xp INTEGER DEFAULT 0 NOT NULL, 
+    quest_xp INTEGER DEFAULT 0 NOT NULL, 
+    total_xp INTEGER DEFAULT 0 NOT NULL, 
+    audio_stored BOOLEAN DEFAULT false NOT NULL, 
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT now() NOT NULL, 
+    CONSTRAINT pk_sessions PRIMARY KEY (id), 
+    CONSTRAINT fk_sessions_user_id_users FOREIGN KEY(user_id) REFERENCES users (id), 
+    CONSTRAINT fk_sessions_scenario_id_scenarios FOREIGN KEY(scenario_id) REFERENCES scenarios (id), 
+    CONSTRAINT uq_sessions_user_client_session UNIQUE (user_id, client_session_id)
+);
+
+CREATE INDEX idx_sessions_user_date ON sessions (user_id, created_at);
+
+CREATE TABLE vocabulary_cards (
+    id UUID NOT NULL, 
+    user_id UUID NOT NULL, 
+    word TEXT NOT NULL, 
+    translations JSONB NOT NULL, 
+    stability FLOAT DEFAULT 0 NOT NULL, 
+    difficulty FLOAT DEFAULT 0 NOT NULL, 
+    elapsed_days INTEGER DEFAULT 0 NOT NULL, 
+    scheduled_days INTEGER DEFAULT 0 NOT NULL, 
+    reps INTEGER DEFAULT 0 NOT NULL, 
+    lapses INTEGER DEFAULT 0 NOT NULL, 
+    state INTEGER DEFAULT 0 NOT NULL, 
+    due_date TIMESTAMP WITH TIME ZONE DEFAULT now() NOT NULL, 
+    last_review TIMESTAMP WITH TIME ZONE, 
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT now() NOT NULL, 
+    CONSTRAINT pk_vocabulary_cards PRIMARY KEY (id), 
+    CONSTRAINT fk_vocabulary_cards_user_id_users FOREIGN KEY(user_id) REFERENCES users (id)
+);
+
+CREATE INDEX idx_vocab_due ON vocabulary_cards (user_id, due_date) WHERE state < 3;
+
+CREATE TABLE user_badges (
+    id UUID NOT NULL, 
+    user_id UUID NOT NULL, 
+    badge_id VARCHAR(50) NOT NULL, 
+    title VARCHAR(255) DEFAULT '' NOT NULL, 
+    description TEXT DEFAULT '' NOT NULL, 
+    earned_at TIMESTAMP WITH TIME ZONE DEFAULT now() NOT NULL, 
+    CONSTRAINT pk_user_badges PRIMARY KEY (id), 
+    CONSTRAINT fk_user_badges_user_id_users FOREIGN KEY(user_id) REFERENCES users (id), 
+    CONSTRAINT uq_user_badges_user_badge UNIQUE (user_id, badge_id)
+);
+
+CREATE TABLE daily_quests (
+    id UUID NOT NULL, 
+    user_id UUID NOT NULL, 
+    quest_date DATE NOT NULL, 
+    quest_type VARCHAR(30) NOT NULL, 
+    code VARCHAR(50) NOT NULL, 
+    title VARCHAR(255) DEFAULT '' NOT NULL, 
+    description TEXT DEFAULT '' NOT NULL, 
+    target_count INTEGER DEFAULT 1 NOT NULL, 
+    progress_count INTEGER DEFAULT 0 NOT NULL, 
+    scenario_id UUID, 
+    completed BOOLEAN DEFAULT false NOT NULL, 
+    completed_at TIMESTAMP WITH TIME ZONE, 
+    xp_reward INTEGER NOT NULL, 
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT now() NOT NULL, 
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT now() NOT NULL, 
+    CONSTRAINT pk_daily_quests PRIMARY KEY (id), 
+    CONSTRAINT fk_daily_quests_user_id_users FOREIGN KEY(user_id) REFERENCES users (id), 
+    CONSTRAINT fk_daily_quests_scenario_id_scenarios FOREIGN KEY(scenario_id) REFERENCES scenarios (id), 
+    CONSTRAINT uq_daily_quests_user_date_code UNIQUE (user_id, quest_date, code)
+);
+
+CREATE INDEX idx_quests_user_date ON daily_quests (user_id, quest_date);
+
+CREATE TABLE analytics_events (
+    id UUID NOT NULL, 
+    user_id UUID, 
+    event_name VARCHAR(100) NOT NULL, 
+    event_properties JSONB NOT NULL, 
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT now() NOT NULL, 
+    CONSTRAINT pk_analytics_events PRIMARY KEY (id)
+);
+
+CREATE INDEX idx_analytics_event ON analytics_events (event_name, created_at);
+
+INSERT INTO alembic_version (version_num) VALUES ('0001_initial') RETURNING alembic_version.version_num;
+
+COMMIT;
+
+EXIT_CODE=0

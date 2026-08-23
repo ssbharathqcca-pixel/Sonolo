@@ -8,8 +8,6 @@ Cards move left to right through the columns defined in [GLM_WORKFLOW.md](GLM_WO
 |---|---|---|---|---|---|---|---|
 | SN-004 — Web landing scaffold (Next.js) | 
 | SN-005 — Content model and scenario schema | | | | | | |
-| SN-010 — Voice pipeline integration (STT → LLM → TTS) | | | | | | | |
-| SN-012 — FSRS review engine | | | | | | | |
 | SN-013 — Gamification (streaks, XP, quests) | | | | | | | |
 | SN-014 — Paywall + RevenueCat integration | | | | | | | |
 | SN-015 — Analytics (PostHog) + Sentry setup | | | | | | | |
@@ -35,7 +33,9 @@ Cards move left to right through the columns defined in [GLM_WORKFLOW.md](GLM_WO
 | SN-007 — Voice WebSocket protocol | | | | | | | |Done
 | SN-008 — Scenario content batch (20 Canadian immigration) | | | | | | | |Done
 | SN-009 — Vocabulary content batch (100 items) | | | | | | | |Pending 400 Items for the last 
+| SN-010 — Voice pipeline integration (STT → LLM → TTS) | | | | | | | |Done
 | SN-011 — Feedback/scoring engine (6 dimensions) | | | | | | | |Done
+| SN-012 — FSRS review engine | | | | | | | |Done
 
 ## Card format
 

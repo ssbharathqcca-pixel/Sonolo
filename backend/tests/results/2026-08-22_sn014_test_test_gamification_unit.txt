@@ -1,0 +1,38 @@
+C:\Users\pavan\OneDrive\Desktop\Sonolo\backend\.venv\Lib\site-packages\pytest_asyncio\plugin.py:207: PytestDeprecationWarning: The configuration option "asyncio_default_fixture_loop_scope" is unset.
+The event loop scope for asynchronous fixtures will default to the fixture caching scope. Future versions of pytest-asyncio will default the loop scope for asynchronous fixtures to function scope. Set the default fixture loop scope explicitly in order to avoid unexpected behavior in the future. Valid fixture loop scopes are: "function", "class", "module", "package", "session"
+
+  warnings.warn(PytestDeprecationWarning(_DEFAULT_FIXTURE_LOOP_SCOPE_UNSET))
+============================= test session starts =============================
+platform win32 -- Python 3.11.4, pytest-8.3.4, pluggy-1.6.0 -- C:\Users\pavan\OneDrive\Desktop\Sonolo\backend\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\pavan\OneDrive\Desktop\Sonolo\backend
+plugins: anyio-4.14.2, asyncio-0.25.3
+asyncio: mode=Mode.STRICT, asyncio_default_fixture_loop_scope=None
+collecting ... collected 23 items
+
+tests/test_gamification_unit.py::test_streak_first_activity_sets_one PASSED [  4%]
+tests/test_gamification_unit.py::test_streak_same_local_date_unchanged PASSED [  8%]
+tests/test_gamification_unit.py::test_streak_consecutive_day_increments PASSED [ 13%]
+tests/test_gamification_unit.py::test_streak_resets_after_gap PASSED     [ 17%]
+tests/test_gamification_unit.py::test_streak_utc_midnight_crossing_local_unchanged PASSED [ 21%]
+tests/test_gamification_unit.py::test_streak_local_date_change_before_utc_midnight PASSED [ 26%]
+tests/test_gamification_unit.py::test_xp_today_resets_on_local_date_change PASSED [ 30%]
+tests/test_gamification_unit.py::test_session_xp_formula_exact_values PASSED [ 34%]
+tests/test_gamification_unit.py::test_session_xp_never_exceeds_cap PASSED [ 39%]
+tests/test_gamification_unit.py::test_non_eligible_session_awards_zero_xp PASSED [ 43%]
+tests/test_gamification_unit.py::test_skill_update_creates_first_scores PASSED [ 47%]
+tests/test_gamification_unit.py::test_skill_update_ema_and_clamping PASSED [ 52%]
+tests/test_gamification_unit.py::test_quest_generation_creates_three_quests PASSED [ 56%]
+tests/test_gamification_unit.py::test_quest_generation_is_idempotent PASSED [ 60%]
+tests/test_gamification_unit.py::test_quest_session_1_completes_after_one_session PASSED [ 65%]
+tests/test_gamification_unit.py::test_quest_session_2_completes_after_two_sessions PASSED [ 69%]
+tests/test_gamification_unit.py::test_quest_completion_not_reawarded PASSED [ 73%]
+tests/test_gamification_unit.py::test_vocab_quest_increments_per_review PASSED [ 78%]
+tests/test_gamification_unit.py::test_badge_first_session_awards_once PASSED [ 82%]
+tests/test_gamification_unit.py::test_badge_streak_3_awards_at_threshold PASSED [ 86%]
+tests/test_gamification_unit.py::test_badge_xp_500_awards_at_threshold PASSED [ 91%]
+tests/test_gamification_unit.py::test_badge_quest_day_complete_requires_all_quests PASSED [ 95%]
+tests/test_gamification_unit.py::test_level_and_summary_reflect_state PASSED [100%]
+
+============================= 23 passed in 1.14s ==============================
+EXIT_CODE=0

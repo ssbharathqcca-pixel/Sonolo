@@ -14,9 +14,11 @@ from typing import cast
 from uuid import UUID
 
 from fastapi import APIRouter, WebSocket, WebSocketDisconnect
+from fastapi import HTTPException as FastAPIHTTPException
 from pydantic import ValidationError
 
 from app.core.config import get_settings
+from app.core.security import decode_access_token
 from app.voice.pipeline import process_turn
 from app.voice.protocol import (
     AudioChunkMessage,
@@ -109,17 +111,48 @@ def _payload_session_id(message: ClientMessage) -> UUID | None:
     return cast(UUID | None, getattr(payload, "session_id", None))
 
 
+WS_UNAUTHORIZED_CLOSE_CODE = 4401
+
+
+def _authenticate_websocket_user(websocket: WebSocket) -> UUID | None:
+    """Resolve the verified JWT `sub` claim to a user UUID.
+
+    The token is validated with the SN-010 logic (signature + expiry).
+    Binding trusts the verified claim without a DB round-trip per
+    socket; tokens are only issued for existing users at login.
+    """
+    token = websocket.query_params.get("token")
+    if token is None:
+        return None
+    try:
+        payload = decode_access_token(token)
+        subject = payload.get("sub")
+        if not isinstance(subject, str) or subject == "":
+            return None
+        return UUID(subject)
+    except (FastAPIHTTPException, ValueError):
+        return None
+
+
 @router.websocket("/ws/voice/{session_id}")
 async def voice_session(websocket: WebSocket, session_id: UUID) -> None:
-    """One learner's real-time voice conversation."""
+    """One learner's real-time voice conversation (JWT-authenticated)."""
+    user_id = _authenticate_websocket_user(websocket)
+    if user_id is None:
+        await websocket.close(
+            code=WS_UNAUTHORIZED_CLOSE_CODE,
+            reason="Missing or invalid authentication token.",
+        )
+        return
+
     if manager.get(session_id) is not None:
         await websocket.close(code=1008, reason="Session already active.")
         return
 
     await websocket.accept()
-    session = await manager.register(session_id, websocket)
+    session = await manager.register(session_id, websocket, user_id)
     logger.info(
-        "Voice session opened: session_id=%s", session_id
+        "Voice session opened: session_id=%s user_id=%s", session_id, user_id
     )
     try:
         await session.send(state_change(VoiceState.IDLE))

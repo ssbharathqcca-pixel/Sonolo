@@ -25,8 +25,14 @@ class SessionAlreadyActiveError(RuntimeError):
 class VoiceSession:
     """State for a single live voice connection."""
 
-    def __init__(self, session_id: UUID, websocket: WebSocket) -> None:
+    def __init__(
+        self,
+        session_id: UUID,
+        websocket: WebSocket,
+        user_id: UUID | None = None,
+    ) -> None:
         self.session_id = session_id
+        self.user_id = user_id
         self.websocket = websocket
         self.state: VoiceState = VoiceState.IDLE
         self.lock = asyncio.Lock()
@@ -80,7 +86,10 @@ class SessionManager:
         return self._sessions.get(session_id)
 
     async def register(
-        self, session_id: UUID, websocket: WebSocket
+        self,
+        session_id: UUID,
+        websocket: WebSocket,
+        user_id: UUID | None = None,
     ) -> VoiceSession:
         """Register a new connection; rejects duplicate session_ids."""
         async with self._registry_lock:
@@ -88,7 +97,7 @@ class SessionManager:
                 raise SessionAlreadyActiveError(
                     f"Session {session_id} is already active."
                 )
-            session = VoiceSession(session_id, websocket)
+            session = VoiceSession(session_id, websocket, user_id)
             self._sessions[session_id] = session
             return session
 

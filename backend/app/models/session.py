@@ -15,8 +15,11 @@ from sqlalchemy import (
     ForeignKey,
     Index,
     Integer,
+    UniqueConstraint,
+    Uuid,
     false,
     func,
+    text,
 )
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from uuid6 import uuid7
@@ -38,6 +41,11 @@ class SpeakingSession(Base):
     __tablename__ = "sessions"
     __table_args__ = (
         Index("idx_sessions_user_date", "user_id", "created_at"),
+        UniqueConstraint(
+            "user_id",
+            "client_session_id",
+            name="uq_sessions_user_client_session",
+        ),
     )
 
     id: Mapped[uuid.UUID] = mapped_column(primary_key=True, default=uuid7)
@@ -47,7 +55,10 @@ class SpeakingSession(Base):
     scenario_id: Mapped[uuid.UUID | None] = mapped_column(
         ForeignKey("scenarios.id")
     )
+    client_session_id: Mapped[uuid.UUID] = mapped_column(Uuid())
     session_type: Mapped[str]
+    started_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
+    ended_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
     duration_seconds: Mapped[int] = mapped_column(Integer)
     turns_count: Mapped[int] = mapped_column(Integer)
     fluency_score: Mapped[float] = mapped_column(Float)
@@ -63,6 +74,24 @@ class SpeakingSession(Base):
     )
     transcript: Mapped[list[dict[str, Any]]] = mapped_column(
         JSONB, default=list
+    )
+    evaluation_json: Mapped[dict[str, Any]] = mapped_column(
+        JSONB, default=dict
+    )
+    overall_score: Mapped[float] = mapped_column(
+        Float, default=0.0, server_default=text("0")
+    )
+    is_xp_eligible: Mapped[bool] = mapped_column(
+        Boolean, default=False, server_default=false()
+    )
+    session_xp: Mapped[int] = mapped_column(
+        Integer, default=0, server_default=text("0")
+    )
+    quest_xp: Mapped[int] = mapped_column(
+        Integer, default=0, server_default=text("0")
+    )
+    total_xp: Mapped[int] = mapped_column(
+        Integer, default=0, server_default=text("0")
     )
     audio_stored: Mapped[bool] = mapped_column(
         Boolean, default=False, server_default=false()

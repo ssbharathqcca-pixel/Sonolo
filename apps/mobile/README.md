@@ -2,7 +2,7 @@
 
 React Native + Expo (SDK 52) + TypeScript app for voice-first Canadian English speaking practice.
 
-**Status: UI shell with the three core screens.** Expo Router navigation, the Sonolo glassmorphic design system, Home (daily quests + CanadaReady card), Voice Session (mic states, waveform, transcript), and Feedback (skill radar, wins/growth) are built with mock data. Real audio capture, backend integration, and Canadian French arrive in later tasks (see [`../../docs/TASK_BOARD.md`](../../docs/TASK_BOARD.md)).
+**Status: UI shell + authentication.** Expo Router navigation, the Sonolo glassmorphic design system, Home (daily quests + CanadaReady card), Voice Session (mic states, waveform, transcript), Feedback (skill radar, wins/growth), and a full auth flow — login/register screens, Zustand auth store, JWT in `expo-secure-store`, and an Axios client with Bearer attachment and 401 logout — wired to the FastAPI backend (`EXPO_PUBLIC_API_URL`, default `http://localhost:8000`). Real audio capture and Canadian French arrive in later tasks (see [`../../docs/TASK_BOARD.md`](../../docs/TASK_BOARD.md)).
 
 ## Quickstart
 
@@ -28,7 +28,8 @@ From the repository root, `make mobile` runs the same dev server.
 
 ```
 app/
-├── _layout.tsx            root stack + ThemeProvider + safe area
+├── _layout.tsx            root stack + auth gating + splash while hydrating
+├── (auth)/                login + register (glass cards, language chips)
 ├── (tabs)/                bottom tab bar: Home, Learn, Progress
 │   ├── index.tsx          Home — CanadaReady card, today's quest
 │   ├── learn.tsx          Learn — scenario pack catalog
@@ -36,10 +37,13 @@ app/
 ├── session/[id].tsx       voice session loop (mock state machine)
 └── feedback/[id].tsx      post-session report + skill radar
 src/
+├── api/client.ts          Axios instance, Bearer + 401 interceptors, API types
+├── services/secureStorage.ts  expo-secure-store wrapper (JWT keychain)
+├── stores/authStore.ts    Zustand auth state: login/register/logout/hydrate
 ├── theme/colors.ts        design tokens (Aurora Teal, Warm Coral, Night Sky, glass)
 ├── theme/ThemeProvider.tsx
 ├── data/quests.ts         mock quest catalog (single source until backend lands)
-└── components/            GlassCard, VoiceButton
+└── components/            GlassCard, GlassTextInput, VoiceButton
 ```
 
 ## Conventions

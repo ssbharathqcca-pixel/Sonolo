@@ -62,6 +62,21 @@ class User(Base):
     total_xp: Mapped[int] = mapped_column(
         Integer, default=0, server_default=text("0")
     )
+    xp_today: Mapped[int] = mapped_column(
+        Integer, default=0, server_default=text("0")
+    )
+    xp_today_date: Mapped[date | None] = mapped_column(Date)
+    longest_streak: Mapped[int] = mapped_column(
+        Integer, default=0, server_default=text("0")
+    )
+    last_activity_at: Mapped[datetime | None] = mapped_column(
+        DateTime(timezone=True)
+    )
+    timezone: Mapped[str] = mapped_column(
+        String(64),
+        default="America/Toronto",
+        server_default=text("'America/Toronto'"),
+    )
     total_speaking_seconds: Mapped[int] = mapped_column(
         Integer, default=0, server_default=text("0")
     )

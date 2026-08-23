@@ -10,6 +10,8 @@ files once the mobile test setup task lands.
 |---|---|---|---|
 | SN-003 | Strict TypeScript check (`npx tsc --noEmit`) | `2026-08-22_sn003_tsc_typecheck.txt` | exit 0, zero errors |
 | SN-003 | Full Metro bundle via `expo export --platform android` (Babel, imports, Reanimated plugin, Expo Router) | `2026-08-22_sn003_metro_bundle.txt` | exit 0, Hermes bundle exported |
+| SN-013 | Strict TypeScript check after auth flow (`npx tsc --noEmit`) | `2026-08-22_sn013_tsc_typecheck.txt` | exit 0, zero errors |
+| SN-013 | Metro bundle incl. auth screens, store, API client | `2026-08-22_sn013_metro_bundle.txt` | exit 0, Hermes bundle exported |
 
 ## Environment
 

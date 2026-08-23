@@ -1,7 +1,7 @@
 """Tests for the SQLAlchemy models: schema creation, CRUD, relationships."""
 
 import uuid
-from datetime import date
+from datetime import UTC, date, datetime
 
 import pytest
 from sqlalchemy import inspect, select
@@ -37,8 +37,11 @@ def make_user() -> User:
 def make_session(user_id: uuid.UUID) -> SpeakingSession:
     return SpeakingSession(
         user_id=user_id,
+        client_session_id=uuid.uuid4(),
         session_type="quick_speak",
-        duration_seconds=180,
+        started_at=datetime(2026, 8, 22, 12, 0, tzinfo=UTC),
+        ended_at=datetime(2026, 8, 22, 12, 5, tzinfo=UTC),
+        duration_seconds=300,
         turns_count=8,
         fluency_score=78.0,
         pronunciation_score=82.0,

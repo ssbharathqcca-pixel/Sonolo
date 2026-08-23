@@ -23,3 +23,9 @@ async def get_db() -> AsyncIterator[AsyncSession]:
     """Yield an async database session (FastAPI dependency style)."""
     async with AsyncSessionLocal() as session:
         yield session
+
+
+def dialect_name(session: AsyncSession) -> str:
+    """Dialect the session is bound to ('postgresql', 'sqlite', ...)."""
+    bind = session.bind
+    return bind.dialect.name if bind is not None else ""

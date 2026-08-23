@@ -53,6 +53,9 @@ class Scenario(Base):
     category: Mapped[str] = mapped_column(String(50))
     mode: Mapped[str] = mapped_column(String(20))
     level: Mapped[str] = mapped_column(String(20))
+    difficulty: Mapped[int | None] = mapped_column(
+        Integer, default=None, server_default=text("NULL")
+    )
     target_language: Mapped[str] = mapped_column(
         String(10), default="en-CA", server_default=text("'en-CA'")
     )

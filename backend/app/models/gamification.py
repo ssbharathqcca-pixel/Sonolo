@@ -15,9 +15,11 @@ from sqlalchemy import (
     Index,
     Integer,
     String,
+    Text,
     UniqueConstraint,
     false,
     func,
+    text,
 )
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from uuid6 import uuid7
@@ -40,6 +42,8 @@ class UserBadge(Base):
     id: Mapped[uuid.UUID] = mapped_column(primary_key=True, default=uuid7)
     user_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("users.id"))
     badge_id: Mapped[str] = mapped_column(String(50))
+    title: Mapped[str] = mapped_column(String(255), default="")
+    description: Mapped[str] = mapped_column(Text, default="")
     earned_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), server_default=func.now()
     )
@@ -61,20 +65,39 @@ class DailyQuest(Base):
     __tablename__ = "daily_quests"
     __table_args__ = (
         Index("idx_quests_user_date", "user_id", "quest_date"),
+        UniqueConstraint(
+            "user_id",
+            "quest_date",
+            "code",
+            name="uq_daily_quests_user_date_code",
+        ),
     )
 
     id: Mapped[uuid.UUID] = mapped_column(primary_key=True, default=uuid7)
     user_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("users.id"))
     quest_date: Mapped[date] = mapped_column(Date)
     quest_type: Mapped[str] = mapped_column(String(30))
+    code: Mapped[str] = mapped_column(String(50))
+    title: Mapped[str] = mapped_column(String(255), default="")
+    description: Mapped[str] = mapped_column(Text, default="")
+    target_count: Mapped[int] = mapped_column(
+        Integer, default=1, server_default=text("1")
+    )
+    progress_count: Mapped[int] = mapped_column(
+        Integer, default=0, server_default=text("0")
+    )
     scenario_id: Mapped[uuid.UUID | None] = mapped_column(
         ForeignKey("scenarios.id")
     )
     completed: Mapped[bool] = mapped_column(
         Boolean, default=False, server_default=false()
     )
+    completed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
     xp_reward: Mapped[int] = mapped_column(Integer)
     created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now()
+    )
+    updated_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), server_default=func.now()
     )
 

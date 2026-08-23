@@ -1,0 +1,31 @@
+C:\Users\pavan\OneDrive\Desktop\Sonolo\backend\.venv\Lib\site-packages\pytest_asyncio\plugin.py:207: PytestDeprecationWarning: The configuration option "asyncio_default_fixture_loop_scope" is unset.
+The event loop scope for asynchronous fixtures will default to the fixture caching scope. Future versions of pytest-asyncio will default the loop scope for asynchronous fixtures to function scope. Set the default fixture loop scope explicitly in order to avoid unexpected behavior in the future. Valid fixture loop scopes are: "function", "class", "module", "package", "session"
+
+  warnings.warn(PytestDeprecationWarning(_DEFAULT_FIXTURE_LOOP_SCOPE_UNSET))
+============================= test session starts =============================
+platform win32 -- Python 3.11.4, pytest-8.3.4, pluggy-1.6.0 -- C:\Users\pavan\OneDrive\Desktop\Sonolo\backend\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\pavan\OneDrive\Desktop\Sonolo\backend
+plugins: anyio-4.14.2, asyncio-0.25.3
+asyncio: mode=Mode.STRICT, asyncio_default_fixture_loop_scope=None
+collecting ... collected 16 items
+
+tests/test_api_gamification.py::test_complete_session_persists_and_responds PASSED [  6%]
+tests/test_api_gamification.py::test_complete_creates_user_skills_and_xp PASSED [ 12%]
+tests/test_api_gamification.py::test_complete_generates_and_progresses_quests PASSED [ 18%]
+tests/test_api_gamification.py::test_complete_returns_first_session_badge PASSED [ 25%]
+tests/test_api_gamification.py::test_duplicate_completion_replays_without_mutation PASSED [ 31%]
+tests/test_api_gamification.py::test_duplicate_completion_conflicting_scenario_returns_409 PASSED [ 37%]
+tests/test_api_gamification.py::test_quests_today_generates_lazily PASSED [ 43%]
+tests/test_api_gamification.py::test_gamification_me_summary PASSED      [ 50%]
+tests/test_api_gamification.py::test_unauthenticated_requests_return_401 PASSED [ 56%]
+tests/test_api_gamification.py::test_invalid_evaluation_score_returns_422 PASSED [ 62%]
+tests/test_api_gamification.py::test_ended_before_started_returns_422 PASSED [ 68%]
+tests/test_api_gamification.py::test_duration_mismatch_returns_422 PASSED [ 75%]
+tests/test_api_gamification.py::test_short_session_is_ineligible_for_xp PASSED [ 81%]
+tests/test_api_gamification.py::test_two_sessions_same_local_date_keep_streak PASSED [ 87%]
+tests/test_api_gamification.py::test_consecutive_local_dates_increment_streak PASSED [ 93%]
+tests/test_api_gamification.py::test_concurrent_duplicates_do_not_double_award PASSED [100%]
+
+============================= 16 passed in 12.10s =============================
+EXIT_CODE=0

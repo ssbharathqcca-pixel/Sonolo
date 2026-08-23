@@ -1,0 +1,25 @@
+C:\Users\pavan\OneDrive\Desktop\Sonolo\backend\.venv\Lib\site-packages\pytest_asyncio\plugin.py:207: PytestDeprecationWarning: The configuration option "asyncio_default_fixture_loop_scope" is unset.
+The event loop scope for asynchronous fixtures will default to the fixture caching scope. Future versions of pytest-asyncio will default the loop scope for asynchronous fixtures to function scope. Set the default fixture loop scope explicitly in order to avoid unexpected behavior in the future. Valid fixture loop scopes are: "function", "class", "module", "package", "session"
+
+  warnings.warn(PytestDeprecationWarning(_DEFAULT_FIXTURE_LOOP_SCOPE_UNSET))
+============================= test session starts =============================
+platform win32 -- Python 3.11.4, pytest-8.3.4, pluggy-1.6.0 -- C:\Users\pavan\OneDrive\Desktop\Sonolo\backend\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\pavan\OneDrive\Desktop\Sonolo\backend
+plugins: anyio-4.14.2, asyncio-0.25.3
+asyncio: mode=Mode.STRICT, asyncio_default_fixture_loop_scope=None
+collecting ... collected 10 items
+
+tests/test_api_review.py::test_due_returns_only_own_due_cards PASSED     [ 10%]
+tests/test_api_review.py::test_due_respects_limit PASSED                 [ 20%]
+tests/test_api_review.py::test_answer_processes_new_card_and_persists PASSED [ 30%]
+tests/test_api_review.py::test_answer_again_on_review_card_increments_lapses PASSED [ 40%]
+tests/test_api_review.py::test_endpoints_require_authentication PASSED   [ 50%]
+tests/test_api_review.py::test_other_users_card_is_not_found PASSED      [ 60%]
+tests/test_api_review.py::test_users_schedule_same_word_independently PASSED [ 70%]
+tests/test_api_review.py::test_new_user_sees_new_cards_as_due PASSED     [ 80%]
+tests/test_api_review.py::test_answer_unknown_card_returns_404 PASSED    [ 90%]
+tests/test_api_review.py::test_answer_rejects_invalid_rating PASSED      [100%]
+
+============================= 10 passed in 5.74s ==============================
+EXIT_CODE=0

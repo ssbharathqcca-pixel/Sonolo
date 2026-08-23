@@ -18,7 +18,14 @@ evidence".
 | SN-012 | FSRS-5 engine math (`tests/test_fsrs.py`) | `2026-08-22_sn012_test_fsrs.txt` | 13 passed |
 | SN-012 | Review API (`tests/test_api_review.py`) | `2026-08-22_sn012_test_api_review.txt` | 6 passed |
 | SN-010 | JWT auth + profiles (`tests/test_auth.py`) | `2026-08-22_sn010_test_auth.txt` | 10 passed |
-| all | Full backend suite (regenerated after SN-010) | `2026-08-22_full_suite.txt` | 60 passed |
+| SN-014 | Timezone helpers (`tests/test_time.py`) | `2026-08-22_sn014_test_test_time.txt` | 5 passed |
+| SN-014 | Streak/XP/skill/quest/badge rules (`tests/test_gamification_unit.py`) | `2026-08-22_sn014_test_test_gamification_unit.txt` | 17 passed |
+| SN-014 | /sessions/complete + quests + summary API (`tests/test_api_gamification.py`) | `2026-08-22_sn014_test_test_api_gamification.txt` | 15 passed |
+| SN-014A | WebSocket auth gate + user binding (`tests/test_ws.py`) | `2026-08-22_sn014a_test_test_ws.txt` | 14 passed |
+| SN-014A | User-scoped FSRS review API (`tests/test_api_review.py`) | `2026-08-22_sn014a_test_test_api_review.txt` | 10 passed |
+| SN-014A | Migration consistency (offline SQL + model inspection) (`tests/test_migrations.py`) | `2026-08-22_sn014a_test_test_migrations.txt` | 3 passed |
+| SN-014A | Alembic offline `upgrade head --sql` | `2026-08-22_sn014a_alembic_offline.txt` | exit 0, 8 tables |
+| all | Full backend suite (regenerated after SN-014A) | `2026-08-22_full_suite.txt` | 117 passed |
 
 ## Environment
 
