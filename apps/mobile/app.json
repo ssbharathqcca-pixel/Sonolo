@@ -1,0 +1,18 @@
+{
+  "expo": {
+    "name": "Sonolo",
+    "slug": "sonolo",
+    "version": "0.1.0",
+    "scheme": "sonolo",
+    "orientation": "portrait",
+    "userInterfaceStyle": "dark",
+    "platforms": ["ios", "android"],
+    "ios": {
+      "bundleIdentifier": "com.sonolo.mobile",
+      "supportsTablet": false
+    },
+    "android": {
+      "package": "com.sonolo.mobile"
+    }
+  }
+}
