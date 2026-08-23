@@ -97,11 +97,20 @@ def parse_client_message(data: object) -> ClientMessage:
 
 
 class AiTextChunkPayload(BaseModel):
-    """A piece of a transcript or AI reply; `is_final` closes the stream."""
+    """A piece of the AI tutor reply; `is_final` closes the stream."""
 
     text: str
     is_final: bool
     role: Literal["user", "assistant"] | None = None
+
+
+class UserTextChunkPayload(BaseModel):
+    """STT result for one user turn (retired the role-alternation debt)."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    text: str
+    is_final: bool
 
 
 class AiAudioPayloadPayload(BaseModel):
@@ -157,6 +166,11 @@ class AiTextChunkMessage(BaseModel):
 class AiAudioChunkMessage(BaseModel):
     type: Literal["ai_audio_chunk"] = "ai_audio_chunk"
     payload: AiAudioChunkPayload
+
+
+class UserTextChunkMessage(BaseModel):
+    type: Literal["user_text_chunk"] = "user_text_chunk"
+    payload: UserTextChunkPayload
 
 
 class AiAudioPayloadMessage(BaseModel):
@@ -220,6 +234,7 @@ class SessionSummaryMessage(BaseModel):
 
 
 ServerMessage = Union[
+    UserTextChunkMessage,
     AiTextChunkMessage,
     AiAudioChunkMessage,
     AiAudioPayloadMessage,
@@ -239,6 +254,13 @@ def audio_payload(audio_bytes: bytes, format_: str = "mp3") -> AiAudioPayloadMes
             audio=base64.b64encode(audio_bytes).decode("ascii"),
             format=format_,  # type: ignore[arg-type]
         )
+    )
+
+
+def user_text_chunk(text: str) -> UserTextChunkMessage:
+    """Build a `user_text_chunk` server message carrying the STT result."""
+    return UserTextChunkMessage(
+        payload=UserTextChunkPayload(text=text, is_final=True)
     )
 
 

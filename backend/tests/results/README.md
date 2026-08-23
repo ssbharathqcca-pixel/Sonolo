@@ -33,6 +33,10 @@ evidence".
 | SN-014B | Release smoke + migration tests | `2026-08-22_sn014b_release_smoke.txt` | 5 passed |
 | SN-015 | Scenario catalog API (`tests/test_api_scenarios.py`) | `2026-08-23_sn015_test_api_scenarios.txt` | 2 passed |
 | SN-015 | Full backend suite (regenerated after SN-015) | `2026-08-23_full_suite.txt` | 121 passed |
+| SN-016 | AI providers (`tests/test_ai_providers.py`) | `2026-08-23_sn016_test_ai_providers.txt` | 13 passed |
+| SN-016 | WebSocket pipeline + auth + session_summary (`tests/test_ws.py`) | `2026-08-23_sn016_test_ws.txt` | 15 passed |
+| all | Full backend suite (regenerated after SN-016) | `2026-08-23_full_suite.txt` | 135 passed |
+| SN-015 | Full backend suite (regenerated after SN-015) | `2026-08-23_full_suite.txt` | 121 passed |
 | all | (historical) Full suite after SN-014B | `2026-08-22_full_suite.txt` | 119 passed |
 
 ## Environment

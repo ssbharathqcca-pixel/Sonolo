@@ -1,0 +1,30 @@
+C:\Users\pavan\OneDrive\Desktop\Sonolo\backend\.venv\Lib\site-packages\pytest_asyncio\plugin.py:207: PytestDeprecationWarning: The configuration option "asyncio_default_fixture_loop_scope" is unset.
+The event loop scope for asynchronous fixtures will default to the fixture caching scope. Future versions of pytest-asyncio will default the loop scope for asynchronous fixtures to function scope. Set the default fixture loop scope explicitly in order to avoid unexpected behavior in the future. Valid fixture loop scopes are: "function", "class", "module", "package", "session"
+
+  warnings.warn(PytestDeprecationWarning(_DEFAULT_FIXTURE_LOOP_SCOPE_UNSET))
+============================= test session starts =============================
+platform win32 -- Python 3.11.4, pytest-8.3.4, pluggy-1.6.0 -- C:\Users\pavan\OneDrive\Desktop\Sonolo\backend\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\pavan\OneDrive\Desktop\Sonolo\backend
+plugins: anyio-4.14.2, asyncio-0.25.3
+asyncio: mode=Mode.STRICT, asyncio_default_fixture_loop_scope=None
+collecting ... collected 15 items
+
+tests/test_ws.py::test_connection_sends_idle PASSED                      [  6%]
+tests/test_ws.py::test_audio_chunk_transitions_to_listening PASSED       [ 13%]
+tests/test_ws.py::test_end_turn_runs_full_pipeline PASSED                [ 20%]
+tests/test_ws.py::test_text_input_runs_pipeline PASSED                   [ 26%]
+tests/test_ws.py::test_cancel_sends_session_summary_and_closes PASSED    [ 33%]
+tests/test_ws.py::test_cancel_with_empty_history_closes_gracefully PASSED [ 40%]
+tests/test_ws.py::test_invalid_frames_return_errors PASSED               [ 46%]
+tests/test_ws.py::test_session_mismatch_returns_error PASSED             [ 53%]
+tests/test_ws.py::test_silence_timeout_auto_ends_turn PASSED             [ 60%]
+tests/test_ws.py::test_disconnect_cleans_up_session PASSED               [ 66%]
+tests/test_ws.py::test_missing_token_is_rejected PASSED                  [ 73%]
+tests/test_ws.py::test_invalid_token_is_rejected PASSED                  [ 80%]
+tests/test_ws.py::test_expired_token_is_rejected PASSED                  [ 86%]
+tests/test_ws.py::test_authenticated_session_binds_user_id PASSED        [ 93%]
+tests/test_ws.py::test_no_protected_flow_without_authentication PASSED   [100%]
+
+============================= 15 passed in 2.52s ==============================
+EXIT_CODE=0

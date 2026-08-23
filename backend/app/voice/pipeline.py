@@ -1,14 +1,14 @@
 """Real voice pipeline orchestrator (SN-016).
 
-One turn = STT over the accumulated audio -> LLM tutor reply ->
-TTS synthesis streamed back as a single complete-buffer frame. The
-provider bundle (real or Mock) is selected by settings at startup; the
-state machine wrapper (PROCESSING / SPEAKING / IDLE) is identical for
-both, so CI exercises the real flow with deterministic mocks.
+One turn = STT over accumulated audio (emitting `user_text_chunk`)
+-> LLM tutor reply (`ai_text_chunk`) -> TTS synthesis streamed back as
+a single `audio_payload` MP3 buffer. Provider bundle (real or Mock)
+is selected by settings; the state machine wrapper is identical.
 """
 
 import asyncio
 import logging
+import time
 from collections.abc import AsyncIterator
 from uuid import uuid4
 
@@ -23,70 +23,68 @@ from app.voice.protocol import (
     TurnCompletePayload,
     VoiceState,
     audio_payload,
+    user_text_chunk,
 )
 from app.voice.session_manager import VoiceSession
 
 logger = logging.getLogger(__name__)
 
-STT_DELAY_SECONDS = 0.05  # Keep the mock pipeline visually testable.
-LLM_DELAY_SECONDS = 0.05
+MOCK_DELAY_SECONDS = 0.05
 
 
 async def process_turn(
     session: VoiceSession, override_text: str | None = None
 ) -> AsyncIterator[ServerMessage]:
-    """Run one full tutor turn for the session, yielding server frames.
-
-    `override_text` (typed input path) bypasses STT: the text is used
-    directly as the user turn.
-    """
+    """Run one full tutor turn, yielding server frames in order."""
     bundle = get_ai_bundle()
-    logger.debug(
-        "Processing turn for session %s (audio=%d bytes, text=%s, mocks=%s)",
-        session.session_id,
-        sum(len(chunk) for chunk in session.audio_bytes),
-        override_text is not None,
-        bundle.using_mocks,
-    )
-
     yield StateChangeMessage(
         payload=StateChangePayload(state=VoiceState.PROCESSING)
     )
 
-    # STT: accumulated audio (or typed text) -> user transcript.
+    # --- STT -------------------------------------------------------------
+    t0 = time.monotonic()
     if override_text is not None:
         user_text = override_text
     else:
-        audio = b"".join(session.audio_bytes)
+        audio_bytes = b"".join(session.audio_bytes)
         session.audio_bytes = []
         session.audio_buffer = []
-        await asyncio.sleep(STT_DELAY_SECONDS)
-        user_text = await bundle.stt.transcribe(audio)
-    if user_text == "":
-        user_text = "…"  # Empty STT still advances the conversation.
+        await asyncio.sleep(MOCK_DELAY_SECONDS)
+        user_text = await bundle.stt.transcribe(audio_bytes)
+    stt_ms = round((time.monotonic() - t0) * 1000)
+
+    if not user_text:
+        user_text = "…"
     session.history.append({"role": "user", "content": user_text})
+    logger.info(
+        "ai.stt_completed session=%s latency_ms=%d", session.session_id, stt_ms
+    )
+    yield user_text_chunk(user_text)
+
+    # --- LLM ---------------------------------------------------------------
+    t1 = time.monotonic()
+    reply = await bundle.llm.generate(session.system_prompt, session.history)
+    llm_ms = round((time.monotonic() - t1) * 1000)
+    session.history.append({"role": "assistant", "content": reply})
+    logger.info(
+        "ai.llm_completed session=%s latency_ms=%d", session.session_id, llm_ms
+    )
     yield AiTextChunkMessage(
-        payload=AiTextChunkPayload(text=user_text, is_final=True, role="user")
+        payload=AiTextChunkPayload(text=reply, is_final=True, role="assistant")
     )
 
-    # LLM: history + scenario prompt -> tutor reply.
-    await asyncio.sleep(LLM_DELAY_SECONDS)
-    tutor_reply = await bundle.llm.generate_response(
-        session.system_prompt, session.history
-    )
-    session.history.append({"role": "assistant", "content": tutor_reply})
-    yield AiTextChunkMessage(
-        payload=AiTextChunkPayload(
-            text=tutor_reply, is_final=True, role="assistant"
-        )
-    )
-
-    # TTS: reply -> one complete audio buffer frame.
+    # --- TTS -----------------------------------------------------------------
     yield StateChangeMessage(
         payload=StateChangePayload(state=VoiceState.SPEAKING)
     )
-    audio_bytes = await bundle.tts.synthesize(tutor_reply)
-    yield audio_payload(audio_bytes)
+    t2 = time.monotonic()
+    mp3_bytes = await bundle.tts.synthesize(reply)
+    tts_ms = round((time.monotonic() - t2) * 1000)
+    logger.info(
+        "ai.tts_completed session=%s latency_ms=%d bytes=%d",
+        session.session_id, tts_ms, len(mp3_bytes),
+    )
 
+    yield audio_payload(mp3_bytes)
     yield TurnCompleteMessage(payload=TurnCompletePayload(turn_id=uuid4()))
     yield StateChangeMessage(payload=StateChangePayload(state=VoiceState.IDLE))

@@ -22,7 +22,7 @@ DEFAULT_SYSTEM_PROMPT = (
 class LLMProvider(Protocol):
     """Async tutor-LLM interface."""
 
-    async def generate_response(
+    async def generate(
         self, system_prompt: str, history: list[dict[str, str]]
     ) -> str:
         """Return the tutor's reply for the conversation so far."""
@@ -32,7 +32,7 @@ class LLMProvider(Protocol):
 class MockLLMProvider:
     """Deterministic, encouraging tutor for CI and key-less dev."""
 
-    async def generate_response(
+    async def generate(
         self, system_prompt: str, history: list[dict[str, str]]
     ) -> str:
         """Always the same CanadaReady™ coaching line."""
@@ -56,7 +56,7 @@ class OpenAICompatibleLLMProvider:
         self._timeout_seconds = timeout_seconds
         self._client = http_client
 
-    async def generate_response(
+    async def generate(
         self, system_prompt: str, history: list[dict[str, str]]
     ) -> str:
         """POST /chat/completions and return the assistant message."""
