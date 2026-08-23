@@ -6,8 +6,8 @@ Cards move left to right through the columns defined in [GLM_WORKFLOW.md](GLM_WO
 
 | Backlog | Spec Ready | Prompt Ready | GLM Running | Review | Fix Required | QA | Done |
 |---|---|---|---|---|---|---|---|
-| SN-004 — Web landing scaffold (Next.js) | | SN-003 — Mobile scaffold (Expo) | | | | | SN-001 — Monorepo structure and control docs |
-| SN-005 — Content model and scenario schema | | | | | | | SN-002 — Backend scaffold |
+| SN-004 — Web landing scaffold (Next.js) | 
+| SN-005 — Content model and scenario schema | | | | | | |
 | SN-006 — Database schema and SQLAlchemy models | | | | | | | |
 | SN-007 — Voice WebSocket protocol | | | | | | | |
 | SN-008 — Scenario content batch (20 Canadian immigration) | | | | | | | |
@@ -33,8 +33,9 @@ Cards move left to right through the columns defined in [GLM_WORKFLOW.md](GLM_WO
 
 | ID | Title | Completed | Notes |
 |---|---|---|---|
-| SN-001 | Monorepo structure and control docs | 2026-08-22 | 16 files, clean scaffold |
-| SN-002 | Backend scaffold (FastAPI) | 2026-08-22 | Health endpoint, settings, tests pass |
+| SN-001 | Monorepo structure and control docs | 2026-08-22 | 16 files, clean scaffold |Done
+| SN-002 | Backend scaffold (FastAPI) | 2026-08-22 | Health endpoint, settings, tests pass |Done
+| SN-003 — Mobile scaffold (Expo) |  skill dimensions mismatch | Done
 
 ## Card format
 
