@@ -8,9 +8,7 @@ Cards move left to right through the columns defined in [GLM_WORKFLOW.md](GLM_WO
 |---|---|---|---|---|---|---|---|
 | SN-004 — Web landing scaffold (Next.js) | 
 | SN-005 — Content model and scenario schema | | | | | | |
-| SN-006 — Database schema and SQLAlchemy models | | | | | | | |
 | SN-007 — Voice WebSocket protocol | | | | | | | |
-| SN-008 — Scenario content batch (20 Canadian immigration) | | | | | | | |
 | SN-009 — Vocabulary content batch (500 items) | | | | | | | |
 | SN-010 — Voice pipeline integration (STT → LLM → TTS) | | | | | | | |
 | SN-011 — Feedback/scoring engine (6 dimensions) | | | | | | | |
@@ -36,6 +34,8 @@ Cards move left to right through the columns defined in [GLM_WORKFLOW.md](GLM_WO
 | SN-001 | Monorepo structure and control docs | 2026-08-22 | 16 files, clean scaffold |Done
 | SN-002 | Backend scaffold (FastAPI) | 2026-08-22 | Health endpoint, settings, tests pass |Done
 | SN-003 — Mobile scaffold (Expo) |  skill dimensions mismatch | Done
+| SN-006 — Database schema and SQLAlchemy models | | | | | | | |Done
+| SN-008 — Scenario content batch (20 Canadian immigration) | | | | | | | |Done
 
 ## Card format
 

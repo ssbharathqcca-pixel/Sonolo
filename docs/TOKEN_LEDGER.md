@@ -5,6 +5,8 @@ One row per GLM run — including fix-loop runs (reference the parent task ID in
 | Date | Task ID | Workstream | Prompt tokens | Output tokens | Estimated total | Result | Quality score | Notes |
 |---|---|---|---|---|---|---|---|---|
 | *2026-08-22* | *SN-000* | *WS-INFRA* | *4,000* | *12,000* | *16,000* | *Merged* | *5/5* | *Example row — delete after the first real entry* |
+| D-008 | 2026-08-22 | Use uuid6 library for uuid7 PKs | Python 3.12 stdlib lacks uuid7; uuid6 is maintained and lightweight | Custom uuid generation, waiting for Python 3.14 stdlib | Founder |
+| 2026-08-22 | SN-008 | WS-CONTENT | ~3,500 | ~8,500 | ~12,000 | Merged | 5/5 | 20 Canadian immigration scenarios, perfect distribution and cultural context |
 
 ## Result values
 
