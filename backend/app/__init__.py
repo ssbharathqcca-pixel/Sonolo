@@ -1,0 +1,1 @@
+"""Sonolo backend application package."""
