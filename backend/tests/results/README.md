@@ -17,7 +17,8 @@ evidence".
 | SN-011 | Evaluator unit + feedback API (`tests/test_evaluator.py`, `tests/test_api_sessions.py`) | `2026-08-22_sn011_test_evaluator_api.txt` | 14 passed |
 | SN-012 | FSRS-5 engine math (`tests/test_fsrs.py`) | `2026-08-22_sn012_test_fsrs.txt` | 13 passed |
 | SN-012 | Review API (`tests/test_api_review.py`) | `2026-08-22_sn012_test_api_review.txt` | 6 passed |
-| all | Full backend suite (regenerated after SN-012) | `2026-08-22_full_suite.txt` | 50 passed |
+| SN-010 | JWT auth + profiles (`tests/test_auth.py`) | `2026-08-22_sn010_test_auth.txt` | 10 passed |
+| all | Full backend suite (regenerated after SN-010) | `2026-08-22_full_suite.txt` | 60 passed |
 
 ## Environment
 

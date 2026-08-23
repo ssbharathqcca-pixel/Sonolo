@@ -4,17 +4,26 @@
 # --reload support via watchfiles), pydantic (models), pydantic-settings
 # (environment-driven configuration), sqlalchemy[asyncio] (2.0 async ORM;
 # the extra pulls greenlet required for async), asyncpg (async PostgreSQL
-# driver), alembic (migrations), uuid6 (time-sortable uuid7 primary keys).
+# driver), alembic (migrations), uuid6 (time-sortable uuid7 primary keys),
+# passlib[bcrypt] + bcrypt (password hashing; bcrypt pinned to 4.0.1 for
+# passlib 1.7.4 compatibility), python-jose[cryptography] (JWT),
+# python-multipart (OAuth2 form login in Swagger UI), email-validator
+# (pydantic EmailStr).
 # Test: httpx (required by Starlette's TestClient), pytest (runner),
 # pytest-asyncio (async tests), aiosqlite (async SQLite for the test suite).
 fastapi==0.115.6
-pydantic==2.10.4
+pydantic[email]==2.10.4
 pydantic-settings==2.7.0
 uvicorn[standard]==0.34.0
 sqlalchemy[asyncio]==2.0.36
 asyncpg==0.30.0
 alembic==1.14.0
 uuid6==2024.7.10
+passlib[bcrypt]==1.7.4
+bcrypt==4.0.1
+python-jose[cryptography]==3.3.0
+python-multipart==0.0.20
+email-validator==2.2.0
 httpx==0.28.1
 pytest==8.3.4
 pytest-asyncio==0.25.3

@@ -62,6 +62,21 @@ class Settings(BaseSettings):
             "auto-ended by the voice session manager."
         ),
     )
+    secret_key: str = Field(
+        default="dev-only-secret-key-change-me",
+        description=(
+            "JWT signing secret. Safe local default only — must be "
+            "overridden via the environment outside development."
+        ),
+    )
+    algorithm: str = Field(
+        default="HS256",
+        description="JWT signing algorithm.",
+    )
+    access_token_expire_minutes: int = Field(
+        default=60,
+        description="Access token lifetime in minutes.",
+    )
 
 
 @lru_cache(maxsize=1)

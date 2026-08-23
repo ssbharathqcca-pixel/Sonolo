@@ -10,6 +10,7 @@ One row per GLM run — including fix-loop runs (reference the parent task ID in
 | 2026-08-22 | SN-009 | WS-CONTENT | ~4,000 | ~18,000 | ~22,000 | Merged | 5/5 | 100 FSRS vocab items with Pa/Hi/Zh/Es translations and Canadian context |
 | 2026-08-22 | SN-007 | WS-BACKEND | ~5,000 | ~25,000 | ~30,000 | Merged | 5/5 | WebSocket protocol, session manager, mock pipeline, 9 WS tests (17/17 pass) |
 | 2026-08-22 | SN-011 | WS-BACKEND | ~4,500 | ~16,000 | ~20,500 | Merged | 5/5 | Deterministic 6-dimension evaluator, insights, API endpoint (31/31 tests pass) |
+| 2026-08-22 | SN-012 | WS-BACKEND | ~5,500 | ~28,000 | ~33,500 | Merged | 5/5 | Native FSRS-5 engine, API endpoints, translations column (50/50 tests pass) |
 
 ## Result values
 

@@ -40,6 +40,10 @@ class User(Base):
 
     id: Mapped[uuid.UUID] = mapped_column(primary_key=True, default=uuid7)
     email: Mapped[str | None] = mapped_column(String(255), unique=True)
+    #: bcrypt hash; empty string means the user has no password yet.
+    hashed_password: Mapped[str] = mapped_column(
+        String(255), default="", server_default=text("''")
+    )
     name: Mapped[str] = mapped_column(String(255))
     native_language: Mapped[str] = mapped_column(String(10))
     target_language: Mapped[str] = mapped_column(String(10))
