@@ -1,66 +1,55 @@
-/**
- * On-device cache for the published scenario catalog (SN-017).
- *
- * The catalog changes rarely, so the last successful GET /api/scenarios
- * payload is persisted to a JSON file in the app's documents directory.
- * When the backend is unreachable, Home and Learn hydrate from this
- * file instead of showing an empty state. Every failure degrades
- * silently to "no cache" — caching must never break the happy path.
- */
+import * as SecureStore from 'expo-secure-store';
 
-import * as FileSystem from "expo-file-system";
+export type Scenario = {
+  id: string;
+  title: string;
+  description: string;
+  is_premium: boolean;
+};
 
-import type { Scenario } from "../api/client";
+type CachedPayload = {
+  version: string;
+  timestamp: number;
+  data: Scenario[];
+};
 
-const CACHE_FILE = "sonolo-scenarios-cache.json";
+const CACHE_KEY = 'sonolo_scenarios_catalog';
+const CATALOG_VERSION = '2.0.0'; // Bumped for SN-018 (40 scenarios)
 
-function cacheUri(): string {
-  return `${FileSystem.documentDirectory ?? ""}${CACHE_FILE}`;
-}
-
-function isValidCatalog(value: unknown): value is Scenario[] {
-  return (
-    Array.isArray(value) &&
-    value.every(
-      (item) =>
-        typeof item === "object" &&
-        item !== null &&
-        typeof (item as Scenario).id === "string" &&
-        typeof (item as Scenario).title === "string",
-    )
-  );
-}
-
-/** Persist the catalog; resolves false when storage fails (never throws). */
-export async function saveScenarioCache(scenarios: Scenario[]): Promise<boolean> {
+export async function getScenarios(fetchFromNetwork: () => Promise<Scenario[]>): Promise<Scenario[]> {
   try {
-    await FileSystem.writeAsStringAsync(cacheUri(), JSON.stringify(scenarios), {
-      encoding: FileSystem.EncodingType.UTF8,
-    });
-    return true;
-  } catch (error) {
-    console.warn("[scenarioCache] Failed to persist scenarios:", error);
-    return false;
-  }
-}
-
-/**
- * Load the cached catalog; resolves null when absent or corrupt
- * (never throws).
- */
-export async function loadScenarioCache(): Promise<Scenario[] | null> {
-  try {
-    const info = await FileSystem.getInfoAsync(cacheUri());
-    if (!info.exists) {
-      return null;
+    const cachedJson = await SecureStore.getItemAsync(CACHE_KEY);
+    if (cachedJson) {
+      const parsed: CachedPayload = JSON.parse(cachedJson);
+      if (parsed.version === CATALOG_VERSION) {
+        return parsed.data;
+      }
     }
-    const raw = await FileSystem.readAsStringAsync(cacheUri(), {
-      encoding: FileSystem.EncodingType.UTF8,
-    });
-    const parsed: unknown = JSON.parse(raw);
-    return isValidCatalog(parsed) ? parsed : null;
   } catch (error) {
-    console.warn("[scenarioCache] Failed to load scenarios:", error);
-    return null;
+    console.warn('[ScenarioCache] Read failed, falling back to network', error);
+  }
+
+  const data = await fetchFromNetwork();
+  
+  const payload: CachedPayload = {
+    version: CATALOG_VERSION,
+    timestamp: Date.now(),
+    data,
+  };
+
+  try {
+    await SecureStore.setItemAsync(CACHE_KEY, JSON.stringify(payload));
+  } catch (error) {
+    console.warn('[ScenarioCache] Write failed', error);
+  }
+
+  return data;
+}
+
+export async function invalidateScenarioCache(): Promise<void> {
+  try {
+    await SecureStore.deleteItemAsync(CACHE_KEY);
+  } catch (error) {
+    console.warn('[ScenarioCache] Invalidation failed', error);
   }
 }
