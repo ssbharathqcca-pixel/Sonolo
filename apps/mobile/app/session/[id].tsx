@@ -9,6 +9,7 @@
 import { useEffect, useState } from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import { useLocalSearchParams, useRouter } from "expo-router";
+import * as Linking from "expo-linking";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import Animated, {
   Easing,
@@ -18,7 +19,7 @@ import Animated, {
   withTiming,
   cancelAnimation,
 } from "react-native-reanimated";
-import { ChevronLeft, Flag, Lightbulb } from "lucide-react-native";
+import { ChevronLeft, Flag, Lightbulb, Mic, Settings } from "lucide-react-native";
 
 import { GlassCard } from "../../src/components/GlassCard";
 import {
@@ -83,6 +84,7 @@ export default function VoiceSessionScreen(): JSX.Element {
     error,
     isConnected,
     isFinishing,
+    micDenied,
     handleTap,
     finishSession,
   } = useVoiceSession(scenario?.id ?? params.id ?? "");
@@ -131,6 +133,29 @@ export default function VoiceSessionScreen(): JSX.Element {
         </Pressable>
       </View>
 
+      {micDenied ? (
+        <GlassCard style={styles.micDeniedCard}>
+          <View style={styles.micDeniedRow}>
+            <Mic color={colors.error} size={28} />
+            <Text style={styles.micDeniedTitle}>Microphone access needed</Text>
+          </View>
+          <Text style={styles.micDeniedText}>
+            Sonolo needs microphone access for voice practice. Enable it in
+            your device settings.
+          </Text>
+          <Pressable
+            style={styles.settingsButton}
+            onPress={() => {
+              Linking.openSettings();
+            }}
+            accessibilityLabel="Open device settings"
+          >
+            <Settings color="#FFFFFF" size={16} />
+            <Text style={styles.settingsButtonText}>Open Settings</Text>
+          </Pressable>
+        </GlassCard>
+      ) : null}
+
       <GlassCard style={styles.promptCard}>
         <Text style={styles.promptLabel}>Scenario</Text>
         <Text style={styles.promptText}>
@@ -171,6 +196,12 @@ export default function VoiceSessionScreen(): JSX.Element {
       {error !== null ? <Text style={styles.error}>{error}</Text> : null}
 
       <View style={styles.controls}>
+        {phase === "listening" ? (
+          <View style={styles.recordingIndicator}>
+            <View style={styles.recordingDot} />
+            <Text style={styles.recordingText}>REC</Text>
+          </View>
+        ) : null}
         <VoiceButton state={phase} onPress={handleTap} />
         <Text style={styles.caption}>{voiceButtonCaption(phase)}</Text>
         <Pressable
@@ -350,5 +381,58 @@ const styles = StyleSheet.create({
     color: "#FFFFFF",
     fontSize: 15,
     fontWeight: "700",
+  },
+  micDeniedCard: {
+    gap: 12,
+    borderWidth: 1,
+    borderColor: colors.error,
+  },
+  micDeniedRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 10,
+  },
+  micDeniedTitle: {
+    color: colors.textPrimary,
+    fontSize: 17,
+    fontWeight: "700",
+    flex: 1,
+  },
+  micDeniedText: {
+    color: colors.textSecondary,
+    fontSize: 14,
+    lineHeight: 20,
+  },
+  settingsButton: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 8,
+    backgroundColor: colors.auroraTeal,
+    borderRadius: 12,
+    paddingVertical: 12,
+  },
+  settingsButtonText: {
+    color: "#FFFFFF",
+    fontSize: 14,
+    fontWeight: "700",
+  },
+  recordingIndicator: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 6,
+    marginBottom: 2,
+  },
+  recordingDot: {
+    width: 8,
+    height: 8,
+    borderRadius: 999,
+    backgroundColor: colors.error,
+  },
+  recordingText: {
+    color: colors.error,
+    fontSize: 11,
+    fontWeight: "800",
+    letterSpacing: 2,
   },
 });
