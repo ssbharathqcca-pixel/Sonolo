@@ -10,7 +10,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.api.dependencies import get_current_user
 from app.db.session import get_db
 from app.models.scenario import Scenario
-from app.models.user import User
+from app.models.user import SUBSCRIPTION_FREE, User
 
 router = APIRouter(prefix="/scenarios", tags=["scenarios"])
 
@@ -25,6 +25,9 @@ class ScenarioOut(BaseModel):
     description: str
     category: str
     difficulty: int | None
+    #: True when the scenario is premium and the caller is on the free
+    #: tier (SN-026) — the mobile client renders a paywall for these.
+    is_locked: bool = False
 
 
 class ScenarioListResponse(BaseModel):
@@ -47,6 +50,17 @@ async def list_scenarios(
         .limit(limit)
     )
     scenarios = list(result.scalars().all())
+    is_free_tier = current_user.subscription_tier == SUBSCRIPTION_FREE
     return ScenarioListResponse(
-        scenarios=[ScenarioOut.model_validate(scenario) for scenario in scenarios]
+        scenarios=[
+            ScenarioOut(
+                id=scenario.id,
+                title=scenario.title,
+                description=scenario.description,
+                category=scenario.category,
+                difficulty=scenario.difficulty,
+                is_locked=bool(scenario.is_premium and is_free_tier),
+            )
+            for scenario in scenarios
+        ]
     )

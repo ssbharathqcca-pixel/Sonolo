@@ -23,6 +23,7 @@ import {
   registerRequest,
   setAuthToken,
   setUnauthorizedHandler,
+  upgradeAccountRequest,
   type RegisterPayload,
   type User,
 } from "../api/client";
@@ -46,6 +47,8 @@ interface AuthState {
   targetLevel: string | null;
   login: (email: string, password: string) => Promise<void>;
   register: (payload: RegisterPayload) => Promise<void>;
+  /** Flip the account to premium via the mock upgrade endpoint (SN-026). */
+  upgradeAccount: () => Promise<void>;
   logout: () => Promise<void>;
   hydrate: () => Promise<void>;
   /** Persist onboarding completion and the chosen goal device-side. */
@@ -116,6 +119,17 @@ export const useAuthStore = create<AuthState>()((set, get) => ({
         isLoading: false,
         ...onboarding,
       });
+    } catch (error) {
+      set({ isLoading: false });
+      throw new Error(getApiErrorMessage(error));
+    }
+  },
+
+  upgradeAccount: async () => {
+    set({ isLoading: true });
+    try {
+      const user = await upgradeAccountRequest();
+      set({ user, isLoading: false });
     } catch (error) {
       set({ isLoading: false });
       throw new Error(getApiErrorMessage(error));

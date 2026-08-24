@@ -1,6 +1,8 @@
 /**
  * Learn — today's daily quests with live progress (SN-017) plus the
- * scenario pack catalog feeding the speaking loop.
+ * live scenario catalog feeding the speaking loop. Premium scenarios
+ * carry a lock overlay for free-tier callers and open the SN-026
+ * paywall bottom sheet; unlocked ones jump straight into a session.
  */
 import { useCallback, useEffect, useState } from "react";
 import {
@@ -21,15 +23,54 @@ import Animated, {
   withDelay,
   withTiming,
 } from "react-native-reanimated";
-import { CheckCircle2, ChevronRight, Target } from "lucide-react-native";
+import {
+  CheckCircle2,
+  ChevronRight,
+  Lock,
+  MessagesSquare,
+  Target,
+} from "lucide-react-native";
 
 import { GlassCard } from "../../src/components/GlassCard";
+import { PaywallModal } from "../../src/components/PaywallModal";
 import {
   fetchTodayQuests,
   type QuestResult,
+  type Scenario,
 } from "../../src/api/client";
-import { DIFFICULTY_COLORS, QUESTS, type Quest } from "../../src/data/quests";
+import { useAuthStore } from "../../src/stores/authStore";
+import { useScenarioStore } from "../../src/stores/scenarioStore";
 import { colors } from "../../src/theme/colors";
+
+/** A scenario is tappable only when its premium gate applies to the caller. */
+function isLockedForCaller(
+  scenario: Scenario,
+  isPremiumUser: boolean,
+): boolean {
+  return (scenario.is_locked ?? false) && !isPremiumUser;
+}
+
+function difficultyTone(difficulty: number | null): {
+  label: string;
+  text: string;
+  background: string;
+} {
+  if (difficulty === null || difficulty <= 2) {
+    return { label: "Gentle", text: colors.success, background: colors.successSoft };
+  }
+  if (difficulty <= 3) {
+    return {
+      label: "Standard",
+      text: colors.auroraTeal,
+      background: colors.auroraTealSoft,
+    };
+  }
+  return {
+    label: "Challenge",
+    text: colors.warmCoral,
+    background: colors.warmCoralSoft,
+  };
+}
 
 function QuestProgressBar({ percent }: { percent: number }): JSX.Element {
   const width = useSharedValue(0);
@@ -86,45 +127,97 @@ function DailyQuestCard({ quest }: { quest: QuestResult }): JSX.Element {
   );
 }
 
-function PackCard({ quest }: { quest: Quest }): JSX.Element {
-  const router = useRouter();
-  const Icon = quest.icon;
-  const tone = DIFFICULTY_COLORS[quest.difficulty];
+function LibraryScenarioCard({
+  scenario,
+  isLocked,
+  onPress,
+}: {
+  scenario: Scenario;
+  isLocked: boolean;
+  onPress: () => void;
+}): JSX.Element {
+  const tone = difficultyTone(scenario.difficulty);
 
   return (
-    <GlassCard style={styles.packCard}>
+    <GlassCard style={styles.libraryCard}>
       <Pressable
-        style={styles.packPressable}
-        accessibilityLabel={`Start scenario pack: ${quest.title}`}
-        onPress={() =>
-          router.push({ pathname: "/session/[id]", params: { id: quest.id } })
+        style={styles.libraryPressable}
+        accessibilityLabel={
+          isLocked
+            ? `Premium scenario: ${scenario.title}`
+            : `Start scenario: ${scenario.title}`
         }
+        onPress={onPress}
       >
-        <View style={styles.packIconWell}>
-          <Icon color={colors.auroraTeal} size={22} />
+        <View style={styles.libraryIconWell}>
+          <MessagesSquare color={colors.auroraTeal} size={20} />
         </View>
-        <View style={styles.packInfo}>
-          <Text style={styles.packTitle}>{quest.title}</Text>
-          <Text style={styles.packMeta}>
-            {quest.minutes} min · +{quest.xp} XP
+        <View style={styles.libraryInfo}>
+          <Text style={styles.libraryTitle} numberOfLines={1}>
+            {scenario.title}
           </Text>
+          <Text style={styles.libraryMeta}>{scenario.category}</Text>
         </View>
-        <View style={[styles.difficultyBadge, { backgroundColor: tone.background }]}>
-          <Text style={[styles.difficultyText, { color: tone.text }]}>
-            {quest.difficulty}
-          </Text>
-        </View>
-        <ChevronRight color={colors.textTertiary} size={18} />
+        {!isLocked ? (
+          <>
+            <View
+              style={[styles.difficultyBadge, { backgroundColor: tone.background }]}
+            >
+              <Text style={[styles.difficultyText, { color: tone.text }]}>
+                {tone.label}
+              </Text>
+            </View>
+            <ChevronRight color={colors.textTertiary} size={18} />
+          </>
+        ) : null}
       </Pressable>
+      {isLocked ? (
+        // Translucent cover in place of a native blur (no expo-blur
+        // dependency) — dims the card and carries the premium lock.
+        <View style={styles.lockOverlay} pointerEvents="none">
+          <View style={styles.lockWell}>
+            <Lock color="#FFFFFF" size={18} />
+          </View>
+          <Text style={styles.lockLabel}>Premium</Text>
+        </View>
+      ) : null}
     </GlassCard>
   );
 }
 
 export default function LearnScreen(): JSX.Element {
+  const router = useRouter();
   const insets = useSafeAreaInsets();
   const [quests, setQuests] = useState<QuestResult[] | null>(null);
   const [questsUnavailable, setQuestsUnavailable] = useState(false);
   const [refreshing, setRefreshing] = useState(false);
+  const [paywallVisible, setPaywallVisible] = useState(false);
+
+  const user = useAuthStore((state) => state.user);
+  const scenarios = useScenarioStore((state) => state.scenarios);
+  const isLoadingScenarios = useScenarioStore((state) => state.isLoading);
+  const loadScenarios = useScenarioStore((state) => state.load);
+
+  useEffect(() => {
+    if (scenarios.length === 0) {
+      void loadScenarios();
+    }
+  }, [scenarios.length, loadScenarios]);
+
+  // Server tier truth beats a possibly stale cached catalog: once the
+  // account is premium no card stays locked (SN-026).
+  const isPremiumUser = user?.subscription_tier === "premium";
+
+  const handleScenarioPress = useCallback(
+    (scenario: Scenario): void => {
+      if (isLockedForCaller(scenario, isPremiumUser)) {
+        setPaywallVisible(true);
+        return;
+      }
+      router.push({ pathname: "/session/[id]", params: { id: scenario.id } });
+    },
+    [isPremiumUser, router],
+  );
 
   const loadQuests = useCallback(async (): Promise<void> => {
     try {
@@ -194,10 +287,34 @@ export default function LearnScreen(): JSX.Element {
         </Text>
       ) : null}
 
-      <Text style={styles.sectionTitle}>Scenario packs</Text>
-      {QUESTS.map((quest) => (
-        <PackCard key={quest.id} quest={quest} />
+      <Text style={styles.sectionTitle}>Scenario library</Text>
+      {isLoadingScenarios && scenarios.length === 0 ? (
+        <ActivityIndicator
+          color={colors.auroraTeal}
+          style={styles.questsSpinner}
+        />
+      ) : null}
+      {!isLoadingScenarios && scenarios.length === 0 ? (
+        <Text style={styles.offlineNote}>
+          Scenarios need a connection on first launch — they'll appear once
+          you're back online.
+        </Text>
+      ) : null}
+      {scenarios.map((scenario) => (
+        <LibraryScenarioCard
+          key={scenario.id}
+          scenario={scenario}
+          isLocked={isLockedForCaller(scenario, isPremiumUser)}
+          onPress={() => handleScenarioPress(scenario)}
+        />
       ))}
+
+      <PaywallModal
+        visible={paywallVisible}
+        onClose={() => {
+          setPaywallVisible(false);
+        }}
+      />
     </ScrollView>
   );
 }
@@ -296,15 +413,15 @@ const styles = StyleSheet.create({
     fontSize: 13,
     lineHeight: 18,
   },
-  packCard: {
+  libraryCard: {
     padding: 14,
   },
-  packPressable: {
+  libraryPressable: {
     flexDirection: "row",
     alignItems: "center",
     gap: 12,
   },
-  packIconWell: {
+  libraryIconWell: {
     width: 44,
     height: 44,
     borderRadius: 14,
@@ -312,18 +429,46 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     backgroundColor: colors.auroraTealSoft,
   },
-  packInfo: {
+  libraryInfo: {
     flex: 1,
     gap: 2,
   },
-  packTitle: {
+  libraryTitle: {
     color: colors.textPrimary,
     fontSize: 15,
     fontWeight: "600",
   },
-  packMeta: {
+  libraryMeta: {
     color: colors.textTertiary,
     fontSize: 12,
+    textTransform: "capitalize",
+  },
+  lockOverlay: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    borderRadius: 24,
+    backgroundColor: "rgba(15, 23, 42, 0.62)",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 8,
+  },
+  lockWell: {
+    width: 36,
+    height: 36,
+    borderRadius: 999,
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "rgba(248, 250, 252, 0.16)",
+  },
+  lockLabel: {
+    color: "#F8FAFC",
+    fontSize: 11,
+    fontWeight: "700",
+    letterSpacing: 1.5,
+    textTransform: "uppercase",
   },
   difficultyBadge: {
     borderRadius: 999,

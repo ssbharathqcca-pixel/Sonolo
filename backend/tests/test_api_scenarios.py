@@ -1,16 +1,18 @@
-"""Integration tests for the scenario catalog endpoint (SN-015)."""
+"""Integration tests for the scenario catalog endpoint (SN-015, SN-026)."""
 
 from collections.abc import AsyncIterator
 
 import pytest
 import pytest_asyncio
 from httpx import ASGITransport, AsyncClient
+from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 import app.models  # noqa: F401
 from app.core.config import Settings
 from app.db.session import get_db
 from app.main import create_app
+from app.models.scenario import Scenario
 from app.services.content_service import seed_scenarios
 
 pytestmark = pytest.mark.asyncio
@@ -75,6 +77,55 @@ async def test_scenarios_returns_the_seeded_catalog(
     titles = [scenario["title"] for scenario in body["scenarios"]]
     assert titles == sorted(titles)  # Stable, title-ordered list.
     first = body["scenarios"][0]
-    assert set(first.keys()) == {"id", "title", "description", "category", "difficulty"}
+    assert set(first.keys()) == {
+        "id",
+        "title",
+        "description",
+        "category",
+        "difficulty",
+        "is_locked",
+    }
     assert isinstance(first["id"], str)
     assert first["difficulty"] is None or 1 <= first["difficulty"] <= 5
+
+
+async def test_free_user_sees_premium_scenarios_locked(
+    scenarios_client: AsyncClient, db_session: AsyncSession
+) -> None:
+    await seed_scenarios(db_session)
+    response = await scenarios_client.get(
+        "/api/scenarios", headers=await auth_headers(scenarios_client)
+    )
+
+    assert response.status_code == 200
+    scenarios = response.json()["scenarios"]
+    locked_titles = {
+        scenario["title"] for scenario in scenarios if scenario["is_locked"]
+    }
+    premium_titles = set(
+        (
+            await db_session.execute(
+                select(Scenario.title).where(Scenario.is_premium.is_(True))
+            )
+        ).scalars().all()
+    )
+    # Premium scenarios are exactly the locked entries for a free-tier
+    # caller — 8 from canadian-life-v1 plus the 5 from canadian-life-v2.
+    assert len(premium_titles) == 13
+    assert locked_titles == premium_titles
+
+
+async def test_premium_user_sees_nothing_locked(
+    scenarios_client: AsyncClient, db_session: AsyncSession
+) -> None:
+    await seed_scenarios(db_session)
+    headers = await auth_headers(scenarios_client)
+    upgrade = await scenarios_client.post("/api/users/me/upgrade", headers=headers)
+    assert upgrade.status_code == 200
+
+    response = await scenarios_client.get("/api/scenarios", headers=headers)
+
+    assert response.status_code == 200
+    scenarios = response.json()["scenarios"]
+    assert len(scenarios) == 40
+    assert all(scenario["is_locked"] is False for scenario in scenarios)

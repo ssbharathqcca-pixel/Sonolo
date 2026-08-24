@@ -231,11 +231,22 @@ export interface Scenario {
   description: string;
   category: string;
   difficulty: number | null;
+  /** True when premium content is gated for this caller (SN-026). */
+  is_locked?: boolean;
 }
 
 export async function fetchScenarios(): Promise<Scenario[]> {
   const { data } = await api.get<{ scenarios: Scenario[] }>("/scenarios");
   return data.scenarios;
+}
+
+/**
+ * POST /users/me/upgrade — mock tier flip to premium (SN-026).
+ * Stand-in for the real RevenueCat purchase flow.
+ */
+export async function upgradeAccountRequest(): Promise<User> {
+  const { data } = await api.post<User>("/users/me/upgrade");
+  return data;
 }
 
 // ---------------------------------------------------------------------

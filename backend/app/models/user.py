@@ -3,7 +3,7 @@
 Column value domains (validated at the application layer for now):
 - users.learning_goal: 'pr_readiness' | 'casual' | 'workplace' | 'travel' | 'love'
 - users.current_level: 'seed' | 'sprout' | 'branch' | 'bloom' | 'canopy' | 'summit'
-- users.subscription_tier: 'free' | 'premium' | 'pro'
+- users.subscription_tier: 'free' | 'premium'
 """
 
 import uuid
@@ -31,6 +31,13 @@ if TYPE_CHECKING:
     from app.models.gamification import DailyQuest, UserBadge
     from app.models.session import SpeakingSession
     from app.models.vocabulary import VocabularyCard
+
+
+#: Allowed values for `users.subscription_tier` (SN-026), validated at the
+#: application layer until payments introduce expiry/downgrade flows.
+SUBSCRIPTION_FREE = "free"
+SUBSCRIPTION_PREMIUM = "premium"
+SUBSCRIPTION_TIERS = (SUBSCRIPTION_FREE, SUBSCRIPTION_PREMIUM)
 
 
 class User(Base):

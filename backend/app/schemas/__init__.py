@@ -1,1 +1,1 @@
-"""API schema packages (gamification, sessions, quests)."""
+"""API schema packages (gamification, sessions, quests, user)."""

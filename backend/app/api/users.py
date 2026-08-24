@@ -1,40 +1,26 @@
 """User profile API.
 
-Shared response models live here: `UserResponse` never includes the
-password hash, and `ProfileResponse` attaches the latest skill scores.
+The canonical public payload is `UserRead` (`app/schemas/user.py`);
+`ProfileResponse` attaches the latest skill scores. Password material
+never appears in any response.
 """
 
-from datetime import date, datetime
+from datetime import datetime
 from uuid import UUID
 
 from fastapi import APIRouter, Depends
 from pydantic import BaseModel, ConfigDict
+from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.api.dependencies import get_current_user
-from app.models.user import User
+from app.db.session import get_db
+from app.models.user import SUBSCRIPTION_PREMIUM, User
+from app.schemas.user import UserRead
 
 router = APIRouter(prefix="/users", tags=["users"])
 
-
-class UserResponse(BaseModel):
-    """Public view of a user — no password material, ever."""
-
-    model_config = ConfigDict(from_attributes=True)
-
-    id: UUID
-    email: str | None
-    name: str
-    native_language: str
-    target_language: str
-    learning_goal: str
-    current_level: str
-    subscription_tier: str
-    streak_count: int
-    streak_last_date: date | None
-    total_xp: int
-    total_speaking_seconds: int
-    onboarding_completed: bool
-    created_at: datetime
+#: Historical name for `UserRead`, kept so existing imports stay stable.
+UserResponse = UserRead
 
 
 class UserSkillResponse(BaseModel):
@@ -54,7 +40,7 @@ class UserSkillResponse(BaseModel):
     updated_at: datetime
 
 
-class ProfileResponse(UserResponse):
+class ProfileResponse(UserRead):
     """`/users/me` payload: profile plus skill scores."""
 
     skills: UserSkillResponse | None
@@ -65,4 +51,19 @@ async def read_current_user(
     current_user: User = Depends(get_current_user),
 ) -> ProfileResponse:
     """Return the authenticated user's profile and scores."""
+    return ProfileResponse.model_validate(current_user)
+
+
+@router.post("/me/upgrade", response_model=ProfileResponse)
+async def upgrade_current_user(
+    current_user: User = Depends(get_current_user),
+    db: AsyncSession = Depends(get_db),
+) -> ProfileResponse:
+    """Mock monetization upgrade (SN-026): flip the account to premium.
+
+    Stand-in for the real RevenueCat receipt flow; grants immediate
+    access to premium scenarios with no payment collected.
+    """
+    current_user.subscription_tier = SUBSCRIPTION_PREMIUM
+    await db.commit()
     return ProfileResponse.model_validate(current_user)

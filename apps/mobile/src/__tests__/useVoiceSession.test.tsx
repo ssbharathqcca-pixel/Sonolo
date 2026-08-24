@@ -64,7 +64,28 @@ jest.mock("../api/client", () => {
 
 import { useVoiceSession } from "../hooks/useVoiceSession";
 import { useAuthStore } from "../stores/authStore";
-import { completeSession } from "../api/client";
+import { useScenarioStore } from "../stores/scenarioStore";
+import { completeSession, type User } from "../api/client";
+
+function makeUser(subscription_tier: string): User {
+  return {
+    id: "user-1",
+    email: "pavan@example.com",
+    name: "Pavan",
+    native_language: "hi",
+    target_language: "en-CA",
+    learning_goal: "pr_readiness",
+    current_level: "sprout",
+    subscription_tier,
+    streak_count: 0,
+    streak_last_date: null,
+    total_xp: 0,
+    total_speaking_seconds: 0,
+    onboarding_completed: true,
+    created_at: "2026-08-22T20:05:00Z",
+    skills: null,
+  };
+}
 
 describe("useVoiceSession", () => {
   beforeEach(() => {
@@ -73,6 +94,10 @@ describe("useVoiceSession", () => {
     useAuthStore.setState({
       user: null, token: "test-token", isLoading: false,
       isHydrated: true, isAuthenticated: true,
+    });
+    useScenarioStore.setState({
+      scenarios: [], selected: null, isLoading: false,
+      error: null, isFromCache: false,
     });
   });
 
@@ -85,6 +110,55 @@ describe("useVoiceSession", () => {
     expect(lastSocket().url).toContain("token=test-token");
     act(() => { lastSocket().simulateOpen(); });
     expect(result.current.isConnected).toBe(true);
+  });
+
+  it("refuses to connect for a locked scenario on the free tier (SN-026)", async () => {
+    useScenarioStore.setState({
+      scenarios: [
+        {
+          id: "scenario-1",
+          title: "File your first tax return",
+          description: "A community tax clinic.",
+          category: "government",
+          difficulty: 3,
+          is_locked: true,
+        },
+      ],
+    });
+
+    const { result } = renderHook(() => useVoiceSession("scenario-1"));
+    await act(async () => {});
+
+    expect(openSockets.length).toBe(0);
+    expect(result.current.error).toContain("Premium");
+
+    // Taps are dead ends too — no recorder, no socket traffic.
+    await act(async () => {
+      result.current.handleTap();
+    });
+    expect(openSockets.length).toBe(0);
+  });
+
+  it("connects for a locked scenario once the tier is premium", async () => {
+    useAuthStore.setState({ user: makeUser("premium") });
+    useScenarioStore.setState({
+      scenarios: [
+        {
+          id: "scenario-1",
+          title: "File your first tax return",
+          description: "A community tax clinic.",
+          category: "government",
+          difficulty: 3,
+          is_locked: true,
+        },
+      ],
+    });
+
+    const { result } = renderHook(() => useVoiceSession("scenario-1"));
+    await waitFor(() => expect(openSockets.length).toBe(1));
+    act(() => { lastSocket().simulateOpen(); });
+    expect(result.current.isConnected).toBe(true);
+    expect(result.current.error).toBeNull();
   });
 
   it("collects user turns from user_text_chunk frames", async () => {

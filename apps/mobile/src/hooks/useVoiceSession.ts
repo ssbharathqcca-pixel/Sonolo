@@ -7,6 +7,10 @@
  * Fallback: when the recorder is unavailable (Jest, Expo Go limits),
  * the tap flow degrades to the SN-015 simulated-chunk behaviour so CI
  * stays green without native audio modules.
+ *
+ * SN-026 guard: a premium scenario that is still locked for the signed-in
+ * tier never opens a session — the hook refuses to connect or record,
+ * so a deep link can't bypass the Learn-screen paywall.
  */
 
 import { useCallback, useEffect, useRef, useState } from "react";
@@ -21,6 +25,7 @@ import {
   type TranscriptTurnInput,
 } from "../api/client";
 import { useAuthStore } from "../stores/authStore";
+import { useScenarioStore } from "../stores/scenarioStore";
 import { useSessionResultStore } from "../stores/sessionResultStore";
 import type { VoiceButtonState } from "../components/VoiceButton";
 import { AudioRecorderService } from "../services/audioRecorder";
@@ -31,6 +36,8 @@ import {
 } from "../services/voiceSocket";
 
 const DUMMY_AUDIO_CHUNK = "YXVkaW8=";
+const LOCKED_SCENARIO_ERROR =
+  "This scenario is part of Sonolo Premium — unlock it in Learn to start practicing.";
 
 export interface TranscriptTurnView {
   id: number;
@@ -53,7 +60,17 @@ export function useVoiceSession(scenarioId: string): UseVoiceSessionResult {
   const router = useRouter();
   const token = useAuthStore((state) => state.token);
   const logout = useAuthStore((state) => state.logout);
+  const subscriptionTier = useAuthStore(
+    (state) => state.user?.subscription_tier,
+  );
+  const catalogScenarios = useScenarioStore((state) => state.scenarios);
   const setLastResult = useSessionResultStore((state) => state.setLastResult);
+
+  // SN-026 safety check: locked means the catalog flagged it premium and
+  // the caller isn't premium (server tier truth beats a stale catalog).
+  const isLockedForUser =
+    catalogScenarios.find((scenario) => scenario.id === scenarioId)
+      ?.is_locked === true && subscriptionTier !== "premium";
 
   const [phase, setPhase] = useState<VoiceButtonState>("idle");
   const [transcript, setTranscript] = useState<TranscriptTurnView[]>([]);
@@ -152,7 +169,10 @@ export function useVoiceSession(scenarioId: string): UseVoiceSessionResult {
   // ------------------------------------------------------------------
 
   useEffect(() => {
-    if (token === null) {
+    if (token === null || isLockedForUser) {
+      if (isLockedForUser) {
+        setError(LOCKED_SCENARIO_ERROR);
+      }
       return;
     }
     clientSessionIdRef.current = generateClientSessionId();
@@ -194,7 +214,7 @@ export function useVoiceSession(scenarioId: string): UseVoiceSessionResult {
       socket.close();
       socketRef.current = null;
     };
-  }, [token, logout, handleFrame, stopRecorder]);
+  }, [token, isLockedForUser, logout, handleFrame, stopRecorder]);
 
   // ------------------------------------------------------------------
   // Tap flow
@@ -202,7 +222,7 @@ export function useVoiceSession(scenarioId: string): UseVoiceSessionResult {
 
   const handleTap = useCallback(() => {
     const socket = socketRef.current;
-    if (socket === null) {
+    if (socket === null || isLockedForUser) {
       return;
     }
 
@@ -248,7 +268,7 @@ export function useVoiceSession(scenarioId: string): UseVoiceSessionResult {
       stopRecorder();
     }
     // PROCESSING ignores taps — wait for the pipeline.
-  }, [phase, socketRef, stopRecorder]);
+  }, [phase, isLockedForUser, socketRef, stopRecorder]);
 
   // ------------------------------------------------------------------
   // Finish / complete
