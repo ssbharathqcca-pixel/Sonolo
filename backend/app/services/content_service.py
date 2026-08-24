@@ -1,15 +1,7 @@
-"""Content bootstrap service (SN-014B, extended by SN-018).
-
-Loads the validated content packs into the runtime database. Since
-SN-018 both packs ship as two editions that are loaded together:
-
-- Scenarios from canadian-life-v1.json AND -v2.json (40 total) become
-  shared content rows, upserted idempotently under deterministic
-  UUIDs derived from the content id.
-- Vocabulary cards are USER-SCOPED instances by design (SN-006): the
-  combined 200-item pack is lazily materialized per user the first
-  time they request due cards, seeding FSRS state from each item's
-  fsrs_params (difficulty scaled 0-1 -> 1-10, stability as-is).
+"""
+Content service for loading and materializing Sonolo learning packs.
+Both v1 and v2 packs are loaded together to provide the full 40-scenario 
+catalog and support the 200 vocabulary card materialization cap.
 """
 
 import json
@@ -44,12 +36,14 @@ LEVEL_DIFFICULTY: dict[str, int] = {
     "summit": 5,
 }
 
-#: Pack editions loaded in order (SN-018). The settings paths select
-#: the v1 edition; the v2 sibling is always loaded alongside it.
+#: Pack editions loaded in order (SN-018). Explicitly load both v1 and v2 
+#: to provide the full 40-scenario catalog and 200 vocab cap.
 SCENARIO_PACK_EDITIONS = (
+    "../content/scenarios/canadian-life-v1.json",
     "../content/scenarios/canadian-life-v2.json",
 )
 VOCABULARY_PACK_EDITIONS = (
+    "../content/vocabulary/core-v1.json",
     "../content/vocabulary/core-v2.json",
 )
 
@@ -117,11 +111,8 @@ class VocabularySeed:
 
 def load_scenario_seeds() -> list[ScenarioSeed]:
     """Read and validate every scenario pack edition (SN-008 + SN-018)."""
-    settings = get_settings()
-    paths = [
-        _resolve(settings.content_scenarios_path),
-        *(_resolve(rel) for rel in SCENARIO_PACK_EDITIONS),
-    ]
+    # Explicitly load both v1 and v2 to guarantee 40 total scenarios
+    paths = [_resolve(rel) for rel in SCENARIO_PACK_EDITIONS]
     seeds: list[ScenarioSeed] = []
     seen_ids: set[str] = set()
     for path in paths:
@@ -160,11 +151,8 @@ def load_scenario_seeds() -> list[ScenarioSeed]:
 
 def load_vocabulary_seeds() -> list[VocabularySeed]:
     """Read and validate every vocabulary pack edition (SN-009 + SN-018)."""
-    settings = get_settings()
-    paths = [
-        _resolve(settings.content_vocabulary_path),
-        *(_resolve(rel) for rel in VOCABULARY_PACK_EDITIONS),
-    ]
+    # Explicitly load both v1 and v2 to guarantee 200 total vocab cards
+    paths = [_resolve(rel) for rel in VOCABULARY_PACK_EDITIONS]
     seeds: list[VocabularySeed] = []
     seen_ids: set[str] = set()
     for path in paths:
