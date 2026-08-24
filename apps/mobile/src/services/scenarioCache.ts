@@ -1,11 +1,5 @@
 import * as SecureStore from 'expo-secure-store';
-
-export type Scenario = {
-  id: string;
-  title: string;
-  description: string;
-  is_premium: boolean;
-};
+import type { Scenario } from '../api/client';
 
 type CachedPayload = {
   version: string;
@@ -14,7 +8,7 @@ type CachedPayload = {
 };
 
 const CACHE_KEY = 'sonolo_scenarios_catalog';
-const CATALOG_VERSION = '2.0.0'; // Bumped for SN-018 (40 scenarios)
+const CATALOG_VERSION = '2.0.0';
 
 export async function getScenarios(fetchFromNetwork: () => Promise<Scenario[]>): Promise<Scenario[]> {
   try {
