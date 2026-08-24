@@ -42,6 +42,8 @@ evidence".
 | SN-018 | Dual-pack seed ×2 into live PG (`scripts.seed_content`, v1+v2) | `2026-08-23_sn018_seed_twice.txt` | stable 40 scenarios / 200 vocab items; re-run no-op |
 | SN-018 | Owned tests targeted run (`test_api_scenarios`, `test_release_smoke`) | `2026-08-23_sn018_owned_tests.txt` | 1 passed; 3 count assertions red pending out-of-scope content_service change |
 | SN-018 | Full backend suite (excl. `test_ws.py`, pre-broken at branch tip) | `2026-08-23_sn018_full_suite.txt` | 94 passed, 13 failed — see Notes |
+| SN-018 | Closeout full suite after merging main + dual-pack `content_service` | `2026-08-23_sn018_closeout_full_suite.txt` | **135 passed**, exit 0 |
+| SN-018 | Closeout seed ×2 on fresh Postgres 16 (`scripts.seed_content`) | `2026-08-23_sn018_closeout_seed_twice.txt` | stable 40 scenarios / 200 vocab items; re-run no-op |
 | all | (historical) Full suite after SN-014B | `2026-08-22_full_suite.txt` | 119 passed |
 
 ## Environment
@@ -59,6 +61,11 @@ evidence".
   fail with `NameError: logger` in `session_service.py`, plus a `test_ws.py` collection
   ImportError (`MOCK_AI_RESPONSE`) — both pre-existing at this branch's fork point and
   already fixed on `main`.
+- SN-018 closeout (2026-08-23): RESOLVED — main merged into sn-018 and
+  `content_service.py` now loads v1+v2 for both packs with a settings-driven
+  materialization cap defaulting to 200. The closeout full suite is fully green
+  (`2026-08-23_sn018_closeout_full_suite.txt`, 135 passed); the bullet above is kept
+  as the historical explanation for the earlier artifact.
 
 - Raw outputs include the pytest-asyncio deprecation warning about the
   unset default fixture loop scope — known and harmless (documented in

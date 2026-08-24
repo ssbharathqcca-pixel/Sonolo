@@ -1,13 +1,14 @@
-"""Content bootstrap service (SN-014B).
+"""Content bootstrap service (SN-014B, extended by SN-018).
 
-Loads the validated SN-008 scenario pack and SN-009 vocabulary pack
-into the runtime database:
+Loads the validated content packs into the runtime database. Since
+SN-018 both packs ship as two editions that are loaded together:
 
-- Scenarios are shared content rows, upserted idempotently under
-  deterministic UUIDs derived from the content id.
+- Scenarios from canadian-life-v1.json AND -v2.json (40 total) become
+  shared content rows, upserted idempotently under deterministic
+  UUIDs derived from the content id.
 - Vocabulary cards are USER-SCOPED instances by design (SN-006): the
-  pack is shared content, lazily materialized per user the first time
-  they request due cards, seeding FSRS state from the pack's
+  combined 200-item pack is lazily materialized per user the first
+  time they request due cards, seeding FSRS state from each item's
   fsrs_params (difficulty scaled 0-1 -> 1-10, stability as-is).
 """
 
@@ -43,7 +44,24 @@ LEVEL_DIFFICULTY: dict[str, int] = {
     "summit": 5,
 }
 
-VOCABULARY_PACK_LIMIT = 100
+#: Pack editions loaded in order (SN-018). The settings paths select
+#: the v1 edition; the v2 sibling is always loaded alongside it.
+SCENARIO_PACK_EDITIONS = (
+    "../content/scenarios/canadian-life-v2.json",
+)
+VOCABULARY_PACK_EDITIONS = (
+    "../content/vocabulary/core-v2.json",
+)
+
+
+def _vocabulary_pack_limit() -> int:
+    """Cap on cards materialized per user from the vocabulary packs.
+
+    Settings-driven via the optional `content_vocabulary_pack_limit`
+    field, defaulting to 200 for the combined SN-009 + SN-018 pack
+    until the field is declared in Settings.
+    """
+    return int(getattr(get_settings(), "content_vocabulary_pack_limit", 200))
 
 
 def content_scenario_id(content_id: str) -> UUID:
@@ -98,64 +116,86 @@ class VocabularySeed:
 
 
 def load_scenario_seeds() -> list[ScenarioSeed]:
-    """Read and validate the SN-008 scenario pack."""
+    """Read and validate every scenario pack edition (SN-008 + SN-018)."""
     settings = get_settings()
-    path = _resolve(settings.content_scenarios_path)
-    with path.open(encoding="utf-8") as handle:
-        raw: list[dict[str, Any]] = json.load(handle)
+    paths = [
+        _resolve(settings.content_scenarios_path),
+        *(_resolve(rel) for rel in SCENARIO_PACK_EDITIONS),
+    ]
     seeds: list[ScenarioSeed] = []
-    for entry in raw:
-        level = str(entry["level"])
-        seeds.append(
-            ScenarioSeed(
-                id=content_scenario_id(str(entry["id"])),
-                title=str(entry["title"]),
-                description=str(entry["description"]),
-                category=str(entry["category"]),
-                mode=str(entry["mode"]),
-                level=level,
-                difficulty=LEVEL_DIFFICULTY.get(level, 3),
-                target_language=str(entry["target_language"]),
-                system_prompt=str(entry["system_prompt"]),
-                opening_line=str(entry["opening_line"]),
-                expected_turns=int(entry["expected_turns"]),
-                success_criteria={"items": list(entry["success_criteria"])},
-                vocabulary_targets=list(entry["vocabulary_targets"]),
-                grammar_targets=list(entry["grammar_targets"]),
-                cultural_notes=str(entry["cultural_notes"]),
-                is_premium=bool(entry["is_premium"]),
+    seen_ids: set[str] = set()
+    for path in paths:
+        with path.open(encoding="utf-8") as handle:
+            raw: list[dict[str, Any]] = json.load(handle)
+        for entry in raw:
+            content_id = str(entry["id"])
+            if content_id in seen_ids:
+                raise ValueError(
+                    f"Duplicate scenario id across packs: {content_id!r}"
+                )
+            seen_ids.add(content_id)
+            level = str(entry["level"])
+            seeds.append(
+                ScenarioSeed(
+                    id=content_scenario_id(content_id),
+                    title=str(entry["title"]),
+                    description=str(entry["description"]),
+                    category=str(entry["category"]),
+                    mode=str(entry["mode"]),
+                    level=level,
+                    difficulty=LEVEL_DIFFICULTY.get(level, 3),
+                    target_language=str(entry["target_language"]),
+                    system_prompt=str(entry["system_prompt"]),
+                    opening_line=str(entry["opening_line"]),
+                    expected_turns=int(entry["expected_turns"]),
+                    success_criteria={"items": list(entry["success_criteria"])},
+                    vocabulary_targets=list(entry["vocabulary_targets"]),
+                    grammar_targets=list(entry["grammar_targets"]),
+                    cultural_notes=str(entry["cultural_notes"]),
+                    is_premium=bool(entry["is_premium"]),
+                )
             )
-        )
     return seeds
 
 
 def load_vocabulary_seeds() -> list[VocabularySeed]:
-    """Read and validate the SN-009 vocabulary pack."""
+    """Read and validate every vocabulary pack edition (SN-009 + SN-018)."""
     settings = get_settings()
-    path = _resolve(settings.content_vocabulary_path)
-    with path.open(encoding="utf-8") as handle:
-        raw: list[dict[str, Any]] = json.load(handle)
+    paths = [
+        _resolve(settings.content_vocabulary_path),
+        *(_resolve(rel) for rel in VOCABULARY_PACK_EDITIONS),
+    ]
     seeds: list[VocabularySeed] = []
-    for entry in raw:
-        params = entry["fsrs_params"]
-        seeds.append(
-            VocabularySeed(
-                content_id=str(entry["id"]),
-                word=str(entry["word"]),
-                translations={
-                    code: str(translation)
-                    for code, translation in entry["translations"].items()
-                },
-                # Pack difficulty is 0-1; FSRS difficulty runs 1-10.
-                difficulty=round(1.0 + 9.0 * float(params["difficulty"]), 4),
-                stability=float(params["stability"]),
+    seen_ids: set[str] = set()
+    for path in paths:
+        with path.open(encoding="utf-8") as handle:
+            raw: list[dict[str, Any]] = json.load(handle)
+        for entry in raw:
+            content_id = str(entry["id"])
+            if content_id in seen_ids:
+                raise ValueError(
+                    f"Duplicate vocabulary id across packs: {content_id!r}"
+                )
+            seen_ids.add(content_id)
+            params = entry["fsrs_params"]
+            seeds.append(
+                VocabularySeed(
+                    content_id=content_id,
+                    word=str(entry["word"]),
+                    translations={
+                        code: str(translation)
+                        for code, translation in entry["translations"].items()
+                    },
+                    # Pack difficulty is 0-1; FSRS difficulty runs 1-10.
+                    difficulty=round(1.0 + 9.0 * float(params["difficulty"]), 4),
+                    stability=float(params["stability"]),
+                )
             )
-        )
     return seeds
 
 
 async def seed_scenarios(db: AsyncSession) -> int:
-    """Idempotently upsert all scenarios from the SN-008 pack."""
+    """Idempotently upsert all scenarios from every pack edition."""
     seeds = load_scenario_seeds()
     for seed in seeds:
         values = {
@@ -196,10 +236,11 @@ async def seed_scenarios(db: AsyncSession) -> int:
 
 
 async def ensure_user_vocabulary(db: AsyncSession, user_id: UUID) -> int:
-    """Lazily materialize the SN-009 pack for a user with no cards.
+    """Lazily materialize the vocabulary packs for a user with no cards.
 
-    Existing cards are never touched; re-runs are no-ops thanks to
-    deterministic per-user card ids.
+    Loads both editions (SN-009 + SN-018, 200 items) up to the
+    settings-driven pack limit. Existing cards are never touched;
+    re-runs are no-ops thanks to deterministic per-user card ids.
     """
     count = (
         await db.execute(
@@ -211,7 +252,7 @@ async def ensure_user_vocabulary(db: AsyncSession, user_id: UUID) -> int:
     if int(count) > 0:
         return 0
 
-    seeds = load_vocabulary_seeds()[:VOCABULARY_PACK_LIMIT]
+    seeds = load_vocabulary_seeds()[:_vocabulary_pack_limit()]
     for seed in seeds:
         card = VocabularyCard(
             id=content_vocabulary_card_id(user_id, seed.content_id),
