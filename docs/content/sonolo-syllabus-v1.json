@@ -1,0 +1,1139 @@
+{
+  "id": "sonolo-syllabus-v1",
+  "version": 1,
+  "languages": ["en", "fr"],
+  "levels": ["seed", "sprout", "branch", "bloom", "canopy", "summit"],
+  "domains": [
+    {
+      "id": "emergency-situations",
+      "name": "Emergency Situations",
+      "description": "In a crisis, clarity saves time; newcomers drill short, strong phrases that work under stress.",
+      "packs": [
+        {
+          "id": "en-emergency-calm-under-pressure",
+          "title": "Calm Under Pressure",
+          "language": "en",
+          "description": "Handle urgent moments in clear, simple English, from calling 911 to reporting a problem, so stress never becomes a language barrier. A free CanadaReady starter pack.",
+          "category": "emergency-situations",
+          "tier": "free",
+          "level_range": ["seed", "sprout"],
+          "scenario_count": 10,
+          "vocabulary_count": 80,
+          "premium_scenario_count": 0,
+          "outcomes": [
+            {
+              "id": "en-emergency-calm-under-pressure-o1",
+              "name": "Call for Help",
+              "description": "Place urgent calls and give your location clearly.",
+              "level": "seed",
+              "scenario_ideas": [
+                "Call 911, state the emergency, and give your address",
+                "Report a gas smell and answer dispatcher questions",
+                "Ask a neighbour for urgent help using simple words",
+                "Leave a clear voicemail for your landlord about a burst pipe"
+              ],
+              "vocab_themes": [
+                "calling 911",
+                "giving your address",
+                "urgent requests"
+              ]
+            },
+            {
+              "id": "en-emergency-calm-under-pressure-o2",
+              "name": "Handle Everyday Urgencies",
+              "description": "Manage non-911 urgencies quickly and politely.",
+              "level": "sprout",
+              "scenario_ideas": [
+                "Tell a pharmacist you need urgent non-prescription help",
+                "Report a lost wallet and cancel a card by phone",
+                "Explain a car problem when calling for a tow",
+                "Ask for directions to the nearest emergency room"
+              ],
+              "vocab_themes": [
+                "lost items and cancellations",
+                "vehicle trouble",
+                "finding help fast"
+              ]
+            },
+            {
+              "id": "en-emergency-calm-under-pressure-o3",
+              "name": "Communicate After an Incident",
+              "description": "Describe events accurately once the immediate danger has passed.",
+              "level": "sprout",
+              "scenario_ideas": [
+                "Give a simple statement to police at the scene",
+                "Describe what happened during an insurance claim call",
+                "Update family members about a situation calmly",
+                "Ask a doctor what happened and what comes next"
+              ],
+              "vocab_themes": [
+                "describing events",
+                "insurance basics",
+                "reassurance phrases"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "finance",
+      "name": "Finance",
+      "description": "Every dollar matters in a new country; learners master banking, budgets, and everyday money conversations.",
+      "packs": [
+        {
+          "id": "en-finance-money-confidence",
+          "title": "Money Confidence",
+          "language": "en",
+          "description": "Open accounts, understand fees, and talk about money without confusion. A free CanadaReady starter pack for everyday banking.",
+          "category": "finance",
+          "tier": "free",
+          "level_range": ["seed", "sprout"],
+          "scenario_count": 10,
+          "vocabulary_count": 80,
+          "premium_scenario_count": 0,
+          "outcomes": [
+            {
+              "id": "en-finance-money-confidence-o1",
+              "name": "Bank with Ease",
+              "description": "Complete basic banking tasks independently.",
+              "level": "seed",
+              "scenario_ideas": [
+                "Open a bank account and ask about monthly fees",
+                "Deposit a cheque at the ATM or with a teller",
+                "Ask why a fee was charged and how to avoid it",
+                "Set up direct deposit for your paycheque"
+              ],
+              "vocab_themes": [
+                "accounts and fees",
+                "deposits and withdrawals",
+                "payroll setup"
+              ]
+            },
+            {
+              "id": "en-finance-money-confidence-o2",
+              "name": "Manage Daily Money",
+              "description": "Track, question, and control everyday spending.",
+              "level": "sprout",
+              "scenario_ideas": [
+                "Ask about exchange rates when sending money home",
+                "Dispute a charge you do not recognize on your statement",
+                "Compare phone and internet bills in a store",
+                "Read a credit card statement and minimum payment terms"
+              ],
+              "vocab_themes": [
+                "transfers and remittances",
+                "disputes and statements",
+                "bills and plans"
+              ]
+            },
+            {
+              "id": "en-finance-money-confidence-o3",
+              "name": "Plan Ahead",
+              "description": "Talk about savings and future goals with advisors and family.",
+              "level": "sprout",
+              "scenario_ideas": [
+                "Ask a bank advisor about beginner savings options",
+                "Explain your budget when splitting rent with a roommate",
+                "Ask what documents you need to prepare to buy a home",
+                "Discuss school costs and allowances with your kids"
+              ],
+              "vocab_themes": [
+                "savings basics",
+                "budgets and shared costs",
+                "future planning"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "transportation",
+      "name": "Transportation",
+      "description": "Mobility means independence; from transit cards to road tests, learners get moving in plain, practical English.",
+      "packs": [
+        {
+          "id": "en-transportation-getting-around",
+          "title": "Getting Around",
+          "language": "en",
+          "description": "Master buses, trains, ride-shares, and the road toward a Canadian driver's licence. A free CanadaReady starter pack.",
+          "category": "transportation",
+          "tier": "free",
+          "level_range": ["seed", "sprout"],
+          "scenario_count": 10,
+          "vocabulary_count": 80,
+          "premium_scenario_count": 0,
+          "outcomes": [
+            {
+              "id": "en-transportation-getting-around-o1",
+              "name": "Use Public Transit",
+              "description": "Ride city transit with confidence from day one.",
+              "level": "seed",
+              "scenario_ideas": [
+                "Ask a driver which stop is closest to your destination",
+                "Buy the right fare card and ask about transfers",
+                "Confirm the right train with a fellow rider",
+                "Report a missed connection or lost item to transit staff"
+              ],
+              "vocab_themes": [
+                "fares and passes",
+                "routes and stops",
+                "polite requests"
+              ]
+            },
+            {
+              "id": "en-transportation-getting-around-o2",
+              "name": "Take Taxis and Ride-Shares",
+              "description": "Arrange and complete private trips smoothly.",
+              "level": "sprout",
+              "scenario_ideas": [
+                "Give clear directions to a taxi driver",
+                "Message a ride-share driver about your pickup point",
+                "Ask about the fare before starting a trip",
+                "Report a forgotten item and arrange its return"
+              ],
+              "vocab_themes": [
+                "directions and pickups",
+                "fares and receipts",
+                "lost items"
+              ]
+            },
+            {
+              "id": "en-transportation-getting-around-o3",
+              "name": "Work Toward Your Licence",
+              "description": "Move through licensing steps with the right language.",
+              "level": "sprout",
+              "scenario_ideas": [
+                "Book a driving test and ask what to bring",
+                "Understand common examiner instructions during practice",
+                "Ask about insurance requirements for new drivers",
+                "Explain road rules like four-way stops with confidence"
+              ],
+              "vocab_themes": [
+                "tests and bookings",
+                "examiner instructions",
+                "insurance and road rules"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "healthcare",
+      "name": "Healthcare",
+      "description": "Clear health conversations protect your family; learners describe symptoms and navigate clinics with CLB-inspired speaking goals.",
+      "packs": [
+        {
+          "id": "en-healthcare-at-the-clinic",
+          "title": "At the Clinic",
+          "language": "en",
+          "description": "Book appointments, describe symptoms clearly, and work confidently with doctors and pharmacists using your provincial health coverage. A CanadaReady health foundations pack.",
+          "category": "healthcare",
+          "tier": "freemium",
+          "level_range": ["sprout", "branch"],
+          "scenario_count": 10,
+          "vocabulary_count": 80,
+          "premium_scenario_count": 4,
+          "outcomes": [
+            {
+              "id": "en-healthcare-at-the-clinic-o1",
+              "name": "Describe Symptoms Accurately",
+              "description": "Tell medical staff what hurts, when it started, and how bad it is.",
+              "level": "sprout",
+              "scenario_ideas": [
+                "Explain a sore throat and fever during a walk-in visit",
+                "Answer a nurse's questions about when symptoms started",
+                "Describe pain location and intensity to a doctor",
+                "Ask what a prescription is for at the pharmacy counter"
+              ],
+              "vocab_themes": [
+                "body and symptoms",
+                "pain and duration",
+                "pharmacy basics"
+              ]
+            },
+            {
+              "id": "en-healthcare-at-the-clinic-o2",
+              "name": "Navigate Appointments and Coverage",
+              "description": "Handle booking, referrals, and health card logistics.",
+              "level": "branch",
+              "scenario_ideas": [
+                "Book an appointment by phone and confirm health card details",
+                "Ask a receptionist about walk-in times and waits",
+                "Request a referral to a specialist and ask what to expect",
+                "Have test results explained in plain language"
+              ],
+              "vocab_themes": [
+                "booking and schedules",
+                "health cards and referrals",
+                "results and follow-up"
+              ]
+            },
+            {
+              "id": "en-healthcare-at-the-clinic-o3",
+              "name": "Discuss Treatment and Prevention",
+              "description": "Make informed decisions about medication and ongoing care.",
+              "level": "branch",
+              "scenario_ideas": [
+                "Ask about side effects before starting a new medication",
+                "Confirm follow-up steps at the end of an appointment",
+                "Talk to a dentist about treatment options and costs",
+                "Ask a pharmacist about drug interactions"
+              ],
+              "vocab_themes": [
+                "medications and side effects",
+                "follow-up care",
+                "dental and specialist visits"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "fr-healthcare-ramq-et-vous",
+          "title": "Votre santé et la RAMQ",
+          "language": "fr",
+          "description": "Prenez la santé en main : carte RAMQ, médecin de famille, clinique sans rendez-vous et pharmacie, en français naturel du Québec. Volet santé CanadaReadyMC.",
+          "category": "healthcare",
+          "tier": "freemium",
+          "level_range": ["sprout", "branch"],
+          "scenario_count": 10,
+          "vocabulary_count": 70,
+          "premium_scenario_count": 4,
+          "outcomes": [
+            {
+              "id": "fr-healthcare-ramq-et-vous-o1",
+              "name": "Décrire ce que vous ressentez",
+              "description": "Expliquer symptômes et douleurs simplement et clairement.",
+              "level": "sprout",
+              "scenario_ideas": [
+                "Expliquer vos symptômes à une infirmière au 811 Info-Santé",
+                "Décrire une douleur au dos depuis trois jours",
+                "Répondre aux questions sur vos médicaments actuels",
+                "Prendre rendez-vous avec le médecin de famille par téléphone"
+              ],
+              "vocab_themes": [
+                "symptômes et douleurs",
+                "corps et malaises",
+                "appels à une infirmière"
+              ]
+            },
+            {
+              "id": "fr-healthcare-ramq-et-vous-o2",
+              "name": "Se retrouver dans le système",
+              "description": "Utiliser la carte RAMQ, les cliniques et la pharmacie sans stress.",
+              "level": "branch",
+              "scenario_ideas": [
+                "Renouveler une carte RAMQ expirée",
+                "Choisir entre la clinique sans rendez-vous et l'urgence",
+                "S'inscrire dans un GMF pour trouver un médecin de famille",
+                "Comprendre une ordonnance à la pharmacie"
+              ],
+              "vocab_themes": [
+                "carte RAMQ et assurance",
+                "cliniques et urgence",
+                "pharmacie et ordonnances"
+              ]
+            },
+            {
+              "id": "fr-healthcare-ramq-et-vous-o3",
+              "name": "Prendre soin de soi",
+              "description": "Aborder prévention, santé mentale et suivi médical.",
+              "level": "branch",
+              "scenario_ideas": [
+                "Parler de stress et de sommeil avec votre médecin",
+                "Poser des questions sur la vaccination de vos enfants",
+                "Demander un deuxième avis poliment",
+                "Comprendre les conseils de suivi après une consultation"
+              ],
+              "vocab_themes": [
+                "santé mentale",
+                "vaccination et prévention",
+                "suivi médical"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "workplace",
+      "name": "Workplace",
+      "description": "Work is where belonging is earned day by day; this domain covers hiring, instructions, teamwork, and advancement.",
+      "packs": [
+        {
+          "id": "en-workplace-your-first-job",
+          "title": "Your First Canadian Job",
+          "language": "en",
+          "description": "From applications to your first shift, practise the English that gets you hired: interviews, instructions, and coworker conversation. CLB-inspired outcomes for early career success.",
+          "category": "workplace",
+          "tier": "freemium",
+          "level_range": ["sprout", "branch"],
+          "scenario_count": 10,
+          "vocabulary_count": 80,
+          "premium_scenario_count": 4,
+          "outcomes": [
+            {
+              "id": "en-workplace-your-first-job-o1",
+              "name": "Apply and Interview",
+              "description": "Present yourself well from application to interview.",
+              "level": "sprout",
+              "scenario_ideas": [
+                "Answer tell-me-about-yourself in a job interview",
+                "Describe past experience using strong action verbs",
+                "Ask smart questions about schedule and training",
+                "Send a polite follow-up email after an interview"
+              ],
+              "vocab_themes": [
+                "self-presentation",
+                "experience and skills",
+                "interview questions"
+              ]
+            },
+            {
+              "id": "en-workplace-your-first-job-o2",
+              "name": "Shine in Your First Weeks",
+              "description": "Understand instructions and connect with coworkers early.",
+              "level": "branch",
+              "scenario_ideas": [
+                "Ask your supervisor to clarify a task without embarrassment",
+                "Follow common workplace instructions and safety warnings",
+                "Introduce yourself to coworkers and join lunch conversations",
+                "Confirm duties, breaks, and pay schedule on day one"
+              ],
+              "vocab_themes": [
+                "clarifying and confirming",
+                "safety language",
+                "coworker small talk"
+              ]
+            },
+            {
+              "id": "en-workplace-your-first-job-o3",
+              "name": "Grow from Entry Level",
+              "description": "Show initiative and respond to feedback productively.",
+              "level": "branch",
+              "scenario_ideas": [
+                "Ask your manager what success looks like in your role",
+                "Volunteer for a new task using confident phrases",
+                "Request a short meeting to discuss your progress",
+                "Respond to feedback positively and ask for examples"
+              ],
+              "vocab_themes": [
+                "initiative phrases",
+                "feedback conversations",
+                "goal setting"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "fr-workplace-travail-francophone",
+          "title": "S'intégrer au travail francophone",
+          "language": "fr",
+          "description": "Courriels, réunions, jasette du midi et nuances hiérarchiques : gagnez votre place dans une équipe de travail en français québécois.",
+          "category": "workplace",
+          "tier": "freemium",
+          "level_range": ["branch", "bloom"],
+          "scenario_count": 10,
+          "vocabulary_count": 70,
+          "premium_scenario_count": 4,
+          "outcomes": [
+            {
+              "id": "fr-workplace-travail-francophone-o1",
+              "name": "Décrocher l'entrevue",
+              "description": "Se présenter et convaincre en français professionnel.",
+              "level": "branch",
+              "scenario_ideas": [
+                "Se présenter en deux minutes lors d'une entrevue",
+                "Parler de votre expérience avec des verbes d'action",
+                "Répondre à une question sur vos points faibles avec assurance",
+                "Écrire un courriel de suivi après l'entrevue"
+              ],
+              "vocab_themes": [
+                "présentation personnelle",
+                "expérience et forces",
+                "courriels professionnels"
+              ]
+            },
+            {
+              "id": "fr-workplace-travail-francophone-o2",
+              "name": "Briller au quotidien",
+              "description": "Communiquer efficacement dans le flux de travail quotidien.",
+              "level": "branch",
+              "scenario_ideas": [
+                "Demander des précisions sur une consigne floue",
+                "Participer à une réunion d'équipe et donner votre opinion",
+                "Jaser avec vos collègues autour de la machine à café",
+                "Comprendre les expressions courantes du bureau"
+              ],
+              "vocab_themes": [
+                "consignes et clarifications",
+                "réunions et opinions",
+                "expressions du bureau"
+              ]
+            },
+            {
+              "id": "fr-workplace-travail-francophone-o3",
+              "name": "Progresser et défendre vos intérêts",
+              "description": "Négocier, s'affirmer et viser la croissance.",
+              "level": "bloom",
+              "scenario_ideas": [
+                "Négocier vos conditions au moment de l'embauche",
+                "Préparer votre rencontre d'évaluation annuelle",
+                "Exprimer un désaccord respectueusement en réunion",
+                "Poser des questions sur la formation continue offerte"
+              ],
+              "vocab_themes": [
+                "négociation",
+                "évaluation et reconnaissance",
+                "formation et croissance"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "education",
+      "name": "Education",
+      "description": "From registering children to upgrading your own credentials, education shapes a family's future in Canada.",
+      "packs": [
+        {
+          "id": "en-education-school-and-studies",
+          "title": "School and Studies",
+          "language": "en",
+          "description": "Register children in school, partner with teachers, and pursue your own upgrading, from language classes to college programs. A CanadaReady family futures pack.",
+          "category": "education",
+          "tier": "freemium",
+          "level_range": ["sprout", "branch"],
+          "scenario_count": 10,
+          "vocabulary_count": 80,
+          "premium_scenario_count": 4,
+          "outcomes": [
+            {
+              "id": "en-education-school-and-studies-o1",
+              "name": "Enrol Your Children",
+              "description": "Complete school registration and settle children into routines.",
+              "level": "sprout",
+              "scenario_ideas": [
+                "Register your child at a local school and list required documents",
+                "Ask about bus routes, lunches, and supplies",
+                "Explain a previous school report to the office",
+                "Ask about support for English language learners"
+              ],
+              "vocab_themes": [
+                "registration documents",
+                "school routines",
+                "learner support"
+              ]
+            },
+            {
+              "id": "en-education-school-and-studies-o2",
+              "name": "Partner with Teachers",
+              "description": "Build productive relationships with school staff.",
+              "level": "branch",
+              "scenario_ideas": [
+                "Discuss your child's progress at a parent-teacher interview",
+                "Raise a concern about bullying constructively",
+                "Ask how to support reading at home",
+                "Understand report cards and school messages"
+              ],
+              "vocab_themes": [
+                "progress meetings",
+                "concerns and solutions",
+                "home support"
+              ]
+            },
+            {
+              "id": "en-education-school-and-studies-o3",
+              "name": "Invest in Your Own Learning",
+              "description": "Choose and enter programs that advance your goals.",
+              "level": "branch",
+              "scenario_ideas": [
+                "Compare adult programs at a continuing education centre",
+                "Ask an advisor about prerequisites and funding",
+                "Email an instructor professionally",
+                "Describe your study goals in a program interview"
+              ],
+              "vocab_themes": [
+                "programs and advisors",
+                "funding options",
+                "academic communication"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "fr-education-cegep-etudes",
+          "title": "Cégep et reprise d'études",
+          "language": "fr",
+          "description": "Retournez aux études au cégep ou en formation professionnelle : admission, aide financière et vie de campus en français.",
+          "category": "education",
+          "tier": "freemium",
+          "level_range": ["branch", "bloom"],
+          "scenario_count": 10,
+          "vocabulary_count": 65,
+          "premium_scenario_count": 4,
+          "outcomes": [
+            {
+              "id": "fr-education-cegep-etudes-o1",
+              "name": "Choisir et s'inscrire",
+              "description": "Explorer les programmes et compléter son admission.",
+              "level": "branch",
+              "scenario_ideas": [
+                "Poser des questions sur un programme de cégep par téléphone",
+                "Comprendre les conditions d'admission et les préalables",
+                "Demander une équivalence pour vos diplômes obtenus à l'étranger",
+                "Visiter une journée portes ouvertes et poser vos questions"
+              ],
+              "vocab_themes": [
+                "programmes et préalables",
+                "admissions et équivalences",
+                "portes ouvertes"
+              ]
+            },
+            {
+              "id": "fr-education-cegep-etudes-o2",
+              "name": "Financer ses études",
+              "description": "Trouver et obtenir de l'aide financière pour étudier.",
+              "level": "bloom",
+              "scenario_ideas": [
+                "Remplir une demande de prêts et bourses",
+                "Demander de l'aide au service financier du cégep",
+                "Expliquer votre situation familiale à un conseiller",
+                "Comparer les coûts entre formation professionnelle et cégep"
+              ],
+              "vocab_themes": [
+                "aide financière",
+                "budgets étudiants",
+                "conseillers et démarches"
+              ]
+            },
+            {
+              "id": "fr-education-cegep-etudes-o3",
+              "name": "Réussir sur le campus",
+              "description": "Participer pleinement à la vie académique et sociale.",
+              "level": "bloom",
+              "scenario_ideas": [
+                "Écrire à un professeur pour demander un délai supplémentaire",
+                "Participer à une discussion de classe et défendre une idée",
+                "Former un groupe d'étude avec vos collègues de classe",
+                "Demander des mesures d'accommodement si nécessaire"
+              ],
+              "vocab_themes": [
+                "communication académique",
+                "discussions et débats",
+                "vie étudiante"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "government-services",
+      "name": "Government Services",
+      "description": "Documents and services unlock everything else; learners practise calm, precise exchanges with offices and officers.",
+      "packs": [
+        {
+          "id": "en-government-getting-settled",
+          "title": "Getting Settled",
+          "language": "en",
+          "description": "Register for key documents, find free settlement services, and speak with officials calmly and clearly. CLB-inspired tasks designed for your first year. A CanadaReady essentials pack.",
+          "category": "government-services",
+          "tier": "freemium",
+          "level_range": ["sprout", "branch"],
+          "scenario_count": 10,
+          "vocabulary_count": 80,
+          "premium_scenario_count": 4,
+          "outcomes": [
+            {
+              "id": "en-government-getting-settled-o1",
+              "name": "Get Your Key Documents",
+              "description": "Complete registrations and renewals at service counters.",
+              "level": "sprout",
+              "scenario_ideas": [
+                "Apply for a Social Insurance Number at a federal service centre",
+                "Register for a provincial health card and list required papers",
+                "Renew a driver's licence and book a road test",
+                "Ask what to do when your permanent resident card is delayed"
+              ],
+              "vocab_themes": [
+                "identification numbers",
+                "health card registration",
+                "licences and renewals"
+              ]
+            },
+            {
+              "id": "en-government-getting-settled-o2",
+              "name": "Use Community Services",
+              "description": "Find and use newcomer and public services near you.",
+              "level": "branch",
+              "scenario_ideas": [
+                "Ask a settlement agency about free language classes",
+                "Get a library card and ask about newcomer programs",
+                "Explain your situation to reach the right government office",
+                "Follow up on an application status by phone"
+              ],
+              "vocab_themes": [
+                "settlement agencies",
+                "libraries and programs",
+                "application follow-up"
+              ]
+            },
+            {
+              "id": "en-government-getting-settled-o3",
+              "name": "Handle Official Conversations",
+              "description": "Keep official exchanges clear, even under pressure.",
+              "level": "branch",
+              "scenario_ideas": [
+                "Ask an officer to repeat or slow down politely",
+                "Spell names, dates, and addresses aloud clearly",
+                "Bring an interpreter and explain what you need",
+                "Confirm next steps and deadlines before leaving the desk"
+              ],
+              "vocab_themes": [
+                "clarification strategies",
+                "spelling and numbers",
+                "interpreters and deadlines"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "legal-rights",
+      "name": "Legal Rights",
+      "description": "Knowing your rights changes outcomes; learners develop precise language for tenancy, employment, and authority encounters.",
+      "packs": [
+        {
+          "id": "en-legal-know-your-rights",
+          "title": "Know Your Rights",
+          "language": "en",
+          "description": "Understand tenancy rules, employment standards, and respectful police interactions, then advocate for yourself with precise, confident language. An advanced CanadaReady pack.",
+          "category": "legal-rights",
+          "tier": "freemium",
+          "level_range": ["bloom", "canopy"],
+          "scenario_count": 10,
+          "vocabulary_count": 80,
+          "premium_scenario_count": 4,
+          "outcomes": [
+            {
+              "id": "en-legal-know-your-rights-o1",
+              "name": "Assert Tenant Rights",
+              "description": "Challenge unfair practices and use formal channels.",
+              "level": "bloom",
+              "scenario_ideas": [
+                "Question an illegal rent increase using correct terminology",
+                "File a complaint with your provincial tenancy tribunal",
+                "Negotiate repairs with a landlord and confirm them in writing",
+                "Explain eviction notice rules to a neighbour"
+              ],
+              "vocab_themes": [
+                "rent increases and notices",
+                "tribunals and filings",
+                "repair requests"
+              ]
+            },
+            {
+              "id": "en-legal-know-your-rights-o2",
+              "name": "Protect Employment Rights",
+              "description": "Raise workplace issues safely and effectively.",
+              "level": "bloom",
+              "scenario_ideas": [
+                "Ask HR about overtime pay and break rules",
+                "Report unsafe working conditions through proper channels",
+                "Clarify termination concerns in a formal meeting",
+                "Discuss employment standards with a community legal worker"
+              ],
+              "vocab_themes": [
+                "overtime and breaks",
+                "safety reporting",
+                "termination language"
+              ]
+            },
+            {
+              "id": "en-legal-know-your-rights-o3",
+              "name": "Interact with Authorities",
+              "description": "Stay composed and precise in official encounters.",
+              "level": "canopy",
+              "scenario_ideas": [
+                "Stay calm and ask clear questions during a traffic stop",
+                "Politely confirm your rights and obligations when questioned",
+                "Give an accurate account of an incident",
+                "Ask for interpretation services at a legal appointment"
+              ],
+              "vocab_themes": [
+                "traffic stops",
+                "rights and obligations",
+                "accurate reporting"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "social-integration",
+      "name": "Social Integration",
+      "description": "Belonging grows through conversation; learners build the small talk, humour, and nuance that turn strangers into community. Sound like you belong.",
+      "packs": [
+        {
+          "id": "en-social-making-connections",
+          "title": "Making Connections",
+          "language": "en",
+          "description": "Turn neighbours, parents at the school gate, and coworkers into a real community. CLB-inspired conversation outcomes for genuine belonging. Sound like you belong.",
+          "category": "social-integration",
+          "tier": "freemium",
+          "level_range": ["branch", "bloom"],
+          "scenario_count": 10,
+          "vocabulary_count": 80,
+          "premium_scenario_count": 4,
+          "outcomes": [
+            {
+              "id": "en-social-making-connections-o1",
+              "name": "Start Conversations Anywhere",
+              "description": "Open, hold, and close casual conversations naturally.",
+              "level": "branch",
+              "scenario_ideas": [
+                "Make small talk with a neighbour about the weekend",
+                "Join a conversation at a community potluck",
+                "Chat with other parents at a school event",
+                "Exit a long conversation politely"
+              ],
+              "vocab_themes": [
+                "small talk openers",
+                "community events",
+                "graceful exits"
+              ]
+            },
+            {
+              "id": "en-social-making-connections-o2",
+              "name": "Build Your Circle",
+              "description": "Create friendships and community involvement step by step.",
+              "level": "branch",
+              "scenario_ideas": [
+                "Invite a colleague for coffee and handle any answer",
+                "Join a recreational league and introduce yourself",
+                "Ask about volunteering roles that match your skills",
+                "Suggest a playdate to another parent"
+              ],
+              "vocab_themes": [
+                "invitations",
+                "clubs and volunteering",
+                "parenting networks"
+              ]
+            },
+            {
+              "id": "en-social-making-connections-o3",
+              "name": "Navigate Cultural Nuance",
+              "description": "Read between the lines and respond with warmth.",
+              "level": "bloom",
+              "scenario_ideas": [
+                "Recognize indirect refusals and softening phrases",
+                "Apologize and accept apologies gracefully",
+                "Give and receive compliments naturally",
+                "Discuss holidays and traditions with curiosity and respect"
+              ],
+              "vocab_themes": [
+                "indirect language",
+                "apologies and compliments",
+                "traditions talk"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "consumer-life",
+      "name": "Consumer Life",
+      "description": "Newcomers face confusing contracts and fine print; learners shop, sign, and complain with skill.",
+      "packs": [
+        {
+          "id": "en-consumer-smart-shopping",
+          "title": "Smart Shopping",
+          "language": "en",
+          "description": "Buy with confidence: returns, warranties, contracts, and complaints handled in fluent, firm, friendly English. A CanadaReady consumer power pack.",
+          "category": "consumer-life",
+          "tier": "freemium",
+          "level_range": ["branch", "bloom"],
+          "scenario_count": 10,
+          "vocabulary_count": 80,
+          "premium_scenario_count": 4,
+          "outcomes": [
+            {
+              "id": "en-consumer-smart-shopping-o1",
+              "name": "Shop and Return",
+              "description": "Transact, question charges, and reverse purchases.",
+              "level": "branch",
+              "scenario_ideas": [
+                "Return an item without a receipt and negotiate store credit",
+                "Ask about price matches and sale exclusions",
+                "Exchange incorrectly sized clothing ordered online",
+                "Question a surprising charge on your receipt"
+              ],
+              "vocab_themes": [
+                "returns and exchanges",
+                "prices and discounts",
+                "receipts and charges"
+              ]
+            },
+            {
+              "id": "en-consumer-smart-shopping-o2",
+              "name": "Sign Contracts Wisely",
+              "description": "Understand commitments before signing anything.",
+              "level": "branch",
+              "scenario_ideas": [
+                "Question contract terms for a gym membership before signing",
+                "Negotiate a phone plan and understand cancellation fees",
+                "Cancel a subscription and confirm it in writing",
+                "Compare warranty options for a new appliance"
+              ],
+              "vocab_themes": [
+                "memberships and subscriptions",
+                "phone plans and fees",
+                "warranties"
+              ]
+            },
+            {
+              "id": "en-consumer-smart-shopping-o3",
+              "name": "Complain Effectively",
+              "description": "Escalate problems and secure fair resolutions.",
+              "level": "bloom",
+              "scenario_ideas": [
+                "Make a calm, structured complaint to a store manager",
+                "Escalate a delivery problem to the shipping company",
+                "Request a refund using consumer protection language",
+                "Record agreement details in writing to protect yourself"
+              ],
+              "vocab_themes": [
+                "structured complaints",
+                "refunds and escalations",
+                "protecting yourself"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "family-life",
+      "name": "Family Life",
+      "description": "Strong families adapt together; learners support children, partners, and routines in everyday language.",
+      "packs": [
+        {
+          "id": "fr-family-vie-de-famille",
+          "title": "La vie de famille au quotidien",
+          "language": "fr",
+          "description": "Garderie, école, rendez-vous et routine familiale : le français simple qui fait tourner votre maison au Québec. Une trousse de départ gratuite CanadaReadyMC.",
+          "category": "family-life",
+          "tier": "free",
+          "level_range": ["seed", "sprout"],
+          "scenario_count": 10,
+          "vocabulary_count": 65,
+          "premium_scenario_count": 0,
+          "outcomes": [
+            {
+              "id": "fr-family-vie-de-famille-o1",
+              "name": "Organiser la routine",
+              "description": "Gérer les moments clés de la journée en famille.",
+              "level": "seed",
+              "scenario_ideas": [
+                "Parler de l'horaire de la journée avec vos enfants",
+                "Donner des instructions simples le matin",
+                "Appeler la garderie pour signaler une absence",
+                "Écrire un mot dans l'agenda scolaire"
+              ],
+              "vocab_themes": [
+                "routine quotidienne",
+                "instructions simples",
+                "garderie et absences"
+              ]
+            },
+            {
+              "id": "fr-family-vie-de-famille-o2",
+              "name": "Suivre santé et école des enfants",
+              "description": "Communiquer avec l'école et les professionnels de la santé.",
+              "level": "sprout",
+              "scenario_ideas": [
+                "Expliquer pourquoi votre enfant est malade à l'école",
+                "Prendre un rendez-vous pédiatrique par téléphone",
+                "Parler des devoirs avec l'enseignante",
+                "Demander du soutien pour l'adaptation de votre enfant"
+              ],
+              "vocab_themes": [
+                "santé des enfants",
+                "contacts scolaires",
+                "soutien et adaptation"
+              ]
+            },
+            {
+              "id": "fr-family-vie-de-famille-o3",
+              "name": "Vivre en communauté",
+              "description": "Créer des liens autour de la vie familiale.",
+              "level": "sprout",
+              "scenario_ideas": [
+                "Inviter une autre famille pour un souper",
+                "Confier vos enfants à une gardienne le vendredi soir",
+                "Discuter des règles à la maison avec un adolescent",
+                "Planifier une sortie en famille le week-end"
+              ],
+              "vocab_themes": [
+                "invitations familiales",
+                "gardiennage",
+                "sorties et loisirs"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "quebec-franco-life",
+      "name": "Quebec Franco Life",
+      "description": "Living in French means living the seasons, foods, and rhythms of Quebec; this domain anchors francophone integration.",
+      "packs": [
+        {
+          "id": "fr-quebec-hiver-culture",
+          "title": "L'hiver et la vie québécoise",
+          "language": "fr",
+          "description": "Déneigez votre entrée, habillez-vous en système d'oignon et savourez les plaisirs de l'hiver, cabane à sucre comprise. Le volet culturel CanadaReadyMC.",
+          "category": "quebec-franco-life",
+          "tier": "freemium",
+          "level_range": ["sprout", "branch"],
+          "scenario_count": 10,
+          "vocabulary_count": 60,
+          "premium_scenario_count": 4,
+          "outcomes": [
+            {
+              "id": "fr-quebec-hiver-culture-o1",
+              "name": "Survivre et profiter de l'hiver",
+              "description": "Affronter la saison froide avec aisance et plaisir.",
+              "level": "sprout",
+              "scenario_ideas": [
+                "Demander conseil pour habiller un enfant en hiver",
+                "Comprendre un avis de tempête à la radio",
+                "Parler de déneigement avec votre voisin",
+                "Réserver une sortie de patinage ou de glissade"
+              ],
+              "vocab_themes": [
+                "vêtements d'hiver",
+                "météo et tempêtes",
+                "activités d'hiver"
+              ]
+            },
+            {
+              "id": "fr-quebec-hiver-culture-o2",
+              "name": "Participer aux traditions",
+              "description": "Joindre les fêtes, la table et la culture d'ici.",
+              "level": "branch",
+              "scenario_ideas": [
+                "Accepter une invitation à une cabane à sucre",
+                "Commander des plats typiques lors d'une fête de quartier",
+                "Échanger sur les fêtes et les congés du calendrier québécois",
+                "Discuter du sport et des séries télé populaires d'ici"
+              ],
+              "vocab_themes": [
+                "traditions et fêtes",
+                "cuisine québécoise",
+                "culture populaire"
+              ]
+            },
+            {
+              "id": "fr-quebec-hiver-culture-o3",
+              "name": "Se sentir chez soi",
+              "description": "Parler de son parcours et tisser son appartenance.",
+              "level": "branch",
+              "scenario_ideas": [
+                "Expliquer d'où vous venez et raconter votre parcours",
+                "Répondre à Comment ça va et relancer la conversation",
+                "Corriger gentiment un malentendu culturel",
+                "Exprimer votre attachement à votre quartier"
+              ],
+              "vocab_themes": [
+                "identité et parcours",
+                "conversations spontanées",
+                "sentiment d'appartenance"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "housing",
+      "name": "Housing",
+      "description": "A safe, stable home is the foundation of settlement; this domain builds the language to find one, sign with confidence, and resolve problems.",
+      "packs": [
+        {
+          "id": "fr-housing-louer-au-quebec",
+          "title": "Louer au Québec : votre premier bail",
+          "language": "fr",
+          "description": "Cherchez un logement, comprenez votre bail et vos recours au TAL, et gérez Hydro-Québec dès votre arrivée. Un parcours locataire CanadaReadyMC.",
+          "category": "housing",
+          "tier": "freemium",
+          "level_range": ["sprout", "branch"],
+          "scenario_count": 10,
+          "vocabulary_count": 70,
+          "premium_scenario_count": 4,
+          "outcomes": [
+            {
+              "id": "fr-housing-louer-au-quebec-o1",
+              "name": "Trouver et visiter un logement",
+              "description": "Chercher, filtrer et visiter des logements efficacement.",
+              "level": "sprout",
+              "scenario_ideas": [
+                "Appeler au sujet d'un 4½ à louer près du métro",
+                "Poser des questions sur le chauffage électrique inclus ou non",
+                "Écrire un message pour demander une visite",
+                "Préparer ses références locatives avant de postuler"
+              ],
+              "vocab_themes": [
+                "types de logements",
+                "annonces et commodités",
+                "visites et questions"
+              ]
+            },
+            {
+              "id": "fr-housing-louer-au-quebec-o2",
+              "name": "Signer et vivre avec son bail",
+              "description": "Maîtriser les clauses, le loyer et les dates clés.",
+              "level": "branch",
+              "scenario_ideas": [
+                "Lire les clauses du bail avec le propriétaire avant de signer",
+                "Discuter d'une augmentation de loyer trop élevée",
+                "Organiser son déménagement du 1er juillet",
+                "Réaliser l'inspection d'entrée avec photos"
+              ],
+              "vocab_themes": [
+                "clauses du bail",
+                "loyer et augmentations",
+                "déménagement et inspections"
+              ]
+            },
+            {
+              "id": "fr-housing-louer-au-quebec-o3",
+              "name": "Régler les problèmes",
+              "description": "Agir face aux réparations, factures et litiges.",
+              "level": "branch",
+              "scenario_ideas": [
+                "Signaler une infiltration d'eau au propriétaire par texto",
+                "Ouvrir un compte chez Hydro-Québec et comprendre sa facture",
+                "Déposer une demande au Tribunal administratif du logement",
+                "Négocier des réparations urgentes avant l'hiver"
+              ],
+              "vocab_themes": [
+                "réparations et urgences",
+                "électricité et factures",
+                "recours au TAL"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
