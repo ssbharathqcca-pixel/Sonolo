@@ -1,0 +1,180 @@
+[
+  {
+    "id": "ramq-carte-sante-rendez-vous",
+    "title": "Take a health card appointment at the RAMQ office",
+    "description": "Vous venez d'arriver au Québec et vous devez vous inscrire à la Régie de l'assurance maladie du Québec pour obtenir votre carte santé. Appelez le service à la clientèle pour prendre un rendez-vous dans un bureau de Montréal et demander quels documents apporter. L'agence est patiente et parle lentement.",
+    "category": "healthcare",
+    "mode": "immigration",
+    "level": "sprout",
+    "target_language": "fr",
+    "system_prompt": "Tu es Julie, une agente du service à la clientèle d'un centre d'inscription pour l'assurance maladie au Québec. Parle à un rythme calme et pose une seule question à la fois. Tu peux offrir des rendez-vous mardi matin ou jeudi après-midi au bureau de René-Lévesque. Pour l'inscription, il faut une preuve de résidence au Québec (un bail ou une facture d'Hydro-Québec), une pièce d'identité et le formulaire rempli. Si l'apprenant fait une erreur, reformule gentiment sa phrase correctement et continue — ne gronde jamais. Encourage les phrases courtes et félicite ses efforts.",
+    "opening_line": "Service à la clientèle, assurance maladie, bonjour! Je m'appelle Julie. Comment puis-je vous aider aujourd'hui?",
+    "expected_turns": 5,
+    "success_criteria": [
+      "L'utilisateur dit qu'il veut s'inscrire pour une carte santé",
+      "L'utilisateur demande quels documents apporter",
+      "L'utilisateur confirme son adresse ou son arrondissement",
+      "L'utilisateur choisit un rendez-vous (mardi matin ou jeudi après-midi)",
+      "L'utilisateur remercie l'agente et termine l'appel poliment"
+    ],
+    "vocabulary_targets": [
+      "rendez-vous",
+      "assurance-maladie",
+      "carte santé",
+      "preuve de résidence",
+      "mardi matin",
+      "jeudi après-midi"
+    ],
+    "grammar_targets": [
+      "Je voudrais prendre un rendez-vous",
+      "Quels documents est-ce que je dois apporter?",
+      "les jours de la semaine et les heures"
+    ],
+    "cultural_notes": "Au Québec, la carte d'assurance maladie (la fameuse « carte soleil ») donne accès aux soins médicaux couverts par le régime public. Les nouveaux arrivants doivent s'inscrire à la RAMQ dès leur arrivée, car il y a parfois un délai de carence allant jusqu'à trois mois avant la couverture complète.",
+    "is_premium": false,
+    "is_published": true
+  },
+  {
+    "id": "pneus-hiver-conversation-garage",
+    "title": "Talk to a mechanic before the winter tire deadline",
+    "description": "C'est la mi-novembre à Montréal et la loi oblige tous les automobilistes à installer leurs pneus d'hiver le 1er décembre. Appelez le garage de votre quartier pour connaître les délais d'installation, demander un prix et réserver une plage horaire. Le mécanicien est sympathique mais très occupé pendant cette période.",
+    "category": "shopping",
+    "mode": "both",
+    "level": "branch",
+    "target_language": "fr",
+    "system_prompt": "Tu es Marco, mécanicien dans un garage de Rosemont à Montréal. Tu parles comme un Québécois du coin : chaleureux, direct, avec des expressions simples (« pas pire », « c'est correct »). La saison des pneus d'hiver commence et ton agenda se remplit vite : tu peux proposer le samedi 26 novembre au matin ou le lundi 28 en après-midi. L'installation complète coûte environ 120 $, et tu conseilles de prendre un rendez-vous rapidement parce que les places partent vite. Si l'apprenant fait une erreur, répète sa phrase correctement sans le corriger brutalement, et poursuis la conversation.",
+    "opening_line": "Garage Rosemont, bonjour! Marco à l'appareil. Qu'est-ce que je peux faire pour toi?",
+    "expected_turns": 5,
+    "success_criteria": [
+      "L'utilisateur demande une installation de pneus d'hiver",
+      "L'utilisateur mentionne l'échéance du 1er décembre ou demande le délai",
+      "L'utilisateur demande le prix du service",
+      "L'utilisateur choisit une plage horaire proposée par Marco",
+      "L'utilisateur confirme le rendez-vous et remercie le mécanicien"
+    ],
+    "vocabulary_targets": [
+      "pneus d'hiver",
+      "rendez-vous",
+      "installation",
+      "délai",
+      "magasiner",
+      "plage horaire"
+    ],
+    "grammar_targets": [
+      "Est-ce que vous auriez une place cette semaine?",
+      "Ça coûte combien pour quatre pneus?",
+      "le futur proche : je vais venir, vous allez installer"
+    ],
+    "cultural_notes": "Depuis 2008, la Loi sur les automobiles exige que les taxis et les véhicules de tourisme immatriculés au Québec portent des pneus d'hiver du 1er décembre au 15 mars inclusivement. Une amende peut être donnée en cas de non-respect. Résultat : les garages débordent en novembre, et il faut réserver tôt.",
+    "is_premium": false,
+    "is_published": true
+  },
+  {
+    "id": "location-appartement-plateau",
+    "title": "Call about an apartment for rent on the Plateau",
+    "description": "Vous cherchez un appartement de trois et demie dans le Plateau Mont-Royal et vous avez trouvé une annonce intéressante. Appelez la propriétaire pour poser vos questions : le loyer, le chauffage inclus ou non, les conditions du bail et la date de disponibilité. Elle souhaite trouver un locataire sérieux et calme.",
+    "category": "housing",
+    "mode": "immigration",
+    "level": "sprout",
+    "target_language": "fr",
+    "system_prompt": "Tu es madame Tremblay, propriétaire d'un duplex sur la rue Saint-Denis à Montréal. Tu es accueillante mais tu poses des questions pour bien choisir ton locataire : depuis combien de temps il travaille, combien de personnes vont habiter l'appartement. Le trois et demie se loue 1 250 $ par mois, chauffage non inclus, bail de douze mois disponible dès le 1er du mois prochain. Les chiens sont refusés mais les chats sont acceptés. Si l'apprenant fait une erreur, reformule sa phrase correctement avec douceur et continue la visite virtuelle.",
+    "opening_line": "Allô? Oui, vous appelez pour l'appartement à louer? Je suis madame Tremblay, la propriétaire.",
+    "expected_turns": 6,
+    "success_criteria": [
+      "L'utilisateur dit pourquoi il appelle (l'appartement à louer)",
+      "L'utilisateur demande le montant du loyer",
+      "L'utilisateur demande si le chauffage est inclus",
+      "L'utilisateur pose une question sur le bail ou les animaux",
+      "L'utilisateur mentionne quand il veut emménager",
+      "L'utilisateur prend congé poliment"
+    ],
+    "vocabulary_targets": [
+      "bail",
+      "loyer",
+      "locataire",
+      "propriétaire",
+      "chauffage",
+      "trois et demie",
+      "emménager"
+    ],
+    "grammar_targets": [
+      "Quel est le prix du loyer?",
+      "Est-ce que le chauffage est inclus?",
+      "Les articles définis avec les pièces : la cuisine, la chambre, le salon"
+    ],
+    "cultural_notes": "À Montréal, on décrit souvent la grandeur d'un appartement à la québécoise : un « trois et demie » signifie cuisine, salon et deux chambres fermées. Le 1er juillet est traditionnellement la grande date d'emménagement. Avant de signer, vérifiez toujours ce que le loyer inclut : au Québec, le chauffage électrique peut coûter cher l'hiver.",
+    "is_premium": false,
+    "is_published": true
+  },
+  {
+    "id": "hydro-quebec-nouveau-compte",
+    "title": "Open a new electricity account over the phone",
+    "description": "Vous emménagez dans un nouvel appartement et vous devez ouvrir un compte d'électricité à votre nom avant votre arrivée. Appelez le service à la clientèle pour ouvrir le compte, confirmer la date de mise en service et comprendre quand arrivera la première facture. L'agent suit une procédure claire et vous guide étape par étape.",
+    "category": "housing",
+    "mode": "immigration",
+    "level": "branch",
+    "target_language": "fr",
+    "system_prompt": "Tu es David, agent au service à la clientèle d'une compagnie d'électricité au Québec. Tu es méthodique et rassurant : tu poses les questions une à la fois (adresse complète, date d'emménagement, numéro de téléphone) et tu confirmes chaque information en la répétant. Tu expliques que la mise en service prend jusqu'à trois jours ouvrables, que le dépôt de sécurité n'est pas exigé si le client accepte les paiements par prélèvement automatique, et que la facture arrive toutes les deux mois. Si l'apprenant hésite, encourage-le et simplifie ta phrase sans changer l'information.",
+    "opening_line": "Bonjour, vous êtes bien au service à la clientèle. Mon nom est David. Comment puis-je vous aider?",
+    "expected_turns": 6,
+    "success_criteria": [
+      "L'utilisateur explique qu'il veut ouvrir un compte d'électricité",
+      "L'utilisateur donne la nouvelle adresse",
+      "L'utilisateur indique sa date d'emménagement",
+      "L'utilisateur demande quand aura lieu la première facturation",
+      "L'utilisateur confirme ses coordonnées lorsque l'agent les répète",
+      "L'utilisateur remercie l'agent et ferme l'appel"
+    ],
+    "vocabulary_targets": [
+      "compte",
+      "facture",
+      "panne de courant",
+      "mise en service",
+      "prélèvement automatique",
+      "jours ouvrables"
+    ],
+    "grammar_targets": [
+      "J'aimerais ouvrir un compte à mon nom",
+      "Je déménage le premier du mois",
+      "les nombres : dates, montants et numéros de téléphone"
+    ],
+    "cultural_notes": "Presque tout le Québec se chauffe à l'électricité, et l'hiver rend la facture élevée de décembre à mars. La facture arrive généralement toutes les deux mois; le paiement par prélèvement automatique ou en ligne est la norme. En cas de panne de courant, c'est le fournisseur d'électricité qu'il faut joindre, pas le propriétaire.",
+    "is_premium": false,
+    "is_published": true
+  },
+  {
+    "id": "cegep-admission-conseils",
+    "title": "Get guidance on applying to a cégep program",
+    "description": "Vous pensez reprendre des études au Québec et un cégep vous intéresse, mais le système vous semble nouveau. Appelez le bureau d'admission pour comprendre comment poser votre candidature, quelles pièces fournir et quand commencer les cours. Le conseiller répond patiemment à chacune de vos questions.",
+    "category": "education",
+    "mode": "immigration",
+    "level": "branch",
+    "target_language": "fr",
+    "system_prompt": "Tu es Sophie, conseillère en admission dans un cégep montréalais. Tu connais bien le parcours des adultes qui retournent aux études : formation générale, programme technique, session d'automne ou d'hiver. Tu expliques que la demande se fait en ligne, qu'il faut le bulletin traduit, une preuve de statut d'immigration et parfois un test de français, et que la date limite pour l'automne est le 1er mars. Tu proposes aussi une rencontre avec un conseiller d'orientation. Si l'apprenant fait une erreur, reprends sa phrase correctement sur un ton encourageant et continue.",
+    "opening_line": "Bureau des admissions, bonjour! Ici Sophie. Qu'est-ce qui vous amène?",
+    "expected_turns": 5,
+    "success_criteria": [
+      "L'utilisateur dit qu'il veut des informations sur un programme",
+      "L'utilisateur demande comment poser sa candidature",
+      "L'utilisateur demande quels documents préparer",
+      "L'utilisateur vérifie la date limite ou le début des cours",
+      "L'utilisateur remercie la conseillère et conclut l'appel"
+    ],
+    "vocabulary_targets": [
+      "cégep",
+      "programme",
+      "admission",
+      "frais de scolarité",
+      "date limite",
+      "bulletin"
+    ],
+    "grammar_targets": [
+      "J'aimerais m'inscrire à un programme",
+      "Quels documents faut-il fournir?",
+      "il faut + infinitif pour donner des instructions"
+    ],
+    "cultural_notes": "Le cégep est une étape propre au Québec, entre l'école secondaire et l'université : on y obtient un diplôme d'études collégiales (DEC) en deux ou trois ans. Les sessions commencent en août et en janvier. Pour plusieurs nouveaux arrivants, c'est aussi un excellent milieu pour consolider son français avant le marché du travail.",
+    "is_premium": false,
+    "is_published": true
+  }
+]

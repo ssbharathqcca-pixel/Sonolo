@@ -1,7 +1,11 @@
 """
 Content service for loading and materializing Sonolo learning packs.
-Both v1 and v2 packs are loaded together to provide the full 40-scenario 
-catalog and support the 200 vocabulary card materialization cap.
+Both v1 and v2 packs are loaded together to provide the full 40-scenario
+English catalog, and SN-020 appends the French Quebec pack so learners
+with `preferred_language == "fr"` get a catalog of their own. Vocabulary
+materialization stays capped by `content_vocabulary_pack_limit` (default
+200), which the English packs fill exactly; French cards extend the pool
+behind that cap.
 """
 
 import json
@@ -36,15 +40,18 @@ LEVEL_DIFFICULTY: dict[str, int] = {
     "summit": 5,
 }
 
-#: Pack editions loaded in order (SN-018). Explicitly load both v1 and v2 
-#: to provide the full 40-scenario catalog and 200 vocab cap.
+#: Pack editions loaded in order. SN-018 loads the two English editions;
+#: SN-020 appends the French Quebec pack (loaded last so English keeps
+#: filling the 200-card vocabulary materialization cap first).
 SCENARIO_PACK_EDITIONS = (
     "../content/scenarios/canadian-life-v1.json",
     "../content/scenarios/canadian-life-v2.json",
+    "../content/scenarios/quebec-life-v1.json",
 )
 VOCABULARY_PACK_EDITIONS = (
     "../content/vocabulary/core-v1.json",
     "../content/vocabulary/core-v2.json",
+    "../content/vocabulary/core-fr-v1.json",
 )
 
 
@@ -110,8 +117,8 @@ class VocabularySeed:
 
 
 def load_scenario_seeds() -> list[ScenarioSeed]:
-    """Read and validate every scenario pack edition (SN-008 + SN-018)."""
-    # Explicitly load both v1 and v2 to guarantee 40 total scenarios
+    """Read and validate every scenario pack edition (SN-008 + SN-018 + SN-020)."""
+    # English v1+v2 first, then the French Quebec pack: 45 total scenarios.
     paths = [_resolve(rel) for rel in SCENARIO_PACK_EDITIONS]
     seeds: list[ScenarioSeed] = []
     seen_ids: set[str] = set()
@@ -150,8 +157,8 @@ def load_scenario_seeds() -> list[ScenarioSeed]:
 
 
 def load_vocabulary_seeds() -> list[VocabularySeed]:
-    """Read and validate every vocabulary pack edition (SN-009 + SN-018)."""
-    # Explicitly load both v1 and v2 to guarantee 200 total vocab cards
+    """Read and validate every vocabulary pack edition (SN-009 + SN-018 + SN-020)."""
+    # English v1+v2 first, then the French pack: 220 total cards.
     paths = [_resolve(rel) for rel in VOCABULARY_PACK_EDITIONS]
     seeds: list[VocabularySeed] = []
     seen_ids: set[str] = set()

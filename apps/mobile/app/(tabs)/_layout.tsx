@@ -1,10 +1,15 @@
 /**
- * Bottom tab navigation: Home, Learn, Progress — on a floating
- * glassmorphic tab bar that lets content scroll beneath it.
+ * Bottom tab navigation: Home, Learn, Progress, Settings — on a
+ * floating glassmorphic tab bar that lets content scroll beneath it.
  */
 import { StyleSheet } from "react-native";
 import { Tabs } from "expo-router";
-import { GraduationCap, House, TrendingUp } from "lucide-react-native";
+import {
+  GraduationCap,
+  House,
+  Settings,
+  TrendingUp,
+} from "lucide-react-native";
 import { colors } from "../../src/theme/colors";
 
 interface TabIconProps {
@@ -50,6 +55,10 @@ export default function TabLayout(): JSX.Element {
       <Tabs.Screen
         name="progress"
         options={{ title: "Progress", tabBarIcon: tabIcon(TrendingUp) }}
+      />
+      <Tabs.Screen
+        name="settings"
+        options={{ title: "Settings", tabBarIcon: tabIcon(Settings) }}
       />
     </Tabs>
   );

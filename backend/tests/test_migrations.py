@@ -37,6 +37,7 @@ REQUIRED_COLUMNS: dict[str, set[str]] = {
         "xp_today_date",
         "longest_streak",
         "last_activity_at",
+        "preferred_language",  # SN-020
     },
     "vocabulary_cards": {
         "translations",  # SN-012
@@ -93,6 +94,7 @@ def test_alembic_offline_upgrade_generates_full_schema() -> None:
         "uq_daily_quests_user_date_code",
         "uq_user_badges_user_badge",
         "idx_vocab_due",
+        "preferred_language",
     ):
         assert marker in sql, f"migration SQL missing: {marker}"
     assert "user_vocabulary_states" not in sql  # See SN-014A decision note.

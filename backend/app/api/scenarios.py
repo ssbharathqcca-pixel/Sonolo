@@ -4,13 +4,17 @@ from uuid import UUID
 
 from fastapi import APIRouter, Depends, Query
 from pydantic import BaseModel, ConfigDict
-from sqlalchemy import select
+from sqlalchemy import func, or_, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.api.dependencies import get_current_user
 from app.db.session import get_db
 from app.models.scenario import Scenario
-from app.models.user import SUBSCRIPTION_FREE, User
+from app.models.user import (
+    SUBSCRIPTION_FREE,
+    PreferredLanguage,
+    User,
+)
 
 router = APIRouter(prefix="/scenarios", tags=["scenarios"])
 
@@ -40,12 +44,27 @@ class ScenarioListResponse(BaseModel):
 async def list_scenarios(
     current_user: User = Depends(get_current_user),
     limit: int = Query(default=50, ge=1, le=100),
+    language: PreferredLanguage | None = Query(default=None),
     db: AsyncSession = Depends(get_db),
 ) -> ScenarioListResponse:
-    """Return published scenarios, ordered by title for a stable list."""
+    """Return published scenarios for one content language (SN-020).
+
+    An explicit `language` query param wins; otherwise the caller's
+    `preferred_language` applies. Codes match exact packs ("fr") and
+    regional variants ("en" also matches "en-CA"). SN-026 premium
+    gating is applied after filtering, so it holds in every language.
+    """
+    selected = language.value if language is not None else current_user.preferred_language
+    normalized = selected.strip().lower()
     result = await db.execute(
         select(Scenario)
         .where(Scenario.is_published.is_(True))
+        .where(
+            or_(
+                func.lower(Scenario.target_language) == normalized,
+                func.lower(Scenario.target_language).like(f"{normalized}-%"),
+            )
+        )
         .order_by(Scenario.title.asc())
         .limit(limit)
     )

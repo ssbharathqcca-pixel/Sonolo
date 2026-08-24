@@ -38,17 +38,10 @@ import {
   type QuestResult,
   type Scenario,
 } from "../../src/api/client";
+import { isLockedForCaller } from "../../src/lib/scenarioAccess";
 import { useAuthStore } from "../../src/stores/authStore";
 import { useScenarioStore } from "../../src/stores/scenarioStore";
 import { colors } from "../../src/theme/colors";
-
-/** A scenario is tappable only when its premium gate applies to the caller. */
-function isLockedForCaller(
-  scenario: Scenario,
-  isPremiumUser: boolean,
-): boolean {
-  return (scenario.is_locked ?? false) && !isPremiumUser;
-}
 
 function difficultyTone(difficulty: number | null): {
   label: string;
@@ -196,13 +189,19 @@ export default function LearnScreen(): JSX.Element {
   const user = useAuthStore((state) => state.user);
   const scenarios = useScenarioStore((state) => state.scenarios);
   const isLoadingScenarios = useScenarioStore((state) => state.isLoading);
+  const catalogLanguage = useScenarioStore((state) => state.language);
   const loadScenarios = useScenarioStore((state) => state.load);
 
+  // The catalog follows the account's content language (SN-020): it
+  // loads when missing or stale and refetches when the preference
+  // changes (e.g. from the Settings screen).
+  const preferredLanguage = user?.preferred_language ?? "en";
+
   useEffect(() => {
-    if (scenarios.length === 0) {
-      void loadScenarios();
+    if (scenarios.length === 0 || catalogLanguage !== preferredLanguage) {
+      void loadScenarios(preferredLanguage);
     }
-  }, [scenarios.length, loadScenarios]);
+  }, [scenarios.length, catalogLanguage, preferredLanguage, loadScenarios]);
 
   // Server tier truth beats a possibly stale cached catalog: once the
   // account is premium no card stays locked (SN-026).
@@ -237,9 +236,9 @@ export default function LearnScreen(): JSX.Element {
 
   const onRefresh = useCallback(async (): Promise<void> => {
     setRefreshing(true);
-    await loadQuests();
+    await Promise.all([loadQuests(), loadScenarios(preferredLanguage)]);
     setRefreshing(false);
-  }, [loadQuests]);
+  }, [loadQuests, loadScenarios, preferredLanguage]);
 
   return (
     <ScrollView

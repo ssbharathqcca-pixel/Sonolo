@@ -126,6 +126,9 @@ api.interceptors.response.use(
 // Backend payload types (mirrors of the FastAPI schemas)
 // ---------------------------------------------------------------------
 
+/** Content languages the backend catalogs support (SN-020). */
+export type PreferredLanguage = "en" | "fr";
+
 export interface UserSkill {
   fluency_score: number;
   pronunciation_score: number;
@@ -147,6 +150,8 @@ export interface User {
   target_language: string;
   learning_goal: string;
   current_level: string;
+  /** Content language driving the scenario catalog (SN-020). */
+  preferred_language: PreferredLanguage;
   subscription_tier: string;
   streak_count: number;
   streak_last_date: string | null;
@@ -235,8 +240,12 @@ export interface Scenario {
   is_locked?: boolean;
 }
 
-export async function fetchScenarios(): Promise<Scenario[]> {
-  const { data } = await api.get<{ scenarios: Scenario[] }>("/scenarios");
+export async function fetchScenarios(
+  language?: PreferredLanguage,
+): Promise<Scenario[]> {
+  const { data } = await api.get<{ scenarios: Scenario[] }>("/scenarios", {
+    params: language === undefined ? undefined : { language },
+  });
   return data.scenarios;
 }
 
@@ -246,6 +255,18 @@ export async function fetchScenarios(): Promise<Scenario[]> {
  */
 export async function upgradeAccountRequest(): Promise<User> {
   const { data } = await api.post<User>("/users/me/upgrade");
+  return data;
+}
+
+/**
+ * POST /users/me/language — persist the content language (SN-020).
+ * Returns the updated profile; callers should refetch the scenario
+ * catalog with the new language afterwards.
+ */
+export async function updatePreferredLanguage(
+  language: PreferredLanguage,
+): Promise<User> {
+  const { data } = await api.post<User>("/users/me/language", { language });
   return data;
 }
 

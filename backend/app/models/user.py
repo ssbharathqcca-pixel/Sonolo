@@ -4,10 +4,12 @@ Column value domains (validated at the application layer for now):
 - users.learning_goal: 'pr_readiness' | 'casual' | 'workplace' | 'travel' | 'love'
 - users.current_level: 'seed' | 'sprout' | 'branch' | 'bloom' | 'canopy' | 'summit'
 - users.subscription_tier: 'free' | 'premium'
+- users.preferred_language: 'en' | 'fr'
 """
 
 import uuid
 from datetime import date, datetime
+from enum import Enum
 from typing import TYPE_CHECKING
 
 from sqlalchemy import (
@@ -40,6 +42,13 @@ SUBSCRIPTION_PREMIUM = "premium"
 SUBSCRIPTION_TIERS = (SUBSCRIPTION_FREE, SUBSCRIPTION_PREMIUM)
 
 
+class PreferredLanguage(str, Enum):
+    """Content language a learner wants to practice (SN-020)."""
+
+    ENGLISH = "en"
+    FRENCH = "fr"
+
+
 class User(Base):
     """A Sonolo learner."""
 
@@ -61,6 +70,12 @@ class User(Base):
     )
     subscription_expires_at: Mapped[datetime | None] = mapped_column(
         DateTime(timezone=True)
+    )
+    #: Content language used to filter the scenario catalog (SN-020);
+    #: regional codes such as "en-CA" still match the "en" preference.
+    preferred_language: Mapped[str] = mapped_column(
+        String(10), default=PreferredLanguage.ENGLISH.value,
+        server_default=text("'en'"),
     )
     streak_count: Mapped[int] = mapped_column(
         Integer, default=0, server_default=text("0")

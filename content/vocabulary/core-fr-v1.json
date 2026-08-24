@@ -1,0 +1,502 @@
+[
+  {
+    "id": "vocab-201",
+    "word": "rendez-vous",
+    "phonetic": "/ʁɑ̃.de.vu/",
+    "translations": {
+      "pa": "ਤਹਿ ਕੀਤਾ ਸਮਾਂ (ਮੁਲਾਕਾਤ)",
+      "hi": "अपॉइंटमेंट (तय समय)",
+      "zh": "预约",
+      "es": "cita"
+    },
+    "level": "seed",
+    "category": "healthcare",
+    "example_sentences": [
+      "J'ai un rendez-vous chez le médecin mardi matin.",
+      "Prenez votre carte santé à chaque rendez-vous à la clinique."
+    ],
+    "confusion_pairs": [
+      "réunion",
+      "visite"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.35,
+      "stability": 4.0
+    }
+  },
+  {
+    "id": "vocab-202",
+    "word": "assurance-maladie",
+    "phonetic": "/a.sy.ʁɑ̃s ma.la.di/",
+    "translations": {
+      "pa": "ਸਿਹਤ ਬੀਮਾ",
+      "hi": "स्वास्थ्य बीमा",
+      "zh": "医疗保险",
+      "es": "seguro de enfermedad"
+    },
+    "level": "branch",
+    "category": "healthcare",
+    "example_sentences": [
+      "Au Québec, la RAMQ administre l'assurance-maladie publique.",
+      "Apportez votre carte d'assurance-maladie à l'hôpital."
+    ],
+    "confusion_pairs": [
+      "assurance automobile",
+      "ordonnance"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.55,
+      "stability": 2.8
+    }
+  },
+  {
+    "id": "vocab-203",
+    "word": "ordonnance",
+    "phonetic": "/ɔʁ.dɔ.nɑ̃s/",
+    "translations": {
+      "pa": "ਦਵਾਈ ਦਾ ਨੁਸਖ਼ਾ",
+      "hi": "नुस्ख़ा (दवा का पर्चा)",
+      "zh": "处方",
+      "es": "receta médica"
+    },
+    "level": "branch",
+    "category": "healthcare",
+    "example_sentences": [
+      "Le pharmacien prépare votre ordonnance en vingt minutes.",
+      "Sans ordonnance, on ne peut pas acheter cet antibiotique."
+    ],
+    "confusion_pairs": [
+      "pharmacie",
+      "médicament"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.6,
+      "stability": 2.5
+    }
+  },
+  {
+    "id": "vocab-204",
+    "word": "urgence",
+    "phonetic": "/yʁ.ʒɑ̃s/",
+    "translations": {
+      "pa": "ਐਮਰਜੈਂਸੀ",
+      "hi": "आपातकाल / इमरजेंसी",
+      "zh": "急诊",
+      "es": "urgencias"
+    },
+    "level": "sprout",
+    "category": "healthcare",
+    "example_sentences": [
+      "S'il vous plaît, où est l'urgence la plus proche?",
+      "Nous avons passé six heures à l'urgence samedi soir."
+    ],
+    "confusion_pairs": [
+      "clinique sans rendez-vous",
+      "911"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.4,
+      "stability": 3.6
+    }
+  },
+  {
+    "id": "vocab-205",
+    "word": "pneus d'hiver",
+    "phonetic": "/pø divɛʁ/",
+    "translations": {
+      "pa": "ਸਰਦੀਆਂ ਦੇ ਟਾਇਰ",
+      "hi": "सर्दियों के टायर",
+      "zh": "雪胎",
+      "es": "neumáticos de invierno"
+    },
+    "level": "branch",
+    "category": "government",
+    "example_sentences": [
+      "Les pneus d'hiver sont obligatoires du 1er décembre au 15 mars.",
+      "Réserve tôt : le garage est plein pendant la saison des pneus d'hiver."
+    ],
+    "confusion_pairs": [
+      "pneus quatre saisons",
+      "roues complètes"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.55,
+      "stability": 3.0
+    }
+  },
+  {
+    "id": "vocab-206",
+    "word": "bail",
+    "phonetic": "/baj/",
+    "translations": {
+      "pa": "ਕਿਰਾਇਆ-ਸਮਝੌਤਾ",
+      "hi": "किराया-समझौता",
+      "zh": "租约",
+      "es": "contrato de arrendamiento"
+    },
+    "level": "bloom",
+    "category": "housing",
+    "example_sentences": [
+      "Le bail commence le 1er juillet pour douze mois.",
+      "Lisez toutes les clauses avant de signer le bail."
+    ],
+    "confusion_pairs": [
+      "loyer",
+      "contrat"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.62,
+      "stability": 2.2
+    }
+  },
+  {
+    "id": "vocab-207",
+    "word": "locataire",
+    "phonetic": "/lɔ.ka.tɛʁ/",
+    "translations": {
+      "pa": "ਕਿਰਾਏਦਾਰ",
+      "hi": "किरायेदार",
+      "zh": "租客",
+      "es": "inquilino"
+    },
+    "level": "branch",
+    "category": "housing",
+    "example_sentences": [
+      "Le locataire doit payer le loyer le premier du mois.",
+      "Une locataire responsable garde l'appartement propre et calme."
+    ],
+    "confusion_pairs": [
+      "propriétaire",
+      "colocataire"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.58,
+      "stability": 2.6
+    }
+  },
+  {
+    "id": "vocab-208",
+    "word": "propriétaire",
+    "phonetic": "/pʁɔ.pʁi.jə.tɛʁ/",
+    "translations": {
+      "pa": "ਮਾਲਕ (ਮਕਾਨ ਦਾ)",
+      "hi": "मकान मालिक",
+      "zh": "房东",
+      "es": "propietario; casero"
+    },
+    "level": "branch",
+    "category": "housing",
+    "example_sentences": [
+      "Appelez le propriétaire si le chauffage ne marche pas.",
+      "La propriétaire habite au rez-de-chaussée du duplex."
+    ],
+    "confusion_pairs": [
+      "gestionnaire",
+      "locataire"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.6,
+      "stability": 2.4
+    }
+  },
+  {
+    "id": "vocab-209",
+    "word": "loyer",
+    "phonetic": "/lwa.je/",
+    "translations": {
+      "pa": "ਕਿਰਾਇਆ (ਘਰ ਦਾ)",
+      "hi": "किराया (घर का)",
+      "zh": "房租",
+      "es": "alquiler; renta"
+    },
+    "level": "sprout",
+    "category": "housing",
+    "example_sentences": [
+      "Le loyer est de 1 250 $ par mois, chauffage non inclus.",
+      "Payez toujours le loyer par transfert bancaire pour garder une preuve."
+    ],
+    "confusion_pairs": [
+      "bail",
+      "hypothèque"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.45,
+      "stability": 3.4
+    }
+  },
+  {
+    "id": "vocab-210",
+    "word": "chauffage",
+    "phonetic": "/ʃo.faʒ/",
+    "translations": {
+      "pa": "ਹੀਟਿੰਗ (ਗਰਮੀ ਦੀ ਵਿਵਸਥਾ)",
+      "hi": "हीटिंग (गर्मी की व्यवस्था)",
+      "zh": "暖气",
+      "es": "calefacción"
+    },
+    "level": "sprout",
+    "category": "housing",
+    "example_sentences": [
+      "Est-ce que le chauffage électrique est inclus dans le loyer?",
+      "En janvier, le thermostat du chauffage monte à vingt-deux degrés."
+    ],
+    "confusion_pairs": [
+      "électricité",
+      "thermostat"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.42,
+      "stability": 3.5
+    }
+  },
+  {
+    "id": "vocab-211",
+    "word": "préavis",
+    "phonetic": "/pʁe.a.vi/",
+    "translations": {
+      "pa": "ਪਹਿਲਾਂ ਸੂਚਨਾ",
+      "hi": "पूर्व सूचना",
+      "zh": "预先通知",
+      "es": "preaviso"
+    },
+    "level": "bloom",
+    "category": "housing",
+    "example_sentences": [
+      "Pour quitter l'appartement, donnez un préavis écrit de trois mois.",
+      "Le propriétaire doit envoyer un préavis avant d'augmenter le loyer."
+    ],
+    "confusion_pairs": [
+      "reprise de logement",
+      "contrat résilié"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.68,
+      "stability": 2.0
+    }
+  },
+  {
+    "id": "vocab-212",
+    "word": "compte",
+    "phonetic": "/kɔ̃t/",
+    "translations": {
+      "pa": "ਖਾਤਾ",
+      "hi": "खाता",
+      "zh": "账户",
+      "es": "cuenta"
+    },
+    "level": "seed",
+    "category": "banking",
+    "example_sentences": [
+      "J'aimerais ouvrir un compte d'électricité à mon nom.",
+      "Créez votre compte en ligne pour payer vos factures plus vite."
+    ],
+    "confusion_pairs": [
+      "facture",
+      "carte bancaire"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.35,
+      "stability": 4.2
+    }
+  },
+  {
+    "id": "vocab-213",
+    "word": "facture",
+    "phonetic": "/fak.tyʁ/",
+    "translations": {
+      "pa": "ਬਿੱਲ",
+      "hi": "बिल",
+      "zh": "账单",
+      "es": "factura"
+    },
+    "level": "sprout",
+    "category": "banking",
+    "example_sentences": [
+      "La facture d'électricité arrive toutes les deux mois.",
+      "Payez la facture avant la date limite pour éviter les frais."
+    ],
+    "confusion_pairs": [
+      "compte",
+      "reçu"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.4,
+      "stability": 3.8
+    }
+  },
+  {
+    "id": "vocab-214",
+    "word": "panne de courant",
+    "phonetic": "/pan də ku.ʁɑ̃/",
+    "translations": {
+      "pa": "ਬਿਜਲੀ ਦੀ ਕਟੌਤੀ",
+      "hi": "बिजली की कटौती",
+      "zh": "停电",
+      "es": "apagón; corte de luz"
+    },
+    "level": "branch",
+    "category": "housing",
+    "example_sentences": [
+      "Après la tempête, la panne de courant a duré toute la nuit.",
+      "Gardez une lampe de poche prête en cas de panne de courant."
+    ],
+    "confusion_pairs": [
+      "tempête de verglas",
+      "génératrice"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.6,
+      "stability": 2.6
+    }
+  },
+  {
+    "id": "vocab-215",
+    "word": "cégep",
+    "phonetic": "/se.ʒɛp/",
+    "translations": {
+      "pa": "ਸੀਜੈਪ (ਕਿਊਬੈਕ ਦਾ ਕਾਲਜ)",
+      "hi": "सीईजीईपी (क्यूबेक का कॉलेज)",
+      "zh": "魁北克的预科/职业学院（cégep）",
+      "es": "cégep (colegio preuniversitario de Quebec)"
+    },
+    "level": "branch",
+    "category": "education",
+    "example_sentences": [
+      "Après le secondaire, plusieurs jeunes entrent au cégep.",
+      "Elle fait un programme technique de trois ans au cégep."
+    ],
+    "confusion_pairs": [
+      "université",
+      "centre de formation professionnelle"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.52,
+      "stability": 3.0
+    }
+  },
+  {
+    "id": "vocab-216",
+    "word": "programme",
+    "phonetic": "/pʁɔ.ɡʁam/",
+    "translations": {
+      "pa": "ਪ੍ਰੋਗਰਾਮ (ਪੜ੍ਹਾਈ ਦਾ)",
+      "hi": "कार्यक्रम (पाठ्यक्रम)",
+      "zh": "专业；课程项目",
+      "es": "programa (de estudios)"
+    },
+    "level": "seed",
+    "category": "education",
+    "example_sentences": [
+      "Je veux m'inscrire au programme de soins infirmiers.",
+      "Ce programme dure trois sessions, soit un an complet."
+    ],
+    "confusion_pairs": [
+      "cours",
+      "diplôme"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.32,
+      "stability": 4.5
+    }
+  },
+  {
+    "id": "vocab-217",
+    "word": "admission",
+    "phonetic": "/ad.mi.sjɔ̃/",
+    "translations": {
+      "pa": "ਦਾਖਲਾ",
+      "hi": "प्रवेश",
+      "zh": "录取；入学申请",
+      "es": "admisión"
+    },
+    "level": "branch",
+    "category": "education",
+    "example_sentences": [
+      "Le bureau des admissions répond en deux semaines.",
+      "Votre demande d'admission doit être envoyée avant le 1er mars."
+    ],
+    "confusion_pairs": [
+      "inscription",
+      "date limite"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.5,
+      "stability": 3.1
+    }
+  },
+  {
+    "id": "vocab-218",
+    "word": "frais de scolarité",
+    "phonetic": "/fʁɛ də skɔ.la.ʁi.te/",
+    "translations": {
+      "pa": "ਟਿਊਸ਼ਨ ਫ਼ੀਸ",
+      "hi": "ट्यूशन शुल्क",
+      "zh": "学费",
+      "es": "tasas de matrícula"
+    },
+    "level": "bloom",
+    "category": "education",
+    "example_sentences": [
+      "Les frais de scolarité restent bas pour les résidents du Québec.",
+      "Vous pouvez payer les frais de scolarité en deux versements."
+    ],
+    "confusion_pairs": [
+      "bourse d'études",
+      "frais d'adhésion"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.65,
+      "stability": 2.2
+    }
+  },
+  {
+    "id": "vocab-219",
+    "word": "dépanneur",
+    "phonetic": "/de.pa.nœʁ/",
+    "translations": {
+      "pa": "ਸੁਵਿਧਾ ਦੁਕਾਨ",
+      "hi": "सुविधा की दुकान (किराना)",
+      "zh": "便利店",
+      "es": "tienda de conveniencia"
+    },
+    "level": "sprout",
+    "category": "shopping",
+    "example_sentences": [
+      "Passe au dépanneur acheter du lait, il ouvre jusqu'à minuit.",
+      "Le dépanneur du coin vend aussi des billets de transport."
+    ],
+    "confusion_pairs": [
+      "épicerie",
+      "supermarché"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.48,
+      "stability": 3.2
+    }
+  },
+  {
+    "id": "vocab-220",
+    "word": "tuque",
+    "phonetic": "/tyk/",
+    "translations": {
+      "pa": "ਸਰਦੀਆਂ ਦੀ ਟੋਪੀ",
+      "hi": "सर्दियों की बुनी हुई टोपी",
+      "zh": "冬季毛线帽",
+      "es": "gorro de invierno"
+    },
+    "level": "seed",
+    "category": "shopping",
+    "example_sentences": [
+      "Mets ta tuque, il fait moins vingt ce matin!",
+      "J'ai perdu ma tuque dans l'autobus l'hiver dernier."
+    ],
+    "confusion_pairs": [
+      "mitaines",
+      "cache-cou"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.38,
+      "stability": 3.9
+    }
+  }
+]

@@ -76,6 +76,7 @@ function makeUser(subscription_tier: string): User {
     target_language: "en-CA",
     learning_goal: "pr_readiness",
     current_level: "sprout",
+    preferred_language: "en",
     subscription_tier,
     streak_count: 0,
     streak_last_date: null,

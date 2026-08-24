@@ -57,11 +57,16 @@ export default function HomeScreen(): JSX.Element {
   const error = useScenarioStore((state) => state.error);
   const load = useScenarioStore((state) => state.load);
 
+  // The catalog follows the account's content language (SN-020):
+  // fetch when empty or when it still speaks the previous language.
+  const preferredLanguage = user?.preferred_language ?? "en";
+  const catalogLanguage = useScenarioStore((state) => state.language);
+
   useEffect(() => {
-    if (scenarios.length === 0) {
-      void load();
+    if (scenarios.length === 0 || catalogLanguage !== preferredLanguage) {
+      void load(preferredLanguage);
     }
-  }, [scenarios.length, load]);
+  }, [scenarios.length, catalogLanguage, preferredLanguage, load]);
 
   const rest = scenarios.filter((scenario) => scenario.id !== selected?.id);
 
