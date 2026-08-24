@@ -12,12 +12,16 @@
   },
   "jest": {
     "preset": "jest-expo",
-    "roots": ["<rootDir>/src/__tests__"]
+    "roots": [
+      "<rootDir>/src/__tests__"
+    ]
   },
   "dependencies": {
     "axios": "^1.7.9",
     "expo": "~52.0.23",
+    "expo-av": "~15.0.2",
     "expo-constants": "~17.0.3",
+    "expo-file-system": "~18.0.7",
     "expo-linking": "~7.0.3",
     "expo-router": "~4.0.13",
     "expo-secure-store": "~14.0.1",
@@ -25,6 +29,7 @@
     "lucide-react-native": "^0.469.0",
     "react": "18.3.1",
     "react-dom": "18.3.1",
+    "react-error-boundary": "^4.1.2",
     "react-native": "0.76.5",
     "react-native-gesture-handler": "~2.20.2",
     "react-native-reanimated": "~3.16.1",

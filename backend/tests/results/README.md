@@ -33,6 +33,10 @@ evidence".
 | SN-014B | Release smoke + migration tests | `2026-08-22_sn014b_release_smoke.txt` | 5 passed |
 | SN-015 | Scenario catalog API (`tests/test_api_scenarios.py`) | `2026-08-23_sn015_test_api_scenarios.txt` | 2 passed |
 | SN-015 | Full backend suite (regenerated after SN-015) | `2026-08-23_full_suite.txt` | 121 passed |
+| SN-016 | AI providers (`tests/test_ai_providers.py`) | `2026-08-23_sn016_test_ai_providers.txt` | 13 passed |
+| SN-016 | WebSocket pipeline + auth + session_summary (`tests/test_ws.py`) | `2026-08-23_sn016_test_ws.txt` | 15 passed |
+| all | Full backend suite (regenerated after SN-016) | `2026-08-23_full_suite.txt` | 135 passed |
+| SN-015 | Full backend suite (regenerated after SN-015) | `2026-08-23_full_suite.txt` | 121 passed |
 | SN-018 | Overlap + schema validation, v1 vs v2 packs (titles/ids/words: zero overlap; 9/9 categories; 5 premium) | `2026-08-23_sn018_overlap_validation.txt` | exit 0 |
 | SN-018 | Live PG (Docker postgres:16 :55432) `alembic upgrade head` + `verify_schema` | `2026-08-23_sn018_alembic_upgrade.txt`, `2026-08-23_sn018_verify_schema.txt` | exit 0, `schema_ok: 8 tables` |
 | SN-018 | Dual-pack seed ×2 into live PG (`scripts.seed_content`, v1+v2) | `2026-08-23_sn018_seed_twice.txt` | stable 40 scenarios / 200 vocab items; re-run no-op |

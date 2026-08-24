@@ -6,8 +6,8 @@
  * posts the completion payload on finish.
  */
 
-import { useState } from "react";
-import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+import { useEffect, useState } from "react";
+import { Pressable, StyleSheet, Text, View } from "react-native";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import Animated, {
@@ -18,7 +18,6 @@ import Animated, {
   withTiming,
   cancelAnimation,
 } from "react-native-reanimated";
-import { useEffect } from "react";
 import { ChevronLeft, Flag, Lightbulb } from "lucide-react-native";
 
 import { GlassCard } from "../../src/components/GlassCard";
@@ -26,6 +25,7 @@ import {
   VoiceButton,
   voiceButtonCaption,
 } from "../../src/components/VoiceButton";
+import { TranscriptList } from "../../src/components/TranscriptList";
 import { useScenarioStore } from "../../src/stores/scenarioStore";
 import { useVoiceSession } from "../../src/hooks/useVoiceSession";
 import { colors } from "../../src/theme/colors";
@@ -160,43 +160,13 @@ export default function VoiceSessionScreen(): JSX.Element {
         ))}
       </View>
 
-      <ScrollView
-        style={styles.transcriptScroll}
-        contentContainerStyle={styles.transcriptContent}
-        showsVerticalScrollIndicator={false}
-      >
-        <Text style={styles.transcriptHeader}>Transcript</Text>
-        {transcript.map((turn) => (
-          <View
-            key={turn.id}
-            style={[
-              styles.turnRow,
-              turn.role === "user" ? styles.turnRowRight : styles.turnRowLeft,
-            ]}
-          >
-            <View
-              style={[
-                styles.turnBubble,
-                turn.role === "user" ? styles.bubbleUser : styles.bubbleTutor,
-              ]}
-            >
-              <Text
-                style={[
-                  styles.turnText,
-                  turn.role === "user" && styles.turnTextUser,
-                ]}
-              >
-                {turn.text}
-              </Text>
-            </View>
-          </View>
-        ))}
-        {transcript.length === 0 ? (
-          <Text style={styles.emptyText}>
-            Your conversation will appear here as you speak.
-          </Text>
-        ) : null}
-      </ScrollView>
+      <TranscriptList turns={transcript} style={styles.transcriptScroll} />
+
+      {transcript.length === 0 ? (
+        <Text style={styles.emptyText}>
+          Your conversation will appear here as you speak.
+        </Text>
+      ) : null}
 
       {error !== null ? <Text style={styles.error}>{error}</Text> : null}
 

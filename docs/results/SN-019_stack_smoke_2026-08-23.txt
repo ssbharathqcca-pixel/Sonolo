@@ -1,0 +1,120 @@
+SN-019 docker compose stack smoke — 2026-08-23T22:14:48Z
+--- netstat port 8000 pre-check ---
+port 8000 free
+--- docker compose up -d ---
+ Volume sonolo-prod_pgdata Creating 
+ Network sonolo-prod_default Creating 
+ Volume sonolo-prod_pgdata Creating 
+ Network sonolo-prod_default Creating 
+ Volume sonolo-prod_pgdata Created 
+ Volume sonolo-prod_pgdata Created 
+ Network sonolo-prod_default Created 
+ Network sonolo-prod_default Created 
+ Container sonolo-prod-db-1 Creating 
+ Container sonolo-prod-db-1 Created 
+ Container sonolo-prod-api-1 Creating 
+ Container sonolo-prod-api-1 Created 
+ Container sonolo-prod-db-1 Starting 
+ Container sonolo-prod-db-1 Started 
+ Container sonolo-prod-db-1 Waiting 
+ Container sonolo-prod-db-1 Healthy 
+ Container sonolo-prod-api-1 Starting 
+ Container sonolo-prod-api-1 Started 
+--- docker compose ps after db healthy ---
+NAME                IMAGE               COMMAND                  SERVICE   CREATED         STATUS                                     PORTS
+sonolo-prod-api-1   sonolo-api:latest   "uvicorn app.main:ap…"   api       7 seconds ago   Up Less than a second (health: starting)   0.0.0.0:8000->8000/tcp, [::]:8000->8000/tcp
+sonolo-prod-db-1    postgres:16         "docker-entrypoint.s…"   db        7 seconds ago   Up 6 seconds (healthy)                     5432/tcp
+--- alembic upgrade head ---
+ Container sonolo-prod-api-run-9cdf34fb7436 Creating 
+ Container sonolo-prod-api-run-9cdf34fb7436 Created 
+INFO  [alembic.runtime.migration] Context impl PostgresqlImpl.
+INFO  [alembic.runtime.migration] Will assume transactional DDL.
+INFO  [alembic.runtime.migration] Running upgrade  -> 0001_initial, Initial Sonolo schema: SN-006 base plus additive SN-010/012/014 columns.
+--- seed_content ---
+ Container sonolo-prod-api-run-08d41256b441 Creating 
+ Container sonolo-prod-api-run-08d41256b441 Created 
+scenarios_before=0
+pack_upserts=20
+scenarios_after=20
+--- GET /api/health ---
+{"status":"ok","service":"Sonolo API","version":"0.1.0","environment":"production","timestamp":"2026-08-23T22:15:59.208335Z"}
+HEALTH_EXIT_CODE=0
+--- POST /api/auth/register ---
+register_http_status=422
+--- POST /api/auth/login ---
+curl: (22) The requested URL returned error: 422
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "C:\Users\pavan\AppData\Local\Programs\Python\Python311\Lib\json\__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\pavan\AppData\Local\Programs\Python\Python311\Lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pavan\AppData\Local\Programs\Python\Python311\Lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pavan\AppData\Local\Programs\Python\Python311\Lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+--- GET /api/users/me (Bearer) ---
+curl: (22) The requested URL returned error: 401
+
+--- GET /api/scenarios (Bearer) ---
+curl: (22) The requested URL returned error: 401
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "C:\Users\pavan\AppData\Local\Programs\Python\Python311\Lib\json\__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\pavan\AppData\Local\Programs\Python\Python311\Lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pavan\AppData\Local\Programs\Python\Python311\Lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\pavan\AppData\Local\Programs\Python\Python311\Lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+ROUNDTRIP_EXIT_CODE=1
+--- RETRY register/login/me/scenarios (valid domain) ---
+register_http_status=201
+login ok, token length=165
+{"id":"01a030b3-8db7-7b10-96a6-ebbc1989faf5","email":"smoke.user@sonoloapp.dev","name":"Smoke Test","native_language":"en","target_language":"en","learning_goal":"casual","current_level":"seed","subscription_tier":"free","streak_count":0,"streak_last_date":null,"total_xp":0,"total_speaking_seconds":0,"onboarding_completed":false,"created_at":"2026-08-23T22:17:48.467479Z","skills":null}
+scenarios returned: 1
+ROUNDTRIP_EXIT_CODE=0
+--- scenarios response shape ---
+dict ['scenarios']
+--- docker compose ps before teardown ---
+error while interpolating services.api.environment.DATABASE_URL: required variable POSTGRES_PASSWORD is missing a value: POSTGRES_PASSWORD is required
+error while interpolating services.api.environment.SECRET_KEY: required variable SECRET_KEY is missing a value: SECRET_KEY is required (see docs/RUNBOOK.md)
+error while interpolating services.db.environment.POSTGRES_PASSWORD: required variable POSTGRES_PASSWORD is missing a value: POSTGRES_PASSWORD is required (see docs/RUNBOOK.md)
+--- teardown: docker compose down -v ---
+error while interpolating services.api.environment.DATABASE_URL: required variable POSTGRES_PASSWORD is missing a value: POSTGRES_PASSWORD is required
+error while interpolating services.api.environment.SECRET_KEY: required variable SECRET_KEY is missing a value: SECRET_KEY is required (see docs/RUNBOOK.md)
+error while interpolating services.db.environment.POSTGRES_PASSWORD: required variable POSTGRES_PASSWORD is missing a value: POSTGRES_PASSWORD is required (see docs/RUNBOOK.md)
+DOWN_EXIT_CODE=1
+--- note: previous interpolation errors prove required-var guard; re-running teardown WITH env ---
+--- docker compose ps before teardown ---
+NAME                IMAGE               COMMAND                  SERVICE   CREATED         STATUS                   PORTS
+sonolo-prod-api-1   sonolo-api:latest   "uvicorn app.main:ap…"   api       3 minutes ago   Up 3 minutes (healthy)   0.0.0.0:8000->8000/tcp, [::]:8000->8000/tcp
+sonolo-prod-db-1    postgres:16         "docker-entrypoint.s…"   db        3 minutes ago   Up 3 minutes (healthy)   5432/tcp
+--- teardown: docker compose down -v ---
+ Container sonolo-prod-api-1 Stopping 
+ Container sonolo-prod-api-1 Stopped 
+ Container sonolo-prod-api-1 Removing 
+ Container sonolo-prod-api-1 Removed 
+ Container sonolo-prod-db-1 Stopping 
+ Container sonolo-prod-db-1 Stopped 
+ Container sonolo-prod-db-1 Removing 
+ Container sonolo-prod-db-1 Removed 
+ Network sonolo-prod_default Removing 
+ Volume sonolo-prod_pgdata Removing 
+ Volume sonolo-prod_pgdata Removed 
+ Network sonolo-prod_default Removed 
+DOWN_EXIT_CODE=0
+--- final EXIT_CODE summary ---
+ci_yaml_validation: see SN-019_ci_yaml_validation_2026-08-23.txt EXIT_CODE=0
+compose_config:     see SN-019_compose_config_2026-08-23.txt EXIT_CODE=0
+docker_build:       see SN-019_docker_build_2026-08-23.txt EXIT_CODE=0
+stack_smoke:        up/migrate/seed/health/auth all 0; teardown DOWN_EXIT_CODE=0

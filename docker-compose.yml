@@ -1,0 +1,63 @@
+# Sonolo production-style local stack (SN-019): PostgreSQL 16 + FastAPI API.
+#
+# No secrets are hardcoded here. POSTGRES_PASSWORD and SECRET_KEY are
+# REQUIRED and must come from the host environment or a root .env file
+# (gitignored) — see docs/RUNBOOK.md for the full variable reference.
+# The content packs are mounted read-only at /content and wired through
+# CONTENT_SCENARIOS_PATH / CONTENT_VOCABULARY_PATH.
+
+services:
+  db:
+    image: postgres:16
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-sonolo}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?POSTGRES_PASSWORD is required (see docs/RUNBOOK.md)}
+      POSTGRES_DB: ${POSTGRES_DB:-sonolo}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-sonolo} -d ${POSTGRES_DB:-sonolo}"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+
+  api:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    image: sonolo-api:latest
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "${API_PORT:-8000}:8000"
+    environment:
+      DATABASE_URL: postgresql+asyncpg://${POSTGRES_USER:-sonolo}:${POSTGRES_PASSWORD:?POSTGRES_PASSWORD is required}@db:5432/${POSTGRES_DB:-sonolo}
+      SECRET_KEY: ${SECRET_KEY:?SECRET_KEY is required (see docs/RUNBOOK.md)}
+      ENVIRONMENT: ${ENVIRONMENT:-production}
+      LOG_LEVEL: ${LOG_LEVEL:-INFO}
+      CORS_ORIGINS: >-
+        ${CORS_ORIGINS:-["http://localhost:3000", "http://localhost:8081"]}
+      CONTENT_SCENARIOS_PATH: /content/scenarios/canadian-life-v1.json
+      CONTENT_VOCABULARY_PATH: /content/vocabulary/core-v1.json
+      AI_MOCK_ENABLED: ${AI_MOCK_ENABLED:-true}
+    volumes:
+      - ./content:/content:ro
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "python",
+          "-c",
+          "import sys,urllib.request; sys.exit(0 if urllib.request.urlopen('http://127.0.0.1:8000/api/health', timeout=4).status == 200 else 1)",
+        ]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+
+volumes:
+  pgdata:

@@ -8,6 +8,10 @@
  * - Response interceptor catches 401s, clears the token, and invokes the
  *   unauthorized handler registered by the auth store (which logs out and
  *   triggers the redirect to login via state-driven routing).
+ * - Response interceptor also detects network-level failures (no HTTP
+ *   response at all) and notifies connectivity handlers so the UI can
+ *   show an offline banner; the first successful response reports the
+ *   connection is back.
  *
  * The handler-injection pattern keeps this module free of store imports,
  * avoiding a circular dependency (authStore -> client -> authStore).
@@ -41,6 +45,43 @@ export function setUnauthorizedHandler(handler: () => void): void {
   unauthorizedHandler = handler;
 }
 
+let offlineHandler: (() => void) | null = null;
+let onlineHandler: (() => void) | null = null;
+/** Tracks the last known connectivity so handlers fire on transitions only. */
+let wasOffline = false;
+
+/**
+ * True when a request failed without receiving any HTTP response —
+ * DNS failure, refused socket, timeout — i.e. the server never spoke.
+ * Canceled requests and real HTTP error responses are not outages.
+ */
+export function isNetworkError(error: unknown): boolean {
+  return (
+    axios.isAxiosError(error) &&
+    !axios.isCancel(error) &&
+    error.response === undefined &&
+    error.request !== undefined
+  );
+}
+
+/**
+ * Register callbacks fired when the API becomes unreachable (once per
+ * outage) and reachable again (once per recovery). Pass nulls or an
+ * empty object to clear.
+ */
+export function setConnectivityHandlers(handlers: {
+  onOffline?: (() => void) | null;
+  onOnline?: (() => void) | null;
+}): void {
+  offlineHandler = handlers.onOffline ?? null;
+  onlineHandler = handlers.onOnline ?? null;
+}
+
+/** Reset transition tracking; used after logout and in tests. */
+export function resetConnectivityState(): void {
+  wasOffline = false;
+}
+
 export const api: AxiosInstance = axios.create({
   baseURL: `${API_BASE_URL}/api`,
   timeout: 15000,
@@ -55,8 +96,24 @@ api.interceptors.request.use((config) => {
 });
 
 api.interceptors.response.use(
-  (response) => response,
+  (response) => {
+    if (wasOffline) {
+      wasOffline = false;
+      onlineHandler?.();
+    }
+    return response;
+  },
   (error: AxiosError) => {
+    if (isNetworkError(error)) {
+      if (!wasOffline) {
+        wasOffline = true;
+        offlineHandler?.();
+      }
+    } else if (wasOffline) {
+      // A real HTTP answer means the network is fine again.
+      wasOffline = false;
+      onlineHandler?.();
+    }
     if (error.response?.status === 401) {
       authToken = null;
       unauthorizedHandler?.();
@@ -179,6 +236,43 @@ export interface Scenario {
 export async function fetchScenarios(): Promise<Scenario[]> {
   const { data } = await api.get<{ scenarios: Scenario[] }>("/scenarios");
   return data.scenarios;
+}
+
+// ---------------------------------------------------------------------
+// Daily quests & gamification summary (SN-017)
+// ---------------------------------------------------------------------
+
+export interface TodayQuestsResponse {
+  quest_date: string;
+  timezone: string;
+  quests: QuestResult[];
+}
+
+/** GET /quests/today — lazily generates the user's three daily quests. */
+export async function fetchTodayQuests(): Promise<TodayQuestsResponse> {
+  const { data } = await api.get<TodayQuestsResponse>("/quests/today");
+  return data;
+}
+
+export interface GamificationSummary {
+  xp_total: number;
+  xp_today: number;
+  xp_today_date: string | null;
+  level: number;
+  progress_to_next_level: number;
+  next_level_xp_threshold: number;
+  xp_into_level: number;
+  current_streak: number;
+  longest_streak: number;
+  last_activity_at: string | null;
+  last_activity_local_date: string | null;
+  badges: BadgeResult[];
+}
+
+/** GET /gamification/me — read-only XP, level, streak, badge snapshot. */
+export async function fetchGamificationSummary(): Promise<GamificationSummary> {
+  const { data } = await api.get<GamificationSummary>("/gamification/me");
+  return data;
 }
 
 // ---------------------------------------------------------------------

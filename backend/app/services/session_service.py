@@ -6,6 +6,7 @@ flushes. Idempotency is keyed on (user_id, client_session_id).
 """
 
 import asyncio
+import logging
 import math
 from datetime import UTC, datetime
 from uuid import UUID
@@ -43,6 +44,8 @@ from app.services.gamification_service import (
     badge_display_title,
 )
 from app.services.quest_service import QuestCompletionResult, QuestService
+
+logger = logging.getLogger(__name__)
 
 MIN_ELIGIBLE_DURATION_SECONDS = 15
 SESSION_XP_CAP = 100

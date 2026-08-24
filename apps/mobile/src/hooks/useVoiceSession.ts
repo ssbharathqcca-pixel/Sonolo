@@ -1,17 +1,8 @@
 /**
- * useVoiceSession (SN-015): connects the Voice Session screen to the
- * authenticated backend WebSocket and drives the 4-state pipeline.
- *
- * - Opens `ws://.../ws/voice/{uuid}?token=<JWT>` on mount.
- * - Tap flow: IDLE tap -> send audio chunk (LISTENING); LISTENING tap
- *   -> end_turn (PROCESSING -> SPEAKING); SPEAKING tap -> cancel.
- * - Collects transcript turns from ai_text_chunk frames (first chunk
- *   after a turn is the recognized user speech, then the tutor reply).
- * - finish() compiles the transcript and POSTs /sessions/complete with
- *   a deterministic placeholder evaluation, stores the gamification
- *   result, and navigates to the Feedback screen.
- * - Close code 4401 logs the user out (SN-013 flow) and returns to
- *   login; any other unexpected close shows a gentle error and idles.
+ * useVoiceSession (SN-016): connects to the authenticated WebSocket,
+ * drives the 4-state pipeline, handles user_text_chunk / ai_text_chunk /
+ * audio_payload / session_summary frames, plays TTS audio, and POSTs
+ * the real evaluation on completion.
  */
 
 import { useCallback, useEffect, useRef, useState } from "react";
@@ -21,6 +12,7 @@ import {
   buildMockEvaluation,
   completeSession,
   getApiErrorMessage,
+  type EvaluationInput,
   type SessionCompleteResponse,
   type TranscriptTurnInput,
 } from "../api/client";
@@ -33,7 +25,7 @@ import {
   type ServerFrame,
 } from "../services/voiceSocket";
 
-const DUMMY_AUDIO_CHUNK = "YXVkaW8="; // base64("audio") until capture lands.
+const DUMMY_AUDIO_CHUNK = "YXVkaW8=";
 
 export interface TranscriptTurnView {
   id: number;
@@ -49,6 +41,20 @@ export interface UseVoiceSessionResult {
   isFinishing: boolean;
   handleTap: () => void;
   finishSession: () => Promise<void>;
+}
+
+interface SummaryCapture {
+  evaluation: EvaluationInput;
+  transcript: TranscriptTurnInput[];
+}
+
+function generateClientSessionId(): string {
+  const hex = (count: number): string =>
+    Array.from(
+      { length: count },
+      () => Math.floor(Math.random() * 16).toString(16),
+    ).join("");
+  return `${hex(8)}-${hex(4)}-4${hex(3)}-${hex(4)}-${hex(12)}`;
 }
 
 export function useVoiceSession(scenarioId: string): UseVoiceSessionResult {
@@ -69,10 +75,8 @@ export function useVoiceSession(scenarioId: string): UseVoiceSessionResult {
   const startedAtRef = useRef<Date | null>(null);
   const clientSessionIdRef = useRef<string>("");
   const turnIdRef = useRef(0);
-  const nextRoleRef = useRef<"user" | "tutor">("user");
+  const summaryRef = useRef<SummaryCapture | null>(null);
   const transcriptRef = useRef<TranscriptTurnInput[]>([]);
-  // Router identity can change between renders; keep it out of the
-  // socket effect's dependencies so the connection is never recycled.
   const routerRef = useRef(router);
   routerRef.current = router;
 
@@ -80,31 +84,59 @@ export function useVoiceSession(scenarioId: string): UseVoiceSessionResult {
     if (frame.type === "state_change") {
       const state = frame.payload["state"];
       if (typeof state === "string") {
-        // Backend "processing" maps to the button's "thinking" state.
         const mobileState =
           state === "processing" ? "thinking" : (state as VoiceButtonState);
         setPhase(mobileState);
       }
       return;
     }
-    if (frame.type === "ai_text_chunk") {
+    if (frame.type === "user_text_chunk") {
       const text = frame.payload["text"];
       if (typeof text === "string" && text !== "") {
-        const viewRole = nextRoleRef.current;
-        nextRoleRef.current = viewRole === "user" ? "tutor" : "user";
         turnIdRef.current += 1;
         transcriptRef.current = [
           ...transcriptRef.current,
-          // The wire protocol uses "assistant"; the view shows "tutor".
-          {
-            role: viewRole === "user" ? ("user" as const) : ("assistant" as const),
-            text,
-          },
+          { role: "user", text },
         ];
         setTranscript((current) => [
           ...current,
-          { id: turnIdRef.current, role: viewRole, text },
+          { id: turnIdRef.current, role: "user", text },
         ]);
+      }
+      return;
+    }
+    if (frame.type === "ai_text_chunk") {
+      const text = frame.payload["text"];
+      if (typeof text === "string" && text !== "") {
+        turnIdRef.current += 1;
+        transcriptRef.current = [
+          ...transcriptRef.current,
+          { role: "assistant", text },
+        ];
+        setTranscript((current) => [
+          ...current,
+          { id: turnIdRef.current, role: "tutor", text },
+        ]);
+      }
+      return;
+    }
+    if (frame.type === "session_summary") {
+      const evaluation = frame.payload["evaluation"] as
+        | EvaluationInput
+        | undefined;
+      const serverTranscript = frame.payload["transcript"] as
+        | TranscriptTurnInput[]
+        | undefined;
+      if (evaluation && serverTranscript) {
+        summaryRef.current = {
+          evaluation: {
+            scores: evaluation.scores,
+            overall_score: evaluation.overall_score,
+            insights: evaluation.insights ?? [],
+            engine_version: evaluation.engine_version ?? "sn011-deterministic-v1",
+          },
+          transcript: serverTranscript,
+        };
       }
     }
   }, []);
@@ -155,21 +187,24 @@ export function useVoiceSession(scenarioId: string): UseVoiceSessionResult {
     } else if (phase === "speaking") {
       socket.sendCancel();
     }
-    // PROCESSING ignores taps — wait for the pipeline.
   }, [phase]);
 
   const finishSession = useCallback(async (): Promise<void> => {
-    const socket = socketRef.current;
     const startedAt = startedAtRef.current;
-    if (socket === null || startedAt === null || isFinishing) {
+    if (startedAt === null || isFinishing) {
       return;
-    }    setIsFinishing(true);
+    }
+    setIsFinishing(true);
     setError(null);
     const endedAt = new Date();
     const durationSeconds = Math.max(
       1,
       Math.round((endedAt.getTime() - startedAt.getTime()) / 1000),
     );
+    // Prefer the real evaluation from session_summary; fall back to mock.
+    const evaluation = summaryRef.current?.evaluation ?? buildMockEvaluation();
+    const finalTranscript =
+      summaryRef.current?.transcript ?? transcriptRef.current;
     try {
       const result: SessionCompleteResponse = await completeSession({
         client_session_id: clientSessionIdRef.current,
@@ -177,11 +212,11 @@ export function useVoiceSession(scenarioId: string): UseVoiceSessionResult {
         started_at: startedAt.toISOString(),
         ended_at: endedAt.toISOString(),
         duration_seconds: durationSeconds,
-        transcript: transcriptRef.current,
-        evaluation: buildMockEvaluation(),
+        transcript: finalTranscript,
+        evaluation,
       });
       setLastResult(result);
-      socket.close();
+      socketRef.current?.close();
       socketRef.current = null;
       routerRef.current.replace(`/feedback/${clientSessionIdRef.current}`);
     } catch (completionError) {
@@ -199,15 +234,4 @@ export function useVoiceSession(scenarioId: string): UseVoiceSessionResult {
     handleTap,
     finishSession,
   };
-}
-
-function generateClientSessionId(): string {
-  // UUID-v4-shaped id from Math.random: this is a client-generated
-  // idempotency key, not a security primitive.
-  const hex = (count: number): string =>
-    Array.from(
-      { length: count },
-      () => Math.floor(Math.random() * 16).toString(16),
-    ).join("");
-  return `${hex(8)}-${hex(4)}-4${hex(3)}-${hex(4)}-${hex(12)}`;
 }

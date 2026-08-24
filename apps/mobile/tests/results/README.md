@@ -15,6 +15,12 @@ files once the mobile test setup task lands.
 | SN-015 | Strict TypeScript check after voice-session integration | `2026-08-23_sn015_tsc_typecheck.txt` | exit 0, zero errors |
 | SN-015 | Jest suite (jest-expo + RNTL): WS URL builder, useVoiceSession (auth URL, transcript, tap frames, 4401 logout, dropped-connection, completion POST) | `2026-08-23_sn015_jest.txt` | 9 passed |
 | SN-015 | Metro bundle incl. scenarios store, voice socket, feedback results | `2026-08-23_sn015_metro_bundle.txt` | exit 0, Hermes bundle exported |
+| SN-016 | Strict TypeScript check after AI pipeline integration | `2026-08-23_sn016_tsc_typecheck.txt` | exit 0, zero errors |
+| SN-016 | Jest suite (jest-expo + RNTL): WS URL builder + useVoiceSession (auth URL, user/assistant transcript, 4401 logout, dropped connection, real-eval completion) | `2026-08-23_sn016_jest.txt` | 10 passed |
+| SN-016 | Metro bundle incl. TranscriptList, voiceSocket updates, audio playback | `2026-08-23_sn016_metro_bundle.txt` | exit 0, Hermes bundle exported |
+| SN-017 | Strict TypeScript check after onboarding/offline polish (`npx tsc --noEmit`) | `2026-08-23_sn017_tsc_typecheck.txt` | exit 0, zero errors |
+| SN-017 | Jest suite (jest-expo + RNTL): WS URL builder + useVoiceSession + ErrorBoundary fallback/restart + offline interceptor transitions | `2026-08-23_sn017_jest.txt` | 17 passed (4 suites) |
+| SN-017 | Metro bundle incl. onboarding stack, radar screen, error boundary | `2026-08-23_sn017_metro_bundle.txt` | exit 0, Hermes bundle exported |
 
 ## Environment
 
