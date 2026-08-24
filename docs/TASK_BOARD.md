@@ -2,20 +2,14 @@
 
 Cards move left to right through the columns defined in [GLM_WORKFLOW.md](GLM_WORKFLOW.md). One card per task; IDs are `SN-XXX`. Move a card in the same commit as the work it describes.
 
-**Numbering note (2026-08-22):** implemented cards used the IDs on the issued task cards (SN-014 = gamification, SN-014A = remediation, SN-014B = release closure). The former Backlog card "SN-014 Paywall" was renumbered to **SN-026** to free the ID.
+**Numbering note (2026-08-24):** Implemented cards used the IDs on the issued task cards. The former Backlog card "SN-014 Paywall" was renumbered to **SN-026**. The v0.16.0 Integrated MVP has been tagged and released.
 
 ## Active Board
 
 | Backlog | Spec Ready | Prompt Ready | GLM Running | Review | Fix Required | QA | Done |
 |---|---|---|---|---|---|---|---|
 | SN-004 — Web landing scaffold (Next.js) *(deferred)* | | | | | | | |
-| SN-015 — Analytics (PostHog) + Sentry setup | | | | | | | |
-| SN-016 — Onboarding flow UI (5 screens) | | | | | | | |
-| SN-017 — Voice session screen + waveform | | | | | | | |
-| SN-018 — Feedback/report screen UI | | | | | | | |
-| SN-019 — Daily home screen + quest cards | | | | | | | |
-| SN-020 — Pronunciation drills content (minimal pairs) | | | | | | | |
-| SN-021 — French waitlist landing page | | | | | | | |
+| SN-020 — French Phase 2 / Pronunciation drills content | | | | | | | |
 | SN-022 — Marketing content batch (TikTok scripts) | | | | | | | |
 | SN-023 — SEO blog content batch | | | | | | | |
 | SN-024 — App Store metadata + screenshots | | | | | | | |
@@ -36,24 +30,28 @@ Cards move left to right through the columns defined in [GLM_WORKFLOW.md](GLM_WO
 | SN-009 | Vocabulary content batch (100 items) | 2026-08-22 | `content/vocabulary/core-v1.json`; lazily materialized per user (D-010); ~400 more items planned |
 | SN-010 | JWT authentication + user profiles | 2026-08-22 | bcrypt + jose, get_current_user dependency (10 auth tests) |
 | SN-011 | Feedback/scoring engine (6 dimensions) | 2026-08-22 | Deterministic evaluator, wins/growth insights, API endpoint |
-| SN-012 | FSRS review engine | 2026-08-22 | Native FSRS-5 math, /review endpoints, user-scoped after SN-014A |
+| SN-012 | FSRS review engine | 2026-08-22 | Native FSRS-5 math, /Done, user-scoped after SN-014A |
 | SN-013 | Mobile auth flow, secure storage & API client | 2026-08-22 | Login/register screens, Zustand + SecureStore, Axios interceptors; tsc + bundle pass |
 | SN-014 | Gamification, session persistence & daily quests | 2026-08-22 | Done; release proof closed by SN-014B (live PG 119/119) |
 | SN-014A | Schema reconciliation, auth hardening, user-scoped state | 2026-08-22 | Done; release proof closed by SN-014B |
-| SN-014B | Release closure: PostgreSQL proof + content bootstrap | 2026-08-22 | Live PG 16: upgrade/current/verify + 20 scenarios seeded; fresh-user smoke 10/10; Done |
+| SN-014B | Release closure: PostgreSQL proof + content bootstrap | 2026-08-22 | Done; fresh-user smoke 10/10 |
+| SN-015 | Mobile Voice Session Integration | 2026-08-23 | Authenticated WebSocket, 4401 handling, scenario loading |
+| SN-016 | Real AI Voice Pipeline | 2026-08-23 | STT/LLM/TTS provider abstractions, WebSocket audio streaming, Evaluator wiring |
+| SN-017 | Mobile Polish | 2026-08-23 | Error boundaries, offline caching, 3-screen onboarding, live Learn/Progress tabs |
+| SN-018 | Content Expansion | 2026-08-23 | 40 total scenarios (5 premium), 200 total vocab cards, dual-pack idempotent seeder |
+| SN-019 | Prod Readiness | 2026-08-23 | Multi-stage Dockerfile, docker-compose with PG16, GitHub Actions CI, RUNBOOK |
+| SN-021 | Real Mic Capture | 2026-08-24 | expo-av 16kHz capture, LISTENING state, cleanup on 4401/unmount, Jest coverage |
 
 ## Card format
 
 Cards are written using the implementation pattern in [PROMPT_LIBRARY.md](PROMPT_LIBRARY.md): task ID, title, type, priority, objective, files, constraints, acceptance criteria, and do-not list.
 
-## Priority Queue (Next 24 Hours)
+## Priority Queue (Post v0.16.0 Release)
 
-Backend and release groundwork are complete through SN-014B. Recommended order:
+The v0.16.0 Integrated MVP is now tagged and released. Recommended order for the next sprint:
 
-1. **SN-017 → SN-018 → SN-019** — wire the existing mobile screens to the now-authenticated APIs (sessions/complete, quests/today, gamification/me, review/due+answer)
-2. **SN-015** — Analytics (PostHog) + Sentry before beta
-3. **SN-016** — Onboarding flow UI
-4. **SN-020 / SN-022 / SN-023** — content batches between code tasks (highest token burn)
-5. **SN-026** — Paywall + RevenueCat
-6. **SN-004 / SN-021** — landing pages
-7. **SN-024 / SN-025** — store metadata and beta suite
+1. **SN-026** — Paywall + RevenueCat integration (gate the 5 premium scenarios, backend tier filtering, mobile UI locks).
+2. **SN-020** — French Phase 2 / Pronunciation drills content expansion.
+3. **SN-022 / SN-023** — Marketing and SEO content batches.
+4. **SN-024 / SN-025** — App Store metadata, screenshots, and beta test suite.
+5. **SN-004** — Web landing scaffold (Next.js) *(deferred)*.
