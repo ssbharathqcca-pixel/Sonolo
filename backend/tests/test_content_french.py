@@ -155,3 +155,26 @@ def test_combined_seed_counts() -> None:
     assert len(seeds) == 45
     assert sum(1 for s in seeds if s.target_language.startswith("en")) == 40
     assert len(vocab) == 220
+
+
+def test_vocabulary_seeds_carry_language_metadata() -> None:
+    seeds = load_vocabulary_seeds()
+    english = [seed for seed in seeds if seed.language == "en"]
+    french = [seed for seed in seeds if seed.language == "fr"]
+    assert len(english) == 200
+    assert len(french) == 20
+    # The French pack is exactly the tail of the edition registry.
+    assert {seed.content_id for seed in french} <= {
+        entry["id"] for entry in _raw_pack("vocabulary/core-fr-v1.json")
+    }
+
+
+def test_missing_pack_language_defaults_to_english(monkeypatch) -> None:
+    monkeypatch.setattr(
+        content_service,
+        "VOCABULARY_PACK_EDITIONS",
+        (("../content/vocabulary/core-v1.json", ""),),
+    )
+    seeds = load_vocabulary_seeds()
+    assert len(seeds) == 100
+    assert all(seed.language == "en" for seed in seeds)

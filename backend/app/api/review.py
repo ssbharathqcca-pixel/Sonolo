@@ -46,7 +46,9 @@ async def get_due_cards(
     Due means `due_date <= now` and `state < 3` per the MVP spec —
     relearning cards are answered directly, not queued here.
     """
-    materialized = await ensure_user_vocabulary(session, current_user.id)
+    materialized = await ensure_user_vocabulary(
+        session, current_user.id, current_user.preferred_language
+    )
     if materialized > 0:
         await session.commit()  # Persist the lazy bootstrap before reading.
     result = await session.execute(
