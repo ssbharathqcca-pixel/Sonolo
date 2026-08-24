@@ -1,0 +1,13 @@
+npm notice run sonolo-mobile@0.1.0 npx
+npm notice run jest
+PASS src/__tests__/voiceSocketUrl.test.ts
+PASS src/__tests__/offlineInterceptor.test.ts
+PASS src/__tests__/useVoiceSession.test.tsx (6.166 s)
+PASS src/__tests__/errorBoundary.test.tsx (16.728 s)
+
+Test Suites: 4 passed, 4 total
+Tests:       17 passed, 17 total
+Snapshots:   0 total
+Time:        28.978 s
+Ran all test suites.
+EXIT_CODE=0

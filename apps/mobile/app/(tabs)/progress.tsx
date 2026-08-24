@@ -1,8 +1,21 @@
 /**
- * Progress — weekly practice minutes, streak, and CanadaReady trend.
+ * Progress — live XP/level/streak snapshot plus the six-dimension
+ * skill radar (SN-017).
+ *
+ * Data sources per backend contract: GET /api/gamification/me carries
+ * XP, level, streaks, and badges but no skill dimensions, so the radar
+ * reads the six scores attached to GET /api/users/me (authStore.user).
  */
-import { useEffect } from "react";
-import { ScrollView, StyleSheet, Text, View } from "react-native";
+import { useCallback, useEffect, useState } from "react";
+import {
+  ActivityIndicator,
+  Pressable,
+  RefreshControl,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import Animated, {
   Easing,
@@ -11,62 +24,195 @@ import Animated, {
   withDelay,
   withTiming,
 } from "react-native-reanimated";
-import { Flame, TrendingUp } from "lucide-react-native";
+import { Circle as CircleSvg, Line, Polygon, Svg } from "react-native-svg";
+import { Flame, RefreshCw, Trophy, Zap } from "lucide-react-native";
+
 import { GlassCard } from "../../src/components/GlassCard";
+import {
+  fetchGamificationSummary,
+  type GamificationSummary,
+} from "../../src/api/client";
+import { useAuthStore } from "../../src/stores/authStore";
 import { colors } from "../../src/theme/colors";
 
-interface PracticeDay {
-  day: string;
-  minutes: number;
+const RADAR_SIZE = 220;
+const RADAR_CENTER = RADAR_SIZE / 2;
+const RADAR_RADIUS = RADAR_CENTER - 14;
+const LABEL_CONTAINER_PAD = 46;
+
+const DIMENSIONS = [
+  { key: "fluency_score", label: "Fluency" },
+  { key: "pronunciation_score", label: "Pronunciation" },
+  { key: "grammar_score", label: "Grammar" },
+  { key: "vocabulary_score", label: "Vocabulary" },
+  { key: "coherence_score", label: "Coherence" },
+  { key: "task_completion_score", label: "Task" },
+] as const;
+
+function clampScore(value: number): number {
+  return Math.min(100, Math.max(0, value));
 }
 
-const WEEK_MINUTES: PracticeDay[] = [
-  { day: "Mon", minutes: 6 },
-  { day: "Tue", minutes: 9 },
-  { day: "Wed", minutes: 4 },
-  { day: "Thu", minutes: 11 },
-  { day: "Fri", minutes: 8 },
-  { day: "Sat", minutes: 2 },
-  { day: "Sun", minutes: 7 },
-];
+/** Hexagon vertices for the given 0–100 values, starting at 12 o'clock. */
+export function radarVertices(
+  values: number[],
+  center: number,
+  radius: number,
+): Array<{ x: number; y: number }> {
+  return values.map((value, index) => {
+    const angle = (Math.PI * 2 * index) / values.length - Math.PI / 2;
+    const scaled = (clampScore(value) / 100) * radius;
+    return {
+      x: center + scaled * Math.cos(angle),
+      y: center + scaled * Math.sin(angle),
+    };
+  });
+}
 
-const MAX_BAR_MINUTES = 12;
-const BAR_TRACK_HEIGHT = 100;
-const STREAK_DAYS = 12;
-const SCORE_GAIN_THIS_WEEK = 2;
+function polygonPoints(values: number[]): string {
+  return radarVertices(values, RADAR_CENTER, RADAR_RADIUS)
+    .map((point) => `${point.x.toFixed(2)},${point.y.toFixed(2)}`)
+    .join(" ");
+}
 
-const totalMinutes = WEEK_MINUTES.reduce(
-  (sum, day) => sum + day.minutes,
-  0,
-);
+function outerRingPoints(ringFraction: number): string {
+  return polygonPoints(DIMENSIONS.map(() => 100 * ringFraction));
+}
 
-function WeekBar({ day, index }: { day: PracticeDay; index: number }): JSX.Element {
-  const height = useSharedValue(0);
-
-  useEffect(() => {
-    height.value = withDelay(
-      index * 70,
-      withTiming(
-        6 + (day.minutes / MAX_BAR_MINUTES) * (BAR_TRACK_HEIGHT - 10),
-        { duration: 500, easing: Easing.out(Easing.quad) },
-      ),
-    );
-  }, [height, index, day.minutes]);
-
-  const style = useAnimatedStyle(() => ({ height: height.value }));
+function SkillRadar({ values }: { values: number[] }): JSX.Element {
+  const dataPoints = radarVertices(values, RADAR_CENTER, RADAR_RADIUS);
+  const labelPoints = radarVertices(
+    DIMENSIONS.map(() => 100),
+    RADAR_CENTER,
+    RADAR_RADIUS + 20,
+  );
 
   return (
-    <View style={styles.barColumn}>
-      <View style={styles.barTrack}>
-        <Animated.View style={[styles.barFill, style]} />
-      </View>
-      <Text style={styles.barLabel}>{day.day}</Text>
+    <View
+      style={[
+        styles.radarWrap,
+        {
+          height: RADAR_SIZE,
+          width: RADAR_SIZE,
+          marginHorizontal: LABEL_CONTAINER_PAD - 14,
+        },
+      ]}
+    >
+      <Svg width={RADAR_SIZE} height={RADAR_SIZE}>
+        {[1, 0.66, 0.33].map((ring) => (
+          <Polygon
+            key={ring}
+            points={outerRingPoints(ring)}
+            fill="none"
+            stroke={colors.glassBorder}
+            strokeWidth={1}
+          />
+        ))}
+        {DIMENSIONS.map((_, index) => {
+          const angle =
+            (Math.PI * 2 * index) / DIMENSIONS.length - Math.PI / 2;
+          return (
+            <Line
+              key={`axis-${index}`}
+              x1={RADAR_CENTER}
+              y1={RADAR_CENTER}
+              x2={RADAR_CENTER + RADAR_RADIUS * Math.cos(angle)}
+              y2={RADAR_CENTER + RADAR_RADIUS * Math.sin(angle)}
+              stroke={colors.glassBorder}
+              strokeWidth={1}
+            />
+          );
+        })}
+        <Polygon
+          points={polygonPoints(values)}
+          fill="rgba(14, 165, 233, 0.25)"
+          stroke={colors.auroraTeal}
+          strokeWidth={2}
+        />
+        {dataPoints.map((point, index) => (
+          <CircleSvg
+            key={`dot-${DIMENSIONS[index].key}`}
+            cx={point.x}
+            cy={point.y}
+            r={3}
+            fill={colors.auroraTeal}
+          />
+        ))}
+      </Svg>
+      {labelPoints.map((point, index) => (
+        <Text
+          key={`label-${DIMENSIONS[index].key}`}
+          style={[styles.radarLabel, { left: point.x - 44, top: point.y - 7 }]}
+          allowFontScaling={false}
+        >
+          {DIMENSIONS[index].label}
+        </Text>
+      ))}
+    </View>
+  );
+}
+
+function LevelProgressBar({ percent }: { percent: number }): JSX.Element {
+  const width = useSharedValue(0);
+
+  useEffect(() => {
+    width.value = withDelay(
+      150,
+      withTiming(percent, { duration: 600, easing: Easing.out(Easing.quad) }),
+    );
+  }, [percent, width]);
+
+  const fillStyle = useAnimatedStyle(() => ({ width: `${width.value}%` }));
+
+  return (
+    <View style={styles.barTrack}>
+      <Animated.View style={[styles.barFill, fillStyle]} />
     </View>
   );
 }
 
 export default function ProgressScreen(): JSX.Element {
   const insets = useSafeAreaInsets();
+  const user = useAuthStore((state) => state.user);
+  const [summary, setSummary] = useState<GamificationSummary | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [errorText, setErrorText] = useState<string | null>(null);
+  const [refreshing, setRefreshing] = useState(false);
+
+  const loadSummary = useCallback(async (): Promise<void> => {
+    try {
+      setSummary(await fetchGamificationSummary());
+      setErrorText(null);
+    } catch {
+      setErrorText("Progress needs a connection — pull to retry once you're back online.");
+    } finally {
+      setIsLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    void loadSummary();
+  }, [loadSummary]);
+
+  const onRefresh = useCallback(async (): Promise<void> => {
+    setRefreshing(true);
+    await loadSummary();
+    setRefreshing(false);
+  }, [loadSummary]);
+
+  const skills = user?.skills ?? null;
+  const radarValues = skills === null
+    ? DIMENSIONS.map(() => 0)
+    : DIMENSIONS.map((dimension) => skills[dimension.key]);
+  const levelPercent =
+    summary === null || summary.next_level_xp_threshold <= 0
+      ? 0
+      : Math.min(
+          100,
+          Math.round(
+            (summary.progress_to_next_level / summary.next_level_xp_threshold) * 100,
+          ),
+        );
 
   return (
     <ScrollView
@@ -76,43 +222,108 @@ export default function ProgressScreen(): JSX.Element {
         { paddingTop: insets.top + 20, paddingBottom: 120 },
       ]}
       showsVerticalScrollIndicator={false}
+      refreshControl={
+        <RefreshControl
+          refreshing={refreshing}
+          onRefresh={() => {
+            void onRefresh();
+          }}
+          tintColor={colors.auroraTeal}
+        />
+      }
     >
       <Text style={styles.heading}>Progress</Text>
 
-      <View style={styles.summaryRow}>
-        <GlassCard style={styles.summaryCard}>
-          <Flame color={colors.warmCoral} size={20} />
-          <Text style={styles.summaryValue}>{STREAK_DAYS} days</Text>
-          <Text style={styles.summaryLabel}>Streak</Text>
-        </GlassCard>
-        <GlassCard style={styles.summaryCard}>
-          <TrendingUp color={colors.auroraTeal} size={20} />
-          <Text style={styles.summaryValue}>{totalMinutes} min</Text>
-          <Text style={styles.summaryLabel}>This week</Text>
-        </GlassCard>
-        <GlassCard style={styles.summaryCard}>
-          <Text style={styles.summaryGain}>+{SCORE_GAIN_THIS_WEEK}</Text>
-          <Text style={styles.summaryLabel}>CanadaReady</Text>
-        </GlassCard>
-      </View>
+      {isLoading ? (
+        <ActivityIndicator color={colors.auroraTeal} style={styles.spinner} />
+      ) : null}
 
-      <GlassCard style={styles.chartCard}>
-        <Text style={styles.cardTitle}>Practice minutes</Text>
-        <Text style={styles.cardSubtitle}>Consistency beats intensity.</Text>
-        <View style={styles.chartRow}>
-          {WEEK_MINUTES.map((day, index) => (
-            <WeekBar key={day.day} day={day} index={index} />
-          ))}
-        </View>
-      </GlassCard>
+      {errorText !== null ? (
+        <GlassCard style={styles.errorCard}>
+          <Text style={styles.errorText}>{errorText}</Text>
+          <Pressable
+            style={styles.retryButton}
+            accessibilityLabel="Retry loading progress"
+            onPress={() => {
+              setIsLoading(true);
+              void loadSummary();
+            }}
+          >
+            <RefreshCw color={colors.auroraTeal} size={16} />
+            <Text style={styles.retryText}>Try again</Text>
+          </Pressable>
+        </GlassCard>
+      ) : null}
 
-      <GlassCard style={styles.streakCard}>
-        <Text style={styles.cardTitle}>Longest streak yet</Text>
-        <Text style={styles.streakText}>
-          One 3-minute session keeps the flame alive. Miss a day and Sonolo
-          rebuilds your quest list around what you practiced last.
-        </Text>
-      </GlassCard>
+      {summary !== null ? (
+        <>
+          <View style={styles.summaryRow}>
+            <GlassCard style={styles.summaryCard}>
+              <Zap color={colors.auroraTeal} size={20} />
+              <Text style={styles.summaryValue}>Level {summary.level}</Text>
+              <Text style={styles.summaryLabel}>{summary.xp_total} XP total</Text>
+            </GlassCard>
+            <GlassCard style={styles.summaryCard}>
+              <Flame color={colors.warmCoral} size={20} />
+              <Text style={styles.summaryValue}>
+                {summary.current_streak} day{summary.current_streak === 1 ? "" : "s"}
+              </Text>
+              <Text style={styles.summaryLabel}>Current streak</Text>
+            </GlassCard>
+            <GlassCard style={styles.summaryCard}>
+              <Trophy color={colors.success} size={20} />
+              <Text style={styles.summaryValue}>
+                {summary.longest_streak} day{summary.longest_streak === 1 ? "" : "s"}
+              </Text>
+              <Text style={styles.summaryLabel}>Longest streak</Text>
+            </GlassCard>
+          </View>
+
+          <GlassCard style={styles.radarCard}>
+            <Text style={styles.cardTitle}>Skill radar</Text>
+            <Text style={styles.cardSubtitle}>
+              CLB-inspired six-dimension view of your speaking readiness.
+            </Text>
+            <SkillRadar values={radarValues} />
+            {skills === null ? (
+              <Text style={styles.radarEmptyNote}>
+                Finish your first session to unlock real scores.
+              </Text>
+            ) : (
+              <Text style={styles.compositeNote}>
+                CanadaReady™ composite: {skills.canada_ready_score.toFixed(0)} / 100
+              </Text>
+            )}
+          </GlassCard>
+
+          <GlassCard style={styles.levelCard}>
+            <Text style={styles.cardTitle}>Level {summary.level}</Text>
+            <Text style={styles.cardSubtitle}>
+              {summary.progress_to_next_level} / {summary.next_level_xp_threshold} XP
+              into this level · {summary.xp_today} XP today
+            </Text>
+            <LevelProgressBar percent={levelPercent} />
+          </GlassCard>
+
+          <GlassCard style={styles.badgeCard}>
+            <Text style={styles.cardTitle}>Badges</Text>
+            {summary.badges.length === 0 ? (
+              <Text style={styles.cardSubtitle}>
+                Milestone badges land here after your sessions.
+              </Text>
+            ) : (
+              <View style={styles.badgeRow}>
+                {summary.badges.map((badge) => (
+                  <View key={badge.code} style={styles.badgeChip}>
+                    <Trophy color={colors.success} size={12} />
+                    <Text style={styles.badgeChipText}>{badge.title}</Text>
+                  </View>
+                ))}
+              </View>
+            )}
+          </GlassCard>
+        </>
+      ) : null}
     </ScrollView>
   );
 }
@@ -132,6 +343,34 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     marginBottom: 4,
   },
+  spinner: {
+    paddingVertical: 24,
+  },
+  errorCard: {
+    alignItems: "center",
+    gap: 10,
+    paddingVertical: 20,
+  },
+  errorText: {
+    color: colors.error,
+    fontSize: 13,
+    lineHeight: 18,
+    textAlign: "center",
+  },
+  retryButton: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 8,
+    borderRadius: 999,
+    paddingHorizontal: 14,
+    paddingVertical: 8,
+    backgroundColor: colors.nightSkyDeep,
+  },
+  retryText: {
+    color: colors.auroraTeal,
+    fontSize: 13,
+    fontWeight: "700",
+  },
   summaryRow: {
     flexDirection: "row",
     gap: 12,
@@ -144,60 +383,88 @@ const styles = StyleSheet.create({
   },
   summaryValue: {
     color: colors.textPrimary,
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: "800",
-  },
-  summaryGain: {
-    color: colors.success,
-    fontSize: 20,
-    fontWeight: "800",
+    textAlign: "center",
   },
   summaryLabel: {
     color: colors.textSecondary,
     fontSize: 11,
     fontWeight: "600",
+    textAlign: "center",
   },
-  chartCard: {
+  radarCard: {
     gap: 6,
+    alignItems: "center",
   },
   cardTitle: {
     color: colors.textPrimary,
     fontSize: 18,
     fontWeight: "700",
+    alignSelf: "flex-start",
   },
   cardSubtitle: {
     color: colors.textTertiary,
     fontSize: 12,
+    alignSelf: "flex-start",
   },
-  chartRow: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    marginTop: 12,
+  radarWrap: {
+    marginTop: 8,
+    alignSelf: "center",
   },
-  barColumn: {
-    alignItems: "center",
-    gap: 6,
-  },
-  barTrack: {
-    height: BAR_TRACK_HEIGHT,
-    justifyContent: "flex-end",
-  },
-  barFill: {
-    width: 16,
-    borderRadius: 8,
-    backgroundColor: colors.auroraTeal,
-  },
-  barLabel: {
-    color: colors.textTertiary,
-    fontSize: 11,
+  radarLabel: {
+    position: "absolute",
+    width: 88,
+    color: colors.textSecondary,
+    fontSize: 10,
     fontWeight: "600",
+    textAlign: "center",
   },
-  streakCard: {
+  radarEmptyNote: {
+    color: colors.textTertiary,
+    fontSize: 12,
+    textAlign: "center",
+  },
+  compositeNote: {
+    color: colors.success,
+    fontSize: 12,
+    fontWeight: "700",
+    textAlign: "center",
+  },
+  levelCard: {
+    gap: 10,
+  },
+  badgeCard: {
+    gap: 10,
+  },
+  badgeRow: {
+    flexDirection: "row",
+    flexWrap: "wrap",
     gap: 8,
   },
-  streakText: {
-    color: colors.textSecondary,
-    fontSize: 14,
-    lineHeight: 20,
+  badgeChip: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 6,
+    backgroundColor: colors.successSoft,
+    borderRadius: 999,
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+  },
+  badgeChipText: {
+    color: colors.success,
+    fontSize: 11,
+    fontWeight: "700",
+  },
+  barTrack: {
+    height: 6,
+    borderRadius: 3,
+    backgroundColor: colors.nightSkyDeep,
+    overflow: "hidden",
+  },
+  barFill: {
+    height: "100%",
+    borderRadius: 3,
+    backgroundColor: colors.auroraTeal,
   },
 });
