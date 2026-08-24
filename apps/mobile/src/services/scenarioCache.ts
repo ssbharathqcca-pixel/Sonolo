@@ -53,3 +53,32 @@ export async function invalidateScenarioCache(): Promise<void> {
     console.warn('[ScenarioCache] Invalidation failed', error);
   }
 }
+
+// --- Backwards compatibility for scenarioStore.ts ---
+export async function loadScenarioCache(): Promise<Scenario[] | null> {
+  try {
+    const cachedJson = await SecureStore.getItemAsync(CACHE_KEY);
+    if (cachedJson) {
+      const parsed: CachedPayload = JSON.parse(cachedJson);
+      if (parsed.version === CATALOG_VERSION) {
+        return parsed.data;
+      }
+    }
+  } catch (error) {
+    console.warn('[ScenarioCache] Load failed', error);
+  }
+  return null;
+}
+
+export async function saveScenarioCache(data: Scenario[]): Promise<void> {
+  const payload: CachedPayload = {
+    version: CATALOG_VERSION,
+    timestamp: Date.now(),
+    data,
+  };
+  try {
+    await SecureStore.setItemAsync(CACHE_KEY, JSON.stringify(payload));
+  } catch (error) {
+    console.warn('[ScenarioCache] Save failed', error);
+  }
+}
