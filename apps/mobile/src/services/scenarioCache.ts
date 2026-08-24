@@ -1,14 +1,27 @@
 import * as SecureStore from 'expo-secure-store';
-import type { Scenario } from '../api/client';
+import type { PreferredLanguage, Scenario } from '../api/client';
 
 type CachedPayload = {
   version: string;
   timestamp: number;
+  /**
+   * Language the catalog was fetched for (SN-020). Older caches predate
+   * this field; those were English-only catalogs, so a missing value is
+   * treated as "en".
+   */
+  language?: PreferredLanguage;
   data: Scenario[];
 };
 
 const CACHE_KEY = 'sonolo_scenarios_catalog';
 const CATALOG_VERSION = '2.0.0';
+
+function cachedLanguageMatches(
+  parsed: CachedPayload,
+  language: PreferredLanguage,
+): boolean {
+  return (parsed.language ?? 'en') === language;
+}
 
 export async function getScenarios(fetchFromNetwork: () => Promise<Scenario[]>): Promise<Scenario[]> {
   try {
@@ -49,12 +62,17 @@ export async function invalidateScenarioCache(): Promise<void> {
 }
 
 // --- Backwards compatibility for scenarioStore.ts ---
-export async function loadScenarioCache(): Promise<Scenario[] | null> {
+export async function loadScenarioCache(
+  language: PreferredLanguage = 'en',
+): Promise<Scenario[] | null> {
   try {
     const cachedJson = await SecureStore.getItemAsync(CACHE_KEY);
     if (cachedJson) {
       const parsed: CachedPayload = JSON.parse(cachedJson);
-      if (parsed.version === CATALOG_VERSION) {
+      if (
+        parsed.version === CATALOG_VERSION &&
+        cachedLanguageMatches(parsed, language)
+      ) {
         return parsed.data;
       }
     }
@@ -64,10 +82,14 @@ export async function loadScenarioCache(): Promise<Scenario[] | null> {
   return null;
 }
 
-export async function saveScenarioCache(data: Scenario[]): Promise<void> {
+export async function saveScenarioCache(
+  data: Scenario[],
+  language: PreferredLanguage = 'en',
+): Promise<void> {
   const payload: CachedPayload = {
     version: CATALOG_VERSION,
     timestamp: Date.now(),
+    language,
     data,
   };
   try {

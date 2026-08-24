@@ -23,6 +23,8 @@ class UserRead(BaseModel):
     target_language: str
     learning_goal: str
     current_level: str
+    #: Content language driving scenario catalog filtering (SN-020).
+    preferred_language: str
     subscription_tier: str
     streak_count: int
     streak_last_date: date | None

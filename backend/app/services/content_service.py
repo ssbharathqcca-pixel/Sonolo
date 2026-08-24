@@ -1,7 +1,12 @@
 """
 Content service for loading and materializing Sonolo learning packs.
-Both v1 and v2 packs are loaded together to provide the full 40-scenario 
-catalog and support the 200 vocabulary card materialization cap.
+Both v1 and v2 packs are loaded together to provide the full 40-scenario
+English catalog, and SN-020 appends the French Quebec pack so learners
+with `preferred_language == "fr"` get a catalog of their own. Vocabulary
+materialization stays capped by `content_vocabulary_pack_limit` (default
+200); seeds tagged with the learner's preferred language are ordered
+ahead of the pool so French users materialize French cards inside the
+same cap instead of losing them to the 200 English cards.
 """
 
 import json
@@ -36,15 +41,20 @@ LEVEL_DIFFICULTY: dict[str, int] = {
     "summit": 5,
 }
 
-#: Pack editions loaded in order (SN-018). Explicitly load both v1 and v2 
-#: to provide the full 40-scenario catalog and 200 vocab cap.
+#: Pack editions loaded in order. SN-018 loads the two English editions;
+#: SN-020 appends the French Quebec pack.
 SCENARIO_PACK_EDITIONS = (
     "../content/scenarios/canadian-life-v1.json",
     "../content/scenarios/canadian-life-v2.json",
+    "../content/scenarios/quebec-life-v1.json",
 )
-VOCABULARY_PACK_EDITIONS = (
-    "../content/vocabulary/core-v1.json",
-    "../content/vocabulary/core-v2.json",
+#: Vocabulary editions paired with their pack-level language metadata.
+#: The language orders seeds at materialization time so a learner's
+#: preferred language fills the 200-card cap before other languages.
+VOCABULARY_PACK_EDITIONS: tuple[tuple[str, str], ...] = (
+    ("../content/vocabulary/core-v1.json", "en"),
+    ("../content/vocabulary/core-v2.json", "en"),
+    ("../content/vocabulary/core-fr-v1.json", "fr"),
 )
 
 
@@ -66,6 +76,11 @@ def content_scenario_id(content_id: str) -> UUID:
 def content_vocabulary_card_id(user_id: UUID, content_id: str) -> UUID:
     """Deterministic per-user card PK for a content-pack vocab id."""
     return uuid.uuid5(CONTENT_NAMESPACE, f"vocab:{user_id}:{content_id}")
+
+
+def _primary_language_tag(code: str) -> str:
+    """Base subtag of a BCP-47-style code so "fr-CA" matches the "fr" pack."""
+    return code.strip().lower().split("-", 1)[0]
 
 
 def _resolve(path_setting: str) -> Path:
@@ -107,11 +122,12 @@ class VocabularySeed:
     translations: dict[str, str]
     difficulty: float  # FSRS 1-10
     stability: float  # FSRS days
+    language: str
 
 
 def load_scenario_seeds() -> list[ScenarioSeed]:
-    """Read and validate every scenario pack edition (SN-008 + SN-018)."""
-    # Explicitly load both v1 and v2 to guarantee 40 total scenarios
+    """Read and validate every scenario pack edition (SN-008 + SN-018 + SN-020)."""
+    # English v1+v2 first, then the French Quebec pack: 45 total scenarios.
     paths = [_resolve(rel) for rel in SCENARIO_PACK_EDITIONS]
     seeds: list[ScenarioSeed] = []
     seen_ids: set[str] = set()
@@ -150,14 +166,14 @@ def load_scenario_seeds() -> list[ScenarioSeed]:
 
 
 def load_vocabulary_seeds() -> list[VocabularySeed]:
-    """Read and validate every vocabulary pack edition (SN-009 + SN-018)."""
-    # Explicitly load both v1 and v2 to guarantee 200 total vocab cards
-    paths = [_resolve(rel) for rel in VOCABULARY_PACK_EDITIONS]
+    """Read and validate every vocabulary pack edition (SN-009 + SN-018 + SN-020)."""
+    # English v1+v2 first, then the French pack: 220 total cards.
     seeds: list[VocabularySeed] = []
     seen_ids: set[str] = set()
-    for path in paths:
-        with path.open(encoding="utf-8") as handle:
+    for relative_path, pack_language in VOCABULARY_PACK_EDITIONS:
+        with _resolve(relative_path).open(encoding="utf-8") as handle:
             raw: list[dict[str, Any]] = json.load(handle)
+        language = str(pack_language or "en")
         for entry in raw:
             content_id = str(entry["id"])
             if content_id in seen_ids:
@@ -177,6 +193,7 @@ def load_vocabulary_seeds() -> list[VocabularySeed]:
                     # Pack difficulty is 0-1; FSRS difficulty runs 1-10.
                     difficulty=round(1.0 + 9.0 * float(params["difficulty"]), 4),
                     stability=float(params["stability"]),
+                    language=language,
                 )
             )
     return seeds
@@ -223,12 +240,19 @@ async def seed_scenarios(db: AsyncSession) -> int:
     return len(seeds)
 
 
-async def ensure_user_vocabulary(db: AsyncSession, user_id: UUID) -> int:
+async def ensure_user_vocabulary(
+    db: AsyncSession,
+    user_id: UUID,
+    preferred_language: str | None = None,
+) -> int:
     """Lazily materialize the vocabulary packs for a user with no cards.
 
-    Loads both editions (SN-009 + SN-018, 200 items) up to the
-    settings-driven pack limit. Existing cards are never touched;
-    re-runs are no-ops thanks to deterministic per-user card ids.
+    Loads every edition (SN-009 + SN-018 + SN-020, 220 items) up to the
+    settings-driven pack limit, ordering seeds whose language matches
+    `preferred_language` first so preferred-language cards always fit
+    inside the cap. Regional preferences such as "fr-CA" match their
+    base pack ("fr"). Existing cards are never touched; re-runs are
+    no-ops thanks to deterministic per-user card ids.
     """
     count = (
         await db.execute(
@@ -240,7 +264,20 @@ async def ensure_user_vocabulary(db: AsyncSession, user_id: UUID) -> int:
     if int(count) > 0:
         return 0
 
-    seeds = load_vocabulary_seeds()[:_vocabulary_pack_limit()]
+    seeds = load_vocabulary_seeds()
+    if preferred_language:
+        preferred_tag = _primary_language_tag(preferred_language)
+        matching = [
+            seed
+            for seed in seeds
+            if _primary_language_tag(seed.language) == preferred_tag
+        ]
+        seeds = matching + [
+            seed
+            for seed in seeds
+            if _primary_language_tag(seed.language) != preferred_tag
+        ]
+    seeds = seeds[:_vocabulary_pack_limit()]
     for seed in seeds:
         card = VocabularyCard(
             id=content_vocabulary_card_id(user_id, seed.content_id),

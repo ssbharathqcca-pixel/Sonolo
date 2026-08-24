@@ -23,7 +23,9 @@ import {
   registerRequest,
   setAuthToken,
   setUnauthorizedHandler,
+  updatePreferredLanguage,
   upgradeAccountRequest,
+  type PreferredLanguage,
   type RegisterPayload,
   type User,
 } from "../api/client";
@@ -49,6 +51,12 @@ interface AuthState {
   register: (payload: RegisterPayload) => Promise<void>;
   /** Flip the account to premium via the mock upgrade endpoint (SN-026). */
   upgradeAccount: () => Promise<void>;
+  /**
+   * Persist the content language on the backend (SN-020) and mirror it
+   * into the local user. Throws (with a user-facing message) on failure
+   * so callers can surface an error without losing the old preference.
+   */
+  setPreferredLanguage: (language: PreferredLanguage) => Promise<void>;
   logout: () => Promise<void>;
   hydrate: () => Promise<void>;
   /** Persist onboarding completion and the chosen goal device-side. */
@@ -132,6 +140,19 @@ export const useAuthStore = create<AuthState>()((set, get) => ({
       set({ user, isLoading: false });
     } catch (error) {
       set({ isLoading: false });
+      throw new Error(getApiErrorMessage(error));
+    }
+  },
+
+  setPreferredLanguage: async (language) => {
+    const previousUser = get().user;
+    set({ isLoading: true });
+    try {
+      const user = await updatePreferredLanguage(language);
+      set({ user, isLoading: false });
+    } catch (error) {
+      // Keep the previous profile so the UI stays on the old language.
+      set({ user: previousUser, isLoading: false });
       throw new Error(getApiErrorMessage(error));
     }
   },

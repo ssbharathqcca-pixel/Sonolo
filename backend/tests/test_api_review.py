@@ -20,10 +20,15 @@ from app.db.session import get_db
 from app.main import create_app
 from app.models.user import User
 from app.models.vocabulary import VocabularyCard
+from app.services.content_service import load_vocabulary_seeds
 
 pytestmark = pytest.mark.asyncio
 
 TRANSLATIONS = {"pa": "ਸ਼ਬਦ", "hi": "शब्द", "zh": "词", "es": "palabra"}
+
+FRENCH_WORDS = {
+    seed.word for seed in load_vocabulary_seeds() if seed.language == "fr"
+}
 
 
 @pytest_asyncio.fixture
@@ -335,3 +340,39 @@ async def test_answer_rejects_invalid_rating(
         headers=headers,
     )
     assert response.status_code == 422
+
+
+async def test_due_materializes_french_cards_for_french_users(
+    review_client: AsyncClient,
+) -> None:
+    headers = await register_and_login(review_client, "pavan@example.com")
+    switched = await review_client.post(
+        "/api/users/me/language",
+        json={"language": "fr"},
+        headers=headers,
+    )
+    assert switched.status_code == 200
+
+    response = await review_client.get(
+        "/api/review/due", headers=headers, params={"limit": 100}
+    )
+
+    assert response.status_code == 200
+    words = {card["word"] for card in response.json()}
+    # Preferred-language cards materialize ahead of the English pack.
+    assert FRENCH_WORDS <= words
+
+
+async def test_due_keeps_english_for_default_users(
+    review_client: AsyncClient,
+) -> None:
+    headers = await register_and_login(review_client, "pavan@example.com")
+
+    response = await review_client.get(
+        "/api/review/due", headers=headers, params={"limit": 100}
+    )
+
+    assert response.status_code == 200
+    words = {card["word"] for card in response.json()}
+    assert words
+    assert not words & FRENCH_WORDS

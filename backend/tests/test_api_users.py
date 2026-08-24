@@ -92,3 +92,101 @@ async def test_upgrade_is_idempotent(users_client: AsyncClient) -> None:
     assert first.status_code == 200
     assert second.status_code == 200
     assert second.json()["subscription_tier"] == "premium"
+
+
+async def test_language_update_requires_authentication(
+    users_client: AsyncClient,
+) -> None:
+    response = await users_client.post(
+        "/api/users/me/language", json={"language": "fr"}
+    )
+    assert response.status_code == 401
+
+
+async def test_new_users_default_to_english(users_client: AsyncClient) -> None:
+    register = await users_client.post(
+        "/api/auth/register",
+        json={
+            "email": "default@example.com",
+            "name": "Default",
+            "password": "maple-syrup-99",
+            "native_language": "hi",
+            "target_language": "en-CA",
+        },
+    )
+    assert register.status_code == 201
+    # UserRead carries the preference everywhere it is returned.
+    assert register.json()["preferred_language"] == "en"
+
+    login = await users_client.post(
+        "/api/auth/login",
+        json={"email": "default@example.com", "password": "maple-syrup-99"},
+    )
+    profile = await users_client.get(
+        "/api/users/me",
+        headers={"Authorization": f"Bearer {login.json()['access_token']}"},
+    )
+    assert profile.status_code == 200
+    assert profile.json()["preferred_language"] == "en"
+
+
+async def test_language_update_switches_to_french_and_persists(
+    users_client: AsyncClient,
+) -> None:
+    headers = await auth_headers(users_client)
+
+    updated = await users_client.post(
+        "/api/users/me/language", json={"language": "fr"}, headers=headers
+    )
+
+    assert updated.status_code == 200
+    body = updated.json()
+    assert body["preferred_language"] == "fr"
+    # The full profile payload comes back, same contract as /me.
+    assert body["name"] == "Pavan"
+    assert "skills" in body
+
+    reread = await users_client.get("/api/users/me", headers=headers)
+    assert reread.status_code == 200
+    assert reread.json()["preferred_language"] == "fr"
+
+
+async def test_language_update_back_to_english(users_client: AsyncClient) -> None:
+    headers = await auth_headers(users_client)
+    await users_client.post(
+        "/api/users/me/language", json={"language": "fr"}, headers=headers
+    )
+
+    switched_back = await users_client.post(
+        "/api/users/me/language", json={"language": "en"}, headers=headers
+    )
+
+    assert switched_back.status_code == 200
+    assert switched_back.json()["preferred_language"] == "en"
+
+
+async def test_language_update_rejects_invalid_language(
+    users_client: AsyncClient,
+) -> None:
+    headers = await auth_headers(users_client)
+
+    response = await users_client.post(
+        "/api/users/me/language", json={"language": "es"}, headers=headers
+    )
+
+    assert response.status_code == 422
+    # The stored preference is untouched by the rejected request.
+    profile = await users_client.get("/api/users/me", headers=headers)
+    assert profile.json()["preferred_language"] == "en"
+
+
+async def test_language_update_rejects_missing_field(
+    users_client: AsyncClient,
+) -> None:
+    headers = await auth_headers(users_client)
+
+    response = await users_client.post(
+        "/api/users/me/language", json={}, headers=headers
+    )
+
+    assert response.status_code == 422

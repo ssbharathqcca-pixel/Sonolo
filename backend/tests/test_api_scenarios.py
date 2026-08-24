@@ -5,7 +5,7 @@ from collections.abc import AsyncIterator
 import pytest
 import pytest_asyncio
 from httpx import ASGITransport, AsyncClient
-from sqlalchemy import select
+from sqlalchemy import select, update as sa_update
 from sqlalchemy.ext.asyncio import AsyncSession
 
 import app.models  # noqa: F401
@@ -65,7 +65,7 @@ async def test_scenarios_returns_the_seeded_catalog(
     scenarios_client: AsyncClient, db_session: AsyncSession
 ) -> None:
     seeded = await seed_scenarios(db_session)
-    assert seeded == 40
+    assert seeded == 45
 
     response = await scenarios_client.get(
         "/api/scenarios", headers=await auth_headers(scenarios_client)
@@ -129,3 +129,118 @@ async def test_premium_user_sees_nothing_locked(
     scenarios = response.json()["scenarios"]
     assert len(scenarios) == 40
     assert all(scenario["is_locked"] is False for scenario in scenarios)
+
+
+async def test_language_param_returns_only_french_scenarios(
+    scenarios_client: AsyncClient, db_session: AsyncSession
+) -> None:
+    await seed_scenarios(db_session)
+    headers = await auth_headers(scenarios_client)
+
+    response = await scenarios_client.get(
+        "/api/scenarios",
+        params={"language": "fr"},
+        headers=headers,
+    )
+
+    assert response.status_code == 200
+    scenarios = response.json()["scenarios"]
+    french_titles = set(
+        (
+            await db_session.execute(
+                select(Scenario.title).where(
+                    Scenario.target_language == "fr"
+                )
+            )
+        ).scalars().all()
+    )
+    assert len(french_titles) == 5
+    assert {scenario["title"] for scenario in scenarios} == french_titles
+
+
+async def test_default_catalog_follows_preferred_language(
+    scenarios_client: AsyncClient, db_session: AsyncSession
+) -> None:
+    await seed_scenarios(db_session)
+    headers = await auth_headers(scenarios_client)
+
+    english = await scenarios_client.get("/api/scenarios", headers=headers)
+    assert english.status_code == 200
+    # Default preference is English: the 40 en-CA packs, no French rows.
+    assert len(english.json()["scenarios"]) == 40
+
+    switched = await scenarios_client.post(
+        "/api/users/me/language", json={"language": "fr"}, headers=headers
+    )
+    assert switched.status_code == 200
+
+    french = await scenarios_client.get("/api/scenarios", headers=headers)
+    assert french.status_code == 200
+    titles = [scenario["title"] for scenario in french.json()["scenarios"]]
+    french_titles = set(
+        (
+            await db_session.execute(
+                select(Scenario.title).where(Scenario.target_language == "fr")
+            )
+        ).scalars().all()
+    )
+    assert set(titles) == french_titles
+
+    back = await scenarios_client.post(
+        "/api/users/me/language", json={"language": "en"}, headers=headers
+    )
+    assert back.status_code == 200
+    restored = await scenarios_client.get("/api/scenarios", headers=headers)
+    assert len(restored.json()["scenarios"]) == 40
+
+
+async def test_language_rejects_unknown_values(
+    scenarios_client: AsyncClient,
+) -> None:
+    headers = await auth_headers(scenarios_client)
+    response = await scenarios_client.get(
+        "/api/scenarios", params={"language": "es"}, headers=headers
+    )
+    assert response.status_code == 422
+
+
+async def test_premium_gating_still_applies_to_french_scenarios(
+    scenarios_client: AsyncClient, db_session: AsyncSession
+) -> None:
+    await seed_scenarios(db_session)
+    # A future premium French pack must gate exactly like English ones.
+    premium_french_title = (
+        await db_session.execute(
+            select(Scenario.title).where(Scenario.target_language == "fr")
+        )
+    ).scalars().first()
+    await db_session.execute(
+        sa_update(Scenario)
+        .where(Scenario.title == premium_french_title)
+        .values(is_premium=True)
+    )
+    await db_session.commit()
+    headers = await auth_headers(scenarios_client)
+
+    free_view = await scenarios_client.get(
+        "/api/scenarios", params={"language": "fr"}, headers=headers
+    )
+    assert free_view.status_code == 200
+    locked = {
+        scenario["title"]
+        for scenario in free_view.json()["scenarios"]
+        if scenario["is_locked"]
+    }
+    assert locked == {premium_french_title}
+
+    upgrade = await scenarios_client.post(
+        "/api/users/me/upgrade", headers=headers
+    )
+    assert upgrade.status_code == 200
+    premium_view = await scenarios_client.get(
+        "/api/scenarios", params={"language": "fr"}, headers=headers
+    )
+    assert all(
+        scenario["is_locked"] is False
+        for scenario in premium_view.json()["scenarios"]
+    )
