@@ -1,12 +1,12 @@
 """
 Content service for loading and materializing Sonolo learning packs.
-Both v1 and v2 packs are loaded together to provide the full 40-scenario
-English catalog, and SN-020 appends the French Quebec pack so learners
-with `preferred_language == "fr"` get a catalog of their own. Vocabulary
-materialization stays capped by `content_vocabulary_pack_limit` (default
-200); seeds tagged with the learner's preferred language are ordered
-ahead of the pool so French users materialize French cards inside the
-same cap instead of losing them to the 200 English cards.
+Pack discovery is manifest-driven: content/manifest.json at the repo
+root declares every scenario and vocabulary edition (SN-027), so new
+packs ship without loader code changes. Vocabulary materialization
+stays capped by `content_vocabulary_pack_limit` (default 200); seeds
+tagged with the learner's preferred language are ordered ahead of the
+pool so French users materialize French cards inside the same cap
+instead of losing them to the 200 English cards.
 """
 
 import json
@@ -41,21 +41,13 @@ LEVEL_DIFFICULTY: dict[str, int] = {
     "summit": 5,
 }
 
-#: Pack editions loaded in order. SN-018 loads the two English editions;
-#: SN-020 appends the French Quebec pack.
-SCENARIO_PACK_EDITIONS = (
-    "../content/scenarios/canadian-life-v1.json",
-    "../content/scenarios/canadian-life-v2.json",
-    "../content/scenarios/quebec-life-v1.json",
-)
-#: Vocabulary editions paired with their pack-level language metadata.
-#: The language orders seeds at materialization time so a learner's
-#: preferred language fills the 200-card cap before other languages.
-VOCABULARY_PACK_EDITIONS: tuple[tuple[str, str], ...] = (
-    ("../content/vocabulary/core-v1.json", "en"),
-    ("../content/vocabulary/core-v2.json", "en"),
-    ("../content/vocabulary/core-fr-v1.json", "fr"),
-)
+#: Repository root: backend/app/services/content_service.py -> parents[3].
+REPO_ROOT = Path(__file__).resolve().parents[3]
+
+#: Single source of truth for pack discovery (SN-027): every scenario and
+#: vocabulary edition is declared in the manifest with language, tier, and
+#: UI metadata instead of hardcoded loader tuples.
+MANIFEST_PATH = REPO_ROOT / "content" / "manifest.json"
 
 
 def _vocabulary_pack_limit() -> int:
@@ -83,12 +75,48 @@ def _primary_language_tag(code: str) -> str:
     return code.strip().lower().split("-", 1)[0]
 
 
-def _resolve(path_setting: str) -> Path:
-    path = Path(path_setting)
+@dataclass(frozen=True)
+class ManifestPack:
+    """One pack entry from content/manifest.json."""
+
+    id: str
+    type: str  # "scenarios" | "vocabulary"
+    language: str
+    path: str  # Repo-root relative, e.g. content/scenarios/canadian-life-v1.json.
+
+
+def load_manifest_packs() -> list[ManifestPack]:
+    """Read the content manifest and validate its pack entries.
+
+    Pack ids must be unique across the manifest; loaders filter the
+    returned entries by `type` and resolve `path` against the repo root.
+    """
+    with MANIFEST_PATH.open(encoding="utf-8") as handle:
+        manifest: dict[str, Any] = json.load(handle)
+    packs: list[ManifestPack] = []
+    seen_ids: set[str] = set()
+    for entry in manifest.get("packs", []):
+        pack_id = str(entry["id"])
+        if pack_id in seen_ids:
+            raise ValueError(f"Duplicate pack id in content manifest: {pack_id!r}")
+        seen_ids.add(pack_id)
+        packs.append(
+            ManifestPack(
+                id=pack_id,
+                type=str(entry["type"]),
+                language=str(entry["language"]),
+                path=str(entry["path"]),
+            )
+        )
+    return packs
+
+
+def _resolve_pack_path(manifest_path: str) -> Path:
+    """Resolve a manifest pack path relative to the repository root."""
+    path = Path(manifest_path)
     if path.is_absolute():
         return path
-    backend_dir = Path(__file__).resolve().parents[2]
-    return backend_dir / path
+    return REPO_ROOT / path
 
 
 @dataclass(frozen=True)
@@ -126,9 +154,14 @@ class VocabularySeed:
 
 
 def load_scenario_seeds() -> list[ScenarioSeed]:
-    """Read and validate every scenario pack edition (SN-008 + SN-018 + SN-020)."""
-    # English v1+v2 first, then the French Quebec pack: 45 total scenarios.
-    paths = [_resolve(rel) for rel in SCENARIO_PACK_EDITIONS]
+    """Read and validate every scenario pack listed in the manifest."""
+    # Manifest order governs pack precedence (English v1+v2, then Quebec):
+    # 45 total scenarios today; new packs append without code changes.
+    paths = [
+        _resolve_pack_path(pack.path)
+        for pack in load_manifest_packs()
+        if pack.type == "scenarios"
+    ]
     seeds: list[ScenarioSeed] = []
     seen_ids: set[str] = set()
     for path in paths:
@@ -166,12 +199,19 @@ def load_scenario_seeds() -> list[ScenarioSeed]:
 
 
 def load_vocabulary_seeds() -> list[VocabularySeed]:
-    """Read and validate every vocabulary pack edition (SN-009 + SN-018 + SN-020)."""
-    # English v1+v2 first, then the French pack: 220 total cards.
+    """Read and validate every vocabulary pack listed in the manifest."""
+    # Pack-level language comes from the manifest and orders seeds at
+    # materialization time so a learner's preferred language fills the
+    # 200-card cap before other languages.
+    editions = [
+        (_resolve_pack_path(pack.path), pack.language)
+        for pack in load_manifest_packs()
+        if pack.type == "vocabulary"
+    ]
     seeds: list[VocabularySeed] = []
     seen_ids: set[str] = set()
-    for relative_path, pack_language in VOCABULARY_PACK_EDITIONS:
-        with _resolve(relative_path).open(encoding="utf-8") as handle:
+    for path, pack_language in editions:
+        with path.open(encoding="utf-8") as handle:
             raw: list[dict[str, Any]] = json.load(handle)
         language = str(pack_language or "en")
         for entry in raw:
