@@ -65,7 +65,7 @@ async def test_scenarios_returns_the_seeded_catalog(
     scenarios_client: AsyncClient, db_session: AsyncSession
 ) -> None:
     seeded = await seed_scenarios(db_session)
-    assert seeded == 45
+    assert seeded == 55
 
     response = await scenarios_client.get(
         "/api/scenarios", headers=await auth_headers(scenarios_client)
@@ -73,7 +73,7 @@ async def test_scenarios_returns_the_seeded_catalog(
 
     assert response.status_code == 200
     body = response.json()
-    assert len(body["scenarios"]) == 40
+    assert len(body["scenarios"]) == 50
     titles = [scenario["title"] for scenario in body["scenarios"]]
     assert titles == sorted(titles)  # Stable, title-ordered list.
     first = body["scenarios"][0]
@@ -111,7 +111,7 @@ async def test_free_user_sees_premium_scenarios_locked(
     )
     # Premium scenarios are exactly the locked entries for a free-tier
     # caller — 8 from canadian-life-v1 plus the 5 from canadian-life-v2.
-    assert len(premium_titles) == 13
+    assert len(premium_titles) == 16
     assert locked_titles == premium_titles
 
 
@@ -127,7 +127,7 @@ async def test_premium_user_sees_nothing_locked(
 
     assert response.status_code == 200
     scenarios = response.json()["scenarios"]
-    assert len(scenarios) == 40
+    assert len(scenarios) == 50
     assert all(scenario["is_locked"] is False for scenario in scenarios)
 
 
@@ -167,7 +167,7 @@ async def test_default_catalog_follows_preferred_language(
     english = await scenarios_client.get("/api/scenarios", headers=headers)
     assert english.status_code == 200
     # Default preference is English: the 40 en-CA packs, no French rows.
-    assert len(english.json()["scenarios"]) == 40
+    assert len(english.json()["scenarios"]) == 50
 
     switched = await scenarios_client.post(
         "/api/users/me/language", json={"language": "fr"}, headers=headers
@@ -191,7 +191,7 @@ async def test_default_catalog_follows_preferred_language(
     )
     assert back.status_code == 200
     restored = await scenarios_client.get("/api/scenarios", headers=headers)
-    assert len(restored.json()["scenarios"]) == 40
+    assert len(restored.json()["scenarios"]) == 50
 
 
 async def test_language_rejects_unknown_values(
