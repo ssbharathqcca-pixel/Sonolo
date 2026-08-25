@@ -78,6 +78,32 @@
       "theme_color": "#00B0C7",
       "icon": "book",
       "is_published": true
+    },
+    {
+      "id": "workplace-english-v1",
+      "type": "scenarios",
+      "language": "en",
+      "path": "content/scenarios/workplace-english-v1.json",
+      "title": "Workplace English",
+      "description": "Meetings, small talk, interviews, pay, safety, and workplace confidence.",
+      "category": "workplace",
+      "tier": "freemium",
+      "theme_color": "#FF8A00",
+      "icon": "briefcase",
+      "is_published": true
+    },
+    {
+      "id": "vocab-workplace-english-v1",
+      "type": "vocabulary",
+      "language": "en",
+      "path": "content/vocabulary/workplace-english-v1.json",
+      "title": "Workplace Vocabulary",
+      "description": "Essential words for Canadian workplaces.",
+      "category": "vocabulary",
+      "tier": "freemium",
+      "theme_color": "#FF8A00",
+      "icon": "book",
+      "is_published": true
     }
   ]
 }
