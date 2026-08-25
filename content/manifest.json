@@ -1,0 +1,83 @@
+{
+  "version": 1,
+  "packs": [
+    {
+      "id": "canadian-life-v1",
+      "type": "scenarios",
+      "language": "en",
+      "path": "content/scenarios/canadian-life-v1.json",
+      "title": "Canadian Life Foundations",
+      "description": "Core settlement scenarios for daily life in Canada.",
+      "category": "settlement",
+      "tier": "free",
+      "theme_color": "#4F8CFF",
+      "icon": "home",
+      "is_published": true
+    },
+    {
+      "id": "canadian-life-v2",
+      "type": "scenarios",
+      "language": "en",
+      "path": "content/scenarios/canadian-life-v2.json",
+      "title": "Canadian Life Expansion",
+      "description": "Advanced work, finance, and community scenarios.",
+      "category": "settlement",
+      "tier": "freemium",
+      "theme_color": "#7A5CFF",
+      "icon": "briefcase",
+      "is_published": true
+    },
+    {
+      "id": "quebec-life-v1",
+      "type": "scenarios",
+      "language": "fr",
+      "path": "content/scenarios/quebec-life-v1.json",
+      "title": "Vie québécoise",
+      "description": "Scénarios pratiques pour la vie au Québec.",
+      "category": "settlement",
+      "tier": "free",
+      "theme_color": "#00A3A3",
+      "icon": "map",
+      "is_published": true
+    },
+    {
+      "id": "core-v1",
+      "type": "vocabulary",
+      "language": "en",
+      "path": "content/vocabulary/core-v1.json",
+      "title": "Core Vocabulary 1",
+      "description": "Foundational vocabulary for Canadian daily life.",
+      "category": "vocabulary",
+      "tier": "free",
+      "theme_color": "#3FB27F",
+      "icon": "book",
+      "is_published": true
+    },
+    {
+      "id": "core-v2",
+      "type": "vocabulary",
+      "language": "en",
+      "path": "content/vocabulary/core-v2.json",
+      "title": "Core Vocabulary 2",
+      "description": "Expanded vocabulary for work, services, and community.",
+      "category": "vocabulary",
+      "tier": "free",
+      "theme_color": "#5BBF6D",
+      "icon": "book",
+      "is_published": true
+    },
+    {
+      "id": "core-fr-v1",
+      "type": "vocabulary",
+      "language": "fr",
+      "path": "content/vocabulary/core-fr-v1.json",
+      "title": "Vocabulaire français 1",
+      "description": "Vocabulaire essentiel pour la vie au Québec.",
+      "category": "vocabulary",
+      "tier": "free",
+      "theme_color": "#00B0C7",
+      "icon": "book",
+      "is_published": true
+    }
+  ]
+}
