@@ -1,0 +1,1252 @@
+[
+  {
+    "id": "vocab-wep-01",
+    "word": "resume",
+    "phonetic": "/ˈrezʊmeɪ/",
+    "translations": {
+      "pa": "ਰਿਜ਼ਿਊਮੇ (ਨੌਕਰੀ ਦਾ ਵੇਰਵਾ)",
+      "hi": "रिज़्यूमे",
+      "zh": "简历",
+      "es": "currículum"
+    },
+    "level": "seed",
+    "category": "workplace",
+    "example_sentences": [
+      "Send your resume as a PDF when you apply online.",
+      "Canadian resumes usually leave out photos, birthdays, and marital status."
+    ],
+    "confusion_pairs": [
+      "CV",
+      "cover letter"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.25,
+      "stability": 4.4
+    }
+  },
+  {
+    "id": "vocab-wep-02",
+    "word": "interview",
+    "phonetic": "/ˈɪntərvjuː/",
+    "translations": {
+      "pa": "ਇੰਟਰਵਿਊ",
+      "hi": "इंटरव्यू",
+      "zh": "面试",
+      "es": "entrevista"
+    },
+    "level": "seed",
+    "category": "workplace",
+    "example_sentences": [
+      "She has a job interview on Thursday afternoon.",
+      "Arrive ten minutes early for your interview and silence your phone."
+    ],
+    "confusion_pairs": [
+      "meeting",
+      "phone screen"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.2,
+      "stability": 4.6
+    }
+  },
+  {
+    "id": "vocab-wep-03",
+    "word": "reference",
+    "phonetic": "/ˈrefrəns/",
+    "translations": {
+      "pa": "ਹਵਾਲਾ (ਸਿਫ਼ਾਰਸ਼ ਕਰਨ ਵਾਲਾ)",
+      "hi": "संदर्भ (सिफ़ारिश)",
+      "zh": "推荐人",
+      "es": "referencia"
+    },
+    "level": "branch",
+    "category": "workplace",
+    "example_sentences": [
+      "Can you list two references from past jobs?",
+      "Always ask your reference for permission before sharing their phone number."
+    ],
+    "confusion_pairs": [
+      "recommendation letter",
+      "referee"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.48,
+      "stability": 2.9
+    }
+  },
+  {
+    "id": "vocab-wep-04",
+    "word": "shift",
+    "phonetic": "/ʃɪft/",
+    "translations": {
+      "pa": "ਸ਼ਿਫਟ (ਕੰਮ ਦੀ ਪਾਲੀ)",
+      "hi": "शिफ्ट (पाली)",
+      "zh": "轮班",
+      "es": "turno"
+    },
+    "level": "seed",
+    "category": "workplace",
+    "example_sentences": [
+      "My shift starts at six in the morning.",
+      "Night shifts pay an extra dollar an hour at the plant."
+    ],
+    "confusion_pairs": [
+      "schedule",
+      "hours"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.22,
+      "stability": 4.5
+    }
+  },
+  {
+    "id": "vocab-wep-05",
+    "word": "swap",
+    "phonetic": "/swɑːp/",
+    "translations": {
+      "pa": "ਅਦਲ-ਬਦਲ ਕਰਨਾ",
+      "hi": "आपस में बदलना",
+      "zh": "对调",
+      "es": "intercambiar"
+    },
+    "level": "sprout",
+    "category": "workplace",
+    "example_sentences": [
+      "Can we swap shifts this Saturday?",
+      "She swapped her Sunday shift so she could attend a wedding."
+    ],
+    "confusion_pairs": [
+      "trade",
+      "change"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.35,
+      "stability": 3.7
+    }
+  },
+  {
+    "id": "vocab-wep-06",
+    "word": "supervisor",
+    "phonetic": "/ˈsuːpərvaɪzər/",
+    "translations": {
+      "pa": "ਸੁਪਰਵਾਈਜ਼ਰ",
+      "hi": "पर्यवेक्षक",
+      "zh": "主管",
+      "es": "supervisor"
+    },
+    "level": "seed",
+    "category": "workplace",
+    "example_sentences": [
+      "Tell your supervisor if you will be late.",
+      "The supervisor approved our shift swap on Monday."
+    ],
+    "confusion_pairs": [
+      "boss",
+      "manager"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.25,
+      "stability": 4.4
+    }
+  },
+  {
+    "id": "vocab-wep-07",
+    "word": "coworker",
+    "phonetic": "/ˈkoʊwɜːrkər/",
+    "translations": {
+      "pa": "ਸਹਿ-ਕਰਮਚਾਰੀ",
+      "hi": "सहकर्मी",
+      "zh": "同事",
+      "es": "compañero de trabajo"
+    },
+    "level": "seed",
+    "category": "workplace",
+    "example_sentences": [
+      "My coworkers threw me a birthday coffee break.",
+      "I carpool with a coworker who lives nearby."
+    ],
+    "confusion_pairs": [
+      "colleague",
+      "teammate"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.2,
+      "stability": 4.7
+    }
+  },
+  {
+    "id": "vocab-wep-08",
+    "word": "colleague",
+    "phonetic": "/ˈkɒliːɡ/",
+    "translations": {
+      "pa": "ਸਾਥੀ ਕਰਮਚਾਰੀ",
+      "hi": "सहयोगी",
+      "zh": "同僚",
+      "es": "colega"
+    },
+    "level": "sprout",
+    "category": "workplace",
+    "example_sentences": [
+      "A colleague from the finance team joined us for lunch.",
+      "Please copy your colleague on the update email."
+    ],
+    "confusion_pairs": [
+      "coworker",
+      "partner"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.45,
+      "stability": 3.3
+    }
+  },
+  {
+    "id": "vocab-wep-09",
+    "word": "staffroom",
+    "phonetic": "/ˈstæfruːm/",
+    "translations": {
+      "pa": "ਸਟਾਫ਼ ਰੂਮ (ਕਰਮਚਾਰੀ ਕਮਰਾ)",
+      "hi": "कर्मचारी कक्ष",
+      "zh": "员工休息室",
+      "es": "sala de personal"
+    },
+    "level": "sprout",
+    "category": "workplace",
+    "example_sentences": [
+      "Lunch is in the staffroom on the second floor.",
+      "There is free coffee in the staffroom fridge — label your food."
+    ],
+    "confusion_pairs": [
+      "break room",
+      "lunchroom"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.4,
+      "stability": 3.4
+    }
+  },
+  {
+    "id": "vocab-wep-10",
+    "word": "paycheque",
+    "phonetic": "/ˈpeɪtʃek/",
+    "translations": {
+      "pa": "ਤਨਖਾਹ ਦਾ ਚੈੱਕ",
+      "hi": "वेतन चेक",
+      "zh": "工资支票",
+      "es": "cheque de pago"
+    },
+    "level": "seed",
+    "category": "workplace",
+    "example_sentences": [
+      "Paycheques come every second Friday.",
+      "Most employers send your paycheque straight to the bank now."
+    ],
+    "confusion_pairs": [
+      "payroll",
+      "salary"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.25,
+      "stability": 4.4
+    }
+  },
+  {
+    "id": "vocab-wep-11",
+    "word": "pay stub",
+    "phonetic": "/ˈpeɪ stʌb/",
+    "translations": {
+      "pa": "ਤਨਖਾਹ ਦੀ ਪਰਚੀ",
+      "hi": "वेतन पर्ची",
+      "zh": "工资单",
+      "es": "comprobante de pago"
+    },
+    "level": "branch",
+    "category": "workplace",
+    "example_sentences": [
+      "Check your pay stub for the overtime hours.",
+      "Landlords often ask for two recent pay stubs."
+    ],
+    "confusion_pairs": [
+      "payslip",
+      "T4 slip"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.55,
+      "stability": 2.7
+    }
+  },
+  {
+    "id": "vocab-wep-12",
+    "word": "direct deposit",
+    "phonetic": "/dəˈrekt dɪˈpɒzɪt/",
+    "translations": {
+      "pa": "ਸਿੱਧੀ ਡਿਪਾਜ਼ਿਟ",
+      "hi": "सीधा जमा",
+      "zh": "直接存款",
+      "es": "depósito directo"
+    },
+    "level": "sprout",
+    "category": "workplace",
+    "example_sentences": [
+      "Set up direct deposit so your pay lands automatically.",
+      "Direct deposit takes one cycle to start after you sign the form."
+    ],
+    "confusion_pairs": [
+      "e-transfer",
+      "wire transfer"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.38,
+      "stability": 3.6
+    }
+  },
+  {
+    "id": "vocab-wep-13",
+    "word": "overtime",
+    "phonetic": "/ˈoʊvərtaɪm/",
+    "translations": {
+      "pa": "ਓਵਰਟਾਈਮ",
+      "hi": "ओवरटाइम",
+      "zh": "加班",
+      "es": "horas extra"
+    },
+    "level": "sprout",
+    "category": "workplace",
+    "example_sentences": [
+      "Overtime past forty-four hours a week pays one and a half times.",
+      "He earned good overtime money during the holiday rush."
+    ],
+    "confusion_pairs": [
+      "extra hours",
+      "double time"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.35,
+      "stability": 3.7
+    }
+  },
+  {
+    "id": "vocab-wep-14",
+    "word": "minimum wage",
+    "phonetic": "/ˈmɪnɪməm weɪdʒ/",
+    "translations": {
+      "pa": "ਘੱਟੋ-ਘੱਟ ਤਨਖਾਹ",
+      "hi": "न्यूनतम मजदूरी",
+      "zh": "最低工资",
+      "es": "salario mínimo"
+    },
+    "level": "sprout",
+    "category": "workplace",
+    "example_sentences": [
+      "Minimum wage rises each October in many provinces.",
+      "No employer may pay below minimum wage, even for training shifts."
+    ],
+    "confusion_pairs": [
+      "living wage",
+      "base pay"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.32,
+      "stability": 3.8
+    }
+  },
+  {
+    "id": "vocab-wep-15",
+    "word": "wage",
+    "phonetic": "/weɪdʒ/",
+    "translations": {
+      "pa": "ਤਨਖਾਹ (ਪ੍ਰਤੀ ਘੰਟਾ)",
+      "hi": "मजदूरी",
+      "zh": "时薪工资",
+      "es": "sueldo (por hora)"
+    },
+    "level": "sprout",
+    "category": "workplace",
+    "example_sentences": [
+      "The job pays a starting wage of nineteen dollars an hour.",
+      "Wages are reviewed after your probation ends."
+    ],
+    "confusion_pairs": [
+      "salary",
+      "rate"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.3,
+      "stability": 3.9
+    }
+  },
+  {
+    "id": "vocab-wep-16",
+    "word": "schedule",
+    "phonetic": "/ˈskedʒuːl/",
+    "translations": {
+      "pa": "ਸਮਾਂ-ਸਾਰਣੀ",
+      "hi": "कार्यसूची",
+      "zh": "排班表",
+      "es": "horario"
+    },
+    "level": "seed",
+    "category": "workplace",
+    "example_sentences": [
+      "Next week's schedule posts on Wednesday.",
+      "Check the schedule app before you commute in."
+    ],
+    "confusion_pairs": [
+      "shift",
+      "roster"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.22,
+      "stability": 4.5
+    }
+  },
+  {
+    "id": "vocab-wep-17",
+    "word": "time off",
+    "phonetic": "/taɪm ɒf/",
+    "translations": {
+      "pa": "ਛੁੱਟੀ ਦਾ ਸਮਾਂ",
+      "hi": "अवकाश",
+      "zh": "休假时间",
+      "es": "permiso"
+    },
+    "level": "sprout",
+    "category": "workplace",
+    "example_sentences": [
+      "I need to request time off for my citizenship ceremony.",
+      "Approved time off shows up in green on the calendar."
+    ],
+    "confusion_pairs": [
+      "vacation",
+      "leave"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.35,
+      "stability": 3.7
+    }
+  },
+  {
+    "id": "vocab-wep-18",
+    "word": "sick day",
+    "phonetic": "/sɪk deɪ/",
+    "translations": {
+      "pa": "ਬਿਮਾਰੀ ਵਾਲੀ ਛੁੱਟੀ",
+      "hi": "बीमारी की छुट्टी",
+      "zh": "病假",
+      "es": "día por enfermedad"
+    },
+    "level": "sprout",
+    "category": "workplace",
+    "example_sentences": [
+      "Call in early if you need a sick day.",
+      "Three unpaid sick days a year are protected in several provinces."
+    ],
+    "confusion_pairs": [
+      "personal day",
+      "medical leave"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.32,
+      "stability": 3.8
+    }
+  },
+  {
+    "id": "vocab-wep-19",
+    "word": "dress code",
+    "phonetic": "/dres koʊd/",
+    "translations": {
+      "pa": "ਪਹਿਰਾਵੇ ਦਾ ਨਿਯਮ",
+      "hi": "वेशभूषा नियम",
+      "zh": "着装规范",
+      "es": "código de vestimenta"
+    },
+    "level": "sprout",
+    "category": "workplace",
+    "example_sentences": [
+      "The dress code is business casual except on Fridays.",
+      "Steel-toe boots are part of the dress code on the floor."
+    ],
+    "confusion_pairs": [
+      "uniform",
+      "attire"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.42,
+      "stability": 3.1
+    }
+  },
+  {
+    "id": "vocab-wep-20",
+    "word": "training",
+    "phonetic": "/ˈtreɪnɪŋ/",
+    "translations": {
+      "pa": "ਸਿਖਲਾਈ",
+      "hi": "प्रशिक्षण",
+      "zh": "培训",
+      "es": "capacitación"
+    },
+    "level": "seed",
+    "category": "workplace",
+    "example_sentences": [
+      "Paid training runs for your first two weeks.",
+      "She finished forklift training and got certified."
+    ],
+    "confusion_pairs": [
+      "orientation",
+      "coaching"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.2,
+      "stability": 4.7
+    }
+  },
+  {
+    "id": "vocab-wep-21",
+    "word": "orientation",
+    "phonetic": "/ˌɔːriənˈteɪʃn/",
+    "translations": {
+      "pa": "ਜਾਣ-ਪਛਾਣ ਸੈਸ਼ਨ",
+      "hi": "परिचय कार्यक्रम",
+      "zh": "入职培训",
+      "es": "inducción"
+    },
+    "level": "branch",
+    "category": "workplace",
+    "example_sentences": [
+      "Orientation starts at nine sharp in the boardroom.",
+      "During orientation you will get your badge and email login."
+    ],
+    "confusion_pairs": [
+      "onboarding",
+      "training"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.5,
+      "stability": 2.8
+    }
+  },
+  {
+    "id": "vocab-wep-22",
+    "word": "probation period",
+    "phonetic": "/prəˈbeɪʃn ˈpɪəriəd/",
+    "translations": {
+      "pa": "ਪ੍ਰੋਬੇਸ਼ਨ ਮਿਆਦ",
+      "hi": "परिवीक्षा अवधि",
+      "zh": "试用期",
+      "es": "período de prueba"
+    },
+    "level": "branch",
+    "category": "workplace",
+    "example_sentences": [
+      "The probation period lasts three months with a review at the end.",
+      "Benefits start once you clear probation."
+    ],
+    "confusion_pairs": [
+      "trial period",
+      "probation (legal)"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.55,
+      "stability": 2.7
+    }
+  },
+  {
+    "id": "vocab-wep-23",
+    "word": "benefits",
+    "phonetic": "/ˈbenɪfɪts/",
+    "translations": {
+      "pa": "ਲਾਭ (ਬੈਨਿਫ਼ਿਟਸ)",
+      "hi": "सुविधाएँ (बenefits)",
+      "zh": "福利",
+      "es": "prestaciones"
+    },
+    "level": "branch",
+    "category": "workplace",
+    "example_sentences": [
+      "Benefits kick in after six months of full-time work.",
+      "Our benefits package includes drug and dental coverage."
+    ],
+    "confusion_pairs": [
+      "perks",
+      "insurance"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.45,
+      "stability": 3.3
+    }
+  },
+  {
+    "id": "vocab-wep-24",
+    "word": "health coverage",
+    "phonetic": "/helθ ˈkʌvərɪdʒ/",
+    "translations": {
+      "pa": "ਸਿਹਤ ਕਵਰੇਜ",
+      "hi": "स्वास्थ्य कवरेज",
+      "zh": "医疗保险",
+      "es": "cobertura médica"
+    },
+    "level": "branch",
+    "category": "workplace",
+    "example_sentences": [
+      "Provincial health coverage starts about three months after arrival.",
+      "The plan's extended health coverage pays for prescriptions."
+    ],
+    "confusion_pairs": [
+      "health card",
+      "insurance policy"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.52,
+      "stability": 2.7
+    }
+  },
+  {
+    "id": "vocab-wep-25",
+    "word": "dental plan",
+    "phonetic": "/ˈdentl plæn/",
+    "translations": {
+      "pa": "ਦੰਦਾਂ ਦੀ ਯੋਜਨਾ",
+      "hi": "दंत योजना",
+      "zh": "牙科保险计划",
+      "es": "plan dental"
+    },
+    "level": "branch",
+    "category": "workplace",
+    "example_sentences": [
+      "The dental plan covers cleanings twice a year.",
+      "Braces are only covered on the enhanced dental plan."
+    ],
+    "confusion_pairs": [
+      "health plan",
+      "vision plan"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.48,
+      "stability": 2.9
+    }
+  },
+  {
+    "id": "vocab-wep-26",
+    "word": "enrolment",
+    "phonetic": "/ɪnˈroʊlmənt/",
+    "translations": {
+      "pa": "ਰਜਿਸਟ੍ਰੇਸ਼ਨ",
+      "hi": "नामांकन",
+      "zh": "登记",
+      "es": "inscripción"
+    },
+    "level": "branch",
+    "category": "workplace",
+    "example_sentences": [
+      "Benefits enrolment closes Friday at five.",
+      "Complete your enrolment forms during orientation week."
+    ],
+    "confusion_pairs": [
+      "registration",
+      "application"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.58,
+      "stability": 2.5
+    }
+  },
+  {
+    "id": "vocab-wep-27",
+    "word": "deduction",
+    "phonetic": "/dɪˈdʌkʃn/",
+    "translations": {
+      "pa": "ਕਟੌਤੀ",
+      "hi": "कटौती",
+      "zh": "扣款",
+      "es": "deducción"
+    },
+    "level": "branch",
+    "category": "workplace",
+    "example_sentences": [
+      "Taxes and CPP are deductions on every pay stub.",
+      "Ask payroll about that unknown deduction before payday."
+    ],
+    "confusion_pairs": [
+      "withholding",
+      "contribution"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.6,
+      "stability": 2.4
+    }
+  },
+  {
+    "id": "vocab-wep-28",
+    "word": "vacation pay",
+    "phonetic": "/veɪˈkeɪʃn peɪ/",
+    "translations": {
+      "pa": "ਛੁੱਟੀ ਦੀ ਤਨਖਾਹ",
+      "hi": "अवकाश वेतन",
+      "zh": "假期工资",
+      "es": "pago de vacaciones"
+    },
+    "level": "branch",
+    "category": "workplace",
+    "example_sentences": [
+      "Vacation pay adds four percent on every cheque.",
+      "You can take vacation pay out or bank it for time off."
+    ],
+    "confusion_pairs": [
+      "paid leave",
+      "holiday pay"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.58,
+      "stability": 2.5
+    }
+  },
+  {
+    "id": "vocab-wep-29",
+    "word": "stat holiday",
+    "phonetic": "/stæt ˈhɒlədeɪ/",
+    "translations": {
+      "pa": "ਸਰਕਾਰੀ ਛੁੱਟੀ",
+      "hi": "वैधानिक अवकाश",
+      "zh": "法定假日",
+      "es": "feriado oficial"
+    },
+    "level": "branch",
+    "category": "workplace",
+    "example_sentences": [
+      "Family Day is a stat holiday in February.",
+      "Working a stat holiday pays time and a half plus a day off."
+    ],
+    "confusion_pairs": [
+      "public holiday",
+      "long weekend"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.52,
+      "stability": 2.8
+    }
+  },
+  {
+    "id": "vocab-wep-30",
+    "word": "punch in",
+    "phonetic": "/pʌnʧ ɪn/",
+    "translations": {
+      "pa": "ਪੰਚ ਇਨ (ਹਾਜ਼ਰੀ ਲਗਾਉਣੀ)",
+      "hi": "पंच इन (उपस्थिति दर्ज करना)",
+      "zh": "打卡上班",
+      "es": "fichar al entrar"
+    },
+    "level": "sprout",
+    "category": "workplace",
+    "example_sentences": [
+      "Punch in before you grab your vest.",
+      "Don't forget to punch in or your hours won't count."
+    ],
+    "confusion_pairs": [
+      "clock in",
+      "sign in"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.45,
+      "stability": 3.1
+    }
+  },
+  {
+    "id": "vocab-wep-31",
+    "word": "safety gear",
+    "phonetic": "/ˈseɪfti ɡɪər/",
+    "translations": {
+      "pa": "ਸੁਰੱਖਿਆ ਸਾਜ਼-ਸਾਮਾਨ",
+      "hi": "सुरक्षा उपकरण",
+      "zh": "安全装备",
+      "es": "equipo de seguridad"
+    },
+    "level": "sprout",
+    "category": "workplace",
+    "example_sentences": [
+      "Put on your safety gear before entering the floor.",
+      "The company provides safety gear free of charge."
+    ],
+    "confusion_pairs": [
+      "PPE",
+      "uniform"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.38,
+      "stability": 3.6
+    }
+  },
+  {
+    "id": "vocab-wep-32",
+    "word": "hard hat",
+    "phonetic": "/hɑːrd hæt/",
+    "translations": {
+      "pa": "ਸੁਰੱਖਿਆ ਟੋਪੀ",
+      "hi": "सुरक्षा हैलमेट",
+      "zh": "安全帽",
+      "es": "casco de seguridad"
+    },
+    "level": "sprout",
+    "category": "workplace",
+    "example_sentences": [
+      "Hard hats are required past the yellow line.",
+      "Grab a hard hat from the rack by the door."
+    ],
+    "confusion_pairs": [
+      "helmet",
+      "toque"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.35,
+      "stability": 3.7
+    }
+  },
+  {
+    "id": "vocab-wep-33",
+    "word": "hazard",
+    "phonetic": "/ˈhæzərd/",
+    "translations": {
+      "pa": "ਖ਼ਤਰਾ",
+      "hi": "खतरा",
+      "zh": "危险隐患",
+      "es": "riesgo"
+    },
+    "level": "branch",
+    "category": "workplace",
+    "example_sentences": [
+      "Report any spill — a wet floor is a hazard.",
+      "Fill out a hazard form if you spot loose wiring."
+    ],
+    "confusion_pairs": [
+      "danger",
+      "risk"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.5,
+      "stability": 2.9
+    }
+  },
+  {
+    "id": "vocab-wep-34",
+    "word": "task",
+    "phonetic": "/tæsk/",
+    "translations": {
+      "pa": "ਕੰਮ ਦਾ ਟਾਸਕ",
+      "hi": "कार्य",
+      "zh": "任务",
+      "es": "tarea"
+    },
+    "level": "seed",
+    "category": "workplace",
+    "example_sentences": [
+      "Your first task is sorting the returns cart.",
+      "She finished the task ahead of schedule."
+    ],
+    "confusion_pairs": [
+      "chore",
+      "project"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.18,
+      "stability": 4.8
+    }
+  },
+  {
+    "id": "vocab-wep-35",
+    "word": "deadline",
+    "phonetic": "/ˈdedlaɪn/",
+    "translations": {
+      "pa": "ਆਖ਼ਰੀ ਤਾਰੀਖ਼",
+      "hi": "अंतिम तिथि",
+      "zh": "截止日期",
+      "es": "fecha límite"
+    },
+    "level": "sprout",
+    "category": "workplace",
+    "example_sentences": [
+      "The deadline for the report is Thursday noon.",
+      "Tell your lead early if a deadline looks tight."
+    ],
+    "confusion_pairs": [
+      "due date",
+      "cut-off"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.3,
+      "stability": 3.9
+    }
+  },
+  {
+    "id": "vocab-wep-36",
+    "word": "clarify",
+    "phonetic": "/ˈklærəfaɪ/",
+    "translations": {
+      "pa": "ਸਪਸ਼ਟ ਕਰਨਾ",
+      "hi": "स्पष्ट करना",
+      "zh": "澄清",
+      "es": "aclarar"
+    },
+    "level": "branch",
+    "category": "workplace",
+    "example_sentences": [
+      "Could you clarify which aisle the pallets go to?",
+      "I want to clarify one point from the meeting."
+    ],
+    "confusion_pairs": [
+      "explain",
+      "confirm"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.48,
+      "stability": 3.0
+    }
+  },
+  {
+    "id": "vocab-wep-37",
+    "word": "follow up",
+    "phonetic": "/ˈfɒloʊ ʌp/",
+    "translations": {
+      "pa": "ਪਿੱਛੇ ਰਾਬਤਾ ਕਰਨਾ",
+      "hi": "फॉलो अप करना",
+      "zh": "跟进",
+      "es": "hacer seguimiento"
+    },
+    "level": "branch",
+    "category": "workplace",
+    "example_sentences": [
+      "Follow up by email after the interview.",
+      "I will follow up with the supplier on Monday."
+    ],
+    "confusion_pairs": [
+      "check in",
+      "catch up"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.5,
+      "stability": 2.9
+    }
+  },
+  {
+    "id": "vocab-wep-38",
+    "word": "feedback",
+    "phonetic": "/ˈfiːdbæk/",
+    "translations": {
+      "pa": "ਪ੍ਰਤੀਕਿਰਿਆ (ਸੁਝਾਅ)",
+      "hi": "प्रतिक्रिया",
+      "zh": "反馈",
+      "es": "retroalimentación"
+    },
+    "level": "branch",
+    "category": "workplace",
+    "example_sentences": [
+      "My lead gave me useful feedback on my calls.",
+      "Feedback here is direct but respectful."
+    ],
+    "confusion_pairs": [
+      "criticism",
+      "review"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.42,
+      "stability": 3.2
+    }
+  },
+  {
+    "id": "vocab-wep-39",
+    "word": "performance review",
+    "phonetic": "/pərˈfɔːrməns rɪˈvjuː/",
+    "translations": {
+      "pa": "ਕਾਰਗੁਜ਼ਾਰੀ ਸਮੀਖਿਆ",
+      "hi": "निष्पादन समीक्षा",
+      "zh": "绩效评估",
+      "es": "evaluación de desempeño"
+    },
+    "level": "bloom",
+    "category": "workplace",
+    "example_sentences": [
+      "My first performance review is in March.",
+      "Bring your wins to the performance review — nobody else will remember them."
+    ],
+    "confusion_pairs": [
+      "check-in",
+      "appraisal"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.62,
+      "stability": 2.2
+    }
+  },
+  {
+    "id": "vocab-wep-40",
+    "word": "promotion",
+    "phonetic": "/prəˈmoʊʃn/",
+    "translations": {
+      "pa": "ਤਰੱਕੀ",
+      "hi": "पदोन्नति",
+      "zh": "晋升",
+      "es": "ascenso"
+    },
+    "level": "branch",
+    "category": "workplace",
+    "example_sentences": [
+      "She got a promotion to team lead after a year.",
+      "Promotions here usually go to people who train others."
+    ],
+    "confusion_pairs": [
+      "raise",
+      "transfer"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.55,
+      "stability": 2.7
+    }
+  },
+  {
+    "id": "vocab-wep-41",
+    "word": "raise",
+    "phonetic": "/reɪz/",
+    "translations": {
+      "pa": "ਤਨਖਾਹ ਵਾਧਾ",
+      "hi": "वेतन वृद्धि",
+      "zh": "加薪",
+      "es": "aumento de sueldo"
+    },
+    "level": "branch",
+    "category": "workplace",
+    "example_sentences": [
+      "Ask about a raise at your yearly review.",
+      "He earned a raise by covering night shifts all summer."
+    ],
+    "confusion_pairs": [
+      "promotion",
+      "bonus"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.52,
+      "stability": 2.8
+    }
+  },
+  {
+    "id": "vocab-wep-42",
+    "word": "strength",
+    "phonetic": "/streŋθ/",
+    "translations": {
+      "pa": "ਮਜ਼ਬੂਤ ਪੱਖ",
+      "hi": "मजबूत पक्ष",
+      "zh": "优势",
+      "es": "punto fuerte"
+    },
+    "level": "branch",
+    "category": "workplace",
+    "example_sentences": [
+      "My biggest strength is staying calm with angry customers.",
+      "Name one strength and prove it with a story."
+    ],
+    "confusion_pairs": [
+      "skill",
+      "talent"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.45,
+      "stability": 3.3
+    }
+  },
+  {
+    "id": "vocab-wep-43",
+    "word": "weakness",
+    "phonetic": "/ˈwiːknəs/",
+    "translations": {
+      "pa": "ਕਮਜ਼ੋਰੀ",
+      "hi": "कमजोरी",
+      "zh": "待改进之处",
+      "es": "punto débil"
+    },
+    "level": "bloom",
+    "category": "workplace",
+    "example_sentences": [
+      "Pick a weakness you are actively improving.",
+      "Interviewers ask about weaknesses to see how you grow."
+    ],
+    "confusion_pairs": [
+      "flaw",
+      "area for improvement"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.6,
+      "stability": 2.4
+    }
+  },
+  {
+    "id": "vocab-wep-44",
+    "word": "small talk",
+    "phonetic": "/ˈsmɔːl tɔːk/",
+    "translations": {
+      "pa": "ਹਲਕੀ ਫੁਲਕੀ ਗੱਲਬਾਤ",
+      "hi": "हल्की बातचीत",
+      "zh": "寒暄",
+      "es": "charla trivial"
+    },
+    "level": "sprout",
+    "category": "workplace",
+    "example_sentences": [
+      "Small talk about the weather opens most meetings here.",
+      "Five minutes of small talk builds trust with coworkers."
+    ],
+    "confusion_pairs": [
+      "gossip",
+      "chatting"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.4,
+      "stability": 3.4
+    }
+  },
+  {
+    "id": "vocab-wep-45",
+    "word": "potluck",
+    "phonetic": "/ˈpɑːtlʌk/",
+    "translations": {
+      "pa": "ਪਾਟਲਕ (ਮਿਲ ਕੇ ਪਕਵਾਨ ਲਿਆਉਣਾ)",
+      "hi": "पोटलक (सब अपना व्यंजन लाते हैं)",
+      "zh": "百乐餐（各带一道菜）",
+      "es": "comida compartida"
+    },
+    "level": "branch",
+    "category": "workplace",
+    "example_sentences": [
+      "The team potluck is Friday — bring a dish to share.",
+      "His butter chicken disappeared first at the potluck."
+    ],
+    "confusion_pairs": [
+      "bbq",
+      "pizza party"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.55,
+      "stability": 2.6
+    }
+  },
+  {
+    "id": "vocab-wep-46",
+    "word": "full-time",
+    "phonetic": "/ˌfʊlˈtaɪm/",
+    "translations": {
+      "pa": "ਪੂਰਾ ਸਮਾਂ",
+      "hi": "पूर्णकालिक",
+      "zh": "全职",
+      "es": "tiempo completo"
+    },
+    "level": "seed",
+    "category": "workplace",
+    "example_sentences": [
+      "Full-time hours here mean thirty-five to forty a week.",
+      "She moved from part-time to full-time in March."
+    ],
+    "confusion_pairs": [
+      "permanent",
+      "salaried"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.22,
+      "stability": 4.5
+    }
+  },
+  {
+    "id": "vocab-wep-47",
+    "word": "part-time",
+    "phonetic": "/ˈpɑːrt taɪm/",
+    "translations": {
+      "pa": "ਅੱਧਾ ਸਮਾਂ",
+      "hi": "अंशकालिक",
+      "zh": "兼职",
+      "es": "medio tiempo"
+    },
+    "level": "seed",
+    "category": "workplace",
+    "example_sentences": [
+      "Part-time roles rarely include benefits.",
+      "He works part-time while studying at college."
+    ],
+    "confusion_pairs": [
+      "casual",
+      "seasonal"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.22,
+      "stability": 4.5
+    }
+  },
+  {
+    "id": "vocab-wep-48",
+    "word": "seasonal work",
+    "phonetic": "/ˈsiːzənl wɜːrk/",
+    "translations": {
+      "pa": "ਰੁੱਤੀ ਕੰਮ",
+      "hi": "मौसमी कार्य",
+      "zh": "季节性工作",
+      "es": "trabajo de temporada"
+    },
+    "level": "branch",
+    "category": "workplace",
+    "example_sentences": [
+      "Warehouse hires spike for seasonal work before December.",
+      "Seasonal work can convert to permanent if you perform."
+    ],
+    "confusion_pairs": [
+      "temp job",
+      "summer job"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.5,
+      "stability": 2.9
+    }
+  },
+  {
+    "id": "vocab-wep-49",
+    "word": "union",
+    "phonetic": "/ˈjuːniən/",
+    "translations": {
+      "pa": "ਯੂਨੀਅਨ",
+      "hi": "यूनियन (श्रम संगठन)",
+      "zh": "工会",
+      "es": "sindicato"
+    },
+    "level": "bloom",
+    "category": "workplace",
+    "example_sentences": [
+      "The union negotiated better weekend premiums.",
+      "Union dues come off your cheque automatically."
+    ],
+    "confusion_pairs": [
+      "association",
+      "HR"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.65,
+      "stability": 2.1
+    }
+  },
+  {
+    "id": "vocab-wep-50",
+    "word": "notice period",
+    "phonetic": "/ˈnoʊtɪs ˈpɪəriəd/",
+    "translations": {
+      "pa": "ਨੋਟਿਸ ਮਿਆਦ",
+      "hi": "नोटिस अवधि",
+      "zh": "离职通知期",
+      "es": "preaviso"
+    },
+    "level": "bloom",
+    "category": "workplace",
+    "example_sentences": [
+      "Give two weeks' notice before leaving a job.",
+      "The contract lists a one-month notice period for resignations."
+    ],
+    "confusion_pairs": [
+      "termination",
+      "layoff"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.68,
+      "stability": 1.9
+    }
+  }
+]
