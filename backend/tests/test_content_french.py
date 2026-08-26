@@ -7,6 +7,7 @@ deterministic uuid5 IDs, and duplicate detection across packs.
 
 import json
 import uuid
+from collections import Counter
 from pathlib import Path
 
 import pytest
@@ -155,6 +156,17 @@ def test_combined_seed_counts() -> None:
     assert len(seeds) == 65
     assert sum(1 for s in seeds if s.target_language.startswith("en")) == 60
     assert len(vocab) == 320
+
+
+def test_scenario_seeds_carry_manifest_pack_ids() -> None:
+    counts = Counter(seed.pack_id for seed in load_scenario_seeds())
+    assert counts == {
+        "canadian-life-v1": 20,
+        "canadian-life-v2": 20,
+        "quebec-life-v1": 5,
+        "workplace-english-v1": 10,
+        "healthcare-english-v1": 10,
+    }
 
 
 def test_vocabulary_seeds_carry_language_metadata() -> None:

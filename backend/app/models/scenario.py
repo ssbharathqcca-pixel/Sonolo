@@ -59,6 +59,11 @@ class Scenario(Base):
     target_language: Mapped[str] = mapped_column(
         String(10), default="en-CA", server_default=text("'en-CA'")
     )
+    #: Manifest pack this row came from (SN-035); nullable so rows seeded
+    #: before pack tracking remain valid until their next upsert.
+    pack_id: Mapped[str | None] = mapped_column(
+        String(64), default=None, server_default=text("NULL"), index=True
+    )
     system_prompt: Mapped[str] = mapped_column(Text, default="")
     opening_line: Mapped[str] = mapped_column(Text, default="")
     expected_turns: Mapped[int] = mapped_column(Integer)

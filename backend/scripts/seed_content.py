@@ -4,25 +4,26 @@ Usage (from backend/, with DATABASE_URL pointing at the target DB):
 
     .venv/Scripts/python -m scripts.seed_content
 
-Loads BOTH editions of each pack:
+Loads every pack declared in content/manifest.json (SN-027):
 
-    scenarios  : content/scenarios/canadian-life-v1.json + -v2.json  (40)
-    vocabulary : content/vocabulary/core-v1.json + core-v2.json      (200)
+    scenarios  : canadian-life-v1 + v2, quebec-life-v1,
+                 workplace-english-v1, healthcare-english-v1  (65)
+    vocabulary : core-v1 + v2, core-fr-v1, workplace + healthcare  (320)
 
 Scenarios are shared rows upserted idempotently under deterministic
 uuid5 PKs derived in the SAME namespace as
-app.services.content_service, so seeded ids match what lazy
-materialization and the API return regardless of which code path
-seeded first. Vocabulary stays user-scoped by design (D-008): this
-script validates and counts the combined pack; cards materialize
-lazily per user via GET /api/review/due. Re-running is a no-op:
-counts stay stable at 40 scenarios / 200 vocabulary pack items.
+app.services.content_service — the script delegates to the service
+loader so both seeding paths stay byte-identical, including the
+per-scenario pack_id mapping (SN-035). Vocabulary stays user-scoped
+by design (D-008): this script validates and counts the combined
+packs; cards materialize lazily per user via GET /api/review/due.
+Re-running is a no-op: counts stay stable at 65 scenarios / 320
+vocabulary pack items.
 """
 
 import asyncio
 import json
 import sys
-from pathlib import Path
 from typing import Any
 
 from sqlalchemy import func, select
@@ -30,107 +31,58 @@ from sqlalchemy import func, select
 from app.db.session import AsyncSessionLocal, dialect_name
 from app.models.scenario import Scenario
 from app.services.content_service import (
-    LEVEL_DIFFICULTY,
-    ScenarioSeed,
-    content_scenario_id,
+    _resolve_pack_path,
+    load_manifest_packs,
+    load_scenario_seeds,
 )
 from sqlalchemy.dialects.postgresql import insert as pg_insert
 from sqlalchemy.dialects.sqlite import insert as sqlite_insert
-
-BACKEND_DIR = Path(__file__).resolve().parents[1]
-
-SCENARIO_PACKS = [
-    "../content/scenarios/canadian-life-v1.json",
-    "../content/scenarios/canadian-life-v2.json",
-]
-
-VOCABULARY_PACKS = [
-    "../content/vocabulary/core-v1.json",
-    "../content/vocabulary/core-v2.json",
-]
 
 REQUIRED_VOCAB_FIELDS = {"id", "word", "translations", "fsrs_params"}
 REQUIRED_TRANSLATIONS = {"pa", "hi", "zh", "es"}
 
 
-def _resolve(path_setting: str) -> Path:
-    path = Path(path_setting)
-    if path.is_absolute():
-        return path
-    return BACKEND_DIR / path
-
-
-def _load_scenario_pack(rel_path: str) -> list[ScenarioSeed]:
-    """Flatten one scenario pack exactly like the service loader."""
-    with _resolve(rel_path).open(encoding="utf-8") as handle:
-        raw: list[dict[str, Any]] = json.load(handle)
-    seeds: list[ScenarioSeed] = []
-    for entry in raw:
-        level = str(entry["level"])
-        seeds.append(
-            ScenarioSeed(
-                id=content_scenario_id(str(entry["id"])),
-                title=str(entry["title"]),
-                description=str(entry["description"]),
-                category=str(entry["category"]),
-                mode=str(entry["mode"]),
-                level=level,
-                difficulty=LEVEL_DIFFICULTY.get(level, 3),
-                target_language=str(entry["target_language"]),
-                system_prompt=str(entry["system_prompt"]),
-                opening_line=str(entry["opening_line"]),
-                expected_turns=int(entry["expected_turns"]),
-                success_criteria={"items": list(entry["success_criteria"])},
-                vocabulary_targets=list(entry["vocabulary_targets"]),
-                grammar_targets=list(entry["grammar_targets"]),
-                cultural_notes=str(entry["cultural_notes"]),
-                is_premium=bool(entry["is_premium"]),
-            )
-        )
-    return seeds
-
-
-def load_all_scenario_seeds() -> list[ScenarioSeed]:
-    """Load every scenario edition, newest last on conflict."""
-    seeds: list[ScenarioSeed] = []
-    for rel_path in SCENARIO_PACKS:
-        seeds.extend(_load_scenario_pack(rel_path))
-    if len({seed.id for seed in seeds}) != len(seeds):
-        raise ValueError("Scenario packs contain duplicate content ids.")
-    return seeds
+def load_all_scenario_seeds():
+    """Load every manifest scenario pack through the service loader."""
+    return load_scenario_seeds()
 
 
 def validate_vocabulary_packs() -> dict[str, int]:
-    """Parse both vocabulary packs and verify the shared schema."""
+    """Parse every manifest vocabulary pack and verify the shared schema."""
     counts: dict[str, int] = {}
-    seen_words: set[str] = set()
     total = 0
-    for rel_path in VOCABULARY_PACKS:
-        with _resolve(rel_path).open(encoding="utf-8") as handle:
+    packs = [
+        pack for pack in load_manifest_packs() if pack.type == "vocabulary"
+    ]
+    for pack in packs:
+        path = _resolve_pack_path(pack.path)
+        with path.open(encoding="utf-8") as handle:
             raw: list[dict[str, Any]] = json.load(handle)
+        # Word overlaps ACROSS packs are by design (e.g. "interview");
+        # only duplicates inside one pack indicate a curation mistake.
+        seen_words: set[str] = set()
         for entry in raw:
             missing = REQUIRED_VOCAB_FIELDS - entry.keys()
             if missing:
                 raise ValueError(
-                    f"{rel_path}: item {entry.get('id')!r} missing {sorted(missing)}"
+                    f"{pack.id}: item {entry.get('id')!r} missing {sorted(missing)}"
                 )
             codes = set(entry["translations"])
             if codes != REQUIRED_TRANSLATIONS:
                 raise ValueError(
-                    f"{rel_path}: item {entry['id']!r} translations {sorted(codes)}"
+                    f"{pack.id}: item {entry['id']!r} translations {sorted(codes)}"
                     f" != {sorted(REQUIRED_TRANSLATIONS)}"
                 )
             params = entry["fsrs_params"]
             if not 0.0 <= float(params["difficulty"]) <= 1.0:
                 raise ValueError(
-                    f"{rel_path}: item {entry['id']!r} difficulty out of range"
+                    f"{pack.id}: item {entry['id']!r} difficulty out of range"
                 )
             word = str(entry["word"]).casefold()
             if word in seen_words:
-                raise ValueError(f"{rel_path}: duplicate word {word!r}")
+                raise ValueError(f"{pack.id}: duplicate word {word!r}")
             seen_words.add(word)
-        name = Path(rel_path).stem
-        counts[name] = len(raw)
+        counts[pack.id] = len(raw)
         total += len(raw)
     counts["total"] = total
     return counts
@@ -149,6 +101,7 @@ async def seed_scenarios(db) -> int:
             "level": seed.level,
             "difficulty": seed.difficulty,
             "target_language": seed.target_language,
+            "pack_id": seed.pack_id,
             "system_prompt": seed.system_prompt,
             "opening_line": seed.opening_line,
             "expected_turns": seed.expected_turns,

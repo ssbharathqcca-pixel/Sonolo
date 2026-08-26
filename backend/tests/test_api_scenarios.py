@@ -83,11 +83,14 @@ async def test_scenarios_returns_the_seeded_catalog(
         "description",
         "category",
         "target_language",
+        "pack_id",
         "difficulty",
         "is_locked",
     }
     assert isinstance(first["id"], str)
     assert first["difficulty"] is None or 1 <= first["difficulty"] <= 5
+    # Every seeded row maps back to its manifest pack (SN-035).
+    assert all(scenario["pack_id"] for scenario in body["scenarios"])
 
 
 async def test_free_user_sees_premium_scenarios_locked(

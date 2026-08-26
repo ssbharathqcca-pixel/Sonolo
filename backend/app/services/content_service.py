@@ -147,6 +147,9 @@ class ScenarioSeed:
     grammar_targets: list[str]
     cultural_notes: str
     is_premium: bool
+    #: Manifest pack the scenario belongs to (SN-035); drives the Learn
+    #: tab's per-pack filtering and counts.
+    pack_id: str
 
 
 @dataclass(frozen=True)
@@ -163,17 +166,17 @@ class VocabularySeed:
 
 def load_scenario_seeds() -> list[ScenarioSeed]:
     """Read and validate every scenario pack listed in the manifest."""
-    # Manifest order governs pack precedence (English v1+v2, then Quebec):
-    # 45 total scenarios today; new packs append without code changes.
-    paths = [
-        _resolve_pack_path(pack.path)
-        for pack in load_manifest_packs()
-        if pack.type == "scenarios"
+    # Manifest order governs pack precedence (English v1+v2, workplace,
+    # healthcare, then Quebec): 65 total scenarios today; new packs
+    # append without code changes. Each seed carries its manifest pack
+    # id so seeded rows map back to their pack (SN-035).
+    packs = [
+        pack for pack in load_manifest_packs() if pack.type == "scenarios"
     ]
     seeds: list[ScenarioSeed] = []
     seen_ids: set[str] = set()
-    for path in paths:
-        with path.open(encoding="utf-8") as handle:
+    for pack in packs:
+        with _resolve_pack_path(pack.path).open(encoding="utf-8") as handle:
             raw: list[dict[str, Any]] = json.load(handle)
         for entry in raw:
             content_id = str(entry["id"])
@@ -201,6 +204,7 @@ def load_scenario_seeds() -> list[ScenarioSeed]:
                     grammar_targets=list(entry["grammar_targets"]),
                     cultural_notes=str(entry["cultural_notes"]),
                     is_premium=bool(entry["is_premium"]),
+                    pack_id=pack.id,
                 )
             )
     return seeds
@@ -260,6 +264,7 @@ async def seed_scenarios(db: AsyncSession) -> int:
             "level": seed.level,
             "difficulty": seed.difficulty,
             "target_language": seed.target_language,
+            "pack_id": seed.pack_id,
             "system_prompt": seed.system_prompt,
             "opening_line": seed.opening_line,
             "expected_turns": seed.expected_turns,

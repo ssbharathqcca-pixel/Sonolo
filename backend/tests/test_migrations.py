@@ -61,6 +61,7 @@ REQUIRED_COLUMNS: dict[str, set[str]] = {
     },
     "daily_quests": {"code", "title", "target_count", "progress_count", "completed_at"},
     "user_badges": {"badge_id", "title", "description", "earned_at"},
+    "scenarios": {"pack_id"},  # SN-035
 }
 
 
@@ -95,6 +96,7 @@ def test_alembic_offline_upgrade_generates_full_schema() -> None:
         "uq_user_badges_user_badge",
         "idx_vocab_due",
         "preferred_language",
+        "ix_scenarios_pack_id",  # SN-035
     ):
         assert marker in sql, f"migration SQL missing: {marker}"
     assert "user_vocabulary_states" not in sql  # See SN-014A decision note.

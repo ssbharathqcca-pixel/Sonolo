@@ -31,6 +31,9 @@ class ScenarioOut(BaseModel):
     #: BCP-47 content language of the scenario's pack; the mobile Learn
     #: tab matches it against pack languages for card badges (SN-030).
     target_language: str
+    #: Manifest pack the scenario belongs to; the Learn tab filters the
+    #: catalog to one pack with it (SN-035).
+    pack_id: str | None
     difficulty: int | None
     #: True when the scenario is premium and the caller is on the free
     #: tier (SN-026) — the mobile client renders a paywall for these.
@@ -81,9 +84,10 @@ async def list_scenarios(
                     description=scenario.description,
                     category=scenario.category,
                     target_language=scenario.target_language,
+                    pack_id=scenario.pack_id,
                     difficulty=scenario.difficulty,
-                is_locked=bool(scenario.is_premium and is_free_tier),
-            )
+                    is_locked=bool(scenario.is_premium and is_free_tier),
+                )
             for scenario in scenarios
         ]
     )
