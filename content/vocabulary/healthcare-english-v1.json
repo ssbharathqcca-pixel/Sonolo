@@ -1,0 +1,1252 @@
+[
+  {
+    "id": "vocab-hep-01",
+    "word": "doctor",
+    "phonetic": "/ˈdɑːktər/",
+    "translations": {
+      "pa": "ਡਾਕਟਰ",
+      "hi": "डॉक्टर",
+      "zh": "医生",
+      "es": "médico / médica"
+    },
+    "level": "seed",
+    "category": "healthcare",
+    "example_sentences": [
+      "Ask the receptionist which doctor is taking new patients.",
+      "My family doctor has treated me for ten years."
+    ],
+    "confusion_pairs": [
+      "nurse practitioner",
+      "specialist"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.2,
+      "stability": 4.8
+    }
+  },
+  {
+    "id": "vocab-hep-02",
+    "word": "nurse",
+    "phonetic": "/nɜːrs/",
+    "translations": {
+      "pa": "ਨਰਸ",
+      "hi": "नर्स",
+      "zh": "护士",
+      "es": "enfermero / enfermera"
+    },
+    "level": "seed",
+    "category": "healthcare",
+    "example_sentences": [
+      "A nurse checked my blood pressure before the doctor came in.",
+      "Call the clinic and ask to speak with the nurse."
+    ],
+    "confusion_pairs": [
+      "nurse practitioner",
+      "personal support worker"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.22,
+      "stability": 4.6
+    }
+  },
+  {
+    "id": "vocab-hep-03",
+    "word": "sick",
+    "phonetic": "/sɪk/",
+    "translations": {
+      "pa": "ਬਿਮਾਰ",
+      "hi": "बीमार",
+      "zh": "生病的",
+      "es": "enfermo / enferma"
+    },
+    "level": "seed",
+    "category": "healthcare",
+    "example_sentences": [
+      "I'm calling in sick to work this morning.",
+      "She stayed home sick with a bad cold."
+    ],
+    "confusion_pairs": [
+      "unwell",
+      "nauseous"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.2,
+      "stability": 4.5
+    }
+  },
+  {
+    "id": "vocab-hep-04",
+    "word": "pain",
+    "phonetic": "/peɪn/",
+    "translations": {
+      "pa": "ਦਰਦ",
+      "hi": "दर्द",
+      "zh": "疼痛",
+      "es": "dolor"
+    },
+    "level": "seed",
+    "category": "healthcare",
+    "example_sentences": [
+      "I have a sharp pain in my lower back.",
+      "Tell the nurse where the pain is and how bad it feels."
+    ],
+    "confusion_pairs": [
+      "ache",
+      "soreness"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.24,
+      "stability": 4.4
+    }
+  },
+  {
+    "id": "vocab-hep-05",
+    "word": "medicine",
+    "phonetic": "/ˈmedsn/",
+    "translations": {
+      "pa": "ਦਵਾਈ",
+      "hi": "दवा",
+      "zh": "药品",
+      "es": "medicamento"
+    },
+    "level": "seed",
+    "category": "healthcare",
+    "example_sentences": [
+      "Take this medicine with food twice a day.",
+      "Some cold medicines make you drowsy, so read the label."
+    ],
+    "confusion_pairs": [
+      "medication",
+      "supplement"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.25,
+      "stability": 4.3
+    }
+  },
+  {
+    "id": "vocab-hep-06",
+    "word": "health card",
+    "phonetic": "/ˈhelθ kɑːrd/",
+    "translations": {
+      "pa": "ਸਿਹਤ ਕਾਰਡ",
+      "hi": "स्वास्थ्य कार्ड",
+      "zh": "医疗卡",
+      "es": "tarjeta de salud"
+    },
+    "level": "sprout",
+    "category": "healthcare",
+    "example_sentences": [
+      "Always carry your health card with you to appointments.",
+      "The clerk will ask for your health card before the visit."
+    ],
+    "confusion_pairs": [
+      "driver's licence",
+      "private insurance card"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.3,
+      "stability": 4.0
+    }
+  },
+  {
+    "id": "vocab-hep-07",
+    "word": "clinic",
+    "phonetic": "/ˈklɪnɪk/",
+    "translations": {
+      "pa": "ਕਲੀਨਿਕ",
+      "hi": "क्लिनिक",
+      "zh": "诊所",
+      "es": "clínica"
+    },
+    "level": "sprout",
+    "category": "healthcare",
+    "example_sentences": [
+      "The clinic down the street is open until nine tonight.",
+      "There's usually a long line at the clinic on Saturday mornings."
+    ],
+    "confusion_pairs": [
+      "doctor's office",
+      "hospital"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.3,
+      "stability": 4.1
+    }
+  },
+  {
+    "id": "vocab-hep-08",
+    "word": "appointment",
+    "phonetic": "/əˈpɔɪntmənt/",
+    "translations": {
+      "pa": "ਅਪਾਇੰਟਮੈਂਟ",
+      "hi": "अपॉइंटमेंट",
+      "zh": "预约",
+      "es": "cita"
+    },
+    "level": "sprout",
+    "category": "healthcare",
+    "example_sentences": [
+      "I booked an appointment to see my doctor on Friday.",
+      "Can I move my appointment to next week?"
+    ],
+    "confusion_pairs": [
+      "booking",
+      "walk-in visit"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.32,
+      "stability": 3.9
+    }
+  },
+  {
+    "id": "vocab-hep-09",
+    "word": "pharmacy",
+    "phonetic": "/ˈfɑːrməsi/",
+    "translations": {
+      "pa": "ਫਾਰਮੇਸੀ",
+      "hi": "फार्मेसी",
+      "zh": "药房",
+      "es": "farmacia"
+    },
+    "level": "sprout",
+    "category": "healthcare",
+    "example_sentences": [
+      "Pick up your prescription at the pharmacy on Main Street.",
+      "The pharmacy can deliver refills to your door."
+    ],
+    "confusion_pairs": [
+      "drugstore",
+      "laboratory"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.31,
+      "stability": 4.0
+    }
+  },
+  {
+    "id": "vocab-hep-10",
+    "word": "pharmacist",
+    "phonetic": "/ˈfɑːrməsɪst/",
+    "translations": {
+      "pa": "ਫ਼ਾਰਮਾਸਿਸਟ",
+      "hi": "फ़ार्मासिस्ट",
+      "zh": "药剂师",
+      "es": "farmacéutico / farmacéutica"
+    },
+    "level": "sprout",
+    "category": "healthcare",
+    "example_sentences": [
+      "Ask the pharmacist before mixing cold medicine with other drugs.",
+      "The pharmacist can print a list of all your medications."
+    ],
+    "confusion_pairs": [
+      "pharmacy technician",
+      "chemist (UK)"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.34,
+      "stability": 3.8
+    }
+  },
+  {
+    "id": "vocab-hep-11",
+    "word": "fever",
+    "phonetic": "/ˈfiːvər/",
+    "translations": {
+      "pa": "ਬੁਖ਼ਾਰ",
+      "hi": "बुखार",
+      "zh": "发烧",
+      "es": "fiebre"
+    },
+    "level": "sprout",
+    "category": "healthcare",
+    "example_sentences": [
+      "He has a fever of thirty-nine degrees.",
+      "If the fever lasts more than three days, see a doctor."
+    ],
+    "confusion_pairs": [
+      "chills",
+      "high temperature"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.33,
+      "stability": 3.7
+    }
+  },
+  {
+    "id": "vocab-hep-12",
+    "word": "cough",
+    "phonetic": "/kɔːf/",
+    "translations": {
+      "pa": "ਖੰਘ",
+      "hi": "खांसी",
+      "zh": "咳嗽",
+      "es": "tos"
+    },
+    "level": "sprout",
+    "category": "healthcare",
+    "example_sentences": [
+      "Her cough kept her awake most of the night.",
+      "A spoonful of honey can settle a dry cough."
+    ],
+    "confusion_pairs": [
+      "wheeze",
+      "sore throat"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.32,
+      "stability": 3.8
+    }
+  },
+  {
+    "id": "vocab-hep-13",
+    "word": "sore throat",
+    "phonetic": "/sɔːr θroʊt/",
+    "translations": {
+      "pa": "ਗਲੇ ਦਾ ਦਰਦ",
+      "hi": "गले में खराश",
+      "zh": "喉咙痛",
+      "es": "dolor de garganta"
+    },
+    "level": "sprout",
+    "category": "healthcare",
+    "example_sentences": [
+      "I have a sore throat and swollen glands.",
+      "Gargling warm salt water can ease a sore throat."
+    ],
+    "confusion_pairs": [
+      "strep throat",
+      "hoarse voice"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.35,
+      "stability": 3.6
+    }
+  },
+  {
+    "id": "vocab-hep-14",
+    "word": "allergy",
+    "phonetic": "/ˈælərdʒi/",
+    "translations": {
+      "pa": "ਐਲਰਜੀ",
+      "hi": "एलर्जी",
+      "zh": "过敏",
+      "es": "alergia"
+    },
+    "level": "sprout",
+    "category": "healthcare",
+    "example_sentences": [
+      "She has a penicillin allergy, so check the label.",
+      "Spring pollen makes my allergy flare up every April."
+    ],
+    "confusion_pairs": [
+      "food intolerance",
+      "sensitivity"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.36,
+      "stability": 3.5
+    }
+  },
+  {
+    "id": "vocab-hep-15",
+    "word": "emergency",
+    "phonetic": "/ɪˈmɜːrdʒənsi/",
+    "translations": {
+      "pa": "ਐਮਰਜੈਂਸੀ",
+      "hi": "आपातकालीन स्थिति",
+      "zh": "急诊；紧急情况",
+      "es": "emergencia"
+    },
+    "level": "sprout",
+    "category": "healthcare",
+    "example_sentences": [
+      "If the chest pain gets worse, that's an emergency — call 911.",
+      "Go to the nearest emergency department for a broken bone."
+    ],
+    "confusion_pairs": [
+      "urgent care",
+      "crisis"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.35,
+      "stability": 3.7
+    }
+  },
+  {
+    "id": "vocab-hep-16",
+    "word": "waiting room",
+    "phonetic": "/ˈweɪtɪŋ ruːm/",
+    "translations": {
+      "pa": "ਉਡੀਕ ਘਰ",
+      "hi": "प्रतीक्षा कक्ष",
+      "zh": "候诊室",
+      "es": "sala de espera"
+    },
+    "level": "sprout",
+    "category": "healthcare",
+    "example_sentences": [
+      "We waited forty minutes in the waiting room.",
+      "Please keep children with you in the waiting room."
+    ],
+    "confusion_pairs": [
+      "lobby",
+      "triage area"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.3,
+      "stability": 4.0
+    }
+  },
+  {
+    "id": "vocab-hep-17",
+    "word": "family doctor",
+    "phonetic": "/ˈfæməli ˈdɑːktər/",
+    "translations": {
+      "pa": "ਫੈਮਿਲੀ ਡਾਕਟਰ",
+      "hi": "फैमिली डॉक्टर",
+      "zh": "家庭医生",
+      "es": "médico de familia"
+    },
+    "level": "sprout",
+    "category": "healthcare",
+    "example_sentences": [
+      "Our family doctor knows everyone's medical history.",
+      "It can take months to find a family doctor who's accepting patients."
+    ],
+    "confusion_pairs": [
+      "walk-in doctor",
+      "pediatrician"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.33,
+      "stability": 3.9
+    }
+  },
+  {
+    "id": "vocab-hep-18",
+    "word": "walk-in clinic",
+    "phonetic": "/ˈwɔːkɪn ˈklɪnɪk/",
+    "translations": {
+      "pa": "ਵਾਕ-ਇਨ ਕਲੀਨਿਕ",
+      "hi": "वॉक-इन क्लिनिक",
+      "zh": "免预约诊所",
+      "es": "clínica sin cita previa"
+    },
+    "level": "sprout",
+    "category": "healthcare",
+    "example_sentences": [
+      "Walk-in clinics take patients without appointments.",
+      "I used a walk-in clinic while searching for a family doctor."
+    ],
+    "confusion_pairs": [
+      "urgent care centre",
+      "appointment-only clinic"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.37,
+      "stability": 3.5
+    }
+  },
+  {
+    "id": "vocab-hep-19",
+    "word": "symptom",
+    "phonetic": "/ˈsɪmptəm/",
+    "translations": {
+      "pa": "ਲੱਛਣ",
+      "hi": "लक्षण",
+      "zh": "症状",
+      "es": "síntoma"
+    },
+    "level": "branch",
+    "category": "healthcare",
+    "example_sentences": [
+      "Tell the doctor every symptom, even the small ones.",
+      "A fever is often the first symptom of the flu."
+    ],
+    "confusion_pairs": [
+      "sign",
+      "side effect"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.44,
+      "stability": 3.1
+    }
+  },
+  {
+    "id": "vocab-hep-20",
+    "word": "prescription",
+    "phonetic": "/prɪˈskrɪpʃn/",
+    "translations": {
+      "pa": "ਨੁਸਖ਼ਾ",
+      "hi": "पर्चा (नुस्ख़ा)",
+      "zh": "处方",
+      "es": "receta"
+    },
+    "level": "branch",
+    "category": "healthcare",
+    "example_sentences": [
+      "You need a prescription from a doctor for antibiotics.",
+      "Your prescription is ready at the pharmacy counter."
+    ],
+    "confusion_pairs": [
+      "referral note",
+      "over-the-counter medicine"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.46,
+      "stability": 3.0
+    }
+  },
+  {
+    "id": "vocab-hep-21",
+    "word": "refill",
+    "phonetic": "/ˈriːfɪl/",
+    "translations": {
+      "pa": "ਰੀਫਿਲ",
+      "hi": "रिफ़िल (दोबारा भरवाना)",
+      "zh": "续配药",
+      "es": "renovación de receta"
+    },
+    "level": "branch",
+    "category": "healthcare",
+    "example_sentences": [
+      "Ask your doctor to approve a refill before the bottle runs out.",
+      "I have one refill left on this prescription."
+    ],
+    "confusion_pairs": [
+      "renewal",
+      "transfer"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.45,
+      "stability": 3.0
+    }
+  },
+  {
+    "id": "vocab-hep-22",
+    "word": "dosage",
+    "phonetic": "/ˈdoʊsɪdʒ/",
+    "translations": {
+      "pa": "ਖਾਰਕ (ਖੁਰਾક)",
+      "hi": "खुराक",
+      "zh": "剂量",
+      "es": "dosis"
+    },
+    "level": "branch",
+    "category": "healthcare",
+    "example_sentences": [
+      "The dosage is one tablet twice a day with food.",
+      "Never change your dosage without asking the pharmacist."
+    ],
+    "confusion_pairs": [
+      "strength",
+      "quantity"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.47,
+      "stability": 2.9
+    }
+  },
+  {
+    "id": "vocab-hep-23",
+    "word": "side effect",
+    "phonetic": "/ˈsaɪd ɪˌfekt/",
+    "translations": {
+      "pa": "ਮਾੜਾ ਅਸਰ",
+      "hi": "दुष्प्रभाव",
+      "zh": "副作用",
+      "es": "efecto secundario"
+    },
+    "level": "branch",
+    "category": "healthcare",
+    "example_sentences": [
+      "Drowsiness is a common side effect of this medication.",
+      "Call the clinic if a side effect becomes severe."
+    ],
+    "confusion_pairs": [
+      "allergic reaction",
+      "drug interaction"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.46,
+      "stability": 3.0
+    }
+  },
+  {
+    "id": "vocab-hep-24",
+    "word": "nausea",
+    "phonetic": "/ˈnɔːziə/",
+    "translations": {
+      "pa": "ਜੀ ਮਿਚਲਣਾ",
+      "hi": "मतली (जी मिचलाहट)",
+      "zh": "恶心",
+      "es": "náuseas"
+    },
+    "level": "branch",
+    "category": "healthcare",
+    "example_sentences": [
+      "Strong painkillers can cause nausea.",
+      "Sip ginger tea if the nausea won't settle."
+    ],
+    "confusion_pairs": [
+      "vomiting",
+      "indigestion"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.48,
+      "stability": 2.8
+    }
+  },
+  {
+    "id": "vocab-hep-25",
+    "word": "dizziness",
+    "phonetic": "/ˈdɪzinəs/",
+    "translations": {
+      "pa": "ਚੱਕਰ ਆਉਣੇ",
+      "hi": "चक्कर आना",
+      "zh": "头晕",
+      "es": "mareo"
+    },
+    "level": "branch",
+    "category": "healthcare",
+    "example_sentences": [
+      "Dizziness can be a sign of dehydration.",
+      "She felt sudden dizziness after skipping lunch."
+    ],
+    "confusion_pairs": [
+      "lightheadedness",
+      "vertigo"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.48,
+      "stability": 2.8
+    }
+  },
+  {
+    "id": "vocab-hep-26",
+    "word": "rash",
+    "phonetic": "/ræʃ/",
+    "translations": {
+      "pa": "ਧੱਫ਼",
+      "hi": "चकत्ते (रैश)",
+      "zh": "皮疹",
+      "es": "sarpullido"
+    },
+    "level": "branch",
+    "category": "healthcare",
+    "example_sentences": [
+      "The new detergent gave him a red rash.",
+      "Show the doctor the rash before it fades."
+    ],
+    "confusion_pairs": [
+      "hives",
+      "itching"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.45,
+      "stability": 2.9
+    }
+  },
+  {
+    "id": "vocab-hep-27",
+    "word": "bleeding",
+    "phonetic": "/ˈbliːdɪŋ/",
+    "translations": {
+      "pa": "ਖ਼ੂਨ ਨਿਕਲਣਾ",
+      "hi": "खून बहना",
+      "zh": "出血",
+      "es": "sangrado"
+    },
+    "level": "branch",
+    "category": "healthcare",
+    "example_sentences": [
+      "Apply firm pressure to stop the bleeding.",
+      "Bleeding that won't stop needs immediate care."
+    ],
+    "confusion_pairs": [
+      "bruising",
+      "clotting"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.46,
+      "stability": 2.9
+    }
+  },
+  {
+    "id": "vocab-hep-28",
+    "word": "injury",
+    "phonetic": "/ˈɪndʒəri/",
+    "translations": {
+      "pa": "ਸੱਟ",
+      "hi": "चोट",
+      "zh": "外伤",
+      "es": "lesión"
+    },
+    "level": "branch",
+    "category": "healthcare",
+    "example_sentences": [
+      "Report any workplace injury to your supervisor right away.",
+      "The knee injury flares up whenever it rains."
+    ],
+    "confusion_pairs": [
+      "wound",
+      "sprain"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.47,
+      "stability": 2.9
+    }
+  },
+  {
+    "id": "vocab-hep-29",
+    "word": "emergency room",
+    "phonetic": "/ɪˈmɜːrdʒənsi ruːm/",
+    "translations": {
+      "pa": "ਐਮਰਜੈਂਸੀ ਵਿਭਾਗ",
+      "hi": "इमरजेंसी रूम",
+      "zh": "急诊室",
+      "es": "sala de emergencias"
+    },
+    "level": "branch",
+    "category": "healthcare",
+    "example_sentences": [
+      "They rushed him to the emergency room at St. Paul's Hospital.",
+      "Expect a long wait at the emergency room for minor problems."
+    ],
+    "confusion_pairs": [
+      "urgent care centre",
+      "walk-in clinic"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.45,
+      "stability": 3.0
+    }
+  },
+  {
+    "id": "vocab-hep-30",
+    "word": "referral",
+    "phonetic": "/rɪˈfɜːrəl/",
+    "translations": {
+      "pa": "ਰੈਫਰਲ",
+      "hi": "रेफ़रल (भेजना)",
+      "zh": "转诊单",
+      "es": "derivación"
+    },
+    "level": "branch",
+    "category": "healthcare",
+    "example_sentences": [
+      "Your referral to the skin specialist came through.",
+      "Ask how long the referral wait list usually is."
+    ],
+    "confusion_pairs": [
+      "requisition",
+      "recommendation letter"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.49,
+      "stability": 2.8
+    }
+  },
+  {
+    "id": "vocab-hep-31",
+    "word": "specialist",
+    "phonetic": "/ˈspeʃəlɪst/",
+    "translations": {
+      "pa": "ਮਾਹਿਰ ਡਾਕਟਰ",
+      "hi": "विशेषज्ञ डॉक्टर",
+      "zh": "专科医生",
+      "es": "especialista"
+    },
+    "level": "branch",
+    "category": "healthcare",
+    "example_sentences": [
+      "A specialist handles problems your family doctor can't treat.",
+      "The specialist will see you at the outpatient clinic."
+    ],
+    "confusion_pairs": [
+      "general practitioner",
+      "surgeon"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.46,
+      "stability": 3.0
+    }
+  },
+  {
+    "id": "vocab-hep-32",
+    "word": "checkup",
+    "phonetic": "/ˈtʃekʌp/",
+    "translations": {
+      "pa": "ਜਾਂਚ",
+      "hi": "जांच (रुटीन परीक्षा)",
+      "zh": "体检",
+      "es": "chequeo"
+    },
+    "level": "branch",
+    "category": "healthcare",
+    "example_sentences": [
+      "Book a yearly checkup even when you feel healthy.",
+      "At the checkup, the doctor measured her blood pressure."
+    ],
+    "confusion_pairs": [
+      "annual physical",
+      "screening test"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.44,
+      "stability": 3.1
+    }
+  },
+  {
+    "id": "vocab-hep-33",
+    "word": "bloodwork",
+    "phonetic": "/ˈblʌdwɜːrk/",
+    "translations": {
+      "pa": "ਖ਼ੂਨ ਦੀ ਜਾਂਚ",
+      "hi": "खून की जांच",
+      "zh": "血液检查",
+      "es": "análisis de sangre"
+    },
+    "level": "branch",
+    "category": "healthcare",
+    "example_sentences": [
+      "The bloodwork shows your iron is a bit low.",
+      "Fast for twelve hours before the bloodwork."
+    ],
+    "confusion_pairs": [
+      "urine test",
+      "imaging scan"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.48,
+      "stability": 2.8
+    }
+  },
+  {
+    "id": "vocab-hep-34",
+    "word": "treatment",
+    "phonetic": "/ˈtriːtmənt/",
+    "translations": {
+      "pa": "ਇਲਾਜ",
+      "hi": "इलाज",
+      "zh": "治疗",
+      "es": "tratamiento"
+    },
+    "level": "branch",
+    "category": "healthcare",
+    "example_sentences": [
+      "Physiotherapy is the usual treatment for this injury.",
+      "The treatment worked within two weeks."
+    ],
+    "confusion_pairs": [
+      "cure",
+      "therapy session"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.45,
+      "stability": 3.0
+    }
+  },
+  {
+    "id": "vocab-hep-35",
+    "word": "over-the-counter",
+    "phonetic": "/ˌəʊvər ðə ˈkaʊntər/",
+    "translations": {
+      "pa": "ਬਿਨਾਂ ਨੁਸਖ਼ੇ ਦੀ ਦਵਾਈ",
+      "hi": "बिना पर्चे वाली दवा",
+      "zh": "非处方药",
+      "es": "de venta libre"
+    },
+    "level": "branch",
+    "category": "healthcare",
+    "example_sentences": [
+      "Ibuprofen is an over-the-counter pain reliever.",
+      "Over-the-counter remedies won't clear a bacterial infection."
+    ],
+    "confusion_pairs": [
+      "prescription-only medicine",
+      "behind-the-counter product"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.5,
+      "stability": 2.7
+    }
+  },
+  {
+    "id": "vocab-hep-36",
+    "word": "painkiller",
+    "phonetic": "/ˈpeɪnkɪlər/",
+    "translations": {
+      "pa": "ਦਰਦ ਨਿਵਾਰਕ ਦਵਾਈ",
+      "hi": "दर्द निवारक दवा",
+      "zh": "止痛药",
+      "es": "analgésico"
+    },
+    "level": "branch",
+    "category": "healthcare",
+    "example_sentences": [
+      "Take a painkiller before the freezing wears off.",
+      "That painkiller upset my stomach, so now I always eat first."
+    ],
+    "confusion_pairs": [
+      "anti-inflammatory",
+      "muscle relaxant"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.47,
+      "stability": 2.8
+    }
+  },
+  {
+    "id": "vocab-hep-37",
+    "word": "antibiotic",
+    "phonetic": "/ˌæntibaɪˈɑːtɪk/",
+    "translations": {
+      "pa": "ਐੰਟੀਬਾਇਓਟਿਕ",
+      "hi": "एंटीबायोटिक दवा",
+      "zh": "抗生素",
+      "es": "antibiótico"
+    },
+    "level": "branch",
+    "category": "healthcare",
+    "example_sentences": [
+      "Finish all the antibiotic, even if you feel better on day three.",
+      "Antibiotics don't help colds caused by viruses."
+    ],
+    "confusion_pairs": [
+      "antiviral",
+      "probiotic"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.49,
+      "stability": 2.7
+    }
+  },
+  {
+    "id": "vocab-hep-38",
+    "word": "ointment",
+    "phonetic": "/ˈɔɪntmənt/",
+    "translations": {
+      "pa": "ਮਲਮ",
+      "hi": "मरहम",
+      "zh": "药膏",
+      "es": "pomada"
+    },
+    "level": "branch",
+    "category": "healthcare",
+    "example_sentences": [
+      "Apply the ointment in a thin layer twice a day.",
+      "This ointment soothes the rash and stops the itching."
+    ],
+    "confusion_pairs": [
+      "cream",
+      "lotion"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.5,
+      "stability": 2.6
+    }
+  },
+  {
+    "id": "vocab-hep-39",
+    "word": "interpreter",
+    "phonetic": "/ɪnˈtɜːrprətər/",
+    "translations": {
+      "pa": "ਤਰਜੁਮਾਕਾਰ",
+      "hi": "दुभाषिया",
+      "zh": "口译员",
+      "es": "intérprete"
+    },
+    "level": "branch",
+    "category": "healthcare",
+    "example_sentences": [
+      "Request an interpreter when you book the appointment — it's free.",
+      "Hospital interpreters are trained and bound by confidentiality."
+    ],
+    "confusion_pairs": [
+      "translator",
+      "patient advocate"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.49,
+      "stability": 2.7
+    }
+  },
+  {
+    "id": "vocab-hep-40",
+    "word": "follow-up",
+    "phonetic": "/ˈfɑːloʊʌp/",
+    "translations": {
+      "pa": "ਫਾਲੋ-ਅੱਪ ਮੁਲਾਕਾਤ",
+      "hi": "फॉलो-अप (अगली जांच)",
+      "zh": "复诊",
+      "es": "consulta de seguimiento"
+    },
+    "level": "branch",
+    "category": "healthcare",
+    "example_sentences": [
+      "The doctor scheduled a follow-up for two weeks out.",
+      "Bring your questions to the follow-up visit."
+    ],
+    "confusion_pairs": [
+      "checkup",
+      "initial consultation"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.46,
+      "stability": 2.9
+    }
+  },
+  {
+    "id": "vocab-hep-41",
+    "word": "triage",
+    "phonetic": "/triˈɑːʒ/",
+    "translations": {
+      "pa": "ਟ੍ਰਾਈਏਜ (ਤਰਤੀਬ ਦਾ ਕ੍ਰਮ)",
+      "hi": "ट्रायाज (प्राथमिकता तय करना)",
+      "zh": "分诊",
+      "es": "triaje"
+    },
+    "level": "bloom",
+    "category": "healthcare",
+    "example_sentences": [
+      "Triage puts the most urgent patients first, not the earliest arrivals.",
+      "A nurse does triage at the door and checks your vital signs."
+    ],
+    "confusion_pairs": [
+      "waiting list",
+      "priority queue"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.6,
+      "stability": 2.0
+    }
+  },
+  {
+    "id": "vocab-hep-42",
+    "word": "diagnosis",
+    "phonetic": "/ˌdaɪəɡˈnoʊsɪs/",
+    "translations": {
+      "pa": "ਨਿਦਾਨ",
+      "hi": "निदान",
+      "zh": "诊断",
+      "es": "diagnóstico"
+    },
+    "level": "bloom",
+    "category": "healthcare",
+    "example_sentences": [
+      "The diagnosis finally explained months of tiredness.",
+      "Asking for a second opinion on a diagnosis is completely normal."
+    ],
+    "confusion_pairs": [
+      "prognosis",
+      "symptom pattern"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.62,
+      "stability": 1.9
+    }
+  },
+  {
+    "id": "vocab-hep-43",
+    "word": "condition",
+    "phonetic": "/kənˈdɪʃn/",
+    "translations": {
+      "pa": "ਬਿਮਾਰੀ ਦੀ ਹਾਲਤ",
+      "hi": "स्थिति (बीमारी)",
+      "zh": "病情",
+      "es": "afección"
+    },
+    "level": "bloom",
+    "category": "healthcare",
+    "example_sentences": [
+      "Diabetes is a condition you manage every single day.",
+      "Tell every new provider about your existing condition."
+    ],
+    "confusion_pairs": [
+      "illness",
+      "syndrome"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.58,
+      "stability": 2.1
+    }
+  },
+  {
+    "id": "vocab-hep-44",
+    "word": "coverage",
+    "phonetic": "/ˈkʌvərɪdʒ/",
+    "translations": {
+      "pa": "ਕਵੇਜ",
+      "hi": "कवरेज",
+      "zh": "（医保）覆盖范围",
+      "es": "cobertura"
+    },
+    "level": "bloom",
+    "category": "healthcare",
+    "example_sentences": [
+      "Provincial coverage doesn't pay for most dental work.",
+      "Check whether your coverage includes prescription glasses."
+    ],
+    "confusion_pairs": [
+      "benefits",
+      "eligibility"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.6,
+      "stability": 2.0
+    }
+  },
+  {
+    "id": "vocab-hep-45",
+    "word": "insurance",
+    "phonetic": "/ɪnˈʃʊərəns/",
+    "translations": {
+      "pa": "ਬੀਮਾ",
+      "hi": "बीमा",
+      "zh": "保险",
+      "es": "seguro"
+    },
+    "level": "bloom",
+    "category": "healthcare",
+    "example_sentences": [
+      "Private insurance through work often covers dental and vision.",
+      "Compare insurance plans carefully before you sign up."
+    ],
+    "confusion_pairs": [
+      "policy",
+      "benefits provider"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.57,
+      "stability": 2.2
+    }
+  },
+  {
+    "id": "vocab-hep-46",
+    "word": "claim",
+    "phonetic": "/kleɪm/",
+    "translations": {
+      "pa": "ਕਲੇਮ",
+      "hi": "दावा (क्लेम)",
+      "zh": "报销申请",
+      "es": "reclamación"
+    },
+    "level": "bloom",
+    "category": "healthcare",
+    "example_sentences": [
+      "Submit the claim online with your receipt.",
+      "My claim for the physiotherapy sessions was approved within days."
+    ],
+    "confusion_pairs": [
+      "receipt",
+      "pre-authorization"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.63,
+      "stability": 1.8
+    }
+  },
+  {
+    "id": "vocab-hep-47",
+    "word": "deductible",
+    "phonetic": "/dɪˈdʌktəbl/",
+    "translations": {
+      "pa": "ਡਿਡਕਟਿਬਲ",
+      "hi": "डिडक्टिबल (पहली रकम)",
+      "zh": "免赔额",
+      "es": "deducible"
+    },
+    "level": "bloom",
+    "category": "healthcare",
+    "example_sentences": [
+      "You pay the deductible first, then the plan kicks in.",
+      "A higher deductible usually means a cheaper monthly premium."
+    ],
+    "confusion_pairs": [
+      "co-payment",
+      "monthly premium"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.66,
+      "stability": 1.6
+    }
+  },
+  {
+    "id": "vocab-hep-48",
+    "word": "anxiety",
+    "phonetic": "/æŋˈzaɪəti/",
+    "translations": {
+      "pa": "ਬੈਚੈਨੀ",
+      "hi": "चिंता (घबराहट)",
+      "zh": "焦虑",
+      "es": "ansiedad"
+    },
+    "level": "bloom",
+    "category": "healthcare",
+    "example_sentences": [
+      "Deep breathing takes the edge off my anxiety.",
+      "Talking to someone about your anxiety really does help."
+    ],
+    "confusion_pairs": [
+      "stress",
+      "panic attack"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.58,
+      "stability": 2.1
+    }
+  },
+  {
+    "id": "vocab-hep-49",
+    "word": "counselling",
+    "phonetic": "/ˈkaʊnsəlɪŋ/",
+    "translations": {
+      "pa": "ਕਾਉਂਸਲਿੰਗ",
+      "hi": "काउंसलिंग",
+      "zh": "心理咨询",
+      "es": "consejería"
+    },
+    "level": "bloom",
+    "category": "healthcare",
+    "example_sentences": [
+      "Short-term counselling is free through some community agencies.",
+      "Counselling gave her practical tools for handling stress."
+    ],
+    "confusion_pairs": [
+      "psychotherapy",
+      "peer support group"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.61,
+      "stability": 1.9
+    }
+  },
+  {
+    "id": "vocab-hep-50",
+    "word": "screening",
+    "phonetic": "/ˈskriːnɪŋ/",
+    "translations": {
+      "pa": "ਸਕ੍ਰੀਨਿੰਗ ਜਾਂਚ",
+      "hi": "स्क्रीनिंग जांच",
+      "zh": "筛查",
+      "es": "prueba de detección"
+    },
+    "level": "bloom",
+    "category": "healthcare",
+    "example_sentences": [
+      "Regular screening catches problems early, before symptoms appear.",
+      "Screening for colon cancer usually starts at fifty in Canada."
+    ],
+    "confusion_pairs": [
+      "diagnostic test",
+      "vaccination"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.59,
+      "stability": 2.0
+    }
+  }
+]

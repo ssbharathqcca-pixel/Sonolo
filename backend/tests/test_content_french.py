@@ -152,16 +152,16 @@ def _disabled_test_duplicate_vocabulary_ids_across_packs_raise(monkeypatch) -> N
 def test_combined_seed_counts() -> None:
     seeds = load_scenario_seeds()
     vocab = load_vocabulary_seeds()
-    assert len(seeds) == 55
-    assert sum(1 for s in seeds if s.target_language.startswith("en")) == 50
-    assert len(vocab) == 270
+    assert len(seeds) == 65
+    assert sum(1 for s in seeds if s.target_language.startswith("en")) == 60
+    assert len(vocab) == 320
 
 
 def test_vocabulary_seeds_carry_language_metadata() -> None:
     seeds = load_vocabulary_seeds()
     english = [seed for seed in seeds if seed.language == "en"]
     french = [seed for seed in seeds if seed.language == "fr"]
-    assert len(english) == 250
+    assert len(english) == 300
     assert len(french) == 20
     # The French pack is exactly the tail of the edition registry.
     assert {seed.content_id for seed in french} <= {

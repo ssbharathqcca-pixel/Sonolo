@@ -104,6 +104,32 @@
       "theme_color": "#FF8A00",
       "icon": "book",
       "is_published": true
+    },
+    {
+      "id": "healthcare-english-v1",
+      "type": "scenarios",
+      "language": "en",
+      "path": "content/scenarios/healthcare-english-v1.json",
+      "title": "Healthcare English",
+      "description": "Doctors, pharmacies, hospitals, and navigating Canadian healthcare.",
+      "category": "healthcare",
+      "tier": "freemium",
+      "theme_color": "#22C55E",
+      "icon": "medkit",
+      "is_published": true
+    },
+    {
+      "id": "vocab-healthcare-english-v1",
+      "type": "vocabulary",
+      "language": "en",
+      "path": "content/vocabulary/healthcare-english-v1.json",
+      "title": "Healthcare Vocabulary",
+      "description": "Essential medical and health service words.",
+      "category": "vocabulary",
+      "tier": "freemium",
+      "theme_color": "#22C55E",
+      "icon": "book",
+      "is_published": true
     }
   ]
 }
