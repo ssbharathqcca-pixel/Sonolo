@@ -82,6 +82,7 @@ async def test_scenarios_returns_the_seeded_catalog(
         "title",
         "description",
         "category",
+        "target_language",
         "difficulty",
         "is_locked",
     }

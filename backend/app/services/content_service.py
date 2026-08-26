@@ -87,14 +87,20 @@ class ManifestPack:
     path: str  # Repo-root relative, e.g. content/scenarios/canadian-life-v1.json.
 
 
+def load_manifest() -> dict[str, Any]:
+    """Read and return the parsed content manifest (SN-030)."""
+    with MANIFEST_PATH.open(encoding="utf-8") as handle:
+        manifest: dict[str, Any] = json.load(handle)
+    return manifest
+
+
 def load_manifest_packs() -> list[ManifestPack]:
     """Read the content manifest and validate its pack entries.
 
     Pack ids must be unique across the manifest; loaders filter the
     returned entries by `type` and resolve `path` against the repo root.
     """
-    with MANIFEST_PATH.open(encoding="utf-8") as handle:
-        manifest: dict[str, Any] = json.load(handle)
+    manifest = load_manifest()
     packs: list[ManifestPack] = []
     seen_ids: set[str] = set()
     for entry in manifest.get("packs", []):

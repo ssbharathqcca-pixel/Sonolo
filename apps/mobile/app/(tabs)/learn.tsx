@@ -3,8 +3,11 @@
  * live scenario catalog feeding the speaking loop. Premium scenarios
  * carry a lock overlay for free-tier callers and open the SN-026
  * paywall bottom sheet; unlocked ones jump straight into a session.
+ * SN-030 adds a horizontal rail of tappable manifest pack cards that
+ * filter the scenario list by category and language.
  */
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
+import type { ComponentProps } from "react";
 import {
   ActivityIndicator,
   Pressable,
@@ -14,6 +17,7 @@ import {
   Text,
   View,
 } from "react-native";
+import Ionicons from "@expo/vector-icons/Ionicons";
 import { useRouter } from "expo-router";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import Animated, {
@@ -34,7 +38,9 @@ import {
 import { GlassCard } from "../../src/components/GlassCard";
 import { PaywallModal } from "../../src/components/PaywallModal";
 import {
+  fetchPacks,
   fetchTodayQuests,
+  type ContentPack,
   type QuestResult,
   type Scenario,
 } from "../../src/api/client";
@@ -42,6 +48,36 @@ import { isLockedForCaller } from "../../src/lib/scenarioAccess";
 import { useAuthStore } from "../../src/stores/authStore";
 import { useScenarioStore } from "../../src/stores/scenarioStore";
 import { colors } from "../../src/theme/colors";
+
+/** Manifest icon names mapped onto their Ionicons glyphs (SN-030). */
+const PACK_ICONS: Record<string, ComponentProps<typeof Ionicons>["name"]> = {
+  briefcase: "briefcase",
+  home: "home",
+  map: "map",
+  book: "book",
+};
+
+function packIcon(icon: string): ComponentProps<typeof Ionicons>["name"] {
+  return PACK_ICONS[icon] ?? "book";
+}
+
+/** True when the scenario belongs to the pack's category and language. */
+function scenarioMatchesPack(scenario: Scenario, pack: ContentPack): boolean {
+  return (
+    scenario.category === pack.category &&
+    (scenario.target_language ?? "")
+      .toLowerCase()
+      .startsWith(pack.language.toLowerCase())
+  );
+}
+
+function countScenariosInPack(
+  scenarios: Scenario[],
+  pack: ContentPack,
+): number {
+  return scenarios.filter((scenario) => scenarioMatchesPack(scenario, pack))
+    .length;
+}
 
 function difficultyTone(difficulty: number | null): {
   label: string;
@@ -178,6 +214,49 @@ function LibraryScenarioCard({
   );
 }
 
+function PackCard({
+  pack,
+  scenarioCount,
+  isSelected,
+  onPress,
+}: {
+  pack: ContentPack;
+  scenarioCount: number;
+  isSelected: boolean;
+  onPress: () => void;
+}): JSX.Element {
+  return (
+    <Pressable
+      accessibilityLabel={`Learning pack: ${pack.title}`}
+      accessibilityState={{ selected: isSelected }}
+      onPress={onPress}
+      style={({ pressed }) => [
+        styles.packCard,
+        // Solid theme color at 0.9 opacity (alpha "E6") — no gradient
+        // dependency; the white border keeps it crisp on dark nights.
+        { backgroundColor: `${pack.theme_color}E6` },
+        isSelected && styles.packCardSelected,
+        pressed && styles.packCardPressed,
+      ]}
+    >
+      <View style={styles.packIconWell}>
+        <Ionicons name={packIcon(pack.icon)} size={22} color="#FFFFFF" />
+      </View>
+      <Text style={styles.packTitle} numberOfLines={1}>
+        {pack.title}
+      </Text>
+      <Text style={styles.packDescription} numberOfLines={3}>
+        {pack.description}
+      </Text>
+      <View style={styles.packBadge}>
+        <Text style={styles.packBadgeText}>
+          {scenarioCount} scenario{scenarioCount === 1 ? "" : "s"}
+        </Text>
+      </View>
+    </Pressable>
+  );
+}
+
 export default function LearnScreen(): JSX.Element {
   const router = useRouter();
   const insets = useSafeAreaInsets();
@@ -185,6 +264,10 @@ export default function LearnScreen(): JSX.Element {
   const [questsUnavailable, setQuestsUnavailable] = useState(false);
   const [refreshing, setRefreshing] = useState(false);
   const [paywallVisible, setPaywallVisible] = useState(false);
+  // SN-030: manifest packs behind the tappable card rail; a selection
+  // narrows the scenario library to the pack's category + language.
+  const [packs, setPacks] = useState<ContentPack[]>([]);
+  const [selectedPackId, setSelectedPackId] = useState<string | null>(null);
 
   const user = useAuthStore((state) => state.user);
   const scenarios = useScenarioStore((state) => state.scenarios);
@@ -202,6 +285,44 @@ export default function LearnScreen(): JSX.Element {
       void loadScenarios(preferredLanguage);
     }
   }, [scenarios.length, catalogLanguage, preferredLanguage, loadScenarios]);
+
+  // Pack rail metadata is static manifest data (SN-030): fetch once on
+  // mount alongside the catalog and degrade silently when offline —
+  // the library below stays fully usable without the rail.
+  useEffect(() => {
+    let cancelled = false;
+    fetchPacks()
+      .then((manifestPacks) => {
+        if (!cancelled) {
+          setPacks(manifestPacks);
+        }
+      })
+      .catch(() => {
+        // No packs, no rail; nothing else on screen depends on it.
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  const selectedPack = useMemo(
+    () => packs.find((pack) => pack.id === selectedPackId) ?? null,
+    [packs, selectedPackId],
+  );
+
+  // An active pack narrows the library to its category + language
+  // prefix; with no selection the full catalog renders.
+  const visibleScenarios = useMemo(
+    () =>
+      selectedPack
+        ? scenarios.filter((scenario) => scenarioMatchesPack(scenario, selectedPack))
+        : scenarios,
+    [scenarios, selectedPack],
+  );
+
+  const togglePack = useCallback((packId: string): void => {
+    setSelectedPackId((current) => (current === packId ? null : packId));
+  }, []);
 
   // Server tier truth beats a possibly stale cached catalog: once the
   // account is premium no card stays locked (SN-026).
@@ -264,6 +385,24 @@ export default function LearnScreen(): JSX.Element {
         fluency.
       </Text>
 
+      {packs.length > 0 ? (
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={styles.packRail}
+        >
+          {packs.map((pack) => (
+            <PackCard
+              key={pack.id}
+              pack={pack}
+              scenarioCount={countScenariosInPack(scenarios, pack)}
+              isSelected={pack.id === selectedPackId}
+              onPress={() => togglePack(pack.id)}
+            />
+          ))}
+        </ScrollView>
+      ) : null}
+
       {quests === null && !questsUnavailable ? (
         <ActivityIndicator
           color={colors.auroraTeal}
@@ -286,7 +425,9 @@ export default function LearnScreen(): JSX.Element {
         </Text>
       ) : null}
 
-      <Text style={styles.sectionTitle}>Scenario library</Text>
+      <Text style={styles.sectionTitle}>
+        {selectedPack ? selectedPack.title : "Scenario library"}
+      </Text>
       {isLoadingScenarios && scenarios.length === 0 ? (
         <ActivityIndicator
           color={colors.auroraTeal}
@@ -299,7 +440,14 @@ export default function LearnScreen(): JSX.Element {
           you're back online.
         </Text>
       ) : null}
-      {scenarios.map((scenario) => (
+      {!isLoadingScenarios &&
+      scenarios.length > 0 &&
+      visibleScenarios.length === 0 ? (
+        <Text style={styles.offlineNote}>
+          No scenarios in this pack yet — try another one.
+        </Text>
+      ) : null}
+      {visibleScenarios.map((scenario) => (
         <LibraryScenarioCard
           key={scenario.id}
           scenario={scenario}
@@ -411,6 +559,61 @@ const styles = StyleSheet.create({
     color: colors.textTertiary,
     fontSize: 13,
     lineHeight: 18,
+  },
+  packRail: {
+    paddingRight: 4,
+  },
+  packCard: {
+    width: 220,
+    borderRadius: 16,
+    borderWidth: 1,
+    borderColor: "rgba(255, 255, 255, 0.2)",
+    padding: 16,
+    marginRight: 12,
+    gap: 8,
+    shadowColor: "#000000",
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.3,
+    shadowRadius: 6,
+    elevation: 4,
+  },
+  packCardSelected: {
+    borderColor: "rgba(255, 255, 255, 0.7)",
+  },
+  packCardPressed: {
+    opacity: 0.85,
+    transform: [{ scale: 0.98 }],
+  },
+  packIconWell: {
+    width: 40,
+    height: 40,
+    borderRadius: 12,
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "rgba(255, 255, 255, 0.18)",
+  },
+  packTitle: {
+    color: "#FFFFFF",
+    fontSize: 15,
+    fontWeight: "700",
+  },
+  packDescription: {
+    color: "rgba(255, 255, 255, 0.85)",
+    fontSize: 12,
+    lineHeight: 17,
+  },
+  packBadge: {
+    alignSelf: "flex-start",
+    borderRadius: 999,
+    backgroundColor: "rgba(255, 255, 255, 0.22)",
+    paddingHorizontal: 10,
+    paddingVertical: 4,
+    marginTop: 2,
+  },
+  packBadgeText: {
+    color: "#FFFFFF",
+    fontSize: 11,
+    fontWeight: "700",
   },
   libraryCard: {
     padding: 14,

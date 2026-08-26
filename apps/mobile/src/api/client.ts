@@ -235,6 +235,8 @@ export interface Scenario {
   title: string;
   description: string;
   category: string;
+  /** BCP-47 content language of the pack this scenario belongs to. */
+  target_language?: string;
   difficulty: number | null;
   /** True when premium content is gated for this caller (SN-026). */
   is_locked?: boolean;
@@ -268,6 +270,30 @@ export async function updatePreferredLanguage(
 ): Promise<User> {
   const { data } = await api.post<User>("/users/me/language", { language });
   return data;
+}
+
+// ---------------------------------------------------------------------
+// Content packs (SN-030)
+// ---------------------------------------------------------------------
+
+/** One manifest pack as rendered by the Learn tab's pack cards. */
+export interface ContentPack {
+  id: string;
+  /** Manifest pack type; the Learn tab renders "scenarios" packs. */
+  type: string;
+  title: string;
+  description: string;
+  category: string;
+  language: string;
+  tier: string;
+  theme_color: string;
+  icon: string;
+}
+
+/** GET /packs — manifest-declared scenario packs for the Learn tab. */
+export async function fetchPacks(): Promise<ContentPack[]> {
+  const { data } = await api.get<{ packs: ContentPack[] }>("/packs");
+  return data.packs;
 }
 
 // ---------------------------------------------------------------------
