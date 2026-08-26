@@ -204,6 +204,10 @@ async def test_review_due_materialization_is_idempotent(
 
     from app.models.user import User
     from app.models.vocabulary import VocabularyCard
+    from app.services.content_service import (
+        _vocabulary_pack_limit,
+        load_vocabulary_seeds,
+    )
 
     headers = await register_and_login(smoke_client, "fresh@example.com")
     first = await smoke_client.get("/api/review/due", headers=headers)
@@ -227,4 +231,5 @@ async def test_review_due_materialization_is_idempotent(
             )
         ).scalar_one()
     )
-    assert card_count == 200  # Full SN-009 + SN-018 pack, materialized once.
+    expected = min(len(load_vocabulary_seeds()), _vocabulary_pack_limit())
+    assert card_count == expected  # Full manifest pack, materialized once.

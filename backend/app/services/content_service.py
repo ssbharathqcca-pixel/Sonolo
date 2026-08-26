@@ -3,10 +3,10 @@ Content service for loading and materializing Sonolo learning packs.
 Pack discovery is manifest-driven: content/manifest.json at the repo
 root declares every scenario and vocabulary edition (SN-027), so new
 packs ship without loader code changes. Vocabulary materialization
-stays capped by `content_vocabulary_pack_limit` (default 200); seeds
+stays capped by `content_vocabulary_pack_limit` (default 500); seeds
 tagged with the learner's preferred language are ordered ahead of the
 pool so French users materialize French cards inside the same cap
-instead of losing them to the 200 English cards.
+instead of losing them to other-language cards.
 """
 
 import json
@@ -25,6 +25,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.core.config import get_settings
 from app.db.session import dialect_name
 from app.models.scenario import Scenario
+from app.models.user import User
 from app.models.vocabulary import VocabularyCard
 
 logger = logging.getLogger(__name__)
@@ -54,10 +55,11 @@ def _vocabulary_pack_limit() -> int:
     """Cap on cards materialized per user from the vocabulary packs.
 
     Settings-driven via the optional `content_vocabulary_pack_limit`
-    field, defaulting to 200 for the combined SN-009 + SN-018 pack
-    until the field is declared in Settings.
+    field, defaulting to 500 so the full multi-pack syllabus fits with
+    headroom for further expansion until the field is declared in
+    Settings.
     """
-    return int(getattr(get_settings(), "content_vocabulary_pack_limit", 200))
+    return int(getattr(get_settings(), "content_vocabulary_pack_limit", 500))
 
 
 def content_scenario_id(content_id: str) -> UUID:
@@ -202,7 +204,7 @@ def load_vocabulary_seeds() -> list[VocabularySeed]:
     """Read and validate every vocabulary pack listed in the manifest."""
     # Pack-level language comes from the manifest and orders seeds at
     # materialization time so a learner's preferred language fills the
-    # 200-card cap before other languages.
+    # pack limit before other languages.
     editions = [
         (_resolve_pack_path(pack.path), pack.language)
         for pack in load_manifest_packs()
@@ -287,12 +289,14 @@ async def ensure_user_vocabulary(
 ) -> int:
     """Lazily materialize the vocabulary packs for a user with no cards.
 
-    Loads every edition (SN-009 + SN-018 + SN-020, 220 items) up to the
-    settings-driven pack limit, ordering seeds whose language matches
-    `preferred_language` first so preferred-language cards always fit
-    inside the cap. Regional preferences such as "fr-CA" match their
-    base pack ("fr"). Existing cards are never touched; re-runs are
-    no-ops thanks to deterministic per-user card ids.
+    Loads every edition up to the settings-driven pack limit after
+    ordering seeds whose language matches the learner's preference
+    ahead of the pool, so preferred-language cards always fit inside
+    the cap. The preference is read from the users table when the
+    caller omits it, falling back to "en" when unset; regional tags
+    such as "fr-CA" match their base pack ("fr"). Existing cards are
+    never touched; re-runs are no-ops thanks to deterministic
+    per-user card ids.
     """
     count = (
         await db.execute(
@@ -304,19 +308,28 @@ async def ensure_user_vocabulary(
     if int(count) > 0:
         return 0
 
+    preference = preferred_language
+    if not preference:
+        preference = (
+            await db.execute(
+                select(User.preferred_language).where(User.id == user_id)
+            )
+        ).scalar_one_or_none()
+    preferred_tag = _primary_language_tag(preference or "en")
+
     seeds = load_vocabulary_seeds()
-    if preferred_language:
-        preferred_tag = _primary_language_tag(preferred_language)
-        matching = [
-            seed
-            for seed in seeds
-            if _primary_language_tag(seed.language) == preferred_tag
-        ]
-        seeds = matching + [
-            seed
-            for seed in seeds
-            if _primary_language_tag(seed.language) != preferred_tag
-        ]
+    matching = [
+        seed
+        for seed in seeds
+        if _primary_language_tag(seed.language) == preferred_tag
+    ]
+    seeds = matching + [
+        seed
+        for seed in seeds
+        if _primary_language_tag(seed.language) != preferred_tag
+    ]
+    # The cap applies after sorting so preferred-language cards are
+    # never crowded out of materialization by other languages.
     seeds = seeds[:_vocabulary_pack_limit()]
     for seed in seeds:
         card = VocabularyCard(

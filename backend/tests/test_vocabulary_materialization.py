@@ -1,8 +1,10 @@
-"""Language-aware vocabulary materialization checks (SN-020).
+"""Language-aware vocabulary materialization checks (SN-020/SN-033).
 
-The 200-card cap must not crowd out non-English packs: seeds matching
-the learner's preferred language are ordered ahead of the pool so
-French users materialize French cards inside the same cap.
+Seeds matching the learner's preferred language are ordered ahead of
+the pool before the 500-card cap applies, so preferred-language cards
+are never crowded out. The full manifest (270 seeds today) fits inside
+the cap, so every seed lands; ordering still matters once packs
+outgrow the limit again.
 """
 
 import pytest
@@ -19,12 +21,12 @@ from app.services.content_service import (
 
 pytestmark = pytest.mark.asyncio
 
-FRENCH_WORDS = {
-    seed.word for seed in load_vocabulary_seeds() if seed.language == "fr"
-}
-ENGLISH_WORDS = {
-    seed.word for seed in load_vocabulary_seeds() if seed.language == "en"
-}
+SEEDS = load_vocabulary_seeds()
+FRENCH_WORDS = {seed.word for seed in SEEDS if seed.language == "fr"}
+ENGLISH_WORDS = {seed.word for seed in SEEDS if seed.language == "en"}
+TOTAL_SEEDS = len(SEEDS)
+# Packs reuse some words ("ID", "PIN", ...): count distinct spellings.
+ALL_WORDS = {seed.word for seed in SEEDS}
 
 
 async def seed_user(
@@ -60,11 +62,11 @@ async def test_french_user_materializes_french_cards_inside_cap(
         db_session, user.id, user.preferred_language
     )
 
-    assert materialized == 200
+    assert materialized == TOTAL_SEEDS
     words = await materialized_words(db_session, user)
-    # All 20 French cards fit inside the cap ahead of the English pack.
+    # Every French card lands ahead of the English pool inside the cap.
     assert FRENCH_WORDS <= words
-    assert len(words) == 200
+    assert words == ALL_WORDS
 
 
 async def test_english_user_still_materializes_english_cards(
@@ -76,9 +78,9 @@ async def test_english_user_still_materializes_english_cards(
         db_session, user.id, user.preferred_language
     )
 
-    assert materialized == 200
+    assert materialized == TOTAL_SEEDS
     words = await materialized_words(db_session, user)
-    assert words <= ENGLISH_WORDS
+    assert ENGLISH_WORDS <= words
     assert "lease" in words  # First card of the English v1 pack.
 
 
@@ -98,7 +100,7 @@ async def test_vocabulary_cap_remains_active_for_any_language(
             .where(VocabularyCard.user_id == user.id)
         )
     ).scalar_one()
-    assert materialized == min(220, _vocabulary_pack_limit())
+    assert materialized == min(TOTAL_SEEDS, _vocabulary_pack_limit())
     assert total == materialized
 
 
@@ -122,16 +124,36 @@ async def test_regional_variant_preference_matches_base_pack(
     quebec_words = await materialized_words(db_session, french_quebec)
     canada_words = await materialized_words(db_session, english_canada)
     assert FRENCH_WORDS <= quebec_words
-    assert canada_words <= ENGLISH_WORDS
+    assert ENGLISH_WORDS <= canada_words
 
 
-async def test_missing_preference_keeps_english_first(
+async def test_missing_preference_defaults_to_english_from_db(
     db_session: AsyncSession,
 ) -> None:
     user = await seed_user(db_session, "legacy@example.com", "en")
 
+    # No preference passed: the service reads users.preferred_language
+    # itself and falls back to "en" when unset.
     materialized = await ensure_user_vocabulary(db_session, user.id, None)
 
-    assert materialized == 200
+    assert materialized == TOTAL_SEEDS
     words = await materialized_words(db_session, user)
-    assert words <= ENGLISH_WORDS
+    assert ENGLISH_WORDS <= words
+
+
+async def test_cap_applies_after_preferred_language_sort(
+    db_session: AsyncSession, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """With a shrunken cap, French fills the budget before English."""
+    user = await seed_user(db_session, "amara@example.com", "fr")
+    monkeypatch.setattr(
+        "app.services.content_service._vocabulary_pack_limit", lambda: 30
+    )
+
+    materialized = await ensure_user_vocabulary(db_session, user.id)
+
+    words = await materialized_words(db_session, user)
+    assert materialized == 30
+    # All 20 French cards fit first; only 10 English slots remain.
+    assert FRENCH_WORDS <= words
+    assert len(words - FRENCH_WORDS) == 10
