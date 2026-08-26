@@ -237,6 +237,9 @@ export interface Scenario {
   category: string;
   /** BCP-47 content language of the pack this scenario belongs to. */
   target_language?: string;
+  /** Manifest pack this scenario belongs to (SN-035); absent on
+   *  catalogs cached before the field shipped. */
+  pack_id?: string;
   difficulty: number | null;
   /** True when premium content is gated for this caller (SN-026). */
   is_locked?: boolean;
@@ -288,6 +291,10 @@ export interface ContentPack {
   tier: string;
   theme_color: string;
   icon: string;
+  /** Live catalog stats keyed on Scenario.pack_id (SN-035); absent
+   *  from responses served before the field shipped. */
+  scenario_count?: number;
+  premium_count?: number;
 }
 
 /** GET /packs — manifest-declared scenario packs for the Learn tab. */

@@ -1,21 +1,27 @@
 /**
  * Home — the daily driver (SN-015): loads the published scenario
  * catalog from the backend, features the selected scenario, and jumps
- * straight into a live voice session.
+ * straight into a live voice session. Locked premium scenarios show a
+ * Premium badge and open the SN-026 paywall instead of a session;
+ * premium callers navigate normally.
  */
 
-import { useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { ActivityIndicator, Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { useRouter } from "expo-router";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import {
   ChevronRight,
+  Lock,
   Play,
   RefreshCw,
   Sparkles,
 } from "lucide-react-native";
 
 import { GlassCard } from "../../src/components/GlassCard";
+import { PaywallModal } from "../../src/components/PaywallModal";
+import type { Scenario } from "../../src/api/client";
+import { isLockedForCaller } from "../../src/lib/scenarioAccess";
 import { useAuthStore } from "../../src/stores/authStore";
 import { useScenarioStore } from "../../src/stores/scenarioStore";
 import { colors } from "../../src/theme/colors";
@@ -56,6 +62,10 @@ export default function HomeScreen(): JSX.Element {
   const isLoading = useScenarioStore((state) => state.isLoading);
   const error = useScenarioStore((state) => state.error);
   const load = useScenarioStore((state) => state.load);
+  // SN-035: locked premium scenarios open the SN-026 paywall instead
+  // of a session; server tier truth beats a stale cached catalog.
+  const isPremiumUser = user?.subscription_tier === "premium";
+  const [paywallVisible, setPaywallVisible] = useState(false);
 
   // The catalog follows the account's content language (SN-020):
   // fetch when empty or when it still speaks the previous language.
@@ -67,6 +77,17 @@ export default function HomeScreen(): JSX.Element {
       void load(preferredLanguage);
     }
   }, [scenarios.length, catalogLanguage, preferredLanguage, load]);
+
+  const handleScenarioPress = useCallback(
+    (scenario: Scenario): void => {
+      if (isLockedForCaller(scenario, isPremiumUser)) {
+        setPaywallVisible(true);
+        return;
+      }
+      router.push(`/session/${scenario.id}`);
+    },
+    [isPremiumUser, router],
+  );
 
   const rest = scenarios.filter((scenario) => scenario.id !== selected?.id);
 
@@ -111,20 +132,33 @@ export default function HomeScreen(): JSX.Element {
             <View style={styles.todayKickerWell}>
               <Play color={colors.auroraTeal} size={22} />
             </View>
-            <View style={[styles.difficultyBadge, { backgroundColor: difficultyTone(selected.difficulty).background }]}>
-              <Text style={[styles.difficultyText, { color: difficultyTone(selected.difficulty).text }]}>
-                {difficultyTone(selected.difficulty).label}
-              </Text>
-            </View>
+            {isLockedForCaller(selected, isPremiumUser) ? (
+              <View style={styles.premiumBadge}>
+                <Lock color={colors.warmCoral} size={12} />
+                <Text style={[styles.difficultyText, { color: colors.warmCoral }]}>
+                  Premium
+                </Text>
+              </View>
+            ) : (
+              <View style={[styles.difficultyBadge, { backgroundColor: difficultyTone(selected.difficulty).background }]}>
+                <Text style={[styles.difficultyText, { color: difficultyTone(selected.difficulty).text }]}>
+                  {difficultyTone(selected.difficulty).label}
+                </Text>
+              </View>
+            )}
           </View>
           <Text style={styles.todayKicker}>Today's scenario</Text>
           <Text style={styles.todayTitle}>{selected.title}</Text>
           <Text style={styles.todayScenario}>{selected.description}</Text>
           <Pressable
             style={styles.startButton}
-            accessibilityLabel={`Start session: ${selected.title}`}
+            accessibilityLabel={
+              isLockedForCaller(selected, isPremiumUser)
+                ? `Premium session: ${selected.title}`
+                : `Start session: ${selected.title}`
+            }
             onPress={() => {
-              router.push(`/session/${selected.id}`);
+              handleScenarioPress(selected);
             }}
           >
             <Play color="#FFFFFF" size={18} />
@@ -136,28 +170,46 @@ export default function HomeScreen(): JSX.Element {
       {rest.length > 0 ? (
         <Text style={styles.sectionTitle}>More scenarios</Text>
       ) : null}
-      {rest.map((scenario) => (
-        <GlassCard key={scenario.id} style={styles.rowCard}>
-          <Pressable
-            style={styles.rowPressable}
-            accessibilityLabel={`Start scenario: ${scenario.title}`}
-            onPress={() => {
-              router.push(`/session/${scenario.id}`);
-            }}
-          >
-            <View style={styles.rowInfo}>
-              <Text style={styles.rowTitle}>{scenario.title}</Text>
-              <Text style={styles.rowMeta}>{scenario.category}</Text>
-            </View>
-            <View style={[styles.difficultyBadge, { backgroundColor: difficultyTone(scenario.difficulty).background }]}>
-              <Text style={[styles.difficultyText, { color: difficultyTone(scenario.difficulty).text }]}>
-                {difficultyTone(scenario.difficulty).label}
-              </Text>
-            </View>
-            <ChevronRight color={colors.textTertiary} size={18} />
-          </Pressable>
-        </GlassCard>
-      ))}
+      {rest.map((scenario) => {
+        const locked = isLockedForCaller(scenario, isPremiumUser);
+        return (
+          <GlassCard key={scenario.id} style={styles.rowCard}>
+            <Pressable
+              style={styles.rowPressable}
+              accessibilityLabel={
+                locked
+                  ? `Premium scenario: ${scenario.title}`
+                  : `Start scenario: ${scenario.title}`
+              }
+              onPress={() => {
+                handleScenarioPress(scenario);
+              }}
+            >
+              <View style={styles.rowInfo}>
+                <Text style={styles.rowTitle}>{scenario.title}</Text>
+                <Text style={styles.rowMeta}>{scenario.category}</Text>
+              </View>
+              {locked ? (
+                <View style={styles.premiumBadge}>
+                  <Lock color={colors.warmCoral} size={12} />
+                  <Text style={[styles.difficultyText, { color: colors.warmCoral }]}>
+                    Premium
+                  </Text>
+                </View>
+              ) : (
+                <>
+                  <View style={[styles.difficultyBadge, { backgroundColor: difficultyTone(scenario.difficulty).background }]}>
+                    <Text style={[styles.difficultyText, { color: difficultyTone(scenario.difficulty).text }]}>
+                      {difficultyTone(scenario.difficulty).label}
+                    </Text>
+                  </View>
+                  <ChevronRight color={colors.textTertiary} size={18} />
+                </>
+              )}
+            </Pressable>
+          </GlassCard>
+        );
+      })}
 
       <View style={styles.footerNote}>
         <Sparkles color={colors.auroraTeal} size={16} />
@@ -165,6 +217,13 @@ export default function HomeScreen(): JSX.Element {
           Every session feeds your streak, quests, and CanadaReady scores.
         </Text>
       </View>
+
+      <PaywallModal
+        visible={paywallVisible}
+        onClose={() => {
+          setPaywallVisible(false);
+        }}
+      />
     </ScrollView>
   );
 }
@@ -300,6 +359,15 @@ const styles = StyleSheet.create({
   },
   difficultyBadge: {
     borderRadius: 999,
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+  },
+  premiumBadge: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 4,
+    borderRadius: 999,
+    backgroundColor: colors.warmCoralSoft,
     paddingHorizontal: 10,
     paddingVertical: 5,
   },

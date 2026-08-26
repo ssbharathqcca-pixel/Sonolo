@@ -42,6 +42,16 @@ jest.mock("lucide-react-native", () => ({
   Target: () => null,
 }));
 
+// The real vector Icon fetches glyph fonts at render time and throws
+// under react-test-renderer; only SN-035 tests render the pack rail.
+jest.mock("@expo/vector-icons/Ionicons", () => ({
+  __esModule: true,
+  default: ({ name }: { name: string }) => {
+    const { Text } = require("react-native");
+    return <Text>{`ionicon:${name}`}</Text>;
+  },
+}));
+
 jest.mock("../../src/components/PaywallModal", () => {
   const { Text } = require("react-native");
   return {
@@ -74,11 +84,14 @@ jest.mock("../../src/services/scenarioCache", () => ({
 import { fireEvent, render, waitFor } from "@testing-library/react-native";
 
 import LearnScreen from "../../app/(tabs)/learn";
-import { fetchScenarios } from "../../src/api/client";
+import { fetchPacks, fetchScenarios } from "../../src/api/client";
 import { useAuthStore } from "../../src/stores/authStore";
 import { useScenarioStore } from "../../src/stores/scenarioStore";
 
-function makeUser(subscription_tier: string) {
+function makeUser(
+  subscription_tier: string,
+  preferred_language: "en" | "fr" = "fr",
+) {
   return {
     id: "user-1",
     email: "pavan@example.com",
@@ -87,7 +100,7 @@ function makeUser(subscription_tier: string) {
     target_language: "en-CA",
     learning_goal: "pr_readiness",
     current_level: "sprout",
-    preferred_language: "fr" as const,
+    preferred_language,
     subscription_tier,
     streak_count: 0,
     streak_last_date: null,
@@ -200,5 +213,158 @@ describe("Learn screen with French scenarios (SN-020)", () => {
       ).toBeTruthy();
     });
     expect(screen.queryByText("Premium")).toBeNull();
+  });
+});
+
+describe("Learn screen exact pack filtering (SN-035)", () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
+  const manifestPacks = [
+    {
+      id: "workplace-english-v1",
+      type: "scenarios",
+      title: "Workplace English",
+      description: "Meetings, interviews, and workplace confidence.",
+      category: "workplace",
+      language: "en",
+      tier: "freemium",
+      theme_color: "#FF8A00",
+      icon: "briefcase",
+      scenario_count: 10,
+      premium_count: 3,
+    },
+    {
+      id: "healthcare-english-v1",
+      type: "scenarios",
+      title: "Healthcare English",
+      description: "Doctors, pharmacies, and Canadian healthcare.",
+      category: "healthcare",
+      language: "en",
+      tier: "freemium",
+      theme_color: "#22C55E",
+      icon: "briefcase",
+      scenario_count: 10,
+      premium_count: 3,
+    },
+  ];
+
+  function seedEnglishStores(
+    scenarios: Array<{
+      id: string;
+      title: string;
+      description: string;
+      category: string;
+      target_language?: string;
+      pack_id?: string;
+      difficulty: number;
+      is_locked: boolean;
+    }>,
+  ) {
+    useAuthStore.setState({
+      user: makeUser("free", "en"),
+      token: "test-token",
+      isLoading: false,
+      isHydrated: true,
+      isAuthenticated: true,
+    });
+    useScenarioStore.setState({
+      scenarios,
+      selected: scenarios[0],
+      isLoading: false,
+      error: null,
+      isFromCache: false,
+      language: "en",
+    });
+  }
+
+  it("filters by exact pack_id, not by category and language alone", async () => {
+    (fetchPacks as jest.Mock).mockResolvedValueOnce(manifestPacks);
+    seedEnglishStores([
+      // Exact-id match even though the category disagrees with the pack.
+      {
+        id: "wp-mismatched-category",
+        title: "Interview warm-up",
+        description: "Work",
+        category: "social",
+        target_language: "en-CA",
+        pack_id: "workplace-english-v1",
+        difficulty: 2,
+        is_locked: false,
+      },
+      // Cached before SN-035: no pack_id, so the category+language
+      // fallback keeps it in the workplace view.
+      {
+        id: "legacy-no-pack-id",
+        title: "Legacy workplace card",
+        description: "Work",
+        category: "workplace",
+        target_language: "en-CA",
+        difficulty: 2,
+        is_locked: false,
+      },
+      // Same category + language as the pack but a different pack_id:
+      // exactly the leak the old heuristic could not see.
+      {
+        id: "healthcare-in-workplace-clothes",
+        title: "Bloodwork review",
+        description: "Clinic",
+        category: "workplace",
+        target_language: "en-CA",
+        pack_id: "healthcare-english-v1",
+        difficulty: 3,
+        is_locked: false,
+      },
+    ]);
+
+    const screen = render(<LearnScreen />);
+    await waitFor(() => {
+      expect(
+        screen.getByLabelText("Learning pack: Workplace English"),
+      ).toBeTruthy();
+    });
+
+    fireEvent.press(screen.getByLabelText("Learning pack: Workplace English"));
+
+    await waitFor(() => {
+      expect(
+        screen.getByLabelText("Start scenario: Interview warm-up"),
+      ).toBeTruthy();
+    });
+    expect(
+      screen.getByLabelText("Start scenario: Legacy workplace card"),
+    ).toBeTruthy();
+    expect(
+      screen.queryByLabelText("Start scenario: Bloodwork review"),
+    ).toBeNull();
+  });
+
+  it("uses the server scenario_count for the pack badge", async () => {
+    (fetchPacks as jest.Mock).mockResolvedValueOnce(manifestPacks);
+    seedEnglishStores([
+      {
+        id: "only-local-match",
+        title: "Interview warm-up",
+        description: "Work",
+        category: "workplace",
+        target_language: "en-CA",
+        pack_id: "workplace-english-v1",
+        difficulty: 2,
+        is_locked: false,
+      },
+    ]);
+
+    const screen = render(<LearnScreen />);
+    await waitFor(() => {
+      expect(
+        screen.getByLabelText("Learning pack: Workplace English"),
+      ).toBeTruthy();
+    });
+
+    // Server count (10) wins over recounting one local scenario; both
+    // manifest packs carry scenario_count 10, hence getAllByText.
+    expect(screen.getAllByText("10 scenarios").length).toBeGreaterThan(0);
+    expect(screen.queryByText("1 scenario")).toBeNull();
   });
 });

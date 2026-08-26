@@ -4,7 +4,9 @@
  * carry a lock overlay for free-tier callers and open the SN-026
  * paywall bottom sheet; unlocked ones jump straight into a session.
  * SN-030 adds a horizontal rail of tappable manifest pack cards that
- * filter the scenario list by category and language.
+ * filter the scenario library; SN-035 makes that filtering exact by
+ * matching each scenario's manifest pack id (with a category/language
+ * fallback for catalogs cached before pack ids shipped).
  */
 import { useCallback, useEffect, useMemo, useState } from "react";
 import type { ComponentProps } from "react";
@@ -61,8 +63,16 @@ function packIcon(icon: string): ComponentProps<typeof Ionicons>["name"] {
   return PACK_ICONS[icon] ?? "book";
 }
 
-/** True when the scenario belongs to the pack's category and language. */
+/**
+ * Exact pack membership first (SN-035): scenarios carry the manifest
+ * pack id they were seeded from, so filtering compares ids directly.
+ * Catalogs cached before SN-035 have no pack_id and fall back to the
+ * old category + language heuristic.
+ */
 function scenarioMatchesPack(scenario: Scenario, pack: ContentPack): boolean {
+  if (scenario.pack_id) {
+    return scenario.pack_id === pack.id;
+  }
   return (
     scenario.category === pack.category &&
     (scenario.target_language ?? "")
@@ -71,10 +81,17 @@ function scenarioMatchesPack(scenario: Scenario, pack: ContentPack): boolean {
   );
 }
 
+/**
+ * The server counts scenarios per pack from Scenario.pack_id (SN-035);
+ * prefer that over recounting the local list, which may be truncated.
+ */
 function countScenariosInPack(
   scenarios: Scenario[],
   pack: ContentPack,
 ): number {
+  if (pack.scenario_count !== undefined) {
+    return pack.scenario_count;
+  }
   return scenarios.filter((scenario) => scenarioMatchesPack(scenario, pack))
     .length;
 }
