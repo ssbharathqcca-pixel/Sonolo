@@ -7,11 +7,12 @@
  * session; the root layout holds a splash until it finishes. A 401 from
  * any endpoint logs the user out through the handler registered below.
  *
- * Onboarding state (SN-017) is tracked device-side: the backend has no
- * profile-write endpoint yet, so completion and the chosen goal are
- * stored in SecureStore. Server truth (`user.onboarding_completed`)
- * wins when it reports complete. Logout clears the local flags so the
- * next account on this device gets its own onboarding journey.
+ * Onboarding state (SN-017, reworked SN-040) is tracked device-side:
+ * the backend has no profile-write endpoint yet, so completion and the
+ * chosen goal are stored in SecureStore. Server truth
+ * (`user.onboarding_completed`) wins when it reports complete. Logout
+ * clears the local flags so the next account on this device gets its
+ * own onboarding journey.
  */
 
 import { create } from "zustand";
@@ -33,8 +34,8 @@ import { TOKEN_KEY, getItem, removeItem, setItem } from "../services/secureStora
 
 /** Keychain key marking onboarding as finished (SN-017). */
 export const ONBOARDING_KEY = "sonolo.onboarding_completed";
-/** Keychain key holding the CLB-inspired goal id chosen during onboarding. */
-export const TARGET_LEVEL_KEY = "sonolo.target_level";
+/** Keychain key holding the onboarding goal id chosen during onboarding (SN-040). */
+export const ONBOARDING_GOAL_KEY = "sonolo.onboarding_goal";
 
 interface AuthState {
   user: User | null;
@@ -45,8 +46,8 @@ interface AuthState {
   isAuthenticated: boolean;
   /** True when the onboarding flow has been completed (local or server). */
   onboardingCompleted: boolean;
-  /** CLB-inspired goal id selected during onboarding, if any. */
-  targetLevel: string | null;
+  /** Onboarding goal id (career/health/housing/settlement) chosen during onboarding. */
+  onboardingGoal: string | null;
   login: (email: string, password: string) => Promise<void>;
   register: (payload: RegisterPayload) => Promise<void>;
   /** Flip the account to premium via the mock upgrade endpoint (SN-026). */
@@ -59,22 +60,24 @@ interface AuthState {
   setPreferredLanguage: (language: PreferredLanguage) => Promise<void>;
   logout: () => Promise<void>;
   hydrate: () => Promise<void>;
-  /** Persist onboarding completion and the chosen goal device-side. */
-  completeOnboarding: (targetLevel: string) => Promise<void>;
+  /** Persist the chosen onboarding goal device-side without completing onboarding. */
+  setOnboardingGoal: (goal: string) => Promise<void>;
+  /** Persist onboarding completion (and any pending goal) device-side. */
+  completeOnboarding: () => Promise<void>;
 }
 
 /** Merge local flags with server truth into one onboarding snapshot. */
 async function resolveOnboarding(user: User): Promise<{
   completed: boolean;
-  level: string | null;
+  goal: string | null;
 }> {
-  const [completedRaw, storedLevel] = await Promise.all([
+  const [completedRaw, storedGoal] = await Promise.all([
     getItem(ONBOARDING_KEY),
-    getItem(TARGET_LEVEL_KEY),
+    getItem(ONBOARDING_GOAL_KEY),
   ]);
   return {
     completed: completedRaw === "true" || user.onboarding_completed === true,
-    level: storedLevel,
+    goal: storedGoal,
   };
 }
 
@@ -85,7 +88,7 @@ export const useAuthStore = create<AuthState>()((set, get) => ({
   isHydrated: false,
   isAuthenticated: false,
   onboardingCompleted: false,
-  targetLevel: null,
+  onboardingGoal: null,
 
   login: async (email, password) => {
     set({ isLoading: true });
@@ -162,13 +165,13 @@ export const useAuthStore = create<AuthState>()((set, get) => ({
     await removeItem(TOKEN_KEY);
     // Onboarding is per-account; drop local flags with the session.
     await removeItem(ONBOARDING_KEY);
-    await removeItem(TARGET_LEVEL_KEY);
+    await removeItem(ONBOARDING_GOAL_KEY);
     set({
       user: null,
       token: null,
       isAuthenticated: false,
       onboardingCompleted: false,
-      targetLevel: null,
+      onboardingGoal: null,
     });
   },
 
@@ -176,16 +179,16 @@ export const useAuthStore = create<AuthState>()((set, get) => ({
     if (get().isHydrated) {
       return;
     }
-    const [token, completedRaw, storedLevel] = await Promise.all([
+    const [token, completedRaw, storedGoal] = await Promise.all([
       getItem(TOKEN_KEY),
       getItem(ONBOARDING_KEY),
-      getItem(TARGET_LEVEL_KEY),
+      getItem(ONBOARDING_GOAL_KEY),
     ]);
     if (token === null) {
       set({
         isHydrated: true,
         onboardingCompleted: completedRaw === "true",
-        targetLevel: storedLevel,
+        onboardingGoal: storedGoal,
       });
       return;
     }
@@ -200,7 +203,7 @@ export const useAuthStore = create<AuthState>()((set, get) => ({
         isHydrated: true,
         isLoading: false,
         onboardingCompleted: completedRaw === "true" || user.onboarding_completed === true,
-        targetLevel: storedLevel,
+        onboardingGoal: storedGoal,
       });
     } catch {
       // Token expired or revoked — clear it and require a fresh login.
@@ -213,15 +216,25 @@ export const useAuthStore = create<AuthState>()((set, get) => ({
         isHydrated: true,
         isLoading: false,
         onboardingCompleted: completedRaw === "true",
-        targetLevel: storedLevel,
+        onboardingGoal: storedGoal,
       });
     }
   },
 
-  completeOnboarding: async (targetLevel) => {
+  setOnboardingGoal: async (goal) => {
+    await setItem(ONBOARDING_GOAL_KEY, goal);
+    set({ onboardingGoal: goal });
+  },
+
+  completeOnboarding: async () => {
+    // The goal is usually persisted already by setOnboardingGoal; write
+    // it again if the user jumped straight to the final step.
+    const goal = get().onboardingGoal;
     await setItem(ONBOARDING_KEY, "true");
-    await setItem(TARGET_LEVEL_KEY, targetLevel);
-    set({ onboardingCompleted: true, targetLevel });
+    if (goal !== null) {
+      await setItem(ONBOARDING_GOAL_KEY, goal);
+    }
+    set({ onboardingCompleted: true });
   },
 }));
 

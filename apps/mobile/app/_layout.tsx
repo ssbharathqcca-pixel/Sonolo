@@ -90,6 +90,10 @@ export default function RootLayout(): JSX.Element {
               <Stack screenOptions={stackScreenOptions}>
                 <Stack.Screen name="(tabs)" />
                 <Stack.Screen
+                  name="pack/[id]"
+                  options={{ animation: "slide_from_bottom" }}
+                />
+                <Stack.Screen
                   name="session/[id]"
                   options={{ animation: "slide_from_bottom" }}
                 />

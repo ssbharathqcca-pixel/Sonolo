@@ -1,6 +1,7 @@
 /**
- * Onboarding stack (SN-017): shown instead of the tabs until a new
- * user has picked a goal and confirmed microphone access.
+ * Onboarding stack (SN-040): language → goal → ready. Shown instead of
+ * the tabs until a new user has picked a primary language and a goal;
+ * the card-forward transitions keep the flow feeling like one surface.
  */
 
 import { Stack } from "expo-router";
@@ -13,11 +14,12 @@ export default function OnboardingLayout(): JSX.Element {
       screenOptions={{
         headerShown: false,
         contentStyle: { backgroundColor: colors.nightSky },
+        animation: "slide_from_right",
       }}
     >
-      <Stack.Screen name="welcome" />
-      <Stack.Screen name="goals" />
-      <Stack.Screen name="mic-check" />
+      <Stack.Screen name="index" />
+      <Stack.Screen name="goal" />
+      <Stack.Screen name="ready" />
     </Stack>
   );
 }

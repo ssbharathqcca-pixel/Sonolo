@@ -55,7 +55,7 @@ describe("authStore.setPreferredLanguage (SN-020)", () => {
       isHydrated: true,
       isAuthenticated: true,
       onboardingCompleted: true,
-      targetLevel: null,
+      onboardingGoal: null,
     });
   });
 
