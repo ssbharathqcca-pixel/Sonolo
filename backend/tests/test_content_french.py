@@ -153,9 +153,9 @@ def _disabled_test_duplicate_vocabulary_ids_across_packs_raise(monkeypatch) -> N
 def test_combined_seed_counts() -> None:
     seeds = load_scenario_seeds()
     vocab = load_vocabulary_seeds()
-    assert len(seeds) == 85
-    assert sum(1 for s in seeds if s.target_language.startswith("en")) == 60
-    assert len(vocab) == 420
+    assert len(seeds) == 105
+    assert sum(1 for s in seeds if s.target_language.startswith("en")) == 80
+    assert len(vocab) == 520
 
 
 def test_scenario_seeds_carry_manifest_pack_ids() -> None:
@@ -168,6 +168,8 @@ def test_scenario_seeds_carry_manifest_pack_ids() -> None:
         "healthcare-english-v1": 10,
         "quebec-healthcare-v1": 10,
         "quebec-workplace-v1": 10,
+        "housing-english-v1": 10,
+        "finance-english-v1": 10,
     }
 
 
@@ -175,7 +177,7 @@ def test_vocabulary_seeds_carry_language_metadata() -> None:
     seeds = load_vocabulary_seeds()
     english = [seed for seed in seeds if seed.language == "en"]
     french = [seed for seed in seeds if seed.language == "fr"]
-    assert len(english) == 300
+    assert len(english) == 400
     assert len(french) == 120
     # Every French seed maps to one of the manifest's French vocabulary
     # packs (core-fr-v1 plus the Quebec healthcare and workplace packs).

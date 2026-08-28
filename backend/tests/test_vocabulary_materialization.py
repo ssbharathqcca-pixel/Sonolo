@@ -2,9 +2,9 @@
 
 Seeds matching the learner's preferred language are ordered ahead of
 the pool before the 500-card cap applies, so preferred-language cards
-are never crowded out. The full manifest (420 seeds today) fits inside
-the cap, so every seed lands; ordering still matters once packs
-outgrow the limit again.
+are never crowded out. The full manifest (520 seeds today) now exceeds
+the cap, so the preferred language always fills first and the tail of
+the other language is cut off — which is exactly what the cap is for.
 """
 
 import pytest
@@ -62,11 +62,12 @@ async def test_french_user_materializes_french_cards_inside_cap(
         db_session, user.id, user.preferred_language
     )
 
-    assert materialized == TOTAL_SEEDS
+    assert materialized == min(TOTAL_SEEDS, _vocabulary_pack_limit())
     words = await materialized_words(db_session, user)
-    # Every French card lands ahead of the English pool inside the cap.
+    # Every French card lands ahead of the English pool inside the cap;
+    # the pool exceeds the cap, so only the English tail is cut off.
     assert FRENCH_WORDS <= words
-    assert words == ALL_WORDS
+    assert len(words) < len(ALL_WORDS)
 
 
 async def test_english_user_still_materializes_english_cards(
@@ -78,8 +79,9 @@ async def test_english_user_still_materializes_english_cards(
         db_session, user.id, user.preferred_language
     )
 
-    assert materialized == TOTAL_SEEDS
+    assert materialized == min(TOTAL_SEEDS, _vocabulary_pack_limit())
     words = await materialized_words(db_session, user)
+    # All English seeds fit for an English-learner (400 < 500 cap).
     assert ENGLISH_WORDS <= words
     assert "lease" in words  # First card of the English v1 pack.
 
@@ -136,7 +138,7 @@ async def test_missing_preference_defaults_to_english_from_db(
     # itself and falls back to "en" when unset.
     materialized = await ensure_user_vocabulary(db_session, user.id, None)
 
-    assert materialized == TOTAL_SEEDS
+    assert materialized == min(TOTAL_SEEDS, _vocabulary_pack_limit())
     words = await materialized_words(db_session, user)
     assert ENGLISH_WORDS <= words
 

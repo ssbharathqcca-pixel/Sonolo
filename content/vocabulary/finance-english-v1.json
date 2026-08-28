@@ -1,0 +1,1252 @@
+[
+  {
+    "id": "vocab-fn-01",
+    "word": "bank",
+    "phonetic": "/bæŋk/",
+    "translations": {
+      "pa": "ਬੈਂਕ",
+      "hi": "बैंक",
+      "zh": "银行",
+      "es": "banco"
+    },
+    "level": "seed",
+    "category": "finance",
+    "example_sentences": [
+      "I need to open a bank account for my paycheque.",
+      "The bank on the corner has an ATM that works all night."
+    ],
+    "confusion_pairs": [
+      "branch",
+      "credit union"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.2,
+      "stability": 4.8
+    }
+  },
+  {
+    "id": "vocab-fn-02",
+    "word": "money",
+    "phonetic": "/ˈmʌni/",
+    "translations": {
+      "pa": "ਪੈਸਾ",
+      "hi": "पैसा",
+      "zh": "钱",
+      "es": "dinero"
+    },
+    "level": "seed",
+    "category": "finance",
+    "example_sentences": [
+      "I put my money in a savings account to earn interest.",
+      "How much money do you need for the deposit?"
+    ],
+    "confusion_pairs": [
+      "cash",
+      "funds"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.2,
+      "stability": 4.6
+    }
+  },
+  {
+    "id": "vocab-fn-03",
+    "word": "account",
+    "phonetic": "/əˈkaʊnt/",
+    "translations": {
+      "pa": "ਖਾਤਾ",
+      "hi": "खाता",
+      "zh": "账户",
+      "es": "cuenta"
+    },
+    "level": "seed",
+    "category": "finance",
+    "example_sentences": [
+      "I have a chequing account and a savings account.",
+      "Check your account balance before you buy something."
+    ],
+    "confusion_pairs": [
+      "chequing",
+      "savings"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.24,
+      "stability": 4.4
+    }
+  },
+  {
+    "id": "vocab-fn-04",
+    "word": "cash",
+    "phonetic": "/kæʃ/",
+    "translations": {
+      "pa": "ਨਕਦ",
+      "hi": "नकद",
+      "zh": "现金",
+      "es": "efectivo"
+    },
+    "level": "seed",
+    "category": "finance",
+    "example_sentences": [
+      "Do you have enough cash for the taxi?",
+      "I prefer to pay with cash at small stores."
+    ],
+    "confusion_pairs": [
+      "debit",
+      "money"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.22,
+      "stability": 4.5
+    }
+  },
+  {
+    "id": "vocab-fn-05",
+    "word": "credit",
+    "phonetic": "/ˈkrɛdɪt/",
+    "translations": {
+      "pa": "ਕ੍ਰੈਡਿਟ",
+      "hi": "क्रेडिट",
+      "zh": "信用",
+      "es": "crédito"
+    },
+    "level": "seed",
+    "category": "finance",
+    "example_sentences": [
+      "Your credit score affects your ability to get a loan.",
+      "Building credit takes time, so start early."
+    ],
+    "confusion_pairs": [
+      "debit",
+      "loan"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.25,
+      "stability": 4.3
+    }
+  },
+  {
+    "id": "vocab-fn-06",
+    "word": "teller",
+    "phonetic": "/ˈtɛlər/",
+    "translations": {
+      "pa": "ਟੈਲਰ",
+      "hi": "कैशियर (टेलर)",
+      "zh": "出纳员",
+      "es": "cajero"
+    },
+    "level": "sprout",
+    "category": "finance",
+    "example_sentences": [
+      "The teller helped me deposit my cheque.",
+      "Ask the teller about the daily withdrawal limit."
+    ],
+    "confusion_pairs": [
+      "cashier",
+      "advisor"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.3,
+      "stability": 4.0
+    }
+  },
+  {
+    "id": "vocab-fn-07",
+    "word": "deposit",
+    "phonetic": "/dɪˈpɒzɪt/",
+    "translations": {
+      "pa": "ਜਮ੍ਹਾਂ",
+      "hi": "जमा",
+      "zh": "存款",
+      "es": "depósito"
+    },
+    "level": "sprout",
+    "category": "finance",
+    "example_sentences": [
+      "I made a cash deposit at the ATM.",
+      "The deposit will show in your account by tomorrow."
+    ],
+    "confusion_pairs": [
+      "withdrawal",
+      "transfer"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.3,
+      "stability": 4.0
+    }
+  },
+  {
+    "id": "vocab-fn-08",
+    "word": "withdrawal",
+    "phonetic": "/wɪðˈdrɔːəl/",
+    "translations": {
+      "pa": "ਨਿਕਾਸੀ",
+      "hi": "निकासी",
+      "zh": "取款",
+      "es": "retiro"
+    },
+    "level": "sprout",
+    "category": "finance",
+    "example_sentences": [
+      "The maximum withdrawal at this ATM is five hundred dollars.",
+      "I made a withdrawal of two hundred dollars."
+    ],
+    "confusion_pairs": [
+      "deposit",
+      "transfer"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.32,
+      "stability": 3.9
+    }
+  },
+  {
+    "id": "vocab-fn-09",
+    "word": "transfer",
+    "phonetic": "/ˈtrænsfər/",
+    "translations": {
+      "pa": "ਟ੍ਰਾਂਸਫਰ",
+      "hi": "स्थानांतरण",
+      "zh": "转账",
+      "es": "transferencia"
+    },
+    "level": "sprout",
+    "category": "finance",
+    "example_sentences": [
+      "I'll transfer the money to your account tonight.",
+      "The transfer takes one business day."
+    ],
+    "confusion_pairs": [
+      "e-transfer",
+      "wire transfer"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.31,
+      "stability": 3.9
+    }
+  },
+  {
+    "id": "vocab-fn-10",
+    "word": "e-transfer",
+    "phonetic": "/ˈiːˌtrænsfər/",
+    "translations": {
+      "pa": "ਈ-ਟ੍ਰਾਂਸਫਰ",
+      "hi": "ई-ट्रांसफर",
+      "zh": "电子转账",
+      "es": "transferencia electrónica"
+    },
+    "level": "sprout",
+    "category": "finance",
+    "example_sentences": [
+      "I sent you an e-transfer for the rent.",
+      "Interac e-transfers usually arrive within minutes."
+    ],
+    "confusion_pairs": [
+      "wire transfer",
+      "Interac"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.33,
+      "stability": 3.8
+    }
+  },
+  {
+    "id": "vocab-fn-11",
+    "word": "balance",
+    "phonetic": "/ˈbæləns/",
+    "translations": {
+      "pa": "ਬਕਾਇਆ",
+      "hi": "शेष राशि",
+      "zh": "余额",
+      "es": "saldo"
+    },
+    "level": "sprout",
+    "category": "finance",
+    "example_sentences": [
+      "My account balance is one hundred and fifty dollars.",
+      "Check your balance online before the bill is due."
+    ],
+    "confusion_pairs": [
+      "available balance",
+      "credit limit"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.3,
+      "stability": 4.0
+    }
+  },
+  {
+    "id": "vocab-fn-12",
+    "word": "interest",
+    "phonetic": "/ˈɪntrəst/",
+    "translations": {
+      "pa": "ਵਿਆਜ",
+      "hi": "ब्याज",
+      "zh": "利息",
+      "es": "interés"
+    },
+    "level": "sprout",
+    "category": "finance",
+    "example_sentences": [
+      "The savings account pays three percent interest.",
+      "Credit cards charge high interest on unpaid balances."
+    ],
+    "confusion_pairs": [
+      "compound interest",
+      "rate"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.32,
+      "stability": 3.8
+    }
+  },
+  {
+    "id": "vocab-fn-13",
+    "word": "fee",
+    "phonetic": "/fiː/",
+    "translations": {
+      "pa": "ਫੀਸ",
+      "hi": "शुल्क",
+      "zh": "费用",
+      "es": "cargo"
+    },
+    "level": "sprout",
+    "category": "finance",
+    "example_sentences": [
+      "There's a monthly fee for this account.",
+      "The ATM charged a fee because it wasn't our bank's machine."
+    ],
+    "confusion_pairs": [
+      "charge",
+      "penalty"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.3,
+      "stability": 4.0
+    }
+  },
+  {
+    "id": "vocab-fn-14",
+    "word": "cheque",
+    "phonetic": "/tʃɛk/",
+    "translations": {
+      "pa": "ਚੈੱਕ",
+      "hi": "चेक",
+      "zh": "支票",
+      "es": "cheque"
+    },
+    "level": "sprout",
+    "category": "finance",
+    "example_sentences": [
+      "I wrote a cheque for the first month's rent.",
+      "The bank holds the cheque for five business days."
+    ],
+    "confusion_pairs": [
+      "chequing account",
+      "bill"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.33,
+      "stability": 3.7
+    }
+  },
+  {
+    "id": "vocab-fn-15",
+    "word": "debit",
+    "phonetic": "/ˈdɛbɪt/",
+    "translations": {
+      "pa": "ਡੈਬਿਟ",
+      "hi": "डेबिट",
+      "zh": "借记",
+      "es": "débito"
+    },
+    "level": "sprout",
+    "category": "finance",
+    "example_sentences": [
+      "I paid with my debit card at the grocery store.",
+      "Debit comes straight out of your account."
+    ],
+    "confusion_pairs": [
+      "credit",
+      "e-transfer"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.31,
+      "stability": 3.9
+    }
+  },
+  {
+    "id": "vocab-fn-16",
+    "word": "card",
+    "phonetic": "/kɑːrd/",
+    "translations": {
+      "pa": "ਕਾਰਡ",
+      "hi": "कार्ड",
+      "zh": "卡",
+      "es": "tarjeta"
+    },
+    "level": "sprout",
+    "category": "finance",
+    "example_sentences": [
+      "My card was declined at the checkout.",
+      "Keep your card in a safe place."
+    ],
+    "confusion_pairs": [
+      "debit card",
+      "credit card"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.3,
+      "stability": 4.0
+    }
+  },
+  {
+    "id": "vocab-fn-17",
+    "word": "ATM",
+    "phonetic": "/ˌeɪtiːˈɛm/",
+    "translations": {
+      "pa": "ਏਟੀਐਮ",
+      "hi": "एटीएम",
+      "zh": "自动取款机",
+      "es": "cajero automático"
+    },
+    "level": "sprout",
+    "category": "finance",
+    "example_sentences": [
+      "I got cash from the ATM on the corner.",
+      "The ATM is out of order today."
+    ],
+    "confusion_pairs": [
+      "branch",
+      "ABM"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.32,
+      "stability": 3.8
+    }
+  },
+  {
+    "id": "vocab-fn-18",
+    "word": "branch",
+    "phonetic": "/bræntʃ/",
+    "translations": {
+      "pa": "ਬ੍ਰਾਂਚ",
+      "hi": "शाखा",
+      "zh": "分行",
+      "es": "sucursal"
+    },
+    "level": "sprout",
+    "category": "finance",
+    "example_sentences": [
+      "I opened the account at the downtown branch.",
+      "The branch opens at nine thirty."
+    ],
+    "confusion_pairs": [
+      "ATM",
+      "head office"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.3,
+      "stability": 4.0
+    }
+  },
+  {
+    "id": "vocab-fn-19",
+    "word": "credit score",
+    "phonetic": "/ˈkrɛdɪt skɔːr/",
+    "translations": {
+      "pa": "ਕ੍ਰੈਡਿਟ ਸਕੋਰ",
+      "hi": "क्रेडिट स्कोर",
+      "zh": "信用评分",
+      "es": "puntaje crediticio"
+    },
+    "level": "branch",
+    "category": "finance",
+    "example_sentences": [
+      "A good credit score helps you get better interest rates.",
+      "You can check your credit score for free once a year."
+    ],
+    "confusion_pairs": [
+      "credit history",
+      "credit report"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.45,
+      "stability": 3.0
+    }
+  },
+  {
+    "id": "vocab-fn-20",
+    "word": "credit card",
+    "phonetic": "/ˈkrɛdɪt kɑːrd/",
+    "translations": {
+      "pa": "ਕ੍ਰੈਡਿਟ ਕਾਰਡ",
+      "hi": "क्रेडिट कार्ड",
+      "zh": "信用卡",
+      "es": "tarjeta de crédito"
+    },
+    "level": "branch",
+    "category": "finance",
+    "example_sentences": [
+      "I use my credit card for online purchases.",
+      "Pay your credit card balance on time to avoid interest."
+    ],
+    "confusion_pairs": [
+      "debit card",
+      "line of credit"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.44,
+      "stability": 3.1
+    }
+  },
+  {
+    "id": "vocab-fn-21",
+    "word": "minimum payment",
+    "phonetic": "/ˈmɪnɪməm ˈpeɪmənt/",
+    "translations": {
+      "pa": "ਘੱਟੋ-ਘੱਟ ਭੁਗਤਾਨ",
+      "hi": "न्यूनतम भुगतान",
+      "zh": "最低还款额",
+      "es": "pago mínimo"
+    },
+    "level": "branch",
+    "category": "finance",
+    "example_sentences": [
+      "The minimum payment is fifty dollars this month.",
+      "Paying only the minimum means you pay more interest over time."
+    ],
+    "confusion_pairs": [
+      "statement balance",
+      "full balance"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.46,
+      "stability": 3.0
+    }
+  },
+  {
+    "id": "vocab-fn-22",
+    "word": "statement",
+    "phonetic": "/ˈsteɪtmənt/",
+    "translations": {
+      "pa": "ਸਟੇਟਮੈਂਟ",
+      "hi": "स्टेटमेंट",
+      "zh": "账单",
+      "es": "estado de cuenta"
+    },
+    "level": "branch",
+    "category": "finance",
+    "example_sentences": [
+      "Your statement is available online on the first of the month.",
+      "Review your statement for charges you don't recognize."
+    ],
+    "confusion_pairs": [
+      "receipt",
+      "bill"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.45,
+      "stability": 3.0
+    }
+  },
+  {
+    "id": "vocab-fn-23",
+    "word": "fraud",
+    "phonetic": "/frɔːd/",
+    "translations": {
+      "pa": "ਧੋਖਾਧੜੀ",
+      "hi": "धोखाधड़ी",
+      "zh": "欺诈",
+      "es": "fraude"
+    },
+    "level": "branch",
+    "category": "finance",
+    "example_sentences": [
+      "The bank blocked the transaction because it looked like fraud.",
+      "Report fraud to your bank immediately."
+    ],
+    "confusion_pairs": [
+      "scam",
+      "theft"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.47,
+      "stability": 2.9
+    }
+  },
+  {
+    "id": "vocab-fn-24",
+    "word": "alert",
+    "phonetic": "/əˈlɜːrt/",
+    "translations": {
+      "pa": "ਚੇਤਾਵਨੀ",
+      "hi": "चेतावनी",
+      "zh": "警报",
+      "es": "alerta"
+    },
+    "level": "branch",
+    "category": "finance",
+    "example_sentences": [
+      "I set up an alert for any purchase over one hundred dollars.",
+      "The bank sends an alert when your balance is low."
+    ],
+    "confusion_pairs": [
+      "notification",
+      "warning"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.45,
+      "stability": 3.0
+    }
+  },
+  {
+    "id": "vocab-fn-25",
+    "word": "limit",
+    "phonetic": "/ˈlɪmɪt/",
+    "translations": {
+      "pa": "ਹੱਦ",
+      "hi": "सीमा",
+      "zh": "限额",
+      "es": "límite"
+    },
+    "level": "branch",
+    "category": "finance",
+    "example_sentences": [
+      "What's the daily limit for e-transfers?",
+      "You can raise your card limit by calling the bank."
+    ],
+    "confusion_pairs": [
+      "daily limit",
+      "credit limit"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.44,
+      "stability": 3.1
+    }
+  },
+  {
+    "id": "vocab-fn-26",
+    "word": "foreign exchange",
+    "phonetic": "/ˈfɒrɪn ɪksˈtʃeɪndʒ/",
+    "translations": {
+      "pa": "ਵਿਦੇਸ਼ੀ ਮੁਦਰਾ",
+      "hi": "विदेशी मुद्रा",
+      "zh": "外汇",
+      "es": "divisas"
+    },
+    "level": "branch",
+    "category": "finance",
+    "example_sentences": [
+      "The foreign exchange rate changes every day.",
+      "I asked about foreign exchange before my trip to the US."
+    ],
+    "confusion_pairs": [
+      "currency exchange",
+      "wire transfer"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.48,
+      "stability": 2.9
+    }
+  },
+  {
+    "id": "vocab-fn-27",
+    "word": "wire transfer",
+    "phonetic": "/ˈwaɪər ˈtrænsfər/",
+    "translations": {
+      "pa": "ਵਾਇਰ ਟ੍ਰਾਂਸਫਰ",
+      "hi": "वायर ट्रांसफर",
+      "zh": "电汇",
+      "es": "transferencia bancaria"
+    },
+    "level": "branch",
+    "category": "finance",
+    "example_sentences": [
+      "A wire transfer to India takes two business days.",
+      "There's a fee for international wire transfers."
+    ],
+    "confusion_pairs": [
+      "e-transfer",
+      "international transfer"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.47,
+      "stability": 2.9
+    }
+  },
+  {
+    "id": "vocab-fn-28",
+    "word": "currency",
+    "phonetic": "/ˈkʌrənsi/",
+    "translations": {
+      "pa": "ਮੁਦਰਾ",
+      "hi": "मुद्रा",
+      "zh": "货币",
+      "es": "moneda"
+    },
+    "level": "branch",
+    "category": "finance",
+    "example_sentences": [
+      "You can exchange currency at the bank.",
+      "What currency do you need for your trip?"
+    ],
+    "confusion_pairs": [
+      "foreign exchange",
+      "cash"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.46,
+      "stability": 3.0
+    }
+  },
+  {
+    "id": "vocab-fn-29",
+    "word": "bill payment",
+    "phonetic": "/bɪl ˈpeɪmənt/",
+    "translations": {
+      "pa": "ਬਿੱਲ ਭੁਗਤਾਨ",
+      "hi": "बिल भुगतान",
+      "zh": "账单支付",
+      "es": "pago de facturas"
+    },
+    "level": "branch",
+    "category": "finance",
+    "example_sentences": [
+      "I set up bill payments for my phone and internet.",
+      "The bill payment will leave your account today."
+    ],
+    "confusion_pairs": [
+      "pre-authorized payment",
+      "e-transfer"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.45,
+      "stability": 3.0
+    }
+  },
+  {
+    "id": "vocab-fn-30",
+    "word": "pre-authorized",
+    "phonetic": "/ˌpriːˈɔːθəraɪzd/",
+    "translations": {
+      "pa": "ਪੂਰਵ-ਅਧਿਕਾਰਤ",
+      "hi": "पूर्व-अधिकृत",
+      "zh": "预授权",
+      "es": "preautorizado"
+    },
+    "level": "branch",
+    "category": "finance",
+    "example_sentences": [
+      "My rent is pre-authorized from my account on the first.",
+      "Pre-authorized payments save time but watch your balance."
+    ],
+    "confusion_pairs": [
+      "automatic payment",
+      "recurring payment"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.46,
+      "stability": 3.0
+    }
+  },
+  {
+    "id": "vocab-fn-31",
+    "word": "savings",
+    "phonetic": "/ˈseɪvɪŋz/",
+    "translations": {
+      "pa": "ਬੱਚਤ",
+      "hi": "बचत",
+      "zh": "储蓄",
+      "es": "ahorros"
+    },
+    "level": "branch",
+    "category": "finance",
+    "example_sentences": [
+      "I keep my emergency fund in a savings account.",
+      "The savings account gives you a higher interest rate."
+    ],
+    "confusion_pairs": [
+      "chequing",
+      "investment"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.44,
+      "stability": 3.1
+    }
+  },
+  {
+    "id": "vocab-fn-32",
+    "word": "overdraft",
+    "phonetic": "/ˈoʊvərdræft/",
+    "translations": {
+      "pa": "ਓਵਰਡਰਾਫਟ",
+      "hi": "ओवरड्राफ्ट",
+      "zh": "透支",
+      "es": "sobregiro"
+    },
+    "level": "branch",
+    "category": "finance",
+    "example_sentences": [
+      "I went into overdraft by twenty dollars.",
+      "Overdraft protection costs a small monthly fee."
+    ],
+    "confusion_pairs": [
+      "insufficient funds",
+      "overdraft protection"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.47,
+      "stability": 2.9
+    }
+  },
+  {
+    "id": "vocab-fn-33",
+    "word": "loan",
+    "phonetic": "/loʊn/",
+    "translations": {
+      "pa": "ਕਰਜ਼ਾ",
+      "hi": "लोन",
+      "zh": "贷款",
+      "es": "préstamo"
+    },
+    "level": "branch",
+    "category": "finance",
+    "example_sentences": [
+      "I applied for a small personal loan to buy a car.",
+      "The loan has a fixed interest rate for five years."
+    ],
+    "confusion_pairs": [
+      "mortgage",
+      "line of credit"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.45,
+      "stability": 3.0
+    }
+  },
+  {
+    "id": "vocab-fn-34",
+    "word": "line of credit",
+    "phonetic": "/laɪn əv ˈkrɛdɪt/",
+    "translations": {
+      "pa": "ਕ੍ਰੈਡਿਟ ਲਾਈਨ",
+      "hi": "क्रेडिट लाइन",
+      "zh": "信用额度",
+      "es": "línea de crédito"
+    },
+    "level": "branch",
+    "category": "finance",
+    "example_sentences": [
+      "A line of credit lets you borrow up to a limit.",
+      "The line of credit has a lower rate than a credit card."
+    ],
+    "confusion_pairs": [
+      "loan",
+      "credit card"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.46,
+      "stability": 2.9
+    }
+  },
+  {
+    "id": "vocab-fn-35",
+    "word": "credit history",
+    "phonetic": "/ˈkrɛdɪt ˈhɪstəri/",
+    "translations": {
+      "pa": "ਕ੍ਰੈਡਿਟ ਇਤਿਹਾਸ",
+      "hi": "क्रेडिट इतिहास",
+      "zh": "信用记录",
+      "es": "historial crediticio"
+    },
+    "level": "branch",
+    "category": "finance",
+    "example_sentences": [
+      "You need a credit history to rent an apartment.",
+      "Building a credit history starts with your first card."
+    ],
+    "confusion_pairs": [
+      "credit report",
+      "credit score"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.47,
+      "stability": 2.9
+    }
+  },
+  {
+    "id": "vocab-fn-36",
+    "word": "income",
+    "phonetic": "/ˈɪnkʌm/",
+    "translations": {
+      "pa": "ਆਮਦਨ",
+      "hi": "आय",
+      "zh": "收入",
+      "es": "ingresos"
+    },
+    "level": "branch",
+    "category": "finance",
+    "example_sentences": [
+      "The bank asked for proof of income.",
+      "My monthly income is enough to cover the rent."
+    ],
+    "confusion_pairs": [
+      "salary",
+      "revenue"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.44,
+      "stability": 3.1
+    }
+  },
+  {
+    "id": "vocab-fn-37",
+    "word": "proof of employment",
+    "phonetic": "/pruːf əv ɪmˈplɔɪmənt/",
+    "translations": {
+      "pa": "ਰੋਜ਼ਗਾਰ ਦਾ ਸਬੂਤ",
+      "hi": "रोज़गार का प्रमाण",
+      "zh": "就业证明",
+      "es": "comprobante de empleo"
+    },
+    "level": "branch",
+    "category": "finance",
+    "example_sentences": [
+      "Bring proof of employment to the appointment.",
+      "A letter from your employer works as proof of employment."
+    ],
+    "confusion_pairs": [
+      "pay stub",
+      "letter of employment"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.48,
+      "stability": 2.8
+    }
+  },
+  {
+    "id": "vocab-fn-38",
+    "word": "PIN",
+    "phonetic": "/pɪn/",
+    "translations": {
+      "pa": "ਪਿੰਨ",
+      "hi": "पिन",
+      "zh": "密码",
+      "es": "PIN"
+    },
+    "level": "branch",
+    "category": "finance",
+    "example_sentences": [
+      "Never share your PIN with anyone.",
+      "I changed my PIN at the ATM."
+    ],
+    "confusion_pairs": [
+      "password",
+      "security question"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.45,
+      "stability": 3.0
+    }
+  },
+  {
+    "id": "vocab-fn-39",
+    "word": "transaction",
+    "phonetic": "/trænˈzækʃən/",
+    "translations": {
+      "pa": "ਲੈਣ-ਦੇਣ",
+      "hi": "लेनदेन",
+      "zh": "交易",
+      "es": "transacción"
+    },
+    "level": "branch",
+    "category": "finance",
+    "example_sentences": [
+      "The transaction was declined, so I tried again.",
+      "Keep track of your transactions in the app."
+    ],
+    "confusion_pairs": [
+      "deposit",
+      "purchase"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.46,
+      "stability": 2.9
+    }
+  },
+  {
+    "id": "vocab-fn-40",
+    "word": "receipt",
+    "phonetic": "/rɪˈsiːt/",
+    "translations": {
+      "pa": "ਰਸੀਦ",
+      "hi": "रसीद",
+      "zh": "收据",
+      "es": "recibo"
+    },
+    "level": "branch",
+    "category": "finance",
+    "example_sentences": [
+      "Do you want a receipt for the withdrawal?",
+      "Save your receipt in case of a dispute."
+    ],
+    "confusion_pairs": [
+      "statement",
+      "invoice"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.44,
+      "stability": 3.1
+    }
+  },
+  {
+    "id": "vocab-fn-41",
+    "word": "TFSA",
+    "phonetic": "/ˌtiːɛfɛsˈeɪ/",
+    "translations": {
+      "pa": "ਟੀਐਫਐਸਏ",
+      "hi": "TFSA",
+      "zh": "免税储蓄账户",
+      "es": "TFSA"
+    },
+    "level": "bloom",
+    "category": "finance",
+    "example_sentences": [
+      "A TFSA lets your money grow without tax.",
+      "You can withdraw from a TFSA at any time."
+    ],
+    "confusion_pairs": [
+      "RRSP",
+      "savings account"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.58,
+      "stability": 2.1
+    }
+  },
+  {
+    "id": "vocab-fn-42",
+    "word": "RRSP",
+    "phonetic": "/ˌɑːrɑːrɛsˈpiː/",
+    "translations": {
+      "pa": "ਆਰਆਰਐਸਪੀ",
+      "hi": "RRSP",
+      "zh": "注册退休储蓄计划",
+      "es": "RRSP"
+    },
+    "level": "bloom",
+    "category": "finance",
+    "example_sentences": [
+      "RRSP contributions lower your taxable income.",
+      "The advisor suggested putting more into my RRSP."
+    ],
+    "confusion_pairs": [
+      "TFSA",
+      "pension"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.59,
+      "stability": 2.0
+    }
+  },
+  {
+    "id": "vocab-fn-43",
+    "word": "contribution room",
+    "phonetic": "/ˌkɒntrɪˈbjuːʃən ruːm/",
+    "translations": {
+      "pa": "ਯੋਗਦਾਨ ਸੀਮਾ",
+      "hi": "योगदान सीमा",
+      "zh": "供款额度",
+      "es": "espacio de contribución"
+    },
+    "level": "bloom",
+    "category": "finance",
+    "example_sentences": [
+      "Your TFSA contribution room is shown online.",
+      "Check your contribution room before you invest."
+    ],
+    "confusion_pairs": [
+      "contribution limit",
+      "annual limit"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.6,
+      "stability": 2.0
+    }
+  },
+  {
+    "id": "vocab-fn-44",
+    "word": "retirement",
+    "phonetic": "/rɪˈtaɪərmənt/",
+    "translations": {
+      "pa": "ਰਿਟਾਇਰਮੈਂਟ",
+      "hi": "सेवानिवृत्ति",
+      "zh": "退休",
+      "es": "jubilación"
+    },
+    "level": "bloom",
+    "category": "finance",
+    "example_sentences": [
+      "It's never too early to save for retirement.",
+      "She plans to retire at sixty-five."
+    ],
+    "confusion_pairs": [
+      "pension",
+      "RRSP"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.57,
+      "stability": 2.2
+    }
+  },
+  {
+    "id": "vocab-fn-45",
+    "word": "investment",
+    "phonetic": "/ɪnˈvɛstmənt/",
+    "translations": {
+      "pa": "ਨਿਵੇਸ਼",
+      "hi": "निवेश",
+      "zh": "投资",
+      "es": "inversión"
+    },
+    "level": "bloom",
+    "category": "finance",
+    "example_sentences": [
+      "The advisor explained different investment options.",
+      "Investments can go down as well as up."
+    ],
+    "confusion_pairs": [
+      "savings",
+      "speculation"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.58,
+      "stability": 2.1
+    }
+  },
+  {
+    "id": "vocab-fn-46",
+    "word": "dividend",
+    "phonetic": "/ˈdɪvɪdɛnd/",
+    "translations": {
+      "pa": "ਲਾਭਾਂਸ਼",
+      "hi": "लाभांश",
+      "zh": "股息",
+      "es": "dividendo"
+    },
+    "level": "bloom",
+    "category": "finance",
+    "example_sentences": [
+      "The fund pays a dividend every quarter.",
+      "Dividends are one way to earn from your investment."
+    ],
+    "confusion_pairs": [
+      "interest",
+      "capital gain"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.61,
+      "stability": 1.9
+    }
+  },
+  {
+    "id": "vocab-fn-47",
+    "word": "mutual fund",
+    "phonetic": "/ˈmjuːtʃuəl fʌnd/",
+    "translations": {
+      "pa": "ਮਿਉਚੁਅਲ ਫੰਡ",
+      "hi": "म्युचुअल फंड",
+      "zh": "共同基金",
+      "es": "fondo mutuo"
+    },
+    "level": "bloom",
+    "category": "finance",
+    "example_sentences": [
+      "A mutual fund spreads your money across many companies.",
+      "I put part of my savings into a mutual fund."
+    ],
+    "confusion_pairs": [
+      "ETF",
+      "GIC"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.6,
+      "stability": 2.0
+    }
+  },
+  {
+    "id": "vocab-fn-48",
+    "word": "compound interest",
+    "phonetic": "/ˈkɒmpaʊnd ˈɪntrəst/",
+    "translations": {
+      "pa": "ਮਿਸ਼ਰਤ ਵਿਆਜ",
+      "hi": "चक्रवृद्धि ब्याज",
+      "zh": "复利",
+      "es": "interés compuesto"
+    },
+    "level": "bloom",
+    "category": "finance",
+    "example_sentences": [
+      "Compound interest helps your savings grow faster.",
+      "The earlier you start, the more compound interest works for you."
+    ],
+    "confusion_pairs": [
+      "simple interest",
+      "interest rate"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.62,
+      "stability": 1.9
+    }
+  },
+  {
+    "id": "vocab-fn-49",
+    "word": "financial advisor",
+    "phonetic": "/faɪˈnænʃəl ədˈvaɪzər/",
+    "translations": {
+      "pa": "ਵਿੱਤੀ ਸਲਾਹਕਾਰ",
+      "hi": "वित्तीय सलाहकार",
+      "zh": "财务顾问",
+      "es": "asesor financiero"
+    },
+    "level": "bloom",
+    "category": "finance",
+    "example_sentences": [
+      "The financial advisor reviewed my goals.",
+      "Meeting a financial advisor at the bank is free."
+    ],
+    "confusion_pairs": [
+      "bank teller",
+      "financial planner"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.59,
+      "stability": 2.0
+    }
+  },
+  {
+    "id": "vocab-fn-50",
+    "word": "tax return",
+    "phonetic": "/tæks rɪˈtɜːrn/",
+    "translations": {
+      "pa": "ਟੈਕਸ ਰਿਟਰਨ",
+      "hi": "टैक्स रिटर्न",
+      "zh": "报税",
+      "es": "declaración de impuestos"
+    },
+    "level": "bloom",
+    "category": "finance",
+    "example_sentences": [
+      "You can file your tax return online in March.",
+      "A tax return shows your income and deductions."
+    ],
+    "confusion_pairs": [
+      "tax refund",
+      "T4"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.6,
+      "stability": 2.0
+    }
+  }
+]
