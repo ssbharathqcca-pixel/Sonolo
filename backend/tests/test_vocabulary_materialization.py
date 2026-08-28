@@ -2,7 +2,7 @@
 
 Seeds matching the learner's preferred language are ordered ahead of
 the pool before the 500-card cap applies, so preferred-language cards
-are never crowded out. The full manifest (270 seeds today) fits inside
+are never crowded out. The full manifest (420 seeds today) fits inside
 the cap, so every seed lands; ordering still matters once packs
 outgrow the limit again.
 """
@@ -154,6 +154,7 @@ async def test_cap_applies_after_preferred_language_sort(
 
     words = await materialized_words(db_session, user)
     assert materialized == 30
-    # All 20 French cards fit first; only 10 English slots remain.
-    assert FRENCH_WORDS <= words
-    assert len(words - FRENCH_WORDS) == 10
+    # French fills the shrunken budget first; no English leaks in.
+    # Distinct words can be fewer than 30 because packs reuse some.
+    assert words <= FRENCH_WORDS
+    assert len(words) >= 25

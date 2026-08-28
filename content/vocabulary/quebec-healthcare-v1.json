@@ -1,0 +1,1302 @@
+[
+  {
+    "id": "vocab-qhep-01",
+    "word": "médecin",
+    "phonetic": "/med.sɛ̃/",
+    "translations": {
+      "en": "doctor",
+      "pa": "ਡਾਕਟਰ",
+      "hi": "डॉक्टर",
+      "zh": "医生",
+      "es": "médico"
+    },
+    "level": "seed",
+    "category": "healthcare",
+    "example_sentences": [
+      "Il faut prendre rendez-vous avec le médecin pour renouveler ton ordonnance.",
+      "Demande à la réception quel médecin prend de nouveaux patients."
+    ],
+    "confusion_pairs": [
+      "docteur",
+      "spécialiste"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.2,
+      "stability": 4.8
+    }
+  },
+  {
+    "id": "vocab-qhep-02",
+    "word": "infirmière",
+    "phonetic": "/ɛ̃.fiʁ.mjɛʁ/",
+    "translations": {
+      "en": "nurse",
+      "pa": "ਨਰਸ",
+      "hi": "नर्स",
+      "zh": "护士",
+      "es": "enfermera"
+    },
+    "level": "seed",
+    "category": "healthcare",
+    "example_sentences": [
+      "Une infirmière a pris ma tension avant que le médecin entre.",
+      "Appelle le CLSC et demande de parler à une infirmière."
+    ],
+    "confusion_pairs": [
+      "infirmière auxiliaire",
+      "infirmier-praticien"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.22,
+      "stability": 4.6
+    }
+  },
+  {
+    "id": "vocab-qhep-03",
+    "word": "malade",
+    "phonetic": "/ma.lad/",
+    "translations": {
+      "en": "sick",
+      "pa": "ਬਿਮਾਰ",
+      "hi": "बीमार",
+      "zh": "生病的",
+      "es": "enfermo"
+    },
+    "level": "seed",
+    "category": "healthcare",
+    "example_sentences": [
+      "Je reste à la maison aujourd'hui, je suis malade.",
+      "Mon petit garçon est malade, il vomit depuis ce matin."
+    ],
+    "confusion_pairs": [
+      "avoir mal",
+      "patiente"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.2,
+      "stability": 4.5
+    }
+  },
+  {
+    "id": "vocab-qhep-04",
+    "word": "douleur",
+    "phonetic": "/du.lœʁ/",
+    "translations": {
+      "en": "pain",
+      "pa": "ਦਰਦ",
+      "hi": "दर्द",
+      "zh": "疼痛",
+      "es": "dolor"
+    },
+    "level": "seed",
+    "category": "healthcare",
+    "example_sentences": [
+      "J'ai une douleur vive dans le bas du dos.",
+      "Sur une échelle de un à dix, ta douleur est rendue où?"
+    ],
+    "confusion_pairs": [
+      "mal",
+      "courbature"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.24,
+      "stability": 4.4
+    }
+  },
+  {
+    "id": "vocab-qhep-05",
+    "word": "médicament",
+    "phonetic": "/me.di.kɑ.mɑ̃/",
+    "translations": {
+      "en": "medicine",
+      "pa": "ਦਵਾਈ",
+      "hi": "दवा",
+      "zh": "药品",
+      "es": "medicamento"
+    },
+    "level": "seed",
+    "category": "healthcare",
+    "example_sentences": [
+      "Prends ton médicament avec de la nourriture, deux fois par jour.",
+      "Certains médicaments donnent de la somnolence, lis l'étiquette."
+    ],
+    "confusion_pairs": [
+      "médication",
+      "comprimé"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.25,
+      "stability": 4.3
+    }
+  },
+  {
+    "id": "vocab-qhep-06",
+    "word": "carte d'assurance maladie",
+    "phonetic": "/kaʁ.t‿a.sy.ʁɑ̃s ma.la.di/",
+    "translations": {
+      "en": "health card (RAMQ)",
+      "pa": "ਸਿਹਤ ਕਾਰਡ",
+      "hi": "स्वास्थ्य कार्ड (RAMQ)",
+      "zh": "医疗卡（RAMQ）",
+      "es": "tarjeta de seguro médico"
+    },
+    "level": "sprout",
+    "category": "healthcare",
+    "example_sentences": [
+      "Apporte ta carte d'assurance maladie à chaque rendez-vous.",
+      "Ma nouvelle carte soleil est arrivée par la poste cette semaine."
+    ],
+    "confusion_pairs": [
+      "carte soleil",
+      "permis de conduire"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.3,
+      "stability": 4.0
+    }
+  },
+  {
+    "id": "vocab-qhep-07",
+    "word": "clinique",
+    "phonetic": "/kli.nik/",
+    "translations": {
+      "en": "clinic",
+      "pa": "ਕਲੀਨਿਕ",
+      "hi": "क्लिनिक",
+      "zh": "诊所",
+      "es": "clínica"
+    },
+    "level": "sprout",
+    "category": "healthcare",
+    "example_sentences": [
+      "La clinique du coin est ouverte jusqu'à neuf ce soir.",
+      "Le samedi matin, la clinique déborde de monde."
+    ],
+    "confusion_pairs": [
+      "centre hospitalier",
+      "GMF"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.3,
+      "stability": 4.1
+    }
+  },
+  {
+    "id": "vocab-qhep-08",
+    "word": "rendez-vous",
+    "phonetic": "/ʁɑ̃.de.vu/",
+    "translations": {
+      "en": "appointment",
+      "pa": "ਮੁਲਾਕਾਤ (ਡਾਕਟਰੀ)",
+      "hi": "अपॉइंटमेंट",
+      "zh": "预约",
+      "es": "cita"
+    },
+    "level": "sprout",
+    "category": "healthcare",
+    "example_sentences": [
+      "J'ai un rendez-vous avec le médecin vendredi.",
+      "C'est-tu possible d'avancer mon rendez-vous à la semaine prochaine?"
+    ],
+    "confusion_pairs": [
+      "consultation",
+      "disponibilité"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.32,
+      "stability": 3.9
+    }
+  },
+  {
+    "id": "vocab-qhep-09",
+    "word": "pharmacie",
+    "phonetic": "/faʁ.ma.si/",
+    "translations": {
+      "en": "pharmacy",
+      "pa": "ਫ਼ਾਰਮੇਸੀ",
+      "hi": "फ़ार्मेसी",
+      "zh": "药房",
+      "es": "farmacia"
+    },
+    "level": "sprout",
+    "category": "healthcare",
+    "example_sentences": [
+      "Va chercher ton ordonnance à la pharmacie du centre d'achat.",
+      "La pharmacie livre les renouvellements à domicile."
+    ],
+    "confusion_pairs": [
+      "dépanneur",
+      "laboratoire"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.31,
+      "stability": 4.0
+    }
+  },
+  {
+    "id": "vocab-qhep-10",
+    "word": "pharmacien",
+    "phonetic": "/faʁ.ma.sjɛ̃/",
+    "translations": {
+      "en": "pharmacist",
+      "pa": "ਫ਼ਾਰਮਾਸਿਸਟ",
+      "hi": "फ़ार्मासिस्ट",
+      "zh": "药剂师",
+      "es": "farmacéutico"
+    },
+    "level": "sprout",
+    "category": "healthcare",
+    "example_sentences": [
+      "Demande au pharmacien avant de mélanger deux médicaments.",
+      "Ton pharmacien peut imprimer la liste de tous tes médicaments."
+    ],
+    "confusion_pairs": [
+      "technicien en pharmacie",
+      "homéopathe"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.34,
+      "stability": 3.8
+    }
+  },
+  {
+    "id": "vocab-qhep-11",
+    "word": "fièvre",
+    "phonetic": "/fjɛvʁ/",
+    "translations": {
+      "en": "fever",
+      "pa": "ਬੁਖ਼ਾਰ",
+      "hi": "बुखार",
+      "zh": "发烧",
+      "es": "fiebre"
+    },
+    "level": "sprout",
+    "category": "healthcare",
+    "example_sentences": [
+      "Il fait trente-neuf de fièvre depuis hier soir.",
+      "Si la fièvre dure plus de trois jours, consulte un médecin."
+    ],
+    "confusion_pairs": [
+      "frissons",
+      "température"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.33,
+      "stability": 3.7
+    }
+  },
+  {
+    "id": "vocab-qhep-12",
+    "word": "toux",
+    "phonetic": "/tu/",
+    "translations": {
+      "en": "cough",
+      "pa": "ਖੰਘ",
+      "hi": "खांसी",
+      "zh": "咳嗽",
+      "es": "tos"
+    },
+    "level": "sprout",
+    "category": "healthcare",
+    "example_sentences": [
+      "Sa toux l'a réveillé toute la nuit.",
+      "Une cuillerée de miel calme la toux sèche."
+    ],
+    "confusion_pairs": [
+      "respiration sifflante",
+      "rhume"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.32,
+      "stability": 3.8
+    }
+  },
+  {
+    "id": "vocab-qhep-13",
+    "word": "mal de gorge",
+    "phonetic": "/mal də ɡɔʁʒ/",
+    "translations": {
+      "en": "sore throat",
+      "pa": "ਗਲੇ ਦਾ ਦਰਦ",
+      "hi": "गले में खराश",
+      "zh": "喉咙痛",
+      "es": "dolor de garganta"
+    },
+    "level": "sprout",
+    "category": "healthcare",
+    "example_sentences": [
+      "J'ai mal de gorge et les ganglions gonflés.",
+      "Un gargarisme d'eau salée tiède soulage le mal de gorge."
+    ],
+    "confusion_pairs": [
+      "angine",
+      "gorge enrouée"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.35,
+      "stability": 3.6
+    }
+  },
+  {
+    "id": "vocab-qhep-14",
+    "word": "allergie",
+    "phonetic": "/a.lɛʁ.ʒi/",
+    "translations": {
+      "en": "allergy",
+      "pa": "ਐਲਰਜੀ",
+      "hi": "एलर्जी",
+      "zh": "过敏",
+      "es": "alergia"
+    },
+    "level": "sprout",
+    "category": "healthcare",
+    "example_sentences": [
+      "Elle a une allergie à la pénicilline, vérifie l'étiquette.",
+      "Le pollen du printemps réveille mon allergie chaque année."
+    ],
+    "confusion_pairs": [
+      "intolérance alimentaire",
+      "sensibilité"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.36,
+      "stability": 3.5
+    }
+  },
+  {
+    "id": "vocab-qhep-15",
+    "word": "urgence",
+    "phonetic": "/yʁ.ʒɑ̃s/",
+    "translations": {
+      "en": "emergency",
+      "pa": "ਐਮਰਜੈਂਸੀ",
+      "hi": "आपातकालीन स्थिति",
+      "zh": "急诊；紧急情况",
+      "es": "emergencia"
+    },
+    "level": "sprout",
+    "category": "healthcare",
+    "example_sentences": [
+      "Si la douleur à la poitrine empire, c'est une urgence, fais le 911.",
+      "Pour une fracture, file à l'urgence la plus proche."
+    ],
+    "confusion_pairs": [
+      "crise",
+      "pressé"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.35,
+      "stability": 3.7
+    }
+  },
+  {
+    "id": "vocab-qhep-16",
+    "word": "salle d'attente",
+    "phonetic": "/sal da.tɑ̃t/",
+    "translations": {
+      "en": "waiting room",
+      "pa": "ਉਡੀਕ ਘਰ",
+      "hi": "प्रतीक्षा कक्ष",
+      "zh": "候诊室",
+      "es": "sala de espera"
+    },
+    "level": "sprout",
+    "category": "healthcare",
+    "example_sentences": [
+      "On a attendu quarante minutes dans la salle d'attente.",
+      "Garde ton enfant près de toi dans la salle d'attente, s'il te plaît."
+    ],
+    "confusion_pairs": [
+      "accueil",
+      "salle d'urgence"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.3,
+      "stability": 4.0
+    }
+  },
+  {
+    "id": "vocab-qhep-17",
+    "word": "médecin de famille",
+    "phonetic": "/med.sɛ̃ də fa.mi.j/",
+    "translations": {
+      "en": "family doctor",
+      "pa": "ਫੈਮਿਲੀ ਡਾਕਟਰ",
+      "hi": "फैमिली डॉक्टर",
+      "zh": "家庭医生",
+      "es": "médico de familia"
+    },
+    "level": "sprout",
+    "category": "healthcare",
+    "example_sentences": [
+      "Notre médecin de famille suit toute la famille depuis dix ans.",
+      "Ça peut prendre des mois de trouver un médecin de famille qui prend des patients."
+    ],
+    "confusion_pairs": [
+      "médecin sans rendez-vous",
+      "pédiatre"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.33,
+      "stability": 3.9
+    }
+  },
+  {
+    "id": "vocab-qhep-18",
+    "word": "CLSC",
+    "phonetic": "/se.ɛl.ɛs.se/",
+    "translations": {
+      "en": "community health centre (CLSC)",
+      "pa": "ਕਮਿਊਨਿਟੀ ਹੈਲਥ ਸੈਂਟਰ (CLSC)",
+      "hi": "सामुदायिक स्वास्थ्य केंद्र (CLSC)",
+      "zh": "社区医疗中心（CLSC）",
+      "es": "centro comunitario de salud"
+    },
+    "level": "sprout",
+    "category": "healthcare",
+    "example_sentences": [
+      "Pour un vaccin, prends rendez-vous à ton CLSC.",
+      "Le CLSC du quartier offre des ateliers de grossesse gratuits."
+    ],
+    "confusion_pairs": [
+      "GMF",
+      "centre hospitalier"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.37,
+      "stability": 3.5
+    }
+  },
+  {
+    "id": "vocab-qhep-19",
+    "word": "symptôme",
+    "phonetic": "/sɛ̃p.tom/",
+    "translations": {
+      "en": "symptom",
+      "pa": "ਲੱਛਣ",
+      "hi": "लक्षण",
+      "zh": "症状",
+      "es": "síntoma"
+    },
+    "level": "branch",
+    "category": "healthcare",
+    "example_sentences": [
+      "Décris chaque symptôme au médecin, même les petits.",
+      "La fièvre est souvent le premier symptôme de la grippe."
+    ],
+    "confusion_pairs": [
+      "signe",
+      "effet secondaire"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.44,
+      "stability": 3.1
+    }
+  },
+  {
+    "id": "vocab-qhep-20",
+    "word": "ordonnance",
+    "phonetic": "/ɔʁ.dɔ.nɑ̃s/",
+    "translations": {
+      "en": "prescription",
+      "pa": "ਨੁਸਖ਼ਾ",
+      "hi": "पर्चा (नुस्ख़ा)",
+      "zh": "处方",
+      "es": "receta"
+    },
+    "level": "branch",
+    "category": "healthcare",
+    "example_sentences": [
+      "Il te faut une ordonnance du médecin pour l'antibiotique.",
+      "Ton ordonnance est prête au comptoir de la pharmacie."
+    ],
+    "confusion_pairs": [
+      "note du médecin",
+      "médicament en vente libre"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.46,
+      "stability": 3.0
+    }
+  },
+  {
+    "id": "vocab-qhep-21",
+    "word": "renouvellement",
+    "phonetic": "/ʁə.nu.vɛl.mɑ̃/",
+    "translations": {
+      "en": "refill (prescription renewal)",
+      "pa": "ਰੀਫ਼ਿਲ",
+      "hi": "रिफिल (दोबारा भरवाना)",
+      "zh": "续配药",
+      "es": "renovación de la receta"
+    },
+    "level": "branch",
+    "category": "healthcare",
+    "example_sentences": [
+      "Demande à ton médecin d'approuver le renouvellement avant que le flacon soit vide.",
+      "Il me reste un renouvellement sur cette ordonnance."
+    ],
+    "confusion_pairs": [
+      "prolongation",
+      "transfert d'ordonnance"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.45,
+      "stability": 3.0
+    }
+  },
+  {
+    "id": "vocab-qhep-22",
+    "word": "dose",
+    "phonetic": "/doz/",
+    "translations": {
+      "en": "dose",
+      "pa": "ਖ਼ੁਰਾਕ (ਦਵਾਈ ਦੀ)",
+      "hi": "खुराक",
+      "zh": "剂量",
+      "es": "dosis"
+    },
+    "level": "branch",
+    "category": "healthcare",
+    "example_sentences": [
+      "La dose, c'est un comprimé deux fois par jour avec de la nourriture.",
+      "Ne change jamais ta dose sans parler au pharmacien."
+    ],
+    "confusion_pairs": [
+      "dosage",
+      "quantité"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.47,
+      "stability": 2.9
+    }
+  },
+  {
+    "id": "vocab-qhep-23",
+    "word": "effet secondaire",
+    "phonetic": "/ɛ.fɛ sə.ɡɔ̃.dɛʁ/",
+    "translations": {
+      "en": "side effect",
+      "pa": "ਮਾੜਾ ਅਸਰ",
+      "hi": "दुष्प्रभाव",
+      "zh": "副作用",
+      "es": "efecto secundario"
+    },
+    "level": "branch",
+    "category": "healthcare",
+    "example_sentences": [
+      "La somnolence, c'est un effet secondaire courant de ce médicament.",
+      "Appelle la clinique si un effet secondaire devient sévère."
+    ],
+    "confusion_pairs": [
+      "réaction allergique",
+      "interaction médicamenteuse"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.46,
+      "stability": 3.0
+    }
+  },
+  {
+    "id": "vocab-qhep-24",
+    "word": "nausée",
+    "phonetic": "/no.ze/",
+    "translations": {
+      "en": "nausea",
+      "pa": "ਜੀ ਮਿਚਲਣਾ",
+      "hi": "मतली",
+      "zh": "恶心",
+      "es": "náuseas"
+    },
+    "level": "branch",
+    "category": "healthcare",
+    "example_sentences": [
+      "Les antidouleurs forts peuvent causer de la nausée.",
+      "Bois du thé au gingembre si la nausée ne passe pas."
+    ],
+    "confusion_pairs": [
+      "vomissement",
+      "indigestion"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.48,
+      "stability": 2.8
+    }
+  },
+  {
+    "id": "vocab-qhep-25",
+    "word": "étourdissement",
+    "phonetic": "/e.tuʁ.di.smɑ̃/",
+    "translations": {
+      "en": "dizziness",
+      "pa": "ਚੱਕਰ ਆਉਣੇ",
+      "hi": "चक्कर आना",
+      "zh": "头晕",
+      "es": "mareo"
+    },
+    "level": "branch",
+    "category": "healthcare",
+    "example_sentences": [
+      "Un étourdissement peut être un signe de déshydratation.",
+      "Elle a eu des étourdissements après avoir sauté le dîner."
+    ],
+    "confusion_pairs": [
+      "vertige",
+      "faiblesse"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.48,
+      "stability": 2.8
+    }
+  },
+  {
+    "id": "vocab-qhep-26",
+    "word": "éruption cutanée",
+    "phonetic": "/e.ʁyp.sjɔ̃ ky.ta.ne/",
+    "translations": {
+      "en": "rash",
+      "pa": "ਧੱਫ਼",
+      "hi": "चकत्ते (रैश)",
+      "zh": "皮疹",
+      "es": "sarpullido"
+    },
+    "level": "branch",
+    "category": "healthcare",
+    "example_sentences": [
+      "Ce nouveau savon lui a donné une éruption cutanée rouge.",
+      "Montre l'éruption cutanée au médecin avant qu'elle disparaisse."
+    ],
+    "confusion_pairs": [
+      "urticaire",
+      "démangeaison"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.45,
+      "stability": 2.9
+    }
+  },
+  {
+    "id": "vocab-qhep-27",
+    "word": "saignement",
+    "phonetic": "/sɛɲ.mɑ̃/",
+    "translations": {
+      "en": "bleeding",
+      "pa": "ਖ਼ੂਨ ਨਿਕਲਣਾ",
+      "hi": "खून बहना",
+      "zh": "出血",
+      "es": "sangrado"
+    },
+    "level": "branch",
+    "category": "healthcare",
+    "example_sentences": [
+      "Appuie fermement pour arrêter le saignement.",
+      "Un saignement qui ne s'arrête pas demande des soins immédiats."
+    ],
+    "confusion_pairs": [
+      "contusion",
+      "caillot"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.46,
+      "stability": 2.9
+    }
+  },
+  {
+    "id": "vocab-qhep-28",
+    "word": "blessure",
+    "phonetic": "/blɛ.syʁ/",
+    "translations": {
+      "en": "injury",
+      "pa": "ਸੱਟ",
+      "hi": "चोट",
+      "zh": "外伤",
+      "es": "lesión"
+    },
+    "level": "branch",
+    "category": "healthcare",
+    "example_sentences": [
+      "Signale toute blessure au travail à ton superviseur tout de suite.",
+      "Cette vieille blessure au genou lui fait encore mal."
+    ],
+    "confusion_pairs": [
+      "plaie",
+      "entorse"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.47,
+      "stability": 2.9
+    }
+  },
+  {
+    "id": "vocab-qhep-29",
+    "word": "salle d'urgence",
+    "phonetic": "/sal dy.ʁʒɑ̃s/",
+    "translations": {
+      "en": "emergency room",
+      "pa": "ਐਮਰਜੈਂਸੀ ਵਿਭਾਗ",
+      "hi": "इमरजेंसी रूम",
+      "zh": "急诊室",
+      "es": "sala de emergencias"
+    },
+    "level": "branch",
+    "category": "healthcare",
+    "example_sentences": [
+      "On l'a transporté à la salle d'urgence de l'hôpital de la Citadelle.",
+      "Prévois une longue attente à la salle d'urgence pour un problème mineur."
+    ],
+    "confusion_pairs": [
+      "clinique sans rendez-vous",
+      "centre hospitalier"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.45,
+      "stability": 3.0
+    }
+  },
+  {
+    "id": "vocab-qhep-30",
+    "word": "référence",
+    "phonetic": "/ʁe.fe.ʁɑ̃s/",
+    "translations": {
+      "en": "referral",
+      "pa": "ਰੈਫ਼ਰਲ",
+      "hi": "रेफ़रल (भेजना)",
+      "zh": "转诊单",
+      "es": "derivación"
+    },
+    "level": "branch",
+    "category": "healthcare",
+    "example_sentences": [
+      "Ta référence pour le dermatologue est enfin arrivée.",
+      "Demande combien de temps d'attente il y a après une référence."
+    ],
+    "confusion_pairs": [
+      "bon (feuille de référence)",
+      "recommandation"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.49,
+      "stability": 2.8
+    }
+  },
+  {
+    "id": "vocab-qhep-31",
+    "word": "spécialiste",
+    "phonetic": "/spe.sja.list/",
+    "translations": {
+      "en": "specialist",
+      "pa": "ਮਾਹਿਰ ਡਾਕਟਰ",
+      "hi": "विशेषज्ञ डॉक्टर",
+      "zh": "专科医生",
+      "es": "especialista"
+    },
+    "level": "branch",
+    "category": "healthcare",
+    "example_sentences": [
+      "Un spécialiste soigne ce que ton médecin de famille ne peut pas traiter.",
+      "Le spécialiste te verra à la clinique externe."
+    ],
+    "confusion_pairs": [
+      "généraliste",
+      "chirurgien"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.46,
+      "stability": 3.0
+    }
+  },
+  {
+    "id": "vocab-qhep-32",
+    "word": "examen médical",
+    "phonetic": "/ɛɡ.za.mɛ̃ me.di.kal/",
+    "translations": {
+      "en": "checkup",
+      "pa": "ਜਾਂਚ",
+      "hi": "जांच (रूटीन परीक्षा)",
+      "zh": "体检",
+      "es": "chequeo"
+    },
+    "level": "branch",
+    "category": "healthcare",
+    "example_sentences": [
+      "Prends un examen médical annuel même quand tu te sens en forme.",
+      "À l'examen médical, le docteur a mesuré sa tension artérielle."
+    ],
+    "confusion_pairs": [
+      "bilan de santé",
+      "visite de routine"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.44,
+      "stability": 3.1
+    }
+  },
+  {
+    "id": "vocab-qhep-33",
+    "word": "prise de sang",
+    "phonetic": "/pʁiz də sɑ̃/",
+    "translations": {
+      "en": "blood test",
+      "pa": "ਖ਼ੂਨ ਦੀ ਜਾਂਚ",
+      "hi": "खून की जांच",
+      "zh": "抽血检查",
+      "es": "análisis de sangre"
+    },
+    "level": "branch",
+    "category": "healthcare",
+    "example_sentences": [
+      "La prise de sang montre que ton fer est un peu bas.",
+      "Jeûne douze heures avant la prise de sang."
+    ],
+    "confusion_pairs": [
+      "analyse d'urine",
+      "radiographie"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.48,
+      "stability": 2.8
+    }
+  },
+  {
+    "id": "vocab-qhep-34",
+    "word": "traitement",
+    "phonetic": "/tʁɛt.mɑ̃/",
+    "translations": {
+      "en": "treatment",
+      "pa": "ਇਲਾਜ",
+      "hi": "इलाज",
+      "zh": "治疗",
+      "es": "tratamiento"
+    },
+    "level": "branch",
+    "category": "healthcare",
+    "example_sentences": [
+      "La physiothérapie, c'est le traitement habituel pour cette blessure.",
+      "Le traitement a fait effet en deux semaines."
+    ],
+    "confusion_pairs": [
+      "guérison",
+      "soins"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.45,
+      "stability": 3.0
+    }
+  },
+  {
+    "id": "vocab-qhep-35",
+    "word": "en vente libre",
+    "phonetic": "/ɑ̃ vɑ̃t libʁ/",
+    "translations": {
+      "en": "over-the-counter",
+      "pa": "ਬਿਨਾਂ ਨੁਸਖ਼ੇ ਦੀ ਦਵਾਈ",
+      "hi": "बिना पर्चे वाली दवा",
+      "zh": "非处方药",
+      "es": "de venta libre"
+    },
+    "level": "branch",
+    "category": "healthcare",
+    "example_sentences": [
+      "L'ibuprofène, c'est un antidouleur en vente libre.",
+      "Les produits en vente libre ne guérissent pas une infection bactérienne."
+    ],
+    "confusion_pairs": [
+      "sur ordonnance",
+      "derrière le comptoir"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.5,
+      "stability": 2.7
+    }
+  },
+  {
+    "id": "vocab-qhep-36",
+    "word": "antidouleur",
+    "phonetic": "/ɑ̃.ti.du.lœʁ/",
+    "translations": {
+      "en": "painkiller",
+      "pa": "ਦਰਦ ਨਿਵਾਰਕ ਦਵਾਈ",
+      "hi": "दर्द निवारक दवा",
+      "zh": "止痛药",
+      "es": "analgésico"
+    },
+    "level": "branch",
+    "category": "healthcare",
+    "example_sentences": [
+      "Prends un antidouleur avant que l'anesthésie se dissipe.",
+      "Cet antidouleur-là me donnait le cœur au ventre, alors je mange avant."
+    ],
+    "confusion_pairs": [
+      "anti-inflammatoire",
+      "myorelaxant"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.47,
+      "stability": 2.8
+    }
+  },
+  {
+    "id": "vocab-qhep-37",
+    "word": "antibiotique",
+    "phonetic": "/ɑ̃.ti.bjo.tik/",
+    "translations": {
+      "en": "antibiotic",
+      "pa": "ਐਂਟੀਬਾਇਓਟਿਕ",
+      "hi": "एंटीबायोटिक दवा",
+      "zh": "抗生素",
+      "es": "antibiótico"
+    },
+    "level": "branch",
+    "category": "healthcare",
+    "example_sentences": [
+      "Finis tout ton antibiotique, même si tu te sens mieux au bout de trois jours.",
+      "Les antibiotiques ne servent à rien contre le rhume."
+    ],
+    "confusion_pairs": [
+      "antiviral",
+      "probiotique"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.49,
+      "stability": 2.7
+    }
+  },
+  {
+    "id": "vocab-qhep-38",
+    "word": "pommade",
+    "phonetic": "/pɔ.mad/",
+    "translations": {
+      "en": "ointment",
+      "pa": "ਮਲਮ",
+      "hi": "मरहम",
+      "zh": "药膏",
+      "es": "pomada"
+    },
+    "level": "branch",
+    "category": "healthcare",
+    "example_sentences": [
+      "Applique la pommade en mince couche deux fois par jour.",
+      "Cette pommade calme l'éruption cutanée et arrête les démangeaisons."
+    ],
+    "confusion_pairs": [
+      "crème",
+      "lotion"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.5,
+      "stability": 2.6
+    }
+  },
+  {
+    "id": "vocab-qhep-39",
+    "word": "interprète",
+    "phonetic": "/ɛ̃.tɛʁ.pʁɛt/",
+    "translations": {
+      "en": "interpreter",
+      "pa": "ਤਰਜੁਮਾਕਾਰ",
+      "hi": "दुभाषिया",
+      "zh": "口译员",
+      "es": "intérprete"
+    },
+    "level": "branch",
+    "category": "healthcare",
+    "example_sentences": [
+      "Demande un interprète quand tu prends ton rendez-vous, c'est gratuit.",
+      "Les interprètes des hôpitaux sont formés et tenus au secret professionnel."
+    ],
+    "confusion_pairs": [
+      "traducteur",
+      "accompagnateur"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.49,
+      "stability": 2.7
+    }
+  },
+  {
+    "id": "vocab-qhep-40",
+    "word": "suivi",
+    "phonetic": "/sɥi.vi/",
+    "translations": {
+      "en": "follow-up",
+      "pa": "ਫ਼ਾਲੋ-ਅੱਪ",
+      "hi": "फ़ॉलो-अप (अगली जांच)",
+      "zh": "复诊",
+      "es": "consulta de seguimiento"
+    },
+    "level": "branch",
+    "category": "healthcare",
+    "example_sentences": [
+      "Le médecin a fixé le suivi dans deux semaines.",
+      "Apporte tes questions au rendez-vous de suivi."
+    ],
+    "confusion_pairs": [
+      "examen médical",
+      "première consultation"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.46,
+      "stability": 2.9
+    }
+  },
+  {
+    "id": "vocab-qhep-41",
+    "word": "triage",
+    "phonetic": "/tʁi.aʒ/",
+    "translations": {
+      "en": "triage",
+      "pa": "ਟ੍ਰਾਈਏਜ਼ (ਤਰਤੀਬ)",
+      "hi": "ट्रायाज (प्राथमिकता)",
+      "zh": "分诊",
+      "es": "triaje"
+    },
+    "level": "bloom",
+    "category": "healthcare",
+    "example_sentences": [
+      "Le triage met les patients les plus urgents en premier, pas les premiers arrivés.",
+      "Une infirmière fait le triage à l'entrée et prend tes signes vitaux."
+    ],
+    "confusion_pairs": [
+      "liste d'attente",
+      "priorité"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.6,
+      "stability": 2.0
+    }
+  },
+  {
+    "id": "vocab-qhep-42",
+    "word": "diagnostic",
+    "phonetic": "/djaɡ.nɔ.sti/",
+    "translations": {
+      "en": "diagnosis",
+      "pa": "ਨਿਦਾਨ",
+      "hi": "निदान",
+      "zh": "诊断",
+      "es": "diagnóstico"
+    },
+    "level": "bloom",
+    "category": "healthcare",
+    "example_sentences": [
+      "Le diagnostic explique enfin des mois de fatigue.",
+      "Demander une deuxième opinion sur un diagnostic, c'est tout à fait normal."
+    ],
+    "confusion_pairs": [
+      "pronostic",
+      "hypothèse"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.62,
+      "stability": 1.9
+    }
+  },
+  {
+    "id": "vocab-qhep-43",
+    "word": "condition médicale",
+    "phonetic": "/kɔ̃.di.sjɔ̃ me.di.kal/",
+    "translations": {
+      "en": "medical condition",
+      "pa": "ਬਿਮਾਰੀ ਦੀ ਹਾਲਤ",
+      "hi": "बीमारी (स्थिति)",
+      "zh": "病情",
+      "es": "afección"
+    },
+    "level": "bloom",
+    "category": "healthcare",
+    "example_sentences": [
+      "Le diabète, c'est une condition médicale qui se gère à tous les jours.",
+      "Mentionne ta condition médicale à chaque nouveau professionnel."
+    ],
+    "confusion_pairs": [
+      "maladie",
+      "syndrome"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.58,
+      "stability": 2.1
+    }
+  },
+  {
+    "id": "vocab-qhep-44",
+    "word": "couverture",
+    "phonetic": "/ku.vɛʁ.tyʁ/",
+    "translations": {
+      "en": "coverage",
+      "pa": "ਕਵਰੇਜ",
+      "hi": "कवरेज",
+      "zh": "（医保）覆盖范围",
+      "es": "cobertura"
+    },
+    "level": "bloom",
+    "category": "healthcare",
+    "example_sentences": [
+      "La couverture publique ne paie pas les soins dentaires pour les adultes.",
+      "Vérifie si ta couverture inclut les lunettes."
+    ],
+    "confusion_pairs": [
+      "prestations",
+      "admissibilité"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.6,
+      "stability": 2.0
+    }
+  },
+  {
+    "id": "vocab-qhep-45",
+    "word": "assurance",
+    "phonetic": "/a.sy.ʁɑ̃s/",
+    "translations": {
+      "en": "insurance",
+      "pa": "ਬੀਮਾ",
+      "hi": "बीमा",
+      "zh": "保险",
+      "es": "seguro"
+    },
+    "level": "bloom",
+    "category": "healthcare",
+    "example_sentences": [
+      "L'assurance collective du travail couvre souvent la dentaire et la vue.",
+      "Compare les assurances avant de signer quoi que ce soit."
+    ],
+    "confusion_pairs": [
+      "police d'assurance",
+      "assureur"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.57,
+      "stability": 2.2
+    }
+  },
+  {
+    "id": "vocab-qhep-46",
+    "word": "réclamation",
+    "phonetic": "/ʁe.kla.ma.sjɔ̃/",
+    "translations": {
+      "en": "claim (insurance)",
+      "pa": "ਕਲੇਮ",
+      "hi": "दावा (क्लेम)",
+      "zh": "报销申请",
+      "es": "reclamación"
+    },
+    "level": "bloom",
+    "category": "healthcare",
+    "example_sentences": [
+      "Soumets ta réclamation en ligne avec ton reçu.",
+      "Ma réclamation pour la physio a été approuvée en quelques jours."
+    ],
+    "confusion_pairs": [
+      "reçu",
+      "préautorisation"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.63,
+      "stability": 1.8
+    }
+  },
+  {
+    "id": "vocab-qhep-47",
+    "word": "franchise",
+    "phonetic": "/fʁɑ̃.kiz/",
+    "translations": {
+      "en": "deductible",
+      "pa": "ਡਿਡਕਟਿਬਲ",
+      "hi": "डिडक्टिबल (पहली रकम)",
+      "zh": "免赔额",
+      "es": "deducible"
+    },
+    "level": "bloom",
+    "category": "healthcare",
+    "example_sentences": [
+      "Tu paies la franchise d'abord, ensuite le régime prend le relais.",
+      "Une franchise plus haute veut souvent dire une prime mensuelle moindre."
+    ],
+    "confusion_pairs": [
+      "coassurance",
+      "prime mensuelle"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.66,
+      "stability": 1.6
+    }
+  },
+  {
+    "id": "vocab-qhep-48",
+    "word": "anxiété",
+    "phonetic": "/ɑ̃k.zje.te/",
+    "translations": {
+      "en": "anxiety",
+      "pa": "ਬੈਚੈਨੀ",
+      "hi": "चिंता (घबराहट)",
+      "zh": "焦虑",
+      "es": "ansiedad"
+    },
+    "level": "bloom",
+    "category": "healthcare",
+    "example_sentences": [
+      "Respirer lentement aide à calmer mon anxiété.",
+      "Parler de ton anxiété à quelqu'un, ça aide vraiment."
+    ],
+    "confusion_pairs": [
+      "stress",
+      "crise de panique"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.58,
+      "stability": 2.1
+    }
+  },
+  {
+    "id": "vocab-qhep-49",
+    "word": "thérapie",
+    "phonetic": "/te.ʁa.pi/",
+    "translations": {
+      "en": "therapy (counselling)",
+      "pa": "ਕਾਉਂਸਲਿੰਗ",
+      "hi": "थेरेपी (काउंसलिंग)",
+      "zh": "心理咨询；治疗",
+      "es": "terapia"
+    },
+    "level": "bloom",
+    "category": "healthcare",
+    "example_sentences": [
+      "Des organismes communautaires offrent de la thérapie gratuite à court terme.",
+      "La thérapie lui a donné des outils concrets pour gérer son stress."
+    ],
+    "confusion_pairs": [
+      "psychothérapie",
+      "groupe d'entraide"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.61,
+      "stability": 1.9
+    }
+  },
+  {
+    "id": "vocab-qhep-50",
+    "word": "dépistage",
+    "phonetic": "/de.pis.taʒ/",
+    "translations": {
+      "en": "screening",
+      "pa": "ਸਕਰੀਨਿੰਗ ਜਾਂਚ",
+      "hi": "स्क्रीनिंग जांच",
+      "zh": "筛查",
+      "es": "prueba de detección"
+    },
+    "level": "bloom",
+    "category": "healthcare",
+    "example_sentences": [
+      "Le dépistage régulier attrape les problèmes tôt, avant les symptômes.",
+      "Au Québec, le dépistage du cancer colorectal commence vers cinquante ans."
+    ],
+    "confusion_pairs": [
+      "test diagnostique",
+      "vaccination"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.59,
+      "stability": 2.0
+    }
+  }
+]

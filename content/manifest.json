@@ -130,6 +130,58 @@
       "theme_color": "#22C55E",
       "icon": "book",
       "is_published": true
+    },
+    {
+      "id": "quebec-healthcare-v1",
+      "type": "scenarios",
+      "language": "fr",
+      "path": "content/scenarios/quebec-healthcare-v1.json",
+      "title": "Santé au Québec",
+      "description": "RAMQ, pharmacies, médecins et navigation du système de santé québécois.",
+      "category": "healthcare",
+      "tier": "freemium",
+      "theme_color": "#22C55E",
+      "icon": "medkit",
+      "is_published": true
+    },
+    {
+      "id": "vocab-quebec-healthcare-v1",
+      "type": "vocabulary",
+      "language": "fr",
+      "path": "content/vocabulary/quebec-healthcare-v1.json",
+      "title": "Vocabulaire santé",
+      "description": "Mots essentiels du système de santé québécois.",
+      "category": "vocabulary",
+      "tier": "freemium",
+      "theme_color": "#22C55E",
+      "icon": "book",
+      "is_published": true
+    },
+    {
+      "id": "quebec-workplace-v1",
+      "type": "scenarios",
+      "language": "fr",
+      "path": "content/scenarios/quebec-workplace-v1.json",
+      "title": "Travail au Québec",
+      "description": "Premiers jours, collègues, paie et intégration professionnelle en français.",
+      "category": "workplace",
+      "tier": "freemium",
+      "theme_color": "#FF8A00",
+      "icon": "briefcase",
+      "is_published": true
+    },
+    {
+      "id": "vocab-quebec-workplace-v1",
+      "type": "vocabulary",
+      "language": "fr",
+      "path": "content/vocabulary/quebec-workplace-v1.json",
+      "title": "Vocabulaire travail",
+      "description": "Mots essentiels du milieu de travail québécois.",
+      "category": "vocabulary",
+      "tier": "freemium",
+      "theme_color": "#FF8A00",
+      "icon": "book",
+      "is_published": true
     }
   ]
 }

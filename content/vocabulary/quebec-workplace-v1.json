@@ -1,0 +1,1302 @@
+[
+  {
+    "id": "vocab-qwp-01",
+    "word": "travail",
+    "phonetic": "/tʁa.vaj/",
+    "translations": {
+      "en": "work",
+      "pa": "ਕੰਮ",
+      "hi": "काम",
+      "zh": "工作",
+      "es": "trabajo"
+    },
+    "level": "seed",
+    "category": "workplace",
+    "example_sentences": [
+      "J'adore mon nouveau travail, l'équipe est super accueillante.",
+      "Le travail commence à huit heures trente le matin."
+    ],
+    "confusion_pairs": [
+      "boulot",
+      "emploi"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.2,
+      "stability": 4.8
+    }
+  },
+  {
+    "id": "vocab-qwp-02",
+    "word": "collègue",
+    "phonetic": "/kɔ.lɛɡ/",
+    "translations": {
+      "en": "colleague",
+      "pa": "ਸਾਥੀ",
+      "hi": "सहकर्मी",
+      "zh": "同事",
+      "es": "colega"
+    },
+    "level": "seed",
+    "category": "workplace",
+    "example_sentences": [
+      "Ma collègue m'a montré comment remplir le formulaire.",
+      "Parle à un collègue du service de la paie pour cette question."
+    ],
+    "confusion_pairs": [
+      "confrère",
+      "camarade de travail"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.22,
+      "stability": 4.6
+    }
+  },
+  {
+    "id": "vocab-qwp-03",
+    "word": "patron",
+    "phonetic": "/pa.tʁɔ̃/",
+    "translations": {
+      "en": "boss",
+      "pa": "ਮਾਲਕ",
+      "hi": "बॉस",
+      "zh": "老板",
+      "es": "jefe"
+    },
+    "level": "seed",
+    "category": "workplace",
+    "example_sentences": [
+      "Mon patron m'a fixé un rendez-vous pour le bilan de trois mois.",
+      "Le patron est en réunion jusqu'à quinze heures."
+    ],
+    "confusion_pairs": [
+      "gestionnaire",
+      "propriétaire"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.24,
+      "stability": 4.4
+    }
+  },
+  {
+    "id": "vocab-qwp-04",
+    "word": "salaire",
+    "phonetic": "/sa.lɛʁ/",
+    "translations": {
+      "en": "salary",
+      "pa": "ਤਨਖ਼ਾਹ",
+      "hi": "वेतन",
+      "zh": "工资",
+      "es": "salario"
+    },
+    "level": "seed",
+    "category": "workplace",
+    "example_sentences": [
+      "Le salaire est déposé directement dans mon compte.",
+      "Ton salaire brut, c'est le montant avant les déductions."
+    ],
+    "confusion_pairs": [
+      "paie",
+      "rémunération"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.25,
+      "stability": 4.3
+    }
+  },
+  {
+    "id": "vocab-qwp-05",
+    "word": "pause",
+    "phonetic": "/poz/",
+    "translations": {
+      "en": "break",
+      "pa": "ਬ੍ਰੇਕ",
+      "hi": "ब्रेक",
+      "zh": "休息",
+      "es": "descanso"
+    },
+    "level": "seed",
+    "category": "workplace",
+    "example_sentences": [
+      "On prend une pause de quinze minutes à dix heures.",
+      "Tu veux prendre un café pendant la pause?"
+    ],
+    "confusion_pairs": [
+      "période de repos",
+      "arrêt"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.2,
+      "stability": 4.5
+    }
+  },
+  {
+    "id": "vocab-qwp-06",
+    "word": "emploi",
+    "phonetic": "/ɑ̃.plwa/",
+    "translations": {
+      "en": "job",
+      "pa": "ਨੌਕਰੀ",
+      "hi": "नौकरी",
+      "zh": "工作职位",
+      "es": "empleo"
+    },
+    "level": "sprout",
+    "category": "workplace",
+    "example_sentences": [
+      "Elle cherche un nouvel emploi dans le domaine de la comptabilité.",
+      "J'ai signé le contrat pour mon nouvel emploi hier."
+    ],
+    "confusion_pairs": [
+      "travail",
+      "poste"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.3,
+      "stability": 4.0
+    }
+  },
+  {
+    "id": "vocab-qwp-07",
+    "word": "poste",
+    "phonetic": "/pɔst/",
+    "translations": {
+      "en": "position (job)",
+      "pa": "ਅਹੁਦਾ",
+      "hi": "पद",
+      "zh": "职位",
+      "es": "puesto"
+    },
+    "level": "sprout",
+    "category": "workplace",
+    "example_sentences": [
+      "Le poste de coordonnateur est affiché sur le site de l'entreprise.",
+      "Pour ce poste, on demande trois ans d'expérience."
+    ],
+    "confusion_pairs": [
+      "fonction",
+      "bureau"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.31,
+      "stability": 3.9
+    }
+  },
+  {
+    "id": "vocab-qwp-08",
+    "word": "équipe",
+    "phonetic": "/e.kip/",
+    "translations": {
+      "en": "team",
+      "pa": "ਟੀਮ",
+      "hi": "टीम",
+      "zh": "团队",
+      "es": "equipo"
+    },
+    "level": "sprout",
+    "category": "workplace",
+    "example_sentences": [
+      "L'équipe des ventes se réunit tous les lundis matin.",
+      "Bienvenue dans l'équipe, on est contents de t'avoir!"
+    ],
+    "confusion_pairs": [
+      "département",
+      "groupe"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.3,
+      "stability": 4.1
+    }
+  },
+  {
+    "id": "vocab-qwp-09",
+    "word": "horaire",
+    "phonetic": "/ɔ.ʁɛʁ/",
+    "translations": {
+      "en": "schedule",
+      "pa": "ਸਮਾਂ-ਸਾਰਣੀ",
+      "hi": "समय-सारणी",
+      "zh": "时间表",
+      "es": "horario"
+    },
+    "level": "sprout",
+    "category": "workplace",
+    "example_sentences": [
+      "Mon horaire varie d'une semaine à l'autre.",
+      "On affiche l'horaire de la semaine le vendredi après-midi."
+    ],
+    "confusion_pairs": [
+      "emploi du temps",
+      "cadence"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.33,
+      "stability": 3.8
+    }
+  },
+  {
+    "id": "vocab-qwp-10",
+    "word": "quart",
+    "phonetic": "/kaʁ/",
+    "translations": {
+      "en": "shift",
+      "pa": "ਸ਼ਿਫ਼ਟ",
+      "hi": "शिफ्ट",
+      "zh": "班次",
+      "es": "turno"
+    },
+    "level": "sprout",
+    "category": "workplace",
+    "example_sentences": [
+      "Je commence mon quart de soir à quinze heures.",
+      "Elle a pris le quart de nuit pour les deux prochaines semaines."
+    ],
+    "confusion_pairs": [
+      "période",
+      "équipe de nuit"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.32,
+      "stability": 3.9
+    }
+  },
+  {
+    "id": "vocab-qwp-11",
+    "word": "congé",
+    "phonetic": "/kɔ̃.ʒe/",
+    "translations": {
+      "en": "day off",
+      "pa": "ਛੁੱਟੀ",
+      "hi": "छुट्टी",
+      "zh": "休假",
+      "es": "día libre"
+    },
+    "level": "sprout",
+    "category": "workplace",
+    "example_sentences": [
+      "Je prends congé vendredi pour une visite chez le médecin.",
+      "Il lui reste dix jours de congé à prendre cette année."
+    ],
+    "confusion_pairs": [
+      "vacances",
+      "absence"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.34,
+      "stability": 3.7
+    }
+  },
+  {
+    "id": "vocab-qwp-12",
+    "word": "paie",
+    "phonetic": "/pɛ/",
+    "translations": {
+      "en": "pay (payroll)",
+      "pa": "ਤਨਖ਼ਾਹ",
+      "hi": "वेतन-भुगतान",
+      "zh": "工资发放",
+      "es": "pago"
+    },
+    "level": "sprout",
+    "category": "workplace",
+    "example_sentences": [
+      "La paie est déposée aux deux semaines, le jeudi.",
+      "Si tu as une question sur ta paie, parle au service de la paie."
+    ],
+    "confusion_pairs": [
+      "salaire",
+      "dépôt direct"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.3,
+      "stability": 4.0
+    }
+  },
+  {
+    "id": "vocab-qwp-13",
+    "word": "déduction",
+    "phonetic": "/de.dyk.sjɔ̃/",
+    "translations": {
+      "en": "deduction",
+      "pa": "ਕਟੌਤੀ",
+      "hi": "कटौती",
+      "zh": "扣款",
+      "es": "deducción"
+    },
+    "level": "sprout",
+    "category": "workplace",
+    "example_sentences": [
+      "Les déductions incluent l'impôt et les cotisations.",
+      "Regarde les déductions sur ton bulletin avant de poser des questions."
+    ],
+    "confusion_pairs": [
+      "retenue",
+      "impôt"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.35,
+      "stability": 3.6
+    }
+  },
+  {
+    "id": "vocab-qwp-14",
+    "word": "formulaire",
+    "phonetic": "/fɔʁ.my.lɛʁ/",
+    "translations": {
+      "en": "form",
+      "pa": "ਫਾਰਮ",
+      "hi": "फॉर्म",
+      "zh": "表格",
+      "es": "formulario"
+    },
+    "level": "sprout",
+    "category": "workplace",
+    "example_sentences": [
+      "Remplis le formulaire d'inscription avant vendredi.",
+      "Il faut signer le formulaire et le retourner au bureau."
+    ],
+    "confusion_pairs": [
+      "questionnaire",
+      "demande"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.31,
+      "stability": 3.9
+    }
+  },
+  {
+    "id": "vocab-qwp-15",
+    "word": "formation",
+    "phonetic": "/fɔʁ.ma.sjɔ̃/",
+    "translations": {
+      "en": "training",
+      "pa": "ਸਿਖਲਾਈ",
+      "hi": "प्रशिक्षण",
+      "zh": "培训",
+      "es": "formación"
+    },
+    "level": "sprout",
+    "category": "workplace",
+    "example_sentences": [
+      "La formation en santé et sécurité dure une demi-journée.",
+      "Mon employeur offre une formation en français sur les heures de travail."
+    ],
+    "confusion_pairs": [
+      "perfectionnement",
+      "atelier"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.33,
+      "stability": 3.8
+    }
+  },
+  {
+    "id": "vocab-qwp-16",
+    "word": "entrevue",
+    "phonetic": "/ɑ̃.tʁə.vy/",
+    "translations": {
+      "en": "interview",
+      "pa": "ਇੰਟਰਵਿਊ",
+      "hi": "इंटरव्यू",
+      "zh": "面试",
+      "es": "entrevista"
+    },
+    "level": "sprout",
+    "category": "workplace",
+    "example_sentences": [
+      "J'ai une entrevue téléphonique jeudi après-midi.",
+      "Prépare des exemples concrets avant ton entrevue."
+    ],
+    "confusion_pairs": [
+      "entretien",
+      "discussion"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.35,
+      "stability": 3.6
+    }
+  },
+  {
+    "id": "vocab-qwp-17",
+    "word": "contrat",
+    "phonetic": "/kɔ̃.tʁa/",
+    "translations": {
+      "en": "contract",
+      "pa": "ਇਕਰਾਰਨਾਮਾ",
+      "hi": "अनुबंध",
+      "zh": "合同",
+      "es": "contrato"
+    },
+    "level": "sprout",
+    "category": "workplace",
+    "example_sentences": [
+      "Lis bien ton contrat avant de le signer.",
+      "Le contrat précise le salaire et les vacances."
+    ],
+    "confusion_pairs": [
+      "entente",
+      "lettre d'embauche"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.36,
+      "stability": 3.5
+    }
+  },
+  {
+    "id": "vocab-qwp-18",
+    "word": "courriel",
+    "phonetic": "/ku.ʁjɛl/",
+    "translations": {
+      "en": "email",
+      "pa": "ਈਮੇਲ",
+      "hi": "ईमेल",
+      "zh": "电子邮件",
+      "es": "correo electrónico"
+    },
+    "level": "sprout",
+    "category": "workplace",
+    "example_sentences": [
+      "Envoie-moi un courriel pour confirmer ta disponibilité.",
+      "Je réponds à mes courriels en début de journée."
+    ],
+    "confusion_pairs": [
+      "messagerie",
+      "courrier"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.3,
+      "stability": 4.0
+    }
+  },
+  {
+    "id": "vocab-qwp-19",
+    "word": "gestionnaire",
+    "phonetic": "/ʒɛs.tjɔ.nɛʁ/",
+    "translations": {
+      "en": "manager",
+      "pa": "ਪ੍ਰਬੰਧਕ",
+      "hi": "प्रबंधक",
+      "zh": "经理",
+      "es": "gerente"
+    },
+    "level": "branch",
+    "category": "workplace",
+    "example_sentences": [
+      "Mon gestionnaire m'a donné une bonne rétroaction cette semaine.",
+      "La gestionnaire a accepté de discuter de mon horaire."
+    ],
+    "confusion_pairs": [
+      "chef d'équipe",
+      "directeur"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.44,
+      "stability": 3.1
+    }
+  },
+  {
+    "id": "vocab-qwp-20",
+    "word": "superviseur",
+    "phonetic": "/sy.pɛʁ.vi.zœʁ/",
+    "translations": {
+      "en": "supervisor",
+      "pa": "ਸੁਪਰਵਾਈਜ਼ਰ",
+      "hi": "पर्यवेक्षक",
+      "zh": "主管",
+      "es": "supervisor"
+    },
+    "level": "branch",
+    "category": "workplace",
+    "example_sentences": [
+      "Ton superviseur peut approuver tes heures supplémentaires.",
+      "Signale tout incident à ton superviseur immédiatement."
+    ],
+    "confusion_pairs": [
+      "contremaître",
+      "gestionnaire"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.45,
+      "stability": 3.0
+    }
+  },
+  {
+    "id": "vocab-qwp-21",
+    "word": "ressources humaines",
+    "phonetic": "/ʁə.suʁs y.mɛn/",
+    "translations": {
+      "en": "human resources",
+      "pa": "ਮਨੁੱਖੀ ਸਰੋਤ",
+      "hi": "मानव संसाधन",
+      "zh": "人力资源",
+      "es": "recursos humanos"
+    },
+    "level": "branch",
+    "category": "workplace",
+    "example_sentences": [
+      "Les ressources humaines gèrent l'inscription aux avantages sociaux.",
+      "Pose ta question aux ressources humaines, c'est confidentiel."
+    ],
+    "confusion_pairs": [
+      "service de la paie",
+      "direction"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.47,
+      "stability": 2.9
+    }
+  },
+  {
+    "id": "vocab-qwp-22",
+    "word": "bulletin de paie",
+    "phonetic": "/byl.tɛ̃ də pɛ/",
+    "translations": {
+      "en": "pay stub",
+      "pa": "ਤਨਖ਼ਾਹ ਸਲਿੱਪ",
+      "hi": "वेतन पर्ची",
+      "zh": "工资单",
+      "es": "talón de pago"
+    },
+    "level": "branch",
+    "category": "workplace",
+    "example_sentences": [
+      "Le bulletin de paie montre le salaire brut, les déductions et le net.",
+      "Vérifie ton bulletin de paie pour les heures supplémentaires."
+    ],
+    "confusion_pairs": [
+      "relevé d'emploi",
+      "fiche de paie (France)"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.46,
+      "stability": 3.0
+    }
+  },
+  {
+    "id": "vocab-qwp-23",
+    "word": "jour férié",
+    "phonetic": "/ʒuʁ fe.ʁje/",
+    "translations": {
+      "en": "statutory holiday",
+      "pa": "ਸਰਕਾਰੀ ਛੁੱਟੀ",
+      "hi": "सार्वजनिक अवकाश",
+      "zh": "法定假日",
+      "es": "día festivo"
+    },
+    "level": "branch",
+    "category": "workplace",
+    "example_sentences": [
+      "Le jour férié est payé même si tu ne travailles pas.",
+      "La fête nationale du Québec, le 24 juin, est un jour férié."
+    ],
+    "confusion_pairs": [
+      "jour chômé",
+      "congé"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.45,
+      "stability": 3.0
+    }
+  },
+  {
+    "id": "vocab-qwp-24",
+    "word": "heures supplémentaires",
+    "phonetic": "/œʁ sy.ple.mɑ̃.tɛʁ/",
+    "translations": {
+      "en": "overtime",
+      "pa": "ਓਵਰਟਾਈਮ",
+      "hi": "ओवरटाइम",
+      "zh": "加班",
+      "es": "horas extra"
+    },
+    "level": "branch",
+    "category": "workplace",
+    "example_sentences": [
+      "Les heures supplémentaires se paient une fois et demie.",
+      "Il fait souvent des heures supplémentaires pendant la période des fêtes."
+    ],
+    "confusion_pairs": [
+      "temps supplémentaire",
+      "heures travaillées"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.46,
+      "stability": 2.9
+    }
+  },
+  {
+    "id": "vocab-qwp-25",
+    "word": "santé et sécurité",
+    "phonetic": "/sɑ̃.te e se.ky.ʁi.te/",
+    "translations": {
+      "en": "health and safety",
+      "pa": "ਸਿਹਤ ਅਤੇ ਸੁਰੱਖਿਆ",
+      "hi": "स्वास्थ्य और सुरक्षा",
+      "zh": "健康与安全",
+      "es": "salud y seguridad"
+    },
+    "level": "branch",
+    "category": "workplace",
+    "example_sentences": [
+      "La formation en santé et sécurité est obligatoire au Québec.",
+      "Les comités de santé et sécurité inspectent les lieux régulièrement."
+    ],
+    "confusion_pairs": [
+      "prévention",
+      "premiers soins"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.47,
+      "stability": 2.9
+    }
+  },
+  {
+    "id": "vocab-qwp-26",
+    "word": "équipement de protection",
+    "phonetic": "/e.kip.mɑ̃ də pʁɔ.tɛk.sjɔ̃/",
+    "translations": {
+      "en": "protective equipment",
+      "pa": "ਸੁਰੱਖਿਆ ਉਪਕਰਨ",
+      "hi": "सुरक्षा उपकरण",
+      "zh": "防护装备",
+      "es": "equipo de protección"
+    },
+    "level": "branch",
+    "category": "workplace",
+    "example_sentences": [
+      "Porte ton équipement de protection dans la zone de production.",
+      "Les lunettes de sécurité font partie de l'équipement de protection."
+    ],
+    "confusion_pairs": [
+      "uniforme",
+      "outillage"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.49,
+      "stability": 2.7
+    }
+  },
+  {
+    "id": "vocab-qwp-27",
+    "word": "consigne",
+    "phonetic": "/kɔ̃.siɲ/",
+    "translations": {
+      "en": "safety instruction",
+      "pa": "ਹਿਦਾਇਤ",
+      "hi": "निर्देश",
+      "zh": "安全须知",
+      "es": "consigna"
+    },
+    "level": "branch",
+    "category": "workplace",
+    "example_sentences": [
+      "La consigne est claire : jamais d'équipement sans formation.",
+      "Suis les consignes affichées près de la sortie de secours."
+    ],
+    "confusion_pairs": [
+      "règle",
+      "directive"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.45,
+      "stability": 3.0
+    }
+  },
+  {
+    "id": "vocab-qwp-28",
+    "word": "incident",
+    "phonetic": "/ɛ̃.si.dɑ̃/",
+    "translations": {
+      "en": "incident",
+      "pa": "ਘਟਨਾ",
+      "hi": "घटना",
+      "zh": "事故",
+      "es": "incidente"
+    },
+    "level": "branch",
+    "category": "workplace",
+    "example_sentences": [
+      "Tu dois remplir un rapport d'incident même pour une petite coupure.",
+      "On a signalé un incident dans l'entrepôt ce matin."
+    ],
+    "confusion_pairs": [
+      "accident",
+      "presqu'accident"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.46,
+      "stability": 2.9
+    }
+  },
+  {
+    "id": "vocab-qwp-29",
+    "word": "référence",
+    "phonetic": "/ʁe.fe.ʁɑ̃s/",
+    "translations": {
+      "en": "job reference",
+      "pa": "ਹਵਾਲਾ (ਨੌਕਰੀ)",
+      "hi": "संदर्भ (नौकरी)",
+      "zh": "推荐人",
+      "es": "referencia"
+    },
+    "level": "branch",
+    "category": "workplace",
+    "example_sentences": [
+      "Elle m'a demandé deux références pour le nouveau poste.",
+      "Demande la permission avant d'utiliser quelqu'un comme référence."
+    ],
+    "confusion_pairs": [
+      "recommandation",
+      "certificat de travail"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.48,
+      "stability": 2.8
+    }
+  },
+  {
+    "id": "vocab-qwp-30",
+    "word": "ancien employeur",
+    "phonetic": "/ɑ̃.sjɛ̃ ɑ̃.plwa.jœʁ/",
+    "translations": {
+      "en": "former employer",
+      "pa": "ਪੁਰਾਣਾ ਮਾਲਕ",
+      "hi": "पूर्व नियोक्ता",
+      "zh": "前雇主",
+      "es": "ex empleador"
+    },
+    "level": "branch",
+    "category": "workplace",
+    "example_sentences": [
+      "Mon ancien employeur peut confirmer mes dates de travail.",
+      "J'ai gardé un bon contact avec mon ancien employeur."
+    ],
+    "confusion_pairs": [
+      "ex-patron",
+      "référence"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.47,
+      "stability": 2.9
+    }
+  },
+  {
+    "id": "vocab-qwp-31",
+    "word": "télétravail",
+    "phonetic": "/te.le.tʁa.vaj/",
+    "translations": {
+      "en": "remote work",
+      "pa": "ਰਿਮੋਟ ਕੰਮ",
+      "hi": "दूरस्थ कार्य",
+      "zh": "远程办公",
+      "es": "teletrabajo"
+    },
+    "level": "branch",
+    "category": "workplace",
+    "example_sentences": [
+      "Le télétravail est permis deux jours par semaine.",
+      "Elle préfère le télétravail quand il y a une tempête de neige."
+    ],
+    "confusion_pairs": [
+      "travail hybride",
+      "travail à distance"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.46,
+      "stability": 2.9
+    }
+  },
+  {
+    "id": "vocab-qwp-32",
+    "word": "avantages sociaux",
+    "phonetic": "/a.vɑ̃.taʒ sɔ.sjo/",
+    "translations": {
+      "en": "employee benefits",
+      "pa": "ਲਾਭ (ਭੱਤੇ)",
+      "hi": "लाभ (भत्ते)",
+      "zh": "员工福利",
+      "es": "beneficios"
+    },
+    "level": "branch",
+    "category": "workplace",
+    "example_sentences": [
+      "Les avantages sociaux incluent la dentaire et la vue.",
+      "Ton ancienneté peut influencer les avantages sociaux offerts."
+    ],
+    "confusion_pairs": [
+      "conditions de travail",
+      "rémunération"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.45,
+      "stability": 3.0
+    }
+  },
+  {
+    "id": "vocab-qwp-33",
+    "word": "assurance collective",
+    "phonetic": "/a.sy.ʁɑ̃s kɔ.lɛk.tiv/",
+    "translations": {
+      "en": "group insurance",
+      "pa": "ਸਮੂਹ ਬੀਮਾ",
+      "hi": "समूह बीमा",
+      "zh": "团体保险",
+      "es": "seguro colectivo"
+    },
+    "level": "branch",
+    "category": "workplace",
+    "example_sentences": [
+      "L'assurance collective couvre les médicaments d'ordonnance.",
+      "L'inscription à l'assurance collective se fait pendant la semaine prévue."
+    ],
+    "confusion_pairs": [
+      "régime public RAMQ",
+      "assurance individuelle"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.48,
+      "stability": 2.8
+    }
+  },
+  {
+    "id": "vocab-qwp-34",
+    "word": "régime de retraite",
+    "phonetic": "/ʁe.ʒim də ʁə.tʁɛt/",
+    "translations": {
+      "en": "pension plan",
+      "pa": "ਰਿਟਾਇਰਮੈਂਟ ਯੋਜਨਾ",
+      "hi": "पेंशन योजना",
+      "zh": "退休金计划",
+      "es": "plan de jubilación"
+    },
+    "level": "branch",
+    "category": "workplace",
+    "example_sentences": [
+      "Le régime de retraite de l'entreprise comprend une cotisation de l'employeur.",
+      "Tu peux cotiser au régime de retraite dès la première année."
+    ],
+    "confusion_pairs": [
+      "REER",
+      "fonds de pension"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.49,
+      "stability": 2.7
+    }
+  },
+  {
+    "id": "vocab-qwp-35",
+    "word": "perfectionnement",
+    "phonetic": "/pɛʁ.fɛk.sjɔn.mɑ̃/",
+    "translations": {
+      "en": "professional development",
+      "pa": "ਪੇਸ਼ਾਵਰ ਵਿਕਾਸ",
+      "hi": "पेशेवर विकास",
+      "zh": "专业发展",
+      "es": "perfeccionamiento"
+    },
+    "level": "branch",
+    "category": "workplace",
+    "example_sentences": [
+      "Le perfectionnement peut se faire sur les heures de travail.",
+      "Elle suit un cours de perfectionnement en gestion de projet."
+    ],
+    "confusion_pairs": [
+      "formation",
+      "avancement"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.46,
+      "stability": 2.9
+    }
+  },
+  {
+    "id": "vocab-qwp-36",
+    "word": "rendement",
+    "phonetic": "/ʁɑ̃.də.mɑ̃/",
+    "translations": {
+      "en": "performance",
+      "pa": "ਪ੍ਰਦਰਸ਼ਨ",
+      "hi": "प्रदर्शन",
+      "zh": "绩效",
+      "es": "rendimiento"
+    },
+    "level": "branch",
+    "category": "workplace",
+    "example_sentences": [
+      "L'évaluation du rendement a lieu chaque printemps.",
+      "Son rendement s'est beaucoup amélioré ce trimestre."
+    ],
+    "confusion_pairs": [
+      "productivité",
+      "efficacité"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.47,
+      "stability": 2.8
+    }
+  },
+  {
+    "id": "vocab-qwp-37",
+    "word": "évaluation",
+    "phonetic": "/e.va.lɥa.sjɔ̃/",
+    "translations": {
+      "en": "performance review",
+      "pa": "ਮੁਲਾਂਕਣ",
+      "hi": "मूल्यांकन",
+      "zh": "绩效评估",
+      "es": "evaluación"
+    },
+    "level": "branch",
+    "category": "workplace",
+    "example_sentences": [
+      "L'évaluation de trois mois fixe tes objectifs pour la suite.",
+      "Prépare tes questions avant l'évaluation."
+    ],
+    "confusion_pairs": [
+      "bilan de performance",
+      "rétroaction"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.45,
+      "stability": 3.0
+    }
+  },
+  {
+    "id": "vocab-qwp-38",
+    "word": "objectif",
+    "phonetic": "/ɔb.ʒɛk.tif/",
+    "translations": {
+      "en": "goal",
+      "pa": "ਟੀਚਾ",
+      "hi": "लक्ष्य",
+      "zh": "目标",
+      "es": "objetivo"
+    },
+    "level": "branch",
+    "category": "workplace",
+    "example_sentences": [
+      "Un bon objectif est précis et mesurable.",
+      "Mon objectif est de terminer la formation avant juin."
+    ],
+    "confusion_pairs": [
+      "but",
+      "cible"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.44,
+      "stability": 3.1
+    }
+  },
+  {
+    "id": "vocab-qwp-39",
+    "word": "délai",
+    "phonetic": "/de.lɛ/",
+    "translations": {
+      "en": "deadline",
+      "pa": "ਸਮਾਂ-ਸੀਮਾ",
+      "hi": "समय-सीमा",
+      "zh": "截止日期",
+      "es": "plazo"
+    },
+    "level": "branch",
+    "category": "workplace",
+    "example_sentences": [
+      "Le délai pour s'inscrire aux avantages, c'est vendredi.",
+      "Je dois respecter le délai pour la soumission."
+    ],
+    "confusion_pairs": [
+      "échéance",
+      "retard"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.46,
+      "stability": 2.9
+    }
+  },
+  {
+    "id": "vocab-qwp-40",
+    "word": "tâche",
+    "phonetic": "/tɑʃ/",
+    "translations": {
+      "en": "task",
+      "pa": "ਕੰਮ",
+      "hi": "कार्य",
+      "zh": "任务",
+      "es": "tarea"
+    },
+    "level": "branch",
+    "category": "workplace",
+    "example_sentences": [
+      "Ta première tâche, c'est de vérifier la liste des clients.",
+      "On se partage les tâches selon nos forces."
+    ],
+    "confusion_pairs": [
+      "responsabilité",
+      "projet"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.43,
+      "stability": 3.2
+    }
+  },
+  {
+    "id": "vocab-qwp-41",
+    "word": "rémunération",
+    "phonetic": "/ʁe.my.ne.ʁa.sjɔ̃/",
+    "translations": {
+      "en": "compensation",
+      "pa": "ਮੁਆਵਜ਼ਾ",
+      "hi": "पारिश्रमिक",
+      "zh": "薪酬",
+      "es": "remuneración"
+    },
+    "level": "bloom",
+    "category": "workplace",
+    "example_sentences": [
+      "La rémunération comprend le salaire et les avantages sociaux.",
+      "Discute de la rémunération avec les ressources humaines."
+    ],
+    "confusion_pairs": [
+      "salaire",
+      "compensation totale"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.58,
+      "stability": 2.1
+    }
+  },
+  {
+    "id": "vocab-qwp-42",
+    "word": "négociation",
+    "phonetic": "/ne.ɡɔ.sja.sjɔ̃/",
+    "translations": {
+      "en": "negotiation",
+      "pa": "ਗੱਲਬਾਤ",
+      "hi": "बातचीत",
+      "zh": "谈判",
+      "es": "negociación"
+    },
+    "level": "bloom",
+    "category": "workplace",
+    "example_sentences": [
+      "La négociation du salaire se fait après l'offre d'emploi.",
+      "Une bonne négociation commence par une recherche de marché."
+    ],
+    "confusion_pairs": [
+      "discussion",
+      "marchandage"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.6,
+      "stability": 2.0
+    }
+  },
+  {
+    "id": "vocab-qwp-43",
+    "word": "salaire net",
+    "phonetic": "/sa.lɛʁ nɛt/",
+    "translations": {
+      "en": "net pay",
+      "pa": "ਸ਼ੁੱਧ ਤਨਖ਼ਾਹ",
+      "hi": "शुद्ध वेतन",
+      "zh": "税后工资",
+      "es": "salario neto"
+    },
+    "level": "bloom",
+    "category": "workplace",
+    "example_sentences": [
+      "Le salaire net, c'est ce qui reste après les déductions.",
+      "Calcule ton salaire net avant de faire ton budget."
+    ],
+    "confusion_pairs": [
+      "salaire brut",
+      "montant net"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.59,
+      "stability": 2.0
+    }
+  },
+  {
+    "id": "vocab-qwp-44",
+    "word": "prime",
+    "phonetic": "/pʁim/",
+    "translations": {
+      "en": "bonus",
+      "pa": "ਬੋਨਸ",
+      "hi": "बोनस",
+      "zh": "奖金",
+      "es": "bono"
+    },
+    "level": "bloom",
+    "category": "workplace",
+    "example_sentences": [
+      "Une prime de fin d'année peut s'ajouter au salaire.",
+      "La prime de quart de nuit est indiquée sur le bulletin."
+    ],
+    "confusion_pairs": [
+      "boni (Canada)",
+      "commission"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.57,
+      "stability": 2.2
+    }
+  },
+  {
+    "id": "vocab-qwp-45",
+    "word": "cotisation",
+    "phonetic": "/kɔ.ti.za.sjɔ̃/",
+    "translations": {
+      "en": "contribution",
+      "pa": "ਯੋਗਦਾਨ",
+      "hi": "योगदान",
+      "zh": "缴款",
+      "es": "cotización"
+    },
+    "level": "bloom",
+    "category": "workplace",
+    "example_sentences": [
+      "Les cotisations au régime de retraite sont déduites à chaque paie.",
+      "La cotisation au RQAP apparaît sur ton bulletin de paie."
+    ],
+    "confusion_pairs": [
+      "contribution",
+      "impôt"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.6,
+      "stability": 2.0
+    }
+  },
+  {
+    "id": "vocab-qwp-46",
+    "word": "ancienneté",
+    "phonetic": "/ɑ̃.sjɛn.te/",
+    "translations": {
+      "en": "seniority",
+      "pa": "ਸੀਨੀਆਰਿਟੀ",
+      "hi": "वरिष्ठता",
+      "zh": "工龄",
+      "es": "antigüedad"
+    },
+    "level": "bloom",
+    "category": "workplace",
+    "example_sentences": [
+      "L'ancienneté détermine l'ordre des vacances dans l'équipe.",
+      "Avec trois ans d'ancienneté, tu as droit à plus de vacances."
+    ],
+    "confusion_pairs": [
+      "expérience",
+      "séniorité (anglicisme)"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.61,
+      "stability": 1.9
+    }
+  },
+  {
+    "id": "vocab-qwp-47",
+    "word": "préavis",
+    "phonetic": "/pʁe.a.vi/",
+    "translations": {
+      "en": "notice period",
+      "pa": "ਨੋਟਿਸ ਅਵਧੀ",
+      "hi": "नोटिस अवधि",
+      "zh": "通知期",
+      "es": "preaviso"
+    },
+    "level": "bloom",
+    "category": "workplace",
+    "example_sentences": [
+      "Donne un préavis de deux semaines si tu quittes ton emploi.",
+      "Le préavis de changement d'horaire est de cinq jours."
+    ],
+    "confusion_pairs": [
+      "avis",
+      "préavis de démission"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.62,
+      "stability": 1.9
+    }
+  },
+  {
+    "id": "vocab-qwp-48",
+    "word": "rétroaction",
+    "phonetic": "/ʁe.tʁo.ak.sjɔ̃/",
+    "translations": {
+      "en": "feedback",
+      "pa": "ਸੁਝਾਅ",
+      "hi": "प्रतिक्रिया",
+      "zh": "反馈",
+      "es": "retroalimentación"
+    },
+    "level": "bloom",
+    "category": "workplace",
+    "example_sentences": [
+      "La rétroaction de mon gestionnaire m'a aidé à m'améliorer.",
+      "On donne de la rétroaction chaque mois, pas seulement à l'évaluation."
+    ],
+    "confusion_pairs": [
+      "commentaires",
+      "évaluation"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.59,
+      "stability": 2.0
+    }
+  },
+  {
+    "id": "vocab-qwp-49",
+    "word": "mentorat",
+    "phonetic": "/mɑ̃.tɔ.ʁa/",
+    "translations": {
+      "en": "mentorship",
+      "pa": "ਮੈਂਟਰਸ਼ਿਪ",
+      "hi": "मार्गदर्शन",
+      "zh": "导师制",
+      "es": "mentoría"
+    },
+    "level": "bloom",
+    "category": "workplace",
+    "example_sentences": [
+      "L'entreprise propose un programme de mentorat pour les nouveaux.",
+      "Mon mentorat m'aide à comprendre la culture du bureau."
+    ],
+    "confusion_pairs": [
+      "encadrement",
+      "parrainage"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.61,
+      "stability": 1.9
+    }
+  },
+  {
+    "id": "vocab-qwp-50",
+    "word": "recrutement",
+    "phonetic": "/ʁə.kʁyt.mɑ̃/",
+    "translations": {
+      "en": "recruiting",
+      "pa": "ਭਰਤੀ",
+      "hi": "भर्ती",
+      "zh": "招聘",
+      "es": "reclutamiento"
+    },
+    "level": "bloom",
+    "category": "workplace",
+    "example_sentences": [
+      "La firme de recrutement m'a contacté pour une entrevue.",
+      "Le processus de recrutement prend environ trois semaines."
+    ],
+    "confusion_pairs": [
+      "embauche",
+      "sélection"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.58,
+      "stability": 2.1
+    }
+  }
+]

@@ -153,9 +153,9 @@ def _disabled_test_duplicate_vocabulary_ids_across_packs_raise(monkeypatch) -> N
 def test_combined_seed_counts() -> None:
     seeds = load_scenario_seeds()
     vocab = load_vocabulary_seeds()
-    assert len(seeds) == 65
+    assert len(seeds) == 85
     assert sum(1 for s in seeds if s.target_language.startswith("en")) == 60
-    assert len(vocab) == 320
+    assert len(vocab) == 420
 
 
 def test_scenario_seeds_carry_manifest_pack_ids() -> None:
@@ -166,6 +166,8 @@ def test_scenario_seeds_carry_manifest_pack_ids() -> None:
         "quebec-life-v1": 5,
         "workplace-english-v1": 10,
         "healthcare-english-v1": 10,
+        "quebec-healthcare-v1": 10,
+        "quebec-workplace-v1": 10,
     }
 
 
@@ -174,11 +176,19 @@ def test_vocabulary_seeds_carry_language_metadata() -> None:
     english = [seed for seed in seeds if seed.language == "en"]
     french = [seed for seed in seeds if seed.language == "fr"]
     assert len(english) == 300
-    assert len(french) == 20
-    # The French pack is exactly the tail of the edition registry.
-    assert {seed.content_id for seed in french} <= {
-        entry["id"] for entry in _raw_pack("vocabulary/core-fr-v1.json")
-    }
+    assert len(french) == 120
+    # Every French seed maps to one of the manifest's French vocabulary
+    # packs (core-fr-v1 plus the Quebec healthcare and workplace packs).
+    french_pack_paths = [
+        content_service._resolve_pack_path(pack.path)
+        for pack in content_service.load_manifest_packs()
+        if pack.type == "vocabulary" and pack.language.lower().startswith("fr")
+    ]
+    french_ids: set[str] = set()
+    for path in french_pack_paths:
+        with path.open(encoding="utf-8") as handle:
+            french_ids.update(entry["id"] for entry in json.load(handle))
+    assert {seed.content_id for seed in french} == french_ids
 
 
 def _disabled_test_missing_pack_language_defaults_to_english(monkeypatch) -> None:

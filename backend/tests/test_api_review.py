@@ -359,8 +359,12 @@ async def test_due_materializes_french_cards_for_french_users(
 
     assert response.status_code == 200
     words = {card["word"] for card in response.json()}
-    # Preferred-language cards materialize ahead of the English pack.
-    assert FRENCH_WORDS <= words
+    # Preferred-language cards materialize ahead of the English pool, so
+    # the first page (capped at 100) is entirely French. Distinct words
+    # can be fewer than 100 because packs reuse some words.
+    assert words <= FRENCH_WORDS
+    assert len(words) >= 90
+    assert "ordonnance" in words
 
 
 async def test_due_keeps_english_for_default_users(

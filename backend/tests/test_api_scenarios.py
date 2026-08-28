@@ -65,7 +65,7 @@ async def test_scenarios_returns_the_seeded_catalog(
     scenarios_client: AsyncClient, db_session: AsyncSession
 ) -> None:
     seeded = await seed_scenarios(db_session)
-    assert seeded == 65
+    assert seeded == 85
 
     response = await scenarios_client.get(
         "/api/scenarios", headers=await auth_headers(scenarios_client)
@@ -113,11 +113,24 @@ async def test_free_user_sees_premium_scenarios_locked(
             )
         ).scalars().all()
     )
+    en_premium_titles = set(
+        (
+            await db_session.execute(
+                select(Scenario.title).where(
+                    Scenario.is_premium.is_(True),
+                    Scenario.target_language.like("en%"),
+                )
+            )
+        ).scalars().all()
+    )
     # Premium scenarios are exactly the locked entries for a free-tier
     # caller — 8 from canadian-life-v1, 5 from canadian-life-v2, and 3
-    # each from workplace-english-v1 and healthcare-english-v1.
-    assert len(premium_titles) == 19
-    assert locked_titles == premium_titles
+    # each from workplace-english-v1 and healthcare-english-v1 = 19 en;
+    # plus 3 each from quebec-healthcare-v1 and quebec-workplace-v1 = 25
+    # total. The English catalog sees only the 19 English premiums.
+    assert len(premium_titles) == 25
+    assert len(en_premium_titles) == 19
+    assert locked_titles == en_premium_titles
 
 
 async def test_premium_user_sees_nothing_locked(
@@ -154,12 +167,12 @@ async def test_language_param_returns_only_french_scenarios(
         (
             await db_session.execute(
                 select(Scenario.title).where(
-                    Scenario.target_language == "fr"
+                    Scenario.target_language.like("fr%")
                 )
             )
         ).scalars().all()
     )
-    assert len(french_titles) == 5
+    assert len(french_titles) == 25
     assert {scenario["title"] for scenario in scenarios} == french_titles
 
 
@@ -185,7 +198,7 @@ async def test_default_catalog_follows_preferred_language(
     french_titles = set(
         (
             await db_session.execute(
-                select(Scenario.title).where(Scenario.target_language == "fr")
+                select(Scenario.title).where(Scenario.target_language.like("fr%"))
             )
         ).scalars().all()
     )
@@ -213,15 +226,19 @@ async def test_premium_gating_still_applies_to_french_scenarios(
     scenarios_client: AsyncClient, db_session: AsyncSession
 ) -> None:
     await seed_scenarios(db_session)
-    # A future premium French pack must gate exactly like English ones.
-    premium_french_title = (
+    # Pick a free French scenario and flip it to premium; the gating
+    # must cover all existing plus the newly flipped one.
+    free_french_title = (
         await db_session.execute(
-            select(Scenario.title).where(Scenario.target_language == "fr")
+            select(Scenario.title).where(
+                Scenario.target_language.like("fr%"),
+                Scenario.is_premium.is_(False),
+            ).limit(1)
         )
     ).scalars().first()
     await db_session.execute(
         sa_update(Scenario)
-        .where(Scenario.title == premium_french_title)
+        .where(Scenario.title == free_french_title)
         .values(is_premium=True)
     )
     await db_session.commit()
@@ -236,7 +253,18 @@ async def test_premium_gating_still_applies_to_french_scenarios(
         for scenario in free_view.json()["scenarios"]
         if scenario["is_locked"]
     }
-    assert locked == {premium_french_title}
+    expected = set(
+        (
+            await db_session.execute(
+                select(Scenario.title).where(
+                    Scenario.target_language.like("fr%"),
+                    Scenario.is_premium.is_(True),
+                )
+            )
+        ).scalars().all()
+    )
+    assert locked == expected
+    assert free_french_title in locked
 
     upgrade = await scenarios_client.post(
         "/api/users/me/upgrade", headers=headers
