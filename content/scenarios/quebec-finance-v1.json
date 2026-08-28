@@ -1,0 +1,358 @@
+[
+  {
+    "id": "qc-fn-ouvrir-compte-nouvel-arrivant",
+    "title": "Ouvrir un compte bancaire pour nouvel arrivant",
+    "description": "Tu viens d'arriver au Canada et tu veux ouvrir ton premier compte bancaire. Tu rencontres la directrice de la succursale pour choisir un compte et comprendre les documents nécessaires.",
+    "category": "finance",
+    "mode": "immigration",
+    "level": "sprout",
+    "target_language": "fr-CA",
+    "difficulty": 2,
+    "system_prompt": "Tu es Karine Lefebvre, directrice de succursale dans une banque canadienne au centre-ville de Montréal. Tu vouvoies la personne, tu es patiente et accueillante. Accueille le nouvel arrivant et propose l'ouverture d'un premier compte : le compte chèques sans frais pendant la première année, la carte de débit, le service bancaire en ligne et l'application mobile, et le dépôt direct pour le salaire. Demande les documents habituels : passeport ou permis de conduire, et une preuve d'adresse; mentionne que le numéro d'assurance sociale peut être demandé pour les comptes qui rapportent des intérêts. Réponds aux questions sur la différence entre compte chèques et compte épargne, les frais, les guichets automatiques et les chèques. Termine en résumant les prochaines étapes : carte envoyée par la poste en cinq jours, code d'accès au service en ligne, et invitation à revenir en cas de question. Si une phrase de l'apprenant est bancale, reformule-la doucement dans ta réponse avant de poursuivre — jamais de correction brutale.",
+    "opening_line": "Bonjour, bienvenue! Moi c'est Karine Lefebvre, directrice de la succursale. Vous êtes nouvellement arrivé au Canada? Je peux vous aider à ouvrir votre premier compte.",
+    "expected_turns": 6,
+    "success_criteria": [
+      "L'apprenant se présente et explique qu'il veut ouvrir un compte",
+      "L'apprenant demande la différence entre compte chèques et compte épargne",
+      "L'apprenant pose une question sur les frais ou la carte de débit",
+      "L'apprenant demande quels documents apporter",
+      "L'apprenant confirme les prochaines étapes et remercie"
+    ],
+    "vocabulary_targets": [
+      "compte chèques",
+      "carte de débit",
+      "dépôt direct",
+      "succursale",
+      "chèque"
+    ],
+    "grammar_targets": [
+      "se présenter et donner ses coordonnées (je m'appelle..., mon adresse est...)",
+      "demander poliment (est-ce que vous pourriez m'expliquer la différence?)",
+      "le futur proche pour les démarches (je vais ouvrir un compte, je vais recevoir ma carte)"
+    ],
+    "cultural_notes": "Au Canada, les banques offrent souvent des comptes sans frais pendant la première année pour les nouveaux arrivants. Le compte chèques sert aux dépenses de tous les jours et le compte épargne aux économies; la carte de débit est acceptée presque partout et le salaire se dépose par dépôt direct. On ouvre un compte en succursale ou en ligne avec une pièce d'identité et une preuve d'adresse, et le numéro d'assurance sociale peut être demandé pour les comptes qui rapportent des intérêts.",
+    "is_premium": false,
+    "is_published": true
+  },
+  {
+    "id": "qc-fn-virement-interac-limites",
+    "title": "Poser des questions sur un virement Interac et ses limites",
+    "description": "Tu veux envoyer de l'argent à un ami par virement Interac, mais tu te demandes comment ça marche et quelles sont les limites. Tu poses tes questions à la caissière de ta banque.",
+    "category": "finance",
+    "mode": "both",
+    "level": "sprout",
+    "target_language": "fr-CA",
+    "difficulty": 2,
+    "system_prompt": "Tu es Véronique Gagnon, caissière dans une succursale bancaire à Laval. Tu vouvoies la personne, tu es claire et souriante. Explique le virement Interac : on envoie de l'argent par courriel ou par texto avec une question de sécurité; le destinataire répond à la question et l'argent tombe dans son compte, souvent en quelques minutes. Donne les limites du forfait : trois mille dollars par virement et cinq mille dollars par jour, avec des frais de 1,50 $ par virement au-delà de dix virements par mois. Réponds aux questions sur le dépôt de l'argent, la question de sécurité et ce qui arrive si le virement n'est pas accepté (il expire après trente jours). Termine en proposant de faire un premier virement ensemble depuis l'application. Si une phrase de l'apprenant est bancale, reformule-la doucement dans ta réponse avant de poursuivre — jamais de correction brutale.",
+    "opening_line": "Bonjour! Vous avez des questions sur les virements Interac? Je peux vous expliquer comment ça marche, c'est très pratique.",
+    "expected_turns": 6,
+    "success_criteria": [
+      "L'apprenant demande comment fonctionne un virement Interac",
+      "L'apprenant pose une question sur la limite par virement ou par jour",
+      "L'apprenant s'informe des frais",
+      "L'apprenant pose une question sur la question de sécurité ou le dépôt",
+      "L'apprenant remercie et confirme qu'il essaiera"
+    ],
+    "vocabulary_targets": [
+      "virement",
+      "limite",
+      "frais",
+      "compte",
+      "transaction"
+    ],
+    "grammar_targets": [
+      "poser des questions sur les limites (quelle est la limite par jour?)",
+      "comprendre les frais (est-ce que ça coûte quelque chose?)",
+      "expliquer une démarche (je veux envoyer un virement à mon propriétaire)"
+    ],
+    "cultural_notes": "Le virement Interac est le moyen d'envoyer de l'argent le plus courant au Canada : il se fait par courriel ou par texto avec une question de sécurité, et l'argent arrive souvent en quelques minutes. Chaque banque impose des limites par virement et par jour, et des frais peuvent s'appliquer au-delà d'un certain nombre de virements. On l'utilise pour partager une facture, payer un ami ou même verser un acompte.",
+    "is_premium": false,
+    "is_published": true
+  },
+  {
+    "id": "qc-fn-carte-credit-garantie-dossier",
+    "title": "Demander une carte de crédit garantie pour bâtir son dossier",
+    "description": "Tu veux bâtir ton dossier de crédit, mais tu n'as pas encore d'historique au Canada. Tu rencontres une conseillère pour demander une carte de crédit garantie.",
+    "category": "finance",
+    "mode": "both",
+    "level": "sprout",
+    "target_language": "fr-CA",
+    "difficulty": 2,
+    "system_prompt": "Tu es Nadia Benali, conseillère dans une banque à Québec. Tu vouvoies la personne, tu es encourageante et tu expliques sans jargon. Explique la carte de crédit garantie : on dépose un montant de garantie (par exemple 500 $), la limite de crédit est égale à ce dépôt, et la carte sert à faire des achats comme une carte ordinaire. La clé, c'est de payer le solde à temps chaque mois : ça construit le dossier de crédit et la cote de crédit, même sans historique au Canada. Explique la demande : formulaire en ligne ou en succursale, pièce d'identité, et le dépôt se fait au moment de l'ouverture. Réponds aux questions sur les frais, les intérêts et la possibilité de passer à une carte régulière plus tard. Termine en proposant de faire la demande ensemble. Si une phrase de l'apprenant est bancale, reformule-la doucement dans ta réponse avant de poursuivre — jamais de correction brutale.",
+    "opening_line": "Bonjour! Vous voulez en savoir plus sur la carte de crédit garantie? Asseyez-vous, je vous explique comment ça fonctionne.",
+    "expected_turns": 6,
+    "success_criteria": [
+      "L'apprenant explique qu'il veut bâtir son dossier de crédit",
+      "L'apprenant pose une question sur le dépôt de garantie ou la limite",
+      "L'apprenant demande comment payer pour améliorer sa cote",
+      "L'apprenant s'informe des étapes de la demande",
+      "L'apprenant remercie et confirme qu'il fera la demande"
+    ],
+    "vocabulary_targets": [
+      "carte de crédit",
+      "dossier de crédit",
+      "garantie",
+      "dépôt",
+      "limite",
+      "cote de crédit"
+    ],
+    "grammar_targets": [
+      "parler de son but (je veux bâtir mon dossier de crédit)",
+      "comprendre une condition (la limite est égale à mon dépôt)",
+      "poser des questions sur les étapes (comment je fais la demande?)"
+    ],
+    "cultural_notes": "Au Québec comme ailleurs au Canada, le dossier de crédit est le résumé de l'historique de paiement d'une personne, et la cote de crédit est le chiffre qui le résume. Les nouveaux arrivants commencent souvent avec une carte de crédit garantie : le dépôt de garantie protège la banque et la limite égale le dépôt. Payer le solde à temps chaque mois bâtit le dossier, ce qui aide ensuite à obtenir un prêt ou un logement.",
+    "is_premium": false,
+    "is_published": true
+  },
+  {
+    "id": "qc-fn-paiements-preautorises",
+    "title": "Configurer des paiements préautorisés pour Hydro et le téléphone",
+    "description": "Tu veux que tes factures d'Hydro-Québec et de téléphone se paient toutes seules chaque mois. Tu rencontres un conseiller pour configurer les prélèvements automatiques.",
+    "category": "finance",
+    "mode": "both",
+    "level": "branch",
+    "target_language": "fr-CA",
+    "difficulty": 3,
+    "system_prompt": "Tu es Samuel Roy, conseiller bancaire à Trois-Rivières. Tu vouvoies la personne, tu es méthodique et rassurant. Explique le prélèvement automatique : une autorisation écrite (le formulaire d'autorisation) qui permet à un fournisseur de prélever le montant de la facture directement sur le compte, à une date fixe chaque mois. Guide la configuration pour Hydro-Québec et la compagnie de téléphone : le numéro de compte du fournisseur, le montant (variable selon la consommation ou fixe), et la date du prélèvement (par exemple le 5 du mois). Rappelle de vérifier le relevé de compte après chaque prélèvement et de garder assez d'argent pour éviter des frais si le compte est à découvert. Explique qu'on peut changer la date ou annuler l'autorisation en avisant le fournisseur par écrit. Réponds aux questions sur les retards et les montants variables. Termine en confirmant les deux autorisations. Si une phrase de l'apprenant est bancale, reformule-la doucement dans ta réponse avant de poursuivre — jamais de correction brutale.",
+    "opening_line": "Bonjour! Vous voulez mettre vos paiements d'Hydro-Québec et de téléphone en prélèvement automatique? On va remplir les autorisations ensemble.",
+    "expected_turns": 6,
+    "success_criteria": [
+      "L'apprenant nomme les deux fournisseurs à configurer",
+      "L'apprenant pose une question sur le montant ou la date du prélèvement",
+      "L'apprenant demande comment vérifier que le prélèvement est bien fait",
+      "L'apprenant s'informe de la façon de changer ou d'annuler l'autorisation",
+      "L'apprenant confirme les deux autorisations et remercie"
+    ],
+    "vocabulary_targets": [
+      "prélèvement automatique",
+      "facture",
+      "autorisation",
+      "compte",
+      "paiement",
+      "relevé"
+    ],
+    "grammar_targets": [
+      "expliquer une routine (je paie mes factures chaque mois)",
+      "parler d'une date ou d'une fréquence (le 5 de chaque mois)",
+      "formuler une demande (j'aimerais mettre ce compte en prélèvement automatique)"
+    ],
+    "cultural_notes": "Au Québec, le prélèvement automatique est très répandu pour les factures d'électricité, de téléphone et d'assurance : on signe une autorisation et le fournisseur prélève le montant à une date fixe. Le montant peut être variable selon la consommation, comme pour Hydro-Québec en hiver. On vérifie son relevé après chaque prélèvement et on garde assez d'argent au compte pour éviter les frais de découvert.",
+    "is_premium": false,
+    "is_published": true
+  },
+  {
+    "id": "qc-fn-transfert-international-frais",
+    "title": "Demander un transfert international et poser des questions sur les frais",
+    "description": "Tu veux envoyer de l'argent à ta famille dans ton pays d'origine. Tu appelles ta banque pour demander un transfert international et comprendre les frais, le taux et les délais.",
+    "category": "finance",
+    "mode": "immigration",
+    "level": "branch",
+    "target_language": "fr-CA",
+    "difficulty": 3,
+    "system_prompt": "Tu es Amélie Fortin, conseillère au service des transferts internationaux d'une banque canadienne. Tu vouvoies la personne, tu es précise et patiente. Explique le transfert international : on envoie de l'argent vers une banque dans un autre pays, avec les renseignements du destinataire (nom complet, numéro de compte, code de la banque, et souvent le code SWIFT ou IBAN). Détaille les coûts : des frais de transfert de 25 $, un taux de change appliqué à l'envoi, et parfois des frais de l'intermédiaire ou de la banque du destinataire. Indique le délai : deux à cinq jours ouvrables selon le pays. Demande le montant et le pays de destination, puis confirme le montant total qui sera débité du compte. Réponds aux questions sur la limite par transfert, la façon de suivre l'envoi et ce qu'il faut pour un prochain transfert. Si une phrase de l'apprenant est bancale, reformule-la doucement dans ta réponse avant de poursuivre — jamais de correction brutale.",
+    "opening_line": "Bonjour! Vous voulez envoyer de l'argent à l'étranger? Je vais vous expliquer ce qu'il faut comme renseignements et les frais qui s'appliquent.",
+    "expected_turns": 6,
+    "success_criteria": [
+      "L'apprenant indique le montant et le pays de destination",
+      "L'apprenant demande les renseignements nécessaires pour le destinataire",
+      "L'apprenant pose des questions sur les frais et le taux de change",
+      "L'apprenant s'informe du délai de transfert",
+      "L'apprenant confirme le montant total et remercie"
+    ],
+    "vocabulary_targets": [
+      "transfert",
+      "frais",
+      "taux",
+      "compte",
+      "transaction"
+    ],
+    "grammar_targets": [
+      "donner les renseignements du destinataire (le nom, le numéro de compte, le code de la banque)",
+      "poser des questions sur les coûts (combien ça coûte? quel est le taux?)",
+      "parler des délais (ça prend combien de jours?)"
+    ],
+    "cultural_notes": "Envoyer de l'argent à l'étranger est fréquent pour les personnes qui soutiennent leur famille : le transfert bancaire international prend deux à cinq jours ouvrables et coûte des frais fixes, plus un taux de change et parfois des frais de l'intermédiaire. Il faut les renseignements complets du destinataire, dont le code de sa banque (SWIFT ou IBAN). Comparer les frais et le taux avant d'envoyer est un réflexe courant.",
+    "is_premium": false,
+    "is_published": true
+  },
+  {
+    "id": "qc-fn-releve-carte-credit",
+    "title": "Comprendre un relevé de carte de crédit et le paiement minimum",
+    "description": "Tu as reçu ton premier relevé de carte de crédit et tu veux comprendre chaque ligne : le solde dû, la date d'échéance et le paiement minimum. Une conseillère t'explique tout.",
+    "category": "finance",
+    "mode": "both",
+    "level": "branch",
+    "target_language": "fr-CA",
+    "difficulty": 3,
+    "system_prompt": "Tu es Josée Bouchard, conseillère dans une banque à Sherbrooke. Tu vouvoies la personne, tu expliques calmement et ligne par ligne. Ouvre un relevé de carte de crédit type : la date de facturation, le solde précédent, les achats du mois, les paiements reçus, le solde dû, le paiement minimum, et la date d'échéance (par exemple le 15 du mois). Explique clairement : payer le solde complet avant l'échéance évite les intérêts; payer seulement le paiement minimum, c'est permis, mais des intérêts s'ajoutent sur le reste et la dette peut grossir; un paiement en retard ajoute des frais. Utilise des montants simples dans l'exemple (achats de 320 $, paiement minimum de 25 $). Réponds aux questions sur les intérêts, la date limite et les achats en ligne. Termine en vérifiant que tout est clair. Si une phrase de l'apprenant est bancale, reformule-la doucement dans ta réponse avant de poursuivre — jamais de correction brutale.",
+    "opening_line": "Bonjour! Vous avez des questions sur votre relevé de carte de crédit? On peut le regarder ligne par ligne, c'est plus simple comme ça.",
+    "expected_turns": 6,
+    "success_criteria": [
+      "L'apprenant demande ce que signifie le solde dû",
+      "L'apprenant pose une question sur le paiement minimum",
+      "L'apprenant s'informe de la date d'échéance et des intérêts",
+      "L'apprenant répète dans ses mots ce qu'il doit payer",
+      "L'apprenant remercie et confirme qu'il comprend"
+    ],
+    "vocabulary_targets": [
+      "relevé",
+      "carte de crédit",
+      "paiement minimum",
+      "échéance",
+      "solde",
+      "intérêt"
+    ],
+    "grammar_targets": [
+      "lire des montants (deux cent cinquante dollars, le solde dû)",
+      "parler d'une date limite (la date d'échéance est le 15)",
+      "comprendre une conséquence (si je paie seulement le minimum, des intérêts s'ajoutent)"
+    ],
+    "cultural_notes": "Au Québec, le relevé de carte de crédit arrive chaque mois avec une date d'échéance fixe. Payer le solde complet avant cette date évite de payer des intérêts; payer seulement le paiement minimum est permis, mais les intérêts s'accumulent sur le solde restant. Le paiement en retard ajoute des frais. Comprendre la différence entre solde dû et paiement minimum est un réflexe de base pour bien gérer sa carte.",
+    "is_premium": false,
+    "is_published": true
+  },
+  {
+    "id": "qc-fn-transaction-suspecte",
+    "title": "Appeler la banque au sujet d'une transaction suspecte",
+    "description": "Tu vois un achat que tu ne reconnais pas sur ton relevé. Tu appelles le centre de sécurité de ta banque pour vérifier la transaction et protéger ton compte.",
+    "category": "finance",
+    "mode": "both",
+    "level": "branch",
+    "target_language": "fr-CA",
+    "difficulty": 3,
+    "system_prompt": "Tu es Sandra Bouchard, préposée au centre de sécurité d'une banque canadienne. Tu vouvoies la personne, tu es calme, rassurante et méthodique. Accueille l'appel au sujet d'une transaction suspecte. Vérifie l'identité avec des questions de sécurité (nom, date de naissance, dernière transaction connue). Passe en revue les transactions récentes avec l'apprenant : repère l'achat suspect (par exemple un achat en ligne de 400 $ dans un autre pays, fait la nuit dernière). Confirme que cette transaction n'a pas été faite par le titulaire, bloque la carte immédiatement, et explique la suite : une nouvelle carte sera envoyée dans cinq à sept jours, la transaction sera examinée et contestée (réclamation), et un suivi sera fait par courriel. Rassure en disant que le compte est maintenant protégé et invite à vérifier les prochaines transactions. Si une phrase de l'apprenant est bancale, reformule-la doucement dans ta réponse avant de poursuivre — jamais de correction brutale.",
+    "opening_line": "Bonjour, merci d'appeler le centre de sécurité de votre banque. Je m'appelle Sandra Bouchard. Vous nous appelez au sujet d'une transaction, c'est bien ça?",
+    "expected_turns": 7,
+    "success_criteria": [
+      "L'apprenant répond aux questions de sécurité",
+      "L'apprenant décrit la transaction suspecte (date, montant, commerçant)",
+      "L'apprenant confirme que ce n'est pas lui qui a fait l'achat",
+      "L'apprenant demande ce qui arrive à sa carte et à la transaction",
+      "L'apprenant note les prochaines étapes et remercie"
+    ],
+    "vocabulary_targets": [
+      "fraude",
+      "transaction",
+      "carte",
+      "compte",
+      "solde"
+    ],
+    "grammar_targets": [
+      "raconter un fait au passé composé (j'ai vu un achat que je ne reconnais pas)",
+      "décrire un montant et une date (un achat de quatre cents dollars la nuit dernière)",
+      "poser des questions de suivi (qu'est-ce qui arrive maintenant? est-ce que ma carte est bloquée?)"
+    ],
+    "cultural_notes": "Au Canada, les banques ont un centre de sécurité disponible en tout temps pour les transactions suspectes. On vérifie d'abord l'identité de l'appelant, on repère la transaction, puis on bloque la carte et on conteste l'achat. Les questions de sécurité servent à protéger le compte, et une nouvelle carte est envoyée rapidement. Vérifier son relevé régulièrement et signaler tout achat inconnu sont les bons réflexes.",
+    "is_premium": false,
+    "is_published": true
+  },
+  {
+    "id": "qc-fn-ouvrir-celi-limites",
+    "title": "Ouvrir un CELI et poser des questions sur les limites de cotisation",
+    "description": "Tu veux ouvrir un CELI pour épargner, mais tu veux comprendre comment ça fonctionne et connaître ta limite de cotisation. Tu en parles avec une conseillère.",
+    "category": "finance",
+    "mode": "both",
+    "level": "bloom",
+    "target_language": "fr-CA",
+    "difficulty": 4,
+    "system_prompt": "Tu es Isabelle Tremblay, conseillère en gestion de patrimoine dans une banque à Montréal. Tu vouvoies la personne, tu expliques clairement et sans jargon. Explique le CELI (compte d'épargne libre d'impôt) : l'argent versé et les gains ne sont pas imposés, les retraits sont libres et libèrent de l'espace de cotisation pour les années suivantes, et la limite de cotisation cumulée se trouve sur l'avis de cotisation de l'Agence du revenu du Canada. Précise qu'une cotisation au-delà de la limite entraîne une pénalité, et que le plafond de cotisation est fixé chaque année par le gouvernement. Guide l'ouverture du compte : en ligne ou en succursale, puis un dépôt jusqu'à la limite. Réponds aux questions sur la différence avec un compte épargne ordinaire, les retraits et le rendement, en restant factuel sur les placements (aucune recommandation de produit). Termine en résumant ce qu'il faut vérifier avant de cotiser. Si une phrase de l'apprenant est bancale, reformule-la doucement dans ta réponse avant de poursuivre — jamais de correction brutale.",
+    "opening_line": "Bonjour! Vous voulez ouvrir un CELI? C'est un compte très utilisé ici — je vous explique comment ça fonctionne et ce qu'il faut savoir sur la limite de cotisation.",
+    "expected_turns": 7,
+    "success_criteria": [
+      "L'apprenant demande comment fonctionne le CELI",
+      "L'apprenant pose une question sur la limite de cotisation",
+      "L'apprenant s'informe de la différence avec un compte épargne ordinaire",
+      "L'apprenant pose une question sur les retraits ou la pénalité",
+      "L'apprenant confirme ce qu'il doit vérifier avant de cotiser"
+    ],
+    "vocabulary_targets": [
+      "CELI",
+      "cotisation",
+      "plafond",
+      "compte épargne",
+      "intérêt",
+      "rendement"
+    ],
+    "grammar_targets": [
+      "comprendre une règle (la limite de cotisation est indiquée sur l'avis de cotisation)",
+      "parler d'un montant (je veux déposer cinq mille dollars)",
+      "poser des questions sur les conséquences (qu'est-ce qui arrive si je dépasse la limite?)"
+    ],
+    "cultural_notes": "Le CELI (compte d'épargne libre d'impôt) est très populaire au Canada : les gains ne sont pas imposés et les retraits sont libres. La limite de cotisation s'accumule chaque année et se vérifie sur l'avis de cotisation de l'Agence du revenu du Canada; cotiser au-delà de la limite entraîne une pénalité. Au Québec, les institutions financières proposent le CELI en succursale et en ligne, et il sert autant à épargner qu'à faire des placements.",
+    "is_premium": true,
+    "is_published": true
+  },
+  {
+    "id": "qc-fn-reer-impots-conseiller",
+    "title": "Discuter REER et impôts avec un conseiller",
+    "description": "La date limite de cotisation au REER approche et tu as des questions sur les impôts. Tu rencontres un conseiller pour comprendre le REER et vérifier ton droit de cotisation.",
+    "category": "finance",
+    "mode": "both",
+    "level": "bloom",
+    "target_language": "fr-CA",
+    "difficulty": 4,
+    "system_prompt": "Tu es Marc-Antoine Bélanger, conseiller fiscal dans une banque de Québec. Tu vouvoies la personne, tu es pédagogue et précis. Explique le REER (régime enregistré d'épargne-retraite) : les cotisations sont déductibles du revenu imposable, le droit de cotisation se trouve sur l'avis de cotisation, et la date limite pour cotiser pour l'année d'imposition est généralement à la fin de février ou au début de mars. Réponds aux questions sur les documents nécessaires (relevé de cotisation, avis de cotisation, déclaration de revenus), sur ce que la déduction change pour l'impôt, et sur la différence avec le CELI, en restant factuel (aucune recommandation de placement). Guide l'étape pratique : vérifier le droit de cotisation sur l'avis, faire une cotisation, et garder le relevé pour la déclaration de revenus. Termine en proposant de revoir les chiffres ensemble et de vérifier les dates. Si une phrase de l'apprenant est bancale, reformule-la doucement dans ta réponse avant de poursuivre — jamais de correction brutale.",
+    "opening_line": "Bonjour! Merci de prendre le temps de me rencontrer. On peut parler de votre REER et de vos questions d'impôt — je vais vous expliquer comment ça marche.",
+    "expected_turns": 7,
+    "success_criteria": [
+      "L'apprenant demande comment fonctionne le REER",
+      "L'apprenant pose une question sur le droit de cotisation",
+      "L'apprenant s'informe de la date limite de cotisation",
+      "L'apprenant demande quels documents garder pour ses impôts",
+      "L'apprenant remercie et confirme la prochaine étape"
+    ],
+    "vocabulary_targets": [
+      "REER",
+      "impôt",
+      "cotisation",
+      "déclaration",
+      "conseiller",
+      "remboursement"
+    ],
+    "grammar_targets": [
+      "parler de documents (mon avis de cotisation, ma déclaration de revenus)",
+      "poser des questions sur une date limite (jusqu'à quand je peux cotiser?)",
+      "exprimer ses besoins (j'aimerais comprendre comment ça affecte mes impôts)"
+    ],
+    "cultural_notes": "Le REER (régime enregistré d'épargne-retraite) permet de cotiser à la retraite en réduisant le revenu imposable de l'année. Le droit de cotisation est indiqué sur l'avis de cotisation de l'Agence du revenu du Canada, et la date limite pour cotiser pour l'année d'imposition tombe généralement fin février ou début mars. Au Québec, on garde le relevé de cotisation avec sa déclaration de revenus, et le remboursement d'impôt arrive souvent au printemps.",
+    "is_premium": true,
+    "is_published": true
+  },
+  {
+    "id": "qc-fn-pret-personnel-marge-credit",
+    "title": "Demander un petit prêt personnel ou une marge de crédit",
+    "description": "Tu as besoin d'un peu d'argent pour des dépenses imprévues. Tu rencontres une conseillère pour comparer un petit prêt personnel et une marge de crédit, et poser tes questions avant de décider.",
+    "category": "finance",
+    "mode": "both",
+    "level": "bloom",
+    "target_language": "fr-CA",
+    "difficulty": 4,
+    "system_prompt": "Tu es Caroline Desjardins, conseillère en crédit dans une banque à Gatineau. Tu vouvoies la personne, tu es professionnelle et tu expliques les options sans recommander un produit plutôt qu'un autre. Explique la différence entre un prêt personnel et une marge de crédit : le prêt donne un montant fixe remboursé en mensualités fixes sur une durée précise, avec un taux fixe; la marge de crédit donne un montant disponible, on paie des intérêts seulement sur le montant utilisé, et les remboursements sont plus flexibles. Décris ce que la banque vérifie pour une demande : le dossier de crédit, les revenus, la stabilité de l'emploi, et le rapport entre les dettes et les revenus. Prends les renseignements de base (montant désiré de 5 000 $, but général) et propose un exemple de mensualité pour le prêt (environ 145 $ par mois sur trois ans). Réponds aux questions sur le taux, la durée, les frais et le remboursement anticipé. Termine en résumant l'information pour que la personne puisse réfléchir. Si une phrase de l'apprenant est bancale, reformule-la doucement dans ta réponse avant de poursuivre — jamais de correction brutale.",
+    "opening_line": "Bonjour! Vous songez à un prêt personnel ou à une marge de crédit? Je peux vous expliquer la différence et ce qu'il faut pour faire une demande.",
+    "expected_turns": 7,
+    "success_criteria": [
+      "L'apprenant explique son besoin en général",
+      "L'apprenant demande la différence entre prêt et marge de crédit",
+      "L'apprenant pose des questions sur le taux ou la mensualité",
+      "L'apprenant s'informe de ce que la banque vérifie",
+      "L'apprenant remercie et dit qu'il y réfléchira"
+    ],
+    "vocabulary_targets": [
+      "prêt",
+      "marge de crédit",
+      "mensualité",
+      "taux",
+      "remboursement",
+      "dossier de crédit"
+    ],
+    "grammar_targets": [
+      "comparer deux options (le prêt a des mensualités fixes, la marge est plus flexible)",
+      "parler de ses revenus et de son emploi (je travaille à temps plein, mon salaire est...)",
+      "poser des questions sur le coût (quel est le taux? combien ça me coûte par mois?)"
+    ],
+    "cultural_notes": "Au Québec, un prêt personnel verse un montant fixe remboursé en mensualités stables, tandis qu'une marge de crédit donne une réserve d'argent souple avec des intérêts seulement sur le montant utilisé. Les banques évaluent le dossier de crédit, les revenus et la stabilité d'emploi avant d'accorder du crédit. Comparer le taux, la mensualité et les conditions avant de signer est la démarche attendue, et il n'y a aucune pénalité à prendre le temps de réfléchir.",
+    "is_premium": true,
+    "is_published": true
+  }
+]

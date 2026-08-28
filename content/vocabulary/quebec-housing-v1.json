@@ -1,0 +1,1302 @@
+[
+  {
+    "id": "vocab-qhs-01",
+    "word": "loyer",
+    "phonetic": "/lwa.je/",
+    "translations": {
+      "en": "rent",
+      "pa": "ਕਿਰਾਇਆ",
+      "hi": "किराया",
+      "zh": "租金",
+      "es": "alquiler"
+    },
+    "level": "seed",
+    "category": "housing",
+    "example_sentences": [
+      "Mon loyer est de 980 $ par mois, chauffage compris.",
+      "Le loyer se paie le premier du mois, par chèque ou dépôt direct."
+    ],
+    "confusion_pairs": [
+      "bail",
+      "locataire"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.2,
+      "stability": 4.8
+    }
+  },
+  {
+    "id": "vocab-qhs-02",
+    "word": "logement",
+    "phonetic": "/lɔʒ.mɑ̃/",
+    "translations": {
+      "en": "housing",
+      "pa": "ਰਿਹਾਇਸ਼",
+      "hi": "आवास",
+      "zh": "住房",
+      "es": "vivienda"
+    },
+    "level": "seed",
+    "category": "housing",
+    "example_sentences": [
+      "J'ai trouvé un logement au troisième étage, très lumineux.",
+      "Le logement est disponible le 1er juillet."
+    ],
+    "confusion_pairs": [
+      "appartement",
+      "maison"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.21,
+      "stability": 4.7
+    }
+  },
+  {
+    "id": "vocab-qhs-03",
+    "word": "bail",
+    "phonetic": "/baj/",
+    "translations": {
+      "en": "lease",
+      "pa": "ਪਟਾ",
+      "hi": "पट्टा",
+      "zh": "租约",
+      "es": "contrato de alquiler"
+    },
+    "level": "seed",
+    "category": "housing",
+    "example_sentences": [
+      "J'ai signé le bail pour un an, à compter du 1er juillet.",
+      "Avant de signer le bail, lis chaque page attentivement."
+    ],
+    "confusion_pairs": [
+      "contrat",
+      "loyer"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.22,
+      "stability": 4.6
+    }
+  },
+  {
+    "id": "vocab-qhs-04",
+    "word": "appartement",
+    "phonetic": "/a.paʁ.tə.mɑ̃/",
+    "translations": {
+      "en": "apartment",
+      "pa": "ਅਪਾਰਟਮੈਂਟ",
+      "hi": "अपार्टमेंट",
+      "zh": "公寓",
+      "es": "apartamento"
+    },
+    "level": "seed",
+    "category": "housing",
+    "example_sentences": [
+      "Son appartement est au centre-ville, près du métro.",
+      "On visite un appartement de deux chambres samedi."
+    ],
+    "confusion_pairs": [
+      "logement",
+      "condo"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.2,
+      "stability": 4.5
+    }
+  },
+  {
+    "id": "vocab-qhs-05",
+    "word": "clé",
+    "phonetic": "/kle/",
+    "translations": {
+      "en": "key",
+      "pa": "ਚਾਬੀ",
+      "hi": "चाबी",
+      "zh": "钥匙",
+      "es": "llave"
+    },
+    "level": "seed",
+    "category": "housing",
+    "example_sentences": [
+      "J'ai reçu deux jeux de clés le jour de l'emménagement.",
+      "N'oublie pas ta clé, je rentre tard ce soir."
+    ],
+    "confusion_pairs": [
+      "serrure",
+      "porte"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.24,
+      "stability": 4.4
+    }
+  },
+  {
+    "id": "vocab-qhs-06",
+    "word": "chauffage",
+    "phonetic": "/ʃo.faʒ/",
+    "translations": {
+      "en": "heating",
+      "pa": "ਹੀਟਿੰਗ",
+      "hi": "हीटिंग",
+      "zh": "暖气",
+      "es": "calefacción"
+    },
+    "level": "seed",
+    "category": "housing",
+    "example_sentences": [
+      "Le chauffage est électrique et compris dans le loyer.",
+      "Depuis deux jours, le chauffage ne fonctionne plus."
+    ],
+    "confusion_pairs": [
+      "thermostat",
+      "chauffe-eau"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.23,
+      "stability": 4.3
+    }
+  },
+  {
+    "id": "vocab-qhs-07",
+    "word": "électricité",
+    "phonetic": "/e.lɛk.tʁi.si.te/",
+    "translations": {
+      "en": "electricity",
+      "pa": "ਬਿਜਲੀ",
+      "hi": "बिजली",
+      "zh": "电力",
+      "es": "electricidad"
+    },
+    "level": "seed",
+    "category": "housing",
+    "example_sentences": [
+      "L'électricité est à part : il faut ouvrir un compte chez Hydro-Québec.",
+      "En hiver, l'électricité coûte plus cher à cause du chauffage."
+    ],
+    "confusion_pairs": [
+      "hydro",
+      "courant"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.25,
+      "stability": 4.2
+    }
+  },
+  {
+    "id": "vocab-qhs-08",
+    "word": "propriétaire",
+    "phonetic": "/pʁɔ.pʁi.je.tɛʁ/",
+    "translations": {
+      "en": "landlord",
+      "pa": "ਮਕਾਨ ਮਾਲਕ",
+      "hi": "मकान मालिक",
+      "zh": "房东",
+      "es": "propietario"
+    },
+    "level": "seed",
+    "category": "housing",
+    "example_sentences": [
+      "Le propriétaire habite au rez-de-chaussée de l'immeuble.",
+      "J'ai appelé le propriétaire pour signaler une réparation."
+    ],
+    "confusion_pairs": [
+      "locateur",
+      "locataire"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.24,
+      "stability": 4.1
+    }
+  },
+  {
+    "id": "vocab-qhs-09",
+    "word": "fenêtre",
+    "phonetic": "/fə.nɛtʁ/",
+    "translations": {
+      "en": "window",
+      "pa": "ਖਿੜਕੀ",
+      "hi": "खिड़की",
+      "zh": "窗户",
+      "es": "ventana"
+    },
+    "level": "seed",
+    "category": "housing",
+    "example_sentences": [
+      "La fenêtre du salon donne sur la cour.",
+      "Il y a un peu d'air froid qui passe par la fenêtre."
+    ],
+    "confusion_pairs": [
+      "vitre",
+      "balcon"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.26,
+      "stability": 4.0
+    }
+  },
+  {
+    "id": "vocab-qhs-10",
+    "word": "porte",
+    "phonetic": "/pɔʁt/",
+    "translations": {
+      "en": "door",
+      "pa": "ਦਰਵਾਜ਼ਾ",
+      "hi": "दरवाज़ा",
+      "zh": "门",
+      "es": "puerta"
+    },
+    "level": "seed",
+    "category": "housing",
+    "example_sentences": [
+      "La porte d'entrée se verrouille avec une clé.",
+      "Le voisin a frappé à ma porte pour me parler du bruit."
+    ],
+    "confusion_pairs": [
+      "entrée",
+      "escalier"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.25,
+      "stability": 3.9
+    }
+  },
+  {
+    "id": "vocab-qhs-11",
+    "word": "dépôt",
+    "phonetic": "/de.po/",
+    "translations": {
+      "en": "deposit",
+      "pa": "ਜਮ੍ਹਾਂ",
+      "hi": "जमा",
+      "zh": "押金",
+      "es": "depósito"
+    },
+    "level": "sprout",
+    "category": "housing",
+    "example_sentences": [
+      "J'ai payé le premier mois d'avance comme dépôt.",
+      "Le dépôt s'applique au premier mois de loyer."
+    ],
+    "confusion_pairs": [
+      "acompte",
+      "versement"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.3,
+      "stability": 3.9
+    }
+  },
+  {
+    "id": "vocab-qhs-12",
+    "word": "état des lieux",
+    "phonetic": "/e.ta de ljø/",
+    "translations": {
+      "en": "move-in inspection",
+      "pa": "ਸਥਿਤੀ ਰਿਪੋਰਟ",
+      "hi": "स्थिति रिपोर्ट",
+      "zh": "入住检查",
+      "es": "inventario del estado"
+    },
+    "level": "sprout",
+    "category": "housing",
+    "example_sentences": [
+      "On a fait l'état des lieux pièce par pièce à mon arrivée.",
+      "L'état des lieux d'entrée note déjà les marques au plancher."
+    ],
+    "confusion_pairs": [
+      "inspection",
+      "constat"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.32,
+      "stability": 3.7
+    }
+  },
+  {
+    "id": "vocab-qhs-13",
+    "word": "avis de départ",
+    "phonetic": "/a.vi də de.paʁ/",
+    "translations": {
+      "en": "notice of departure",
+      "pa": "ਜਾਣ ਦਾ ਨੋਟਿਸ",
+      "hi": "जाने की सूचना",
+      "zh": "退租通知",
+      "es": "aviso de salida"
+    },
+    "level": "sprout",
+    "category": "housing",
+    "example_sentences": [
+      "J'ai remis mon avis de départ trois mois avant la fin du bail.",
+      "L'avis de départ se donne par écrit au propriétaire."
+    ],
+    "confusion_pairs": [
+      "préavis",
+      "résiliation"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.31,
+      "stability": 3.6
+    }
+  },
+  {
+    "id": "vocab-qhs-14",
+    "word": "préavis",
+    "phonetic": "/pʁe.a.vi/",
+    "translations": {
+      "en": "notice period",
+      "pa": "ਨੋਟਿਸ ਅਵਧੀ",
+      "hi": "नोटिस अवधि",
+      "zh": "通知期",
+      "es": "preaviso"
+    },
+    "level": "sprout",
+    "category": "housing",
+    "example_sentences": [
+      "Mon bail demande un préavis de trois mois.",
+      "Si tu donnes ton préavis en retard, vérifie ton bail."
+    ],
+    "confusion_pairs": [
+      "avis de départ",
+      "délai"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.3,
+      "stability": 3.6
+    }
+  },
+  {
+    "id": "vocab-qhs-15",
+    "word": "sous-location",
+    "phonetic": "/su.lɔ.ka.sjɔ̃/",
+    "translations": {
+      "en": "sublet",
+      "pa": "ਉਪ-ਕਿਰਾਇਆ",
+      "hi": "उप-किराया",
+      "zh": "转租",
+      "es": "subarriendo"
+    },
+    "level": "sprout",
+    "category": "housing",
+    "example_sentences": [
+      "La sous-location pour l'été doit être approuvée par le propriétaire.",
+      "Il a fait une sous-location pendant ses trois mois d'absence."
+    ],
+    "confusion_pairs": [
+      "colocation",
+      "sous-locataire"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.34,
+      "stability": 3.5
+    }
+  },
+  {
+    "id": "vocab-qhs-16",
+    "word": "augmentation de loyer",
+    "phonetic": "/ɔɡ.mɑ̃.ta.sjɔ̃ də lwa.je/",
+    "translations": {
+      "en": "rent increase",
+      "pa": "ਕਿਰਾਇਆ ਵਾਧਾ",
+      "hi": "किराया वृद्धि",
+      "zh": "涨租",
+      "es": "aumento de alquiler"
+    },
+    "level": "sprout",
+    "category": "housing",
+    "example_sentences": [
+      "J'ai reçu un avis d'augmentation de loyer de 40 $ par mois.",
+      "L'augmentation de loyer s'explique par les taxes et les assurances."
+    ],
+    "confusion_pairs": [
+      "hausse",
+      "majoration"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.33,
+      "stability": 3.4
+    }
+  },
+  {
+    "id": "vocab-qhs-17",
+    "word": "voisin",
+    "phonetic": "/vwa.zɛ̃/",
+    "translations": {
+      "en": "neighbour",
+      "pa": "ਗੁਆਂਢੀ",
+      "hi": "पड़ोसी",
+      "zh": "邻居",
+      "es": "vecino"
+    },
+    "level": "sprout",
+    "category": "housing",
+    "example_sentences": [
+      "Mon voisin m'a aidé à déneiger l'entrée.",
+      "Parle à ton voisin avant de porter plainte."
+    ],
+    "confusion_pairs": [
+      "voisine",
+      "concierge"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.31,
+      "stability": 3.5
+    }
+  },
+  {
+    "id": "vocab-qhs-18",
+    "word": "bruit",
+    "phonetic": "/bʁɥi/",
+    "translations": {
+      "en": "noise",
+      "pa": "ਰੌਲਾ",
+      "hi": "शोर",
+      "zh": "噪音",
+      "es": "ruido"
+    },
+    "level": "sprout",
+    "category": "housing",
+    "example_sentences": [
+      "Il y a du bruit de la rue jusqu'à tard le soir.",
+      "La musique est trop forte, le bruit traverse le mur."
+    ],
+    "confusion_pairs": [
+      "tapage",
+      "vacarme"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.3,
+      "stability": 3.4
+    }
+  },
+  {
+    "id": "vocab-qhs-19",
+    "word": "déneigement",
+    "phonetic": "/de.nɛʒ.mɑ̃/",
+    "translations": {
+      "en": "snow removal",
+      "pa": "ਬਰਫ਼ ਹਟਾਉਣਾ",
+      "hi": "बर्फ़ हटाना",
+      "zh": "除雪",
+      "es": "quitanieves"
+    },
+    "level": "sprout",
+    "category": "housing",
+    "example_sentences": [
+      "Le déneigement de l'entrée se fait avant sept heures le matin.",
+      "On s'entraide pour le déneigement entre voisins."
+    ],
+    "confusion_pairs": [
+      "déblaiement",
+      "pelletage"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.34,
+      "stability": 3.3
+    }
+  },
+  {
+    "id": "vocab-qhs-20",
+    "word": "réparation",
+    "phonetic": "/ʁe.pa.ʁa.sjɔ̃/",
+    "translations": {
+      "en": "repair",
+      "pa": "ਮੁਰੰਮਤ",
+      "hi": "मरम्मत",
+      "zh": "维修",
+      "es": "reparación"
+    },
+    "level": "sprout",
+    "category": "housing",
+    "example_sentences": [
+      "Le plombier viendra pour la réparation jeudi avant-midi.",
+      "J'ai demandé une réparation pour la fenêtre qui ferme mal."
+    ],
+    "confusion_pairs": [
+      "entretien",
+      "rénovation"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.32,
+      "stability": 3.3
+    }
+  },
+  {
+    "id": "vocab-qhs-21",
+    "word": "moisissure",
+    "phonetic": "/mwa.zi.syʁ/",
+    "translations": {
+      "en": "mold",
+      "pa": "ਉੱਲੀ",
+      "hi": "फफूंदी",
+      "zh": "霉菌",
+      "es": "moho"
+    },
+    "level": "sprout",
+    "category": "housing",
+    "example_sentences": [
+      "Il y a de la moisissure dans le coin de la salle de bain.",
+      "La moisissure apparaît souvent à cause de l'humidité."
+    ],
+    "confusion_pairs": [
+      "humidité",
+      "condensation"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.35,
+      "stability": 3.2
+    }
+  },
+  {
+    "id": "vocab-qhs-22",
+    "word": "plomberie",
+    "phonetic": "/plɔ̃.bʁi/",
+    "translations": {
+      "en": "plumbing",
+      "pa": "ਪਲੰਬਿੰਗ",
+      "hi": "प्लंबिंग",
+      "zh": "水管",
+      "es": "fontanería"
+    },
+    "level": "sprout",
+    "category": "housing",
+    "example_sentences": [
+      "L'évier de la cuisine coule, c'est un problème de plomberie.",
+      "Le propriétaire a fait vérifier la plomberie de l'immeuble."
+    ],
+    "confusion_pairs": [
+      "tuyauterie",
+      "évier"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.33,
+      "stability": 3.2
+    }
+  },
+  {
+    "id": "vocab-qhs-23",
+    "word": "électroménager",
+    "phonetic": "/e.lɛk.tʁɔ.me.na.ʒe/",
+    "translations": {
+      "en": "appliances",
+      "pa": "ਘਰੇਲੂ ਉਪਕਰਨ",
+      "hi": "घरेलू उपकरण",
+      "zh": "家电",
+      "es": "electrodomésticos"
+    },
+    "level": "sprout",
+    "category": "housing",
+    "example_sentences": [
+      "Le logement se loue avec les électroménagers : frigo, cuisinière et laveuse.",
+      "Les électroménagers sont en bon état, sauf le frigo qui fait du bruit."
+    ],
+    "confusion_pairs": [
+      "appareil",
+      "gadget"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.35,
+      "stability": 3.1
+    }
+  },
+  {
+    "id": "vocab-qhs-24",
+    "word": "compteur",
+    "phonetic": "/kɔ̃.tœʁ/",
+    "translations": {
+      "en": "meter",
+      "pa": "ਮੀਟਰ",
+      "hi": "मीटर",
+      "zh": "电表",
+      "es": "contador"
+    },
+    "level": "sprout",
+    "category": "housing",
+    "example_sentences": [
+      "Le numéro du compteur d'électricité est sur le bail.",
+      "Hydro-Québec demande le numéro du compteur pour ouvrir le contrat."
+    ],
+    "confusion_pairs": [
+      "disjoncteur",
+      "panneau"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.34,
+      "stability": 3.1
+    }
+  },
+  {
+    "id": "vocab-qhs-25",
+    "word": "colocation",
+    "phonetic": "/kɔ.lɔ.ka.sjɔ̃/",
+    "translations": {
+      "en": "shared flat",
+      "pa": "ਸਾਂਝਾ ਮਕਾਨ",
+      "hi": "साझा मकान",
+      "zh": "合租",
+      "es": "piso compartido"
+    },
+    "level": "sprout",
+    "category": "housing",
+    "example_sentences": [
+      "On est en colocation à deux dans un 4 ½.",
+      "La colocation, c'est pratique pour partager le loyer."
+    ],
+    "confusion_pairs": [
+      "sous-location",
+      "logement partagé"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.36,
+      "stability": 3.0
+    }
+  },
+  {
+    "id": "vocab-qhs-26",
+    "word": "locataire",
+    "phonetic": "/lɔ.ka.tɛʁ/",
+    "translations": {
+      "en": "tenant",
+      "pa": "ਕਿਰਾਏਦਾਰ",
+      "hi": "किराएदार",
+      "zh": "租客",
+      "es": "inquilino"
+    },
+    "level": "branch",
+    "category": "housing",
+    "example_sentences": [
+      "Le locataire doit signaler les problèmes rapidement.",
+      "Chaque locataire a son entrée dans le triplex."
+    ],
+    "confusion_pairs": [
+      "locateur",
+      "propriétaire"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.4,
+      "stability": 3.0
+    }
+  },
+  {
+    "id": "vocab-qhs-27",
+    "word": "formulaire",
+    "phonetic": "/fɔʁ.my.lɛʁ/",
+    "translations": {
+      "en": "form",
+      "pa": "ਫਾਰਮ",
+      "hi": "फॉर्म",
+      "zh": "表格",
+      "es": "formulario"
+    },
+    "level": "branch",
+    "category": "housing",
+    "example_sentences": [
+      "J'ai rempli le formulaire d'avis de modification de loyer.",
+      "Le formulaire se signe et se remet au propriétaire."
+    ],
+    "confusion_pairs": [
+      "document",
+      "demande"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.39,
+      "stability": 3.0
+    }
+  },
+  {
+    "id": "vocab-qhs-28",
+    "word": "assurance habitation",
+    "phonetic": "/a.sy.ʁɑ̃s a.bi.ta.sjɔ̃/",
+    "translations": {
+      "en": "home insurance",
+      "pa": "ਘਰ ਬੀਮਾ",
+      "hi": "गृह बीमा",
+      "zh": "房屋保险",
+      "es": "seguro de hogar"
+    },
+    "level": "branch",
+    "category": "housing",
+    "example_sentences": [
+      "Mon bail exige une assurance habitation pour locataire.",
+      "L'assurance habitation couvre mes biens et ma responsabilité."
+    ],
+    "confusion_pairs": [
+      "assurance locataire",
+      "assurance vie"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.42,
+      "stability": 2.9
+    }
+  },
+  {
+    "id": "vocab-qhs-29",
+    "word": "réclamation",
+    "phonetic": "/ʁe.kla.ma.sjɔ̃/",
+    "translations": {
+      "en": "claim",
+      "pa": "ਦਾਅਵਾ",
+      "hi": "दावा",
+      "zh": "理赔",
+      "es": "reclamación"
+    },
+    "level": "branch",
+    "category": "housing",
+    "example_sentences": [
+      "J'ai fait une réclamation après le dégât d'eau.",
+      "L'assureur demande des photos pour la réclamation."
+    ],
+    "confusion_pairs": [
+      "demande",
+      "plainte"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.41,
+      "stability": 2.9
+    }
+  },
+  {
+    "id": "vocab-qhs-30",
+    "word": "franchise",
+    "phonetic": "/fʁɑ̃.ʃiz/",
+    "translations": {
+      "en": "deductible",
+      "pa": "ਕਟੌਤੀ",
+      "hi": "कटौती",
+      "zh": "免赔额",
+      "es": "franquicia"
+    },
+    "level": "branch",
+    "category": "housing",
+    "example_sentences": [
+      "La franchise de mon assurance est de 250 $.",
+      "Je paie la franchise, l'assureur paie le reste."
+    ],
+    "confusion_pairs": [
+      "déductible",
+      "prime"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.43,
+      "stability": 2.8
+    }
+  },
+  {
+    "id": "vocab-qhs-31",
+    "word": "sinistre",
+    "phonetic": "/si.nistʁ/",
+    "translations": {
+      "en": "insured loss",
+      "pa": "ਨੁਕਸਾਨ ਘਟਨਾ",
+      "hi": "हानि घटना",
+      "zh": "事故损失",
+      "es": "siniestro"
+    },
+    "level": "branch",
+    "category": "housing",
+    "example_sentences": [
+      "Le dégât d'eau est un sinistre couvert par mon assurance.",
+      "Après le sinistre, un expert est venu évaluer les dégâts."
+    ],
+    "confusion_pairs": [
+      "dégât",
+      "accident"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.44,
+      "stability": 2.8
+    }
+  },
+  {
+    "id": "vocab-qhs-32",
+    "word": "entente",
+    "phonetic": "/ɑ̃.tɑ̃t/",
+    "translations": {
+      "en": "agreement",
+      "pa": "ਸਮਝੌਤਾ",
+      "hi": "समझौता",
+      "zh": "协议",
+      "es": "acuerdo"
+    },
+    "level": "branch",
+    "category": "housing",
+    "example_sentences": [
+      "On a trouvé une entente pour le déneigement.",
+      "Une entente écrite protège le locataire et le propriétaire."
+    ],
+    "confusion_pairs": [
+      "accord",
+      "contrat"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.4,
+      "stability": 2.9
+    }
+  },
+  {
+    "id": "vocab-qhs-33",
+    "word": "courriel",
+    "phonetic": "/ku.ʁjɛl/",
+    "translations": {
+      "en": "email",
+      "pa": "ਈਮੇਲ",
+      "hi": "ईमेल",
+      "zh": "电子邮件",
+      "es": "correo electrónico"
+    },
+    "level": "branch",
+    "category": "housing",
+    "example_sentences": [
+      "Envoie-moi les photos par courriel, s'il te plaît.",
+      "Je t'ai écrit un courriel avec le détail des réparations."
+    ],
+    "confusion_pairs": [
+      "courrier",
+      "message"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.38,
+      "stability": 3.0
+    }
+  },
+  {
+    "id": "vocab-qhs-34",
+    "word": "plainte",
+    "phonetic": "/plɛ̃t/",
+    "translations": {
+      "en": "complaint",
+      "pa": "ਸ਼ਿਕਾਇਤ",
+      "hi": "शिकायत",
+      "zh": "投诉",
+      "es": "queja"
+    },
+    "level": "branch",
+    "category": "housing",
+    "example_sentences": [
+      "Je préfère parler au voisin avant de porter plainte.",
+      "La plainte se dépose au Tribunal administratif du logement en dernier recours."
+    ],
+    "confusion_pairs": [
+      "réclamation",
+      "protestation"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.42,
+      "stability": 2.8
+    }
+  },
+  {
+    "id": "vocab-qhs-35",
+    "word": "dégât",
+    "phonetic": "/de.ɡɑ/",
+    "translations": {
+      "en": "damage",
+      "pa": "ਨੁਕਸਾਨ",
+      "hi": "क्षति",
+      "zh": "损坏",
+      "es": "daño"
+    },
+    "level": "branch",
+    "category": "housing",
+    "example_sentences": [
+      "Il y a un dégât d'eau dans la salle de bain.",
+      "Les dégâts au plancher étaient déjà là à mon arrivée."
+    ],
+    "confusion_pairs": [
+      "dommage",
+      "défaut"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.43,
+      "stability": 2.7
+    }
+  },
+  {
+    "id": "vocab-qhs-36",
+    "word": "TAL",
+    "phonetic": "/te.a.ɛl/",
+    "translations": {
+      "en": "housing tribunal (TAL)",
+      "pa": "ਟੀ.ਏ.ਐੱਲ.",
+      "hi": "टी.ए.एल.",
+      "zh": "租房法庭",
+      "es": "TAL"
+    },
+    "level": "branch",
+    "category": "housing",
+    "example_sentences": [
+      "Le TAL peut fixer l'augmentation de loyer si on ne s'entend pas.",
+      "On a décidé d'aller au TAL pour régler le litige."
+    ],
+    "confusion_pairs": [
+      "tribunal",
+      "régie"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.45,
+      "stability": 2.6
+    }
+  },
+  {
+    "id": "vocab-qhs-37",
+    "word": "sous-locataire",
+    "phonetic": "/su.lɔ.ka.tɛʁ/",
+    "translations": {
+      "en": "subtenant",
+      "pa": "ਉਪ-ਕਿਰਾਏਦਾਰ",
+      "hi": "उप-किराएदार",
+      "zh": "转租客",
+      "es": "subinquilino"
+    },
+    "level": "branch",
+    "category": "housing",
+    "example_sentences": [
+      "Le sous-locataire occupera le logement de juin à août.",
+      "Le sous-locataire doit fournir des références."
+    ],
+    "confusion_pairs": [
+      "colocataire",
+      "locataire"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.44,
+      "stability": 2.6
+    }
+  },
+  {
+    "id": "vocab-qhs-38",
+    "word": "thermostat",
+    "phonetic": "/tɛʁ.mɔs.ta/",
+    "translations": {
+      "en": "thermostat",
+      "pa": "ਥਰਮੋਸਟੈਟ",
+      "hi": "थर्मोस्टेट",
+      "zh": "恒温器",
+      "es": "termostato"
+    },
+    "level": "branch",
+    "category": "housing",
+    "example_sentences": [
+      "Le thermostat est dans le corridor, près de la chambre.",
+      "Monte le thermostat à vingt et un degrés en hiver."
+    ],
+    "confusion_pairs": [
+      "chauffe-eau",
+      "thermopompe"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.4,
+      "stability": 2.8
+    }
+  },
+  {
+    "id": "vocab-qhs-39",
+    "word": "adresse",
+    "phonetic": "/a.dʁɛs/",
+    "translations": {
+      "en": "address",
+      "pa": "ਪਤਾ",
+      "hi": "पता",
+      "zh": "地址",
+      "es": "dirección"
+    },
+    "level": "branch",
+    "category": "housing",
+    "example_sentences": [
+      "Donne ta nouvelle adresse au propriétaire pour la correspondance.",
+      "L'adresse du logement est au 4567, rue de la Gauchetière."
+    ],
+    "confusion_pairs": [
+      "adresse civique",
+      "adresse postale"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.38,
+      "stability": 2.9
+    }
+  },
+  {
+    "id": "vocab-qhs-40",
+    "word": "pièce",
+    "phonetic": "/pjɛs/",
+    "translations": {
+      "en": "room",
+      "pa": "ਕਮਰਾ",
+      "hi": "कमरा",
+      "zh": "房间",
+      "es": "habitación"
+    },
+    "level": "branch",
+    "category": "housing",
+    "example_sentences": [
+      "Un 3 ½, c'est trois pièces et demie.",
+      "La plus grande pièce du logement, c'est le salon."
+    ],
+    "confusion_pairs": [
+      "chambre",
+      "salle"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.39,
+      "stability": 2.8
+    }
+  },
+  {
+    "id": "vocab-qhs-41",
+    "word": "retenue",
+    "phonetic": "/ʁə.tə.ny/",
+    "translations": {
+      "en": "withholding",
+      "pa": "ਰੋਕੀ ਰਕਮ",
+      "hi": "रोकी राशि",
+      "zh": "扣留",
+      "es": "retención"
+    },
+    "level": "bloom",
+    "category": "housing",
+    "example_sentences": [
+      "Le propriétaire veut faire une retenue sur le montant pour des dommages.",
+      "La retenue doit s'appuyer sur un décompte clair."
+    ],
+    "confusion_pairs": [
+      "déduction",
+      "saisie"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.5,
+      "stability": 2.5
+    }
+  },
+  {
+    "id": "vocab-qhs-42",
+    "word": "médiation",
+    "phonetic": "/me.dja.sjɔ̃/",
+    "translations": {
+      "en": "mediation",
+      "pa": "ਮੱਧਸਥਤਾ",
+      "hi": "मध्यस्थता",
+      "zh": "调解",
+      "es": "mediación"
+    },
+    "level": "bloom",
+    "category": "housing",
+    "example_sentences": [
+      "La médiation peut aider à régler le conflit sans aller au TAL.",
+      "On a proposé une médiation pour trouver une entente."
+    ],
+    "confusion_pairs": [
+      "conciliation",
+      "arbitrage"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.52,
+      "stability": 2.4
+    }
+  },
+  {
+    "id": "vocab-qhs-43",
+    "word": "preuve",
+    "phonetic": "/pʁœv/",
+    "translations": {
+      "en": "proof, evidence",
+      "pa": "ਸਬੂਤ",
+      "hi": "सबूत",
+      "zh": "证据",
+      "es": "prueba"
+    },
+    "level": "bloom",
+    "category": "housing",
+    "example_sentences": [
+      "Les photos de l'état des lieux sont une bonne preuve.",
+      "Envoie tes preuves par courriel avant la rencontre."
+    ],
+    "confusion_pairs": [
+      "photo",
+      "témoignage"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.5,
+      "stability": 2.5
+    }
+  },
+  {
+    "id": "vocab-qhs-44",
+    "word": "remboursement",
+    "phonetic": "/ʁɑ̃.buʁ.sə.mɑ̃/",
+    "translations": {
+      "en": "reimbursement",
+      "pa": "ਵਾਪਸੀ",
+      "hi": "वापसी",
+      "zh": "报销",
+      "es": "reembolso"
+    },
+    "level": "bloom",
+    "category": "housing",
+    "example_sentences": [
+      "L'assureur a confirmé le remboursement des biens abîmés.",
+      "J'attends le remboursement du dépôt par chèque."
+    ],
+    "confusion_pairs": [
+      "dédommagement",
+      "crédit"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.51,
+      "stability": 2.4
+    }
+  },
+  {
+    "id": "vocab-qhs-45",
+    "word": "décompte",
+    "phonetic": "/de.kɔ̃t/",
+    "translations": {
+      "en": "itemized breakdown",
+      "pa": "ਵੇਰਵਾ",
+      "hi": "विवरण",
+      "zh": "明细",
+      "es": "desglose"
+    },
+    "level": "bloom",
+    "category": "housing",
+    "example_sentences": [
+      "Demande un décompte détaillé des dommages au propriétaire.",
+      "Le décompte liste chaque réparation et son coût."
+    ],
+    "confusion_pairs": [
+      "relevé",
+      "détail"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.53,
+      "stability": 2.3
+    }
+  },
+  {
+    "id": "vocab-qhs-46",
+    "word": "inspection",
+    "phonetic": "/ɛ̃s.pɛk.sjɔ̃/",
+    "translations": {
+      "en": "inspection",
+      "pa": "ਨਿਰੀਖਣ",
+      "hi": "निरीक्षण",
+      "zh": "检查",
+      "es": "inspección"
+    },
+    "level": "bloom",
+    "category": "housing",
+    "example_sentences": [
+      "L'inspection de l'immeuble a lieu la semaine prochaine.",
+      "L'expert a fait une inspection après le sinistre."
+    ],
+    "confusion_pairs": [
+      "visite",
+      "vérification"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.52,
+      "stability": 2.3
+    }
+  },
+  {
+    "id": "vocab-qhs-47",
+    "word": "résiliation",
+    "phonetic": "/ʁe.zi.lja.sjɔ̃/",
+    "translations": {
+      "en": "termination",
+      "pa": "ਖਤਮ ਕਰਨਾ",
+      "hi": "समापन",
+      "zh": "解除",
+      "es": "rescisión"
+    },
+    "level": "bloom",
+    "category": "housing",
+    "example_sentences": [
+      "La résiliation du bail se fait avec un avis de départ.",
+      "Il a demandé la résiliation de son bail pour le 1er août."
+    ],
+    "confusion_pairs": [
+      "annulation",
+      "fin de bail"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.54,
+      "stability": 2.2
+    }
+  },
+  {
+    "id": "vocab-qhs-48",
+    "word": "indemnité",
+    "phonetic": "/ɛ̃.dɛm.ni.te/",
+    "translations": {
+      "en": "compensation",
+      "pa": "ਮੁਆਵਜ਼ਾ",
+      "hi": "मुआवज़ा",
+      "zh": "赔偿金",
+      "es": "indemnización"
+    },
+    "level": "bloom",
+    "category": "housing",
+    "example_sentences": [
+      "L'assureur versera une indemnité pour les dommages couverts.",
+      "L'indemnité couvre la valeur de remplacement des biens."
+    ],
+    "confusion_pairs": [
+      "compensation",
+      "dédommagement"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.55,
+      "stability": 2.2
+    }
+  },
+  {
+    "id": "vocab-qhs-49",
+    "word": "litige",
+    "phonetic": "/li.tiʒ/",
+    "translations": {
+      "en": "dispute",
+      "pa": "ਵਿਵਾਦ",
+      "hi": "विवाद",
+      "zh": "纠纷",
+      "es": "litigio"
+    },
+    "level": "bloom",
+    "category": "housing",
+    "example_sentences": [
+      "Le litige porte sur l'augmentation de loyer.",
+      "Un litige se règle souvent plus vite par la discussion que devant le tribunal."
+    ],
+    "confusion_pairs": [
+      "différend",
+      "conflit"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.56,
+      "stability": 2.1
+    }
+  },
+  {
+    "id": "vocab-qhs-50",
+    "word": "arriérés",
+    "phonetic": "/a.ʁje.ʁe/",
+    "translations": {
+      "en": "arrears",
+      "pa": "ਬਕਾਇਆ",
+      "hi": "बकाया",
+      "zh": "欠款",
+      "es": "atrasos"
+    },
+    "level": "bloom",
+    "category": "housing",
+    "example_sentences": [
+      "Il y a deux mois d'arriérés de loyer à rattraper.",
+      "Les arriérés s'accumulent quand on ne paie pas à temps."
+    ],
+    "confusion_pairs": [
+      "retards",
+      "dettes"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.58,
+      "stability": 2.0
+    }
+  }
+]

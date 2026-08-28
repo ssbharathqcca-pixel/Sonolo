@@ -46,6 +46,7 @@ evidence".
 | SN-018 | Closeout seed ×2 on fresh Postgres 16 (`scripts.seed_content`) | `2026-08-23_sn018_closeout_seed_twice.txt` | stable 40 scenarios / 200 vocab items; re-run no-op |
 | all | (historical) Full suite after SN-014B | `2026-08-22_full_suite.txt` | 119 passed |
 | SN-041 | Full backend suite after entitlement enforcement | `2026-08-28_sn041_backend_pytest.txt` | **180 passed**, exit 0 |
+| SN-042 | Full backend suite after quebec housing/finance pack integration (catalog 105→125, vocab 520→620) | `2026-08-28_sn042_packs_integration_pytest.txt` | **180 passed**, exit 0 |
 
 ## Environment
 

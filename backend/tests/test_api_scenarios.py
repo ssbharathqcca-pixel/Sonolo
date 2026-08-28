@@ -65,7 +65,7 @@ async def test_scenarios_returns_the_seeded_catalog(
     scenarios_client: AsyncClient, db_session: AsyncSession
 ) -> None:
     seeded = await seed_scenarios(db_session)
-    assert seeded == 105
+    assert seeded == 125
 
     response = await scenarios_client.get(
         "/api/scenarios", headers=await auth_headers(scenarios_client)
@@ -129,7 +129,7 @@ async def test_free_user_sees_premium_scenarios_locked(
     # housing-english-v1, and finance-english-v1 = 25 en; plus 3 each
     # from quebec-healthcare-v1 and quebec-workplace-v1 = 31 total.
     # The English catalog sees only the 25 English premiums.
-    assert len(premium_titles) == 31
+    assert len(premium_titles) == 37
     assert len(en_premium_titles) == 25
     assert locked_titles == en_premium_titles
 
@@ -173,7 +173,7 @@ async def test_language_param_returns_only_french_scenarios(
             )
         ).scalars().all()
     )
-    assert len(french_titles) == 25
+    assert len(french_titles) == 45
     assert {scenario["title"] for scenario in scenarios} == french_titles
 
 

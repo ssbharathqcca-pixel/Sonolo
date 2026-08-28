@@ -30,6 +30,16 @@ FRENCH_WORDS = {
     seed.word for seed in load_vocabulary_seeds() if seed.language == "fr"
 }
 
+ENGLISH_WORDS = {
+    seed.word for seed in load_vocabulary_seeds() if seed.language == "en"
+}
+
+# Some words are spelled identically in both languages (thermostat,
+# inspection, transaction, triage) and are legitimately taught in each
+# pack; only French-only words must stay out of an English learner's
+# queue (SN-040 pack additions introduced the shared spellings).
+FRENCH_ONLY_WORDS = FRENCH_WORDS - ENGLISH_WORDS
+
 
 @pytest_asyncio.fixture
 async def review_client(
@@ -379,4 +389,4 @@ async def test_due_keeps_english_for_default_users(
     assert response.status_code == 200
     words = {card["word"] for card in response.json()}
     assert words
-    assert not words & FRENCH_WORDS
+    assert not words & FRENCH_ONLY_WORDS

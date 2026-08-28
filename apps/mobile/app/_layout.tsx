@@ -18,6 +18,10 @@ import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
+import { PostHogProvider } from 'posthog-react-native';
+import '../lib/analytics'; // Initializes Sentry & exports posthog
+import { posthog } from '../lib/analytics';
+
 import {
   resetConnectivityState,
   setConnectivityHandlers,
@@ -69,44 +73,46 @@ export default function RootLayout(): JSX.Element {
 
   return (
     <AppErrorBoundary>
-      {!isHydrated ? (
-        <SafeAreaProvider>
-          <StatusBar style="light" />
-          <SplashScreen />
-        </SafeAreaProvider>
-      ) : (
-        <ThemeProvider>
+      <PostHogProvider client={posthog}>
+        {!isHydrated ? (
           <SafeAreaProvider>
             <StatusBar style="light" />
-            {!isAuthenticated ? (
-              <Stack screenOptions={stackScreenOptions}>
-                <Stack.Screen name="(auth)" />
-              </Stack>
-            ) : !onboardingCompleted ? (
-              <Stack screenOptions={stackScreenOptions}>
-                <Stack.Screen name="(onboarding)" />
-              </Stack>
-            ) : (
-              <Stack screenOptions={stackScreenOptions}>
-                <Stack.Screen name="(tabs)" />
-                <Stack.Screen
-                  name="pack/[id]"
-                  options={{ animation: "slide_from_bottom" }}
-                />
-                <Stack.Screen
-                  name="session/[id]"
-                  options={{ animation: "slide_from_bottom" }}
-                />
-                <Stack.Screen
-                  name="feedback/[id]"
-                  options={{ animation: "slide_from_bottom" }}
-                />
-              </Stack>
-            )}
-            <OfflineBanner />
+            <SplashScreen />
           </SafeAreaProvider>
-        </ThemeProvider>
-      )}
+        ) : (
+          <ThemeProvider>
+            <SafeAreaProvider>
+              <StatusBar style="light" />
+              {!isAuthenticated ? (
+                <Stack screenOptions={stackScreenOptions}>
+                  <Stack.Screen name="(auth)" />
+                </Stack>
+              ) : !onboardingCompleted ? (
+                <Stack screenOptions={stackScreenOptions}>
+                  <Stack.Screen name="(onboarding)" />
+                </Stack>
+              ) : (
+                <Stack screenOptions={stackScreenOptions}>
+                  <Stack.Screen name="(tabs)" />
+                  <Stack.Screen
+                    name="pack/[id]"
+                    options={{ animation: "slide_from_bottom" }}
+                  />
+                  <Stack.Screen
+                    name="session/[id]"
+                    options={{ animation: "slide_from_bottom" }}
+                  />
+                  <Stack.Screen
+                    name="feedback/[id]"
+                    options={{ animation: "slide_from_bottom" }}
+                  />
+                </Stack>
+              )}
+              <OfflineBanner />
+            </SafeAreaProvider>
+          </ThemeProvider>
+        )}
+      </PostHogProvider>
     </AppErrorBoundary>
   );
 }

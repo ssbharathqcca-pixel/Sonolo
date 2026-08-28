@@ -234,6 +234,58 @@
       "theme_color": "#10B981",
       "icon": "book",
       "is_published": true
+    },
+    {
+      "id": "quebec-housing-v1",
+      "type": "scenarios",
+      "language": "fr",
+      "path": "content/scenarios/quebec-housing-v1.json",
+      "title": "Logement au Québec",
+      "description": "Bail, propriétaire, réparations, avis et droits du locataire.",
+      "category": "housing",
+      "tier": "freemium",
+      "theme_color": "#8B5CF6",
+      "icon": "home",
+      "is_published": true
+    },
+    {
+      "id": "vocab-quebec-housing-v1",
+      "type": "vocabulary",
+      "language": "fr",
+      "path": "content/vocabulary/quebec-housing-v1.json",
+      "title": "Vocabulaire logement",
+      "description": "Mots essentiels pour louer et vivre au Québec.",
+      "category": "vocabulary",
+      "tier": "freemium",
+      "theme_color": "#8B5CF6",
+      "icon": "book",
+      "is_published": true
+    },
+    {
+      "id": "quebec-finance-v1",
+      "type": "scenarios",
+      "language": "fr",
+      "path": "content/scenarios/quebec-finance-v1.json",
+      "title": "Finances au Québec",
+      "description": "Banque, crédit, factures, CELI et conversations financières.",
+      "category": "finance",
+      "tier": "freemium",
+      "theme_color": "#10B981",
+      "icon": "cash",
+      "is_published": true
+    },
+    {
+      "id": "vocab-quebec-finance-v1",
+      "type": "vocabulary",
+      "language": "fr",
+      "path": "content/vocabulary/quebec-finance-v1.json",
+      "title": "Vocabulaire finances",
+      "description": "Mots essentiels pour la banque et l'argent au Québec.",
+      "category": "vocabulary",
+      "tier": "freemium",
+      "theme_color": "#10B981",
+      "icon": "book",
+      "is_published": true
     }
   ]
 }

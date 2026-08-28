@@ -1,0 +1,1302 @@
+[
+  {
+    "id": "vocab-qfn-01",
+    "word": "compte",
+    "phonetic": "/kɔ̃t/",
+    "translations": {
+      "en": "account",
+      "pa": "ਖਾਤਾ",
+      "hi": "खाता",
+      "zh": "账户",
+      "es": "cuenta"
+    },
+    "level": "seed",
+    "category": "finance",
+    "example_sentences": [
+      "J'ai ouvert un compte à la banque cette semaine.",
+      "Le numéro de mon compte est sur mon relevé."
+    ],
+    "confusion_pairs": [
+      "compte chèques",
+      "compte épargne"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.2,
+      "stability": 4.8
+    }
+  },
+  {
+    "id": "vocab-qfn-02",
+    "word": "banque",
+    "phonetic": "/bɑ̃k/",
+    "translations": {
+      "en": "bank",
+      "pa": "ਬੈਂਕ",
+      "hi": "बैंक",
+      "zh": "银行",
+      "es": "banco"
+    },
+    "level": "seed",
+    "category": "finance",
+    "example_sentences": [
+      "Ma banque a une succursale près du métro.",
+      "La banque est ouverte du lundi au vendredi."
+    ],
+    "confusion_pairs": [
+      "succursale",
+      "institution"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.21,
+      "stability": 4.7
+    }
+  },
+  {
+    "id": "vocab-qfn-03",
+    "word": "argent",
+    "phonetic": "/aʁ.ʒɑ̃/",
+    "translations": {
+      "en": "money",
+      "pa": "ਪੈਸਾ",
+      "hi": "पैसा",
+      "zh": "钱",
+      "es": "dinero"
+    },
+    "level": "seed",
+    "category": "finance",
+    "example_sentences": [
+      "J'ai déposé de l'argent à mon compte.",
+      "Il me reste un peu d'argent jusqu'à la fin du mois."
+    ],
+    "confusion_pairs": [
+      "espèces",
+      "monnaie"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.2,
+      "stability": 4.6
+    }
+  },
+  {
+    "id": "vocab-qfn-04",
+    "word": "carte",
+    "phonetic": "/kaʁt/",
+    "translations": {
+      "en": "card",
+      "pa": "ਕਾਰਡ",
+      "hi": "कार्ड",
+      "zh": "卡",
+      "es": "tarjeta"
+    },
+    "level": "seed",
+    "category": "finance",
+    "example_sentences": [
+      "Je paie presque tout avec ma carte.",
+      "Ma carte est bloquée, je dois appeler la banque."
+    ],
+    "confusion_pairs": [
+      "carte de débit",
+      "carte de crédit"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.22,
+      "stability": 4.5
+    }
+  },
+  {
+    "id": "vocab-qfn-05",
+    "word": "dépôt",
+    "phonetic": "/de.po/",
+    "translations": {
+      "en": "deposit",
+      "pa": "ਜਮ੍ਹਾਂ",
+      "hi": "जमा",
+      "zh": "存款",
+      "es": "depósito"
+    },
+    "level": "seed",
+    "category": "finance",
+    "example_sentences": [
+      "J'ai fait un dépôt de cinq cents dollars.",
+      "Le dépôt direct arrive le jeudi matin."
+    ],
+    "confusion_pairs": [
+      "versement",
+      "retrait"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.23,
+      "stability": 4.4
+    }
+  },
+  {
+    "id": "vocab-qfn-06",
+    "word": "retrait",
+    "phonetic": "/ʁə.tʁɛ/",
+    "translations": {
+      "en": "withdrawal",
+      "pa": "ਨਿਕਾਸੀ",
+      "hi": "निकासी",
+      "zh": "取款",
+      "es": "retiro"
+    },
+    "level": "seed",
+    "category": "finance",
+    "example_sentences": [
+      "Je dois faire un retrait au guichet automatique.",
+      "Le retrait maximal par jour est de mille dollars."
+    ],
+    "confusion_pairs": [
+      "dépôt",
+      "transfert"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.24,
+      "stability": 4.3
+    }
+  },
+  {
+    "id": "vocab-qfn-07",
+    "word": "solde",
+    "phonetic": "/sɔld/",
+    "translations": {
+      "en": "balance",
+      "pa": "ਬਕਾਇਆ ਰਕਮ",
+      "hi": "शेष राशि",
+      "zh": "余额",
+      "es": "saldo"
+    },
+    "level": "seed",
+    "category": "finance",
+    "example_sentences": [
+      "Quel est le solde de mon compte?",
+      "Le solde de ma carte de crédit est de deux cent cinquante dollars."
+    ],
+    "confusion_pairs": [
+      "montant",
+      "relevé"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.23,
+      "stability": 4.2
+    }
+  },
+  {
+    "id": "vocab-qfn-08",
+    "word": "intérêt",
+    "phonetic": "/ɛ̃.te.ʁɛ/",
+    "translations": {
+      "en": "interest",
+      "pa": "ਵਿਆਜ",
+      "hi": "ब्याज",
+      "zh": "利息",
+      "es": "interés"
+    },
+    "level": "seed",
+    "category": "finance",
+    "example_sentences": [
+      "La carte de crédit charge des intérêts sur le solde impayé.",
+      "Plus le taux est élevé, plus les intérêts coûtent cher."
+    ],
+    "confusion_pairs": [
+      "taux",
+      "frais"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.25,
+      "stability": 4.1
+    }
+  },
+  {
+    "id": "vocab-qfn-09",
+    "word": "guichet",
+    "phonetic": "/ɡi.ʃɛ/",
+    "translations": {
+      "en": "counter, ATM",
+      "pa": "ਕਾਊਂਟਰ",
+      "hi": "काउंटर",
+      "zh": "柜台/取款机",
+      "es": "ventanilla"
+    },
+    "level": "seed",
+    "category": "finance",
+    "example_sentences": [
+      "Le guichet automatique est à l'intérieur de la succursale.",
+      "Je retire de l'argent au guichet le vendredi."
+    ],
+    "confusion_pairs": [
+      "distributeur",
+      "comptoir"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.26,
+      "stability": 4.0
+    }
+  },
+  {
+    "id": "vocab-qfn-10",
+    "word": "transaction",
+    "phonetic": "/tʁɑ̃.zak.sjɔ̃/",
+    "translations": {
+      "en": "transaction",
+      "pa": "ਲੈਣ-ਦੇਣ",
+      "hi": "लेन-देन",
+      "zh": "交易",
+      "es": "transacción"
+    },
+    "level": "seed",
+    "category": "finance",
+    "example_sentences": [
+      "J'ai vu une transaction suspecte sur mon relevé.",
+      "Chaque transaction apparaît dans mon application bancaire."
+    ],
+    "confusion_pairs": [
+      "opération",
+      "paiement"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.25,
+      "stability": 3.9
+    }
+  },
+  {
+    "id": "vocab-qfn-11",
+    "word": "virement",
+    "phonetic": "/viʁ.mɑ̃/",
+    "translations": {
+      "en": "transfer (payment)",
+      "pa": "ਟ੍ਰਾਂਸਫਰ",
+      "hi": "ट्रांसफर",
+      "zh": "转账",
+      "es": "transferencia"
+    },
+    "level": "sprout",
+    "category": "finance",
+    "example_sentences": [
+      "Je t'ai envoyé un virement Interac pour le souper.",
+      "Le virement est arrivé en quelques minutes."
+    ],
+    "confusion_pairs": [
+      "transfert",
+      "dépôt"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.3,
+      "stability": 3.9
+    }
+  },
+  {
+    "id": "vocab-qfn-12",
+    "word": "frais",
+    "phonetic": "/fʁɛ/",
+    "translations": {
+      "en": "fees",
+      "pa": "ਫੀਸ",
+      "hi": "शुल्क",
+      "zh": "费用",
+      "es": "cargos"
+    },
+    "level": "sprout",
+    "category": "finance",
+    "example_sentences": [
+      "Il y a des frais pour le transfert international.",
+      "Vérifie les frais avant d'envoyer l'argent."
+    ],
+    "confusion_pairs": [
+      "coût",
+      "commission"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.31,
+      "stability": 3.8
+    }
+  },
+  {
+    "id": "vocab-qfn-13",
+    "word": "relevé",
+    "phonetic": "/ʁəl.ve/",
+    "translations": {
+      "en": "statement",
+      "pa": "ਸਟੇਟਮੈਂਟ",
+      "hi": "विवरण पत्र",
+      "zh": "对账单",
+      "es": "estado de cuenta"
+    },
+    "level": "sprout",
+    "category": "finance",
+    "example_sentences": [
+      "Mon relevé de carte de crédit arrive le 3 de chaque mois.",
+      "J'ai vérifié mon relevé, tout est correct."
+    ],
+    "confusion_pairs": [
+      "facture",
+      "état de compte"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.3,
+      "stability": 3.7
+    }
+  },
+  {
+    "id": "vocab-qfn-14",
+    "word": "paiement",
+    "phonetic": "/pɛ.mɑ̃/",
+    "translations": {
+      "en": "payment",
+      "pa": "ਭੁਗਤਾਨ",
+      "hi": "भुगतान",
+      "zh": "付款",
+      "es": "pago"
+    },
+    "level": "sprout",
+    "category": "finance",
+    "example_sentences": [
+      "J'ai fait mon paiement de loyer par virement.",
+      "Le paiement minimum est indiqué sur le relevé."
+    ],
+    "confusion_pairs": [
+      "versement",
+      "transaction"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.29,
+      "stability": 3.7
+    }
+  },
+  {
+    "id": "vocab-qfn-15",
+    "word": "facture",
+    "phonetic": "/fak.tyʁ/",
+    "translations": {
+      "en": "bill, invoice",
+      "pa": "ਬਿੱਲ",
+      "hi": "बिल",
+      "zh": "账单",
+      "es": "factura"
+    },
+    "level": "sprout",
+    "category": "finance",
+    "example_sentences": [
+      "La facture d'Hydro-Québec arrive par courriel.",
+      "J'ai réglé ma facture de téléphone hier."
+    ],
+    "confusion_pairs": [
+      "relevé",
+      "compte"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.3,
+      "stability": 3.6
+    }
+  },
+  {
+    "id": "vocab-qfn-16",
+    "word": "prélèvement automatique",
+    "phonetic": "/pʁe.lɛv.mɑ̃ ɔ.tɔ.ma.tik/",
+    "translations": {
+      "en": "pre-authorized debit",
+      "pa": "ਆਟੋਮੈਟਿਕ ਕਟੌਤੀ",
+      "hi": "स्वचालित कटौती",
+      "zh": "自动扣款",
+      "es": "débito automático"
+    },
+    "level": "sprout",
+    "category": "finance",
+    "example_sentences": [
+      "Mon loyer se paie par prélèvement automatique.",
+      "J'ai signé une autorisation pour le prélèvement automatique."
+    ],
+    "confusion_pairs": [
+      "dépôt direct",
+      "paiement récurrent"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.34,
+      "stability": 3.5
+    }
+  },
+  {
+    "id": "vocab-qfn-17",
+    "word": "carte de crédit",
+    "phonetic": "/kaʁt də kʁe.di/",
+    "translations": {
+      "en": "credit card",
+      "pa": "ਕ੍ਰੈਡਿਟ ਕਾਰਡ",
+      "hi": "क्रेडिट कार्ड",
+      "zh": "信用卡",
+      "es": "tarjeta de crédito"
+    },
+    "level": "sprout",
+    "category": "finance",
+    "example_sentences": [
+      "J'utilise ma carte de crédit pour les achats en ligne.",
+      "La carte de crédit a une limite de deux mille dollars."
+    ],
+    "confusion_pairs": [
+      "carte de débit",
+      "carte prépayée"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.33,
+      "stability": 3.5
+    }
+  },
+  {
+    "id": "vocab-qfn-18",
+    "word": "carte de débit",
+    "phonetic": "/kaʁt də de.bi/",
+    "translations": {
+      "en": "debit card",
+      "pa": "ਡੈਬਿਟ ਕਾਰਡ",
+      "hi": "डेबिट कार्ड",
+      "zh": "借记卡",
+      "es": "tarjeta de débito"
+    },
+    "level": "sprout",
+    "category": "finance",
+    "example_sentences": [
+      "Avec la carte de débit, l'argent sort directement de mon compte.",
+      "Ma carte de débit fonctionne partout au Canada."
+    ],
+    "confusion_pairs": [
+      "carte de crédit",
+      "carte Interac"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.32,
+      "stability": 3.4
+    }
+  },
+  {
+    "id": "vocab-qfn-19",
+    "word": "dossier de crédit",
+    "phonetic": "/dɔ.sje də kʁe.di/",
+    "translations": {
+      "en": "credit history",
+      "pa": "ਕ੍ਰੈਡਿਟ ਇਤਿਹਾਸ",
+      "hi": "क्रेडिट इतिहास",
+      "zh": "信用记录",
+      "es": "historial de crédito"
+    },
+    "level": "sprout",
+    "category": "finance",
+    "example_sentences": [
+      "Un bon dossier de crédit aide à obtenir un prêt.",
+      "Ma carte garantie m'aide à bâtir mon dossier de crédit."
+    ],
+    "confusion_pairs": [
+      "cote de crédit",
+      "historique"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.36,
+      "stability": 3.3
+    }
+  },
+  {
+    "id": "vocab-qfn-20",
+    "word": "compte chèques",
+    "phonetic": "/kɔ̃t ʃɛk/",
+    "translations": {
+      "en": "chequing account",
+      "pa": "ਚੈਕਿੰਗ ਖਾਤਾ",
+      "hi": "चेकिंग खाता",
+      "zh": "支票账户",
+      "es": "cuenta corriente"
+    },
+    "level": "sprout",
+    "category": "finance",
+    "example_sentences": [
+      "Mon salaire tombe dans mon compte chèques.",
+      "Le compte chèques sert aux dépenses de tous les jours."
+    ],
+    "confusion_pairs": [
+      "compte épargne",
+      "compte bancaire"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.33,
+      "stability": 3.3
+    }
+  },
+  {
+    "id": "vocab-qfn-21",
+    "word": "compte épargne",
+    "phonetic": "/kɔ̃t e.paʁɲ/",
+    "translations": {
+      "en": "savings account",
+      "pa": "ਬੱਚਤ ਖਾਤਾ",
+      "hi": "बचत खाता",
+      "zh": "储蓄账户",
+      "es": "cuenta de ahorros"
+    },
+    "level": "sprout",
+    "category": "finance",
+    "example_sentences": [
+      "Je mets un peu d'argent dans mon compte épargne chaque mois.",
+      "Le compte épargne sert à garder mes économies."
+    ],
+    "confusion_pairs": [
+      "compte chèques",
+      "CELI"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.35,
+      "stability": 3.2
+    }
+  },
+  {
+    "id": "vocab-qfn-22",
+    "word": "succursale",
+    "phonetic": "/sy.kyʁ.sal/",
+    "translations": {
+      "en": "branch",
+      "pa": "ਸ਼ਾਖਾ",
+      "hi": "शाखा",
+      "zh": "分行",
+      "es": "sucursal"
+    },
+    "level": "sprout",
+    "category": "finance",
+    "example_sentences": [
+      "La succursale ouvre à neuf heures trente.",
+      "Je dois aller à la succursale pour signer le formulaire."
+    ],
+    "confusion_pairs": [
+      "banque",
+      "agence"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.31,
+      "stability": 3.3
+    }
+  },
+  {
+    "id": "vocab-qfn-23",
+    "word": "dépôt direct",
+    "phonetic": "/de.po di.ʁɛkt/",
+    "translations": {
+      "en": "direct deposit",
+      "pa": "ਸਿੱਧੀ ਜਮ੍ਹਾਂ",
+      "hi": "सीधा जमा",
+      "zh": "直接存款",
+      "es": "depósito directo"
+    },
+    "level": "sprout",
+    "category": "finance",
+    "example_sentences": [
+      "Mon employeur paie par dépôt direct.",
+      "Le dépôt direct arrive aux deux semaines."
+    ],
+    "confusion_pairs": [
+      "prélèvement automatique",
+      "virement"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.34,
+      "stability": 3.2
+    }
+  },
+  {
+    "id": "vocab-qfn-24",
+    "word": "chèque",
+    "phonetic": "/ʃɛk/",
+    "translations": {
+      "en": "cheque",
+      "pa": "ਚੈੱਕ",
+      "hi": "चेक",
+      "zh": "支票",
+      "es": "cheque"
+    },
+    "level": "sprout",
+    "category": "finance",
+    "example_sentences": [
+      "J'ai écrit un chèque pour le premier mois de loyer.",
+      "Le chèque est au nom du propriétaire."
+    ],
+    "confusion_pairs": [
+      "traite",
+      "mandat"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.32,
+      "stability": 3.1
+    }
+  },
+  {
+    "id": "vocab-qfn-25",
+    "word": "fraude",
+    "phonetic": "/fʁod/",
+    "translations": {
+      "en": "fraud",
+      "pa": "ਧੋਖਾਧੜੀ",
+      "hi": "धोखाधड़ी",
+      "zh": "欺诈",
+      "es": "fraude"
+    },
+    "level": "sprout",
+    "category": "finance",
+    "example_sentences": [
+      "La banque m'a appelé pour une possible fraude.",
+      "Signale tout achat suspect pour éviter la fraude."
+    ],
+    "confusion_pairs": [
+      "vol",
+      "arnaque"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.38,
+      "stability": 3.0
+    }
+  },
+  {
+    "id": "vocab-qfn-26",
+    "word": "conseiller",
+    "phonetic": "/kɔ̃.sɛ.je/",
+    "translations": {
+      "en": "advisor",
+      "pa": "ਸਲਾਹਕਾਰ",
+      "hi": "सलाहकार",
+      "zh": "顾问",
+      "es": "consejero"
+    },
+    "level": "branch",
+    "category": "finance",
+    "example_sentences": [
+      "Le conseiller m'a expliqué les options de compte.",
+      "J'ai pris rendez-vous avec un conseiller à la banque."
+    ],
+    "confusion_pairs": [
+      "caissier",
+      "gestionnaire"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.4,
+      "stability": 3.0
+    }
+  },
+  {
+    "id": "vocab-qfn-27",
+    "word": "limite",
+    "phonetic": "/li.mit/",
+    "translations": {
+      "en": "limit",
+      "pa": "ਸੀਮਾ",
+      "hi": "सीमा",
+      "zh": "限额",
+      "es": "límite"
+    },
+    "level": "branch",
+    "category": "finance",
+    "example_sentences": [
+      "La limite de virement Interac est de trois mille dollars par jour.",
+      "Je peux augmenter la limite de ma carte en ligne."
+    ],
+    "confusion_pairs": [
+      "plafond",
+      "maximum"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.39,
+      "stability": 3.0
+    }
+  },
+  {
+    "id": "vocab-qfn-28",
+    "word": "taux",
+    "phonetic": "/to/",
+    "translations": {
+      "en": "rate",
+      "pa": "ਦਰ",
+      "hi": "दर",
+      "zh": "利率",
+      "es": "tasa"
+    },
+    "level": "branch",
+    "category": "finance",
+    "example_sentences": [
+      "Le taux d'intérêt du prêt est de huit pour cent.",
+      "Compare les taux avant de choisir une carte."
+    ],
+    "confusion_pairs": [
+      "intérêt",
+      "pourcentage"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.42,
+      "stability": 2.9
+    }
+  },
+  {
+    "id": "vocab-qfn-29",
+    "word": "hypothèque",
+    "phonetic": "/i.pɔ.tɛk/",
+    "translations": {
+      "en": "mortgage",
+      "pa": "ਗਿਰਵੀਨਾਮਾ",
+      "hi": "गिरवी",
+      "zh": "房贷",
+      "es": "hipoteca"
+    },
+    "level": "branch",
+    "category": "finance",
+    "example_sentences": [
+      "Le remboursement de l'hypothèque est ma plus grosse mensualité.",
+      "J'ai une hypothèque sur ma maison à Québec."
+    ],
+    "confusion_pairs": [
+      "prêt",
+      "marge de crédit"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.45,
+      "stability": 2.8
+    }
+  },
+  {
+    "id": "vocab-qfn-30",
+    "word": "marge de crédit",
+    "phonetic": "/maʁʒ də kʁe.di/",
+    "translations": {
+      "en": "line of credit",
+      "pa": "ਕ੍ਰੈਡਿਟ ਲਾਈਨ",
+      "hi": "क्रेडिट लाइन",
+      "zh": "信用额度",
+      "es": "línea de crédito"
+    },
+    "level": "branch",
+    "category": "finance",
+    "example_sentences": [
+      "La marge de crédit me permet d'emprunter jusqu'à un certain montant.",
+      "J'ai utilisé une partie de ma marge de crédit."
+    ],
+    "confusion_pairs": [
+      "prêt",
+      "découvert"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.44,
+      "stability": 2.8
+    }
+  },
+  {
+    "id": "vocab-qfn-31",
+    "word": "prêt",
+    "phonetic": "/pʁɛ/",
+    "translations": {
+      "en": "loan",
+      "pa": "ਕਰਜ਼ਾ",
+      "hi": "ऋण",
+      "zh": "贷款",
+      "es": "préstamo"
+    },
+    "level": "branch",
+    "category": "finance",
+    "example_sentences": [
+      "J'ai fait une demande de prêt pour ma voiture.",
+      "Le prêt se rembourse en mensualités fixes."
+    ],
+    "confusion_pairs": [
+      "marge de crédit",
+      "hypothèque"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.41,
+      "stability": 2.9
+    }
+  },
+  {
+    "id": "vocab-qfn-32",
+    "word": "remboursement",
+    "phonetic": "/ʁɑ̃.buʁ.sə.mɑ̃/",
+    "translations": {
+      "en": "repayment, refund",
+      "pa": "ਵਾਪਸੀ",
+      "hi": "वापसी",
+      "zh": "还款/退款",
+      "es": "reembolso"
+    },
+    "level": "branch",
+    "category": "finance",
+    "example_sentences": [
+      "Le remboursement du prêt commence le mois prochain.",
+      "Le remboursement de l'impôt arrive au printemps."
+    ],
+    "confusion_pairs": [
+      "paiement",
+      "dédommagement"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.42,
+      "stability": 2.8
+    }
+  },
+  {
+    "id": "vocab-qfn-33",
+    "word": "mensualité",
+    "phonetic": "/mɑ̃.sɥa.li.te/",
+    "translations": {
+      "en": "monthly payment",
+      "pa": "ਮਹੀਨਾਵਾਰ ਕਿਸ਼ਤ",
+      "hi": "मासिक किश्त",
+      "zh": "月供",
+      "es": "mensualidad"
+    },
+    "level": "branch",
+    "category": "finance",
+    "example_sentences": [
+      "Ma mensualité de prêt est de trois cent vingt dollars.",
+      "La mensualité comprend le capital et les intérêts."
+    ],
+    "confusion_pairs": [
+      "versement",
+      "échéance"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.43,
+      "stability": 2.7
+    }
+  },
+  {
+    "id": "vocab-qfn-34",
+    "word": "cotisation",
+    "phonetic": "/kɔ.ti.za.sjɔ̃/",
+    "translations": {
+      "en": "contribution",
+      "pa": "ਯੋਗਦਾਨ",
+      "hi": "अंशदान",
+      "zh": "缴款额度",
+      "es": "aportación"
+    },
+    "level": "branch",
+    "category": "finance",
+    "example_sentences": [
+      "Ma limite de cotisation au CELI est sur mon avis de cotisation.",
+      "J'ai fait une cotisation à mon REER cette année."
+    ],
+    "confusion_pairs": [
+      "contribution",
+      "dépôt"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.44,
+      "stability": 2.7
+    }
+  },
+  {
+    "id": "vocab-qfn-35",
+    "word": "CELI",
+    "phonetic": "/se.li/",
+    "translations": {
+      "en": "tax-free savings account (TFSA)",
+      "pa": "ਸੀਈਐੱਲਆਈ",
+      "hi": "सी.ई.एल.आई.",
+      "zh": "免税储蓄账户",
+      "es": "CELI"
+    },
+    "level": "branch",
+    "category": "finance",
+    "example_sentences": [
+      "Le CELI est un compte d'épargne libre d'impôt.",
+      "J'ai déposé cinq mille dollars dans mon CELI."
+    ],
+    "confusion_pairs": [
+      "REER",
+      "compte épargne"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.45,
+      "stability": 2.6
+    }
+  },
+  {
+    "id": "vocab-qfn-36",
+    "word": "REER",
+    "phonetic": "/ʁe.ɛʁ/",
+    "translations": {
+      "en": "registered retirement savings plan (RRSP)",
+      "pa": "ਆਰ.ਈ.ਈ.ਆਰ.",
+      "hi": "आर.ई.ई.आर.",
+      "zh": "注册退休储蓄计划",
+      "es": "REER"
+    },
+    "level": "branch",
+    "category": "finance",
+    "example_sentences": [
+      "Le REER permet de cotiser pour la retraite.",
+      "La date limite pour cotiser à mon REER approche."
+    ],
+    "confusion_pairs": [
+      "CELI",
+      "régime de retraite"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.46,
+      "stability": 2.6
+    }
+  },
+  {
+    "id": "vocab-qfn-37",
+    "word": "impôt",
+    "phonetic": "/ɛ̃.po/",
+    "translations": {
+      "en": "tax",
+      "pa": "ਟੈਕਸ",
+      "hi": "कर",
+      "zh": "税",
+      "es": "impuesto"
+    },
+    "level": "branch",
+    "category": "finance",
+    "example_sentences": [
+      "Une partie de ma paie va aux impôts.",
+      "Je fais ma déclaration d'impôt chaque printemps."
+    ],
+    "confusion_pairs": [
+      "taxe",
+      "déclaration"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.42,
+      "stability": 2.8
+    }
+  },
+  {
+    "id": "vocab-qfn-38",
+    "word": "transfert",
+    "phonetic": "/tʁɑ̃s.fɛʁ/",
+    "translations": {
+      "en": "transfer",
+      "pa": "ਟ੍ਰਾਂਸਫਰ",
+      "hi": "ट्रांसफर",
+      "zh": "转账/汇款",
+      "es": "transferencia"
+    },
+    "level": "branch",
+    "category": "finance",
+    "example_sentences": [
+      "Le transfert international prend quelques jours.",
+      "J'ai fait un transfert à ma famille à l'étranger."
+    ],
+    "confusion_pairs": [
+      "virement",
+      "envoi"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.4,
+      "stability": 2.9
+    }
+  },
+  {
+    "id": "vocab-qfn-39",
+    "word": "dette",
+    "phonetic": "/dɛt/",
+    "translations": {
+      "en": "debt",
+      "pa": "ਕਰਜ਼",
+      "hi": "कर्ज़",
+      "zh": "债务",
+      "es": "deuda"
+    },
+    "level": "branch",
+    "category": "finance",
+    "example_sentences": [
+      "Je rembourse ma dette de carte de crédit petit à petit.",
+      "Une dette trop élevée affecte la cote de crédit."
+    ],
+    "confusion_pairs": [
+      "solde impayé",
+      "emprunt"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.44,
+      "stability": 2.7
+    }
+  },
+  {
+    "id": "vocab-qfn-40",
+    "word": "cote de crédit",
+    "phonetic": "/kɔt də kʁe.di/",
+    "translations": {
+      "en": "credit score",
+      "pa": "ਕ੍ਰੈਡਿਟ ਸਕੋਰ",
+      "hi": "क्रेडिट स्कोर",
+      "zh": "信用评分",
+      "es": "puntuación de crédito"
+    },
+    "level": "branch",
+    "category": "finance",
+    "example_sentences": [
+      "Ma cote de crédit s'améliore quand je paie à temps.",
+      "Le propriétaire a vérifié ma cote de crédit."
+    ],
+    "confusion_pairs": [
+      "dossier de crédit",
+      "pointage"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.47,
+      "stability": 2.5
+    }
+  },
+  {
+    "id": "vocab-qfn-41",
+    "word": "plafond",
+    "phonetic": "/pla.fɔ̃/",
+    "translations": {
+      "en": "ceiling, cap",
+      "pa": "ਉਪਰਲੀ ਹੱਦ",
+      "hi": "ऊपरी सीमा",
+      "zh": "上限",
+      "es": "tope"
+    },
+    "level": "bloom",
+    "category": "finance",
+    "example_sentences": [
+      "Le plafond de cotisation au CELI augmente chaque année.",
+      "J'ai atteint mon plafond, je ne peux pas cotiser plus."
+    ],
+    "confusion_pairs": [
+      "limite",
+      "maximum"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.5,
+      "stability": 2.5
+    }
+  },
+  {
+    "id": "vocab-qfn-42",
+    "word": "pénalité",
+    "phonetic": "/pe.na.li.te/",
+    "translations": {
+      "en": "penalty",
+      "pa": "ਜੁਰਮਾਨਾ",
+      "hi": "जुर्माना",
+      "zh": "罚款",
+      "es": "penalización"
+    },
+    "level": "bloom",
+    "category": "finance",
+    "example_sentences": [
+      "Il y a une pénalité si je dépasse la limite de cotisation.",
+      "Une pénalité s'ajoute quand le paiement est en retard."
+    ],
+    "confusion_pairs": [
+      "amende",
+      "frais"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.52,
+      "stability": 2.4
+    }
+  },
+  {
+    "id": "vocab-qfn-43",
+    "word": "garantie",
+    "phonetic": "/ɡa.ʁɑ̃.ti/",
+    "translations": {
+      "en": "security, guarantee",
+      "pa": "ਗਾਰੰਟੀ",
+      "hi": "गारंटी",
+      "zh": "保证金/担保",
+      "es": "garantía"
+    },
+    "level": "bloom",
+    "category": "finance",
+    "example_sentences": [
+      "La carte de crédit garantie exige un dépôt de garantie.",
+      "Le dépôt de garantie protège la banque."
+    ],
+    "confusion_pairs": [
+      "caution",
+      "assurance"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.51,
+      "stability": 2.4
+    }
+  },
+  {
+    "id": "vocab-qfn-44",
+    "word": "échéance",
+    "phonetic": "/e.ʃe.ɑ̃s/",
+    "translations": {
+      "en": "due date, maturity",
+      "pa": "ਨਿਯਤ ਤਾਰੀਖ",
+      "hi": "नियत तिथि",
+      "zh": "到期日",
+      "es": "vencimiento"
+    },
+    "level": "bloom",
+    "category": "finance",
+    "example_sentences": [
+      "La date d'échéance du paiement est le 15 du mois.",
+      "Payer avant l'échéance évite les intérêts."
+    ],
+    "confusion_pairs": [
+      "date limite",
+      "échéancier"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.53,
+      "stability": 2.3
+    }
+  },
+  {
+    "id": "vocab-qfn-45",
+    "word": "autorisation",
+    "phonetic": "/o.tɔ.ʁi.za.sjɔ̃/",
+    "translations": {
+      "en": "authorization",
+      "pa": "ਇਜਾਜ਼ਤ",
+      "hi": "अनुमति",
+      "zh": "授权",
+      "es": "autorización"
+    },
+    "level": "bloom",
+    "category": "finance",
+    "example_sentences": [
+      "J'ai signé une autorisation de prélèvement automatique.",
+      "L'autorisation indique le montant et la date du prélèvement."
+    ],
+    "confusion_pairs": [
+      "consentement",
+      "formulaire"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.52,
+      "stability": 2.3
+    }
+  },
+  {
+    "id": "vocab-qfn-46",
+    "word": "découvert",
+    "phonetic": "/de.ku.vɛʁ/",
+    "translations": {
+      "en": "overdraft",
+      "pa": "ਓਵਰਡਰਾਫਟ",
+      "hi": "ओवरड्राफ्ट",
+      "zh": "透支",
+      "es": "descubierto"
+    },
+    "level": "bloom",
+    "category": "finance",
+    "example_sentences": [
+      "Je suis allé à découvert de deux cents dollars.",
+      "Le découvert autorisé a un taux d'intérêt élevé."
+    ],
+    "confusion_pairs": [
+      "marge de crédit",
+      "solde négatif"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.54,
+      "stability": 2.2
+    }
+  },
+  {
+    "id": "vocab-qfn-47",
+    "word": "paiement minimum",
+    "phonetic": "/pɛ.mɑ̃ mi.ni.mɔm/",
+    "translations": {
+      "en": "minimum payment",
+      "pa": "ਘੱਟੋ-ਘੱਟ ਭੁਗਤਾਨ",
+      "hi": "न्यूनतम भुगतान",
+      "zh": "最低还款额",
+      "es": "pago mínimo"
+    },
+    "level": "bloom",
+    "category": "finance",
+    "example_sentences": [
+      "Je paie plus que le paiement minimum chaque mois.",
+      "Le paiement minimum est de vingt-cinq dollars."
+    ],
+    "confusion_pairs": [
+      "solde dû",
+      "paiement intégral"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.55,
+      "stability": 2.2
+    }
+  },
+  {
+    "id": "vocab-qfn-48",
+    "word": "déclaration",
+    "phonetic": "/de.kla.ʁa.sjɔ̃/",
+    "translations": {
+      "en": "tax return",
+      "pa": "ਟੈਕਸ ਰਿਟਰਨ",
+      "hi": "कर रिटर्न",
+      "zh": "报税",
+      "es": "declaración"
+    },
+    "level": "bloom",
+    "category": "finance",
+    "example_sentences": [
+      "Ma déclaration de revenus se fait en ligne.",
+      "J'ai besoin de mes relevés pour ma déclaration."
+    ],
+    "confusion_pairs": [
+      "avis de cotisation",
+      "formulaire"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.53,
+      "stability": 2.3
+    }
+  },
+  {
+    "id": "vocab-qfn-49",
+    "word": "intérêt composé",
+    "phonetic": "/ɛ̃.te.ʁɛ kɔ̃.po.ze/",
+    "translations": {
+      "en": "compound interest",
+      "pa": "ਚੱਕਰਵਿਧੀ ਵਿਆਜ",
+      "hi": "चक्रवृद्धि ब्याज",
+      "zh": "复利",
+      "es": "interés compuesto"
+    },
+    "level": "bloom",
+    "category": "finance",
+    "example_sentences": [
+      "L'intérêt composé fait grandir l'épargne avec le temps.",
+      "Avec l'intérêt composé, les intérêts produisent aussi des intérêts."
+    ],
+    "confusion_pairs": [
+      "intérêt simple",
+      "rendement"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.56,
+      "stability": 2.1
+    }
+  },
+  {
+    "id": "vocab-qfn-50",
+    "word": "rendement",
+    "phonetic": "/ʁɑ̃d.mɑ̃/",
+    "translations": {
+      "en": "return (investment)",
+      "pa": "ਵਾਪਸੀ (ਨਿਵੇਸ਼)",
+      "hi": "प्रतिफल",
+      "zh": "收益",
+      "es": "rendimiento"
+    },
+    "level": "bloom",
+    "category": "finance",
+    "example_sentences": [
+      "Le rendement de mon CELI est variable selon les placements.",
+      "Le rendement passé ne garantit pas l'avenir."
+    ],
+    "confusion_pairs": [
+      "gain",
+      "profit"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.58,
+      "stability": 2.0
+    }
+  }
+]
