@@ -4,9 +4,9 @@
  * Summarizes the pack recommended from the chosen goal + language and
  * completes onboarding. The goal→pack map mirrors the manifest: career
  * and health map to the EN or Quebec FR packs, settlement to the
- * life-pack, and housing has no FR pack yet, so that combination falls
- * back to the Learn library. "Start Learning" persists completion and
- * lands on the Pack Detail screen when a pack exists.
+ * life-pack, housing and finance map to EN or Quebec FR packs.
+ * "Start Learning" persists completion and lands on the Pack Detail
+ * screen when a pack exists.
  */
 
 import { useEffect, useState } from "react";
@@ -31,11 +31,12 @@ import { colors } from "../../src/theme/colors";
 /** Onboarding goal the user is assumed to pick when none is present. */
 const DEFAULT_GOAL = "settlement";
 
-/** Goal id → manifest pack id per content language (SN-040). */
+/** Goal id → manifest pack id per content language (SN-040, SN-042). */
 const GOAL_PACK_IDS: Record<string, { en: string | null; fr: string | null }> = {
   career: { en: "workplace-english-v1", fr: "quebec-workplace-v1" },
   health: { en: "healthcare-english-v1", fr: "quebec-healthcare-v1" },
-  housing: { en: "housing-english-v1", fr: null },
+  housing: { en: "housing-english-v1", fr: "quebec-housing-v1" },
+  finance: { en: "finance-english-v1", fr: "quebec-finance-v1" },
   settlement: { en: "canadian-life-v1", fr: "quebec-life-v1" },
 };
 
@@ -43,6 +44,7 @@ const GOAL_LABELS: Record<string, string> = {
   career: "Career & Workplace",
   health: "Health & Wellness",
   housing: "Housing & Renting",
+  finance: "Banking & Finance",
   settlement: "Daily Settlement",
 };
 
@@ -52,12 +54,14 @@ const LANGUAGE_LABELS: Record<string, string> = {
 };
 
 /** Manifest icon names mapped onto their Ionicons glyphs (SN-030). */
-function packIcon(icon: string): "briefcase" | "home" | "map" | "book" {
-  const icons: Record<string, "briefcase" | "home" | "map" | "book"> = {
+function packIcon(icon: string): "briefcase" | "home" | "map" | "book" | "cash" | "medkit" {
+  const icons: Record<string, "briefcase" | "home" | "map" | "book" | "cash" | "medkit"> = {
     briefcase: "briefcase",
     home: "home",
     map: "map",
     book: "book",
+    cash: "cash",
+    medkit: "medkit",
   };
   return icons[icon] ?? "book";
 }

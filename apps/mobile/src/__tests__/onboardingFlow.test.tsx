@@ -268,7 +268,7 @@ describe("Onboarding ready step (SN-040)", () => {
   });
 
   it("falls back to the Learn library when the goal maps to no pack", async () => {
-    mockParams.goal = "housing";
+    mockParams.goal = "unknown";
     seedStore("fr");
     const screen = render(<ReadyScreen />);
 
