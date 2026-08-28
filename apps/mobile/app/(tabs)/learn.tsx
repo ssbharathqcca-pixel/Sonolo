@@ -1,14 +1,12 @@
 /**
  * Learn — today's daily quests with live progress (SN-017) plus the
- * live scenario catalog feeding the speaking loop. Premium scenarios
+ * live scenario library feeding the speaking loop. Premium scenarios
  * carry a lock overlay for free-tier callers and open the SN-026
  * paywall bottom sheet; unlocked ones jump straight into a session.
- * SN-030 adds a horizontal rail of tappable manifest pack cards that
- * filter the scenario library; SN-035 makes that filtering exact by
- * matching each scenario's manifest pack id (with a category/language
- * fallback for catalogs cached before pack ids shipped).
+ * SN-030 adds a horizontal rail of tappable manifest pack cards; SN-039
+ * makes them navigate to the Pack Detail screen.
  */
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import type { ComponentProps } from "react";
 import {
   ActivityIndicator,
@@ -234,25 +232,21 @@ function LibraryScenarioCard({
 function PackCard({
   pack,
   scenarioCount,
-  isSelected,
   onPress,
 }: {
   pack: ContentPack;
   scenarioCount: number;
-  isSelected: boolean;
   onPress: () => void;
 }): JSX.Element {
   return (
     <Pressable
       accessibilityLabel={`Learning pack: ${pack.title}`}
-      accessibilityState={{ selected: isSelected }}
       onPress={onPress}
       style={({ pressed }) => [
         styles.packCard,
         // Solid theme color at 0.9 opacity (alpha "E6") — no gradient
         // dependency; the white border keeps it crisp on dark nights.
         { backgroundColor: `${pack.theme_color}E6` },
-        isSelected && styles.packCardSelected,
         pressed && styles.packCardPressed,
       ]}
     >
@@ -281,10 +275,9 @@ export default function LearnScreen(): JSX.Element {
   const [questsUnavailable, setQuestsUnavailable] = useState(false);
   const [refreshing, setRefreshing] = useState(false);
   const [paywallVisible, setPaywallVisible] = useState(false);
-  // SN-030: manifest packs behind the tappable card rail; a selection
-  // narrows the scenario library to the pack's category + language.
+  // SN-030: manifest packs behind the tappable card rail; SN-039 cards
+  // navigate to the Pack Detail screen instead of filtering in place.
   const [packs, setPacks] = useState<ContentPack[]>([]);
-  const [selectedPackId, setSelectedPackId] = useState<string | null>(null);
 
   const user = useAuthStore((state) => state.user);
   const scenarios = useScenarioStore((state) => state.scenarios);
@@ -320,25 +313,6 @@ export default function LearnScreen(): JSX.Element {
     return () => {
       cancelled = true;
     };
-  }, []);
-
-  const selectedPack = useMemo(
-    () => packs.find((pack) => pack.id === selectedPackId) ?? null,
-    [packs, selectedPackId],
-  );
-
-  // An active pack narrows the library to its category + language
-  // prefix; with no selection the full catalog renders.
-  const visibleScenarios = useMemo(
-    () =>
-      selectedPack
-        ? scenarios.filter((scenario) => scenarioMatchesPack(scenario, selectedPack))
-        : scenarios,
-    [scenarios, selectedPack],
-  );
-
-  const togglePack = useCallback((packId: string): void => {
-    setSelectedPackId((current) => (current === packId ? null : packId));
   }, []);
 
   // Server tier truth beats a possibly stale cached catalog: once the
@@ -413,8 +387,7 @@ export default function LearnScreen(): JSX.Element {
               key={pack.id}
               pack={pack}
               scenarioCount={countScenariosInPack(scenarios, pack)}
-              isSelected={pack.id === selectedPackId}
-              onPress={() => togglePack(pack.id)}
+              onPress={() => router.push(`/pack/${pack.id}`)}
             />
           ))}
         </ScrollView>
@@ -442,9 +415,7 @@ export default function LearnScreen(): JSX.Element {
         </Text>
       ) : null}
 
-      <Text style={styles.sectionTitle}>
-        {selectedPack ? selectedPack.title : "Scenario library"}
-      </Text>
+      <Text style={styles.sectionTitle}>Scenario library</Text>
       {isLoadingScenarios && scenarios.length === 0 ? (
         <ActivityIndicator
           color={colors.auroraTeal}
@@ -457,14 +428,7 @@ export default function LearnScreen(): JSX.Element {
           you're back online.
         </Text>
       ) : null}
-      {!isLoadingScenarios &&
-      scenarios.length > 0 &&
-      visibleScenarios.length === 0 ? (
-        <Text style={styles.offlineNote}>
-          No scenarios in this pack yet — try another one.
-        </Text>
-      ) : null}
-      {visibleScenarios.map((scenario) => (
+      {scenarios.map((scenario) => (
         <LibraryScenarioCard
           key={scenario.id}
           scenario={scenario}
@@ -593,9 +557,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.3,
     shadowRadius: 6,
     elevation: 4,
-  },
-  packCardSelected: {
-    borderColor: "rgba(255, 255, 255, 0.7)",
   },
   packCardPressed: {
     opacity: 0.85,

@@ -279,7 +279,7 @@ describe("Learn screen exact pack filtering (SN-035)", () => {
     });
   }
 
-  it("filters by exact pack_id, not by category and language alone", async () => {
+  it("navigates to the pack detail screen when a pack card is tapped (SN-039)", async () => {
     (fetchPacks as jest.Mock).mockResolvedValueOnce(manifestPacks);
     seedEnglishStores([
       // Exact-id match even though the category disagrees with the pack.
@@ -327,17 +327,19 @@ describe("Learn screen exact pack filtering (SN-035)", () => {
 
     fireEvent.press(screen.getByLabelText("Learning pack: Workplace English"));
 
-    await waitFor(() => {
-      expect(
-        screen.getByLabelText("Start scenario: Interview warm-up"),
-      ).toBeTruthy();
-    });
+    // SN-039: tapping a pack card routes to the Pack Detail screen
+    // instead of filtering the library in place.
+    expect(mockRouter.push).toHaveBeenCalledWith("/pack/workplace-english-v1");
+    // The library below stays unfiltered — every scenario remains.
+    expect(
+      screen.getByLabelText("Start scenario: Interview warm-up"),
+    ).toBeTruthy();
     expect(
       screen.getByLabelText("Start scenario: Legacy workplace card"),
     ).toBeTruthy();
     expect(
-      screen.queryByLabelText("Start scenario: Bloodwork review"),
-    ).toBeNull();
+      screen.getByLabelText("Start scenario: Bloodwork review"),
+    ).toBeTruthy();
   });
 
   it("uses the server scenario_count for the pack badge", async () => {

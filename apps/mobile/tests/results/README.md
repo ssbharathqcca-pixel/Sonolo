@@ -21,6 +21,9 @@ files once the mobile test setup task lands.
 | SN-017 | Strict TypeScript check after onboarding/offline polish (`npx tsc --noEmit`) | `2026-08-23_sn017_tsc_typecheck.txt` | exit 0, zero errors |
 | SN-017 | Jest suite (jest-expo + RNTL): WS URL builder + useVoiceSession + ErrorBoundary fallback/restart + offline interceptor transitions | `2026-08-23_sn017_jest.txt` | 17 passed (4 suites) |
 | SN-017 | Metro bundle incl. onboarding stack, radar screen, error boundary | `2026-08-23_sn017_metro_bundle.txt` | exit 0, Hermes bundle exported |
+| SN-039 | Strict TypeScript check after Pack Detail screen (`npx tsc --noEmit`) | `2026-08-28_sn039_tsc_typecheck.txt` | exit 0, zero errors |
+| SN-039 | Jest suite (jest-expo + RNTL): pack detail hero/progress/status icons/action + learn pack-card navigation | `2026-08-28_sn039_jest.txt` | 48 passed (10 suites) |
+| SN-039 | Metro bundle incl. `/pack/[id]` route, Learn pack-card navigation | `2026-08-28_sn039_mobile_export_android.txt` | exit 0, Hermes bundle exported |
 
 ## Environment
 
