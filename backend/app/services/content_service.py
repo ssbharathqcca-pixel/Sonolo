@@ -55,12 +55,9 @@ def _vocabulary_pack_limit() -> int:
     """Cap on cards materialized per user from the vocabulary packs.
 
     Settings-driven via the optional `content_vocabulary_pack_limit`
-    field, defaulting to 500 so the full multi-pack syllabus fits with
-    headroom for further expansion until the field is declared in
-    Settings.
+    field, defaulting to 1000 for the combined pack catalog.
     """
-    return int(getattr(get_settings(), "content_vocabulary_pack_limit", 500))
-
+    return get_settings().content_vocabulary_pack_limit
 
 def content_scenario_id(content_id: str) -> UUID:
     """Deterministic scenario PK for a content-pack slug."""

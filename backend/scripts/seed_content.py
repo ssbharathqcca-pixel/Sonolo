@@ -8,9 +8,11 @@ Loads every pack declared in content/manifest.json (SN-027):
 
     scenarios  : canadian-life-v1 + v2, quebec-life-v1,
                  workplace-english-v1, healthcare-english-v1,
-                 quebec-healthcare-v1, quebec-workplace-v1      (85)
+                 quebec-healthcare-v1, quebec-workplace-v1,
+                 housing-english-v1, finance-english-v1         (105)
     vocabulary : core-v1 + v2, core-fr-v1, workplace + healthcare,
-                 quebec-healthcare + quebec-workplace          (420)
+                 quebec-healthcare + quebec-workplace,
+                 housing + finance                             (520)
 
 Scenarios are shared rows upserted idempotently under deterministic
 uuid5 PKs derived in the SAME namespace as
@@ -19,7 +21,7 @@ loader so both seeding paths stay byte-identical, including the
 per-scenario pack_id mapping (SN-035). Vocabulary stays user-scoped
 by design (D-008): this script validates and counts the combined
 packs; cards materialize lazily per user via GET /api/review/due.
-Re-running is a no-op: counts stay stable at 85 scenarios / 420
+Re-running is a no-op: counts stay stable at 105 scenarios / 520
 vocabulary pack items.
 """
 

@@ -1,5 +1,3 @@
-"""Application settings loaded from the environment via pydantic-settings."""
-
 from functools import lru_cache
 
 from pydantic import Field
@@ -90,6 +88,10 @@ class Settings(BaseSettings):
             "Path to the validated vocabulary content pack (SN-009), "
             "absolute or relative to the backend directory."
         ),
+    )
+    content_vocabulary_pack_limit: int = Field(
+        default=1000,
+        description="Maximum vocabulary cards to materialize per user from all packs combined",
     )
     ai_mock_enabled: bool = Field(
         default=True,
