@@ -27,6 +27,9 @@ files once the mobile test setup task lands.
 | SN-040 | Strict TypeScript check after onboarding flow (`npx tsc --noEmit`) | `2026-08-28_sn040_tsc_typecheck.txt` | exit 0, zero errors |
 | SN-040 | Jest suite (jest-expo + RNTL): onboarding language/goal/ready steps + pack recommendation + auth-store goal persistence | `2026-08-28_sn040_jest.txt` | 57 passed (11 suites) |
 | SN-040 | Metro bundle incl. onboarding index/goal/ready, root layout pack route | `2026-08-28_sn040_mobile_export_android.txt` | exit 0, Hermes bundle exported |
+| SN-041 | Strict TypeScript check after entitlement enforcement (`npx tsc --noEmit`) | `2026-08-28_sn041_tsc_typecheck.txt` | exit 0, zero errors |
+| SN-041 | Jest suite (jest-expo + RNTL): entitlements fetch/refresh/logout + existing gating | `2026-08-28_sn041_jest.txt` | 61 passed (12 suites) |
+| SN-041 | Metro bundle incl. entitlements client + paywall refresh | `2026-08-28_sn041_mobile_export_android.txt` | exit 0, Hermes bundle exported |
 
 ## Environment
 

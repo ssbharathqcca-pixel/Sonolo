@@ -19,6 +19,7 @@ import { create } from "zustand";
 
 import {
   fetchCurrentUser,
+  fetchEntitlements,
   getApiErrorMessage,
   loginRequest,
   registerRequest,
@@ -26,6 +27,7 @@ import {
   setUnauthorizedHandler,
   updatePreferredLanguage,
   upgradeAccountRequest,
+  type Entitlements,
   type PreferredLanguage,
   type RegisterPayload,
   type User,
@@ -48,6 +50,8 @@ interface AuthState {
   onboardingCompleted: boolean;
   /** Onboarding goal id (career/health/housing/settlement) chosen during onboarding. */
   onboardingGoal: string | null;
+  /** Server-side premium entitlements (SN-041); null until first fetch. */
+  entitlements: Entitlements | null;
   login: (email: string, password: string) => Promise<void>;
   register: (payload: RegisterPayload) => Promise<void>;
   /** Flip the account to premium via the mock upgrade endpoint (SN-026). */
@@ -64,6 +68,8 @@ interface AuthState {
   setOnboardingGoal: (goal: string) => Promise<void>;
   /** Persist onboarding completion (and any pending goal) device-side. */
   completeOnboarding: () => Promise<void>;
+  /** Refresh premium entitlements from the backend (best-effort). */
+  refreshEntitlements: () => Promise<void>;
 }
 
 /** Merge local flags with server truth into one onboarding snapshot. */
@@ -89,6 +95,7 @@ export const useAuthStore = create<AuthState>()((set, get) => ({
   isAuthenticated: false,
   onboardingCompleted: false,
   onboardingGoal: null,
+  entitlements: null,
 
   login: async (email, password) => {
     set({ isLoading: true });
@@ -105,6 +112,7 @@ export const useAuthStore = create<AuthState>()((set, get) => ({
         isLoading: false,
         ...onboarding,
       });
+      void get().refreshEntitlements();
     } catch (error) {
       set({ isLoading: false });
       throw new Error(getApiErrorMessage(error));
@@ -130,6 +138,7 @@ export const useAuthStore = create<AuthState>()((set, get) => ({
         isLoading: false,
         ...onboarding,
       });
+      void get().refreshEntitlements();
     } catch (error) {
       set({ isLoading: false });
       throw new Error(getApiErrorMessage(error));
@@ -172,6 +181,7 @@ export const useAuthStore = create<AuthState>()((set, get) => ({
       isAuthenticated: false,
       onboardingCompleted: false,
       onboardingGoal: null,
+      entitlements: null,
     });
   },
 
@@ -205,6 +215,7 @@ export const useAuthStore = create<AuthState>()((set, get) => ({
         onboardingCompleted: completedRaw === "true" || user.onboarding_completed === true,
         onboardingGoal: storedGoal,
       });
+      void get().refreshEntitlements();
     } catch {
       // Token expired or revoked — clear it and require a fresh login.
       setAuthToken(null);
@@ -224,6 +235,16 @@ export const useAuthStore = create<AuthState>()((set, get) => ({
   setOnboardingGoal: async (goal) => {
     await setItem(ONBOARDING_GOAL_KEY, goal);
     set({ onboardingGoal: goal });
+  },
+
+  refreshEntitlements: async () => {
+    try {
+      const entitlements = await fetchEntitlements();
+      set({ entitlements });
+    } catch {
+      // Entitlements are supplementary; a failed refresh keeps the
+      // last known state so access never hard-fails offline.
+    }
   },
 
   completeOnboarding: async () => {

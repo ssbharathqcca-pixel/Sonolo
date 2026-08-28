@@ -14,7 +14,8 @@ from app.core.time import utc_now
 from app.db.session import get_db
 from app.learning.evaluator import SessionEvaluator
 from app.learning.schemas import EvaluationRequest, EvaluationResponse
-from app.models.user import User
+from app.models.scenario import Scenario
+from app.models.user import SUBSCRIPTION_PREMIUM, User
 from app.models.session import SpeakingSession
 from app.schemas.gamification import (
     SessionCompleteRequest,
@@ -78,7 +79,22 @@ async def complete_session(
     user: User = Depends(get_current_user),
     db: AsyncSession = Depends(get_db),
 ) -> SessionCompleteResponse:
-    """Persist a completed voice session and award all progress."""
+    """Persist a completed voice session and award all progress.
+
+    Entitlement gate (SN-041): free-tier callers may not complete
+    premium scenarios — the paywall is cosmetic without this server
+    check. Free scenarios stay open to every tier.
+    """
+    scenario = await db.get(Scenario, payload.scenario_id)
+    if (
+        scenario is not None
+        and scenario.is_premium
+        and user.subscription_tier != SUBSCRIPTION_PREMIUM
+    ):
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="This scenario requires a premium subscription.",
+        )
     service = SessionService(db)
     try:
         result = await service.complete_session(user, payload, utc_now())

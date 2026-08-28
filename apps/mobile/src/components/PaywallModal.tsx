@@ -1,8 +1,9 @@
 /**
- * PaywallModal (SN-026): glassmorphic bottom sheet offering the beta
- * premium unlock. The primary button calls the mock upgrade endpoint
- * through the auth store; on success the sheet closes and every gated
- * surface re-renders unlocked from store state.
+ * PaywallModal (SN-026, refreshed SN-041): glassmorphic bottom sheet
+ * offering the beta premium unlock. The primary button calls the mock
+ * upgrade endpoint through the auth store, then refetches server-side
+ * entitlements; on success the sheet closes and every gated surface
+ * re-renders unlocked from store state.
  */
 import { useEffect, useState } from "react";
 import {
@@ -36,6 +37,7 @@ export function PaywallModal({
 }: PaywallModalProps): JSX.Element {
   const insets = useSafeAreaInsets();
   const upgradeAccount = useAuthStore((state) => state.upgradeAccount);
+  const refreshEntitlements = useAuthStore((state) => state.refreshEntitlements);
   const [isUpgrading, setIsUpgrading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -54,6 +56,9 @@ export function PaywallModal({
     setError(null);
     try {
       await upgradeAccount();
+      // Entitlements are the server's word on access; refresh them so
+      // every surface gates on fresh state after the mock purchase.
+      await refreshEntitlements();
       setIsUpgrading(false);
       onClose();
     } catch (upgradeError) {

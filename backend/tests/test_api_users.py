@@ -11,6 +11,7 @@ import app.models  # noqa: F401
 from app.core.config import Settings
 from app.db.session import get_db
 from app.main import create_app
+from app.models.scenario import Scenario
 
 pytestmark = pytest.mark.asyncio
 
@@ -190,3 +191,82 @@ async def test_language_update_rejects_missing_field(
     )
 
     assert response.status_code == 422
+
+
+async def test_entitlements_requires_authentication(
+    users_client: AsyncClient,
+) -> None:
+    response = await users_client.get("/api/users/me/entitlements")
+    assert response.status_code == 401
+
+
+async def test_free_user_entitlements_allow_no_premium_scenarios(
+    users_client: AsyncClient,
+    db_session: AsyncSession,
+) -> None:
+    # A premium scenario exists in the catalog, yet the free tier sees
+    # no premium entitlements.
+    db_session.add(
+        Scenario(
+            title="Premium tenant insurance call",
+            category="housing",
+            mode="both",
+            level="bloom",
+            difficulty=4,
+            expected_turns=6,
+            is_premium=True,
+        )
+    )
+    await db_session.commit()
+
+    headers = await auth_headers(users_client)
+    response = await users_client.get(
+        "/api/users/me/entitlements", headers=headers
+    )
+
+    assert response.status_code == 200
+    body = response.json()
+    assert body["tier"] == "free"
+    assert body["premium_scenario_ids"] == []
+    assert body["expires_at"] is None
+
+
+async def test_premium_user_entitlements_list_premium_scenarios(
+    users_client: AsyncClient,
+    db_session: AsyncSession,
+) -> None:
+    premium = Scenario(
+        title="Premium tenant insurance call",
+        category="housing",
+        mode="both",
+        level="bloom",
+        difficulty=4,
+        expected_turns=6,
+        is_premium=True,
+    )
+    free = Scenario(
+        title="Order at the coffee shop",
+        category="shopping",
+        mode="casual",
+        level="seed",
+        difficulty=1,
+        expected_turns=6,
+        is_premium=False,
+    )
+    db_session.add_all([premium, free])
+    await db_session.commit()
+
+    headers = await auth_headers(users_client)
+    upgraded = await users_client.post("/api/users/me/upgrade", headers=headers)
+    assert upgraded.status_code == 200
+
+    response = await users_client.get(
+        "/api/users/me/entitlements", headers=headers
+    )
+
+    assert response.status_code == 200
+    body = response.json()
+    assert body["tier"] == "premium"
+    assert str(premium.id) in body["premium_scenario_ids"]
+    assert str(free.id) not in body["premium_scenario_ids"]
+    assert body["expires_at"] is None

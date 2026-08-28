@@ -10,10 +10,12 @@ from uuid import UUID
 
 from fastapi import APIRouter, Depends
 from pydantic import BaseModel, ConfigDict
+from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.api.dependencies import get_current_user
 from app.db.session import get_db
+from app.models.scenario import Scenario
 from app.models.user import (
     SUBSCRIPTION_PREMIUM,
     PreferredLanguage,
@@ -71,12 +73,52 @@ async def upgrade_current_user(
 ) -> ProfileResponse:
     """Mock monetization upgrade (SN-026): flip the account to premium.
 
-    Stand-in for the real RevenueCat receipt flow; grants immediate
-    access to premium scenarios with no payment collected.
+    Beta/testing stand-in for the real RevenueCat purchase flow — it
+    grants immediate access to premium scenarios with no payment
+    collected. Will be replaced by a RevenueCat server-to-server
+    webhook that flips `subscription_tier` on verified receipt events;
+    keep this endpoint working until that lands so the mobile beta can
+    unlock content.
     """
     current_user.subscription_tier = SUBSCRIPTION_PREMIUM
     await db.commit()
     return ProfileResponse.model_validate(current_user)
+
+
+class EntitlementsResponse(BaseModel):
+    """What the caller may access right now (SN-041)."""
+
+    tier: str
+    premium_scenario_ids: list[UUID]
+    expires_at: datetime | None = None
+
+
+@router.get("/me/entitlements", response_model=EntitlementsResponse)
+async def read_entitlements(
+    current_user: User = Depends(get_current_user),
+    db: AsyncSession = Depends(get_db),
+) -> EntitlementsResponse:
+    """Return the caller's premium scenario entitlements (SN-041).
+
+    `premium_scenario_ids` lists the premium scenarios the caller is
+    entitled to complete: empty on the free tier, the full premium set
+    on the premium tier. `expires_at` stays null until a real
+    subscription provider sets a term (RevenueCat integration).
+    """
+    if current_user.subscription_tier != SUBSCRIPTION_PREMIUM:
+        return EntitlementsResponse(
+            tier=current_user.subscription_tier,
+            premium_scenario_ids=[],
+            expires_at=None,
+        )
+    result = await db.execute(
+        select(Scenario.id).where(Scenario.is_premium.is_(True))
+    )
+    return EntitlementsResponse(
+        tier=current_user.subscription_tier,
+        premium_scenario_ids=list(result.scalars().all()),
+        expires_at=None,
+    )
 
 
 @router.post("/me/language", response_model=ProfileResponse)

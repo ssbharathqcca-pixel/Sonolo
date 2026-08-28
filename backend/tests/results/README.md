@@ -45,6 +45,7 @@ evidence".
 | SN-018 | Closeout full suite after merging main + dual-pack `content_service` | `2026-08-23_sn018_closeout_full_suite.txt` | **135 passed**, exit 0 |
 | SN-018 | Closeout seed ×2 on fresh Postgres 16 (`scripts.seed_content`) | `2026-08-23_sn018_closeout_seed_twice.txt` | stable 40 scenarios / 200 vocab items; re-run no-op |
 | all | (historical) Full suite after SN-014B | `2026-08-22_full_suite.txt` | 119 passed |
+| SN-041 | Full backend suite after entitlement enforcement | `2026-08-28_sn041_backend_pytest.txt` | **180 passed**, exit 0 |
 
 ## Environment
 

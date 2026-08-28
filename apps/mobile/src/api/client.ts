@@ -304,6 +304,23 @@ export async function fetchPacks(): Promise<ContentPack[]> {
 }
 
 // ---------------------------------------------------------------------
+// Entitlements (SN-041)
+// ---------------------------------------------------------------------
+
+/** Server-side access entitlements for the current caller. */
+export interface Entitlements {
+  tier: string;
+  premium_scenario_ids: string[];
+  expires_at: string | null;
+}
+
+/** GET /users/me/entitlements — what premium scenarios the caller may complete. */
+export async function fetchEntitlements(): Promise<Entitlements> {
+  const { data } = await api.get<Entitlements>("/users/me/entitlements");
+  return data;
+}
+
+// ---------------------------------------------------------------------
 // Daily quests & gamification summary (SN-017)
 // ---------------------------------------------------------------------
 

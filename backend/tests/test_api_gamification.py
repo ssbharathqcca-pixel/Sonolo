@@ -182,6 +182,59 @@ async def test_complete_session_persists_and_responds(
     assert stored.overall_score == 82.0
 
 
+async def seed_premium_scenario(db_session: AsyncSession) -> Scenario:
+    scenario = Scenario(
+        title="Premium tenant insurance call",
+        category="housing",
+        mode="both",
+        level="bloom",
+        difficulty=4,
+        expected_turns=6,
+        is_premium=True,
+    )
+    db_session.add(scenario)
+    await db_session.commit()
+    return scenario
+
+
+async def test_free_user_cannot_complete_premium_scenario(
+    api_client: AsyncClient, db_session: AsyncSession
+) -> None:
+    headers = await register_and_login(api_client)
+    premium = await seed_premium_scenario(db_session)
+
+    response = await complete(
+        api_client, headers, make_payload(str(premium.id))
+    )
+
+    assert response.status_code == 403
+    assert "premium" in response.json()["detail"].lower()
+    # The blocked completion persisted nothing.
+    db_session.expire_all()
+    stored = (
+        await db_session.execute(select(SpeakingSession))
+    ).scalars().all()
+    assert stored == []
+
+
+async def test_premium_user_can_complete_premium_scenario(
+    api_client: AsyncClient, db_session: AsyncSession
+) -> None:
+    headers = await register_and_login(api_client)
+    upgraded = await api_client.post("/api/users/me/upgrade", headers=headers)
+    assert upgraded.status_code == 200
+    premium = await seed_premium_scenario(db_session)
+
+    response = await complete(
+        api_client, headers, make_payload(str(premium.id))
+    )
+
+    assert response.status_code == 200
+    body = response.json()
+    assert body["idempotent_replayed"] is False
+    assert body["session_id"]
+
+
 async def test_complete_creates_user_skills_and_xp(
     api_client: AsyncClient, db_session: AsyncSession
 ) -> None:
