@@ -9,7 +9,9 @@
  */
 
 import { Audio } from "expo-av";
-import * as FileSystem from "expo-file-system";
+// expo-file-system v19 moved the classic read/write API behind the
+// legacy entry point (SDK 54 upgrade, SN-043).
+import * as FileSystem from "expo-file-system/legacy";
 
 export type RecorderState = "idle" | "recording" | "denied" | "unavailable";
 

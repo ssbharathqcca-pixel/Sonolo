@@ -2,7 +2,7 @@
 
 Seeds matching the learner's preferred language are ordered ahead of
 the pool before the 1000-card cap applies, so preferred-language cards
-are never crowded out. The full manifest (520 seeds today) now exceeds
+are never crowded out. The full manifest (670 seeds today) now exceeds
 the cap, so the preferred language always fills first and the tail of
 the other language is cut off — which is exactly what the cap is for.
 """
@@ -81,7 +81,7 @@ async def test_english_user_still_materializes_english_cards(
 
     assert materialized == min(TOTAL_SEEDS, _vocabulary_pack_limit())
     words = await materialized_words(db_session, user)
-    # All English seeds fit for an English-learner (400 < 1000 cap).
+    # All English seeds fit for an English-learner (450 < 1000 cap).
     assert ENGLISH_WORDS <= words
     assert "lease" in words  # First card of the English v1 pack.
 

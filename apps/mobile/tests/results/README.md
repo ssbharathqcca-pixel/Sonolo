@@ -30,11 +30,15 @@ files once the mobile test setup task lands.
 | SN-041 | Strict TypeScript check after entitlement enforcement (`npx tsc --noEmit`) | `2026-08-28_sn041_tsc_typecheck.txt` | exit 0, zero errors |
 | SN-041 | Jest suite (jest-expo + RNTL): entitlements fetch/refresh/logout + existing gating | `2026-08-28_sn041_jest.txt` | 61 passed (12 suites) |
 | SN-041 | Metro bundle incl. entitlements client + paywall refresh | `2026-08-28_sn041_mobile_export_android.txt` | exit 0, Hermes bundle exported |
+| SDK 54 upgrade | Strict TypeScript check after Expo 52→54 migration (`npx tsc --noEmit`) | `2026-08-28_sn043_mobile_sdk54_tsc_typecheck.txt` | exit 0, zero errors |
+| SDK 54 upgrade | Jest suite after SDK 54 (jest-expo 54, RNTL 13, React 19) | `2026-08-28_sn043_mobile_sdk54_jest.txt` | 61 passed (12 suites) |
+| SDK 54 upgrade | Metro bundle incl. Sentry/PostHog analytics, reanimated 4, expo-router 6 | `2026-08-28_sn043_mobile_sdk54_export_android.txt` | exit 0, Hermes bundle exported |
 
 ## Environment
 
 - Node v24.19.0, npm 12.0.2 (Windows / Git Bash)
-- Expo SDK 52, React Native 0.76.5, TypeScript 5.x strict mode
+- Expo SDK 54, React Native 0.81.5, React 19.1, TypeScript 5.9 strict mode
+  (upgraded 2026-08-28 so Expo Go SDK 54 on the owner's iPhone can run the project)
 - `npm install` completed for 908 packages on 2026-08-22 (SN-003)
 
 ## Notes

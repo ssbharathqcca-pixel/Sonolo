@@ -9,10 +9,13 @@ Loads every pack declared in content/manifest.json (SN-027):
     scenarios  : canadian-life-v1 + v2, quebec-life-v1,
                  workplace-english-v1, healthcare-english-v1,
                  quebec-healthcare-v1, quebec-workplace-v1,
-                 housing-english-v1, finance-english-v1         (105)
+                 housing-english-v1, finance-english-v1,
+                 quebec-housing-v1, quebec-finance-v1,
+                 smalltalk-english-v1                       (135)
     vocabulary : core-v1 + v2, core-fr-v1, workplace + healthcare,
                  quebec-healthcare + quebec-workplace,
-                 housing + finance                             (520)
+                 housing + finance, quebec-housing + quebec-finance,
+                 smalltalk                                  (670)
 
 Scenarios are shared rows upserted idempotently under deterministic
 uuid5 PKs derived in the SAME namespace as
@@ -21,7 +24,7 @@ loader so both seeding paths stay byte-identical, including the
 per-scenario pack_id mapping (SN-035). Vocabulary stays user-scoped
 by design (D-008): this script validates and counts the combined
 packs; cards materialize lazily per user via GET /api/review/due.
-Re-running is a no-op: counts stay stable at 105 scenarios / 520
+Re-running is a no-op: counts stay stable at 135 scenarios / 670
 vocabulary pack items.
 """
 
@@ -43,7 +46,13 @@ from sqlalchemy.dialects.postgresql import insert as pg_insert
 from sqlalchemy.dialects.sqlite import insert as sqlite_insert
 
 REQUIRED_VOCAB_FIELDS = {"id", "word", "translations", "fsrs_params"}
-REQUIRED_TRANSLATIONS = {"pa", "hi", "zh", "es"}
+REQUIRED_TRANSLATIONS = {"pa", "en", "hi", "zh", "es"}
+# English-target packs carry the four L1 translations; French-target
+# packs additionally carry "en" (SN-020/SN-036). Both sets are valid.
+ALLOWED_TRANSLATION_SETS = {
+    frozenset({"pa", "hi", "zh", "es"}),
+    frozenset(REQUIRED_TRANSLATIONS),
+}
 
 
 def load_all_scenario_seeds():
@@ -71,11 +80,11 @@ def validate_vocabulary_packs() -> dict[str, int]:
                 raise ValueError(
                     f"{pack.id}: item {entry.get('id')!r} missing {sorted(missing)}"
                 )
-            codes = set(entry["translations"])
-            if codes != REQUIRED_TRANSLATIONS:
+            codes = frozenset(entry["translations"])
+            if codes not in ALLOWED_TRANSLATION_SETS:
                 raise ValueError(
                     f"{pack.id}: item {entry['id']!r} translations {sorted(codes)}"
-                    f" != {sorted(REQUIRED_TRANSLATIONS)}"
+                    f" not one of {[sorted(s) for s in ALLOWED_TRANSLATION_SETS]}"
                 )
             params = entry["fsrs_params"]
             if not 0.0 <= float(params["difficulty"]) <= 1.0:

@@ -29,7 +29,9 @@ jest.mock("expo-av", () => ({
   },
 }));
 
-jest.mock("expo-file-system", () => ({
+// The service imports the legacy entry point (SDK 54 moved the classic
+// read/write API behind expo-file-system/legacy), so the mock must too.
+jest.mock("expo-file-system/legacy", () => ({
   cacheDirectory: "/tmp/",
   readAsStringAsync: jest.fn(async () => "QUJDREVGRw=="), // "ABCDEFG" b64
   deleteAsync: jest.fn(async () => {}),
@@ -38,7 +40,7 @@ jest.mock("expo-file-system", () => ({
 }));
 
 import { Audio } from "expo-av";
-import * as FileSystem from "expo-file-system";
+import * as FileSystem from "expo-file-system/legacy";
 import {
   AudioRecorderService,
 } from "../services/audioRecorder";

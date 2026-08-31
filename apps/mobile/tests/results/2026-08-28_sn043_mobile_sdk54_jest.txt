@@ -1,0 +1,41 @@
+npm notice run sonolo-mobile@0.1.0 npx
+npm notice run jest
+PASS src/__tests__/authStoreEntitlements.test.ts
+PASS src/__tests__/offlineInterceptor.test.ts
+PASS src/__tests__/authStoreLanguage.test.ts
+PASS src/__tests__/scenarioStore.test.ts
+PASS src/__tests__/errorBoundary.test.tsx
+PASS src/__tests__/useVoiceSession.test.tsx
+  ● Console
+
+    console.warn
+      [audioRecorder] start failed: TypeError: Cannot read properties of undefined (reading 'recording')
+          at AudioRecorderService.recording (C:\Users\pavan\OneDrive\Desktop\Sonolo\apps\mobile\src\services\audioRecorder.ts:96:15)
+          at Generator.next (<anonymous>)
+          at asyncGeneratorStep (C:\Users\pavan\OneDrive\Desktop\Sonolo\apps\mobile\node_modules\@babel\runtime\helpers\asyncToGenerator.js:3:17)
+          at _next (C:\Users\pavan\OneDrive\Desktop\Sonolo\apps\mobile\node_modules\@babel\runtime\helpers\asyncToGenerator.js:17:9)
+
+    [0m [90m 104 |[39m     } [36mcatch[39m (error) {
+     [90m 105 |[39m       [90m// Native module unavailable (Jest, Expo Go limits) — caller falls back.[39m
+    [31m[1m>[22m[39m[90m 106 |[39m       console[33m.[39mwarn([32m"[audioRecorder] start failed:"[39m[33m,[39m error)[33m;[39m
+     [90m     |[39m               [31m[1m^[22m[39m
+     [90m 107 |[39m       [36mthis[39m[33m.[39m_state [33m=[39m [32m"unavailable"[39m[33m;[39m
+     [90m 108 |[39m       [36mreturn[39m [36mfalse[39m[33m;[39m
+     [90m 109 |[39m     }[0m
+
+      at AudioRecorderService.warn (src/services/audioRecorder.ts:106:15)
+      at asyncGeneratorStep (node_modules/@babel/runtime/helpers/asyncToGenerator.js:3:17)
+      at _next (node_modules/@babel/runtime/helpers/asyncToGenerator.js:17:9)
+
+PASS src/__tests__/audioRecorder.test.ts
+PASS src/__tests__/voiceSocketUrl.test.ts
+PASS src/__tests__/homePaywall.test.tsx
+PASS src/__tests__/learnFrenchScenarios.test.tsx
+PASS src/__tests__/onboardingFlow.test.tsx
+PASS src/__tests__/packDetail.test.tsx
+
+Test Suites: 12 passed, 12 total
+Tests:       61 passed, 61 total
+Snapshots:   0 total
+Time:        5.068 s
+Ran all test suites.

@@ -1,0 +1,1252 @@
+[
+  {
+    "id": "vocab-st-01",
+    "word": "neighbour",
+    "phonetic": "/ˈneɪbər/",
+    "translations": {
+      "pa": "ਗੁਆਂਢੀ",
+      "hi": "पड़ोसी",
+      "zh": "邻居",
+      "es": "vecino / vecina"
+    },
+    "level": "seed",
+    "category": "social",
+    "example_sentences": [
+      "My neighbour waved hello from the balcony this morning.",
+      "It is good to know your neighbours in a Canadian apartment building."
+    ],
+    "confusion_pairs": [
+      "neighbourhood",
+      "nearby"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.15,
+      "stability": 4.8
+    }
+  },
+  {
+    "id": "vocab-st-02",
+    "word": "elevator",
+    "phonetic": "/ˈeləveɪtər/",
+    "translations": {
+      "pa": "ਲਿਫਟ",
+      "hi": "लिफ़्ट",
+      "zh": "电梯",
+      "es": "ascensor"
+    },
+    "level": "seed",
+    "category": "social",
+    "example_sentences": [
+      "We shared the elevator up to the sixth floor.",
+      "The elevator is out of service, so we took the stairs."
+    ],
+    "confusion_pairs": [
+      "stairs",
+      "escalator"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.1,
+      "stability": 5.1
+    }
+  },
+  {
+    "id": "vocab-st-03",
+    "word": "floor",
+    "phonetic": "/flɔːr/",
+    "translations": {
+      "pa": "ਮੰਜ਼ਿਲ",
+      "hi": "मंज़िल",
+      "zh": "楼层",
+      "es": "piso / planta"
+    },
+    "level": "seed",
+    "category": "social",
+    "example_sentences": [
+      "I live on the sixth floor, near the end of the hall.",
+      "Which floor is the laundry room on?"
+    ],
+    "confusion_pairs": [
+      "ground floor",
+      "level"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.2,
+      "stability": 4.6
+    }
+  },
+  {
+    "id": "vocab-st-04",
+    "word": "move in",
+    "phonetic": "/muːv ɪn/",
+    "translations": {
+      "pa": "ਨਵੇਂ ਘਰ ਵਿੱਚ ਜਾਣਾ",
+      "hi": "(नए घर में) आना / रहने आना",
+      "zh": "搬进来",
+      "es": "mudarse"
+    },
+    "level": "sprout",
+    "category": "social",
+    "example_sentences": [
+      "We moved in last month and we are still unpacking boxes.",
+      "The couple across the hall moved in during the summer."
+    ],
+    "confusion_pairs": [
+      "move out",
+      "settle in"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.38,
+      "stability": 3.4
+    }
+  },
+  {
+    "id": "vocab-st-05",
+    "word": "introduce",
+    "phonetic": "/ˌɪntrəˈduːs/",
+    "translations": {
+      "pa": "ਜਾਣ-ਪਛਾਣ ਕਰਾਉਣੀ",
+      "hi": "परिचय कराना",
+      "zh": "介绍",
+      "es": "presentar"
+    },
+    "level": "sprout",
+    "category": "social",
+    "example_sentences": [
+      "Let me introduce myself — I'm Grace from 604.",
+      "She introduced me to her neighbours at the community barbecue."
+    ],
+    "confusion_pairs": [
+      "present",
+      "mention"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.33,
+      "stability": 3.9
+    }
+  },
+  {
+    "id": "vocab-st-06",
+    "word": "bus stop",
+    "phonetic": "/ˈbʌs stɑːp/",
+    "translations": {
+      "pa": "ਬੱਸ ਸਟਾਪ",
+      "hi": "बस स्टॉप",
+      "zh": "公交车站",
+      "es": "parada de autobús"
+    },
+    "level": "seed",
+    "category": "social",
+    "example_sentences": [
+      "The bus stop is right outside our building.",
+      "We waited at the bus stop for ten minutes in the cold."
+    ],
+    "confusion_pairs": [
+      "bus station",
+      "bus route"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.12,
+      "stability": 5.0
+    }
+  },
+  {
+    "id": "vocab-st-07",
+    "word": "freezing",
+    "phonetic": "/ˈfriːzɪŋ/",
+    "translations": {
+      "pa": "ਬਹੁਤ ਠੰਡਾ",
+      "hi": "बहुत ठंडा",
+      "zh": "极冷的",
+      "es": "helado / congelante"
+    },
+    "level": "sprout",
+    "category": "social",
+    "example_sentences": [
+      "It is freezing outside, so wear your warm coat.",
+      "That wind goes right through you when it's freezing."
+    ],
+    "confusion_pairs": [
+      "cold",
+      "frozen"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.28,
+      "stability": 4.2
+    }
+  },
+  {
+    "id": "vocab-st-08",
+    "word": "transit",
+    "phonetic": "/ˈtrænzɪt/",
+    "translations": {
+      "pa": "ਜਨਤਕ ਆਵਾਜਾਈ",
+      "hi": "सार्वजनिक परिवहन",
+      "zh": "公共交通",
+      "es": "transporte público"
+    },
+    "level": "branch",
+    "category": "social",
+    "example_sentences": [
+      "The transit system here runs buses and a light rail line.",
+      "I take transit to work every day instead of driving."
+    ],
+    "confusion_pairs": [
+      "transport",
+      "commute"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.42,
+      "stability": 3.2
+    }
+  },
+  {
+    "id": "vocab-st-09",
+    "word": "route",
+    "phonetic": "/ruːt/",
+    "translations": {
+      "pa": "ਰੂਟ / ਰਸਤਾ",
+      "hi": "मार्ग",
+      "zh": "路线",
+      "es": "ruta / recorrido"
+    },
+    "level": "sprout",
+    "category": "social",
+    "example_sentences": [
+      "The 62 route runs every ten minutes in the morning.",
+      "What is the fastest route to downtown from here?"
+    ],
+    "confusion_pairs": [
+      "way",
+      "path"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.35,
+      "stability": 3.6
+    }
+  },
+  {
+    "id": "vocab-st-10",
+    "word": "on time",
+    "phonetic": "/ɑːn taɪm/",
+    "translations": {
+      "pa": "ਸਮੇਂ ਸਿਰ",
+      "hi": "समय पर",
+      "zh": "准时",
+      "es": "a tiempo / puntual"
+    },
+    "level": "sprout",
+    "category": "social",
+    "example_sentences": [
+      "The bus is usually on time, except when it snows.",
+      "Please arrive on time for the meeting."
+    ],
+    "confusion_pairs": [
+      "in time",
+      "punctual"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.3,
+      "stability": 3.8
+    }
+  },
+  {
+    "id": "vocab-st-11",
+    "word": "coffee",
+    "phonetic": "/ˈkɔːfi/",
+    "translations": {
+      "pa": "ਕਾਫੀ",
+      "hi": "कॉफ़ी",
+      "zh": "咖啡",
+      "es": "café"
+    },
+    "level": "seed",
+    "category": "social",
+    "example_sentences": [
+      "I get a coffee from the shop on my way to work.",
+      "Want to grab a coffee together this afternoon?"
+    ],
+    "confusion_pairs": [
+      "tea",
+      "café"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.08,
+      "stability": 5.3
+    }
+  },
+  {
+    "id": "vocab-st-12",
+    "word": "hockey",
+    "phonetic": "/ˈhɑːki/",
+    "translations": {
+      "pa": "ਹਾਕੀ",
+      "hi": "हॉकी",
+      "zh": "冰球",
+      "es": "hockey"
+    },
+    "level": "sprout",
+    "category": "social",
+    "example_sentences": [
+      "Did you catch the hockey game last night?",
+      "Hockey is a favourite topic of small talk in Canada."
+    ],
+    "confusion_pairs": [
+      "soccer",
+      "game"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.25,
+      "stability": 4.4
+    }
+  },
+  {
+    "id": "vocab-st-13",
+    "word": "weather",
+    "phonetic": "/ˈweðər/",
+    "translations": {
+      "pa": "ਮੌਸਮ",
+      "hi": "मौसम",
+      "zh": "天气",
+      "es": "clima / tiempo"
+    },
+    "level": "seed",
+    "category": "social",
+    "example_sentences": [
+      "The weather is beautiful today, perfect for a walk.",
+      "Canadians love to talk about the weather."
+    ],
+    "confusion_pairs": [
+      "forecast",
+      "temperature"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.1,
+      "stability": 5.0
+    }
+  },
+  {
+    "id": "vocab-st-14",
+    "word": "line",
+    "phonetic": "/laɪn/",
+    "translations": {
+      "pa": "ਕਤਾਰ",
+      "hi": "कतार / लाइन",
+      "zh": "队伍",
+      "es": "fila / cola"
+    },
+    "level": "sprout",
+    "category": "social",
+    "example_sentences": [
+      "The line at the coffee shop was long this morning.",
+      "Please wait your turn in line at the counter."
+    ],
+    "confusion_pairs": [
+      "queue",
+      "row"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.27,
+      "stability": 4.1
+    }
+  },
+  {
+    "id": "vocab-st-15",
+    "word": "order",
+    "phonetic": "/ˈɔːrdər/",
+    "translations": {
+      "pa": "ਆਰਡਰ / ਮੰਗਵਾਉਣਾ",
+      "hi": "ऑर्डर करना",
+      "zh": "点单",
+      "es": "pedido / ordenar"
+    },
+    "level": "sprout",
+    "category": "social",
+    "example_sentences": [
+      "I'd like to order a medium coffee, please.",
+      "It's your turn to order — what are you getting?"
+    ],
+    "confusion_pairs": [
+      "request",
+      "ask for"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.22,
+      "stability": 4.5
+    }
+  },
+  {
+    "id": "vocab-st-16",
+    "word": "weekend",
+    "phonetic": "/ˈwiːkend/",
+    "translations": {
+      "pa": "ਹਫਤੇ ਦਾ ਅੰਤ",
+      "hi": "सप्ताहांत / वीकेंड",
+      "zh": "周末",
+      "es": "fin de semana"
+    },
+    "level": "seed",
+    "category": "social",
+    "example_sentences": [
+      "How was your weekend? Did you do anything fun?",
+      "I usually relax and visit friends on the weekend."
+    ],
+    "confusion_pairs": [
+      "weekday",
+      "holiday"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.12,
+      "stability": 5.1
+    }
+  },
+  {
+    "id": "vocab-st-17",
+    "word": "coworker",
+    "phonetic": "/ˈkoʊwɜːrkər/",
+    "translations": {
+      "pa": "ਸਹਿਕਰਮੀ",
+      "hi": "सहकर्मी",
+      "zh": "同事",
+      "es": "compañero de trabajo"
+    },
+    "level": "sprout",
+    "category": "social",
+    "example_sentences": [
+      "My coworker and I chat by the coffee machine on Mondays.",
+      "A coworker invited me to join the lunch group."
+    ],
+    "confusion_pairs": [
+      "colleague",
+      "boss"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.32,
+      "stability": 3.9
+    }
+  },
+  {
+    "id": "vocab-st-18",
+    "word": "catch up",
+    "phonetic": "/kætʃ ʌp/",
+    "translations": {
+      "pa": "ਹਾਲ-ਚਾਲ ਪੁੱਛਣੀ",
+      "hi": "हाल-चाल पूछना",
+      "zh": "聊聊近况",
+      "es": "ponerse al día"
+    },
+    "level": "branch",
+    "category": "social",
+    "example_sentences": [
+      "We should catch up over coffee sometime.",
+      "Let's catch up — how have you been?"
+    ],
+    "confusion_pairs": [
+      "keep up",
+      "meet up"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.45,
+      "stability": 3.1
+    }
+  },
+  {
+    "id": "vocab-st-19",
+    "word": "plans",
+    "phonetic": "/plænz/",
+    "translations": {
+      "pa": "ਯੋਜਨਾਵਾਂ",
+      "hi": "योजनाएँ",
+      "zh": "计划",
+      "es": "planes"
+    },
+    "level": "seed",
+    "category": "social",
+    "example_sentences": [
+      "Do you have any plans for the weekend?",
+      "I'm meeting a friend tonight, that's my only plan."
+    ],
+    "confusion_pairs": [
+      "schedule",
+      "arrangements"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.18,
+      "stability": 4.6
+    }
+  },
+  {
+    "id": "vocab-st-20",
+    "word": "tired",
+    "phonetic": "/ˈtaɪərd/",
+    "translations": {
+      "pa": "ਥੱਕਿਆ ਹੋਇਆ",
+      "hi": "थका हुआ",
+      "zh": "累的",
+      "es": "cansado"
+    },
+    "level": "seed",
+    "category": "social",
+    "example_sentences": [
+      "I'm a bit tired this morning — I stayed up late.",
+      "A short walk usually wakes me up when I feel tired."
+    ],
+    "confusion_pairs": [
+      "exhausted",
+      "sleepy"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.14,
+      "stability": 4.9
+    }
+  },
+  {
+    "id": "vocab-st-21",
+    "word": "cashier",
+    "phonetic": "/kæˈʃɪr/",
+    "translations": {
+      "pa": "ਕੈਸ਼ੀਅਰ",
+      "hi": "कैशियर",
+      "zh": "收银员",
+      "es": "cajero / cajera"
+    },
+    "level": "sprout",
+    "category": "social",
+    "example_sentences": [
+      "The cashier scanned my groceries and smiled.",
+      "You pay the cashier at the front of the store."
+    ],
+    "confusion_pairs": [
+      "clerk",
+      "teller"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.3,
+      "stability": 3.9
+    }
+  },
+  {
+    "id": "vocab-st-22",
+    "word": "receipt",
+    "phonetic": "/rɪˈsiːt/",
+    "translations": {
+      "pa": "ਰਸੀਦ",
+      "hi": "रसीद",
+      "zh": "收据",
+      "es": "recibo / ticket"
+    },
+    "level": "sprout",
+    "category": "social",
+    "example_sentences": [
+      "Would you like your receipt in the bag?",
+      "Keep the receipt in case you need to return something."
+    ],
+    "confusion_pairs": [
+      "invoice",
+      "bill"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.26,
+      "stability": 4.2
+    }
+  },
+  {
+    "id": "vocab-st-23",
+    "word": "groceries",
+    "phonetic": "/ˈɡroʊsəriz/",
+    "translations": {
+      "pa": "ਕਿਰਾਨੇ ਦਾ ਸਾਮਾਨ",
+      "hi": "किराने का सामान",
+      "zh": "食品杂货",
+      "es": "la compra / comestibles"
+    },
+    "level": "sprout",
+    "category": "social",
+    "example_sentences": [
+      "I need to pick up groceries for dinner tonight.",
+      "The grocery store is open late, so I shop after work."
+    ],
+    "confusion_pairs": [
+      "shopping",
+      "supplies"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.34,
+      "stability": 3.7
+    }
+  },
+  {
+    "id": "vocab-st-24",
+    "word": "debit",
+    "phonetic": "/ˈdebɪt/",
+    "translations": {
+      "pa": "ਡੈਬਿਟ ਕਾਰਡ",
+      "hi": "डेबिट कार्ड",
+      "zh": "借记卡",
+      "es": "tarjeta de débito"
+    },
+    "level": "sprout",
+    "category": "social",
+    "example_sentences": [
+      "I'll pay with debit, please.",
+      "Most Canadian stores accept debit and credit cards."
+    ],
+    "confusion_pairs": [
+      "credit",
+      "cash"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.36,
+      "stability": 3.6
+    }
+  },
+  {
+    "id": "vocab-st-25",
+    "word": "bag",
+    "phonetic": "/bæɡ/",
+    "translations": {
+      "pa": "ਥੈਲਾ",
+      "hi": "थैला / बैग",
+      "zh": "袋子",
+      "es": "bolsa"
+    },
+    "level": "seed",
+    "category": "social",
+    "example_sentences": [
+      "Would you like a bag for your groceries?",
+      "I brought my own reusable bag to the store."
+    ],
+    "confusion_pairs": [
+      "sack",
+      "purse"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.1,
+      "stability": 5.2
+    }
+  },
+  {
+    "id": "vocab-st-26",
+    "word": "waiting room",
+    "phonetic": "/ˈweɪtɪŋ ruːm/",
+    "translations": {
+      "pa": "ਇੰਤਜ਼ਾਰ ਕਮਰਾ",
+      "hi": "प्रतीक्षा कक्ष",
+      "zh": "候诊室",
+      "es": "sala de espera"
+    },
+    "level": "sprout",
+    "category": "social",
+    "example_sentences": [
+      "The clinic waiting room was busy this morning.",
+      "Please have a seat in the waiting room until your name is called."
+    ],
+    "confusion_pairs": [
+      "lobby",
+      "reception"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.38,
+      "stability": 3.4
+    }
+  },
+  {
+    "id": "vocab-st-27",
+    "word": "appointment",
+    "phonetic": "/əˈpɔɪntmənt/",
+    "translations": {
+      "pa": "ਮੁਲਾਕਾਤ / ਅਪੁਆਇੰਟਮੈਂਟ",
+      "hi": "अपॉइंटमेंट",
+      "zh": "预约",
+      "es": "cita"
+    },
+    "level": "sprout",
+    "category": "social",
+    "example_sentences": [
+      "I have a doctor's appointment at three o'clock.",
+      "Call ahead to book an appointment at the clinic."
+    ],
+    "confusion_pairs": [
+      "meeting",
+      "reservation"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.33,
+      "stability": 3.8
+    }
+  },
+  {
+    "id": "vocab-st-28",
+    "word": "health card",
+    "phonetic": "/helθ kɑːrd/",
+    "translations": {
+      "pa": "ਹੈਲਥ ਕਾਰਡ",
+      "hi": "हेल्थ कार्ड",
+      "zh": "健康卡",
+      "es": "tarjeta de salud"
+    },
+    "level": "branch",
+    "category": "social",
+    "example_sentences": [
+      "Bring your provincial health card when you visit the clinic.",
+      "The receptionist asked to see my health card."
+    ],
+    "confusion_pairs": [
+      "ID card",
+      "insurance card"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.48,
+      "stability": 2.9
+    }
+  },
+  {
+    "id": "vocab-st-29",
+    "word": "paperwork",
+    "phonetic": "/ˈpeɪpərwɜːrk/",
+    "translations": {
+      "pa": "ਕਾਗਜ਼ੀ ਕਾਰਵਾਈ",
+      "hi": "कागज़ी कार्रवाई",
+      "zh": "文书工作",
+      "es": "papeleo"
+    },
+    "level": "branch",
+    "category": "social",
+    "example_sentences": [
+      "There is some paperwork to fill out at the front desk.",
+      "New patients complete their paperwork before seeing the doctor."
+    ],
+    "confusion_pairs": [
+      "documents",
+      "forms"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.44,
+      "stability": 3.2
+    }
+  },
+  {
+    "id": "vocab-st-30",
+    "word": "check in",
+    "phonetic": "/tʃek ɪn/",
+    "translations": {
+      "pa": "ਚੈੱਕ-ਇਨ ਕਰਨਾ",
+      "hi": "चेक इन करना / रिपोर्ट करना",
+      "zh": "报到",
+      "es": "registrarse"
+    },
+    "level": "branch",
+    "category": "social",
+    "example_sentences": [
+      "Check in at the front desk when you arrive.",
+      "You need to check in for your appointment at the kiosk."
+    ],
+    "confusion_pairs": [
+      "sign in",
+      "register"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.42,
+      "stability": 3.3
+    }
+  },
+  {
+    "id": "vocab-st-31",
+    "word": "fence",
+    "phonetic": "/fens/",
+    "translations": {
+      "pa": "ਵਾੜ",
+      "hi": "बाड़",
+      "zh": "栅栏",
+      "es": "valla / cerca"
+    },
+    "level": "sprout",
+    "category": "social",
+    "example_sentences": [
+      "We chatted with our neighbour over the fence.",
+      "The backyard fence needs a fresh coat of paint."
+    ],
+    "confusion_pairs": [
+      "wall",
+      "gate"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.29,
+      "stability": 4.0
+    }
+  },
+  {
+    "id": "vocab-st-32",
+    "word": "garden",
+    "phonetic": "/ˈɡɑːrdn/",
+    "translations": {
+      "pa": "ਬਾਗ",
+      "hi": "बगीचा",
+      "zh": "花园",
+      "es": "jardín"
+    },
+    "level": "seed",
+    "category": "social",
+    "example_sentences": [
+      "Ron grows tomatoes and peppers in his garden.",
+      "The community garden is behind the recreation centre."
+    ],
+    "confusion_pairs": [
+      "yard",
+      "greenhouse"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.16,
+      "stability": 4.7
+    }
+  },
+  {
+    "id": "vocab-st-33",
+    "word": "backyard",
+    "phonetic": "/ˌbækˈjɑːrd/",
+    "translations": {
+      "pa": "ਵਿਹੜਾ / ਪਿਛਲਾ ਵਿਹੜਾ",
+      "hi": "पिछवाड़ा",
+      "zh": "后院",
+      "es": "patio trasero"
+    },
+    "level": "sprout",
+    "category": "social",
+    "example_sentences": [
+      "We had a barbecue in the backyard on the weekend.",
+      "The kids are playing in the backyard."
+    ],
+    "confusion_pairs": [
+      "front yard",
+      "balcony"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.3,
+      "stability": 3.9
+    }
+  },
+  {
+    "id": "vocab-st-34",
+    "word": "snow",
+    "phonetic": "/snoʊ/",
+    "translations": {
+      "pa": "ਬਰਫ਼",
+      "hi": "बर्फ़",
+      "zh": "雪",
+      "es": "nieve"
+    },
+    "level": "seed",
+    "category": "social",
+    "example_sentences": [
+      "They're calling for snow tonight.",
+      "The snow on the driveway needs to be shovelled."
+    ],
+    "confusion_pairs": [
+      "ice",
+      "sleet"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.13,
+      "stability": 5.0
+    }
+  },
+  {
+    "id": "vocab-st-35",
+    "word": "shovel",
+    "phonetic": "/ˈʃʌvəl/",
+    "translations": {
+      "pa": "ਬੇਲਚਾ",
+      "hi": "फावड़ा",
+      "zh": "铲子",
+      "es": "pala"
+    },
+    "level": "branch",
+    "category": "social",
+    "example_sentences": [
+      "I borrow a shovel from my neighbour to clear the walkway.",
+      "Snow shovelling is good exercise on a winter morning."
+    ],
+    "confusion_pairs": [
+      "spade",
+      "snow blower"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.46,
+      "stability": 3.0
+    }
+  },
+  {
+    "id": "vocab-st-36",
+    "word": "meeting",
+    "phonetic": "/ˈmiːtɪŋ/",
+    "translations": {
+      "pa": "ਮੀਟਿੰਗ",
+      "hi": "मीटिंग / बैठक",
+      "zh": "会议",
+      "es": "reunión"
+    },
+    "level": "seed",
+    "category": "social",
+    "example_sentences": [
+      "We have a team meeting at ten o'clock.",
+      "Let's get started — the meeting is on the agenda."
+    ],
+    "confusion_pairs": [
+      "appointment",
+      "gathering"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.12,
+      "stability": 5.0
+    }
+  },
+  {
+    "id": "vocab-st-37",
+    "word": "agenda",
+    "phonetic": "/əˈdʒendə/",
+    "translations": {
+      "pa": "ਏਜੰਡਾ",
+      "hi": "एजेंडा / कार्यसूची",
+      "zh": "议程",
+      "es": "agenda / orden del día"
+    },
+    "level": "branch",
+    "category": "social",
+    "example_sentences": [
+      "The meeting agenda is posted on the wall.",
+      "We have three items on today's agenda."
+    ],
+    "confusion_pairs": [
+      "schedule",
+      "list"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.4,
+      "stability": 3.4
+    }
+  },
+  {
+    "id": "vocab-st-38",
+    "word": "conference room",
+    "phonetic": "/ˈkɑːnfərəns ruːm/",
+    "translations": {
+      "pa": "ਕਾਨਫਰੰਸ ਰੂਮ",
+      "hi": "कॉन्फ्रेंस रूम / बैठक कक्ष",
+      "zh": "会议室",
+      "es": "sala de reuniones"
+    },
+    "level": "sprout",
+    "category": "social",
+    "example_sentences": [
+      "The meeting is in the conference room on the second floor.",
+      "Someone is already setting up in the conference room."
+    ],
+    "confusion_pairs": [
+      "boardroom",
+      "office"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.35,
+      "stability": 3.7
+    }
+  },
+  {
+    "id": "vocab-st-39",
+    "word": "projector",
+    "phonetic": "/prəˈdʒektər/",
+    "translations": {
+      "pa": "ਪ੍ਰੋਜੈਕਟਰ",
+      "hi": "प्रोजेक्टर",
+      "zh": "投影仪",
+      "es": "proyector"
+    },
+    "level": "branch",
+    "category": "social",
+    "example_sentences": [
+      "Can you connect your laptop to the projector?",
+      "The slides will show on the projector at the front."
+    ],
+    "confusion_pairs": [
+      "screen",
+      "display"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.43,
+      "stability": 3.3
+    }
+  },
+  {
+    "id": "vocab-st-40",
+    "word": "slide",
+    "phonetic": "/slaɪd/",
+    "translations": {
+      "pa": "ਸਲਾਈਡ",
+      "hi": "स्लाइड",
+      "zh": "幻灯片",
+      "es": "diapositiva"
+    },
+    "level": "branch",
+    "category": "social",
+    "example_sentences": [
+      "The next slide shows this month's numbers.",
+      "Could you go back to the first slide, please?"
+    ],
+    "confusion_pairs": [
+      "page",
+      "image"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.41,
+      "stability": 3.4
+    }
+  },
+  {
+    "id": "vocab-st-41",
+    "word": "gym",
+    "phonetic": "/dʒɪm/",
+    "translations": {
+      "pa": "ਜਿਮ",
+      "hi": "जिम / व्यायामशाला",
+      "zh": "健身房",
+      "es": "gimnasio"
+    },
+    "level": "seed",
+    "category": "social",
+    "example_sentences": [
+      "The community centre has a gym with new equipment.",
+      "I go to the gym three times a week."
+    ],
+    "confusion_pairs": [
+      "fitness centre",
+      "workout"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.14,
+      "stability": 4.9
+    }
+  },
+  {
+    "id": "vocab-st-42",
+    "word": "membership",
+    "phonetic": "/ˈmembərʃɪp/",
+    "translations": {
+      "pa": "ਮੈਂਬਰਸ਼ਿਪ",
+      "hi": "सदस्यता",
+      "zh": "会员资格",
+      "es": "membresía / abono"
+    },
+    "level": "branch",
+    "category": "social",
+    "example_sentences": [
+      "A monthly membership gives you access to all the classes.",
+      "My community centre membership covers the pool and the gym."
+    ],
+    "confusion_pairs": [
+      "subscription",
+      "registration"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.45,
+      "stability": 3.1
+    }
+  },
+  {
+    "id": "vocab-st-43",
+    "word": "class",
+    "phonetic": "/klæs/",
+    "translations": {
+      "pa": "ਕਲਾਸ",
+      "hi": "कक्षा",
+      "zh": "课程",
+      "es": "clase"
+    },
+    "level": "seed",
+    "category": "social",
+    "example_sentences": [
+      "There is a drop-in yoga class tonight at six.",
+      "The cooking class fills up fast, so sign up early."
+    ],
+    "confusion_pairs": [
+      "course",
+      "lesson"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.12,
+      "stability": 5.0
+    }
+  },
+  {
+    "id": "vocab-st-44",
+    "word": "front desk",
+    "phonetic": "/frʌnt desk/",
+    "translations": {
+      "pa": "ਫਰੰਟ ਡੈਸਕ",
+      "hi": "फ्रंट डेस्क / मुख्य काउंटर",
+      "zh": "前台",
+      "es": "recepción"
+    },
+    "level": "sprout",
+    "category": "social",
+    "example_sentences": [
+      "Check in at the front desk when you arrive.",
+      "The front desk has a schedule of all the classes."
+    ],
+    "confusion_pairs": [
+      "reception",
+      "counter"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.3,
+      "stability": 3.9
+    }
+  },
+  {
+    "id": "vocab-st-45",
+    "word": "schedule",
+    "phonetic": "/ˈskedʒuːl/",
+    "translations": {
+      "pa": "ਸਮਾਂ-ਸਾਰਣੀ",
+      "hi": "शेड्यूल / समय-सारणी",
+      "zh": "时间表",
+      "es": "horario"
+    },
+    "level": "sprout",
+    "category": "social",
+    "example_sentences": [
+      "The pool schedule is posted by the front desk.",
+      "What does the weekend class schedule look like?"
+    ],
+    "confusion_pairs": [
+      "timetable",
+      "agenda"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.31,
+      "stability": 3.9
+    }
+  },
+  {
+    "id": "vocab-st-46",
+    "word": "dog park",
+    "phonetic": "/dɔːɡ pɑːrk/",
+    "translations": {
+      "pa": "ਡੌਗ ਪਾਰਕ",
+      "hi": "डॉग पार्क",
+      "zh": "狗狗公园",
+      "es": "parque para perros"
+    },
+    "level": "sprout",
+    "category": "social",
+    "example_sentences": [
+      "We take our dog to the dog park every morning.",
+      "The dog park is a great place to meet other pet owners."
+    ],
+    "confusion_pairs": [
+      "park",
+      "leash area"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.37,
+      "stability": 3.5
+    }
+  },
+  {
+    "id": "vocab-st-47",
+    "word": "leash",
+    "phonetic": "/liːʃ/",
+    "translations": {
+      "pa": "ਪੱਟਾ",
+      "hi": "पट्टा",
+      "zh": "牵引绳",
+      "es": "correa"
+    },
+    "level": "sprout",
+    "category": "social",
+    "example_sentences": [
+      "Keep your dog on a leash until you reach the park gate.",
+      "I always carry a spare leash in my bag."
+    ],
+    "confusion_pairs": [
+      "collar",
+      "rope"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.34,
+      "stability": 3.7
+    }
+  },
+  {
+    "id": "vocab-st-48",
+    "word": "puppy",
+    "phonetic": "/ˈpʌpi/",
+    "translations": {
+      "pa": "ਕਤੂਰਾ",
+      "hi": "पिल्ला",
+      "zh": "小狗",
+      "es": "cachorro"
+    },
+    "level": "seed",
+    "category": "social",
+    "example_sentences": [
+      "What an adorable puppy — how old is it?",
+      "Our puppy is learning to walk on a leash."
+    ],
+    "confusion_pairs": [
+      "kitten",
+      "dog"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.16,
+      "stability": 4.8
+    }
+  },
+  {
+    "id": "vocab-st-49",
+    "word": "breed",
+    "phonetic": "/briːd/",
+    "translations": {
+      "pa": "ਨਸਲ",
+      "hi": "नस्ल",
+      "zh": "品种",
+      "es": "raza"
+    },
+    "level": "branch",
+    "category": "social",
+    "example_sentences": [
+      "What breed is your dog — a golden retriever?",
+      "She's a mixed breed, but she has a gentle personality."
+    ],
+    "confusion_pairs": [
+      "type",
+      "kind"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.4,
+      "stability": 3.5
+    }
+  },
+  {
+    "id": "vocab-st-50",
+    "word": "friendly",
+    "phonetic": "/ˈfrendli/",
+    "translations": {
+      "pa": "ਮਿਲਣਸਾਰ",
+      "hi": "मिलनसार / दोस्ताना",
+      "zh": "友好的",
+      "es": "amigable / simpático"
+    },
+    "level": "seed",
+    "category": "social",
+    "example_sentences": [
+      "People here are friendly and quick to say hello.",
+      "Maple is very friendly — she loves meeting new dogs."
+    ],
+    "confusion_pairs": [
+      "kind",
+      "outgoing"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.13,
+      "stability": 5.0
+    }
+  }
+]

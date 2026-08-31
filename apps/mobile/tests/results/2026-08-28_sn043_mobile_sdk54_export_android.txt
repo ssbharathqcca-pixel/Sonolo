@@ -1,0 +1,29 @@
+npm notice run sonolo-mobile@0.1.0 npx
+npm notice run expo export --platform android
+Starting Metro Bundler
+Android node_modules\expo-router\entry.js ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░ 99.9% (3501/3501)
+Android Bundled 9207ms node_modules\expo-router\entry.js (3501 modules)
+Android node_modules\expo-router\entry.js ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░ 99.9% (3501/3501)
+
+› Assets (25):
+node_modules\@expo\vector-icons\build\vendor\react-native-vector-icons\Fonts\Ionicons.ttf (390 kB)
+node_modules\@react-navigation\elements\lib\module\assets\back-icon-mask.png (653 B)
+node_modules\@react-navigation\elements\lib\module\assets\back-icon.png (4 variations | 152 B)
+node_modules\@react-navigation\elements\lib\module\assets\clear-icon.png (4 variations | 425 B)
+node_modules\@react-navigation\elements\lib\module\assets\close-icon.png (4 variations | 235 B)
+node_modules\@react-navigation\elements\lib\module\assets\search-icon.png (4 variations | 599 B)
+node_modules\expo-router\assets\arrow_down.png (9.46 kB)
+node_modules\expo-router\assets\error.png (469 B)
+node_modules\expo-router\assets\file.png (138 B)
+node_modules\expo-router\assets\forward.png (188 B)
+node_modules\expo-router\assets\pkg.png (364 B)
+node_modules\expo-router\assets\sitemap.png (465 B)
+node_modules\expo-router\assets\unmatched.png (4.75 kB)
+
+› android bundles (1):
+_expo/static/js/android/entry-7deead8c4e15b76dbf3128e9b8067f39.hbc (7.84 MB)
+
+› Files (1):
+metadata.json (1.88 kB)
+
+Exported: dist

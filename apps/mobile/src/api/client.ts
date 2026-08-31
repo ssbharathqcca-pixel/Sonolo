@@ -24,7 +24,7 @@ const processEnv: Record<string, string | undefined> | undefined = (
 ).process?.env;
 
 export const API_BASE_URL: string =
-  processEnv?.EXPO_PUBLIC_API_URL ?? "http://localhost:8000";
+  processEnv?.EXPO_PUBLIC_API_URL ?? "http://192.168.1.228:8000";
 
 /** Authenticated voice WebSocket URL (backend mounts /ws outside /api). */
 export function voiceSocketUrl(sessionId: string, token: string): string {

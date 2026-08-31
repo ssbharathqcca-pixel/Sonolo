@@ -65,7 +65,7 @@ async def test_scenarios_returns_the_seeded_catalog(
     scenarios_client: AsyncClient, db_session: AsyncSession
 ) -> None:
     seeded = await seed_scenarios(db_session)
-    assert seeded == 125
+    assert seeded == 135
 
     response = await scenarios_client.get(
         "/api/scenarios", headers=await auth_headers(scenarios_client)
@@ -73,7 +73,7 @@ async def test_scenarios_returns_the_seeded_catalog(
 
     assert response.status_code == 200
     body = response.json()
-    assert len(body["scenarios"]) == 80
+    assert len(body["scenarios"]) == 90
     titles = [scenario["title"] for scenario in body["scenarios"]]
     assert titles == sorted(titles)  # Stable, title-ordered list.
     first = body["scenarios"][0]
@@ -146,7 +146,7 @@ async def test_premium_user_sees_nothing_locked(
 
     assert response.status_code == 200
     scenarios = response.json()["scenarios"]
-    assert len(scenarios) == 80
+    assert len(scenarios) == 90
     assert all(scenario["is_locked"] is False for scenario in scenarios)
 
 
@@ -185,8 +185,8 @@ async def test_default_catalog_follows_preferred_language(
 
     english = await scenarios_client.get("/api/scenarios", headers=headers)
     assert english.status_code == 200
-    # Default preference is English: the 60 en-CA scenarios, no French rows.
-    assert len(english.json()["scenarios"]) == 80
+    # Default preference is English: the 90 en-CA scenarios, no French rows.
+    assert len(english.json()["scenarios"]) == 90
 
     switched = await scenarios_client.post(
         "/api/users/me/language", json={"language": "fr"}, headers=headers
@@ -210,7 +210,7 @@ async def test_default_catalog_follows_preferred_language(
     )
     assert back.status_code == 200
     restored = await scenarios_client.get("/api/scenarios", headers=headers)
-    assert len(restored.json()["scenarios"]) == 80
+    assert len(restored.json()["scenarios"]) == 90
 
 
 async def test_language_rejects_unknown_values(

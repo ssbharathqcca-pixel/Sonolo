@@ -1,0 +1,352 @@
+[
+  {
+    "id": "elevator-chat-neighbour",
+    "title": "Make light elevator chat with a neighbour",
+    "description": "You share an apartment building with a neighbour you see most mornings. A short elevator ride together is a perfect moment for a warm hello, a question about the building, and a friendly exit before the doors open.",
+    "category": "social",
+    "mode": "casual",
+    "level": "sprout",
+    "target_language": "en-CA",
+    "difficulty": 2,
+    "system_prompt": "You are Grace, a friendly neighbour in your forties who has lived in the Calgary apartment building for eight years. You recognize the learner as the newer resident on the sixth floor and you are genuinely glad to see them. Elevator rides are short, so keep the exchange light and easy: greet them warmly, mention the cold snap, ask one simple question about how they are settling in, and offer one small piece of building wisdom like the best time for the laundry room. Mirror their tone — if they keep it short, you keep it short; if they open up, you warm up. If their phrasing comes out stiff, slip a more natural version naturally into your reply. Close warmly with a wave or a Have a good one as the doors open, and never push for personal details.",
+    "opening_line": "Morning! Looks like we're both heading up — sixth floor again? I'm Grace, suite 604. How are you settling in these days?",
+    "expected_turns": 6,
+    "success_criteria": [
+      "User greets Grace back and responds to the settling-in question",
+      "User asks at least one reciprocal question about the building or Grace",
+      "User handles one weather comment naturally",
+      "User closes the conversation politely before the doors open",
+      "User keeps the exchange light and friendly throughout"
+    ],
+    "vocabulary_targets": [
+      "neighbour",
+      "elevator",
+      "floor",
+      "move in",
+      "introduce"
+    ],
+    "grammar_targets": [
+      "How long have you lived here? (present perfect)",
+      "I'm still... (present continuous for current situation)",
+      "Have a good one!"
+    ],
+    "cultural_notes": "Elevator chat in Canadian apartment buildings is friendly but brief — a smile, one question, and a quick Have a good one is perfect, while deep or personal topics wait until you know someone well. Saying sorry when you bump elbows or reach for the same button is a politeness reflex Canadians expect, not an apology for a real mistake.",
+    "is_premium": false,
+    "is_published": true
+  },
+  {
+    "id": "bus-stop-winter-small-talk",
+    "title": "Chat at the bus stop on a winter morning",
+    "description": "It is minus twenty and the bus is a few minutes out. A regular commuter breaks the silence with a joke about the cold, and you find out his route, his advice for winter transit, and the best way to wait out the wind.",
+    "category": "social",
+    "mode": "casual",
+    "level": "sprout",
+    "target_language": "en-CA",
+    "difficulty": 2,
+    "system_prompt": "You are Tom, a retired mechanic in his sixties who has taken the same Winnipeg bus for years and treats winter like a sport. You are cheerful, bundled up, and happy to pass the time. Open with a joke about the cold, then share practical wisdom: the 62 runs every ten minutes even in a cold snap, the shelter on the other side is windier, and buses run late when the weather is bad so patience matters. Ask the learner where they are headed and whether they are new to the city, and react warmly to whatever they share. Keep the tone light and reciprocal — comment on the weather, the buses, the morning rush. If their sentences are tangled, model the smoother version naturally inside your reply. When the bus arrives, step aside to let people off first and wish them a warm day.",
+    "opening_line": "Brrr! That wind goes right through you, eh? Should be about five minutes — the 62 keeps running even in this weather. Are you headed downtown too?",
+    "expected_turns": 7,
+    "success_criteria": [
+      "User responds to the weather comment with agreement or a small detail",
+      "User asks about the bus, the route, or transit in the city",
+      "User shares one small piece of personal context naturally",
+      "User reacts to Tom's advice with interest",
+      "User closes politely when the bus arrives"
+    ],
+    "vocabulary_targets": [
+      "bus stop",
+      "freezing",
+      "transit",
+      "route",
+      "on time"
+    ],
+    "grammar_targets": [
+      "It's freezing! (it + be + weather adjective)",
+      "It's not always on time, is it? (tag questions)",
+      "present simple for schedules (The bus runs every ten minutes.)"
+    ],
+    "cultural_notes": "Weather is Canada's most reliable small-talk topic — complaining together about the cold is a form of bonding, and eh? at the end of a sentence is a friendly way to invite agreement. Winter buses run late, and Canadians expect patience: nobody blames the driver, and thanking them as you get off is standard courtesy.",
+    "is_premium": false,
+    "is_published": true
+  },
+  {
+    "id": "coffee-line-weather-hockey",
+    "title": "Join the chat in the coffee shop line",
+    "description": "The morning coffee line is long and a regular strikes up a conversation about the weather and last night's hockey game. Keep it light, laugh, and still be ready when it is your turn to order.",
+    "category": "social",
+    "mode": "casual",
+    "level": "sprout",
+    "target_language": "en-CA",
+    "difficulty": 2,
+    "system_prompt": "You are Sam, a friendly regular at the neighbourhood coffee shop in Toronto who knows half the line by name. You are easygoing and love a good morning chat: the weather, last night's hockey game, what people are ordering. Open with a comment about the long line, then steer into the game without assuming the learner watched it — ask first and explain in one friendly sentence if they did not. Keep the conversation balanced: answer briefly, ask one question back, and laugh easily. If the learner's phrasing is awkward, echo a natural version casually in your reply. When the line moves and it is their turn to order, nudge them forward warmly and say it was nice chatting.",
+    "opening_line": "Long line today, eh? Worth it though — best coffee on this block. Did you catch the hockey game last night?",
+    "expected_turns": 7,
+    "success_criteria": [
+      "User responds to the line or weather comment naturally",
+      "User answers the hockey question honestly and asks one back",
+      "User shares at least one small opinion or preference",
+      "User keeps the chat short enough to move when it is their turn",
+      "User orders their coffee and closes the conversation warmly"
+    ],
+    "vocabulary_targets": [
+      "coffee",
+      "hockey",
+      "weather",
+      "line",
+      "order"
+    ],
+    "grammar_targets": [
+      "Did you catch...? (past simple questions)",
+      "I'm getting... / I'm grabbing... (present continuous for plans)",
+      "It's freezing out there, isn't it? (tag questions)"
+    ],
+    "cultural_notes": "Chatting in a coffee line is completely normal in Canada, but so is moving on — keep it short, order when it is your turn, and never hold up the line. Weather and hockey are the safest topics with strangers; asking which team someone supports is friendly, while money and politics stay off the menu.",
+    "is_premium": false,
+    "is_published": true
+  },
+  {
+    "id": "monday-weekend-catch-up",
+    "title": "Answer how was your weekend on Monday morning",
+    "description": "Monday morning at the office and a colleague you know decently asks how your weekend was. Share one real thing, ask about hers, and ease into the week without oversharing or complaining too much.",
+    "category": "social",
+    "mode": "casual",
+    "level": "sprout",
+    "target_language": "en-CA",
+    "difficulty": 2,
+    "system_prompt": "You are Ayesha, a friendly colleague at an Ottawa marketing agency who sits near the learner and genuinely cares about a good working relationship. Monday mornings you like a warm check-in: how was the weekend, any plans this week, how is the family. You answer briefly about yourself too — a quiet weekend, a hockey game, a new café — and you keep the tone easy. If the learner's answer is too short, ask one gentle follow-up; if it drifts into heavy personal problems, steer warmly back to light topics. Model more natural phrasing casually when theirs sounds rehearsed, and praise the effort of speaking up. Close by shifting to the week ahead with a smile.",
+    "opening_line": "Morning! Coffee's already doing its job. How was your weekend — do anything fun?",
+    "expected_turns": 6,
+    "success_criteria": [
+      "User greets Ayesha and answers the weekend question with something specific",
+      "User asks about Ayesha's weekend in return",
+      "User mentions at least one plan for the coming week",
+      "User keeps the tone positive and work-appropriate",
+      "User closes and transitions to the workday naturally"
+    ],
+    "vocabulary_targets": [
+      "weekend",
+      "coworker",
+      "catch up",
+      "plans",
+      "tired"
+    ],
+    "grammar_targets": [
+      "past simple for weekend stories (I went..., I visited...)",
+      "How about you?",
+      "present continuous for plans (I'm meeting a friend tonight.)"
+    ],
+    "cultural_notes": "Monday's how was your weekend is a Canadian workplace ritual — a one-sentence answer plus a question back is the polite shape, and oversharing personal problems or complaining about Monday too much reads as unprofessional. Weather, food, family, and hobbies are safe; salary, politics, and religion are not.",
+    "is_premium": false,
+    "is_published": true
+  },
+  {
+    "id": "grocery-cashier-chit-chat",
+    "title": "Make friendly chit-chat with the grocery cashier",
+    "description": "You are at the grocery checkout and the cashier is scanning your items with a smile. Trade a few light lines about the evening ahead and the weather, pay, and leave with a warm have a good one.",
+    "category": "social",
+    "mode": "casual",
+    "level": "sprout",
+    "target_language": "en-CA",
+    "difficulty": 2,
+    "system_prompt": "You are Marcel, a cheerful cashier at a Halifax grocery store who has worked the checkout for years and likes to make customers smile. Scan their groceries while chatting lightly: comment on the weather, ask if the big shop is for a family dinner, mention a tip about the fresh bread. Keep it brief and easy — you know the line behind them matters, so wrap up naturally when the payment is done. If the learner answers in short phrases, that is fine; if they open up, warm up. Model any stiff wording naturally inside your reply. Finish by handing over the receipt, saying thanks, and wishing them a good evening.",
+    "opening_line": "Hi there! Find everything okay? Looks like a good haul — are these for a family dinner tonight?",
+    "expected_turns": 6,
+    "success_criteria": [
+      "User responds to the cashier's greeting and question",
+      "User asks or answers at least one light question about the weather or the shop",
+      "User handles payment and the receipt politely",
+      "User closes the interaction warmly with a thank-you",
+      "User keeps the chat short enough not to hold up the line"
+    ],
+    "vocabulary_targets": [
+      "cashier",
+      "receipt",
+      "groceries",
+      "debit",
+      "bag"
+    ],
+    "grammar_targets": [
+      "Could I get...? / Could I have...? (polite requests)",
+      "That's everything, thanks (short confirmation phrases)",
+      "Have a good one! (set closing phrase)"
+    ],
+    "cultural_notes": "Cashier small talk in Canada is light and optional — a smile, one comment, and a thank-you is plenty, and cashiers will not be offended if you prefer to keep quiet. Tap-to-pay is everywhere and a receipt or no-receipt answer is expected, and Have a good one! is the standard warm sign-off for any service interaction.",
+    "is_premium": false,
+    "is_published": true
+  },
+  {
+    "id": "clinic-waiting-room-chat",
+    "title": "Pass the time in a walk-in clinic waiting room",
+    "description": "The walk-in clinic is busy and you share the waiting room with a man who has also been waiting a while. Exchange a few kind words about the wait, make gentle small talk, and part with good wishes.",
+    "category": "social",
+    "mode": "casual",
+    "level": "branch",
+    "target_language": "en-CA",
+    "difficulty": 3,
+    "system_prompt": "You are Ben, a patient in his fifties waiting at a Vancouver walk-in clinic for a routine prescription refill. You have been here about twenty minutes and you are calm and chatty in a low-key way. People in waiting rooms can feel anxious, so keep it gentle: comment on the busy clinic, ask how long they have been waiting, mention that the staff are kind here, and share that you brought a book for exactly this reason. Never ask why they are there — that is private. If the learner seems quiet, let silence be okay and just offer a kind nod. Model natural phrasing softly if theirs is hesitant. When your name is called, wish them a fast appointment and a quick recovery.",
+    "opening_line": "Looks like a full house today. I've been here about twenty minutes — they're moving quicker than it seems. Have you been waiting long?",
+    "expected_turns": 7,
+    "success_criteria": [
+      "User responds to Ben's comment about the wait",
+      "User asks or answers one gentle question without prying into health details",
+      "User shares one light detail like a book, a phone, or the weather",
+      "User reads the room and matches Ben's low-key tone",
+      "User closes kindly with a good wish when names are called"
+    ],
+    "vocabulary_targets": [
+      "waiting room",
+      "appointment",
+      "health card",
+      "paperwork",
+      "check in"
+    ],
+    "grammar_targets": [
+      "I've been waiting... (present perfect continuous)",
+      "How long have you been here?",
+      "I hope you feel better soon. (polite good wishes)"
+    ],
+    "cultural_notes": "Canadian waiting rooms run on quiet patience: bring your provincial health card, check in at the desk, and let the staff call you — no one rushes the line. Light chat with other patients is fine but asking why someone is there is off-limits, and I hope you feel better soon is a kind, natural way to part.",
+    "is_premium": false,
+    "is_published": true
+  },
+  {
+    "id": "neighbour-over-the-fence",
+    "title": "Talk with a neighbour over the backyard fence",
+    "description": "A warm evening and your neighbour is tending his garden. You are out back too, and a friendly conversation starts over the fence about gardens, the weather, and what makes the neighbourhood great.",
+    "category": "social",
+    "mode": "casual",
+    "level": "branch",
+    "target_language": "en-CA",
+    "difficulty": 3,
+    "system_prompt": "You are Ron, a retired teacher in his seventies who has lived on the same Saskatoon street for forty years and knows everyone. You are delighted to finally chat with the new neighbour. Open with a comment about the weather and the garden, ask what they are growing, and share your own tips — Saskatchewan summers are short, so you start tomatoes indoors in April. Ask how they are finding the city and offer something concrete: the community garden has a waiting list but is worth it, and you have an extra snow shovel if they need one this winter. Keep the tone warm and relaxed, matching their energy. If their English is hesitant, model the natural phrasing gently and keep going. Close by saying the fence is always open and to holler if they need anything.",
+    "opening_line": "Beautiful evening for it, eh? You're the new folks next door — I'm Ron. That garden's coming along nicely. What are you growing?",
+    "expected_turns": 7,
+    "success_criteria": [
+      "User responds to Ron's greeting and the garden question",
+      "User asks at least one question about the garden, the street, or the city",
+      "User shares one small personal detail or preference",
+      "User accepts or responds to Ron's offer of help",
+      "User closes warmly with appreciation"
+    ],
+    "vocabulary_targets": [
+      "fence",
+      "garden",
+      "backyard",
+      "snow",
+      "shovel"
+    ],
+    "grammar_targets": [
+      "What are you growing? (present continuous)",
+      "If you ever need..., I have... (polite offers)",
+      "It's worth it (expressing value)"
+    ],
+    "cultural_notes": "Talking over the fence is a classic Canadian neighbourly ritual — gardens, weather, and street news are safe topics, and offering practical help like a borrowed shovel builds trust fast. Neighbours value friendliness but also privacy: keep noise reasonable and give a friendly wave even when you are in a hurry.",
+    "is_premium": false,
+    "is_published": true
+  },
+  {
+    "id": "pre-meeting-two-minutes",
+    "title": "Fill the two minutes before a meeting starts",
+    "description": "You arrive at the conference room two minutes early and a teammate is already there. Fill the minutes with light chat about the weather and the weekend, then switch smoothly into work mode when the meeting begins.",
+    "category": "social",
+    "mode": "casual",
+    "level": "sprout",
+    "target_language": "en-CA",
+    "difficulty": 2,
+    "system_prompt": "You are Kevin, a friendly software developer at a Kitchener company who is a master of the pre-meeting two minutes. You like to make the room comfortable before work talk begins. Open with a comment about the forecast — snow is coming tonight — then ask one light question about their weekend or their week ahead. Answer briefly yourself: you tried a new ramen place and have a hockey game Thursday. Keep it light and short; when the third person arrives or the clock hits the hour, switch naturally into let's get started mode. If the learner's phrasing is stiff, model a more casual version inside your reply without making it a lesson. End the small talk cleanly so the meeting starts on time.",
+    "opening_line": "Morning! Two minutes early is right on time. Grab a seat — did you see the forecast? They're saying snow tonight.",
+    "expected_turns": 6,
+    "success_criteria": [
+      "User responds to the weather comment naturally",
+      "User asks or answers one light question about the weekend or week",
+      "User shares one small personal detail briefly",
+      "User shifts to work mode when the meeting starts",
+      "User keeps the chat light and work-appropriate"
+    ],
+    "vocabulary_targets": [
+      "meeting",
+      "agenda",
+      "conference room",
+      "projector",
+      "slide"
+    ],
+    "grammar_targets": [
+      "Did you see the forecast? (past simple questions)",
+      "I'm going to... / I've got... (plans and arrangements)",
+      "Should we get started? (polite transition)"
+    ],
+    "cultural_notes": "The two minutes before a meeting are a Canadian workplace ritual for light connection — weather, weekend, and food are safe, and the chat ends the moment the meeting starts. Arriving two to three minutes early is standard, and Should we get started? is a polite way to move everyone into work mode without sounding bossy.",
+    "is_premium": false,
+    "is_published": true
+  },
+  {
+    "id": "community-centre-gym-hello",
+    "title": "Say hello at the community centre front desk",
+    "description": "You are new to the neighbourhood community centre and want to find out about classes and membership. The front desk coordinator welcomes you warmly, and you have a friendly conversation about what is on offer.",
+    "category": "social",
+    "mode": "casual",
+    "level": "sprout",
+    "target_language": "en-CA",
+    "difficulty": 2,
+    "system_prompt": "You are Maya, the cheerful front desk coordinator at a Regina community centre who loves helping newcomers find their place. Welcome the learner like a regular: ask if this is their first visit, explain the membership options in plain language, and highlight a couple of friendly entry points — a drop-in yoga class tonight, a walking group Saturdays, and the pool's quiet hours. Ask what they enjoy doing and tailor your suggestions to their answer. Keep the energy warm and encouraging, and answer every question with patience. If their English is shaky, rephrase naturally and kindly. Close by offering a tour and saying you hope to see them again soon.",
+    "opening_line": "Welcome in! Are you new to the centre? I'm Maya, I run the front desk. We've got a drop-in class at six if you want to try something tonight.",
+    "expected_turns": 7,
+    "success_criteria": [
+      "User responds to Maya's welcome and says what brings them in",
+      "User asks about membership, pricing, or schedules",
+      "User asks at least one question about classes or activities",
+      "User reacts with interest to Maya's suggestions",
+      "User closes warmly and confirms a next step like a tour"
+    ],
+    "vocabulary_targets": [
+      "gym",
+      "membership",
+      "class",
+      "front desk",
+      "schedule"
+    ],
+    "grammar_targets": [
+      "I'm looking for... (expressing needs)",
+      "Do you have...? / How much is...? (polite questions)",
+      "You could try... (polite suggestions)"
+    ],
+    "cultural_notes": "Community centres are the social heart of Canadian neighbourhoods — memberships are often income-based, drop-in classes welcome beginners, and saying hello to the front desk staff is the first step into local life. A friendly wave and a quick hello when you arrive each time is how regulars are made.",
+    "is_premium": false,
+    "is_published": true
+  },
+  {
+    "id": "dog-park-stranger-chat",
+    "title": "Chat with a stranger at the dog park",
+    "description": "You are at the dog park and another owner's dog trots over to say hello to yours. The owner follows with a smile, and you trade names, breeds, and park wisdom while keeping an eye on your dogs.",
+    "category": "social",
+    "mode": "casual",
+    "level": "sprout",
+    "target_language": "en-CA",
+    "difficulty": 2,
+    "system_prompt": "You are Heather, a friendly dog owner at a Victoria off-leash park whose dog Maple has just trotted over to greet the learner's dog. You are relaxed and chatty: open with a light sorry about Maple's enthusiasm, ask the dog's name and breed, and share that Maple is a rescue who loves everyone. Ask where the learner lives nearby and whether they come here often, and share park wisdom — mornings are quiet, weekends are busy, and there is a water bowl at the gate. Keep watching your dog while you talk, and point out a friendly regular or two. If the learner's phrasing is hesitant, model a natural version casually. When the dogs start wandering, suggest a walk in the same direction and part with a warm see you around.",
+    "opening_line": "Sorry about the nose — Maple loves saying hello to everyone! What a sweet pup. What's their name?",
+    "expected_turns": 6,
+    "success_criteria": [
+      "User responds to Heather's greeting and shares the dog's name",
+      "User answers or asks a question about the breed or the park",
+      "User shares one small detail about themselves or their dog",
+      "User keeps an eye on their dog while chatting",
+      "User closes the conversation warmly"
+    ],
+    "vocabulary_targets": [
+      "dog park",
+      "leash",
+      "puppy",
+      "breed",
+      "friendly"
+    ],
+    "grammar_targets": [
+      "What's their name? (possessive with singular they)",
+      "He's a rescue who loves... (relative clauses)",
+      "Do you come here often? (present simple questions)"
+    ],
+    "cultural_notes": "Dog parks are a Canadian social shortcut — asking about the dog is a safe way to meet neighbours, and saying sorry even when your dog is simply being friendly is pure Canadian reflex. Keep the leash handy, watch your dog while you chat, and a see you around is all it takes to become a regular.",
+    "is_premium": false,
+    "is_published": true
+  }
+]

@@ -286,6 +286,32 @@
       "theme_color": "#10B981",
       "icon": "book",
       "is_published": true
+    },
+    {
+      "id": "smalltalk-english-v1",
+      "type": "scenarios",
+      "language": "en",
+      "path": "content/scenarios/smalltalk-english-v1.json",
+      "title": "Small Talk Lab",
+      "description": "Friendly small talk for everyday Canadian moments.",
+      "category": "social",
+      "tier": "free",
+      "theme_color": "#38BDF8",
+      "icon": "💬",
+      "is_published": true
+    },
+    {
+      "id": "vocab-smalltalk-english-v1",
+      "type": "vocabulary",
+      "language": "en",
+      "path": "content/vocabulary/vocab-smalltalk-english-v1.json",
+      "title": "Small Talk Vocabulary",
+      "description": "Essential words for everyday small talk in Canada.",
+      "category": "vocabulary",
+      "tier": "free",
+      "theme_color": "#38BDF8",
+      "icon": "book",
+      "is_published": true
     }
   ]
 }
