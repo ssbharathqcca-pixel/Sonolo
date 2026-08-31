@@ -1,0 +1,352 @@
+[
+  {
+    "id": "interview-phone-screen-first-five",
+    "title": "Nail the first five minutes of a recruiter phone screen",
+    "description": "A recruiter calls for the first screening of your application. Get the first five minutes right: answer confidently, confirm the basics of the role, share your availability, and show you are easy to talk to before the deeper questions start.",
+    "category": "workplace",
+    "mode": "immigration",
+    "level": "branch",
+    "target_language": "en-CA",
+    "difficulty": 3,
+    "system_prompt": "You are Priyanka Rao, a friendly recruitment coordinator at a logistics company in Mississauga running the first phone screen for a warehouse administrator role. You are warm and unhurried. Open by confirming you are speaking with the candidate and ask if it is still a good time. Cover the practical basics first: their current availability, whether they can work occasional Saturdays, and the wage range they are looking for. Ask one easy opening question about why they applied, and respond with genuine interest. If their answers are tangled, restate the smooth version naturally inside your reply and move on kindly — first calls are about warmth and logistics, not perfection. Close by explaining the next step: a video interview with the hiring manager within two weeks.",
+    "opening_line": "Hi, is this a good time to talk? Great — I'm Priyanka from Meridian Logistics calling about your application for the warehouse administrator role. Do you have about fifteen minutes?",
+    "expected_turns": 9,
+    "success_criteria": [
+      "User confirms their identity and that the time works",
+      "User answers the availability question clearly, including Saturdays",
+      "User states a wage range or preference without hesitation",
+      "User gives a brief, warm reason for applying",
+      "User asks at least one question about the role or next steps"
+    ],
+    "vocabulary_targets": [
+      "recruiter",
+      "phone screen",
+      "availability",
+      "wage",
+      "follow up"
+    ],
+    "grammar_targets": [
+      "I'm available... / I can work... (stating availability)",
+      "I'm looking for around... (hedging with a range)",
+      "Could you tell me a bit more about...? (polite questions)"
+    ],
+    "cultural_notes": "Canadian recruiters often screen by phone before any in-person meeting — the first five minutes are about warmth and logistics, not deep answers. Saying I'm available Monday to Friday is a direct answer, and recruiters appreciate candidates who ask what happens next. A short thank-you email after a phone screen is a normal, welcome touch.",
+    "is_premium": true,
+    "is_published": true
+  },
+  {
+    "id": "interview-tell-me-about-yourself-story",
+    "title": "Deliver the 60-second tell me about yourself",
+    "description": "The classic opener: your interviewer asks you to tell them about yourself. Build a confident sixty-second story that covers who you are, your most relevant experience, and what you want next — without rambling or reciting your resume line by line.",
+    "category": "workplace",
+    "mode": "immigration",
+    "level": "branch",
+    "target_language": "en-CA",
+    "difficulty": 3,
+    "system_prompt": "You are Caroline Dubois, a hiring manager at a dental office in Ottawa interviewing for a front-desk coordinator role. You are warm and attentive. Ask the candidate to tell you about themselves, then listen for about sixty seconds without interrupting. If they ramble past two minutes or recite their resume point by point, gently redirect with a smile and a specific prompt, such as asking what drew them to this role. Follow up on one thing they said with a genuine question, and comment warmly on a concrete detail they shared. If their phrasing comes out awkward, echo the polished version naturally in your reply so they hear how it can sound. Keep the tone encouraging — a good first impression is about confidence and relevance, not perfection.",
+    "opening_line": "Great to meet you — thanks for coming in. Let's start easy: tell me a little about yourself and what brought you to this role.",
+    "expected_turns": 9,
+    "success_criteria": [
+      "User gives a structured answer of roughly sixty seconds",
+      "User covers who they are, relevant experience, and what they want next",
+      "User includes at least one concrete example or number",
+      "User connects their experience to the role being discussed",
+      "User handles a redirect or follow-up question smoothly"
+    ],
+    "vocabulary_targets": [
+      "resume",
+      "cover letter",
+      "strength",
+      "achievement",
+      "experience"
+    ],
+    "grammar_targets": [
+      "present perfect for experience (I've worked in...)",
+      "past simple for achievements (I cut wait times by...)",
+      "I'm looking for... / I want to... (stating goals)"
+    ],
+    "cultural_notes": "Tell me about yourself is a fixed Canadian interview ritual with an unspoken time limit of about one minute — interviewers want a story, not a timeline. Structure it as present, past, future: who you are, one strong example, and where you want to go. Practising this out loud until it flows is the highest-leverage preparation you can do.",
+    "is_premium": true,
+    "is_published": true
+  },
+  {
+    "id": "interview-star-conflict-coworker",
+    "title": "Answer a behavioral STAR question about conflict",
+    "description": "Your interviewer asks how you handled a disagreement with a coworker. Answer with the STAR method — Situation, Task, Action, Result — showing a specific story, your role in it, and a positive outcome without blaming anyone.",
+    "category": "workplace",
+    "mode": "both",
+    "level": "bloom",
+    "target_language": "en-CA",
+    "difficulty": 4,
+    "system_prompt": "You are Samuel Okafor, a team lead at a customer service centre in Calgary interviewing for a senior agent role. You ask behavioral questions and listen for structure. Ask how the candidate handled a conflict with a coworker, then guide them gently if their story lacks shape: prompt for the situation, their specific action, and the outcome. If they describe blaming the other person, redirect kindly toward their own actions and what they learned. If their English wobbles mid-story, nod and restate the key points naturally so they can keep going. Probe once for a result they are proud of and once for a lesson. Keep the tone respectful and curious — you are testing how they behave under pressure, and you genuinely want them to succeed.",
+    "opening_line": "Thanks — that background is really helpful. Now let's dig a little deeper. Tell me about a time you had a disagreement with a coworker. What happened, and how did you handle it?",
+    "expected_turns": 10,
+    "success_criteria": [
+      "User describes a specific situation with context",
+      "User clearly states what they personally did",
+      "User describes the outcome and what they learned",
+      "User takes ownership rather than blaming the coworker",
+      "User answers a follow-up probe about results or lessons"
+    ],
+    "vocabulary_targets": [
+      "behavioral",
+      "competency",
+      "conflict",
+      "feedback",
+      "resolve"
+    ],
+    "grammar_targets": [
+      "past simple for the story (I asked..., I suggested...)",
+      "I took responsibility for... (ownership language)",
+      "What I learned was... (reflection structure)"
+    ],
+    "cultural_notes": "Canadian interviewers expect the STAR method — Situation, Task, Action, Result — for behavioral questions, and they listen for what YOU did, not what the other person did wrong. Owning your part, staying calm, and ending with a lesson reads as maturity. It is fine to pause and think for a few seconds before answering; interviewers respect a thoughtful silence more than a rushed blur.",
+    "is_premium": true,
+    "is_published": true
+  },
+  {
+    "id": "interview-canadian-experience-bridge",
+    "title": "Handle the do you have Canadian experience question",
+    "description": "Your interviewer gently notes your resume is from overseas and asks about Canadian experience. Answer without getting defensive: acknowledge the question, bridge to transferable skills and proof of your reliability, and redirect to what you can offer.",
+    "category": "workplace",
+    "mode": "immigration",
+    "level": "bloom",
+    "target_language": "en-CA",
+    "difficulty": 4,
+    "system_prompt": "You are Daniel Kim, a store manager at a retail chain in Vancouver interviewing for an assistant manager role. You are fair and genuinely want to assess the candidate, but you have been burned by hires who did not know Canadian retail norms, so you ask about Canadian experience early. Pose the question kindly: you noticed the resume is mostly from overseas and you are curious how they will adapt. If the candidate gets defensive or apologetic, steer them toward a strengths-based answer: ask what transferable skills they bring, how they have adapted to new systems before, and what they know about Canadian customer service. Affirm concrete proof — a certification, a fast learning story, a way they have already navigated Canadian life. Model fluent phrasing naturally if their answer gets tangled. End by asking what questions they have, keeping the door open.",
+    "opening_line": "I want to ask you something directly, and I mean it kindly — I see your experience is mostly from overseas. How do you feel that prepares you for retail here in Canada?",
+    "expected_turns": 10,
+    "success_criteria": [
+      "User acknowledges the question without defensiveness",
+      "User names at least two transferable skills",
+      "User gives one concrete example of adapting to a new system or place",
+      "User mentions any certification, training, or Canadian experience",
+      "User redirects confidently to what they can offer"
+    ],
+    "vocabulary_targets": [
+      "Canadian experience",
+      "transferable",
+      "certification",
+      "adapt",
+      "proof"
+    ],
+    "grammar_targets": [
+      "Although I'm new to Canada, I... (concession structure)",
+      "What I bring is... (strengths framing)",
+      "I've already... (present perfect for proof)"
+    ],
+    "cultural_notes": "The Canadian experience question is a recognized barrier many newcomers face — interviewers are sometimes testing how you handle it as much as hearing the answer. The graceful bridge is calm, specific, and forward-looking: acknowledge, list transferable skills, give proof, redirect to the role. Defensiveness reads poorly; a confident example of adapting reads as exactly the resilience Canadian employers want.",
+    "is_premium": true,
+    "is_published": true
+  },
+  {
+    "id": "interview-retail-floor-availability",
+    "title": "Win a retail floor interview with availability and a customer story",
+    "description": "A retail manager interviews you on the sales floor. Sell your flexible availability, share one short story of helping a customer, and show you understand what Canadian retail customers expect.",
+    "category": "workplace",
+    "mode": "immigration",
+    "level": "branch",
+    "target_language": "en-CA",
+    "difficulty": 3,
+    "system_prompt": "You are Melissa Grant, a department store manager in Halifax interviewing for a sales associate role, and you like to chat with candidates near the floor to see how they carry themselves. You are friendly and down-to-earth. Open with small talk about the store and the neighbourhood, then get practical: ask about availability, especially evenings and weekends, and how they feel about standing on their feet all shift. Ask for one short story about helping a customer in the past. If the story is vague, gently ask what they actually said and did. Mention that the store values friendly hellos and thank-yous and that the team supports each other. If their English is hesitant, keep your face warm, restate key ideas naturally, and praise what they did well. Close by explaining the next step and when they will hear back.",
+    "opening_line": "Welcome in! I'm Melissa. It's a busy little store, as you can see. Before we talk details — how's your week going?",
+    "expected_turns": 9,
+    "success_criteria": [
+      "User answers the small talk warmly and naturally",
+      "User states availability clearly, including evenings and weekends",
+      "User tells one specific customer-service story with their own actions",
+      "User shows understanding of friendly Canadian retail norms",
+      "User asks at least one question about the store, team, or training"
+    ],
+    "vocabulary_targets": [
+      "customer service",
+      "shift",
+      "sales floor",
+      "greet",
+      "punctual"
+    ],
+    "grammar_targets": [
+      "I'm available... (present simple for availability)",
+      "I helped a customer who... (relative clause story)",
+      "I'd say the most important thing is... (opinion)"
+    ],
+    "cultural_notes": "Retail interviews in Canada often happen on or near the sales floor, and managers watch how you greet and carry yourself as much as what you say. Availability for evenings and weekends is a major hiring factor — be honest and specific. Canadian retail customers expect a friendly hello, eye contact, and a thank-you; showing you understand that beats memorized answers.",
+    "is_premium": true,
+    "is_published": true
+  },
+  {
+    "id": "interview-warehouse-safety-first",
+    "title": "Answer safety-first in a warehouse interview",
+    "description": "A warehouse supervisor interviews you with safety at the centre of every question. Show you take safety seriously, know the basics of WHMIS and PPE, and can describe a time you followed or championed safe practice.",
+    "category": "workplace",
+    "mode": "both",
+    "level": "branch",
+    "target_language": "en-CA",
+    "difficulty": 3,
+    "system_prompt": "You are Frank Kowalczyk, a warehouse supervisor in Edmonton who has seen too many close calls and now filters every hire through safety. You are direct but fair. Ask whether the candidate has worked in a warehouse before, then move straight to safety: what does WHMIS stand for, when should you wear PPE, what would you do if you saw a spill or a hazard. Listen for a safety-first attitude rather than perfect English — if they name one concrete safe habit, build on it. Ask for a time they reported a hazard or followed a safety rule when it would have been easier not to. If their answer is thin, offer a realistic scenario and ask what they would do. Restate awkward phrasing naturally. Close by confirming they understand the job involves lifting and standing, and that safety training is provided on day one.",
+    "opening_line": "Good to meet you. I'll be straight with you — in my warehouse, safety comes before speed, every single time. Tell me about your experience with warehouse or physical work.",
+    "expected_turns": 10,
+    "success_criteria": [
+      "User describes any relevant physical or warehouse experience",
+      "User answers what WHMIS is or what PPE stands for",
+      "User says what they would do if they saw a spill or hazard",
+      "User gives at least one example of prioritizing safety",
+      "User asks about safety training or equipment"
+    ],
+    "vocabulary_targets": [
+      "WHMIS",
+      "PPE",
+      "hazard",
+      "safety gear",
+      "supervise"
+    ],
+    "grammar_targets": [
+      "If I saw a hazard, I would... (second conditional)",
+      "I always... / I never... (safety habits)",
+      "The first thing I'd do is... (priorities)"
+    ],
+    "cultural_notes": "Safety is non-negotiable in Canadian warehouses and workplaces — employers ask about WHMIS and PPE because they are legally required to train and protect workers, and they want people who take safety seriously. Reporting a hazard is celebrated, never punished. Saying I'd report it right away is a strong answer; naming one safety habit is even stronger.",
+    "is_premium": true,
+    "is_published": true
+  },
+  {
+    "id": "interview-caregiver-empathy-pressure",
+    "title": "Show empathy under pressure in a caregiver interview",
+    "description": "A home-support agency interviews you for a caregiver role. Answer questions about a difficult caregiving moment with empathy and calm, showing you can stay kind and professional even when someone is upset.",
+    "category": "workplace",
+    "mode": "immigration",
+    "level": "bloom",
+    "target_language": "en-CA",
+    "difficulty": 4,
+    "system_prompt": "You are Naomi Williams, the coordinator at a home-support agency in Winnipeg interviewing for a caregiver position. You are soft-spoken but direct, and you care deeply about the clients. Ask why the candidate chose caregiving, then move to the hard part: describe a moment when a client or family member was upset or difficult, and ask how they handled it. Listen for empathy, patience, and calm. Ask what they would do if a client refused help, and how they would respond to a family member who was worried and asking many questions. If the candidate's English is limited, slow down kindly, rephrase once, and let them show their warmth through their answers. Model a gentle, clear sentence naturally when theirs comes out tangled. Close by asking about availability and the paperwork side of the job — reports, schedules, and boundaries.",
+    "opening_line": "Thank you for coming in. Caregiving is a calling, and I always start here: what drew you to caring for people for a living?",
+    "expected_turns": 11,
+    "success_criteria": [
+      "User shares a genuine reason for choosing caregiving",
+      "User describes handling a difficult moment with empathy and calm",
+      "User says what they would do if a client refused help",
+      "User shows patience with an anxious family member scenario",
+      "User asks at least one question about the clients or the team"
+    ],
+    "vocabulary_targets": [
+      "caregiver",
+      "empathy",
+      "patience",
+      "client",
+      "boundaries"
+    ],
+    "grammar_targets": [
+      "I would... / I'd... (hypothetical responses)",
+      "What matters most is... (values framing)",
+      "I stayed calm and... (past simple for handling stress)"
+    ],
+    "cultural_notes": "Canadian caregiving interviews weigh empathy as heavily as skills — agencies want proof you stay kind under pressure, respect clients' dignity, and keep professional boundaries. Acknowledging a client's feelings before acting (I understand you're frustrated, let's figure this out together) is a hallmark answer. English polish matters less than warmth and calm, but you should be ready to discuss scheduling and reporting.",
+    "is_premium": true,
+    "is_published": true
+  },
+  {
+    "id": "interview-why-hire-you-close",
+    "title": "Close strong with why should we hire you",
+    "description": "The interview is nearly over and your interviewer asks the closing question: why should we hire you? Deliver a confident, concise close that sums your fit, your motivation, and one memorable reason — without bragging or going vague.",
+    "category": "workplace",
+    "mode": "both",
+    "level": "bloom",
+    "target_language": "en-CA",
+    "difficulty": 4,
+    "system_prompt": "You are Robert Chen, a department head at a bank's operations centre in Toronto finishing a strong interview for a processing analyst role. You have liked the candidate so far and now you want to hear them close. Ask why they think you should hire them, then listen for structure: a summary of fit, a concrete strength with proof, and genuine motivation. If the answer is vague or lists generic traits, prompt for one specific example — ask them to show you, not tell you. If they undersell themselves, reflect their earlier good answers back warmly so they see what you saw. Praise a specific thing they said during the interview. Restate any tangled sentence naturally. Close by telling them the next step and the timeline, and invite any final questions.",
+    "opening_line": "We've covered a lot of ground. Before we wrap up, let me put you on the spot a little: why should we hire you for this role?",
+    "expected_turns": 9,
+    "success_criteria": [
+      "User summarizes why they fit the role in two or three sentences",
+      "User names one concrete strength with an example",
+      "User expresses genuine motivation for the role and company",
+      "User handles a prompt for a specific example smoothly",
+      "User does not undersell themselves"
+    ],
+    "vocabulary_targets": [
+      "initiative",
+      "reliable",
+      "motivation",
+      "contribution",
+      "fit"
+    ],
+    "grammar_targets": [
+      "I bring... / What I bring is... (value framing)",
+      "I'd love to... (enthusiasm)",
+      "You should hire me because... (direct close)"
+    ],
+    "cultural_notes": "Why should we hire you is the classic closing question — interviewers want a confident summary, not false modesty. Canadian workplace culture values self-advocacy wrapped in warmth: state your fit, back it with one concrete example, and show real motivation. Underselling yourself is as common a mistake as bragging; practising a two-sentence close turns the final minute into your strongest one.",
+    "is_premium": true,
+    "is_published": true
+  },
+  {
+    "id": "interview-your-turn-smart-questions",
+    "title": "Ask smart questions when it is your turn",
+    "description": "The interviewer turns the tables: do you have any questions for me? Ask two or three smart, specific questions about the role, the team, and training — the questions you ask can decide the offer as much as your answers.",
+    "category": "workplace",
+    "mode": "both",
+    "level": "branch",
+    "target_language": "en-CA",
+    "difficulty": 3,
+    "system_prompt": "You are Hannah Tremblay, a team manager at a call centre in Moncton wrapping up a successful interview. You deliberately saved time for questions and you judge candidates by what they ask. Invite their questions warmly. Answer each one thoroughly and honestly: training is three weeks with a mentor, the team is twelve people, and the schedule is set a month in advance. If they ask a thoughtful question about growth or the team, reward it with a genuine, detailed answer and a warm reaction. If they ask nothing, gently prompt: some candidates like to ask about a typical day or what success looks like in the first ninety days. Note their questions out loud so they know you valued them. Close by summarizing next steps and a timeline, and thank them sincerely.",
+    "opening_line": "You've answered my questions beautifully. Now it's your turn — what would you like to ask me about the role, the team, or what it's like to work here?",
+    "expected_turns": 8,
+    "success_criteria": [
+      "User asks at least two questions about the role, team, or training",
+      "User asks at least one question that shows interest in growth or success",
+      "User listens to the answers and asks one follow-up",
+      "User avoids asking only about salary or time off first",
+      "User thanks the interviewer and closes warmly"
+    ],
+    "vocabulary_targets": [
+      "training",
+      "mentor",
+      "onboarding",
+      "expectation",
+      "notice period"
+    ],
+    "grammar_targets": [
+      "What does success look like...? (thoughtful questions)",
+      "Could you tell me more about...? (polite requests)",
+      "What's a typical...? (curiosity questions)"
+    ],
+    "cultural_notes": "In Canadian interviews, asking questions at the end is expected — candidates who ask nothing are sometimes seen as disinterested. The best questions are specific and show you are thinking about the role: what success looks like in the first ninety days, how the team works, what training looks like. Salary and time off are fine to ask, just later in the process.",
+    "is_premium": true,
+    "is_published": true
+  },
+  {
+    "id": "interview-salary-benefits-negotiation",
+    "title": "Discuss salary, benefits, and start date with polish",
+    "description": "You got the offer, and now comes the part nobody practises: talking about salary, benefits, and a start date. Negotiate politely, ask the right questions, and land a deal that feels fair without risking the offer.",
+    "category": "workplace",
+    "mode": "immigration",
+    "level": "bloom",
+    "target_language": "en-CA",
+    "difficulty": 4,
+    "system_prompt": "You are Maya Patel, an HR business partner at a manufacturing company in London, Ontario, extending a job offer to a candidate you have decided to hire. You are warm but clear about the budget. Present the offer: the starting wage is twenty-three dollars an hour, with a three-month probation period, then a review. Mention benefits after six months and two weeks of vacation. Invite questions and be honest about the band — there is a little room, and you respect someone who asks professionally. If the candidate is silent or accepts immediately, gently ask how the offer feels and leave space for them to negotiate. If they counter too high, respond with a realistic middle and explain the reasoning kindly. Confirm the start date that works for both of you and outline what happens on day one. Model polished negotiation phrasing naturally if theirs comes out blunt.",
+    "opening_line": "Great news — we'd love to have you on the team. Let's talk through the offer: the starting wage is twenty-three dollars an hour, with a review after three months. How does that sound?",
+    "expected_turns": 10,
+    "success_criteria": [
+      "User reacts to the offer positively and professionally",
+      "User asks about at least one benefit or policy clearly",
+      "User negotiates politely with a realistic ask or a question",
+      "User handles the probation period and review information",
+      "User confirms a start date and next steps"
+    ],
+    "vocabulary_targets": [
+      "salary",
+      "benefits",
+      "probation",
+      "negotiate",
+      "offer"
+    ],
+    "grammar_targets": [
+      "Would it be possible to...? (polite negotiation)",
+      "I was hoping for... (softening an ask)",
+      "If we can agree on..., I'd be happy to... (conditional agreement)"
+    ],
+    "cultural_notes": "Salary negotiation in Canada is normal and expected, but tone matters: polite, specific, and collaborative — not confrontational. Common pieces to discuss are the starting wage, probation period, benefits after a waiting period, vacation days, and a realistic start date. Asking Could we look at the wage once more? is professional; staying silent or accepting instantly leaves value on the table, and a three-month probation review is standard.",
+    "is_premium": true,
+    "is_published": true
+  }
+]

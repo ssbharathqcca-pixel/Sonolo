@@ -28,6 +28,7 @@ import Animated, {
   withTiming,
 } from "react-native-reanimated";
 import {
+  BookOpen,
   CheckCircle2,
   ChevronRight,
   Lock,
@@ -38,14 +39,17 @@ import {
 import { GlassCard } from "../../src/components/GlassCard";
 import { PaywallModal } from "../../src/components/PaywallModal";
 import {
+  fetchMicrolessons,
   fetchPacks,
   fetchTodayQuests,
   type ContentPack,
+  type MicrolessonSummary,
   type QuestResult,
   type Scenario,
 } from "../../src/api/client";
 import { isLockedForCaller } from "../../src/lib/scenarioAccess";
 import { useAuthStore } from "../../src/stores/authStore";
+import { useMicroProgressStore } from "../../src/stores/microProgressStore";
 import { useScenarioStore } from "../../src/stores/scenarioStore";
 import { colors } from "../../src/theme/colors";
 
@@ -268,6 +272,49 @@ function PackCard({
   );
 }
 
+function CultureCornerCard({
+  lesson,
+  isDone,
+  onPress,
+}: {
+  lesson: MicrolessonSummary;
+  isDone: boolean;
+  onPress: () => void;
+}): JSX.Element {
+  return (
+    <Pressable
+      accessibilityLabel={`Culture lesson: ${lesson.title}`}
+      onPress={onPress}
+      style={({ pressed }) => [
+        styles.microCard,
+        // Solid theme color at 0.9 opacity — same treatment as pack cards.
+        { backgroundColor: `${lesson.theme_color ?? "#E11D48"}E6` },
+        pressed && styles.packCardPressed,
+      ]}
+    >
+      <View style={styles.microCardHeader}>
+        <View style={styles.microIconWell}>
+          <Text style={styles.microIcon}>{lesson.icon ?? "🍁"}</Text>
+        </View>
+        {isDone ? (
+          <View style={styles.microDoneBadge}>
+            <CheckCircle2 color="#FFFFFF" size={14} />
+          </View>
+        ) : null}
+      </View>
+      <Text style={styles.microTitle} numberOfLines={2}>
+        {lesson.title}
+      </Text>
+      <View style={styles.microMetaRow}>
+        <BookOpen color="rgba(255, 255, 255, 0.85)" size={12} />
+        <Text style={styles.microMeta}>
+          {lesson.read_minutes} min{isDone ? " · Done" : ""}
+        </Text>
+      </View>
+    </Pressable>
+  );
+}
+
 export default function LearnScreen(): JSX.Element {
   const router = useRouter();
   const insets = useSafeAreaInsets();
@@ -278,12 +325,27 @@ export default function LearnScreen(): JSX.Element {
   // SN-030: manifest packs behind the tappable card rail; SN-039 cards
   // navigate to the Pack Detail screen instead of filtering in place.
   const [packs, setPacks] = useState<ContentPack[]>([]);
+  // SN-047: Culture Corner micro-lesson summaries for the card rail.
+  const [microlessons, setMicrolessons] = useState<MicrolessonSummary[]>([]);
 
   const user = useAuthStore((state) => state.user);
   const scenarios = useScenarioStore((state) => state.scenarios);
   const isLoadingScenarios = useScenarioStore((state) => state.isLoading);
   const catalogLanguage = useScenarioStore((state) => state.language);
   const loadScenarios = useScenarioStore((state) => state.load);
+  // SN-047: micro-lesson completion is device-local; hydrate once so a
+  // finished lesson keeps its check after a relaunch.
+  const isMicroHydrated = useMicroProgressStore((state) => state.isHydrated);
+  const hydrateMicroProgress = useMicroProgressStore((state) => state.hydrate);
+  const completedMicrolessonIds = useMicroProgressStore(
+    (state) => state.completedMicrolessonIds,
+  );
+
+  useEffect(() => {
+    if (!isMicroHydrated) {
+      void hydrateMicroProgress();
+    }
+  }, [isMicroHydrated, hydrateMicroProgress]);
 
   // The catalog follows the account's content language (SN-020): it
   // loads when missing or stale and refetches when the preference
@@ -309,6 +371,25 @@ export default function LearnScreen(): JSX.Element {
       })
       .catch(() => {
         // No packs, no rail; nothing else on screen depends on it.
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  // Culture Corner summaries are static manifest data (SN-047): fetch
+  // once on mount and degrade silently when offline, same as the pack
+  // rail above.
+  useEffect(() => {
+    let cancelled = false;
+    fetchMicrolessons()
+      .then((lessons) => {
+        if (!cancelled) {
+          setMicrolessons(lessons);
+        }
+      })
+      .catch(() => {
+        // No lessons, no Culture Corner rail; nothing else depends on it.
       });
     return () => {
       cancelled = true;
@@ -391,6 +472,29 @@ export default function LearnScreen(): JSX.Element {
             />
           ))}
         </ScrollView>
+      ) : null}
+
+      {microlessons.length > 0 ? (
+        <View style={styles.microSection}>
+          <Text style={styles.sectionTitle}>Culture Corner</Text>
+          <Text style={styles.microSubtitle}>
+            One-minute reads on the unwritten rules of fitting in.
+          </Text>
+          <ScrollView
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={styles.microRail}
+          >
+            {microlessons.map((lesson) => (
+              <CultureCornerCard
+                key={lesson.id}
+                lesson={lesson}
+                isDone={completedMicrolessonIds.includes(lesson.id)}
+                onPress={() => router.push(`/microlesson/${lesson.id}`)}
+              />
+            ))}
+          </ScrollView>
+        </View>
       ) : null}
 
       {quests === null && !questsUnavailable ? (
@@ -543,6 +647,72 @@ const styles = StyleSheet.create({
   },
   packRail: {
     paddingRight: 4,
+  },
+  microSection: {
+    gap: 10,
+  },
+  microSubtitle: {
+    color: colors.textTertiary,
+    fontSize: 13,
+    lineHeight: 18,
+  },
+  microRail: {
+    paddingRight: 4,
+    paddingTop: 2,
+  },
+  microCard: {
+    width: 210,
+    borderRadius: 16,
+    borderWidth: 1,
+    borderColor: "rgba(255, 255, 255, 0.2)",
+    padding: 14,
+    marginRight: 12,
+    gap: 8,
+    shadowColor: "#000000",
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.3,
+    shadowRadius: 6,
+    elevation: 4,
+  },
+  microCardHeader: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+  },
+  microIconWell: {
+    width: 34,
+    height: 34,
+    borderRadius: 12,
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "rgba(255, 255, 255, 0.18)",
+  },
+  microIcon: {
+    fontSize: 18,
+  },
+  microDoneBadge: {
+    width: 22,
+    height: 22,
+    borderRadius: 999,
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "rgba(255, 255, 255, 0.25)",
+  },
+  microTitle: {
+    color: "#FFFFFF",
+    fontSize: 14,
+    fontWeight: "700",
+    lineHeight: 19,
+  },
+  microMetaRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 5,
+  },
+  microMeta: {
+    color: "rgba(255, 255, 255, 0.85)",
+    fontSize: 11,
+    fontWeight: "600",
   },
   packCard: {
     width: 220,

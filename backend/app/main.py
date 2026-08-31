@@ -11,6 +11,7 @@ from app.api import (
     auth,
     gamification,
     health,
+    microlessons,
     packs,
     quests,
     review,
@@ -62,6 +63,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     app.include_router(gamification.router, prefix=settings.api_prefix)
     app.include_router(scenarios.router, prefix=settings.api_prefix)
     app.include_router(packs.router, prefix=settings.api_prefix)
+    app.include_router(microlessons.router, prefix=settings.api_prefix)
     app.include_router(ws.router)
     return app
 

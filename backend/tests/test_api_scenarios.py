@@ -65,7 +65,7 @@ async def test_scenarios_returns_the_seeded_catalog(
     scenarios_client: AsyncClient, db_session: AsyncSession
 ) -> None:
     seeded = await seed_scenarios(db_session)
-    assert seeded == 135
+    assert seeded == 145
 
     response = await scenarios_client.get(
         "/api/scenarios", headers=await auth_headers(scenarios_client)
@@ -73,7 +73,7 @@ async def test_scenarios_returns_the_seeded_catalog(
 
     assert response.status_code == 200
     body = response.json()
-    assert len(body["scenarios"]) == 90
+    assert len(body["scenarios"]) == 100
     titles = [scenario["title"] for scenario in body["scenarios"]]
     assert titles == sorted(titles)  # Stable, title-ordered list.
     first = body["scenarios"][0]
@@ -126,11 +126,12 @@ async def test_free_user_sees_premium_scenarios_locked(
     # Premium scenarios are exactly the locked entries for a free-tier
     # caller — 8 from canadian-life-v1, 5 from canadian-life-v2, and 3
     # each from workplace-english-v1, healthcare-english-v1,
-    # housing-english-v1, and finance-english-v1 = 25 en; plus 3 each
-    # from quebec-healthcare-v1 and quebec-workplace-v1 = 31 total.
-    # The English catalog sees only the 25 English premiums.
-    assert len(premium_titles) == 37
-    assert len(en_premium_titles) == 25
+    # housing-english-v1, and finance-english-v1 = 25 en; plus 10 from
+    # job-interviews-english-v1 = 35 en; plus 3 each from
+    # quebec-healthcare-v1 and quebec-workplace-v1 = 41 total. The
+    # English catalog sees only the 35 English premiums.
+    assert len(premium_titles) == 47
+    assert len(en_premium_titles) == 35
     assert locked_titles == en_premium_titles
 
 
@@ -146,7 +147,7 @@ async def test_premium_user_sees_nothing_locked(
 
     assert response.status_code == 200
     scenarios = response.json()["scenarios"]
-    assert len(scenarios) == 90
+    assert len(scenarios) == 100
     assert all(scenario["is_locked"] is False for scenario in scenarios)
 
 
@@ -185,8 +186,8 @@ async def test_default_catalog_follows_preferred_language(
 
     english = await scenarios_client.get("/api/scenarios", headers=headers)
     assert english.status_code == 200
-    # Default preference is English: the 90 en-CA scenarios, no French rows.
-    assert len(english.json()["scenarios"]) == 90
+    # Default preference is English: the 100 en-CA scenarios, no French rows.
+    assert len(english.json()["scenarios"]) == 100
 
     switched = await scenarios_client.post(
         "/api/users/me/language", json={"language": "fr"}, headers=headers
@@ -210,7 +211,7 @@ async def test_default_catalog_follows_preferred_language(
     )
     assert back.status_code == 200
     restored = await scenarios_client.get("/api/scenarios", headers=headers)
-    assert len(restored.json()["scenarios"]) == 90
+    assert len(restored.json()["scenarios"]) == 100
 
 
 async def test_language_rejects_unknown_values(

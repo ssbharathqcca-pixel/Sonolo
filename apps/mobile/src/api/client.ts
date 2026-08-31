@@ -304,6 +304,52 @@ export async function fetchPacks(): Promise<ContentPack[]> {
 }
 
 // ---------------------------------------------------------------------
+// Culture Corner micro-lessons (SN-047)
+// ---------------------------------------------------------------------
+
+/** One micro-lesson as shown in the Learn tab's Culture Corner rail. */
+export interface MicrolessonSummary {
+  id: string;
+  title: string;
+  hook: string;
+  read_minutes: number;
+  /** Manifest pack the lesson belongs to (SN-047); absent on catalogs
+   *  cached before the format shipped. */
+  pack_id?: string;
+  /** Pack theme color for card theming (SN-047). */
+  theme_color?: string;
+  /** Pack icon (emoji, e.g. 🍁) rendered on the card. */
+  icon?: string;
+}
+
+/** One headed paragraph inside a micro-lesson. */
+export interface MicrolessonSection {
+  heading: string;
+  text: string;
+}
+
+/** The full lesson body for the reader screen. */
+export interface Microlesson extends MicrolessonSummary {
+  sections: MicrolessonSection[];
+  takeaway: string;
+  try_it: string;
+}
+
+/** GET /microlessons — Culture Corner summaries for the Learn rail. */
+export async function fetchMicrolessons(): Promise<MicrolessonSummary[]> {
+  const { data } = await api.get<{ microlessons: MicrolessonSummary[] }>(
+    "/microlessons",
+  );
+  return data.microlessons;
+}
+
+/** GET /microlessons/{id} — one full micro-lesson for the reader. */
+export async function fetchMicrolesson(id: string): Promise<Microlesson> {
+  const { data } = await api.get<Microlesson>(`/microlessons/${id}`);
+  return data;
+}
+
+// ---------------------------------------------------------------------
 // Entitlements (SN-041)
 // ---------------------------------------------------------------------
 

@@ -1,0 +1,7 @@
+== SN-047 backend pytest ==
+186 passed in 88.22s (0:01:28)
+== SN-047 seed_content ==
+scenario_upserts=145
+scenarios_before=145
+scenarios_after=145
+vocabulary_pack_items=720 (core-v1=100, core-v2=100, core-fr-v1=20, vocab-workplace-english-v1=50, vocab-healthcare-english-v1=50, vocab-quebec-healthcare-v1=50, vocab-quebec-workplace-v1=50, vocab-housing-english-v1=50, vocab-finance-english-v1=50, vocab-quebec-housing-v1=50, vocab-quebec-finance-v1=50, vocab-smalltalk-english-v1=50, vocab-job-interviews-english-v1=50)

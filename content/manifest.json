@@ -312,6 +312,45 @@
       "theme_color": "#38BDF8",
       "icon": "book",
       "is_published": true
+    },
+    {
+      "id": "job-interviews-english-v1",
+      "type": "scenarios",
+      "language": "en",
+      "path": "content/scenarios/job-interviews-english-v1.json",
+      "title": "Job Interviews Bootcamp",
+      "description": "High-stakes interview practice: phone screens, STAR answers, and negotiation.",
+      "category": "workplace",
+      "tier": "premium",
+      "theme_color": "#F59E0B",
+      "icon": "💼",
+      "is_published": true
+    },
+    {
+      "id": "vocab-job-interviews-english-v1",
+      "type": "vocabulary",
+      "language": "en",
+      "path": "content/vocabulary/vocab-job-interviews-english-v1.json",
+      "title": "Interview Vocabulary",
+      "description": "Essential words for Canadian job interviews.",
+      "category": "vocabulary",
+      "tier": "premium",
+      "theme_color": "#F59E0B",
+      "icon": "book",
+      "is_published": true
+    },
+    {
+      "id": "culture-english-v1",
+      "type": "microlessons",
+      "language": "en",
+      "path": "content/microlessons/culture-english-v1.json",
+      "title": "Culture Corner",
+      "description": "One-minute reads on the unwritten rules of fitting in.",
+      "category": "culture",
+      "tier": "free",
+      "theme_color": "#E11D48",
+      "icon": "🍁",
+      "is_published": true
     }
   ]
 }

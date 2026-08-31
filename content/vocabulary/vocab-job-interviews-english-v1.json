@@ -1,0 +1,1252 @@
+[
+  {
+    "id": "vocab-ji-01",
+    "word": "recruiter",
+    "phonetic": "/rɪˈkruːtər/",
+    "translations": {
+      "pa": "ਭਰਤੀ ਕਰਨ ਵਾਲਾ",
+      "hi": "भर्तीकर्ता",
+      "zh": "招聘人员",
+      "es": "reclutador"
+    },
+    "level": "branch",
+    "category": "workplace",
+    "example_sentences": [
+      "The recruiter called to set up a phone screen.",
+      "Recruiters often look at your resume before an interview."
+    ],
+    "confusion_pairs": [
+      "hiring manager",
+      "HR"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.42,
+      "stability": 3.4
+    }
+  },
+  {
+    "id": "vocab-ji-02",
+    "word": "phone screen",
+    "phonetic": "/ˈfoʊn skriːn/",
+    "translations": {
+      "pa": "ਫ਼ੋਨ ਸਕ੍ਰੀਨਿੰਗ",
+      "hi": "फ़ोन स्क्रीनिंग",
+      "zh": "电话初筛",
+      "es": "entrevista telefónica"
+    },
+    "level": "branch",
+    "category": "workplace",
+    "example_sentences": [
+      "The phone screen usually takes about fifteen minutes.",
+      "Find a quiet place before you take the phone screen call."
+    ],
+    "confusion_pairs": [
+      "interview",
+      "call"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.5,
+      "stability": 3.0
+    }
+  },
+  {
+    "id": "vocab-ji-03",
+    "word": "availability",
+    "phonetic": "/əˌveɪləˈbɪləti/",
+    "translations": {
+      "pa": "ਉਪਲਬਧਤਾ",
+      "hi": "उपलब्धता",
+      "zh": "可用的时间",
+      "es": "disponibilidad"
+    },
+    "level": "sprout",
+    "category": "workplace",
+    "example_sentences": [
+      "My availability is Monday to Friday, daytime.",
+      "They asked about weekend availability for the retail job."
+    ],
+    "confusion_pairs": [
+      "schedule",
+      "free time"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.36,
+      "stability": 3.6
+    }
+  },
+  {
+    "id": "vocab-ji-04",
+    "word": "wage",
+    "phonetic": "/weɪdʒ/",
+    "translations": {
+      "pa": "ਉਜਰਤ",
+      "hi": "मज़दूरी / वेतन",
+      "zh": "工资",
+      "es": "salario / sueldo"
+    },
+    "level": "sprout",
+    "category": "workplace",
+    "example_sentences": [
+      "The wage is twenty-three dollars an hour.",
+      "Ask about the wage before you accept the offer."
+    ],
+    "confusion_pairs": [
+      "salary",
+      "pay"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.3,
+      "stability": 4.0
+    }
+  },
+  {
+    "id": "vocab-ji-05",
+    "word": "follow up",
+    "phonetic": "/ˈfɑːloʊ ʌp/",
+    "translations": {
+      "pa": "ਪਿੱਛਾ ਕਰਨਾ (ਜਾਂਚ ਕਰਨਾ)",
+      "hi": "अनुवर्ती कार्रवाई",
+      "zh": "跟进",
+      "es": "hacer seguimiento"
+    },
+    "level": "branch",
+    "category": "workplace",
+    "example_sentences": [
+      "Send a thank-you email to follow up after the interview.",
+      "I will follow up with the recruiter next week."
+    ],
+    "confusion_pairs": [
+      "keep in touch",
+      "check in"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.45,
+      "stability": 3.2
+    }
+  },
+  {
+    "id": "vocab-ji-06",
+    "word": "resume",
+    "phonetic": "/ˈrezəmeɪ/",
+    "translations": {
+      "pa": "ਰੈਜ਼ਿਊਮੇ",
+      "hi": "रिज़्यूमे",
+      "zh": "简历",
+      "es": "currículum"
+    },
+    "level": "seed",
+    "category": "workplace",
+    "example_sentences": [
+      "Keep your resume to two pages for most Canadian jobs.",
+      "Tailor your resume to each job you apply for."
+    ],
+    "confusion_pairs": [
+      "cover letter",
+      "CV"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.2,
+      "stability": 4.4
+    }
+  },
+  {
+    "id": "vocab-ji-07",
+    "word": "cover letter",
+    "phonetic": "/ˈkʌvər ˌletər/",
+    "translations": {
+      "pa": "ਕਵਰ ਲੈਟਰ",
+      "hi": "कवर लेटर",
+      "zh": "求职信",
+      "es": "carta de presentación"
+    },
+    "level": "branch",
+    "category": "workplace",
+    "example_sentences": [
+      "Your cover letter should explain why you fit the role.",
+      "Many Canadian employers still ask for a cover letter."
+    ],
+    "confusion_pairs": [
+      "resume",
+      "reference"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.48,
+      "stability": 3.0
+    }
+  },
+  {
+    "id": "vocab-ji-08",
+    "word": "strength",
+    "phonetic": "/streŋkθ/",
+    "translations": {
+      "pa": "ਤਾਕਤ / ਖੂਬੀ",
+      "hi": "ताकत / खूबी",
+      "zh": "优势",
+      "es": "fortaleza / punto fuerte"
+    },
+    "level": "sprout",
+    "category": "workplace",
+    "example_sentences": [
+      "One of my strengths is staying calm under pressure.",
+      "Name a strength and give a real example."
+    ],
+    "confusion_pairs": [
+      "skill",
+      "weakness"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.26,
+      "stability": 4.2
+    }
+  },
+  {
+    "id": "vocab-ji-09",
+    "word": "achievement",
+    "phonetic": "/əˈtʃiːvmənt/",
+    "translations": {
+      "pa": "ਪ੍ਰਾਪਤੀ",
+      "hi": "उपलब्धि",
+      "zh": "成就",
+      "es": "logro"
+    },
+    "level": "branch",
+    "category": "workplace",
+    "example_sentences": [
+      "Share one achievement with a number if you can.",
+      "Her biggest achievement was leading the team through the busy season."
+    ],
+    "confusion_pairs": [
+      "success",
+      "result"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.44,
+      "stability": 3.3
+    }
+  },
+  {
+    "id": "vocab-ji-10",
+    "word": "experience",
+    "phonetic": "/ɪkˈspɪriəns/",
+    "translations": {
+      "pa": "ਤਜਰਬਾ",
+      "hi": "अनुभव",
+      "zh": "经验",
+      "es": "experiencia"
+    },
+    "level": "seed",
+    "category": "workplace",
+    "example_sentences": [
+      "I have three years of customer service experience.",
+      "Experience abroad still counts as experience."
+    ],
+    "confusion_pairs": [
+      "skill",
+      "background"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.16,
+      "stability": 4.6
+    }
+  },
+  {
+    "id": "vocab-ji-11",
+    "word": "behavioral",
+    "phonetic": "/bɪˈheɪvjərəl/",
+    "translations": {
+      "pa": "ਵਿਹਾਰ ਸੰਬੰਧੀ",
+      "hi": "व्यवहार संबंधी",
+      "zh": "行为方面的",
+      "es": "conductual / de comportamiento"
+    },
+    "level": "bloom",
+    "category": "workplace",
+    "example_sentences": [
+      "Behavioral questions ask about your past actions.",
+      "Use the STAR method for behavioral interview questions."
+    ],
+    "confusion_pairs": [
+      "behavior",
+      "technical"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.58,
+      "stability": 2.7
+    }
+  },
+  {
+    "id": "vocab-ji-12",
+    "word": "competency",
+    "phonetic": "/ˈkɑːmpətənsi/",
+    "translations": {
+      "pa": "ਯੋਗਤਾ",
+      "hi": "क्षमता / योग्यता",
+      "zh": "能力",
+      "es": "competencia"
+    },
+    "level": "bloom",
+    "category": "workplace",
+    "example_sentences": [
+      "Communication is a core competency for this role.",
+      "Interviewers listen for the competencies listed in the job posting."
+    ],
+    "confusion_pairs": [
+      "skill",
+      "qualification"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.56,
+      "stability": 2.8
+    }
+  },
+  {
+    "id": "vocab-ji-13",
+    "word": "conflict",
+    "phonetic": "/ˈkɑːnflɪkt/",
+    "translations": {
+      "pa": "ਝਗੜਾ / ਮਤਭੇਦ",
+      "hi": "मतभेद / टकराव",
+      "zh": "冲突",
+      "es": "conflicto"
+    },
+    "level": "branch",
+    "category": "workplace",
+    "example_sentences": [
+      "Tell me about a time you resolved a conflict.",
+      "We handled the conflict by talking calmly and listening."
+    ],
+    "confusion_pairs": [
+      "argument",
+      "problem"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.4,
+      "stability": 3.5
+    }
+  },
+  {
+    "id": "vocab-ji-14",
+    "word": "feedback",
+    "phonetic": "/ˈfiːdbæk/",
+    "translations": {
+      "pa": "ਫ਼ੀਡਬੈਕ / ਪ੍ਰਤੀਕਿਰਿਆ",
+      "hi": "प्रतिक्रिया / फ़ीडबैक",
+      "zh": "反馈",
+      "es": "retroalimentación"
+    },
+    "level": "sprout",
+    "category": "workplace",
+    "example_sentences": [
+      "I asked my manager for feedback after the project.",
+      "Give feedback kindly and specifically."
+    ],
+    "confusion_pairs": [
+      "comment",
+      "review"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.34,
+      "stability": 3.7
+    }
+  },
+  {
+    "id": "vocab-ji-15",
+    "word": "resolve",
+    "phonetic": "/rɪˈzɑːlv/",
+    "translations": {
+      "pa": "ਹੱਲ ਕਰਨਾ",
+      "hi": "हल करना",
+      "zh": "解决",
+      "es": "resolver"
+    },
+    "level": "branch",
+    "category": "workplace",
+    "example_sentences": [
+      "We resolved the issue before the deadline.",
+      "The team worked together to resolve the misunderstanding."
+    ],
+    "confusion_pairs": [
+      "solve",
+      "settle"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.43,
+      "stability": 3.3
+    }
+  },
+  {
+    "id": "vocab-ji-16",
+    "word": "Canadian experience",
+    "phonetic": "/kəˈneɪdiən ɪkˈspɪriəns/",
+    "translations": {
+      "pa": "ਕੈਨੇਡੀਅਨ ਤਜਰਬਾ",
+      "hi": "कनाडाई अनुभव",
+      "zh": "加拿大经验",
+      "es": "experiencia canadiense"
+    },
+    "level": "bloom",
+    "category": "workplace",
+    "example_sentences": [
+      "Some employers ask about Canadian experience in interviews.",
+      "Turn the Canadian experience question into a strengths answer."
+    ],
+    "confusion_pairs": [
+      "work experience",
+      "settlement"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.62,
+      "stability": 2.6
+    }
+  },
+  {
+    "id": "vocab-ji-17",
+    "word": "transferable",
+    "phonetic": "/trænsˈfɜːrəbəl/",
+    "translations": {
+      "pa": "ਤਬਦੀਲਯੋਗ",
+      "hi": "हस्तांतरणीय",
+      "zh": "可迁移的",
+      "es": "transferible"
+    },
+    "level": "bloom",
+    "category": "workplace",
+    "example_sentences": [
+      "Customer service skills are transferable to many jobs.",
+      "Your transferable skills matter more than where you worked."
+    ],
+    "confusion_pairs": [
+      "useful",
+      "portable"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.6,
+      "stability": 2.7
+    }
+  },
+  {
+    "id": "vocab-ji-18",
+    "word": "certification",
+    "phonetic": "/ˌsɜːrtəfɪˈkeɪʃn/",
+    "translations": {
+      "pa": "ਸਰਟੀਫਿਕੇਸ਼ਨ",
+      "hi": "प्रमाणन",
+      "zh": "证书",
+      "es": "certificación"
+    },
+    "level": "branch",
+    "category": "workplace",
+    "example_sentences": [
+      "A food safety certification helps in restaurant jobs.",
+      "Bring proof of your certifications to the interview."
+    ],
+    "confusion_pairs": [
+      "diploma",
+      "license"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.46,
+      "stability": 3.1
+    }
+  },
+  {
+    "id": "vocab-ji-19",
+    "word": "adapt",
+    "phonetic": "/əˈdæpt/",
+    "translations": {
+      "pa": "ਅਨੁਕੂਲ ਹੋਣਾ",
+      "hi": "अनुकूल होना / ढलना",
+      "zh": "适应",
+      "es": "adaptarse"
+    },
+    "level": "branch",
+    "category": "workplace",
+    "example_sentences": [
+      "Newcomers adapt quickly to new systems and teams.",
+      "Show how you adapted when things changed at work."
+    ],
+    "confusion_pairs": [
+      "adjust",
+      "change"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.38,
+      "stability": 3.5
+    }
+  },
+  {
+    "id": "vocab-ji-20",
+    "word": "proof",
+    "phonetic": "/pruːf/",
+    "translations": {
+      "pa": "ਸਬੂਤ",
+      "hi": "प्रमाण / सबूत",
+      "zh": "证明",
+      "es": "prueba"
+    },
+    "level": "sprout",
+    "category": "workplace",
+    "example_sentences": [
+      "Give proof of your skills with real examples.",
+      "A reference letter is proof of your past work."
+    ],
+    "confusion_pairs": [
+      "evidence",
+      "example"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.32,
+      "stability": 3.8
+    }
+  },
+  {
+    "id": "vocab-ji-21",
+    "word": "customer service",
+    "phonetic": "/ˈkʌstəmər ˈsɜːrvɪs/",
+    "translations": {
+      "pa": "ਗਾਹਕ ਸੇਵਾ",
+      "hi": "ग्राहक सेवा",
+      "zh": "客户服务",
+      "es": "servicio al cliente"
+    },
+    "level": "seed",
+    "category": "workplace",
+    "example_sentences": [
+      "Retail jobs in Canada are all about customer service.",
+      "Good customer service starts with a friendly hello."
+    ],
+    "confusion_pairs": [
+      "sales",
+      "support"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.24,
+      "stability": 4.2
+    }
+  },
+  {
+    "id": "vocab-ji-22",
+    "word": "shift",
+    "phonetic": "/ʃɪft/",
+    "translations": {
+      "pa": "ਸ਼ਿਫਟ",
+      "hi": "शिफ्ट",
+      "zh": "轮班",
+      "es": "turno"
+    },
+    "level": "seed",
+    "category": "workplace",
+    "example_sentences": [
+      "The store needs people for the evening shift.",
+      "My shift starts at nine in the morning."
+    ],
+    "confusion_pairs": [
+      "schedule",
+      "hours"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.18,
+      "stability": 4.5
+    }
+  },
+  {
+    "id": "vocab-ji-23",
+    "word": "sales floor",
+    "phonetic": "/ˈseɪlz flɔːr/",
+    "translations": {
+      "pa": "ਵਿਕਰੀ ਫ਼ਰਸ਼",
+      "hi": "बिक्री क्षेत्र",
+      "zh": "销售区",
+      "es": "área de ventas"
+    },
+    "level": "branch",
+    "category": "workplace",
+    "example_sentences": [
+      "The manager interviewed me on the sales floor.",
+      "Associates spend their shift on the sales floor helping customers."
+    ],
+    "confusion_pairs": [
+      "store",
+      "counter"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.47,
+      "stability": 3.1
+    }
+  },
+  {
+    "id": "vocab-ji-24",
+    "word": "greet",
+    "phonetic": "/ɡriːt/",
+    "translations": {
+      "pa": "ਸਵਾਗਤ ਕਰਨਾ",
+      "hi": "अभिवादन करना",
+      "zh": "打招呼",
+      "es": "saludar"
+    },
+    "level": "sprout",
+    "category": "workplace",
+    "example_sentences": [
+      "Greet every customer who walks in.",
+      "A warm greeting sets the tone for the whole visit."
+    ],
+    "confusion_pairs": [
+      "welcome",
+      "meet"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.3,
+      "stability": 4.0
+    }
+  },
+  {
+    "id": "vocab-ji-25",
+    "word": "punctual",
+    "phonetic": "/ˈpʌŋktʃuəl/",
+    "translations": {
+      "pa": "ਸਮੇਂ ਦਾ ਪਾਬੰਦ",
+      "hi": "समय का पाबंद",
+      "zh": "守时的",
+      "es": "puntual"
+    },
+    "level": "branch",
+    "category": "workplace",
+    "example_sentences": [
+      "Arrive punctual — ten minutes early is perfect.",
+      "Employers value punctual workers who show up on time."
+    ],
+    "confusion_pairs": [
+      "reliable",
+      "on time"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.45,
+      "stability": 3.2
+    }
+  },
+  {
+    "id": "vocab-ji-26",
+    "word": "WHMIS",
+    "phonetic": "/ˈwɪmɪs/",
+    "translations": {
+      "pa": "ਵ੍ਹਿਮਿਸ",
+      "hi": "WHMIS",
+      "zh": "工作场所危险品信息系统",
+      "es": "WHMIS"
+    },
+    "level": "bloom",
+    "category": "workplace",
+    "example_sentences": [
+      "WHMIS training teaches you about workplace chemicals.",
+      "Employers provide WHMIS training before you handle products."
+    ],
+    "confusion_pairs": [
+      "PPE",
+      "safety training"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.66,
+      "stability": 2.5
+    }
+  },
+  {
+    "id": "vocab-ji-27",
+    "word": "PPE",
+    "phonetic": "/ˌpiː piː ˈiː/",
+    "translations": {
+      "pa": "ਪੀ.ਪੀ.ਈ.",
+      "hi": "PPE",
+      "zh": "个人防护装备",
+      "es": "EPP"
+    },
+    "level": "bloom",
+    "category": "workplace",
+    "example_sentences": [
+      "PPE stands for personal protective equipment.",
+      "Wear the required PPE such as gloves and safety glasses."
+    ],
+    "confusion_pairs": [
+      "uniform",
+      "gear"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.64,
+      "stability": 2.5
+    }
+  },
+  {
+    "id": "vocab-ji-28",
+    "word": "hazard",
+    "phonetic": "/ˈhæzərd/",
+    "translations": {
+      "pa": "ਖਤਰਾ",
+      "hi": "खतरा",
+      "zh": "危险",
+      "es": "peligro"
+    },
+    "level": "branch",
+    "category": "workplace",
+    "example_sentences": [
+      "Report any hazard to your supervisor right away.",
+      "A wet floor is a common hazard in workplaces."
+    ],
+    "confusion_pairs": [
+      "danger",
+      "risk"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.42,
+      "stability": 3.4
+    }
+  },
+  {
+    "id": "vocab-ji-29",
+    "word": "safety gear",
+    "phonetic": "/ˈseɪfti ɡɪr/",
+    "translations": {
+      "pa": "ਸੁਰੱਖਿਆ ਉਪਕਰਨ",
+      "hi": "सुरक्षा उपकरण",
+      "zh": "安全装备",
+      "es": "equipo de seguridad"
+    },
+    "level": "branch",
+    "category": "workplace",
+    "example_sentences": [
+      "Warehouse workers wear safety gear on the floor.",
+      "Check your safety gear before starting the shift."
+    ],
+    "confusion_pairs": [
+      "uniform",
+      "PPE"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.43,
+      "stability": 3.3
+    }
+  },
+  {
+    "id": "vocab-ji-30",
+    "word": "supervise",
+    "phonetic": "/ˈsuːpərvaɪz/",
+    "translations": {
+      "pa": "ਨਿਗਰਾਨੀ ਕਰਨੀ",
+      "hi": "पर्यवेक्षण करना",
+      "zh": "监督",
+      "es": "supervisar"
+    },
+    "level": "bloom",
+    "category": "workplace",
+    "example_sentences": [
+      "In that job I supervised a team of five.",
+      "The shift lead supervises the whole floor."
+    ],
+    "confusion_pairs": [
+      "manage",
+      "watch"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.52,
+      "stability": 2.9
+    }
+  },
+  {
+    "id": "vocab-ji-31",
+    "word": "caregiver",
+    "phonetic": "/ˈkerɡɪvər/",
+    "translations": {
+      "pa": "ਦੇਖਭਾਲ ਕਰਨ ਵਾਲਾ",
+      "hi": "देखभाल करने वाला",
+      "zh": "护理员",
+      "es": "cuidador"
+    },
+    "level": "branch",
+    "category": "workplace",
+    "example_sentences": [
+      "The agency is hiring caregivers for home support.",
+      "A caregiver helps clients with daily tasks and company."
+    ],
+    "confusion_pairs": [
+      "nurse",
+      "helper"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.48,
+      "stability": 3.0
+    }
+  },
+  {
+    "id": "vocab-ji-32",
+    "word": "empathy",
+    "phonetic": "/ˈempəθi/",
+    "translations": {
+      "pa": "ਹਮਦਰਦੀ",
+      "hi": "सहानुभूति",
+      "zh": "同理心",
+      "es": "empatía"
+    },
+    "level": "bloom",
+    "category": "workplace",
+    "example_sentences": [
+      "Caregivers show empathy by really listening.",
+      "Her empathy calmed the worried family member."
+    ],
+    "confusion_pairs": [
+      "sympathy",
+      "kindness"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.55,
+      "stability": 2.8
+    }
+  },
+  {
+    "id": "vocab-ji-33",
+    "word": "patience",
+    "phonetic": "/ˈpeɪʃns/",
+    "translations": {
+      "pa": "ਧੀਰਜ",
+      "hi": "धैर्य",
+      "zh": "耐心",
+      "es": "paciencia"
+    },
+    "level": "sprout",
+    "category": "workplace",
+    "example_sentences": [
+      "Working with people takes patience and a calm voice.",
+      "She answered the same question twice with patience."
+    ],
+    "confusion_pairs": [
+      "calm",
+      "tolerance"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.34,
+      "stability": 3.7
+    }
+  },
+  {
+    "id": "vocab-ji-34",
+    "word": "client",
+    "phonetic": "/ˈklaɪənt/",
+    "translations": {
+      "pa": "ਕਲਾਇੰਟ",
+      "hi": "ग्राहक / क्लाइंट",
+      "zh": "客户",
+      "es": "cliente"
+    },
+    "level": "sprout",
+    "category": "workplace",
+    "example_sentences": [
+      "The agency matches caregivers with clients.",
+      "Respect each client's dignity and routines."
+    ],
+    "confusion_pairs": [
+      "customer",
+      "patient"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.28,
+      "stability": 4.0
+    }
+  },
+  {
+    "id": "vocab-ji-35",
+    "word": "boundaries",
+    "phonetic": "/ˈbaʊndriz/",
+    "translations": {
+      "pa": "ਹੱਦਾਂ",
+      "hi": "सीमाएँ",
+      "zh": "界限",
+      "es": "límites"
+    },
+    "level": "bloom",
+    "category": "workplace",
+    "example_sentences": [
+      "Professional boundaries keep caregiving healthy.",
+      "Know your boundaries and communicate them kindly."
+    ],
+    "confusion_pairs": [
+      "limits",
+      "rules"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.58,
+      "stability": 2.7
+    }
+  },
+  {
+    "id": "vocab-ji-36",
+    "word": "initiative",
+    "phonetic": "/ɪˈnɪʃətɪv/",
+    "translations": {
+      "pa": "ਪਹਿਲਕਦਮੀ",
+      "hi": "पहल",
+      "zh": "主动性",
+      "es": "iniciativa"
+    },
+    "level": "bloom",
+    "category": "workplace",
+    "example_sentences": [
+      "I took the initiative to organize the supply room.",
+      "Employers love workers who show initiative."
+    ],
+    "confusion_pairs": [
+      "effort",
+      "proactiveness"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.54,
+      "stability": 2.8
+    }
+  },
+  {
+    "id": "vocab-ji-37",
+    "word": "reliable",
+    "phonetic": "/rɪˈlaɪəbəl/",
+    "translations": {
+      "pa": "ਭਰੋਸੇਯੋਗ",
+      "hi": "विश्वसनीय",
+      "zh": "可靠的",
+      "es": "confiable"
+    },
+    "level": "branch",
+    "category": "workplace",
+    "example_sentences": [
+      "A reliable worker shows up on time every day.",
+      "Managers value reliable team members."
+    ],
+    "confusion_pairs": [
+      "dependable",
+      "responsible"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.44,
+      "stability": 3.2
+    }
+  },
+  {
+    "id": "vocab-ji-38",
+    "word": "motivation",
+    "phonetic": "/ˌmoʊtəˈveɪʃn/",
+    "translations": {
+      "pa": "ਪ੍ਰੇਰਨਾ",
+      "hi": "प्रेरणा",
+      "zh": "动力",
+      "es": "motivación"
+    },
+    "level": "branch",
+    "category": "workplace",
+    "example_sentences": [
+      "Explain your motivation for this job clearly.",
+      "Her motivation is building a stable life in Canada."
+    ],
+    "confusion_pairs": [
+      "reason",
+      "drive"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.46,
+      "stability": 3.1
+    }
+  },
+  {
+    "id": "vocab-ji-39",
+    "word": "contribution",
+    "phonetic": "/ˌkɑːntrɪˈbjuːʃn/",
+    "translations": {
+      "pa": "ਯੋਗਦਾਨ",
+      "hi": "योगदान",
+      "zh": "贡献",
+      "es": "contribución"
+    },
+    "level": "branch",
+    "category": "workplace",
+    "example_sentences": [
+      "What contribution do you hope to make to the team?",
+      "Every role is a contribution to the company."
+    ],
+    "confusion_pairs": [
+      "part",
+      "input"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.47,
+      "stability": 3.0
+    }
+  },
+  {
+    "id": "vocab-ji-40",
+    "word": "fit",
+    "phonetic": "/fɪt/",
+    "translations": {
+      "pa": "ਢੁਕਵਾਂ ਹੋਣਾ",
+      "hi": "उपयुक्त होना",
+      "zh": "适合",
+      "es": "encajar / adecuarse"
+    },
+    "level": "sprout",
+    "category": "workplace",
+    "example_sentences": [
+      "I think I'm a great fit for this role.",
+      "Employers look for both skills and cultural fit."
+    ],
+    "confusion_pairs": [
+      "match",
+      "suit"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.32,
+      "stability": 3.8
+    }
+  },
+  {
+    "id": "vocab-ji-41",
+    "word": "training",
+    "phonetic": "/ˈtreɪnɪŋ/",
+    "translations": {
+      "pa": "ਸਿਖਲਾਈ",
+      "hi": "प्रशिक्षण",
+      "zh": "培训",
+      "es": "capacitación"
+    },
+    "level": "seed",
+    "category": "workplace",
+    "example_sentences": [
+      "New hires get three weeks of training.",
+      "Ask about training during the interview."
+    ],
+    "confusion_pairs": [
+      "orientation",
+      "course"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.22,
+      "stability": 4.3
+    }
+  },
+  {
+    "id": "vocab-ji-42",
+    "word": "mentor",
+    "phonetic": "/ˈmentɔːr/",
+    "translations": {
+      "pa": "ਮਾਰਗਦਰਸ਼ਕ",
+      "hi": "मार्गदर्शक",
+      "zh": "导师",
+      "es": "mentor"
+    },
+    "level": "branch",
+    "category": "workplace",
+    "example_sentences": [
+      "A mentor guides you through your first months.",
+      "They assign a mentor to every new employee."
+    ],
+    "confusion_pairs": [
+      "teacher",
+      "coach"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.45,
+      "stability": 3.2
+    }
+  },
+  {
+    "id": "vocab-ji-43",
+    "word": "onboarding",
+    "phonetic": "/ˈɑːnbɔːrdɪŋ/",
+    "translations": {
+      "pa": "ਆਨਬੋਰਡਿੰਗ",
+      "hi": "ऑनबोर्डिंग",
+      "zh": "入职流程",
+      "es": "incorporación"
+    },
+    "level": "bloom",
+    "category": "workplace",
+    "example_sentences": [
+      "Onboarding covers training, forms, and introductions.",
+      "Your first week is all onboarding."
+    ],
+    "confusion_pairs": [
+      "training",
+      "orientation"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.57,
+      "stability": 2.8
+    }
+  },
+  {
+    "id": "vocab-ji-44",
+    "word": "expectation",
+    "phonetic": "/ˌekspekˈteɪʃn/",
+    "translations": {
+      "pa": "ਉਮੀਦ",
+      "hi": "अपेक्षा",
+      "zh": "期望",
+      "es": "expectativa"
+    },
+    "level": "branch",
+    "category": "workplace",
+    "example_sentences": [
+      "Ask what the expectations are for the first ninety days.",
+      "Clear expectations help new employees succeed."
+    ],
+    "confusion_pairs": [
+      "goal",
+      "requirement"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.4,
+      "stability": 3.4
+    }
+  },
+  {
+    "id": "vocab-ji-45",
+    "word": "notice period",
+    "phonetic": "/ˈnoʊtɪs ˌpɪriəd/",
+    "translations": {
+      "pa": "ਨੋਟਿਸ ਮਿਆਦ",
+      "hi": "नोटिस अवधि",
+      "zh": "离职通知期",
+      "es": "preaviso"
+    },
+    "level": "bloom",
+    "category": "workplace",
+    "example_sentences": [
+      "My current job has a two-week notice period.",
+      "The notice period depends on how long you have worked."
+    ],
+    "confusion_pairs": [
+      "probation",
+      "deadline"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.6,
+      "stability": 2.7
+    }
+  },
+  {
+    "id": "vocab-ji-46",
+    "word": "salary",
+    "phonetic": "/ˈsæləri/",
+    "translations": {
+      "pa": "ਤਨਖਾਹ",
+      "hi": "वेतन",
+      "zh": "薪水",
+      "es": "salario"
+    },
+    "level": "sprout",
+    "category": "workplace",
+    "example_sentences": [
+      "The salary for this role is competitive.",
+      "We can discuss salary once you have the offer."
+    ],
+    "confusion_pairs": [
+      "wage",
+      "income"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.3,
+      "stability": 3.9
+    }
+  },
+  {
+    "id": "vocab-ji-47",
+    "word": "benefits",
+    "phonetic": "/ˈbenɪfɪts/",
+    "translations": {
+      "pa": "ਲਾਭ",
+      "hi": "लाभ",
+      "zh": "福利",
+      "es": "beneficios"
+    },
+    "level": "branch",
+    "category": "workplace",
+    "example_sentences": [
+      "Benefits start after six months in this role.",
+      "Ask what benefits the company offers."
+    ],
+    "confusion_pairs": [
+      "bonus",
+      "perks"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.41,
+      "stability": 3.4
+    }
+  },
+  {
+    "id": "vocab-ji-48",
+    "word": "probation",
+    "phonetic": "/proʊˈbeɪʃn/",
+    "translations": {
+      "pa": "ਪਰੀਖਿਆ ਮਿਆਦ",
+      "hi": "परिवीक्षा अवधि",
+      "zh": "试用期",
+      "es": "período de prueba"
+    },
+    "level": "bloom",
+    "category": "workplace",
+    "example_sentences": [
+      "There is a three-month probation period, then a review.",
+      "Passing probation usually means a permanent position."
+    ],
+    "confusion_pairs": [
+      "notice period",
+      "trial"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.56,
+      "stability": 2.8
+    }
+  },
+  {
+    "id": "vocab-ji-49",
+    "word": "negotiate",
+    "phonetic": "/nɪˈɡoʊʃieɪt/",
+    "translations": {
+      "pa": "ਮੋਲ-ਭਾਅ ਕਰਨਾ",
+      "hi": "बातचीत करना / मोल-भाव करना",
+      "zh": "协商",
+      "es": "negociar"
+    },
+    "level": "bloom",
+    "category": "workplace",
+    "example_sentences": [
+      "It is normal to negotiate your starting wage politely.",
+      "She negotiated one more week of vacation."
+    ],
+    "confusion_pairs": [
+      "discuss",
+      "bargain"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.59,
+      "stability": 2.7
+    }
+  },
+  {
+    "id": "vocab-ji-50",
+    "word": "offer",
+    "phonetic": "/ˈɔːfər/",
+    "translations": {
+      "pa": "ਪੇਸ਼ਕਸ਼",
+      "hi": "प्रस्ताव",
+      "zh": "录用通知",
+      "es": "oferta"
+    },
+    "level": "sprout",
+    "category": "workplace",
+    "example_sentences": [
+      "She accepted the job offer happily.",
+      "Ask for the offer in writing before you decide."
+    ],
+    "confusion_pairs": [
+      "proposal",
+      "deal"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.29,
+      "stability": 4.0
+    }
+  }
+]

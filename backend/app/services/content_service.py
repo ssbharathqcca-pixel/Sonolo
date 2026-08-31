@@ -161,6 +161,38 @@ class VocabularySeed:
     language: str
 
 
+@dataclass(frozen=True)
+class MicroLessonSection:
+    """One headed paragraph inside a Culture Corner micro-lesson (SN-047)."""
+
+    heading: str
+    text: str
+
+
+@dataclass(frozen=True)
+class MicroLessonSeed:
+    """One Culture Corner micro-lesson (SN-047), new content format.
+
+    Unlike scenarios, micro-lessons are read-only reference content:
+    they are served straight from the manifest packs and never seeded
+    into the database, so the Learn rail renders them without touching
+    Scenario rows.
+    """
+
+    id: str
+    title: str
+    hook: str
+    read_minutes: int
+    sections: list[MicroLessonSection]
+    takeaway: str
+    try_it: str
+    #: Manifest pack the lesson belongs to, plus the pack's UI metadata
+    #: so the mobile rail can theme and icon the cards.
+    pack_id: str
+    theme_color: str
+    icon: str
+
+
 def load_scenario_seeds() -> list[ScenarioSeed]:
     """Read and validate every scenario pack listed in the manifest."""
     # Manifest order governs pack precedence (English v1+v2, workplace,
@@ -243,6 +275,70 @@ def load_vocabulary_seeds() -> list[VocabularySeed]:
                     difficulty=round(1.0 + 9.0 * float(params["difficulty"]), 4),
                     stability=float(params["stability"]),
                     language=language,
+                )
+            )
+    return seeds
+
+
+def load_microlesson_packs() -> list[ManifestPack]:
+    """Every manifest pack of type "microlessons" (SN-047).
+
+    The new content format is filtered by manifest type at the loader
+    boundary, so it can never leak into scenario seeding or the
+    scenarios/packs endpoints, which read `type == "scenarios"`.
+    """
+    return [
+        pack for pack in load_manifest_packs() if pack.type == "microlessons"
+    ]
+
+
+def load_microlesson_seeds() -> list[MicroLessonSeed]:
+    """Read every Culture Corner micro-lesson from the manifest (SN-047).
+
+    Lessons are pure content-pack reads (no DB rows, no per-user state);
+    the manifest supplies the pack id plus theme_color and icon so the
+    mobile rail can render themed cards. Unknown fields are rejected by
+    schema check; duplicate lesson ids across packs raise.
+    """
+    manifest = load_manifest()
+    meta = {
+        str(entry["id"]): entry
+        for entry in manifest.get("packs", [])
+        if entry.get("type") == "microlessons"
+    }
+    seeds: list[MicroLessonSeed] = []
+    seen_ids: set[str] = set()
+    for pack in load_microlesson_packs():
+        entry = meta[pack.id]
+        path = _resolve_pack_path(pack.path)
+        with path.open(encoding="utf-8") as handle:
+            raw: list[dict[str, Any]] = json.load(handle)
+        for lesson in raw:
+            lesson_id = str(lesson["id"])
+            if lesson_id in seen_ids:
+                raise ValueError(
+                    f"Duplicate microlesson id across packs: {lesson_id!r}"
+                )
+            seen_ids.add(lesson_id)
+            sections = [
+                MicroLessonSection(
+                    heading=str(section["heading"]),
+                    text=str(section["text"]),
+                )
+                for section in lesson["sections"]
+            ]
+            seeds.append(
+                MicroLessonSeed(
+                    id=lesson_id,
+                    title=str(lesson["title"]),
+                    hook=str(lesson["hook"]),
+                    read_minutes=int(lesson["read_minutes"]),
+                    sections=sections,
+                    takeaway=str(lesson["takeaway"]),
+                    try_it=str(lesson["try_it"]),
+                    pack_id=pack.id,
+                    theme_color=str(entry.get("theme_color", "")),
+                    icon=str(entry.get("icon", "")),
                 )
             )
     return seeds

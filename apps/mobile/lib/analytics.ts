@@ -1,5 +1,6 @@
 import * as Sentry from '@sentry/react-native';
 import { PostHog } from 'posthog-react-native';
+import type { PostHogEventProperties } from '@posthog/core';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // 1. Initialize Sentry
@@ -19,3 +20,11 @@ export const posthog = new PostHog(
     captureAppLifecycleEvents: true,
   }
 );
+
+/** Track a custom analytics event via PostHog (SN-047). */
+export function trackEvent(
+  event: string,
+  properties?: PostHogEventProperties,
+): void {
+  posthog.capture(event, properties ?? {});
+}

@@ -11,11 +11,14 @@ Loads every pack declared in content/manifest.json (SN-027):
                  quebec-healthcare-v1, quebec-workplace-v1,
                  housing-english-v1, finance-english-v1,
                  quebec-housing-v1, quebec-finance-v1,
-                 smalltalk-english-v1                       (135)
+                 smalltalk-english-v1, job-interviews-english-v1 (145)
     vocabulary : core-v1 + v2, core-fr-v1, workplace + healthcare,
                  quebec-healthcare + quebec-workplace,
                  housing + finance, quebec-housing + quebec-finance,
-                 smalltalk                                  (670)
+                 smalltalk, job-interviews                    (720)
+
+Micro-lessons (culture-english-v1) are a read-only content format served
+straight from the manifest — they never enter scenario seeding.
 
 Scenarios are shared rows upserted idempotently under deterministic
 uuid5 PKs derived in the SAME namespace as
@@ -24,7 +27,7 @@ loader so both seeding paths stay byte-identical, including the
 per-scenario pack_id mapping (SN-035). Vocabulary stays user-scoped
 by design (D-008): this script validates and counts the combined
 packs; cards materialize lazily per user via GET /api/review/due.
-Re-running is a no-op: counts stay stable at 135 scenarios / 670
+Re-running is a no-op: counts stay stable at 145 scenarios / 720
 vocabulary pack items.
 """
 

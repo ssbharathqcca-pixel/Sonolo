@@ -68,6 +68,7 @@ jest.mock("../../src/api/client", () => {
     ...actual,
     fetchScenarios: jest.fn(async () => []),
     fetchPacks: jest.fn(async () => []),
+    fetchMicrolessons: jest.fn(async () => []),
     fetchTodayQuests: jest.fn(async () => ({
       quest_date: "2026-08-24",
       timezone: "America/Toronto",
@@ -80,6 +81,27 @@ jest.mock("../../src/services/scenarioCache", () => ({
   loadScenarioCache: jest.fn(async () => null),
   saveScenarioCache: jest.fn(async () => undefined),
 }));
+
+// The Learn screen hydrates the Culture Corner progress store (SN-047),
+// which reads AsyncStorage on mount.
+jest.mock("@react-native-async-storage/async-storage", () => {
+  const store: Record<string, string> = {};
+  return {
+    __esModule: true,
+    default: {
+      getItem: jest.fn(async (key: string) => store[key] ?? null),
+      setItem: jest.fn(async (key: string, value: string) => {
+        store[key] = value;
+      }),
+      removeItem: jest.fn(async (key: string) => {
+        delete store[key];
+      }),
+      clear: jest.fn(async () => {
+        Object.keys(store).forEach((key) => delete store[key]);
+      }),
+    },
+  };
+});
 
 import { fireEvent, render, waitFor } from "@testing-library/react-native";
 
