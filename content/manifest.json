@@ -403,6 +403,32 @@
       "theme_color": "#BE123C",
       "icon": "🍁",
       "is_published": true
+    },
+    {
+      "id": "listening-english-v1",
+      "type": "listening",
+      "language": "en",
+      "path": "content/listening/listening-english-v1.json",
+      "title": "Listening Gym",
+      "description": "Train your ear on real Canadian conversations — coffee shops, clinics, Service Canada, and more.",
+      "category": "listening",
+      "tier": "premium",
+      "theme_color": "#06B6D4",
+      "icon": "🎧",
+      "is_published": true
+    },
+    {
+      "id": "vocab-listening-english-v1",
+      "type": "vocabulary",
+      "language": "en",
+      "path": "content/vocabulary/vocab-listening-english-v1.json",
+      "title": "Listening Vocabulary",
+      "description": "Essential words for understanding everyday Canadian conversations.",
+      "category": "vocabulary",
+      "tier": "premium",
+      "theme_color": "#06B6D4",
+      "icon": "book",
+      "is_published": true
     }
   ]
 }

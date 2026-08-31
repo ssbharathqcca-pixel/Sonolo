@@ -1,0 +1,1252 @@
+[
+  {
+    "id": "vocab-ln-01",
+    "word": "address",
+    "phonetic": "/əˈdrɛs/",
+    "translations": {
+      "es": "dirección",
+      "hi": "पता",
+      "pa": "ਪਤਾ",
+      "zh": "地址"
+    },
+    "level": "sprout",
+    "category": "listening",
+    "example_sentences": [
+      "What is your current address?",
+      "I need to update my address with the bank."
+    ],
+    "confusion_pairs": [
+      "location",
+      "place"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.15,
+      "stability": 4.6
+    }
+  },
+  {
+    "id": "vocab-ln-02",
+    "word": "candidacy",
+    "phonetic": "/ˈkændɪdəsi/",
+    "translations": {
+      "es": "candidatura",
+      "hi": "उम्मीदवारी",
+      "pa": "ਉਮੀਦਵਾਰੀ",
+      "zh": "候选人资格"
+    },
+    "level": "bloom",
+    "category": "listening",
+    "example_sentences": [
+      "We were impressed with your candidacy.",
+      "Her candidacy was strong for the role."
+    ],
+    "confusion_pairs": [
+      "application",
+      "nomination"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.16,
+      "stability": 4.55
+    }
+  },
+  {
+    "id": "vocab-ln-03",
+    "word": "change",
+    "phonetic": "/tʃeɪndʒ/",
+    "translations": {
+      "es": "cambio",
+      "hi": "छुट्टा पैसा",
+      "pa": "ਛੁੱਟਾ ਪੈਸਾ",
+      "zh": "零钱"
+    },
+    "level": "sprout",
+    "category": "listening",
+    "example_sentences": [
+      "Here's your change and receipt.",
+      "Do you have change for a twenty?"
+    ],
+    "confusion_pairs": [
+      "coins",
+      "cash"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.17,
+      "stability": 4.5
+    }
+  },
+  {
+    "id": "vocab-ln-04",
+    "word": "chequing",
+    "phonetic": "/ˈtʃɛkɪŋ/",
+    "translations": {
+      "es": "cuenta corriente",
+      "hi": "चेकिंग खाता",
+      "pa": "ਚੈਕਿੰਗ ਖਾਤਾ",
+      "zh": "支票账户"
+    },
+    "level": "branch",
+    "category": "listening",
+    "example_sentences": [
+      "I opened a chequing account at the bank.",
+      "Chequing accounts are for everyday spending."
+    ],
+    "confusion_pairs": [
+      "savings",
+      "credit"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.19,
+      "stability": 4.45
+    }
+  },
+  {
+    "id": "vocab-ln-05",
+    "word": "community",
+    "phonetic": "/kəˈmjuːnəti/",
+    "translations": {
+      "es": "comunidad",
+      "hi": "समुदाय",
+      "pa": "ਭਾਈਚਾਰਾ",
+      "zh": "社区"
+    },
+    "level": "sprout",
+    "category": "listening",
+    "example_sentences": [
+      "The community centre offers free programs.",
+      "Get involved in your local community."
+    ],
+    "confusion_pairs": [
+      "neighborhood",
+      "society"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.2,
+      "stability": 4.4
+    }
+  },
+  {
+    "id": "vocab-ln-06",
+    "word": "concern",
+    "phonetic": "/kənˈsɜːrn/",
+    "translations": {
+      "es": "preocupación",
+      "hi": "चिंता",
+      "pa": "ਚਿੰਤਾ",
+      "zh": "关心"
+    },
+    "level": "sprout",
+    "category": "listening",
+    "example_sentences": [
+      "The teacher shared one small concern.",
+      "Is there anything that concerns you?"
+    ],
+    "confusion_pairs": [
+      "worry",
+      "issue"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.21,
+      "stability": 4.35
+    }
+  },
+  {
+    "id": "vocab-ln-07",
+    "word": "conversation",
+    "phonetic": "/ˌkɑːnvərˈseɪʃn/",
+    "translations": {
+      "es": "conversación",
+      "hi": "बातचीत",
+      "pa": "ਗੱਲਬਾਤ",
+      "zh": "对话"
+    },
+    "level": "sprout",
+    "category": "listening",
+    "example_sentences": [
+      "The English conversation circle meets every Tuesday.",
+      "We had a good conversation about the role."
+    ],
+    "confusion_pairs": [
+      "discussion",
+      "talk"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.22,
+      "stability": 4.3
+    }
+  },
+  {
+    "id": "vocab-ln-08",
+    "word": "corner",
+    "phonetic": "/ˈkɔːrnər/",
+    "translations": {
+      "es": "esquina",
+      "hi": "कोना",
+      "pa": "ਕੋਨਾ",
+      "zh": "角落"
+    },
+    "level": "seed",
+    "category": "listening",
+    "example_sentences": [
+      "The store is on the corner of Bay and Front.",
+      "Turn left at the corner."
+    ],
+    "confusion_pairs": [
+      "edge",
+      "side"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.23,
+      "stability": 4.25
+    }
+  },
+  {
+    "id": "vocab-ln-09",
+    "word": "covered",
+    "phonetic": "/ˈkʌvərd/",
+    "translations": {
+      "es": "cubierto",
+      "hi": "कवर",
+      "pa": "ਕਵਰ",
+      "zh": "承保"
+    },
+    "level": "branch",
+    "category": "listening",
+    "example_sentences": [
+      "The generic version is covered by your plan.",
+      "Is this medication covered by insurance?"
+    ],
+    "confusion_pairs": [
+      "included",
+      "protected"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.25,
+      "stability": 4.2
+    }
+  },
+  {
+    "id": "vocab-ln-10",
+    "word": "cream",
+    "phonetic": "/kriːm/",
+    "translations": {
+      "es": "crema",
+      "hi": "क्रीम",
+      "pa": "ਕਰੀਮ",
+      "zh": "奶油"
+    },
+    "level": "sprout",
+    "category": "listening",
+    "example_sentences": [
+      "I take my coffee with cream.",
+      "Would you like cream or sugar?"
+    ],
+    "confusion_pairs": [
+      "milk",
+      "butter"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.26,
+      "stability": 4.15
+    }
+  },
+  {
+    "id": "vocab-ln-11",
+    "word": "dispensing",
+    "phonetic": "/dɪˈspɛnsɪŋ/",
+    "translations": {
+      "es": "dispensación",
+      "hi": "दवा वितरण",
+      "pa": "ਦਵਾਈ ਵੰਡ",
+      "zh": "配药"
+    },
+    "level": "bloom",
+    "category": "listening",
+    "example_sentences": [
+      "The dispensing fee is separate from the medication cost.",
+      "The pharmacist handles the dispensing."
+    ],
+    "confusion_pairs": [
+      "prescribing",
+      "administering"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.27,
+      "stability": 4.1
+    }
+  },
+  {
+    "id": "vocab-ln-12",
+    "word": "document",
+    "phonetic": "/ˈdɑːkjumənt/",
+    "translations": {
+      "es": "documento",
+      "hi": "दस्तावेज़",
+      "pa": "ਦਸਤਾਵੇਜ਼",
+      "zh": "文件"
+    },
+    "level": "sprout",
+    "category": "listening",
+    "example_sentences": [
+      "Bring your documents to the appointment.",
+      "I need a document that shows my address."
+    ],
+    "confusion_pairs": [
+      "paper",
+      "file"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.28,
+      "stability": 4.05
+    }
+  },
+  {
+    "id": "vocab-ln-13",
+    "word": "downtown",
+    "phonetic": "/ˌdaʊnˈtaʊn/",
+    "translations": {
+      "es": "centro",
+      "hi": "शहर का केंद्र",
+      "pa": "ਸ਼ਹਿਰ ਦਾ ਕੇਂਦਰ",
+      "zh": "市中心"
+    },
+    "level": "sprout",
+    "category": "listening",
+    "example_sentences": [
+      "The bus goes downtown.",
+      "I work downtown."
+    ],
+    "confusion_pairs": [
+      "uptown",
+      "midtown"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.29,
+      "stability": 4.0
+    }
+  },
+  {
+    "id": "vocab-ln-14",
+    "word": "dryer",
+    "phonetic": "/ˈdraɪər/",
+    "translations": {
+      "es": "secadora",
+      "hi": "ड्रायर",
+      "pa": "ਡਰਾਇਰ",
+      "zh": "烘干机"
+    },
+    "level": "sprout",
+    "category": "listening",
+    "example_sentences": [
+      "The dryer takes about 45 minutes.",
+      "Please empty the dryer when you are done."
+    ],
+    "confusion_pairs": [
+      "washer",
+      "fan"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.31,
+      "stability": 3.95
+    }
+  },
+  {
+    "id": "vocab-ln-15",
+    "word": "eastbound",
+    "phonetic": "/ˈiːstbaʊnd/",
+    "translations": {
+      "es": "dirección este",
+      "hi": "पूर्व की ओर",
+      "pa": "ਪੂਰਬ ਵੱਲ",
+      "zh": "东行"
+    },
+    "level": "branch",
+    "category": "listening",
+    "example_sentences": [
+      "The eastbound express leaves at 5 PM.",
+      "I need the eastbound bus."
+    ],
+    "confusion_pairs": [
+      "westbound",
+      "southbound"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.32,
+      "stability": 3.9
+    }
+  },
+  {
+    "id": "vocab-ln-16",
+    "word": "email",
+    "phonetic": "/ˈiːmeɪl/",
+    "translations": {
+      "es": "correo electrónico",
+      "hi": "ईमेल",
+      "pa": "ਈਮੇਲ",
+      "zh": "电子邮件"
+    },
+    "level": "seed",
+    "category": "listening",
+    "example_sentences": [
+      "Send your application by email.",
+      "I'll email you the details."
+    ],
+    "confusion_pairs": [
+      "mail",
+      "message"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.33,
+      "stability": 3.85
+    }
+  },
+  {
+    "id": "vocab-ln-17",
+    "word": "espresso",
+    "phonetic": "/ɛˈsprɛsoʊ/",
+    "translations": {
+      "es": "espresso",
+      "hi": "एस्प्रेसो",
+      "pa": "ਐਸਪ੍ਰੈਸੋ",
+      "zh": "浓缩咖啡"
+    },
+    "level": "sprout",
+    "category": "listening",
+    "example_sentences": [
+      "A double espresso wakes me up.",
+      "The barista made a perfect espresso."
+    ],
+    "confusion_pairs": [
+      "latte",
+      "cappuccino"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.34,
+      "stability": 3.8
+    }
+  },
+  {
+    "id": "vocab-ln-18",
+    "word": "express",
+    "phonetic": "/ɪkˈsprɛs/",
+    "translations": {
+      "es": "exprés",
+      "hi": "एक्सप्रेस",
+      "pa": "ਐਕਸਪ੍ਰੈਸ",
+      "zh": "快车"
+    },
+    "level": "branch",
+    "category": "listening",
+    "example_sentences": [
+      "The express bus is faster.",
+      "Take the express train downtown."
+    ],
+    "confusion_pairs": [
+      "local",
+      "rapid"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.35,
+      "stability": 3.75
+    }
+  },
+  {
+    "id": "vocab-ln-19",
+    "word": "free",
+    "phonetic": "/friː/",
+    "translations": {
+      "es": "gratis",
+      "hi": "मुफ़्त",
+      "pa": "ਮੁਫ਼ਤ",
+      "zh": "免费"
+    },
+    "level": "seed",
+    "category": "listening",
+    "example_sentences": [
+      "The orientation sessions are free.",
+      "Free Wi-Fi is available in the lobby."
+    ],
+    "confusion_pairs": [
+      "cheap",
+      "complimentary"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.37,
+      "stability": 3.7
+    }
+  },
+  {
+    "id": "vocab-ln-20",
+    "word": "generic",
+    "phonetic": "/dʒəˈnɛrɪk/",
+    "translations": {
+      "es": "genérico",
+      "hi": "जेनेरिक",
+      "pa": "ਜੈਨਰਿਕ",
+      "zh": "仿制药"
+    },
+    "level": "bloom",
+    "category": "listening",
+    "example_sentences": [
+      "The generic version is covered by insurance.",
+      "Generic medications are usually cheaper."
+    ],
+    "confusion_pairs": [
+      "brand",
+      "regular"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.38,
+      "stability": 3.65
+    }
+  },
+  {
+    "id": "vocab-ln-21",
+    "word": "instructions",
+    "phonetic": "/ɪnˈstrʌkʃnz/",
+    "translations": {
+      "es": "instrucciones",
+      "hi": "निर्देश",
+      "pa": "ਹਦਾਇਤਾਂ",
+      "zh": "说明"
+    },
+    "level": "sprout",
+    "category": "listening",
+    "example_sentences": [
+      "Follow the instructions on the label.",
+      "I'll attach the instructions for taking the medication."
+    ],
+    "confusion_pairs": [
+      "directions",
+      "guidelines"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.39,
+      "stability": 3.6
+    }
+  },
+  {
+    "id": "vocab-ln-22",
+    "word": "job posting",
+    "phonetic": "/dʒoʊb ˈpoʊstɪŋ/",
+    "translations": {
+      "es": "anuncio de trabajo",
+      "hi": "नौकरी का विज्ञापन",
+      "pa": "ਨੌਕਰੀ ਦਾ ਇਸ਼ਤਿਹਾਰ",
+      "zh": "招聘信息"
+    },
+    "level": "branch",
+    "category": "listening",
+    "example_sentences": [
+      "I saw a job posting for an administrative assistant.",
+      "The job posting listed the requirements."
+    ],
+    "confusion_pairs": [
+      "job ad",
+      "employment listing"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.4,
+      "stability": 3.55
+    }
+  },
+  {
+    "id": "vocab-ln-23",
+    "word": "latte",
+    "phonetic": "/ˈlɑːteɪ/",
+    "translations": {
+      "es": "latte",
+      "hi": "लट्टे",
+      "pa": "ਲੈਟ",
+      "zh": "拿铁"
+    },
+    "level": "sprout",
+    "category": "listening",
+    "example_sentences": [
+      "I ordered a latte with oat milk.",
+      "The cafe makes the best lattes."
+    ],
+    "confusion_pairs": [
+      "espresso",
+      "cappuccino"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.41,
+      "stability": 3.5
+    }
+  },
+  {
+    "id": "vocab-ln-24",
+    "word": "loyalty points",
+    "phonetic": "/ˈlɔɪəlti pɔɪnts/",
+    "translations": {
+      "es": "puntos de fidelidad",
+      "hi": "लॉयल्टी पॉइंट्स",
+      "pa": "ਲੌਇਲਟੀ ਪੁਆਇੰਟ",
+      "zh": "积分"
+    },
+    "level": "branch",
+    "category": "listening",
+    "example_sentences": [
+      "Scan your loyalty points card at checkout.",
+      "You earn loyalty points on every purchase."
+    ],
+    "confusion_pairs": [
+      "rewards",
+      "discount"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.43,
+      "stability": 3.45
+    }
+  },
+  {
+    "id": "vocab-ln-25",
+    "word": "medium",
+    "phonetic": "/ˈmiːdiəm/",
+    "translations": {
+      "es": "mediano",
+      "hi": "मध्यम",
+      "pa": "ਮੱਧਮ",
+      "zh": "中杯"
+    },
+    "level": "sprout",
+    "category": "listening",
+    "example_sentences": [
+      "I'd like a medium coffee, please.",
+      "Medium is my usual size."
+    ],
+    "confusion_pairs": [
+      "small",
+      "large"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.44,
+      "stability": 3.4
+    }
+  },
+  {
+    "id": "vocab-ln-26",
+    "word": "month-to-month",
+    "phonetic": "/ˈmʌnθ tə ˈmʌnθ/",
+    "translations": {
+      "es": "mes a mes",
+      "hi": "मासिक आधार पर",
+      "pa": "ਮਹੀਨਾ-ਦਰ-ਮਹੀਨਾ",
+      "zh": "按月"
+    },
+    "level": "branch",
+    "category": "listening",
+    "example_sentences": [
+      "After the lease, it goes month-to-month.",
+      "A month-to-month agreement is flexible."
+    ],
+    "confusion_pairs": [
+      "yearly",
+      "weekly"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.45,
+      "stability": 3.35
+    }
+  },
+  {
+    "id": "vocab-ln-27",
+    "word": "permit",
+    "phonetic": "/ˈpɜːrmɪt/",
+    "translations": {
+      "es": "permiso",
+      "hi": "परमिट",
+      "pa": "ਪਰਮਿਟ",
+      "zh": "许可证"
+    },
+    "level": "branch",
+    "category": "listening",
+    "example_sentences": [
+      "A work permit allows you to work in Canada.",
+      "My permit expires next year."
+    ],
+    "confusion_pairs": [
+      "license",
+      "visa"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.46,
+      "stability": 3.3
+    }
+  },
+  {
+    "id": "vocab-ln-28",
+    "word": "plastic",
+    "phonetic": "/ˈplæstɪk/",
+    "translations": {
+      "es": "plástico",
+      "hi": "प्लास्टिक",
+      "pa": "ਪਲਾਸਟਿਕ",
+      "zh": "塑料"
+    },
+    "level": "seed",
+    "category": "listening",
+    "example_sentences": [
+      "Paper or plastic bags?",
+      "Plastic bags have a small fee."
+    ],
+    "confusion_pairs": [
+      "paper",
+      "reusable"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.47,
+      "stability": 3.25
+    }
+  },
+  {
+    "id": "vocab-ln-29",
+    "word": "position",
+    "phonetic": "/pəˈzɪʃn/",
+    "translations": {
+      "es": "puesto",
+      "hi": "पद",
+      "pa": "ਅਹੁਦਾ",
+      "zh": "职位"
+    },
+    "level": "branch",
+    "category": "listening",
+    "example_sentences": [
+      "The warehouse supervisor position is still open.",
+      "I applied for the position of administrative assistant."
+    ],
+    "confusion_pairs": [
+      "role",
+      "job"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.49,
+      "stability": 3.2
+    }
+  },
+  {
+    "id": "vocab-ln-30",
+    "word": "processing",
+    "phonetic": "/ˈprɑːsɛsɪŋ/",
+    "translations": {
+      "es": "procesamiento",
+      "hi": "प्रसंस्करण",
+      "pa": "ਪ੍ਰੋਸੈਸਿੰਗ",
+      "zh": "处理"
+    },
+    "level": "branch",
+    "category": "listening",
+    "example_sentences": [
+      "The processing time for a SIN is two weeks.",
+      "Your application is still processing."
+    ],
+    "confusion_pairs": [
+      "handling",
+      "approval"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.5,
+      "stability": 3.15
+    }
+  },
+  {
+    "id": "vocab-ln-31",
+    "word": "progress",
+    "phonetic": "/ˈprɑːɡrɛs/",
+    "translations": {
+      "es": "progreso",
+      "hi": "प्रगति",
+      "pa": "ਤਰੱਕੀ",
+      "zh": "进步"
+    },
+    "level": "sprout",
+    "category": "listening",
+    "example_sentences": [
+      "She has made great progress this term.",
+      "Track your progress every week."
+    ],
+    "confusion_pairs": [
+      "improvement",
+      "growth"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.51,
+      "stability": 3.1
+    }
+  },
+  {
+    "id": "vocab-ln-32",
+    "word": "regional manager",
+    "phonetic": "/ˈriːdʒənl ˈmænɪdʒər/",
+    "translations": {
+      "es": "gerente regional",
+      "hi": "क्षेत्रीय प्रबंधक",
+      "pa": "ਖੇਤਰੀ ਪ੍ਰਬੰਧਕ",
+      "zh": "区域经理"
+    },
+    "level": "bloom",
+    "category": "listening",
+    "example_sentences": [
+      "The regional manager will conduct the second interview.",
+      "A regional manager oversees several stores."
+    ],
+    "confusion_pairs": [
+      "district manager",
+      "supervisor"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.52,
+      "stability": 3.05
+    }
+  },
+  {
+    "id": "vocab-ln-33",
+    "word": "register",
+    "phonetic": "/ˈrɛdʒɪstər/",
+    "translations": {
+      "es": "registrarse",
+      "hi": "पंजीकरण करना",
+      "pa": "ਰਜਿਸਟਰ ਕਰਨਾ",
+      "zh": "登记"
+    },
+    "level": "sprout",
+    "category": "listening",
+    "example_sentences": [
+      "Please register at the front desk.",
+      "Do I need to register beforehand?"
+    ],
+    "confusion_pairs": [
+      "sign up",
+      "enroll"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.53,
+      "stability": 3.0
+    }
+  },
+  {
+    "id": "vocab-ln-34",
+    "word": "report",
+    "phonetic": "/rɪˈpɔːrt/",
+    "translations": {
+      "es": "informe",
+      "hi": "रिपोर्ट",
+      "pa": "ਰਿਪੋਰਟ",
+      "zh": "报告"
+    },
+    "level": "sprout",
+    "category": "listening",
+    "example_sentences": [
+      "Her report card showed excellent progress.",
+      "The teacher mentioned the report writing."
+    ],
+    "confusion_pairs": [
+      "assignment",
+      "review"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.55,
+      "stability": 2.95
+    }
+  },
+  {
+    "id": "vocab-ln-35",
+    "word": "reusable",
+    "phonetic": "/riːˈjuːzəbl/",
+    "translations": {
+      "es": "reutilizable",
+      "hi": "पुन: प्रयोग करने योग्य",
+      "pa": "ਮੁੜ ਵਰਤੋਂ ਯੋਗ",
+      "zh": "可重复使用的"
+    },
+    "level": "branch",
+    "category": "listening",
+    "example_sentences": [
+      "I brought my own reusable bags.",
+      "Reusable bags save five cents each."
+    ],
+    "confusion_pairs": [
+      "disposable",
+      "recyclable"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.56,
+      "stability": 2.9
+    }
+  },
+  {
+    "id": "vocab-ln-36",
+    "word": "rewards",
+    "phonetic": "/rɪˈwɔːrdz/",
+    "translations": {
+      "es": "recompensas",
+      "hi": "पुरस्कार",
+      "pa": "ਇਨਾਮ",
+      "zh": "奖励"
+    },
+    "level": "branch",
+    "category": "listening",
+    "example_sentences": [
+      "The cash back rewards program is free.",
+      "You earn rewards points on every purchase."
+    ],
+    "confusion_pairs": [
+      "bonus",
+      "benefits"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.57,
+      "stability": 2.85
+    }
+  },
+  {
+    "id": "vocab-ln-37",
+    "word": "settlement",
+    "phonetic": "/ˈsɛtlmənt/",
+    "translations": {
+      "es": "asentamiento",
+      "hi": "बसावट",
+      "pa": "ਵਸੇਬਾ",
+      "zh": "安居"
+    },
+    "level": "branch",
+    "category": "listening",
+    "example_sentences": [
+      "Settlement services help newcomers adjust.",
+      "The settlement worker gave me a list of resources."
+    ],
+    "confusion_pairs": [
+      "resettlement",
+      "integration"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.58,
+      "stability": 2.8
+    }
+  },
+  {
+    "id": "vocab-ln-38",
+    "word": "subject line",
+    "phonetic": "/ˈsʌbdʒɪkt laɪn/",
+    "translations": {
+      "es": "línea de asunto",
+      "hi": "विषय पंक्ति",
+      "pa": "ਵਿਸ਼ਾ ਲਾਈਨ",
+      "zh": "主题行"
+    },
+    "level": "branch",
+    "category": "listening",
+    "example_sentences": [
+      "Include 'Administrative Assistant' in the subject line.",
+      "The subject line helps organize emails."
+    ],
+    "confusion_pairs": [
+      "title",
+      "heading"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.59,
+      "stability": 2.75
+    }
+  },
+  {
+    "id": "vocab-ln-39",
+    "word": "submit",
+    "phonetic": "/səbˈmɪt/",
+    "translations": {
+      "es": "enviar",
+      "hi": "जमा करना",
+      "pa": "ਜਮ੍ਹਾਂ ਕਰਨਾ",
+      "zh": "提交"
+    },
+    "level": "branch",
+    "category": "listening",
+    "example_sentences": [
+      "Submit your application by Friday.",
+      "Please submit the form online."
+    ],
+    "confusion_pairs": [
+      "send",
+      "file"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.61,
+      "stability": 2.7
+    }
+  },
+  {
+    "id": "vocab-ln-40",
+    "word": "sugar",
+    "phonetic": "/ˈʃʊɡər/",
+    "translations": {
+      "es": "azúcar",
+      "hi": "चीनी",
+      "pa": "ਚੀਨੀ",
+      "zh": "糖"
+    },
+    "level": "seed",
+    "category": "listening",
+    "example_sentences": [
+      "I take one sugar in my tea.",
+      "Sugar is on the counter."
+    ],
+    "confusion_pairs": [
+      "salt",
+      "honey"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.62,
+      "stability": 2.65
+    }
+  },
+  {
+    "id": "vocab-ln-41",
+    "word": "support",
+    "phonetic": "/səˈpɔːrt/",
+    "translations": {
+      "es": "apoyo",
+      "hi": "सहायता",
+      "pa": "ਸਹਾਇਤਾ",
+      "zh": "支持"
+    },
+    "level": "sprout",
+    "category": "listening",
+    "example_sentences": [
+      "Settlement support is available for newcomers.",
+      "The agency offers free support."
+    ],
+    "confusion_pairs": [
+      "help",
+      "assistance"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.63,
+      "stability": 2.6
+    }
+  },
+  {
+    "id": "vocab-ln-42",
+    "word": "tablet",
+    "phonetic": "/ˈtæblɪt/",
+    "translations": {
+      "es": "tableta",
+      "hi": "गोली",
+      "pa": "ਗੋਲੀ",
+      "zh": "药片"
+    },
+    "level": "branch",
+    "category": "listening",
+    "example_sentences": [
+      "Take one tablet twice a day.",
+      "The tablet should be taken with food."
+    ],
+    "confusion_pairs": [
+      "capsule",
+      "pill"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.64,
+      "stability": 2.55
+    }
+  },
+  {
+    "id": "vocab-ln-43",
+    "word": "teacher",
+    "phonetic": "/ˈtiːtʃər/",
+    "translations": {
+      "es": "maestro",
+      "hi": "शिक्षक",
+      "pa": "ਅਧਿਆਪਕ",
+      "zh": "老师"
+    },
+    "level": "seed",
+    "category": "listening",
+    "example_sentences": [
+      "The teacher gave a positive report.",
+      "My daughter's teacher is very supportive."
+    ],
+    "confusion_pairs": [
+      "professor",
+      "instructor"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.65,
+      "stability": 2.5
+    }
+  },
+  {
+    "id": "vocab-ln-44",
+    "word": "throat",
+    "phonetic": "/θroʊt/",
+    "translations": {
+      "es": "garganta",
+      "hi": "गला",
+      "pa": "ਗਲਾ",
+      "zh": "喉咙"
+    },
+    "level": "sprout",
+    "category": "listening",
+    "example_sentences": [
+      "I have a sore throat.",
+      "The doctor looked at my throat."
+    ],
+    "confusion_pairs": [
+      "neck",
+      "mouth"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.67,
+      "stability": 2.45
+    }
+  },
+  {
+    "id": "vocab-ln-45",
+    "word": "total",
+    "phonetic": "/ˈtoʊtl/",
+    "translations": {
+      "es": "total",
+      "hi": "कुल",
+      "pa": "ਕੁੱਲ",
+      "zh": "总计"
+    },
+    "level": "sprout",
+    "category": "listening",
+    "example_sentences": [
+      "Your total is thirty-two forty-seven.",
+      "The total comes to forty-five dollars."
+    ],
+    "confusion_pairs": [
+      "sum",
+      "amount"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.68,
+      "stability": 2.4
+    }
+  },
+  {
+    "id": "vocab-ln-46",
+    "word": "unwell",
+    "phonetic": "/ʌnˈwɛl/",
+    "translations": {
+      "es": "indispuesto",
+      "hi": "अस्वस्थ",
+      "pa": "ਬੀਮਾਰ",
+      "zh": "不适"
+    },
+    "level": "sprout",
+    "category": "listening",
+    "example_sentences": [
+      "I've been feeling unwell for a few days.",
+      "If you feel unwell, see a doctor."
+    ],
+    "confusion_pairs": [
+      "sick",
+      "ill"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.69,
+      "stability": 2.35
+    }
+  },
+  {
+    "id": "vocab-ln-47",
+    "word": "waiting",
+    "phonetic": "/ˈweɪtɪŋ/",
+    "translations": {
+      "es": "esperando",
+      "hi": "प्रतीक्षा",
+      "pa": "ਉਡੀਕ",
+      "zh": "等待"
+    },
+    "level": "sprout",
+    "category": "listening",
+    "example_sentences": [
+      "The waiting room is full today.",
+      "Thank you for waiting."
+    ],
+    "confusion_pairs": [
+      "wait",
+      "delaying"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.7,
+      "stability": 2.3
+    }
+  },
+  {
+    "id": "vocab-ln-48",
+    "word": "washer",
+    "phonetic": "/ˈwɑːʃər/",
+    "translations": {
+      "es": "lavadora",
+      "hi": "वॉशिंग मशीन",
+      "pa": "ਵਾਸ਼ਿੰਗ ਮਸ਼ੀਨ",
+      "zh": "洗衣机"
+    },
+    "level": "sprout",
+    "category": "listening",
+    "example_sentences": [
+      "The washer and dryer are in the basement.",
+      "The washer is broken."
+    ],
+    "confusion_pairs": [
+      "dryer",
+      "dishwasher"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.71,
+      "stability": 2.25
+    }
+  },
+  {
+    "id": "vocab-ln-49",
+    "word": "westbound",
+    "phonetic": "/ˈwɛstbaʊnd/",
+    "translations": {
+      "es": "dirección oeste",
+      "hi": "पश्चिम की ओर",
+      "pa": "ਪੱਛਮ ਵੱਲ",
+      "zh": "西行"
+    },
+    "level": "branch",
+    "category": "listening",
+    "example_sentences": [
+      "The westbound train is running late.",
+      "Take the westbound platform."
+    ],
+    "confusion_pairs": [
+      "eastbound",
+      "northbound"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.73,
+      "stability": 2.2
+    }
+  },
+  {
+    "id": "vocab-ln-50",
+    "word": "withdraw",
+    "phonetic": "/wɪðˈdrɔː/",
+    "translations": {
+      "es": "retirar",
+      "hi": "निकालना",
+      "pa": "ਕਢਵਾਉਣਾ",
+      "zh": "取款"
+    },
+    "level": "branch",
+    "category": "listening",
+    "example_sentences": [
+      "You can withdraw cash from any ATM.",
+      "I need to withdraw fifty dollars."
+    ],
+    "confusion_pairs": [
+      "deposit",
+      "transfer"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.74,
+      "stability": 2.15
+    }
+  }
+]

@@ -16,11 +16,13 @@ Loads every pack declared in content/manifest.json (SN-027):
     vocabulary : core-v1 + v2, core-fr-v1, workplace + healthcare,
                  quebec-healthcare + quebec-workplace,
                  housing + finance, quebec-housing + quebec-finance,
-                 smalltalk, job-interviews, hospitality      (770)
+                 smalltalk, job-interviews, hospitality,
+                 listening                                   (820)
 
-Micro-lessons (culture-english-v1) and pronunciation drills
-(canadian-speech-english-v1) are read-only content formats served
-straight from the manifest — they never enter scenario seeding.
+Micro-lessons (culture-english-v1, culture-french-v1), pronunciation
+drills (canadian-speech-english-v1), and listening dialogues
+(listening-english-v1) are read-only content formats served straight
+from the manifest — they never enter scenario seeding.
 
 Scenarios are shared rows upserted idempotently under deterministic
 uuid5 PKs derived in the SAME namespace as
@@ -29,7 +31,7 @@ loader so both seeding paths stay byte-identical, including the
 per-scenario pack_id mapping (SN-035). Vocabulary stays user-scoped
 by design (D-008): this script validates and counts the combined
 packs; cards materialize lazily per user via GET /api/review/due.
-Re-running is a no-op: counts stay stable at 155 scenarios / 770
+Re-running is a no-op: counts stay stable at 155 scenarios / 820
 vocabulary pack items.
 """
 

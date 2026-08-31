@@ -48,6 +48,12 @@ def test_manifest_paths_exist() -> None:
 def test_manifest_types_and_languages() -> None:
     payload = _load_manifest()
     for pack in payload["packs"]:
-        assert pack["type"] in {"scenarios", "vocabulary", "microlessons", "pronunciation"}
+        assert pack["type"] in {
+            "scenarios",
+            "vocabulary",
+            "microlessons",
+            "pronunciation",
+            "listening",
+        }
         assert pack["language"] in {"en", "fr"}
         assert isinstance(pack["is_published"], bool)

@@ -115,6 +115,10 @@ export default function RootLayout(): JSX.Element {
                     options={{ animation: "slide_from_bottom" }}
                   />
                   <Stack.Screen
+                    name="listening/[id]"
+                    options={{ animation: "slide_from_bottom" }}
+                  />
+                  <Stack.Screen
                     name="scorecard"
                     options={{ animation: "slide_from_bottom" }}
                   />

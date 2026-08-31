@@ -499,6 +499,108 @@ export async function evaluatePronunciation(
 }
 
 // ---------------------------------------------------------------------
+// Listening Gym (SN-050)
+// ---------------------------------------------------------------------
+
+/** One listening dialogue as shown in the Learn tab's Gym rail. */
+export interface ListeningDialogueSummary {
+  id: string;
+  title: string;
+  context: string;
+  level: string;
+  difficulty: number;
+  listening_focus: string;
+  is_premium: boolean;
+  /** True when the dialogue is premium and the caller is on the free tier. */
+  is_locked?: boolean;
+  theme_color?: string;
+  icon?: string;
+}
+
+/** One spoken turn inside a dialogue. */
+export interface DialogueTurn {
+  role: "speaker" | "listener" | "system";
+  text: string;
+  pause_after_ms: number;
+}
+
+/** One comprehension question with four choices. */
+export interface ListeningQuestion {
+  prompt: string;
+  choices: string[];
+  correct_index: number;
+  explanation: string;
+}
+
+/** The full dialogue body for the player screen. */
+export interface ListeningDialogue {
+  id: string;
+  title: string;
+  context: string;
+  level: string;
+  difficulty: number;
+  listening_focus: string;
+  is_premium: boolean;
+  turns: DialogueTurn[];
+  questions: ListeningQuestion[];
+  vocab_targets: string[];
+  pack_id: string;
+  theme_color: string;
+  icon: string;
+}
+
+/** One incorrectly answered question in the results. */
+export interface MissedQuestion {
+  prompt: string;
+  your_answer: string;
+  correct_answer: string;
+  explanation: string;
+}
+
+/** The deterministic mock evaluation returned by the backend. */
+export interface ListeningEvaluation {
+  correct_count: number;
+  total: number;
+  score: number;
+  missed: MissedQuestion[];
+  time_seconds: number;
+  engine_version: string;
+}
+
+/** GET /listening/dialogues — the Listening Gym catalog. */
+export async function fetchListeningDialogues(): Promise<
+  ListeningDialogueSummary[]
+> {
+  const { data } = await api.get<{ dialogues: ListeningDialogueSummary[] }>(
+    "/listening/dialogues",
+  );
+  return data.dialogues;
+}
+
+/** GET /listening/dialogues/{id} — one full dialogue for the player. */
+export async function fetchListeningDialogue(
+  id: string,
+): Promise<ListeningDialogue> {
+  const { data } = await api.get<ListeningDialogue>(
+    `/listening/dialogues/${id}`,
+  );
+  return data;
+}
+
+/** POST /listening/dialogues/{id}/evaluate — score a quiz take (mock). */
+export async function evaluateListening(
+  id: string,
+  answers: number[],
+  timeSeconds: number,
+): Promise<ListeningEvaluation> {
+  const { data } = await api.post<ListeningEvaluation>(
+    `/listening/dialogues/${id}/evaluate`,
+    { answers, time_seconds: timeSeconds },
+  );
+  return data;
+}
+
+// ---------------------------------------------------------------------
 // Entitlements (SN-041)
 // ---------------------------------------------------------------------
 

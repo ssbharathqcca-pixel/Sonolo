@@ -155,7 +155,7 @@ def test_combined_seed_counts() -> None:
     vocab = load_vocabulary_seeds()
     assert len(seeds) == 155
     assert sum(1 for s in seeds if s.target_language.startswith("en")) == 110
-    assert len(vocab) == 770
+    assert len(vocab) == 820
 
 
 def test_scenario_seeds_carry_manifest_pack_ids() -> None:
@@ -182,7 +182,7 @@ def test_vocabulary_seeds_carry_language_metadata() -> None:
     seeds = load_vocabulary_seeds()
     english = [seed for seed in seeds if seed.language == "en"]
     french = [seed for seed in seeds if seed.language == "fr"]
-    assert len(english) == 550
+    assert len(english) == 600
     assert len(french) == 220
     # Every French seed maps to one of the manifest's French vocabulary
     # packs (core-fr-v1 plus the Quebec healthcare and workplace packs).

@@ -220,4 +220,4 @@ async def test_pronunciation_not_in_scenario_or_vocab_seeds() -> None:
         not seed.pack_id.startswith("canadian-speech")
         for seed in load_scenario_seeds()
     )
-    assert len(load_vocabulary_seeds()) == 770
+    assert len(load_vocabulary_seeds()) == 820

@@ -74,7 +74,7 @@ def _summary(seed: MicroLessonSeed) -> MicroLessonSummaryOut:
 @router.get("", response_model=MicroLessonListResponse)
 async def list_microlessons(
     current_user: User = Depends(get_current_user),
-    language: str | None = Query(default=None, regex="^(en|fr)$"),
+    language: str | None = Query(default=None, pattern="^(en|fr)$"),
 ) -> MicroLessonListResponse:
     """Return Culture Corner micro-lessons, optionally filtered by language.
 

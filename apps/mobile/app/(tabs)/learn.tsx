@@ -39,11 +39,13 @@ import {
 import { GlassCard } from "../../src/components/GlassCard";
 import { PaywallModal } from "../../src/components/PaywallModal";
 import {
+  fetchListeningDialogues,
   fetchMicrolessons,
   fetchPacks,
   fetchPronunciationDrills,
   fetchTodayQuests,
   type ContentPack,
+  type ListeningDialogueSummary,
   type MicrolessonSummary,
   type PronunciationDrillSummary,
   type QuestResult,
@@ -357,6 +359,46 @@ function PronunciationCard({
   );
 }
 
+function ListeningCard({
+  dialogue,
+  isLocked,
+  onPress,
+}: {
+  dialogue: ListeningDialogueSummary;
+  isLocked: boolean;
+  onPress: () => void;
+}): JSX.Element {
+  return (
+    <Pressable
+      accessibilityLabel={`Listening dialogue: ${dialogue.title}`}
+      onPress={onPress}
+      style={({ pressed }) => [
+        styles.microCard,
+        // Same solid theme-color card treatment as the other rails.
+        { backgroundColor: `${dialogue.theme_color ?? "#06B6D4"}E6` },
+        pressed && styles.packCardPressed,
+      ]}
+    >
+      <View style={styles.microCardHeader}>
+        <View style={styles.microIconWell}>
+          <Text style={styles.microIcon}>{dialogue.icon ?? "🎧"}</Text>
+        </View>
+        {isLocked ? (
+          <View style={styles.microDoneBadge}>
+            <Lock color="#FFFFFF" size={14} />
+          </View>
+        ) : null}
+      </View>
+      <Text style={styles.microTitle} numberOfLines={2}>
+        {dialogue.title}
+      </Text>
+      <Text style={styles.microMeta} numberOfLines={1}>
+        {isLocked ? "Premium" : dialogue.listening_focus}
+      </Text>
+    </Pressable>
+  );
+}
+
 export default function LearnScreen(): JSX.Element {
   const router = useRouter();
   const insets = useSafeAreaInsets();
@@ -372,6 +414,10 @@ export default function LearnScreen(): JSX.Element {
   // SN-049: Pronunciation Lab drill summaries for the card rail.
   const [pronunciationDrills, setPronunciationDrills] = useState<
     PronunciationDrillSummary[]
+  >([]);
+  // SN-050: Listening Gym dialogue summaries for the card rail.
+  const [listeningDialogues, setListeningDialogues] = useState<
+    ListeningDialogueSummary[]
   >([]);
 
   const user = useAuthStore((state) => state.user);
@@ -461,6 +507,24 @@ export default function LearnScreen(): JSX.Element {
     };
   }, []);
 
+  // Listening Gym summaries are static manifest data (SN-050): fetch
+  // once on mount and degrade silently when offline.
+  useEffect(() => {
+    let cancelled = false;
+    fetchListeningDialogues()
+      .then((dialogues) => {
+        if (!cancelled) {
+          setListeningDialogues(dialogues);
+        }
+      })
+      .catch(() => {
+        // No dialogues, no Listening Gym rail; nothing else depends on it.
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
   // Server tier truth beats a possibly stale cached catalog: once the
   // account is premium no card stays locked (SN-026).
   const isPremiumUser = user?.subscription_tier === "premium";
@@ -485,6 +549,19 @@ export default function LearnScreen(): JSX.Element {
         return;
       }
       router.push(`/pronunciation/${drill.id}`);
+    },
+    [isPremiumUser, router],
+  );
+
+  // SN-050: a locked listening dialogue opens the paywall instead of
+  // the player; unlocked ones jump straight into the dialogue.
+  const handleListeningPress = useCallback(
+    (dialogue: ListeningDialogueSummary): void => {
+      if (dialogue.is_locked === true && !isPremiumUser) {
+        setPaywallVisible(true);
+        return;
+      }
+      router.push(`/listening/${dialogue.id}`);
     },
     [isPremiumUser, router],
   );
@@ -592,6 +669,29 @@ export default function LearnScreen(): JSX.Element {
                 drill={drill}
                 isLocked={drill.is_locked === true && !isPremiumUser}
                 onPress={() => handleDrillPress(drill)}
+              />
+            ))}
+          </ScrollView>
+        </View>
+      ) : null}
+
+      {listeningDialogues.length > 0 ? (
+        <View style={styles.microSection}>
+          <Text style={styles.sectionTitle}>Listening Gym</Text>
+          <Text style={styles.microSubtitle}>
+            Train your ear on real Canadian conversations.
+          </Text>
+          <ScrollView
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={styles.microRail}
+          >
+            {listeningDialogues.map((dialogue) => (
+              <ListeningCard
+                key={dialogue.id}
+                dialogue={dialogue}
+                isLocked={dialogue.is_locked === true && !isPremiumUser}
+                onPress={() => handleListeningPress(dialogue)}
               />
             ))}
           </ScrollView>

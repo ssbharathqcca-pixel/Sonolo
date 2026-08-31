@@ -427,6 +427,116 @@ def load_pronunciation_drills() -> list[PronunciationDrill]:
     return drills
 
 
+
+@dataclass(frozen=True)
+class ListeningTurn:
+    """One spoken turn inside a Listening Gym dialogue (SN-050)."""
+
+    role: str
+    text: str
+    pause_after_ms: int
+
+
+@dataclass(frozen=True)
+class ListeningQuestion:
+    """One comprehension question with its correct answer (SN-050)."""
+
+    prompt: str
+    choices: list[str]
+    correct_index: int
+    explanation: str
+
+
+@dataclass(frozen=True)
+class ListeningDialogue:
+    """One Listening Gym dialogue (SN-050), new content format.
+
+    Like micro-lessons and pronunciation drills, listening dialogues are
+    read-only content-pack reads (no DB rows); the manifest supplies the
+    pack id plus theme_color and icon. Duplicate ids across packs raise.
+    """
+
+    id: str
+    title: str
+    context: str
+    level: str
+    difficulty: float
+    listening_focus: str
+    is_premium: bool
+    turns: list[ListeningTurn]
+    questions: list[ListeningQuestion]
+    vocab_targets: list[str]
+    pack_id: str
+    theme_color: str
+    icon: str
+
+
+def load_listening_packs() -> list[ManifestPack]:
+    """Every manifest pack of type "listening" (SN-050)."""
+    return [
+        pack for pack in load_manifest_packs() if pack.type == "listening"
+    ]
+
+
+def load_listening_dialogues() -> list[ListeningDialogue]:
+    """Read every Listening Gym dialogue from the manifest (SN-050)."""
+    manifest = load_manifest()
+    meta = {
+        str(entry["id"]): entry
+        for entry in manifest.get("packs", [])
+        if entry.get("type") == "listening"
+    }
+    dialogues: list[ListeningDialogue] = []
+    seen_ids: set[str] = set()
+    for pack in load_listening_packs():
+        entry = meta[pack.id]
+        path = _resolve_pack_path(pack.path)
+        with path.open(encoding="utf-8") as handle:
+            raw: list[dict[str, Any]] = json.load(handle)
+        for dialogue in raw:
+            dialogue_id = str(dialogue["id"])
+            if dialogue_id in seen_ids:
+                raise ValueError(
+                    f"Duplicate listening dialogue id across packs: {dialogue_id!r}"
+                )
+            seen_ids.add(dialogue_id)
+            dialogues.append(
+                ListeningDialogue(
+                    id=dialogue_id,
+                    title=str(dialogue["title"]),
+                    context=str(dialogue["context"]),
+                    level=str(dialogue["level"]),
+                    difficulty=float(dialogue["difficulty"]),
+                    listening_focus=str(dialogue["listening_focus"]),
+                    is_premium=bool(dialogue["is_premium"]),
+                    turns=[
+                        ListeningTurn(
+                            role=str(turn["role"]),
+                            text=str(turn["text"]),
+                            pause_after_ms=int(turn["pause_after_ms"]),
+                        )
+                        for turn in dialogue["turns"]
+                    ],
+                    questions=[
+                        ListeningQuestion(
+                            prompt=str(question["prompt"]),
+                            choices=[
+                                str(choice) for choice in question["choices"]
+                            ],
+                            correct_index=int(question["correct_index"]),
+                            explanation=str(question["explanation"]),
+                        )
+                        for question in dialogue["questions"]
+                    ],
+                    vocab_targets=[
+                        str(word) for word in dialogue["vocab_targets"]
+                    ],
+                    pack_id=pack.id,
+                    theme_color=str(entry.get("theme_color", "")),
+                    icon=str(entry.get("icon", "")),
+                )
+            )
+    return dialogues
 async def seed_scenarios(db: AsyncSession) -> int:
     """Idempotently upsert all scenarios from every pack edition."""
     seeds = load_scenario_seeds()

@@ -1,0 +1,1053 @@
+[
+  {
+    "id": "listen-coffee-morning-rush",
+    "title": "Coffee shop morning rush",
+    "context": "You step into a busy coffee shop near your office. The barista greets you as you approach the counter.",
+    "level": "sprout",
+    "difficulty": 0.3,
+    "listening_focus": "details",
+    "is_premium": false,
+    "turns": [
+      {
+        "role": "speaker",
+        "text": "Hi there! What can I get started for you today?",
+        "pause_after_ms": 1500
+      },
+      {
+        "role": "listener",
+        "text": "Hi, could I get a medium dark roast, please?",
+        "pause_after_ms": 1200
+      },
+      {
+        "role": "speaker",
+        "text": "Sure thing. One medium dark roast. Anything else? Maybe a latte or an espresso to go with it?",
+        "pause_after_ms": 1000
+      },
+      {
+        "role": "listener",
+        "text": "No, just the coffee, thanks. Actually, could I make it a regular — cream and one sugar?",
+        "pause_after_ms": 1000
+      },
+      {
+        "role": "speaker",
+        "text": "No problem at all. That'll be two-seventy-five. Would you like a receipt?",
+        "pause_after_ms": 1200
+      },
+      {
+        "role": "listener",
+        "text": "No receipt, thanks. Have a good one!",
+        "pause_after_ms": 800
+      },
+      {
+        "role": "speaker",
+        "text": "You too! Watch your step — it's a bit slippery out.",
+        "pause_after_ms": 500
+      }
+    ],
+    "questions": [
+      {
+        "prompt": "What did the customer order?",
+        "choices": [
+          "A large latte with almond milk",
+          "A medium dark roast with cream and sugar",
+          "A small espresso with one sugar",
+          "A medium cappuccino with extra foam"
+        ],
+        "correct_index": 1,
+        "explanation": "The customer ordered a medium dark roast, then added cream and one sugar — that's a 'regular' in coffee shop terms. Listen for the modifier 'regular' — it signals a specific preparation, not a different drink."
+      },
+      {
+        "prompt": "What did the barista offer as an extra?",
+        "choices": [
+          "A cookie",
+          "A latte or espresso",
+          "A bottle of water",
+          "A loyalty card"
+        ],
+        "correct_index": 1,
+        "explanation": "The barista said 'Maybe a latte or an espresso to go with it?' This is a common up-sell — the answer is in the offer, not the customer's reply."
+      },
+      {
+        "prompt": "Why did the barista warn the customer at the end?",
+        "choices": [
+          "The coffee was very hot",
+          "The floor was slippery",
+          "It was raining outside",
+          "The door was broken"
+        ],
+        "correct_index": 1,
+        "explanation": "The barista said 'Watch your step — it's a bit slippery out.' The warning came after the transaction was complete, which is a common Canadian politeness: a small care comment as the customer leaves."
+      }
+    ],
+    "vocab_targets": [
+      "espresso",
+      "latte",
+      "cream",
+      "sugar",
+      "medium"
+    ]
+  },
+  {
+    "id": "listen-bus-stop-downtown",
+    "title": "Bus stop — is this the 12 downtown?",
+    "context": "You are waiting at a bus stop in a new neighbourhood. Another person approaches and asks about the route.",
+    "level": "sprout",
+    "difficulty": 0.3,
+    "listening_focus": "details",
+    "is_premium": false,
+    "turns": [
+      {
+        "role": "speaker",
+        "text": "Excuse me — is this the stop for the 12 going downtown?",
+        "pause_after_ms": 1500
+      },
+      {
+        "role": "listener",
+        "text": "I think so. The sign says the 12 goes westbound toward downtown.",
+        "pause_after_ms": 1200
+      },
+      {
+        "role": "speaker",
+        "text": "Great, thanks. I'm new to this neighbourhood. Do you know if the 12 eventually connects to the eastbound express at the main station?",
+        "pause_after_ms": 1500
+      },
+      {
+        "role": "listener",
+        "text": "Yes, it does. You get off at the corner of Bay and Front, and the express is right across the street.",
+        "pause_after_ms": 1200
+      },
+      {
+        "role": "speaker",
+        "text": "Perfect. And how often does the 12 come?",
+        "pause_after_ms": 1000
+      },
+      {
+        "role": "listener",
+        "text": "Every ten minutes during rush hour. The next one should be here in about three minutes.",
+        "pause_after_ms": 800
+      },
+      {
+        "role": "speaker",
+        "text": "Amazing, thank you so much!",
+        "pause_after_ms": 500
+      }
+    ],
+    "questions": [
+      {
+        "prompt": "What does the person want to find out at the bus stop?",
+        "choices": [
+          "Whether the 12 bus goes downtown",
+          "What time the bus stop closes",
+          "Where to buy a bus pass",
+          "Which bus goes eastbound"
+        ],
+        "correct_index": 0,
+        "explanation": "The main purpose is confirmed early: 'is this the stop for the 12 going downtown?' — the listener confirms the route. Identifying the speaker's goal is a main-idea task."
+      },
+      {
+        "prompt": "Where does the person need to transfer to the express?",
+        "choices": [
+          "At the corner of Bay and Front",
+          "At the main bus terminal",
+          "At the next stop eastbound",
+          "At the downtown station"
+        ],
+        "correct_index": 0,
+        "explanation": "The listener said 'You get off at the corner of Bay and Front, and the express is right across the street.' The specific intersection is the key detail."
+      },
+      {
+        "prompt": "Why does the person ask how often the 12 comes?",
+        "choices": [
+          "To plan how long they will wait",
+          "Because they are late for work",
+          "To complain about the service",
+          "Because they missed the last bus"
+        ],
+        "correct_index": 0,
+        "explanation": "Asking about frequency right after confirming the route suggests the person is planning their wait — an inference from the context, not a stated fact."
+      }
+    ],
+    "vocab_targets": [
+      "downtown",
+      "corner",
+      "westbound",
+      "eastbound",
+      "express"
+    ]
+  },
+  {
+    "id": "listen-calling-211",
+    "title": "Calling 211 — settlement services info",
+    "context": "You have just arrived in Canada and need help finding English classes and community resources. You call 211, a free information service.",
+    "level": "sprout",
+    "difficulty": 0.3,
+    "listening_focus": "main idea",
+    "is_premium": false,
+    "turns": [
+      {
+        "role": "system",
+        "text": "Thank you for calling 211. How can I help you today?",
+        "pause_after_ms": 1500
+      },
+      {
+        "role": "listener",
+        "text": "Hi, I'm new to Canada. I'm looking for English classes and maybe some settlement support in my community.",
+        "pause_after_ms": 1200
+      },
+      {
+        "role": "speaker",
+        "text": "Sure, I can help with that. What part of the city are you in?",
+        "pause_after_ms": 1000
+      },
+      {
+        "role": "listener",
+        "text": "I'm in the east end, near the community centre on Main Street.",
+        "pause_after_ms": 1000
+      },
+      {
+        "role": "speaker",
+        "text": "Great. There's a settlement worker at the Main Street Community Centre who offers free drop-in English conversation circles every Tuesday morning. They can also help with housing and health card applications.",
+        "pause_after_ms": 1500
+      },
+      {
+        "role": "listener",
+        "text": "That sounds perfect. Do I need to register beforehand?",
+        "pause_after_ms": 800
+      },
+      {
+        "role": "speaker",
+        "text": "No registration needed — just drop in anytime between 9 and 11. I'll also send you a list of other community resources by email if you'd like.",
+        "pause_after_ms": 500
+      }
+    ],
+    "questions": [
+      {
+        "prompt": "What is the main purpose of the caller's phone call?",
+        "choices": [
+          "To find English classes and settlement support",
+          "To report a lost health card",
+          "To book a doctor's appointment",
+          "To complain about community services"
+        ],
+        "correct_index": 0,
+        "explanation": "The caller states the goal up front: 'I'm looking for English classes and maybe some settlement support.' Grasping the overall goal is a main-idea task."
+      },
+      {
+        "prompt": "What did the 211 worker say about the English conversation circles?",
+        "choices": [
+          "They cost twenty dollars per session",
+          "They are free and drop-in on Tuesday mornings",
+          "They are only for permanent residents",
+          "They require online registration"
+        ],
+        "correct_index": 1,
+        "explanation": "The worker said 'free drop-in English conversation circles every Tuesday morning.' The words 'free' and 'drop-in' are key details — no cost, no appointment needed."
+      },
+      {
+        "prompt": "What does the word 'drop-in' most likely mean here?",
+        "choices": [
+          "You can attend without registering in advance",
+          "You must arrive before 9 AM",
+          "Only newcomers can attend",
+          "The class is held outdoors"
+        ],
+        "correct_index": 0,
+        "explanation": "The worker says 'no registration needed — just drop in anytime between 9 and 11.' The word 'just' signals it's simple and informal — an inference from context."
+      }
+    ],
+    "vocab_targets": [
+      "support",
+      "community",
+      "conversation",
+      "free",
+      "email"
+    ]
+  },
+  {
+    "id": "listen-landlord-showing-apartment",
+    "title": "Landlord showing an apartment",
+    "context": "You are looking at a one-bedroom apartment for rent. The landlord is showing you around and explaining the terms.",
+    "level": "sprout",
+    "difficulty": 0.4,
+    "listening_focus": "details",
+    "is_premium": false,
+    "turns": [
+      {
+        "role": "speaker",
+        "text": "So this is the living room — it gets good afternoon light. The kitchen is through that door.",
+        "pause_after_ms": 1500
+      },
+      {
+        "role": "listener",
+        "text": "It's nice. And the rent includes utilities, right?",
+        "pause_after_ms": 1200
+      },
+      {
+        "role": "speaker",
+        "text": "Heat and water are included, but hydro is separate. You'd pay about fifty to sixty a month for electricity.",
+        "pause_after_ms": 1500
+      },
+      {
+        "role": "listener",
+        "text": "Okay. And is the lease month-to-month or a full year?",
+        "pause_after_ms": 1000
+      },
+      {
+        "role": "speaker",
+        "text": "I prefer a one-year lease to start. After that, it goes month-to-month automatically. The washer and dryer are in the basement — shared with the other unit.",
+        "pause_after_ms": 1000
+      },
+      {
+        "role": "listener",
+        "text": "Got it. And I'd need to fill out a rental application and provide a document like my work permit, right?",
+        "pause_after_ms": 1200
+      },
+      {
+        "role": "speaker",
+        "text": "Yes, a copy of your work permit or passport is fine. I'll also need a damage deposit of half a month's rent.",
+        "pause_after_ms": 500
+      }
+    ],
+    "questions": [
+      {
+        "prompt": "What is the landlord showing the listener?",
+        "choices": [
+          "A one-bedroom apartment for rent",
+          "A house for sale",
+          "An office space",
+          "A storage unit"
+        ],
+        "correct_index": 0,
+        "explanation": "The conversation opens with the landlord showing 'the living room' of an apartment and discussing rent and lease terms. The overall situation is a rental viewing — a main-idea task."
+      },
+      {
+        "prompt": "What is included in the rent?",
+        "choices": [
+          "Heat and water only",
+          "Everything including hydro",
+          "Heat, water, and hydro",
+          "Only heat"
+        ],
+        "correct_index": 0,
+        "explanation": "The landlord said 'Heat and water are included, but hydro is separate.' The word 'but' signals an exception — hydro is NOT included."
+      },
+      {
+        "prompt": "Why might the landlord prefer a one-year lease?",
+        "choices": [
+          "It gives them stable tenancy for a full year",
+          "It is required by law in Canada",
+          "It means the tenant cannot leave early",
+          "It includes free hydro"
+        ],
+        "correct_index": 0,
+        "explanation": "The landlord says they 'prefer' a one-year lease that then becomes month-to-month. Preferring a longer initial term suggests a desire for stability — an inference, since the landlord never states the reason directly."
+      }
+    ],
+    "vocab_targets": [
+      "month-to-month",
+      "washer",
+      "dryer",
+      "document",
+      "permit"
+    ]
+  },
+  {
+    "id": "listen-bank-opening-chequing",
+    "title": "Bank teller — opening a chequing account",
+    "context": "You visit a bank to open your first Canadian chequing account. The teller welcomes you and explains the options.",
+    "level": "branch",
+    "difficulty": 0.5,
+    "listening_focus": "details",
+    "is_premium": true,
+    "turns": [
+      {
+        "role": "speaker",
+        "text": "Welcome to our bank! How can I help you today?",
+        "pause_after_ms": 1500
+      },
+      {
+        "role": "listener",
+        "text": "Hi, I'd like to open a chequing account. I just moved to Canada.",
+        "pause_after_ms": 1200
+      },
+      {
+        "role": "speaker",
+        "text": "Welcome to Canada! I can help you with that. We have two main chequing options — the basic account has no monthly fee if you keep a minimum balance of three thousand dollars, and the everyday account has a four-dollar monthly fee with unlimited transactions.",
+        "pause_after_ms": 1200
+      },
+      {
+        "role": "listener",
+        "text": "I think the everyday account sounds better. Can I withdraw cash from any ATM without extra fees?",
+        "pause_after_ms": 1000
+      },
+      {
+        "role": "speaker",
+        "text": "With the everyday account, you get four free withdrawals from other banks' ATMs per month. After that, it's a dollar fifty each. But our own ATMs are unlimited and free.",
+        "pause_after_ms": 1500
+      },
+      {
+        "role": "listener",
+        "text": "Good to know. I'll go with the everyday account. What do I need to open it?",
+        "pause_after_ms": 800
+      },
+      {
+        "role": "speaker",
+        "text": "I'll just need your passport and a document with your address — a lease or a utility bill works. And if you want, I can set up a cash back rewards program on your debit card too.",
+        "pause_after_ms": 500
+      }
+    ],
+    "questions": [
+      {
+        "prompt": "What is the listener's main goal at the bank?",
+        "choices": [
+          "To open a chequing account",
+          "To apply for a credit card",
+          "To exchange currency",
+          "To pay a bill"
+        ],
+        "correct_index": 0,
+        "explanation": "The listener states the goal immediately: 'I'd like to open a chequing account.' The overall purpose is the main idea of the conversation."
+      },
+      {
+        "prompt": "How many free withdrawals from other banks' ATMs does the everyday account include?",
+        "choices": [
+          "Unlimited",
+          "Two per month",
+          "Four per month",
+          "Ten per month"
+        ],
+        "correct_index": 2,
+        "explanation": "The teller said 'you get four free withdrawals from other banks' ATMs per month.' The quantity is stated directly — a details task."
+      },
+      {
+        "prompt": "Why does the teller mention the cash back rewards program at the end?",
+        "choices": [
+          "To offer the customer an extra benefit",
+          "To charge an extra fee",
+          "To replace the chequing account",
+          "Because it is required by law"
+        ],
+        "correct_index": 0,
+        "explanation": "The teller says 'if you want, I can set up a cash back rewards program too' — an optional perk offered after the main account is chosen. Inferring the intent (a friendly upsell) is an inference task."
+      }
+    ],
+    "vocab_targets": [
+      "chequing",
+      "withdraw",
+      "address",
+      "rewards",
+      "document"
+    ]
+  },
+  {
+    "id": "listen-pharmacist-prescription",
+    "title": "Pharmacist — picking up a prescription",
+    "context": "You go to a pharmacy to pick up a prescription your doctor called in. The pharmacist has questions about your insurance coverage.",
+    "level": "branch",
+    "difficulty": 0.5,
+    "listening_focus": "details",
+    "is_premium": true,
+    "turns": [
+      {
+        "role": "speaker",
+        "text": "Hi, I'm here to pick up a prescription. My doctor said she sent it in earlier today.",
+        "pause_after_ms": 1500
+      },
+      {
+        "role": "listener",
+        "text": "Let me look it up. What's your date of birth?",
+        "pause_after_ms": 1000
+      },
+      {
+        "role": "speaker",
+        "text": "March 15, 1990.",
+        "pause_after_ms": 800
+      },
+      {
+        "role": "listener",
+        "text": "Got it. I see a prescription for a generic antibiotic — the doctor prescribed one tablet twice a day for ten days. Do you have insurance coverage for prescriptions?",
+        "pause_after_ms": 1500
+      },
+      {
+        "role": "speaker",
+        "text": "Perfect. Let me process that. The generic version is covered, so you'll only pay the dispensing fee. I'll attach the instructions on how to take it. The wait time is about fifteen minutes.",
+        "pause_after_ms": 1000
+      },
+      {
+        "role": "listener",
+        "text": "Perfect. Let me process that. The generic version is covered, so you'll only pay the dispensing fee. The wait time is about fifteen minutes. You can grab a seat or come back.",
+        "pause_after_ms": 1200
+      },
+      {
+        "role": "speaker",
+        "text": "Fifteen minutes is fine. I'll wait, thanks.",
+        "pause_after_ms": 500
+      }
+    ],
+    "questions": [
+      {
+        "prompt": "What is the main purpose of the customer's visit to the pharmacy?",
+        "choices": [
+          "To pick up a prescription",
+          "To buy over-the-counter medicine",
+          "To ask about side effects",
+          "To book a flu shot"
+        ],
+        "correct_index": 0,
+        "explanation": "The customer opens with 'I'm here to pick up a prescription.' The overall purpose is the main idea."
+      },
+      {
+        "prompt": "How often should the patient take the medication?",
+        "choices": [
+          "Once a day",
+          "Twice a day for ten days",
+          "Three times a day for a week",
+          "Once a week"
+        ],
+        "correct_index": 1,
+        "explanation": "The pharmacist said 'one tablet twice a day for ten days.' The dosage and duration are stated together — listen for the full instruction, not just the first number."
+      },
+      {
+        "prompt": "Why will the patient only pay the dispensing fee?",
+        "choices": [
+          "Because their insurance covers the medication",
+          "Because the pharmacy is having a sale",
+          "Because the medication is free for newcomers",
+          "Because they have a coupon"
+        ],
+        "correct_index": 0,
+        "explanation": "The pharmacist said 'The generic version is covered, so you'll only pay the dispensing fee.' The word 'so' links cause and effect — the insurance coverage is the reason. This requires connecting the two statements (inference)."
+      }
+    ],
+    "vocab_targets": [
+      "generic",
+      "tablet",
+      "dispensing",
+      "covered",
+      "instructions"
+    ]
+  },
+  {
+    "id": "listen-service-canada-sin",
+    "title": "Service Canada — SIN appointment questions",
+    "context": "You are at a Service Canada office to apply for a Social Insurance Number. The agent asks you several questions to process the application.",
+    "level": "branch",
+    "difficulty": 0.5,
+    "listening_focus": "details",
+    "is_premium": true,
+    "turns": [
+      {
+        "role": "speaker",
+        "text": "Good morning. Please take a seat. I'm here to apply for a SIN number.",
+        "pause_after_ms": 1200
+      },
+      {
+        "role": "listener",
+        "text": "Good morning. Do you have your documents ready? I'll need your passport or permanent resident card, and a document that shows your current address.",
+        "pause_after_ms": 1500
+      },
+      {
+        "role": "speaker",
+        "text": "Yes, I have my passport and my lease agreement with my address on it.",
+        "pause_after_ms": 1000
+      },
+      {
+        "role": "listener",
+        "text": "Perfect. The processing time for a SIN is about two weeks. You'll receive the confirmation letter in the mail at the address you provided. Is there anything else you need help with today?",
+        "pause_after_ms": 1200
+      },
+      {
+        "role": "speaker",
+        "text": "Yes, I'm also a newcomer — are there any citizenship or settlement services I can access through Service Canada?",
+        "pause_after_ms": 1200
+      },
+      {
+        "role": "listener",
+        "text": "Absolutely. We have a welcome centre for newcomers with free orientation sessions. You can also access settlement support online. I'll give you a form to fill out for the orientation program.",
+        "pause_after_ms": 500
+      }
+    ],
+    "questions": [
+      {
+        "prompt": "What is the caller's main purpose at Service Canada?",
+        "choices": [
+          "To apply for a SIN number",
+          "To renew a passport",
+          "To register for English classes",
+          "To file a tax return"
+        ],
+        "correct_index": 0,
+        "explanation": "The caller states the purpose up front: 'I'm here to apply for a SIN number.' The main idea is the overall goal of the visit."
+      },
+      {
+        "prompt": "How long does the SIN processing take?",
+        "choices": [
+          "One week",
+          "Two weeks",
+          "One month",
+          "Same day"
+        ],
+        "correct_index": 1,
+        "explanation": "The agent said 'The processing time for a SIN is about two weeks.' The time frame is stated directly after the document check."
+      },
+      {
+        "prompt": "Why does the agent give the caller a form at the end?",
+        "choices": [
+          "So the caller can sign up for the newcomer orientation",
+          "To register for health coverage",
+          "To file a complaint",
+          "To book a follow-up appointment"
+        ],
+        "correct_index": 0,
+        "explanation": "The agent mentions the welcome centre and says 'I'll give you a form to fill out for the orientation program.' Linking the form to the orientation requires inference — the connection is implied, not spelled out."
+      }
+    ],
+    "vocab_targets": [
+      "processing",
+      "settlement",
+      "document",
+      "support",
+      "address"
+    ]
+  },
+  {
+    "id": "listen-clinic-symptoms",
+    "title": "Walk-in clinic — describing symptoms",
+    "context": "You feel unwell and visit a walk-in clinic. The receptionist asks you to describe your symptoms and provides a wait time.",
+    "level": "branch",
+    "difficulty": 0.5,
+    "listening_focus": "details",
+    "is_premium": true,
+    "turns": [
+      {
+        "role": "system",
+        "text": "Welcome to the walk-in clinic. Do you have an appointment or are you a walk-in?",
+        "pause_after_ms": 1500
+      },
+      {
+        "role": "listener",
+        "text": "I'm a walk-in. I've been feeling unwell for a few days.",
+        "pause_after_ms": 1000
+      },
+      {
+        "role": "system",
+        "text": "Okay, I'll need to register you first. Can I get your full name, date of birth, and health card number?",
+        "pause_after_ms": 1200
+      },
+      {
+        "role": "listener",
+        "text": "Sure. My name is Priya Sharma, born March 22, 1996. Here's my health card.",
+        "pause_after_ms": 1000
+      },
+      {
+        "role": "system",
+        "text": "Thank you. And what symptoms are you experiencing today?",
+        "pause_after_ms": 1200
+      },
+      {
+        "role": "listener",
+        "text": "I have a sore throat, a bit of a cough, and I've had a fever on and off since Sunday. I'm also feeling quite tired.",
+        "pause_after_ms": 1200
+      },
+      {
+        "role": "system",
+        "text": "Got it. The current wait time is about forty-five minutes. You can have a seat in the waiting room. The doctor will call your name when it's your turn. Do you have insurance coverage for this visit? The receptionist will have a short conversation with you before the doctor comes in.",
+        "pause_after_ms": 500
+      }
+    ],
+    "questions": [
+      {
+        "prompt": "Why is the patient at the walk-in clinic?",
+        "choices": [
+          "They have been feeling unwell for a few days",
+          "They need a prescription refill",
+          "They are there for a work physical",
+          "They are visiting a friend"
+        ],
+        "correct_index": 0,
+        "explanation": "The patient says 'I've been feeling unwell for a few days' and later lists symptoms. The reason for the visit is the main idea of the conversation."
+      },
+      {
+        "prompt": "What symptoms does the patient describe?",
+        "choices": [
+          "A headache and stomach pain",
+          "A sore throat, cough, and fever",
+          "A rash and a fever",
+          "Chest pain and shortness of breath"
+        ],
+        "correct_index": 1,
+        "explanation": "The patient said 'a sore throat, a bit of a cough, and I've had a fever on and off since Sunday.' Multiple symptoms are listed — listen for the full list, not just the first symptom."
+      },
+      {
+        "prompt": "Why does the receptionist ask about insurance coverage at the end?",
+        "choices": [
+          "To know how the visit will be paid for",
+          "To schedule a follow-up visit",
+          "To refer the patient to a specialist",
+          "To check the patient's address"
+        ],
+        "correct_index": 0,
+        "explanation": "After giving the wait time, the receptionist asks 'Do you have insurance coverage for this visit?' — the implied purpose is billing. This is an inference about the receptionist's intent."
+      }
+    ],
+    "vocab_targets": [
+      "unwell",
+      "register",
+      "throat",
+      "waiting",
+      "conversation"
+    ]
+  },
+  {
+    "id": "listen-job-interview-followup",
+    "title": "Job interview follow-up call",
+    "context": "You had a job interview last week and the hiring manager calls you with an update.",
+    "level": "branch",
+    "difficulty": 0.5,
+    "listening_focus": "inference",
+    "is_premium": true,
+    "turns": [
+      {
+        "role": "speaker",
+        "text": "Hello, this is Karen from Northern Logistics. Is now a good time to talk?",
+        "pause_after_ms": 1500
+      },
+      {
+        "role": "listener",
+        "text": "Yes, absolutely. Thanks for calling back.",
+        "pause_after_ms": 1000
+      },
+      {
+        "role": "speaker",
+        "text": "Great. I wanted to follow up on your interview for the warehouse supervisor position. We were really impressed with your candidacy.",
+        "pause_after_ms": 1200
+      },
+      {
+        "role": "listener",
+        "text": "Thank you! I was really excited about the role and the team.",
+        "pause_after_ms": 1000
+      },
+      {
+        "role": "speaker",
+        "text": "We'd like to move forward with a second interview. It would be with our regional manager, and it'll be more of a conversation about your experience. How does next Tuesday at 10 AM sound?",
+        "pause_after_ms": 1500
+      },
+      {
+        "role": "listener",
+        "text": "Tuesday at 10 works perfectly. Should I prepare anything specific?",
+        "pause_after_ms": 800
+      },
+      {
+        "role": "speaker",
+        "text": "Just bring yourself and a list of any questions you have. I'll also send a thank-you email with the details. Talk to you then!",
+        "pause_after_ms": 500
+      }
+    ],
+    "questions": [
+      {
+        "prompt": "What is the main purpose of the call?",
+        "choices": [
+          "To reject the application",
+          "To offer the job",
+          "To schedule a second interview",
+          "To ask for references"
+        ],
+        "correct_index": 2,
+        "explanation": "The caller said 'We'd like to move forward with a second interview.' This is a positive update — the candidate is still in the process. Listen for 'move forward' — it signals progress, not a final decision."
+      },
+      {
+        "prompt": "What will the second interview involve?",
+        "choices": [
+          "A written test",
+          "A conversation about experience with the regional manager",
+          "A group interview with the team",
+          "A practical skills assessment"
+        ],
+        "correct_index": 1,
+        "explanation": "The caller said 'It would be with our regional manager, and it'll be more of a conversation about your experience.' The word 'conversation' suggests it's informal and discussion-based."
+      },
+      {
+        "prompt": "What will the caller send after the call?",
+        "choices": [
+          "A job offer letter",
+          "A list of interview questions",
+          "A thank-you email with the details",
+          "A feedback form"
+        ],
+        "correct_index": 2,
+        "explanation": "The caller said 'I'll also send a thank-you email with the details.' This is a common Canadian practice — confirming the next steps in writing."
+      }
+    ],
+    "vocab_targets": [
+      "candidacy",
+      "regional manager",
+      "conversation",
+      "position",
+      "email"
+    ]
+  },
+  {
+    "id": "listen-parent-teacher-conference",
+    "title": "Parent-teacher conference",
+    "context": "You attend a parent-teacher meeting at your child's school. The teacher discusses your child's progress and shares one area of concern.",
+    "level": "branch",
+    "difficulty": 0.5,
+    "listening_focus": "tone",
+    "is_premium": true,
+    "turns": [
+      {
+        "role": "speaker",
+        "text": "Thank you for coming in. I'm Ms. Henderson, your daughter Aisha's teacher. It's nice to meet you.",
+        "pause_after_ms": 1500
+      },
+      {
+        "role": "listener",
+        "text": "Thank you for having me. How is Aisha doing in class?",
+        "pause_after_ms": 1000
+      },
+      {
+        "role": "speaker",
+        "text": "Overall, she's doing really well. Her reading comprehension is excellent, and she participates actively in conversations. She's made great progress since the start of the term.",
+        "pause_after_ms": 1500
+      },
+      {
+        "role": "listener",
+        "text": "That's wonderful to hear. Is there anything we should work on at home?",
+        "pause_after_ms": 1000
+      },
+      {
+        "role": "speaker",
+        "text": "One small concern is her report writing. She sometimes rushes through her assignments and misses details. Encouraging her to take her time and review her work before submitting would really help.",
+        "pause_after_ms": 1200
+      },
+      {
+        "role": "listener",
+        "text": "I'll make sure to work on that with her. Is there a parent council or volunteer group I can join to stay more involved?",
+        "pause_after_ms": 1000
+      },
+      {
+        "role": "speaker",
+        "text": "Absolutely! There's a parent council meeting every second Tuesday. We'd love to have you.",
+        "pause_after_ms": 500
+      }
+    ],
+    "questions": [
+      {
+        "prompt": "How is Aisha doing in class according to the teacher?",
+        "choices": [
+          "She is struggling with reading",
+          "She is doing well overall with great comprehension and progress",
+          "She is quiet and rarely participates",
+          "She needs to improve her math skills"
+        ],
+        "correct_index": 1,
+        "explanation": "The teacher said 'Overall, she's doing really well' and then gave specific praise about reading comprehension and progress. The word 'overall' signals that the general assessment is positive before any details."
+      },
+      {
+        "prompt": "What is the teacher's one concern?",
+        "choices": [
+          "Aisha is not participating enough",
+          "Aisha rushes through her report assignments and misses details",
+          "Aisha is struggling with reading comprehension",
+          "Aisha is having trouble with friendships"
+        ],
+        "correct_index": 1,
+        "explanation": "The teacher said 'One small concern is her report writing. She sometimes rushes through her assignments and misses details.' The phrase 'one small concern' signals a gentle criticism — the teacher is using a common Canadian softener to deliver the feedback."
+      },
+      {
+        "prompt": "What opportunity does the parent ask about at the end?",
+        "choices": [
+          "A tutoring program",
+          "The parent council or volunteer group",
+          "A summer camp",
+          "An after-school program"
+        ],
+        "correct_index": 1,
+        "explanation": "The parent asked 'Is there a parent council or volunteer group I can join?' This is a common question from engaged parents — showing interest in the school community beyond just the classroom."
+      }
+    ],
+    "vocab_targets": [
+      "teacher",
+      "report",
+      "concern",
+      "progress",
+      "conversation"
+    ]
+  },
+  {
+    "id": "listen-apply-for-job",
+    "title": "Calling to apply for a posted job",
+    "context": "You saw a job posting online for an administrative assistant position. You call the phone number listed to get more information and submit your application.",
+    "level": "branch",
+    "difficulty": 0.5,
+    "listening_focus": "details",
+    "is_premium": true,
+    "turns": [
+      {
+        "role": "speaker",
+        "text": "Good morning, you've reached Apex Services. How can I help you?",
+        "pause_after_ms": 1200
+      },
+      {
+        "role": "listener",
+        "text": "Hi, I'm calling about the administrative assistant position posted online. Is it still open?",
+        "pause_after_ms": 1500
+      },
+      {
+        "role": "speaker",
+        "text": "Yes, it is. We're accepting applications until the end of next week. Have you submitted a resume and cover letter yet?",
+        "pause_after_ms": 1200
+      },
+      {
+        "role": "listener",
+        "text": "Not yet. I wanted to ask about the job posting requirements first. It mentioned some document processing experience — could you tell me more about that?",
+        "pause_after_ms": 1500
+      },
+      {
+        "role": "speaker",
+        "text": "Sure. The position involves handling incoming forms, updating our database, and scheduling appointments. Experience with document processing is a plus, but we provide training on our system.",
+        "pause_after_ms": 1200
+      },
+      {
+        "role": "listener",
+        "text": "That sounds like a great fit. Should I submit my application by email or in person?",
+        "pause_after_ms": 1000
+      },
+      {
+        "role": "speaker",
+        "text": "By email is best. Send your resume and cover letter to careers at apex dot ca. Make sure to include 'Administrative Assistant' in the subject line. The deadline to apply is next Friday at 5 PM.",
+        "pause_after_ms": 500
+      }
+    ],
+    "questions": [
+      {
+        "prompt": "What is the caller's main goal?",
+        "choices": [
+          "To apply for the administrative assistant position",
+          "To ask for a raise",
+          "To book a meeting with the manager",
+          "To complain about a job posting"
+        ],
+        "correct_index": 0,
+        "explanation": "The caller says 'I'm calling about the administrative assistant position posted online.' The overall purpose is the main idea."
+      },
+      {
+        "prompt": "How should the application be submitted?",
+        "choices": [
+          "In person at the office",
+          "By email with a specific subject line",
+          "By mail with a printed application",
+          "Through an online portal"
+        ],
+        "correct_index": 1,
+        "explanation": "The employer said 'By email is best' and gave the email address plus the subject line requirement — a key detail the caller must follow."
+      },
+      {
+        "prompt": "Why does the employer say document processing experience is 'a plus'?",
+        "choices": [
+          "Because it is helpful but training is provided",
+          "Because it is a strict requirement",
+          "Because the job is only for experienced staff",
+          "Because they want to pay less"
+        ],
+        "correct_index": 0,
+        "explanation": "The employer says 'Experience with document processing is a plus, but we provide training on our system.' The word 'but' signals the experience is optional — an inference about how strongly the requirement matters."
+      }
+    ],
+    "vocab_targets": [
+      "position",
+      "job posting",
+      "submit",
+      "subject line",
+      "email"
+    ]
+  },
+  {
+    "id": "listen-grocery-checkout",
+    "title": "Grocery checkout — small talk and bagging",
+    "context": "You are at the grocery store checkout. The cashier scans your items and makes friendly small talk while you pack your bags.",
+    "level": "sprout",
+    "difficulty": 0.3,
+    "listening_focus": "details",
+    "is_premium": true,
+    "turns": [
+      {
+        "role": "speaker",
+        "text": "Hi there! Did you find everything you were looking for today?",
+        "pause_after_ms": 1500
+      },
+      {
+        "role": "listener",
+        "text": "Yes, I did, thanks. The store is pretty quiet this afternoon.",
+        "pause_after_ms": 1000
+      },
+      {
+        "role": "speaker",
+        "text": "Yeah, Tuesday afternoons are usually our calmest time. Would you like paper or plastic bags?",
+        "pause_after_ms": 1200
+      },
+      {
+        "role": "listener",
+        "text": "Plastic is fine, please. Actually, I have my own reusable bags — let me use those.",
+        "pause_after_ms": 1000
+      },
+      {
+        "role": "speaker",
+        "text": "Even better! You'll save five cents per bag. That's your total coming to thirty-two forty-seven. Will that be debit or credit today?",
+        "pause_after_ms": 1500
+      },
+      {
+        "role": "listener",
+        "text": "Debit, please. And I have a loyalty points card — can I scan it?",
+        "pause_after_ms": 800
+      },
+      {
+        "role": "speaker",
+        "text": "Of course! Go ahead and tap it on the reader. You've earned some points this month — not bad! Have a great evening. Here's your change and your receipt — have a great evening!",
+        "pause_after_ms": 500
+      }
+    ],
+    "questions": [
+      {
+        "prompt": "What is happening in this conversation?",
+        "choices": [
+          "The customer is paying for groceries at the checkout",
+          "The customer is asking for a refund",
+          "The customer is ordering food to go",
+          "The customer is applying for a store job"
+        ],
+        "correct_index": 0,
+        "explanation": "The cashier scans items, asks about bags, and gives a total — the situation is a grocery checkout. Recognizing the overall situation is a main-idea task."
+      },
+      {
+        "prompt": "What is the total amount the customer needs to pay?",
+        "choices": [
+          "Thirty-two forty-seven",
+          "Thirty-two fourteen",
+          "Thirty-two seventy-four",
+          "Twenty-three forty-seven"
+        ],
+        "correct_index": 0,
+        "explanation": "The cashier said 'That's your total coming to thirty-two forty-seven.' In Canadian dollars, 'thirty-two forty-seven' means $32.47. Listen for the full number, not just the dollar part."
+      },
+      {
+        "prompt": "Why does the cashier say the customer saved five cents per bag?",
+        "choices": [
+          "Because the customer used their own reusable bags",
+          "Because the store is having a sale",
+          "Because the customer paid in cash",
+          "Because the bags were free today"
+        ],
+        "correct_index": 0,
+        "explanation": "The customer first asks for plastic, then says 'let me use those' about their reusable bags — and only then does the cashier mention the five-cent saving. Connecting the saving to the reusable bags is an inference."
+      }
+    ],
+    "vocab_targets": [
+      "loyalty points",
+      "total",
+      "reusable",
+      "change",
+      "plastic"
+    ]
+  }
+]
