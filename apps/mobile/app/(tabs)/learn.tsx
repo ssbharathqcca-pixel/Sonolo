@@ -41,9 +41,11 @@ import { PaywallModal } from "../../src/components/PaywallModal";
 import {
   fetchMicrolessons,
   fetchPacks,
+  fetchPronunciationDrills,
   fetchTodayQuests,
   type ContentPack,
   type MicrolessonSummary,
+  type PronunciationDrillSummary,
   type QuestResult,
   type Scenario,
 } from "../../src/api/client";
@@ -315,6 +317,46 @@ function CultureCornerCard({
   );
 }
 
+function PronunciationCard({
+  drill,
+  isLocked,
+  onPress,
+}: {
+  drill: PronunciationDrillSummary;
+  isLocked: boolean;
+  onPress: () => void;
+}): JSX.Element {
+  return (
+    <Pressable
+      accessibilityLabel={`Pronunciation drill: ${drill.title}`}
+      onPress={onPress}
+      style={({ pressed }) => [
+        styles.microCard,
+        // Same solid theme-color card treatment as pack and culture cards.
+        { backgroundColor: `${drill.theme_color ?? "#A78BFA"}E6` },
+        pressed && styles.packCardPressed,
+      ]}
+    >
+      <View style={styles.microCardHeader}>
+        <View style={styles.microIconWell}>
+          <Text style={styles.microIcon}>{drill.icon ?? "🗣️"}</Text>
+        </View>
+        {isLocked ? (
+          <View style={styles.microDoneBadge}>
+            <Lock color="#FFFFFF" size={14} />
+          </View>
+        ) : null}
+      </View>
+      <Text style={styles.microTitle} numberOfLines={2}>
+        {drill.title}
+      </Text>
+      <Text style={styles.microMeta} numberOfLines={1}>
+        {isLocked ? "Premium" : drill.focus}
+      </Text>
+    </Pressable>
+  );
+}
+
 export default function LearnScreen(): JSX.Element {
   const router = useRouter();
   const insets = useSafeAreaInsets();
@@ -327,6 +369,10 @@ export default function LearnScreen(): JSX.Element {
   const [packs, setPacks] = useState<ContentPack[]>([]);
   // SN-047: Culture Corner micro-lesson summaries for the card rail.
   const [microlessons, setMicrolessons] = useState<MicrolessonSummary[]>([]);
+  // SN-049: Pronunciation Lab drill summaries for the card rail.
+  const [pronunciationDrills, setPronunciationDrills] = useState<
+    PronunciationDrillSummary[]
+  >([]);
 
   const user = useAuthStore((state) => state.user);
   const scenarios = useScenarioStore((state) => state.scenarios);
@@ -379,10 +425,11 @@ export default function LearnScreen(): JSX.Element {
 
   // Culture Corner summaries are static manifest data (SN-047): fetch
   // once on mount and degrade silently when offline, same as the pack
-  // rail above.
+  // rail above. SN-049 passes the learner's preferred language so FR
+  // users see the French pack and EN users the English one.
   useEffect(() => {
     let cancelled = false;
-    fetchMicrolessons()
+    fetchMicrolessons(preferredLanguage)
       .then((lessons) => {
         if (!cancelled) {
           setMicrolessons(lessons);
@@ -390,6 +437,24 @@ export default function LearnScreen(): JSX.Element {
       })
       .catch(() => {
         // No lessons, no Culture Corner rail; nothing else depends on it.
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [preferredLanguage]);
+
+  // Pronunciation Lab summaries are static manifest data (SN-049):
+  // fetch once on mount and degrade silently when offline.
+  useEffect(() => {
+    let cancelled = false;
+    fetchPronunciationDrills()
+      .then((drills) => {
+        if (!cancelled) {
+          setPronunciationDrills(drills);
+        }
+      })
+      .catch(() => {
+        // No drills, no Pronunciation Lab rail; nothing else depends on it.
       });
     return () => {
       cancelled = true;
@@ -407,6 +472,19 @@ export default function LearnScreen(): JSX.Element {
         return;
       }
       router.push({ pathname: "/session/[id]", params: { id: scenario.id } });
+    },
+    [isPremiumUser, router],
+  );
+
+  // SN-049: a locked pronunciation drill opens the paywall instead of
+  // the player; unlocked ones jump straight into the drill.
+  const handleDrillPress = useCallback(
+    (drill: PronunciationDrillSummary): void => {
+      if (drill.is_locked === true && !isPremiumUser) {
+        setPaywallVisible(true);
+        return;
+      }
+      router.push(`/pronunciation/${drill.id}`);
     },
     [isPremiumUser, router],
   );
@@ -491,6 +569,29 @@ export default function LearnScreen(): JSX.Element {
                 lesson={lesson}
                 isDone={completedMicrolessonIds.includes(lesson.id)}
                 onPress={() => router.push(`/microlesson/${lesson.id}`)}
+              />
+            ))}
+          </ScrollView>
+        </View>
+      ) : null}
+
+      {pronunciationDrills.length > 0 ? (
+        <View style={styles.microSection}>
+          <Text style={styles.sectionTitle}>Pronunciation Lab</Text>
+          <Text style={styles.microSubtitle}>
+            Canadian speech sounds — drill them until they feel like yours.
+          </Text>
+          <ScrollView
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={styles.microRail}
+          >
+            {pronunciationDrills.map((drill) => (
+              <PronunciationCard
+                key={drill.id}
+                drill={drill}
+                isLocked={drill.is_locked === true && !isPremiumUser}
+                onPress={() => handleDrillPress(drill)}
               />
             ))}
           </ScrollView>

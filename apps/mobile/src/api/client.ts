@@ -335,10 +335,15 @@ export interface Microlesson extends MicrolessonSummary {
   try_it: string;
 }
 
-/** GET /microlessons — Culture Corner summaries for the Learn rail. */
-export async function fetchMicrolessons(): Promise<MicrolessonSummary[]> {
+/** GET /microlessons — Culture Corner summaries for the Learn rail.
+ *  An optional language ("en" | "fr") filters to that pack (SN-049);
+ *  omitted, every lesson is returned. */
+export async function fetchMicrolessons(
+  language?: PreferredLanguage,
+): Promise<MicrolessonSummary[]> {
   const { data } = await api.get<{ microlessons: MicrolessonSummary[] }>(
     "/microlessons",
+    { params: language === undefined ? undefined : { language } },
   );
   return data.microlessons;
 }
@@ -410,6 +415,87 @@ export async function fetchScorecardPdf(): Promise<string> {
     binary += String.fromCharCode(...bytes.subarray(i, i + CHUNK));
   }
   return btoa(binary);
+}
+
+// ---------------------------------------------------------------------
+// Pronunciation Lab (SN-049)
+// ---------------------------------------------------------------------
+
+/** One pronunciation drill as shown in the Learn tab's Lab rail. */
+export interface PronunciationDrillSummary {
+  id: string;
+  title: string;
+  focus: string;
+  level: string;
+  is_premium: boolean;
+  /** True when the drill is premium and the caller is on the free tier. */
+  is_locked?: boolean;
+  theme_color?: string;
+  icon?: string;
+}
+
+/** The full drill body for the player screen. */
+export interface PronunciationDrill {
+  id: string;
+  title: string;
+  focus: string;
+  target_sentence: string;
+  target_words: string[];
+  ipa_hint: string;
+  tip: string;
+  level: string;
+  is_premium: boolean;
+  pack_id: string;
+  theme_color: string;
+  icon: string;
+}
+
+/** One phoneme's deterministic mock score and tip. */
+export interface PhonemeScore {
+  symbol: string;
+  score: number;
+  tip: string;
+}
+
+/** The deterministic mock evaluation returned by the backend. */
+export interface PronunciationEvaluation {
+  overall: number;
+  phonemes: PhonemeScore[];
+  fluency_score: number;
+  tip_summary: string;
+  engine_version: string;
+}
+
+/** GET /pronunciation/drills — the Pronunciation Lab catalog. */
+export async function fetchPronunciationDrills(): Promise<
+  PronunciationDrillSummary[]
+> {
+  const { data } = await api.get<{ drills: PronunciationDrillSummary[] }>(
+    "/pronunciation/drills",
+  );
+  return data.drills;
+}
+
+/** GET /pronunciation/drills/{id} — one full drill for the player. */
+export async function fetchPronunciationDrill(
+  id: string,
+): Promise<PronunciationDrill> {
+  const { data } = await api.get<PronunciationDrill>(
+    `/pronunciation/drills/${id}`,
+  );
+  return data;
+}
+
+/** POST /pronunciation/drills/{id}/evaluate — score one take (mock). */
+export async function evaluatePronunciation(
+  id: string,
+  durationSeconds: number,
+): Promise<PronunciationEvaluation> {
+  const { data } = await api.post<PronunciationEvaluation>(
+    `/pronunciation/drills/${id}/evaluate`,
+    { duration_seconds: durationSeconds },
+  );
+  return data;
 }
 
 // ---------------------------------------------------------------------

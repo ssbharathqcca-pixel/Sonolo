@@ -69,6 +69,7 @@ jest.mock("../../src/api/client", () => {
     fetchScenarios: jest.fn(async () => []),
     fetchPacks: jest.fn(async () => []),
     fetchMicrolessons: jest.fn(async () => []),
+    fetchPronunciationDrills: jest.fn(async () => []),
     fetchTodayQuests: jest.fn(async () => ({
       quest_date: "2026-08-24",
       timezone: "America/Toronto",

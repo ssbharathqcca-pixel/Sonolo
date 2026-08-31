@@ -377,6 +377,32 @@
       "theme_color": "#14B8A6",
       "icon": "book",
       "is_published": true
+    },
+    {
+      "id": "canadian-speech-english-v1",
+      "type": "pronunciation",
+      "language": "en",
+      "path": "content/pronunciation/canadian-speech-english-v1.json",
+      "title": "Pronunciation Lab",
+      "description": "Canadian speech drills — the sounds that make you sound like you belong.",
+      "category": "speech",
+      "tier": "premium",
+      "theme_color": "#A78BFA",
+      "icon": "🗣️",
+      "is_published": true
+    },
+    {
+      "id": "culture-french-v1",
+      "type": "microlessons",
+      "language": "fr",
+      "path": "content/microlessons/culture-french-v1.json",
+      "title": "Raccourcis culture",
+      "description": "Des lectures d'une minute sur les règles non écrites du Québec.",
+      "category": "culture",
+      "tier": "free",
+      "theme_color": "#BE123C",
+      "icon": "🍁",
+      "is_published": true
     }
   ]
 }

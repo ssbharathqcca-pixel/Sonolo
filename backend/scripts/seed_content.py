@@ -18,7 +18,8 @@ Loads every pack declared in content/manifest.json (SN-027):
                  housing + finance, quebec-housing + quebec-finance,
                  smalltalk, job-interviews, hospitality      (770)
 
-Micro-lessons (culture-english-v1) are a read-only content format served
+Micro-lessons (culture-english-v1) and pronunciation drills
+(canadian-speech-english-v1) are read-only content formats served
 straight from the manifest — they never enter scenario seeding.
 
 Scenarios are shared rows upserted idempotently under deterministic

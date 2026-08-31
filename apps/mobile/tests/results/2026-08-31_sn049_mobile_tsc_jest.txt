@@ -1,0 +1,5 @@
+== tsc --noEmit ==
+tsc: clean (exit 0)
+== jest ==
+Test Suites: 15 passed, 15 total
+Tests:       77 passed, 77 total

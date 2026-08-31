@@ -4,9 +4,14 @@ Micro-lessons are a read-only content format served straight from the
 manifest packs — no database rows, no per-user state. The mobile Learn
 tab fetches the summaries for a horizontal rail, then a detail screen
 loads one lesson by id.
+
+SN-049 adds an optional `language` query parameter so the French
+Culture Corner rail loads only French lessons when the learner's
+preferred language is "fr". Without the parameter every lesson is
+returned (backward-compatible).
 """
 
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, Query
 from pydantic import BaseModel
 
 from app.api.dependencies import get_current_user
@@ -69,9 +74,17 @@ def _summary(seed: MicroLessonSeed) -> MicroLessonSummaryOut:
 @router.get("", response_model=MicroLessonListResponse)
 async def list_microlessons(
     current_user: User = Depends(get_current_user),
+    language: str | None = Query(default=None, regex="^(en|fr)$"),
 ) -> MicroLessonListResponse:
-    """Return every Culture Corner micro-lesson summary (SN-047)."""
+    """Return Culture Corner micro-lessons, optionally filtered by language.
+
+    Without a `language` query parameter every lesson is returned
+    (backward-compatible). With `?language=en` or `?language=fr` only
+    lessons whose manifest pack language matches are shown.
+    """
     seeds = load_microlesson_seeds()
+    if language is not None:
+        seeds = [seed for seed in seeds if seed.language == language]
     return MicroLessonListResponse(microlessons=[_summary(s) for s in seeds])
 
 

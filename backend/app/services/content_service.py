@@ -191,6 +191,33 @@ class MicroLessonSeed:
     pack_id: str
     theme_color: str
     icon: str
+    #: Pack-level language ("en" | "fr") from the manifest (SN-049);
+    #: the Culture Corner rail filters on it via the language query.
+    language: str
+
+
+@dataclass(frozen=True)
+class PronunciationDrill:
+    """One Pronunciation Lab drill (SN-049), new content format.
+
+    Drills are read-only content served straight from the manifest
+    packs; they never enter scenario seeding. The first three drills
+    are free, the rest premium (gated like scenarios via is_locked).
+    """
+
+    id: str
+    title: str
+    focus: str
+    target_sentence: str
+    target_words: list[str]
+    ipa_hint: str
+    tip: str
+    level: str
+    is_premium: bool
+    #: Manifest pack the drill belongs to, plus UI metadata.
+    pack_id: str
+    theme_color: str
+    icon: str
 
 
 def load_scenario_seeds() -> list[ScenarioSeed]:
@@ -339,9 +366,65 @@ def load_microlesson_seeds() -> list[MicroLessonSeed]:
                     pack_id=pack.id,
                     theme_color=str(entry.get("theme_color", "")),
                     icon=str(entry.get("icon", "")),
+                    language=pack.language,
                 )
             )
     return seeds
+
+
+def load_pronunciation_packs() -> list[ManifestPack]:
+    """Every manifest pack of type "pronunciation" (SN-049)."""
+    return [
+        pack for pack in load_manifest_packs() if pack.type == "pronunciation"
+    ]
+
+
+def load_pronunciation_drills() -> list[PronunciationDrill]:
+    """Read every Pronunciation Lab drill from the manifest (SN-049).
+
+    Like micro-lessons, drills are read-only content-pack reads (no DB
+    rows); the manifest supplies the pack id plus theme_color and icon.
+    Duplicate drill ids across packs raise.
+    """
+    manifest = load_manifest()
+    meta = {
+        str(entry["id"]): entry
+        for entry in manifest.get("packs", [])
+        if entry.get("type") == "pronunciation"
+    }
+    drills: list[PronunciationDrill] = []
+    seen_ids: set[str] = set()
+    for pack in load_pronunciation_packs():
+        entry = meta[pack.id]
+        path = _resolve_pack_path(pack.path)
+        with path.open(encoding="utf-8") as handle:
+            raw: list[dict[str, Any]] = json.load(handle)
+        for drill in raw:
+            drill_id = str(drill["id"])
+            if drill_id in seen_ids:
+                raise ValueError(
+                    f"Duplicate pronunciation drill id across packs: {drill_id!r}"
+                )
+            seen_ids.add(drill_id)
+            drills.append(
+                PronunciationDrill(
+                    id=drill_id,
+                    title=str(drill["title"]),
+                    focus=str(drill["focus"]),
+                    target_sentence=str(drill["target_sentence"]),
+                    target_words=[
+                        str(word) for word in drill["target_words"]
+                    ],
+                    ipa_hint=str(drill["ipa_hint"]),
+                    tip=str(drill["tip"]),
+                    level=str(drill["level"]),
+                    is_premium=bool(drill["is_premium"]),
+                    pack_id=pack.id,
+                    theme_color=str(entry.get("theme_color", "")),
+                    icon=str(entry.get("icon", "")),
+                )
+            )
+    return drills
 
 
 async def seed_scenarios(db: AsyncSession) -> int:

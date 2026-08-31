@@ -1,0 +1,7 @@
+== SN-049 backend pytest ==
+204 passed, 4 warnings in 101.41s (0:01:41)
+== SN-049 seed_content ==
+scenario_upserts=155
+scenarios_before=155
+scenarios_after=155
+vocabulary_pack_items=770 (core-v1=100, core-v2=100, core-fr-v1=20, vocab-workplace-english-v1=50, vocab-healthcare-english-v1=50, vocab-quebec-healthcare-v1=50, vocab-quebec-workplace-v1=50, vocab-housing-english-v1=50, vocab-finance-english-v1=50, vocab-quebec-housing-v1=50, vocab-quebec-finance-v1=50, vocab-smalltalk-english-v1=50, vocab-job-interviews-english-v1=50, vocab-hospitality-english-v1=50)

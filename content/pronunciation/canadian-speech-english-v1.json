@@ -1,0 +1,134 @@
+[
+  {
+    "id": "pron-canadian-raising",
+    "title": "Canadian Raising — about, out, house",
+    "focus": "The raised diphthong before voiceless consonants",
+    "target_sentence": "I'm out and about with my house key.",
+    "target_words": ["about", "out", "house"],
+    "ipa_hint": "/əˈbʌʊt/ · /ʌʊt/ · /hʌʊs/",
+    "tip": "Start the vowel higher and round it — say 'ab-OUT' with a quick, crisp finish. The raised sound is what makes 'about' sound unmistakably Canadian.",
+    "level": "sprout",
+    "is_premium": false
+  },
+  {
+    "id": "pron-sorry-vowel",
+    "title": "The sorry vowel — not sah-ree",
+    "focus": "The short-o vowel in sorry",
+    "target_sentence": "Sorry, I bumped into you.",
+    "target_words": ["sorry", "bumped", "into"],
+    "ipa_hint": "/ˈsɔri/ — a warm 'o', not an 'ah'",
+    "tip": "Round your lips like you're starting to say 'sore' — short and warm, never flat like 'sah'. It's the most useful vowel in Canada.",
+    "level": "sprout",
+    "is_premium": false
+  },
+  {
+    "id": "pron-eh-tag",
+    "title": "The eh? tag — rise, don't fall",
+    "focus": "Rising pitch on the eh? tag",
+    "target_sentence": "Cold out there, eh?",
+    "target_words": ["cold", "out", "eh"],
+    "ipa_hint": "/eɪ/ with a rising glide",
+    "tip": "End 'eh' with your voice going UP — it quietly asks 'right?' without saying the words. A falling eh? sounds like a statement, not a question.",
+    "level": "sprout",
+    "is_premium": false
+  },
+  {
+    "id": "pron-flapped-t",
+    "title": "The flapped T — water, better",
+    "focus": "The quick d-like T between vowels",
+    "target_sentence": "Could I get a water? That's better, thanks.",
+    "target_words": ["water", "better", "later"],
+    "ipa_hint": "/ˈwɑːɾər/ · /ˈbɛɾər/ — t becomes ɾ",
+    "tip": "When a T sits between two vowels, it becomes a light tap — like a quick 'd', never a hard 't'. Say 'wa-der', not 'wa-ter'.",
+    "level": "branch",
+    "is_premium": true
+  },
+  {
+    "id": "pron-out-and-about",
+    "title": "Out and about — phrase rhythm",
+    "focus": "Linking words into one smooth phrase",
+    "target_sentence": "I've been out and about all morning.",
+    "target_words": ["out", "and", "about"],
+    "ipa_hint": "/aʊt n əbʌʊt/ — link the 't' into 'and'",
+    "tip": "Let the words blur together — 'out-n-about'. Canadians don't stop between them, and the phrase sounds lazy but friendly.",
+    "level": "branch",
+    "is_premium": true
+  },
+  {
+    "id": "pron-canadian-words",
+    "title": "Canadian uniform words — toque, runners, chesterfield",
+    "focus": "Three unmistakably Canadian words",
+    "target_sentence": "Grab your toque and runners, then sit on the chesterfield.",
+    "target_words": ["toque", "runners", "chesterfield"],
+    "ipa_hint": "/tuːk/ · /ˈrʌnərz/ · /ˈtʃɛstərfiːld/",
+    "tip": "Toque rhymes with 'duke' — no 'k' at the end. Runners are running shoes, and a chesterfield is just a couch. Say them with confidence.",
+    "level": "branch",
+    "is_premium": true
+  },
+  {
+    "id": "pron-clear-th",
+    "title": "Clear th in thanks and three",
+    "focus": "The /θ/ sound — tongue between the teeth",
+    "target_sentence": "Thanks — I'll see you at three.",
+    "target_words": ["thanks", "three", "think"],
+    "ipa_hint": "/θæŋks/ · /θriː/",
+    "tip": "Touch your tongue lightly between your teeth and blow air through. No 't' or 's' substitutes — Canadians hear the difference instantly.",
+    "level": "sprout",
+    "is_premium": true
+  },
+  {
+    "id": "pron-casual-in",
+    "title": "Casual -in' — goin', grabbin'",
+    "focus": "The relaxed -ing ending in casual speech",
+    "target_sentence": "I'm goin' out, grabbin' a coffee.",
+    "target_words": ["goin'", "grabbin'", "coffee"],
+    "ipa_hint": "/ˈɡoʊɪn/ · /ˈɡræbɪn/ — final ŋ becomes n",
+    "tip": "In friendly chat the 'g' drops: 'goin', 'grabbin'. Keep it casual out loud, but never in formal writing.",
+    "level": "branch",
+    "is_premium": true
+  },
+  {
+    "id": "pron-polite-melody",
+    "title": "Polite request melody — Could you just…?",
+    "focus": "The rising, softened melody of a polite ask",
+    "target_sentence": "Could you just send that over?",
+    "target_words": ["could", "you", "just"],
+    "ipa_hint": "/kəd jə dʒʌst/ — soft and connected",
+    "tip": "The melody rises gently at the end — light, never commanding. 'Just' is a softener here, not an order.",
+    "level": "branch",
+    "is_premium": true
+  },
+  {
+    "id": "pron-reductions",
+    "title": "Reductions — How's it goin'?",
+    "focus": "The blended everyday greeting",
+    "target_sentence": "How's it goin'? Not bad, you?",
+    "target_words": ["how's", "goin'", "you"],
+    "ipa_hint": "/ˈhaʊzɪt ˌɡoʊɪn/ — words melt together",
+    "tip": "'How's it' becomes one sound — 'ha-zi-go-in'. It's the most common greeting in Canada; own it.",
+    "level": "branch",
+    "is_premium": true
+  },
+  {
+    "id": "pron-minimal-pair-sorry",
+    "title": "Minimal pair — sorry vs sore-y",
+    "focus": "Vowel length: sorry is short, sore-y is long",
+    "target_sentence": "Sorry isn't sore-y.",
+    "target_words": ["sorry", "sore"],
+    "ipa_hint": "/ˈsɔri/ vs /ˈsɔːri/ — short vs long vowel",
+    "tip": "Say 'sorry' in a hurry — one quick vowel. 'Sore-y' stretches it out. Length is the whole difference, and Canadians keep sorry quick.",
+    "level": "bloom",
+    "is_premium": true
+  },
+  {
+    "id": "pron-sentence-stress",
+    "title": "Sentence stress — I'm just gonna grab a double-double",
+    "focus": "Stressing the key words, gliding over the rest",
+    "target_sentence": "I'm just gonna grab a double-double.",
+    "target_words": ["gonna", "grab", "double-double"],
+    "ipa_hint": "/ˈɡʌnə ˈɡræb ə ˈdʌbəl ˈdʌbəl/",
+    "tip": "Stress 'grab' and 'double-double'; glide over 'just gonna a'. It's a Canadian coffee order, said with rhythm and a smile.",
+    "level": "bloom",
+    "is_premium": true
+  }
+]

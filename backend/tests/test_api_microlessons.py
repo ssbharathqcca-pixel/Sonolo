@@ -73,7 +73,7 @@ async def test_microlessons_requires_authentication(
     assert response.status_code == 401
 
 
-async def test_microlessons_list_returns_all_twelve_summaries(
+async def test_microlessons_list_returns_all_twenty_four_summaries(
     microlessons_client: AsyncClient,
 ) -> None:
     response = await microlessons_client.get(
@@ -83,14 +83,64 @@ async def test_microlessons_list_returns_all_twelve_summaries(
     assert response.status_code == 200
     body = response.json()
     lessons = body["microlessons"]
-    assert len(lessons) == 12
+    assert len(lessons) == 24
     for lesson in lessons:
         assert set(lesson.keys()) == SUMMARY_KEYS
         assert lesson["read_minutes"] == 1
-        assert lesson["pack_id"] == "culture-english-v1"
         assert lesson["theme_color"]
         assert lesson["icon"] == "🍁"
-    assert len({lesson["id"] for lesson in lessons}) == 12
+    assert len({lesson["id"] for lesson in lessons}) == 24
+
+
+async def test_microlessons_language_filter_french(
+    microlessons_client: AsyncClient,
+) -> None:
+    headers = await auth_headers(microlessons_client)
+
+    response = await microlessons_client.get(
+        "/api/microlessons", params={"language": "fr"}, headers=headers
+    )
+
+    assert response.status_code == 200
+    lessons = response.json()["microlessons"]
+    assert len(lessons) == 12
+    assert {lesson["pack_id"] for lesson in lessons} == {"culture-french-v1"}
+    ids = {lesson["id"] for lesson in lessons}
+    assert all(lesson_id.startswith("micro-") for lesson_id in ids)
+    # The French ids are distinct from the English pack's ids.
+    english = (
+        await microlessons_client.get(
+            "/api/microlessons", params={"language": "en"}, headers=headers
+        )
+    ).json()["microlessons"]
+    assert {lesson["id"] for lesson in english}.isdisjoint(ids)
+
+
+async def test_microlessons_language_filter_english(
+    microlessons_client: AsyncClient,
+) -> None:
+    headers = await auth_headers(microlessons_client)
+
+    response = await microlessons_client.get(
+        "/api/microlessons", params={"language": "en"}, headers=headers
+    )
+
+    assert response.status_code == 200
+    lessons = response.json()["microlessons"]
+    assert len(lessons) == 12
+    assert {lesson["pack_id"] for lesson in lessons} == {"culture-english-v1"}
+
+
+async def test_microlessons_language_filter_rejects_unknown(
+    microlessons_client: AsyncClient,
+) -> None:
+    headers = await auth_headers(microlessons_client)
+
+    response = await microlessons_client.get(
+        "/api/microlessons", params={"language": "es"}, headers=headers
+    )
+
+    assert response.status_code == 422
 
 
 async def test_microlesson_detail_returns_full_schema(
