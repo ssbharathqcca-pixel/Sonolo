@@ -41,8 +41,12 @@ const LANGUAGES: Array<{
 export default function LanguageScreen(): JSX.Element {
   const router = useRouter();
   const insets = useSafeAreaInsets();
+  const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
   const setPreferredLanguage = useAuthStore(
     (state) => state.setPreferredLanguage,
+  );
+  const setPendingPreferredLanguage = useAuthStore(
+    (state) => state.setPendingPreferredLanguage,
   );
   const [saving, setSaving] = useState<PreferredLanguage | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -53,6 +57,18 @@ export default function LanguageScreen(): JSX.Element {
     }
     setSaving(language);
     setError(null);
+
+    if (!isAuthenticated) {
+      // Unauthenticated: ZERO authenticated calls. Persist choice locally and navigate unconditionally.
+      try {
+        await setPendingPreferredLanguage(language);
+      } catch {
+        // Non-fatal
+      }
+      router.push("/(auth)/register");
+      return;
+    }
+
     try {
       await setPreferredLanguage(language);
       router.push("./goal");

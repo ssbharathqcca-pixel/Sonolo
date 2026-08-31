@@ -72,7 +72,7 @@ class Settings(BaseSettings):
         description="JWT signing algorithm.",
     )
     access_token_expire_minutes: int = Field(
-        default=60,
+        default=10080,
         description="Access token lifetime in minutes.",
     )
     content_scenarios_path: str = Field(

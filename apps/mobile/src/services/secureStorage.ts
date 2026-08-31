@@ -11,6 +11,8 @@ import * as SecureStore from "expo-secure-store";
 
 /** Keychain key for the Sonolo access token. */
 export const TOKEN_KEY = "sonolo.access_token";
+/** Keychain key for pending preferred language chosen before auth (SN-049.5). */
+export const PENDING_PREFERRED_LANGUAGE_KEY = "sonolo.pending_preferred_language";
 
 export async function setItem(key: string, value: string): Promise<boolean> {
   try {

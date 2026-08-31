@@ -38,6 +38,8 @@ import { TOKEN_KEY, getItem, removeItem, setItem } from "../services/secureStora
 export const ONBOARDING_KEY = "sonolo.onboarding_completed";
 /** Keychain key holding the onboarding goal id chosen during onboarding (SN-040). */
 export const ONBOARDING_GOAL_KEY = "sonolo.onboarding_goal";
+/** Keychain key holding language chosen before authentication (SN-049.5). */
+export const PENDING_PREFERRED_LANGUAGE_KEY = "sonolo.pending_preferred_language";
 
 interface AuthState {
   user: User | null;
@@ -50,6 +52,8 @@ interface AuthState {
   onboardingCompleted: boolean;
   /** Onboarding goal id (career/health/housing/settlement) chosen during onboarding. */
   onboardingGoal: string | null;
+  /** Pending preferred language chosen before logging in or registering. */
+  pendingPreferredLanguage: PreferredLanguage | null;
   /** Server-side premium entitlements (SN-041); null until first fetch. */
   entitlements: Entitlements | null;
   login: (email: string, password: string) => Promise<void>;
@@ -62,6 +66,8 @@ interface AuthState {
    * so callers can surface an error without losing the old preference.
    */
   setPreferredLanguage: (language: PreferredLanguage) => Promise<void>;
+  /** Persist the chosen language locally before authentication. */
+  setPendingPreferredLanguage: (language: PreferredLanguage) => Promise<void>;
   logout: () => Promise<void>;
   hydrate: () => Promise<void>;
   /** Persist the chosen onboarding goal device-side without completing onboarding. */
@@ -87,6 +93,30 @@ async function resolveOnboarding(user: User): Promise<{
   };
 }
 
+/**
+ * If the user selected a preferred language before authenticating,
+ * sync it to the backend once authenticated and delete the pending key (SN-049.5).
+ */
+async function applyPendingLanguage(user: User): Promise<User> {
+  const pending = await getItem(PENDING_PREFERRED_LANGUAGE_KEY);
+  if (pending === "en" || pending === "fr") {
+    if (pending !== user.preferred_language) {
+      try {
+        const updatedUser = await updatePreferredLanguage(pending);
+        await removeItem(PENDING_PREFERRED_LANGUAGE_KEY);
+        return updatedUser;
+      } catch {
+        // Non-fatal: keep local choice, no error UI.
+        await removeItem(PENDING_PREFERRED_LANGUAGE_KEY);
+        return { ...user, preferred_language: pending };
+      }
+    } else {
+      await removeItem(PENDING_PREFERRED_LANGUAGE_KEY);
+    }
+  }
+  return user;
+}
+
 export const useAuthStore = create<AuthState>()((set, get) => ({
   user: null,
   token: null,
@@ -95,6 +125,7 @@ export const useAuthStore = create<AuthState>()((set, get) => ({
   isAuthenticated: false,
   onboardingCompleted: false,
   onboardingGoal: null,
+  pendingPreferredLanguage: null,
   entitlements: null,
 
   login: async (email, password) => {
@@ -103,13 +134,15 @@ export const useAuthStore = create<AuthState>()((set, get) => ({
       const { access_token } = await loginRequest(email, password);
       await setItem(TOKEN_KEY, access_token);
       setAuthToken(access_token);
-      const user = await fetchCurrentUser();
+      let user = await fetchCurrentUser();
+      user = await applyPendingLanguage(user);
       const onboarding = await resolveOnboarding(user);
       set({
         user,
         token: access_token,
         isAuthenticated: true,
         isLoading: false,
+        pendingPreferredLanguage: null,
         ...onboarding,
       });
       void get().refreshEntitlements();
@@ -129,13 +162,15 @@ export const useAuthStore = create<AuthState>()((set, get) => ({
       );
       await setItem(TOKEN_KEY, access_token);
       setAuthToken(access_token);
-      const user = await fetchCurrentUser();
+      let user = await fetchCurrentUser();
+      user = await applyPendingLanguage(user);
       const onboarding = await resolveOnboarding(user);
       set({
         user,
         token: access_token,
         isAuthenticated: true,
         isLoading: false,
+        pendingPreferredLanguage: null,
         ...onboarding,
       });
       void get().refreshEntitlements();
@@ -169,6 +204,11 @@ export const useAuthStore = create<AuthState>()((set, get) => ({
     }
   },
 
+  setPendingPreferredLanguage: async (language) => {
+    await setItem(PENDING_PREFERRED_LANGUAGE_KEY, language);
+    set({ pendingPreferredLanguage: language });
+  },
+
   logout: async () => {
     setAuthToken(null);
     await removeItem(TOKEN_KEY);
@@ -189,23 +229,31 @@ export const useAuthStore = create<AuthState>()((set, get) => ({
     if (get().isHydrated) {
       return;
     }
-    const [token, completedRaw, storedGoal] = await Promise.all([
+    const [token, completedRaw, storedGoal, storedPendingLang] = await Promise.all([
       getItem(TOKEN_KEY),
       getItem(ONBOARDING_KEY),
       getItem(ONBOARDING_GOAL_KEY),
+      getItem(PENDING_PREFERRED_LANGUAGE_KEY),
     ]);
+    const pendingPreferredLanguage =
+      storedPendingLang === "en" || storedPendingLang === "fr"
+        ? storedPendingLang
+        : null;
+
     if (token === null) {
       set({
         isHydrated: true,
         onboardingCompleted: completedRaw === "true",
         onboardingGoal: storedGoal,
+        pendingPreferredLanguage,
       });
       return;
     }
     setAuthToken(token);
     set({ isLoading: true });
     try {
-      const user = await fetchCurrentUser();
+      let user = await fetchCurrentUser();
+      user = await applyPendingLanguage(user);
       set({
         user,
         token,
@@ -214,21 +262,41 @@ export const useAuthStore = create<AuthState>()((set, get) => ({
         isLoading: false,
         onboardingCompleted: completedRaw === "true" || user.onboarding_completed === true,
         onboardingGoal: storedGoal,
+        pendingPreferredLanguage: null,
       });
       void get().refreshEntitlements();
-    } catch {
-      // Token expired or revoked — clear it and require a fresh login.
-      setAuthToken(null);
-      await removeItem(TOKEN_KEY);
-      set({
-        user: null,
-        token: null,
-        isAuthenticated: false,
-        isHydrated: true,
-        isLoading: false,
-        onboardingCompleted: completedRaw === "true",
-        onboardingGoal: storedGoal,
-      });
+    } catch (error) {
+      const is401 =
+        (error as { response?: { status?: number } })?.response?.status === 401;
+
+      if (is401) {
+        // Token expired or revoked — clear it and require a fresh login.
+        setAuthToken(null);
+        await removeItem(TOKEN_KEY);
+        set({
+          user: null,
+          token: null,
+          isAuthenticated: false,
+          isHydrated: true,
+          isLoading: false,
+          onboardingCompleted: completedRaw === "true",
+          onboardingGoal: storedGoal,
+          pendingPreferredLanguage,
+        });
+      } else {
+        // Non-401 error (network failure, 5xx):
+        // KEEP the token in SecureStore. Never destroy credentials due to a momentary outage.
+        set({
+          user: null,
+          token,
+          isAuthenticated: false,
+          isHydrated: true,
+          isLoading: false,
+          onboardingCompleted: completedRaw === "true",
+          onboardingGoal: storedGoal,
+          pendingPreferredLanguage,
+        });
+      }
     }
   },
 
@@ -260,5 +328,8 @@ export const useAuthStore = create<AuthState>()((set, get) => ({
 }));
 
 setUnauthorizedHandler(() => {
-  void useAuthStore.getState().logout();
+  const { token, isAuthenticated } = useAuthStore.getState();
+  if (token !== null || isAuthenticated) {
+    void useAuthStore.getState().logout();
+  }
 });

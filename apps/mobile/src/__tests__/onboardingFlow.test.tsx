@@ -184,6 +184,29 @@ describe("Onboarding language step (SN-040)", () => {
     });
     expect(mockRouter.push).not.toHaveBeenCalled();
   });
+
+  it("when unauthenticated: saves choice as pending locally, makes zero API calls, and navigates unconditionally", async () => {
+    useAuthStore.setState({
+      user: null,
+      token: null,
+      isLoading: false,
+      isHydrated: true,
+      isAuthenticated: false,
+      onboardingCompleted: false,
+      onboardingGoal: null,
+      pendingPreferredLanguage: null,
+    });
+
+    const screen = render(<LanguageScreen />);
+
+    fireEvent.press(screen.getByLabelText("Choose English"));
+
+    await waitFor(() => {
+      expect(updatePreferredLanguage).not.toHaveBeenCalled();
+      expect(mockRouter.push).toHaveBeenCalledWith("/(auth)/register");
+      expect(useAuthStore.getState().pendingPreferredLanguage).toBe("en");
+    });
+  });
 });
 
 describe("Onboarding goal step (SN-040)", () => {
