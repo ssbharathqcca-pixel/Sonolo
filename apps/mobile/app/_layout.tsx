@@ -110,6 +110,10 @@ export default function RootLayout(): JSX.Element {
                     name="microlesson/[id]"
                     options={{ animation: "slide_from_bottom" }}
                   />
+                  <Stack.Screen
+                    name="scorecard"
+                    options={{ animation: "slide_from_bottom" }}
+                  />
                 </Stack>
               )}
               <OfflineBanner />

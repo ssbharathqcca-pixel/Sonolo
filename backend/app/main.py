@@ -16,6 +16,7 @@ from app.api import (
     quests,
     review,
     scenarios,
+    scorecard,
     sessions,
     users,
     ws,
@@ -64,6 +65,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     app.include_router(scenarios.router, prefix=settings.api_prefix)
     app.include_router(packs.router, prefix=settings.api_prefix)
     app.include_router(microlessons.router, prefix=settings.api_prefix)
+    app.include_router(scorecard.router, prefix=settings.api_prefix)
     app.include_router(ws.router)
     return app
 

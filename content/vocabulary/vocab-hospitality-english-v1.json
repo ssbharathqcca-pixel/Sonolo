@@ -1,0 +1,1252 @@
+[
+  {
+    "id": "vocab-hop-01",
+    "word": "housekeeping",
+    "phonetic": "/ˈhaʊskiːpɪŋ/",
+    "translations": {
+      "pa": "ਹਾਊਸਕੀਪਿੰਗ (ਕਮਰੇ ਦੀ ਸਫ਼ਾਈ)",
+      "hi": "हाउसकीपिंग (कमरे की सफ़ाई)",
+      "zh": "客房服务",
+      "es": "limpieza / servicio de habitaciones"
+    },
+    "level": "branch",
+    "category": "workplace",
+    "example_sentences": [
+      "Housekeeping starts at eight and finishes the floor by noon.",
+      "The housekeeping team stocks the carts with fresh linens."
+    ],
+    "confusion_pairs": [
+      "cleaning",
+      "maintenance"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.44,
+      "stability": 3.2
+    }
+  },
+  {
+    "id": "vocab-hop-02",
+    "word": "checklist",
+    "phonetic": "/ˈtʃeklɪst/",
+    "translations": {
+      "pa": "ਚੈਕਲਿਸਟ",
+      "hi": "चेकलिस्ट",
+      "zh": "清单",
+      "es": "lista de verificación"
+    },
+    "level": "sprout",
+    "category": "workplace",
+    "example_sentences": [
+      "The supervisor gave me a checklist for every room.",
+      "Work through the checklist before you leave the floor."
+    ],
+    "confusion_pairs": [
+      "list",
+      "schedule"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.3,
+      "stability": 3.9
+    }
+  },
+  {
+    "id": "vocab-hop-03",
+    "word": "amenity",
+    "phonetic": "/əˈmenəti/",
+    "translations": {
+      "pa": "ਸਹੂਲਤ",
+      "hi": "सुविधा",
+      "zh": "便利设施",
+      "es": "servicio / comodidad"
+    },
+    "level": "bloom",
+    "category": "workplace",
+    "example_sentences": [
+      "Every room gets the coffee and tea amenity basket.",
+      "The hotel advertises free Wi-Fi as a guest amenity."
+    ],
+    "confusion_pairs": [
+      "facility",
+      "extra"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.52,
+      "stability": 2.9
+    }
+  },
+  {
+    "id": "vocab-hop-04",
+    "word": "turnover",
+    "phonetic": "/ˈtɜːrnoʊvər/",
+    "translations": {
+      "pa": "ਕਮਰੇ ਦੀ ਵਾਪਸੀ ਤਿਆਰੀ",
+      "hi": "कमरे की वापसी तैयारी",
+      "zh": "翻房",
+      "es": "preparación de habitaciones"
+    },
+    "level": "bloom",
+    "category": "workplace",
+    "example_sentences": [
+      "Check-out turnover rooms are the first priority.",
+      "Turnover takes about thirty minutes per room."
+    ],
+    "confusion_pairs": [
+      "check-out",
+      "cleaning"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.58,
+      "stability": 2.7
+    }
+  },
+  {
+    "id": "vocab-hop-05",
+    "word": "linens",
+    "phonetic": "/ˈlɪnənz/",
+    "translations": {
+      "pa": "ਚਾਦਰਾਂ ਅਤੇ ਤੌਲੀਏ",
+      "hi": "चादरें और तौलिये",
+      "zh": "布草",
+      "es": "ropa de cama / blancos"
+    },
+    "level": "branch",
+    "category": "workplace",
+    "example_sentences": [
+      "Stock the cart with clean linens and towels.",
+      "Used linens go in the hamper, not on the floor."
+    ],
+    "confusion_pairs": [
+      "sheets",
+      "laundry"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.46,
+      "stability": 3.1
+    }
+  },
+  {
+    "id": "vocab-hop-06",
+    "word": "check-in",
+    "phonetic": "/ˈtʃek ɪn/",
+    "translations": {
+      "pa": "ਚੈੱਕ-ਇਨ",
+      "hi": "चेक-इन",
+      "zh": "入住登记",
+      "es": "registro de entrada"
+    },
+    "level": "sprout",
+    "category": "workplace",
+    "example_sentences": [
+      "Guests check in at three o'clock in the afternoon.",
+      "The front desk handles check-in and check-out."
+    ],
+    "confusion_pairs": [
+      "check-out",
+      "reservation"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.32,
+      "stability": 3.8
+    }
+  },
+  {
+    "id": "vocab-hop-07",
+    "word": "reservation",
+    "phonetic": "/ˌrezərˈveɪʃn/",
+    "translations": {
+      "pa": "ਰਿਜ਼ਰਵੇਸ਼ਨ",
+      "hi": "आरक्षण",
+      "zh": "预订",
+      "es": "reserva"
+    },
+    "level": "branch",
+    "category": "workplace",
+    "example_sentences": [
+      "The guest has a reservation under the name Patel.",
+      "We confirmed the reservation by email."
+    ],
+    "confusion_pairs": [
+      "booking",
+      "appointment"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.42,
+      "stability": 3.4
+    }
+  },
+  {
+    "id": "vocab-hop-08",
+    "word": "walk-in",
+    "phonetic": "/ˈwɔːk ɪn/",
+    "translations": {
+      "pa": "ਬਿਨਾਂ ਰਿਜ਼ਰਵੇਸ਼ਨ ਆਇਆ ਮਹਿਮਾਨ",
+      "hi": "बिना आरक्षण आया मेहमान",
+      "zh": "无预订散客",
+      "es": "cliente sin reserva"
+    },
+    "level": "bloom",
+    "category": "workplace",
+    "example_sentences": [
+      "A walk-in asked if we had any rooms left.",
+      "Walk-ins pay the current room rate at the desk."
+    ],
+    "confusion_pairs": [
+      "guest",
+      "no-show"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.56,
+      "stability": 2.8
+    }
+  },
+  {
+    "id": "vocab-hop-09",
+    "word": "room rate",
+    "phonetic": "/ˈruːm reɪt/",
+    "translations": {
+      "pa": "ਕਮਰੇ ਦੀ ਕੀਮਤ",
+      "hi": "कमरे की दर",
+      "zh": "房价",
+      "es": "tarifa de habitación"
+    },
+    "level": "branch",
+    "category": "workplace",
+    "example_sentences": [
+      "The weekend room rate is higher than the weekday rate.",
+      "Tell the guest the room rate before you confirm."
+    ],
+    "confusion_pairs": [
+      "price",
+      "charge"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.45,
+      "stability": 3.2
+    }
+  },
+  {
+    "id": "vocab-hop-10",
+    "word": "key card",
+    "phonetic": "/ˈkiː kɑːrd/",
+    "translations": {
+      "pa": "ਕੁੰਜੀ ਕਾਰਡ",
+      "hi": "की कार्ड",
+      "zh": "房卡",
+      "es": "tarjeta de llave"
+    },
+    "level": "branch",
+    "category": "workplace",
+    "example_sentences": [
+      "The key card opens the room and the lobby doors.",
+      "Make a new key card if the guest says theirs stopped working."
+    ],
+    "confusion_pairs": [
+      "key",
+      "pass"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.4,
+      "stability": 3.5
+    }
+  },
+  {
+    "id": "vocab-hop-11",
+    "word": "section",
+    "phonetic": "/ˈsekʃn/",
+    "translations": {
+      "pa": "ਟੇਬਲ ਸੈਕਸ਼ਨ",
+      "hi": "टेबल सेक्शन",
+      "zh": "服务区域",
+      "es": "sección / zona"
+    },
+    "level": "branch",
+    "category": "workplace",
+    "example_sentences": [
+      "Your section tonight is the six tables by the window.",
+      "The handover tells you which tables are yours."
+    ],
+    "confusion_pairs": [
+      "area",
+      "station"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.43,
+      "stability": 3.3
+    }
+  },
+  {
+    "id": "vocab-hop-12",
+    "word": "side-work",
+    "phonetic": "/ˈsaɪd wɜːrk/",
+    "translations": {
+      "pa": "ਸਾਈਡ-ਵਰਕ (ਵਾਧੂ ਕੰਮ)",
+      "hi": "साइड-वर्क (अतिरिक्त काम)",
+      "zh": "营业前准备",
+      "es": "tareas auxiliares"
+    },
+    "level": "bloom",
+    "category": "workplace",
+    "example_sentences": [
+      "Finish your side-work before the dinner rush starts.",
+      "Side-work includes filling sugar caddies and rolling cutlery."
+    ],
+    "confusion_pairs": [
+      "duties",
+      "chores"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.57,
+      "stability": 2.7
+    }
+  },
+  {
+    "id": "vocab-hop-13",
+    "word": "handover",
+    "phonetic": "/ˈhændoʊvər/",
+    "translations": {
+      "pa": "ਹੈਂਡਓਵਰ (ਜ਼ਿੰਮੇਵਾਰੀ ਤਬਦੀਲੀ)",
+      "hi": "हैंडओवर (जिम्मेदारी हस्तांतरण)",
+      "zh": "交接",
+      "es": "traspaso / relevo"
+    },
+    "level": "bloom",
+    "category": "workplace",
+    "example_sentences": [
+      "The day server gave me a full handover of the section.",
+      "A good handover mentions allergies and special requests."
+    ],
+    "confusion_pairs": [
+      "turnover",
+      "handoff"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.54,
+      "stability": 2.8
+    }
+  },
+  {
+    "id": "vocab-hop-14",
+    "word": "entrée",
+    "phonetic": "/ˈɑːntreɪ/",
+    "translations": {
+      "pa": "ਮੁੱਖ ਪਕਵਾਨ",
+      "hi": "मुख्य व्यंजन",
+      "zh": "主菜",
+      "es": "plato principal"
+    },
+    "level": "branch",
+    "category": "workplace",
+    "example_sentences": [
+      "The salmon is the most popular entrée tonight.",
+      "Each entrée comes with a side salad or soup."
+    ],
+    "confusion_pairs": [
+      "appetizer",
+      "main course"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.48,
+      "stability": 3.0
+    }
+  },
+  {
+    "id": "vocab-hop-15",
+    "word": "station",
+    "phonetic": "/ˈsteɪʃn/",
+    "translations": {
+      "pa": "ਸਟੇਸ਼ਨ (ਕੰਮ ਦੀ ਥਾਂ)",
+      "hi": "स्टेशन (काम की जगह)",
+      "zh": "岗位",
+      "es": "estación / puesto"
+    },
+    "level": "branch",
+    "category": "workplace",
+    "example_sentences": [
+      "Keep your station stocked and clean all shift.",
+      "The barista owns the espresso station during the rush."
+    ],
+    "confusion_pairs": [
+      "section",
+      "area"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.38,
+      "stability": 3.5
+    }
+  },
+  {
+    "id": "vocab-hop-16",
+    "word": "call-out",
+    "phonetic": "/ˈkɔːl aʊt/",
+    "translations": {
+      "pa": "ਆਰਡਰ ਪੁਕਾਰਨਾ",
+      "hi": "ऑर्डर पुकारना",
+      "zh": "报单",
+      "es": "anuncio de pedido"
+    },
+    "level": "bloom",
+    "category": "workplace",
+    "example_sentences": [
+      "Repeat each call-out back before you start the drink.",
+      "The call-out system keeps the rush moving fast."
+    ],
+    "confusion_pairs": [
+      "announce",
+      "order"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.56,
+      "stability": 2.8
+    }
+  },
+  {
+    "id": "vocab-hop-17",
+    "word": "ticket",
+    "phonetic": "/ˈtɪkɪt/",
+    "translations": {
+      "pa": "ਟਿਕਟ (ਆਰਡਰ ਸਲਿੱਪ)",
+      "hi": "टिकट (ऑर्डर स्लिप)",
+      "zh": "订单票",
+      "es": "ticket / comanda"
+    },
+    "level": "sprout",
+    "category": "workplace",
+    "example_sentences": [
+      "The ticket shows the drink, the cup size, and the name.",
+      "Call out the ticket when it prints so the bar hears it."
+    ],
+    "confusion_pairs": [
+      "receipt",
+      "order"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.34,
+      "stability": 3.7
+    }
+  },
+  {
+    "id": "vocab-hop-18",
+    "word": "barista",
+    "phonetic": "/bəˈriːstə/",
+    "translations": {
+      "pa": "ਬਾਰਿਸਟਾ",
+      "hi": "बरिस्ता",
+      "zh": "咖啡师",
+      "es": "barista"
+    },
+    "level": "sprout",
+    "category": "workplace",
+    "example_sentences": [
+      "The barista remembers every regular's order.",
+      "A good barista keeps the line moving and the drinks correct."
+    ],
+    "confusion_pairs": [
+      "barber",
+      "bartender"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.33,
+      "stability": 3.8
+    }
+  },
+  {
+    "id": "vocab-hop-19",
+    "word": "rush",
+    "phonetic": "/rʌʃ/",
+    "translations": {
+      "pa": "ਭੀੜ (ਰਸ਼)",
+      "hi": "भीड़ (रश)",
+      "zh": "高峰时段",
+      "es": "hora punta / apuro"
+    },
+    "level": "sprout",
+    "category": "workplace",
+    "example_sentences": [
+      "The morning rush starts right after the offices open.",
+      "Stay calm and follow the rhythm during the rush."
+    ],
+    "confusion_pairs": [
+      "hurry",
+      "peak"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.3,
+      "stability": 3.9
+    }
+  },
+  {
+    "id": "vocab-hop-20",
+    "word": "order",
+    "phonetic": "/ˈɔːrdər/",
+    "translations": {
+      "pa": "ਆਰਡਰ",
+      "hi": "ऑर्डर",
+      "zh": "点单",
+      "es": "pedido"
+    },
+    "level": "seed",
+    "category": "workplace",
+    "example_sentences": [
+      "I'll take your order whenever you're ready.",
+      "The ticket prints as soon as the order is placed."
+    ],
+    "confusion_pairs": [
+      "request",
+      "command"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.16,
+      "stability": 4.5
+    }
+  },
+  {
+    "id": "vocab-hop-21",
+    "word": "86'd",
+    "phonetic": "/eɪtɪ sɪksd/",
+    "translations": {
+      "pa": "ਖਤਮ (ਸਟਾਕ ਤੋਂ ਬਾਹਰ)",
+      "hi": "खत्म (स्टॉक से बाहर)",
+      "zh": "售罄",
+      "es": "agotado / fuera de stock"
+    },
+    "level": "bloom",
+    "category": "workplace",
+    "example_sentences": [
+      "The haddock is 86'd until the Thursday delivery.",
+      "Never sell an item that is 86'd — tell the guest what's left."
+    ],
+    "confusion_pairs": [
+      "sold out",
+      "unavailable"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.62,
+      "stability": 2.5
+    }
+  },
+  {
+    "id": "vocab-hop-22",
+    "word": "allergen",
+    "phonetic": "/ˈælərdʒən/",
+    "translations": {
+      "pa": "ਐਲਰਜਨ (ਐਲਰਜੀ ਪੈਦਾ ਕਰਨ ਵਾਲਾ)",
+      "hi": "एलर्जेन (एलर्जी पैदा करने वाला)",
+      "zh": "过敏原",
+      "es": "alérgeno"
+    },
+    "level": "bloom",
+    "category": "workplace",
+    "example_sentences": [
+      "The ticket flags the shellfish allergen clearly.",
+      "Change your gloves when the kitchen says allergen."
+    ],
+    "confusion_pairs": [
+      "allergy",
+      "ingredient"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.58,
+      "stability": 2.7
+    }
+  },
+  {
+    "id": "vocab-hop-23",
+    "word": "flag",
+    "phonetic": "/flæɡ/",
+    "translations": {
+      "pa": "ਨਿਸ਼ਾਨ ਲਗਾਉਣਾ",
+      "hi": "निशान लगाना",
+      "zh": "标记",
+      "es": "marcar / señal"
+    },
+    "level": "branch",
+    "category": "workplace",
+    "example_sentences": [
+      "Flag the ticket so the line sees the allergy.",
+      "A star on the ticket flags a special request."
+    ],
+    "confusion_pairs": [
+      "mark",
+      "note"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.4,
+      "stability": 3.4
+    }
+  },
+  {
+    "id": "vocab-hop-24",
+    "word": "prep",
+    "phonetic": "/prep/",
+    "translations": {
+      "pa": "ਤਿਆਰੀ (ਪ੍ਰੈਪ)",
+      "hi": "तैयारी (प्रेप)",
+      "zh": "备料",
+      "es": "preparación / mise en place"
+    },
+    "level": "branch",
+    "category": "workplace",
+    "example_sentences": [
+      "Prep the vegetables before the dinner shift starts.",
+      "The prep list is on the board by the walk-in fridge."
+    ],
+    "confusion_pairs": [
+      "prepare",
+      "setup"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.44,
+      "stability": 3.2
+    }
+  },
+  {
+    "id": "vocab-hop-25",
+    "word": "comp",
+    "phonetic": "/kɑːmp/",
+    "translations": {
+      "pa": "ਮੁਫ਼ਤ (ਕੰਪ) ਦੇਣਾ",
+      "hi": "मुफ़्त (कंप) देना",
+      "zh": "赠送",
+      "es": "compensar / regalar"
+    },
+    "level": "bloom",
+    "category": "workplace",
+    "example_sentences": [
+      "The manager comped the dessert to apologize for the wait.",
+      "A comp means the guest does not pay for that item."
+    ],
+    "confusion_pairs": [
+      "free",
+      "discount"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.55,
+      "stability": 2.8
+    }
+  },
+  {
+    "id": "vocab-hop-26",
+    "word": "complaint",
+    "phonetic": "/kəmˈpleɪnt/",
+    "translations": {
+      "pa": "ਸ਼ਿਕਾਇਤ",
+      "hi": "शिकायत",
+      "zh": "投诉",
+      "es": "queja / reclamo"
+    },
+    "level": "branch",
+    "category": "workplace",
+    "example_sentences": [
+      "The guest called the front desk with a noise complaint.",
+      "Handle every complaint with a calm voice and a solution."
+    ],
+    "confusion_pairs": [
+      "problem",
+      "issue"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.42,
+      "stability": 3.4
+    }
+  },
+  {
+    "id": "vocab-hop-27",
+    "word": "de-escalate",
+    "phonetic": "/ˌdiː ˈeskəleɪt/",
+    "translations": {
+      "pa": "ਗੁੱਸਾ ਸ਼ਾਂਤ ਕਰਨਾ",
+      "hi": "गुस्सा शांत करना",
+      "zh": "缓和",
+      "es": "desescalar"
+    },
+    "level": "bloom",
+    "category": "workplace",
+    "example_sentences": [
+      "Listen first — that is how you de-escalate a guest.",
+      "A calm apology can de-escalate almost any complaint."
+    ],
+    "confusion_pairs": [
+      "calm down",
+      "resolve"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.6,
+      "stability": 2.6
+    }
+  },
+  {
+    "id": "vocab-hop-28",
+    "word": "noise",
+    "phonetic": "/nɔɪz/",
+    "translations": {
+      "pa": "ਰੌਲਾ",
+      "hi": "शोर",
+      "zh": "噪音",
+      "es": "ruido"
+    },
+    "level": "seed",
+    "category": "workplace",
+    "example_sentences": [
+      "The guest complained about noise from the next room.",
+      "We moved them to a quieter side of the hotel."
+    ],
+    "confusion_pairs": [
+      "sound",
+      "loud"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.18,
+      "stability": 4.4
+    }
+  },
+  {
+    "id": "vocab-hop-29",
+    "word": "resolution",
+    "phonetic": "/ˌrezəˈluːʃn/",
+    "translations": {
+      "pa": "ਹੱਲ",
+      "hi": "समाधान",
+      "zh": "解决方案",
+      "es": "solución / resolución"
+    },
+    "level": "branch",
+    "category": "workplace",
+    "example_sentences": [
+      "A late checkout was the resolution that satisfied the guest.",
+      "Always end a complaint call with a confirmed resolution."
+    ],
+    "confusion_pairs": [
+      "solution",
+      "answer"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.46,
+      "stability": 3.1
+    }
+  },
+  {
+    "id": "vocab-hop-30",
+    "word": "apologize",
+    "phonetic": "/əˈpɑːlədʒaɪz/",
+    "translations": {
+      "pa": "ਮੁਆਫ਼ੀ ਮੰਗਣੀ",
+      "hi": "माफ़ी माँगना",
+      "zh": "道歉",
+      "es": "disculparse"
+    },
+    "level": "branch",
+    "category": "workplace",
+    "example_sentences": [
+      "Apologize for the experience, not just the mistake.",
+      "A sincere apology calms most upset guests."
+    ],
+    "confusion_pairs": [
+      "sorry",
+      "regret"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.4,
+      "stability": 3.5
+    }
+  },
+  {
+    "id": "vocab-hop-31",
+    "word": "shift",
+    "phonetic": "/ʃɪft/",
+    "translations": {
+      "pa": "ਸ਼ਿਫਟ",
+      "hi": "शिफ्ट",
+      "zh": "轮班",
+      "es": "turno"
+    },
+    "level": "seed",
+    "category": "workplace",
+    "example_sentences": [
+      "My shift starts at four and ends at midnight.",
+      "Ask for the weekend shift if you want more hours."
+    ],
+    "confusion_pairs": [
+      "schedule",
+      "hours"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.15,
+      "stability": 4.6
+    }
+  },
+  {
+    "id": "vocab-hop-32",
+    "word": "swap",
+    "phonetic": "/swɑːp/",
+    "translations": {
+      "pa": "ਅਦਲਾ-ਬਦਲੀ",
+      "hi": "अदला-बदली",
+      "zh": "对调",
+      "es": "intercambio"
+    },
+    "level": "branch",
+    "category": "workplace",
+    "example_sentences": [
+      "Can we swap shifts so I can attend the family event?",
+      "A shift swap needs the manager's approval."
+    ],
+    "confusion_pairs": [
+      "trade",
+      "exchange"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.38,
+      "stability": 3.6
+    }
+  },
+  {
+    "id": "vocab-hop-33",
+    "word": "coverage",
+    "phonetic": "/ˈkʌvərɪdʒ/",
+    "translations": {
+      "pa": "ਕਵਰੇਜ (ਸ਼ਿਫਟ ਭਰਨਾ)",
+      "hi": "कवरेज (शिफ्ट भरना)",
+      "zh": "人员覆盖",
+      "es": "cobertura / reemplazo"
+    },
+    "level": "bloom",
+    "category": "workplace",
+    "example_sentences": [
+      "We need coverage for Saturday before I approve the swap.",
+      "Ask a teammate to provide coverage for your shift."
+    ],
+    "confusion_pairs": [
+      "cover",
+      "replacement"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.52,
+      "stability": 2.9
+    }
+  },
+  {
+    "id": "vocab-hop-34",
+    "word": "schedule",
+    "phonetic": "/ˈskedʒuːl/",
+    "translations": {
+      "pa": "ਸਮਾਂ-ਸਾਰਣੀ",
+      "hi": "समय-सारणी",
+      "zh": "排班表",
+      "es": "horario"
+    },
+    "level": "sprout",
+    "category": "workplace",
+    "example_sentences": [
+      "The new schedule comes out every Friday.",
+      "Check the schedule before you make weekend plans."
+    ],
+    "confusion_pairs": [
+      "timetable",
+      "roster"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.34,
+      "stability": 3.7
+    }
+  },
+  {
+    "id": "vocab-hop-35",
+    "word": "manager",
+    "phonetic": "/ˈmænɪdʒər/",
+    "translations": {
+      "pa": "ਮੈਨੇਜਰ",
+      "hi": "मैनेजर",
+      "zh": "经理",
+      "es": "gerente / encargado"
+    },
+    "level": "seed",
+    "category": "workplace",
+    "example_sentences": [
+      "Ask the manager before you change your shift.",
+      "The manager approves all schedule changes."
+    ],
+    "confusion_pairs": [
+      "supervisor",
+      "owner"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.14,
+      "stability": 4.6
+    }
+  },
+  {
+    "id": "vocab-hop-36",
+    "word": "cash-out",
+    "phonetic": "/ˈkæʃ aʊt/",
+    "translations": {
+      "pa": "ਕੈਸ਼-ਆਊਟ (ਹਿਸਾਬ ਬੰਦ ਕਰਨਾ)",
+      "hi": "कैश-आउट (हिसाब बंद करना)",
+      "zh": "收银结算",
+      "es": "cierre de caja"
+    },
+    "level": "bloom",
+    "category": "workplace",
+    "example_sentences": [
+      "Cash out your till before you clock out.",
+      "The cash-out takes about ten minutes at the end of the shift."
+    ],
+    "confusion_pairs": [
+      "check-out",
+      "settlement"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.55,
+      "stability": 2.8
+    }
+  },
+  {
+    "id": "vocab-hop-37",
+    "word": "tip pool",
+    "phonetic": "/ˈtɪp puːl/",
+    "translations": {
+      "pa": "ਟਿਪ ਪੂਲ (ਸਾਂਝੇ ਟਿਪਸ)",
+      "hi": "टिप पूल (साझे टिप्स)",
+      "zh": "小费池",
+      "es": "fondo común de propinas"
+    },
+    "level": "bloom",
+    "category": "workplace",
+    "example_sentences": [
+      "The tip pool is split by hours worked each shift.",
+      "A percentage of the tip pool goes to the kitchen."
+    ],
+    "confusion_pairs": [
+      "tip-out",
+      "gratuity"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.57,
+      "stability": 2.7
+    }
+  },
+  {
+    "id": "vocab-hop-38",
+    "word": "float",
+    "phonetic": "/floʊt/",
+    "translations": {
+      "pa": "ਫਲੋਟ (ਕੈਸ਼ ਬਦਲਣ ਲਈ ਸ਼ੁਰੂਆਤੀ ਰਕਮ)",
+      "hi": "फ्लोट (कैश बदलने के लिए शुरुआती रकम)",
+      "zh": "备用金",
+      "es": "fondo de caja / cambio"
+    },
+    "level": "bloom",
+    "category": "workplace",
+    "example_sentences": [
+      "Count your float before you start taking orders.",
+      "The float gives you change for the whole shift."
+    ],
+    "confusion_pairs": [
+      "cash",
+      "balance"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.53,
+      "stability": 2.8
+    }
+  },
+  {
+    "id": "vocab-hop-39",
+    "word": "till",
+    "phonetic": "/tɪl/",
+    "translations": {
+      "pa": "ਕੈਸ਼ ਡਰਾਅਰ",
+      "hi": "कैश ड्रॉअर",
+      "zh": "收银机抽屉",
+      "es": "caja registradora"
+    },
+    "level": "branch",
+    "category": "workplace",
+    "example_sentences": [
+      "Keep the till locked when you step away.",
+      "The till must balance within two dollars."
+    ],
+    "confusion_pairs": [
+      "register",
+      "cash box"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.41,
+      "stability": 3.4
+    }
+  },
+  {
+    "id": "vocab-hop-40",
+    "word": "tip-out",
+    "phonetic": "/ˈtɪp aʊt/",
+    "translations": {
+      "pa": "ਟਿਪ-ਆਊਟ (ਹਿੱਸਾ ਦੇਣਾ)",
+      "hi": "टिप-आउट (हिस्सा देना)",
+      "zh": "分出小费",
+      "es": "reparto de propinas"
+    },
+    "level": "bloom",
+    "category": "workplace",
+    "example_sentences": [
+      "The tip-out to the bar is a percentage of your sales.",
+      "Everyone on shift contributes to the tip-out."
+    ],
+    "confusion_pairs": [
+      "tip pool",
+      "gratuity"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.55,
+      "stability": 2.8
+    }
+  },
+  {
+    "id": "vocab-hop-41",
+    "word": "fridge",
+    "phonetic": "/frɪdʒ/",
+    "translations": {
+      "pa": "ਫਰਿੱਜ",
+      "hi": "फ्रिज",
+      "zh": "冰箱",
+      "es": "nevera / refrigerador"
+    },
+    "level": "seed",
+    "category": "workplace",
+    "example_sentences": [
+      "Label your lunch before you put it in the staff fridge.",
+      "The staff fridge has a shelf for each crew."
+    ],
+    "confusion_pairs": [
+      "freezer",
+      "cooler"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.16,
+      "stability": 4.5
+    }
+  },
+  {
+    "id": "vocab-hop-42",
+    "word": "label",
+    "phonetic": "/ˈleɪbl/",
+    "translations": {
+      "pa": "ਲੇਬਲ",
+      "hi": "लेबल",
+      "zh": "标签",
+      "es": "etiqueta"
+    },
+    "level": "sprout",
+    "category": "workplace",
+    "example_sentences": [
+      "Write your name and the date on the label.",
+      "Every container in the fridge needs a label."
+    ],
+    "confusion_pairs": [
+      "tag",
+      "sticker"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.28,
+      "stability": 4.0
+    }
+  },
+  {
+    "id": "vocab-hop-43",
+    "word": "policy",
+    "phonetic": "/ˈpɑːləsi/",
+    "translations": {
+      "pa": "ਨੀਤੀ",
+      "hi": "नीति",
+      "zh": "规定",
+      "es": "política / norma"
+    },
+    "level": "branch",
+    "category": "workplace",
+    "example_sentences": [
+      "The labelling policy is posted by the fridge.",
+      "Follow the store policy even when nobody is watching."
+    ],
+    "confusion_pairs": [
+      "rule",
+      "law"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.4,
+      "stability": 3.4
+    }
+  },
+  {
+    "id": "vocab-hop-44",
+    "word": "conflict",
+    "phonetic": "/ˈkɑːnflɪkt/",
+    "translations": {
+      "pa": "ਝਗੜਾ",
+      "hi": "टकराव",
+      "zh": "冲突",
+      "es": "conflicto"
+    },
+    "level": "branch",
+    "category": "workplace",
+    "example_sentences": [
+      "Resolve the conflict with a quick, calm conversation.",
+      "The fridge mix-up was a small conflict, not a big deal."
+    ],
+    "confusion_pairs": [
+      "argument",
+      "issue"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.42,
+      "stability": 3.3
+    }
+  },
+  {
+    "id": "vocab-hop-45",
+    "word": "teammate",
+    "phonetic": "/ˈtiːmmeɪt/",
+    "translations": {
+      "pa": "ਸਾਥੀ",
+      "hi": "साथी / टीममेट",
+      "zh": "队友",
+      "es": "compañero de equipo"
+    },
+    "level": "sprout",
+    "category": "workplace",
+    "example_sentences": [
+      "My teammate covered my station during the rush.",
+      "Good teammates help each other finish side-work."
+    ],
+    "confusion_pairs": [
+      "coworker",
+      "colleague"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.3,
+      "stability": 3.8
+    }
+  },
+  {
+    "id": "vocab-hop-46",
+    "word": "feedback",
+    "phonetic": "/ˈfiːdbæk/",
+    "translations": {
+      "pa": "ਫ਼ੀਡਬੈਕ",
+      "hi": "फ़ीडबैक",
+      "zh": "反馈",
+      "es": "retroalimentación"
+    },
+    "level": "sprout",
+    "category": "workplace",
+    "example_sentences": [
+      "Thank your supervisor for the feedback.",
+      "Positive feedback first, then one thing to grow on."
+    ],
+    "confusion_pairs": [
+      "comment",
+      "review"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.32,
+      "stability": 3.7
+    }
+  },
+  {
+    "id": "vocab-hop-47",
+    "word": "review",
+    "phonetic": "/rɪˈvjuː/",
+    "translations": {
+      "pa": "ਸਮੀਖਿਆ",
+      "hi": "समीक्षा",
+      "zh": "考核",
+      "es": "evaluación / revisión"
+    },
+    "level": "branch",
+    "category": "workplace",
+    "example_sentences": [
+      "Your one-month review happens next week.",
+      "The review covers attendance, teamwork, and guest service."
+    ],
+    "confusion_pairs": [
+      "evaluation",
+      "check-in"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.4,
+      "stability": 3.5
+    }
+  },
+  {
+    "id": "vocab-hop-48",
+    "word": "improvement",
+    "phonetic": "/ɪmˈpruːvmənt/",
+    "translations": {
+      "pa": "ਸੁਧਾਰ",
+      "hi": "सुधार",
+      "zh": "改进",
+      "es": "mejora"
+    },
+    "level": "branch",
+    "category": "workplace",
+    "example_sentences": [
+      "Call out your orders louder — that is the improvement for next week.",
+      "Small improvements add up over a month."
+    ],
+    "confusion_pairs": [
+      "progress",
+      "growth"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.44,
+      "stability": 3.3
+    }
+  },
+  {
+    "id": "vocab-hop-49",
+    "word": "strength",
+    "phonetic": "/streŋkθ/",
+    "translations": {
+      "pa": "ਤਾਕਤ / ਖੂਬੀ",
+      "hi": "ताकत / खूबी",
+      "zh": "优势",
+      "es": "fortaleza / punto fuerte"
+    },
+    "level": "sprout",
+    "category": "workplace",
+    "example_sentences": [
+      "Punctuality is one of your clear strengths.",
+      "Build on your strength with friendly guests."
+    ],
+    "confusion_pairs": [
+      "skill",
+      "talent"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.26,
+      "stability": 4.1
+    }
+  },
+  {
+    "id": "vocab-hop-50",
+    "word": "goal",
+    "phonetic": "/ɡoʊl/",
+    "translations": {
+      "pa": "ਟੀਚਾ",
+      "hi": "लक्ष्य",
+      "zh": "目标",
+      "es": "meta / objetivo"
+    },
+    "level": "sprout",
+    "category": "workplace",
+    "example_sentences": [
+      "My goal for next month is to learn the full menu.",
+      "Set one small goal and check it off each week."
+    ],
+    "confusion_pairs": [
+      "aim",
+      "target"
+    ],
+    "fsrs_params": {
+      "difficulty": 0.24,
+      "stability": 4.2
+    }
+  }
+]

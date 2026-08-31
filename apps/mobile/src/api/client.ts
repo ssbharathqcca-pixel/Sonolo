@@ -350,6 +350,69 @@ export async function fetchMicrolesson(id: string): Promise<Microlesson> {
 }
 
 // ---------------------------------------------------------------------
+// CanadaReady™ Scorecard (SN-048)
+// ---------------------------------------------------------------------
+
+/** The badge tier earned at the learner's current CanadaReady score. */
+export interface ScorecardBadge {
+  code: string;
+  title: string;
+  tagline: string;
+}
+
+/** One of the six speaking-readiness bands with its CLB-inspired hint. */
+export interface ScorecardBand {
+  code: string;
+  label: string;
+  /** 0–100 dimension score. */
+  score: number;
+  clb_hint: string;
+}
+
+/** Session and engagement stats shown under the bands. */
+export interface ScorecardStats {
+  sessions_completed: number;
+  speaking_minutes: number;
+  streak_current: number;
+  total_xp: number;
+}
+
+/** The CanadaReady™ Scorecard payload from GET /users/me/scorecard. */
+export interface Scorecard {
+  generated_at: string;
+  badge: ScorecardBadge;
+  /** 0–100 overall readiness score. */
+  canada_ready_score: number;
+  bands: ScorecardBand[];
+  stats: ScorecardStats;
+  disclaimer: string;
+}
+
+/** GET /users/me/scorecard — the caller's CanadaReady™ Scorecard. */
+export async function fetchScorecard(): Promise<Scorecard> {
+  const { data } = await api.get<Scorecard>("/users/me/scorecard");
+  return data;
+}
+
+/**
+ * Authenticated PDF download: fetches the scorecard PDF as raw bytes
+ * (the axios interceptor attaches the Bearer token) and returns them
+ * as a base64 string for expo-file-system to write to disk.
+ */
+export async function fetchScorecardPdf(): Promise<string> {
+  const { data } = await api.get<ArrayBuffer>("/users/me/scorecard/pdf", {
+    responseType: "arraybuffer",
+  });
+  const bytes = new Uint8Array(data);
+  let binary = "";
+  const CHUNK = 0x8000;
+  for (let i = 0; i < bytes.length; i += CHUNK) {
+    binary += String.fromCharCode(...bytes.subarray(i, i + CHUNK));
+  }
+  return btoa(binary);
+}
+
+// ---------------------------------------------------------------------
 // Entitlements (SN-041)
 // ---------------------------------------------------------------------
 

@@ -17,6 +17,7 @@ import {
   View,
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { useRouter } from "expo-router";
 import Animated, {
   Easing,
   useAnimatedStyle,
@@ -25,12 +26,21 @@ import Animated, {
   withTiming,
 } from "react-native-reanimated";
 import { Circle as CircleSvg, Line, Polygon, Svg } from "react-native-svg";
-import { Flame, RefreshCw, Trophy, Zap } from "lucide-react-native";
+import {
+  Award,
+  ChevronRight,
+  Flame,
+  RefreshCw,
+  Trophy,
+  Zap,
+} from "lucide-react-native";
 
 import { GlassCard } from "../../src/components/GlassCard";
 import {
   fetchGamificationSummary,
+  fetchScorecard,
   type GamificationSummary,
+  type Scorecard,
 } from "../../src/api/client";
 import { useAuthStore } from "../../src/stores/authStore";
 import { colors } from "../../src/theme/colors";
@@ -171,13 +181,67 @@ function LevelProgressBar({ percent }: { percent: number }): JSX.Element {
   );
 }
 
+/** Prominent CanadaReady™ Scorecard entry (SN-048) opening the screen. */
+function ScorecardEntryCard({
+  scorecard,
+  onPress,
+}: {
+  scorecard: Scorecard | null;
+  onPress: () => void;
+}): JSX.Element {
+  const score = scorecard?.canada_ready_score ?? 0;
+  const badgeColor =
+    scorecard?.badge.code === "canada-ready"
+      ? colors.success
+      : scorecard?.badge.code === "confident-colleague"
+        ? colors.auroraTeal
+        : colors.warmCoral;
+  return (
+    <GlassCard style={styles.scorecardEntry}>
+      <Pressable
+        style={styles.scorecardEntryPressable}
+        accessibilityLabel="Open your CanadaReady Scorecard"
+        onPress={onPress}
+      >
+        <View style={[styles.scorecardIconWell, { backgroundColor: `${badgeColor}E6` }]}>
+          <Award color="#FFFFFF" size={22} />
+        </View>
+        <View style={styles.scorecardInfo}>
+          <Text style={styles.scorecardTitle}>CanadaReady™ Scorecard</Text>
+          <Text style={styles.scorecardBadge}>
+            {scorecard?.badge.title ?? "First Steps"}
+          </Text>
+          <View style={styles.scorecardBarTrack}>
+            <View
+              style={[
+                styles.scorecardBarFill,
+                { width: `${Math.max(2, score)}%`, backgroundColor: badgeColor },
+              ]}
+            />
+          </View>
+        </View>
+        <View style={styles.scorecardScoreBlock}>
+          <Text style={[styles.scorecardScore, { color: badgeColor }]}>
+            {score}
+          </Text>
+          <ChevronRight color={colors.textTertiary} size={18} />
+        </View>
+      </Pressable>
+    </GlassCard>
+  );
+}
+
 export default function ProgressScreen(): JSX.Element {
   const insets = useSafeAreaInsets();
+  const router = useRouter();
   const user = useAuthStore((state) => state.user);
   const [summary, setSummary] = useState<GamificationSummary | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [errorText, setErrorText] = useState<string | null>(null);
   const [refreshing, setRefreshing] = useState(false);
+  // SN-048: the scorecard entry needs the live badge + score; degrade
+  // silently (entry stays tappable) when the fetch fails.
+  const [scorecard, setScorecard] = useState<Scorecard | null>(null);
 
   const loadSummary = useCallback(async (): Promise<void> => {
     try {
@@ -194,9 +258,30 @@ export default function ProgressScreen(): JSX.Element {
     void loadSummary();
   }, [loadSummary]);
 
+  useEffect(() => {
+    let cancelled = false;
+    fetchScorecard()
+      .then((data) => {
+        if (!cancelled) {
+          setScorecard(data);
+        }
+      })
+      .catch(() => {
+        // No scorecard badge, no score — the card still opens the screen.
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
   const onRefresh = useCallback(async (): Promise<void> => {
     setRefreshing(true);
-    await loadSummary();
+    await Promise.all([
+      loadSummary(),
+      fetchScorecard()
+        .then(setScorecard)
+        .catch(() => {}),
+    ]);
     setRefreshing(false);
   }, [loadSummary]);
 
@@ -233,6 +318,13 @@ export default function ProgressScreen(): JSX.Element {
       }
     >
       <Text style={styles.heading}>Progress</Text>
+
+      {/* SN-048: CanadaReady™ Scorecard entry — always visible so the
+          screen is discoverable even before the first session. */}
+      <ScorecardEntryCard
+        scorecard={scorecard}
+        onPress={() => router.push("/scorecard")}
+      />
 
       {isLoading ? (
         <ActivityIndicator color={colors.auroraTeal} style={styles.spinner} />
@@ -342,6 +434,55 @@ const styles = StyleSheet.create({
     fontSize: 26,
     fontWeight: "700",
     marginBottom: 4,
+  },
+  scorecardEntry: {
+    padding: 16,
+  },
+  scorecardEntryPressable: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 12,
+  },
+  scorecardIconWell: {
+    width: 48,
+    height: 48,
+    borderRadius: 14,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  scorecardInfo: {
+    flex: 1,
+    gap: 4,
+  },
+  scorecardTitle: {
+    color: colors.textPrimary,
+    fontSize: 15,
+    fontWeight: "700",
+  },
+  scorecardBadge: {
+    color: colors.textSecondary,
+    fontSize: 12,
+    fontWeight: "600",
+  },
+  scorecardBarTrack: {
+    height: 5,
+    borderRadius: 3,
+    backgroundColor: colors.nightSkyDeep,
+    overflow: "hidden",
+    marginTop: 2,
+  },
+  scorecardBarFill: {
+    height: "100%",
+    borderRadius: 3,
+  },
+  scorecardScoreBlock: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 4,
+  },
+  scorecardScore: {
+    fontSize: 20,
+    fontWeight: "800",
   },
   spinner: {
     paddingVertical: 24,

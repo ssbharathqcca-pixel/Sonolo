@@ -351,6 +351,32 @@
       "theme_color": "#E11D48",
       "icon": "🍁",
       "is_published": true
+    },
+    {
+      "id": "hospitality-english-v1",
+      "type": "scenarios",
+      "language": "en",
+      "path": "content/scenarios/hospitality-english-v1.json",
+      "title": "Hospitality Industry Track",
+      "description": "Hotels, restaurants, and coffee bars — service jobs, done the Canadian way.",
+      "category": "workplace",
+      "tier": "premium",
+      "theme_color": "#14B8A6",
+      "icon": "🛎️",
+      "is_published": true
+    },
+    {
+      "id": "vocab-hospitality-english-v1",
+      "type": "vocabulary",
+      "language": "en",
+      "path": "content/vocabulary/vocab-hospitality-english-v1.json",
+      "title": "Hospitality Vocabulary",
+      "description": "Essential words for Canadian service-industry jobs.",
+      "category": "vocabulary",
+      "tier": "premium",
+      "theme_color": "#14B8A6",
+      "icon": "book",
+      "is_published": true
     }
   ]
 }

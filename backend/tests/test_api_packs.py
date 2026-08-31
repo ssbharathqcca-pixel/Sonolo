@@ -80,6 +80,7 @@ async def test_packs_returns_only_scenario_packs_with_exact_fields(
         "quebec-finance-v1",
         "smalltalk-english-v1",
         "job-interviews-english-v1",
+        "hospitality-english-v1",
     }
     first = body["packs"][0]
     assert set(first.keys()) == {
@@ -130,8 +131,10 @@ async def test_pack_counts_match_seeded_scenarios(
     assert by_id["smalltalk-english-v1"]["premium_count"] == 0
     assert by_id["job-interviews-english-v1"]["scenario_count"] == 10
     assert by_id["job-interviews-english-v1"]["premium_count"] == 10
+    assert by_id["hospitality-english-v1"]["scenario_count"] == 10
+    assert by_id["hospitality-english-v1"]["premium_count"] == 10
     total = sum(pack["scenario_count"] for pack in by_id.values())
-    assert total == 145
+    assert total == 155
 
 
 async def test_scenario_responses_carry_pack_id_per_language(
@@ -154,6 +157,7 @@ async def test_scenario_responses_carry_pack_id_per_language(
         "finance-english-v1",
         "smalltalk-english-v1",
         "job-interviews-english-v1",
+        "hospitality-english-v1",
     }
 
     french = await packs_client.get(

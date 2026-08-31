@@ -49,7 +49,7 @@ class ScenarioListResponse(BaseModel):
 @router.get("", response_model=ScenarioListResponse)
 async def list_scenarios(
     current_user: User = Depends(get_current_user),
-    limit: int = Query(default=100, ge=1, le=100),
+    limit: int = Query(default=110, ge=1, le=110),
     language: PreferredLanguage | None = Query(default=None),
     db: AsyncSession = Depends(get_db),
 ) -> ScenarioListResponse:
